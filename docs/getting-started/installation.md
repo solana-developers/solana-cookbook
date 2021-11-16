@@ -12,13 +12,13 @@ Installation ...
 Started by **Installing Rust**.
 
 ```shell
-install rust
+sh -c "$(curl -sSfL https://release.solana.com/v1.8.3/install)"
 ```
 
-ISSUES:  LINKS:  MAC? WINDOWS? WSL? MAC M1?  
+ISSUES:  LINKS:  MAC? WINDOWS? WSL? MAC M1?
 
-yes..
+yes.. lets solve those
 
-Or **view Solana documentation** with **[docusaurus.new](https://docs.solana.com/)**.
+Solana Install Documentation: **view Solana Install documentation** with **[Solana Installation](https://docs.solana.com/cli/install-solana-cli-tools)**.
 
 
