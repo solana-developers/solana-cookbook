@@ -1,20 +1,8 @@
 ---
-sidebar_label: 'Getting Started'
-sidebar_position: 3
-slug: /getting-started
+title: Installation
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-
-Solana has multiple resources at your disposal depending on your preferred programming language and environment.
-
-## Solana Libraries
-
-<Tabs className="unique-tabs">
-  <TabItem value="js" label="JS" default>
+## Install Web3JS
 
 There's a few libraries that you can use to get you started with javascript or typescript on Solana.<br/>
 
@@ -22,21 +10,26 @@ There's a few libraries that you can use to get you started with javascript or t
 
 `@solana/web3.js` is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the chain.
 
-You can install using one of the following:
+You can install using the following:
 
-#### Yarn
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-```console
-$ yarn add @solana/web3.js
+```bash
+yarn add @solana/web3.js
 ```
 
-#### NPM
+  </CodeGroupItem>
 
-```console
-$ npm install --save @solana/web3.js
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install --save @solana/web3.js
 ```
 
-#### Browser Bundle
+  </CodeGroupItem>
+
+  <CodeGroupItem title="BROWSER">
 
 ```html
 <!-- Development (un-minified) -->
@@ -45,6 +38,9 @@ $ npm install --save @solana/web3.js
 <!-- Production (minified) -->
 <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 ```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ---
 
@@ -55,19 +51,24 @@ $ npm install --save @solana/web3.js
 
 You can install this library with one of the following:
 
-#### Yarn
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-```console
-$ yarn add @solana/spl-token
+```bash
+yarn add @solana/spl-token
 ```
 
-#### NPM
+  </CodeGroupItem>
 
-```console
-$ npm install --save @solana/spl-token
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install --save @solana/spl-token
 ```
 
-#### Browser Bundle
+  </CodeGroupItem>
+
+  <CodeGroupItem title="BROWSER">
 
 ```html
 <!-- Development (un-minified) -->
@@ -76,6 +77,9 @@ $ npm install --save @solana/spl-token
 <!-- Production (minified) -->
 <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.min.js"></script>
 ```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ---
 
@@ -87,30 +91,54 @@ There is a collection of libraries that can help bootstrap wallet connections wi
 
 You can install this library with the following:
 
-#### Yarn
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-```console
-$ yarn add @solana/wallet-adapter-wallets \
+```bash
+yarn add @solana/wallet-adapter-wallets \
     @solana/wallet-adapter-base
 ```
 
-#### NPM
+  </CodeGroupItem>
 
-```console
-$ npm install --save @solana/wallet-adapter-wallets \
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install --save @solana/wallet-adapter-wallets \
     @solana/wallet-adapter-base
 ```
 
-  </TabItem>
-  <TabItem value="cli" label="CLI">
+  </CodeGroupItem>
+</CodeGroup>
 
-For local development, it is important that you download the solana tool suite.
+## Install Rust
+
+<CodeGroup>
+  <CodeGroupItem title="MACOS" active>
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+  </CodeGroupItem>
+  <CodeGroupItem title="LINUX">
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+For Windows, please visit the [Rust installation site](https://www.rust-lang.org/tools/install).
+
+## Install CLI
 
 ### MacOS & Linux
 
-- Open your favorite Terminal application
+Open your favorite Terminal application
 
-- Install the Solana release
+Install the Solana release
 [LATEST_SOLANA_RELEASE_VERSION](https://github.com/solana-labs/solana/releases/tag/LATEST_SOLANA_RELEASE_VERSION) on your
 machine by running:
 
@@ -118,11 +146,11 @@ machine by running:
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_SOLANA_RELEASE_VERSION/install)"
 ```
 
-- You can replace `LATEST_SOLANA_RELEASE_VERSION` with the release tag matching
+You can replace `LATEST_SOLANA_RELEASE_VERSION` with the release tag matching
 the software version of your desired release, or use one of the three symbolic
 channel names: `stable`, `beta`, or `edge`.
 
-- The following output indicates a successful update:
+The following output indicates a successful update:
 
 ```text
 downloading LATEST_SOLANA_RELEASE_VERSION installer
@@ -133,22 +161,22 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-- Depending on your system, the end of the installer messaging may prompt you
+Depending on your system, the end of the installer messaging may prompt you
 to
 
 ```bash
 Please update your PATH environment variable to include the solana programs:
 ```
 
-- If you get the above message, copy and paste the recommended command below
+If you get the above message, copy and paste the recommended command below
 it to update `PATH`
-- Confirm you have the desired version of `solana` installed by running:
+Confirm you have the desired version of `solana` installed by running:
 
 ```bash
 solana --version
 ```
 
-- After a successful install, `solana-install update` may be used to easily
+After a successful install, `solana-install update` may be used to easily
 update the Solana software to a newer version at any time.
 
 #### Downloading Binaries(Linux)
@@ -185,21 +213,21 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-- Open a Command Prompt (`cmd.exe`) as an Administrator
+Open a Command Prompt (`cmd.exe`) as an Administrator
 
-- Search for Command Prompt in the Windows search bar. When the Command
+Search for Command Prompt in the Windows search bar. When the Command
 Prompt app appears, right-click and select “Open as Administrator”.
 If you are prompted by a pop-up window asking “Do you want to allow this app to
 make changes to your device?”, click Yes.
 
-- Copy and paste the following command, then press Enter to download the Solana
+Copy and paste the following command, then press Enter to download the Solana
 installer into a temporary directory:
 
 ```bash
 curl https://release.solana.com/LATEST_SOLANA_RELEASE_VERSION/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-- Copy and paste the following command, then press Enter to install the latest
+Copy and paste the following command, then press Enter to install the latest
 version of Solana. If you see a security pop-up by your system, please select
 to allow the program to run.
 
@@ -207,31 +235,31 @@ to allow the program to run.
 C:\solana-install-tmp\solana-install-init.exe LATEST_SOLANA_RELEASE_VERSION
 ```
 
-- When the installer is finished, press Enter.
+When the installer is finished, press Enter.
 
-- Close the command prompt window and re-open a new command prompt window as a
+Close the command prompt window and re-open a new command prompt window as a
 normal user
-- Search for "Command Prompt" in the search bar, then left click on the
+Search for "Command Prompt" in the search bar, then left click on the
 Command Prompt app icon, no need to run as Administrator)
-- Confirm you have the desired version of `solana` installed by entering:
+Confirm you have the desired version of `solana` installed by entering:
 
 ```bash
 solana --version
 ```
 
-- After a successful install, `solana-install update` may be used to easily
+After a successful install, `solana-install update` may be used to easily
 update the Solana software to a newer version at any time.
 
 #### Downloading Binaries
 
 Alternatively you can build from binaries instead of using solana-install.
 
-- Download the binaries by navigating to
+Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
 download **solana-release-x86_64-pc-windows-msvc.tar.bz2**, then extract the
 archive using WinZip or similar.
 
-- Open a Command Prompt and navigate to the directory into which you extracted
+Open a Command Prompt and navigate to the directory into which you extracted
 the binaries and run:
 
 ```bash
@@ -258,7 +286,3 @@ prebuilt binaries:
 ```bash
 solana-install init
 ```
-
-  </TabItem>
-</Tabs>
-
