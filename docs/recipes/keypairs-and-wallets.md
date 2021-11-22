@@ -36,20 +36,72 @@ to test out your dApp.
 @[code](@/code/keypair-from-secret/keypair-from-secret.en.ts)
 
   </CodeGroupItem>
-  <CodeGroupItem title="CLI" active>
+
+  <CodeGroupItem title="CLI">
 
 @[code](@/code/keypair-from-secret/keypair-from-secret.en.sh)
 
   </CodeGroupItem>
-</CodeGroupItem>
+</CodeGroup>
 
 ## Verify a Keypair
 
+If you are given a keypair, you can verify whether or not the secret
+matches the given public key
 
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/verify-keypair/verify-keypair.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/verify-keypair/verify-keypair.en.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Convert Mnemonic to Keypair
 
+Many wallet extensions use mnemonics to represent their secret keys.
+You can convert the mneomics to Keypairs for local testing.
 
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/mnemonic-to-keypair/mnemonic-to-keypair.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/mnemonic-to-keypair/mnemonic-to-keypair.en.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Vanity PublicKeys
 
+Vanity publickeys are keys that have start with specific characters.
+For example, a person may want a publickey to start with "elv1s", or
+maybe even "cook". These can help other people remember who the key
+belongs to, making the key more easily identifiable.
+
+Note: The more characters in your vanity address, the longer it will
+take.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/vanity-publickeys/vanity-publickeys.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/vanity-publickeys/vanity-publickeys.en.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
