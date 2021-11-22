@@ -1,0 +1,1 @@
+solana-keygen grind --starts-with e1v1s:1

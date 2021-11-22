@@ -1,0 +1,1 @@
+solana-keygen verify <PUBKEY> prompt://
