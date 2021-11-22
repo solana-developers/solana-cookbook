@@ -105,5 +105,3 @@ take.
 
   </CodeGroupItem>
 </CodeGroup>
-
-## 
