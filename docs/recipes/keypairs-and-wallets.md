@@ -24,3 +24,32 @@ keypair, you will need to generate one.
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Getting Keypair from a Secret
+
+If you already have your secret, you can get your Keypair from secret
+to test out your dApp.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/keypair-from-secret/keypair-from-secret.en.ts)
+
+  </CodeGroupItem>
+  <CodeGroupItem title="CLI" active>
+
+@[code](@/code/keypair-from-secret/keypair-from-secret.en.sh)
+
+  </CodeGroupItem>
+</CodeGroupItem>
+
+## Verify a Keypair
+
+
+
+## Convert Mnemonic to Keypair
+
+
+
+## Vanity PublicKeys
+
