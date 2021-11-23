@@ -13,7 +13,7 @@ import {
     const fromPubkey = Keypair.generate();
 
     // Airdrop SOL for transferring lamports to the created account
-    var airdropSignature = await connection.requestAirdrop(
+    const airdropSignature = await connection.requestAirdrop(
         fromPubkey.publicKey,
         LAMPORTS_PER_SOL,
     );
@@ -23,8 +23,8 @@ import {
     const createAccountParams = {
         fromPubkey: fromPubkey.publicKey,
         newAccountPubkey: newAccountPubkey.publicKey,
-        lamports: 20,
-        space: 0,
+        lamports: LAMPORTS_PER_SOL / 100, // Seed the created account with lamports for rent exemption
+        space: 0, // amount of space to reserve for the account
         programId: SystemProgram.programId,
     };
 
