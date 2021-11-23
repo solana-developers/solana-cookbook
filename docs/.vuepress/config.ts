@@ -21,9 +21,10 @@ export default defineUserConfig<DefaultThemeOptions> ({
             {
               text: 'Recipes',
               children: [
-                '/recipes/accounts.md',
+                '/recipes/local-development.md',
                 '/recipes/keypairs-and-wallets.md',
-                '/recipes/local-development.md'
+                '/recipes/basic-transactions.md',
+                '/recipes/accounts.md',
               ]
             }
           ]
