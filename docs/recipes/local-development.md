@@ -47,7 +47,7 @@ running remotely with the following:
 ## Airdropping SOL
 
 When you're working locally, you need some SOL in order to send 
-transactions. In non-mainnet environments you can achieve SOL by
+transactions. In non-mainnet environments you can receive SOL by
 airdropping it to your address
 
 <CodeGroup>
@@ -69,7 +69,7 @@ airdropping it to your address
 Testing your program code locally can be a lot more reliable than
 testing on devnet, and can help you test before trying it out on devnet.
 
-You can setup your local-test-validator by installing the solana tool suite 
+You can setup your local-test-validator by installing the [solana tool suite](getting-started.md#install-cli)
 and running 
 
 ```console
