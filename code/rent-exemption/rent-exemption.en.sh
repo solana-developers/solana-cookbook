@@ -1,0 +1,1 @@
+solana rent 1500
