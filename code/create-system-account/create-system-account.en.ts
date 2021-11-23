@@ -19,12 +19,18 @@ import {
     );
     await connection.confirmTransaction(airdropSignature);
 
+    // amount of space to reserve for the account
+    const space = 0;
+
+    // Seed the created account with lamports for rent exemption
+    const rentExemptionAmount = await connection.getMinimumBalanceForRentExemption(space);
+
     const newAccountPubkey = Keypair.generate();
     const createAccountParams = {
         fromPubkey: fromPubkey.publicKey,
         newAccountPubkey: newAccountPubkey.publicKey,
-        lamports: LAMPORTS_PER_SOL / 100, // Seed the created account with lamports for rent exemption
-        space: 0, // amount of space to reserve for the account
+        lamports: rentExemptionAmount,
+        space,
         programId: SystemProgram.programId,
     };
 
