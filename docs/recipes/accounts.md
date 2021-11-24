@@ -13,7 +13,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/create-system-account/create-system-account.en.ts)
+@[code](@/code/accounts/create-system-account/create-system-account.en.ts)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -27,13 +27,13 @@ the amount of data you intend to store in the account.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/rent-exemption/rent-exemption.en.ts)
+@[code](@/code/accounts/rent-exemption/rent-exemption.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/rent-exemption/rent-exemption.en.sh)
+@[code](@/code/accounts/rent-exemption/rent-exemption.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>

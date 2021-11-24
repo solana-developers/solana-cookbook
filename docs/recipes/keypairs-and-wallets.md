@@ -14,13 +14,13 @@ keypair, you will need to generate one.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/generate-keypair/generate-keypair.en.ts)
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/generate-keypair/generate-keypair.en.sh)
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -33,13 +33,13 @@ to test out your dApp.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/keypair-from-secret/keypair-from-secret.en.ts)
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/keypair-from-secret/keypair-from-secret.en.sh)
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -52,13 +52,13 @@ matches the given public key
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/verify-keypair/verify-keypair.en.ts)
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/verify-keypair/verify-keypair.en.sh)
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -71,13 +71,13 @@ You can convert the mneomics to Keypairs for local testing.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/mnemonic-to-keypair/mnemonic-to-keypair.en.ts)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/mnemonic-to-keypair.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/mnemonic-to-keypair/mnemonic-to-keypair.en.sh)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/mnemonic-to-keypair.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -95,13 +95,13 @@ take.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/vanity-publickeys/vanity-publickeys.en.ts)
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/vanity-publickeys/vanity-publickeys.en.sh)
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
