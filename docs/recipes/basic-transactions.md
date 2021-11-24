@@ -11,17 +11,17 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/sending-sol/sending-sol.en.ts)
+@[code](@/code/basic-transactions/sending-sol/sending-sol.en.ts)
 
   </CodeGroupItem>
   <CodeGroupItem title="Wallet-Adapter">
 
-@[code](@/code/sending-sol/sending-sol.adapter.en.tsx)
+@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.en.tsx)
 
   </CodeGroupItem>
   <CodeGroupItem title="CLI">
 
-@[code](@/code/sending-sol/sending-sol.en.sh)
+@[code](@/code/basic-transactions/sending-sol/sending-sol.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -38,17 +38,17 @@ with the following example.
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/sending-spl-token/sending-spl-token.en.ts)
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.ts)
 
   </CodeGroupItem>
   <CodeGroupItem title="Wallet-Adapter">
 
-@[code](@/code/sending-spl-token/sending-spl-token.adapter.en.tsx)
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.adapter.en.tsx)
 
   </CodeGroupItem>
   <CodeGroupItem title="CLI">
 
-@[code](@/code/sending-spl-token/sending-spl-token.en.sh)
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -65,7 +65,7 @@ and account, check out [calculating rent exemption](accounts.md#calculating-rent
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/calc-tx-cost/calc-tx-cost.en.ts)
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-cost.en.ts)
 
   </CodeGroupItem>
 </CodeGroup>

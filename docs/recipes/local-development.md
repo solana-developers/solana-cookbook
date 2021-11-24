@@ -16,13 +16,13 @@ environments:
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/connecting-cluster/connecting-cluster.en.ts)
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/connecting-cluster/connecting-cluster.en.sh)
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -33,13 +33,13 @@ running remotely with the following:
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/connecting-private-cluster/connecting-private-cluster.en.ts)
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/connecting-private-cluster/connecting-private-cluster.en.sh)
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -53,13 +53,13 @@ airdropping it to your address
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/airdropping-sol/airdropping-sol.en.ts)
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/airdropping-sol/airdropping-sol.en.sh)
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
