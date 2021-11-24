@@ -4,7 +4,7 @@ title: Menu
 
 # Menu
 
-We are delighted to have you! Please look over the menu and select something of interest. 
+Please choose from some of our top 
 <br>If you would like a recommendation, I suggest trying our fine [Ingredients](/getting-started/introduction.md)!
 
 # Entrees
@@ -18,7 +18,7 @@ want to know about the core concepts and compontents of clients and programs!
 haven't installed anything and want to build programs (smart contracts)
 
 [Recipes](/recipes/web3.md)
-show me the way to a savory dish!
+show me how to make a savory dish!
 
 [Clients and dApps](/recipes/web3.md)
 want to build clients and web3 dApps
