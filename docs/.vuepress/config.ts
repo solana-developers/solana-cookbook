@@ -10,25 +10,26 @@ export default defineUserConfig<DefaultThemeOptions> ({
   themeConfig: {
     locales: {
       '/': {
-        sidebar: {
-          '/recipes/': [
-            {
-              text: 'Getting Started',
-              children: [
-                '/recipes/getting-started.md'
-              ]
-            },
-            {
-              text: 'Recipes',
-              children: [
-                '/recipes/local-development.md',
-                '/recipes/keypairs-and-wallets.md',
-                '/recipes/basic-transactions.md',
-                '/recipes/accounts.md',
-              ]
-            }
-          ]
-        }
+        sidebar: [
+          {
+            text: 'Getting Started',
+            children: [
+              '/getting-started/introduction.md',
+              '/getting-started/menu.md',
+              '/getting-started/ingredients.md',
+              '/getting-started/installation.md',
+            ],
+          },
+          {
+            text: 'Recipes',
+            children: [
+              '/recipes/local-development.md',
+              '/recipes/keypairs-and-wallets.md',
+              '/recipes/basic-transactions.md',
+              '/recipes/accounts.md',
+            ],
+          },
+        ],
       }
     }
   },
