@@ -6,12 +6,12 @@ title: Introduction
 
 The Solana Cookbook contains recipes that will take you from no how to oh yea. Each recipe is designed to focus on a specific aspect of clients and or program for the Solana Blockchain. The Cookbook is an on going effort to share development implementations, best practices, and help provide you with the knowldge & resources needed to become a great chef! Get ready to cook and serve up the best programs and applications in the Solana ecosystem.
 
-The format here is is less talk, less doc, and more walk. This is for builders and doers. Simple digestable pieces. Everything you need to build. Everything is on the menu. As much as you can digest. If you want to read, and like deep dives (I do..) we have all the links to documentation and resources you need. Something missing? Contribute.
+The format here is is less doc, and more walk. The cookbook is for builders and doers. Recipes and answers are provided in simple digestable pieces. Everything you need to build succesfully on Solana will be made available. If you want more details we will provide all the links to the documentation and resources you need. Something missing? Contribute!
 
 ::: tip
 *No matter your background, if you follow the recipes and guides contained within, and utilize the available resources, you will succeed. You will be building Solana clients and programs in no time. If we can do it, so can you.   -Chefs*
 
-Solana Blockchain Chef, you a ready? 
+Solana Blockchain Chef, you a ready?
 :::
 
 
