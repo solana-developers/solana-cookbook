@@ -101,6 +101,17 @@ Mint token to your token account. After you finishing, you can get mint account 
 
 ## Burn Token
 
+You can burn token if you are the token owner.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/burn-token/burn-token.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 ## Wrapped SOL
 
 ### Create Wrapped SOL Token Account
