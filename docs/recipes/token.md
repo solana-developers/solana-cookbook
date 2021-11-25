@@ -89,8 +89,15 @@ Mint token to your token account. After you finishing, you can get mint account 
   </CodeGroupItem>
 </CodeGroup>
 
-
 ## Transfer Token
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/transfer-token/transfer-token.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Burn Token
 
