@@ -114,6 +114,41 @@ You can burn token if you are the token owner.
 
 ## Wrapped SOL
 
-### Create Wrapped SOL Token Account
+Wrapped SOL is a kind of mint.
+
+### Create Account
+
+Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+
+```js
+import { NATIVE_MINT } from "@solana/spl-token";
+```
 
 ### Add Balance
+
+There are two ways to add balance for Wrapped SOL
+
+#### 1.By SOL Transfer
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/wrapped-sol/add-balance-by-sol.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
+#### 2.By Token Transfer
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/wrapped-sol/add-balance-by-token.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Transfer
+
+Like [Token Transfer](#transfer-token)
