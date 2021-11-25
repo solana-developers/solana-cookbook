@@ -67,6 +67,16 @@ Strongly Recommend. You can know all token address by SOL address.
 
 ## Get Token Account
 
+You can fetch token account's detail.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/get-token-account/get-token-account.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 
 ## Mint Token
 
