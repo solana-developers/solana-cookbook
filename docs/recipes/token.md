@@ -36,11 +36,37 @@ You can get mint account info.
 
 ## Create Token Account
 
-## Get Token Account
+You need a token account to hold token(mint). Different token need different token account to hold it.
+In the other words, `your USDC token account and SRM token account have different address`.
+
+There are two ways you can create token account.
 
 ### Random
 
+Old school. Make addresses manaing more difficult.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/create-token-account/random.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ### Associated Token Account (ATA)
+
+Strongly Recommend. You can know all token address by SOL address.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/create-token-account/ata.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+## Get Token Account
+
 
 ## Mint Token
 
