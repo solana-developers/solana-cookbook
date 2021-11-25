@@ -111,6 +111,27 @@ You can burn token if you are the token owner.
   </CodeGroupItem>
 </CodeGroup>
 
+## Close Token Account
+
+You can close a token account if you don't want to use it anymore. There are two situations:
+
+1. Wrapped SOL
+
+you can close it directly.
+
+2. Other Tokens
+
+you can close it only if token account's balance is 0.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/close-token-account/close-token-account.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 
 ## Wrapped SOL
 
