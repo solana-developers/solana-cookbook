@@ -147,7 +147,22 @@ you can close it only if token account's balance is 0.
   </CodeGroupItem>
 </CodeGroup>
 
+## Set Authority
 
+You can set/update authority. There are 4 types:
+
+1. MintTokens (mint account)
+2. FreezeAccount (mint account)
+3. AccountOwner (token account)
+4. CloseAccount (token account)
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/set-authority/main.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Wrapped SOL
 
