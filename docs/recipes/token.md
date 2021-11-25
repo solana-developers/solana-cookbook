@@ -77,8 +77,18 @@ You can fetch token account's detail.
   </CodeGroupItem>
 </CodeGroup>
 
-
 ## Mint Token
+
+Mint token to your token account. After you finishing, you can get mint account info and token account info again to watch the changes.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/mint-token/mint-token.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 
 ## Transfer Token
 
