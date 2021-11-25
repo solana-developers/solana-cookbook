@@ -77,6 +77,22 @@ You can fetch token account's detail.
   </CodeGroupItem>
 </CodeGroup>
 
+## Get Token Balance
+
+If you only care about balance, you can just get its balance.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/get-token-balance/get-token-balance.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+::: tip
+Token account can only hold one kind of mint. When you sprcific a token account, you also specific a mint too.
+:::
+
 ## Mint Token
 
 Mint token to your token account. After you finishing, you can get mint account info and token account info again to watch the changes.
