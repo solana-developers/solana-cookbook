@@ -204,3 +204,28 @@ There are two ways to add balance for Wrapped SOL
 ### Transfer
 
 Like [Token Transfer](#transfer-token)
+
+## Get Token Account By Owner
+
+You can fetch token accounts by owner. There are two ways to do it.
+
+1. Get All Token Account
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/get-token-account-by-owner/all.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
+2. Filter By Mint
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/get-token-account-by-owner/by-mint.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
