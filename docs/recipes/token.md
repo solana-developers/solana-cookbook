@@ -22,8 +22,17 @@ You can treat a mint as a ERC-20 token. Like SRM, RAY, USDC ... all of them are 
   </CodeGroupItem>
 </CodeGroup>
 
+## Get Mint Account
 
-## Get Mint Token Account
+You can get mint account info.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/get-mint-account/get-mint-account.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 ## Create Token Account
 
