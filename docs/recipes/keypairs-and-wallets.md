@@ -81,16 +81,34 @@ matches the given public key
 Many wallet extensions use mnemonics to represent their secret keys.
 You can convert the mneomics to Keypairs for local testing.
 
+1. BIP39
+
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/mnemonic-to-keypair.en.ts)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.ts)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="CLI">
 
-@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/mnemonic-to-keypair.en.sh)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+2. BIP44
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.sh)
 
   </CodeGroupItem>
 </CodeGroup>
