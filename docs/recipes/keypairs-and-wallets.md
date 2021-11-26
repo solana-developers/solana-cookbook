@@ -7,8 +7,8 @@ title: Keypairs and Wallets
 ## Generating a Keypair
 
 Many of the different actions you can take with the various Solana
-libraries require a Keypair or Wallet. If you are connecting to a 
-wallet, you do not have to worry. However, if you are in need of a 
+libraries require a Keypair or Wallet. If you are connecting to a
+wallet, you do not have to worry. However, if you are in need of a
 keypair, you will need to generate one.
 
 <CodeGroup>
@@ -30,6 +30,8 @@ keypair, you will need to generate one.
 If you already have your secret, you can get your Keypair from secret
 to test out your dApp.
 
+1. From Bytes
+
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
@@ -43,6 +45,17 @@ to test out your dApp.
 
   </CodeGroupItem>
 </CodeGroup>
+
+2. From Base58 String
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 
 ## Verify a Keypair
 
