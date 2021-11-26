@@ -25,6 +25,7 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/keypairs-and-wallets.md',
                 '/recipes/basic-transactions.md',
                 '/recipes/accounts.md',
+                '/recipes/token.md',
               ]
             }
           ]
