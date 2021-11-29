@@ -4,9 +4,11 @@ title: Interacting with Tokens
 
 # Token
 
-## Create Mint Account
+## Create Token
 
-You can treat a mint as a ERC-20 token. Like SRM, RAY, USDC ... all of them are mints
+Creating tokens is done by creating what is called a "mint account". 
+This mint account is later used to mint tokens to a token account and
+create the initial supply.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -22,9 +24,10 @@ You can treat a mint as a ERC-20 token. Like SRM, RAY, USDC ... all of them are 
   </CodeGroupItem>
 </CodeGroup>
 
-## Get Mint Account
+## Get Token Mint
 
-You can get mint account info.
+In order to get the current supply, authority, or decimals a token has,
+you will need to get the account info for the token mint.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -36,14 +39,16 @@ You can get mint account info.
 
 ## Create Token Account
 
-You need a token account to hold token(mint). Different token need different token account to hold it.
-In the other words, `your USDC token account and SRM token account have different address`.
+A token account is required in order to hold tokens. Every token mint
+has a different token account associated with it.
 
 There are two ways you can create token account.
 
-### Random
+### Ancillary Token Accounts
 
-Old school. Make addresses manaing more difficult.
+Ancillary Token Accounts are accounts that you manage by creating the 
+specific keypair for them. Using a keypair on creation allows you to 
+pick the specific public key you want for your token account.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -55,7 +60,9 @@ Old school. Make addresses manaing more difficult.
 
 ### Associated Token Account (ATA)
 
-Strongly Recommend. You can know all token address by SOL address.
+Associated Token Accounts are deterministicly created 
+accounts for every keypair. ATAs are the recommended method 
+of managing token accounts.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -67,7 +74,8 @@ Strongly Recommend. You can know all token address by SOL address.
 
 ## Get Token Account
 
-You can fetch token account's detail.
+Every token account has information on the token such as the owner,
+mint, amount, and decimals.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -79,7 +87,8 @@ You can fetch token account's detail.
 
 ## Get Token Balance
 
-If you only care about balance, you can just get its balance.
+The token account has the token balance, which can be retrieved with a
+single call.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -90,12 +99,14 @@ If you only care about balance, you can just get its balance.
 </CodeGroup>
 
 ::: tip
-Token account can only hold one kind of mint. When you sprcific a token account, you also specific a mint too.
+A token account can only hold one kind of mint. When you specify a token 
+account, you also specific a mint too.
 :::
 
 ## Mint Token
 
-Mint token to your token account. After you finishing, you can get mint account info and token account info again to watch the changes.
+When you mint tokens, you increase the supply and transfer the new tokens
+to a specific token account.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -106,6 +117,8 @@ Mint token to your token account. After you finishing, you can get mint account 
 </CodeGroup>
 
 ## Transfer Token
+
+You can transfer tokens from one token account to another token account.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -129,15 +142,11 @@ You can burn token if you are the token owner.
 
 ## Close Token Account
 
-You can close a token account if you don't want to use it anymore. There are two situations:
+You can close a token account if you don't want to use it anymore. 
+There are two situations:
 
-1. Wrapped SOL
-
-you can close it directly.
-
-2. Other Tokens
-
-you can close it only if token account's balance is 0.
+1. Wrapped SOL - Closing converts Wrapped SOL to SOL
+2. Other Tokens - You can close it only if token account's balance is 0.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -166,9 +175,10 @@ You can set/update authority. There are 4 types:
 
 ## Wrapped SOL
 
-Wrapped SOL is a kind of mint.
+Wrapped SOL just like any other token mint. The difference is using `syncNative`
+and creating token accounts specifically on the `NATIVE_MINT` address.
 
-### Create Account
+### Create Token Account
 
 Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
 
@@ -180,7 +190,7 @@ import { NATIVE_MINT } from "@solana/spl-token";
 
 There are two ways to add balance for Wrapped SOL
 
-#### 1.By SOL Transfer
+#### 1. By SOL Transfer
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -191,7 +201,7 @@ There are two ways to add balance for Wrapped SOL
 </CodeGroup>
 
 
-#### 2.By Token Transfer
+#### 2. By Token Transfer
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -200,10 +210,6 @@ There are two ways to add balance for Wrapped SOL
 
   </CodeGroupItem>
 </CodeGroup>
-
-### Transfer
-
-Like [Token Transfer](#transfer-token)
 
 ## Get Token Account By Owner
 
