@@ -38,4 +38,12 @@ export default defineUserConfig<DefaultThemeOptions> ({
       handleImportPath: (str) => str.replace(/^@/, path.resolve(__dirname, "../../")),
     },
   },
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        'id': 'UA-213843360-1'
+      }
+    ]
+  ],
 });
