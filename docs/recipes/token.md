@@ -173,6 +173,18 @@ You can set/update authority. There are 4 types:
   </CodeGroupItem>
 </CodeGroup>
 
+## Approve (Delegate)
+
+You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/approve/main.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Wrapped SOL
 
 Wrapped SOL just like any other token mint. The difference is using `syncNative`
