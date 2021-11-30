@@ -105,7 +105,7 @@ Accounts Recap:
 
 ## PDAs (Program Derived Addresses)
 
-placeholder
+[placeholder]
 
 
 ## CPI (Calling between Programs)
