@@ -17,6 +17,11 @@ lives under `/code/<topic>`.
 We are using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 for this repository.
 
+To choose a task or make your own, do the following:
+
+1. [Add an issue](https://github.com/solana-dev-adv/solana-cookbook/issues/new) for the task and assign to yourself or comment on the issue
+2. Make a draft PR referencing the issue.
+
 General flow for making a contribution:
 
 1. Fork the repo on GitHub
