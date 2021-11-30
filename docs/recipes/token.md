@@ -185,6 +185,19 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </CodeGroupItem>
 </CodeGroup>
 
+## Revoke (Delegate)
+
+Revoke will set delegate to null and set delegated amount to 0.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/token/revoke/main.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 ## Wrapped SOL
 
 Wrapped SOL just like any other token mint. The difference is using `syncNative`
