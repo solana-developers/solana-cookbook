@@ -10,6 +10,13 @@ actions:
 - text: Get Started →
   link: /recipes/getting-started.md
   type: primary
+features:
+- title: Community Driven
+  details: Anyone can contribute recipes for any project. Help grow your project by providing better references.
+- title: Language Support
+  details: Typescript, CLI, and more
+- title: Short & Sweet
+  details: Each recipe contains code snippets to quickly run and test
 footer: MIT Licensed
 ---
 
