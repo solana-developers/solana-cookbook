@@ -6,7 +6,7 @@ title: Interacting with Tokens
 
 ## Create Token
 
-Creating tokens is done by creating what is called a "mint account". 
+Creating tokens is done by creating what is called a "mint account".
 This mint account is later used to mint tokens to a token account and
 create the initial supply.
 
@@ -46,8 +46,8 @@ There are two ways you can create token account.
 
 ### Ancillary Token Accounts
 
-Ancillary Token Accounts are accounts that you manage by creating the 
-specific keypair for them. Using a keypair on creation allows you to 
+Ancillary Token Accounts are accounts that you manage by creating the
+specific keypair for them. Using a keypair on creation allows you to
 pick the specific public key you want for your token account.
 
 <CodeGroup>
@@ -60,8 +60,8 @@ pick the specific public key you want for your token account.
 
 ### Associated Token Account (ATA)
 
-Associated Token Accounts are deterministicly created 
-accounts for every keypair. ATAs are the recommended method 
+Associated Token Accounts are deterministicly created
+accounts for every keypair. ATAs are the recommended method
 of managing token accounts.
 
 <CodeGroup>
@@ -99,7 +99,7 @@ single call.
 </CodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token 
+A token account can only hold one kind of mint. When you specify a token
 account, you also specific a mint too.
 :::
 
@@ -142,7 +142,7 @@ You can burn token if you are the token owner.
 
 ## Close Token Account
 
-You can close a token account if you don't want to use it anymore. 
+You can close a token account if you don't want to use it anymore.
 There are two situations:
 
 1. Wrapped SOL - Closing converts Wrapped SOL to SOL
