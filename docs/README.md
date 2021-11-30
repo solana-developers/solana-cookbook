@@ -13,10 +13,10 @@ actions:
 features:
 - title: Community Driven
   details: Anyone can contribute recipes for any project. Help grow your project by providing better references.
-- title: Multi-Lingual
-  details: Need another language other than Javascript? We've got you covered.
-- title: Small Paste-able Code
-  details: Each recipe contains code snippets to quickly run and test,
+- title: Language Support
+  details: Typescript, CLI, and more
+- title: Short & Sweet
+  details: Each recipe contains code snippets to quickly run and test
 footer: MIT Licensed
 ---
 
