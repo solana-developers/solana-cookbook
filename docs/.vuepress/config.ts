@@ -10,6 +10,13 @@ export default defineUserConfig<DefaultThemeOptions> ({
   themeConfig: {
     locales: {
       '/': {
+        navbar:
+        [
+          {
+            text: 'Contribute',
+            link: 'https://github.com/solana-dev-adv/solana-cookbook',
+          }
+        ],
         sidebar: {
           '/recipes/': [
             {
@@ -43,6 +50,17 @@ export default defineUserConfig<DefaultThemeOptions> ({
       '@vuepress/google-analytics',
       {
         'id': 'UA-213843360-1'
+      }
+    ],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: 'Search',
+          }
+        },
+        maxSuggestions: 10
       }
     ]
   ],
