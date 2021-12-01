@@ -33,6 +33,7 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/basic-transactions.md',
                 '/recipes/accounts.md',
                 '/recipes/token.md',
+                '/recipes/staking.md',
               ]
             }
           ]
