@@ -17,16 +17,16 @@ import * as bs58 from "bs58";
   // create a example tx, alice transfer to bob and feePayer is `feePayer`
   // alice and feePayer are signer in this tx
   const feePayer = Keypair.generate();
-  await connection.confirmTransaction(await connection.requestAirdrop(feePayer.publicKey, 0.01 * LAMPORTS_PER_SOL));
+  await connection.confirmTransaction(await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL));
   const alice = Keypair.generate();
-  await connection.confirmTransaction(await connection.requestAirdrop(alice.publicKey, 0.01 * LAMPORTS_PER_SOL));
+  await connection.confirmTransaction(await connection.requestAirdrop(alice.publicKey, LAMPORTS_PER_SOL));
   const bob = Keypair.generate();
 
   let tx = new Transaction().add(
     SystemProgram.transfer({
       fromPubkey: alice.publicKey,
       toPubkey: bob.publicKey,
-      lamports: 0.001 * LAMPORTS_PER_SOL,
+      lamports: 0.1 * LAMPORTS_PER_SOL,
     })
   );
   tx.recentBlockhash = (await connection.getRecentBlockhash()).blockhash;
