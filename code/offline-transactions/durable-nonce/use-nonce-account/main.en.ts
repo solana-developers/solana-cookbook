@@ -6,17 +6,18 @@ import {
   Transaction,
   SystemProgram,
   NonceAccount,
+  LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import * as bs58 from "bs58";
 
 (async () => {
-  // connection
+  // Setup our connection and wallet
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const feePayer = Keypair.generate();
 
-  // 5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8
-  const feePayer = Keypair.fromSecretKey(
-    bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
-  );
+  // Fund our wallet with 1 SOL
+  const airdropSignature = await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL);
+  await connection.confirmTransaction(airdropSignature);
 
   // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
   const alice = Keypair.fromSecretKey(
