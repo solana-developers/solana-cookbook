@@ -36,8 +36,8 @@ import * as bs58 from "bs58";
     }),
     // after that, you do what you really want to do, here we append a transfer instruction as an example.
     SystemProgram.transfer({
-      fromPubkey: alice.publicKey,
-      toPubkey: feePayer.publicKey,
+      fromPubkey: feePayer.publicKey,
+      toPubkey: alice.publicKey,
       lamports: 1,
     })
   );
