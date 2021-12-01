@@ -138,26 +138,26 @@ For Windows, please visit the [Rust installation site](https://www.rust-lang.org
 
 Open your favorite Terminal application
 
-Install the Solana release
-[LATEST_SOLANA_RELEASE_VERSION](https://github.com/solana-labs/solana/releases/tag/LATEST_SOLANA_RELEASE_VERSION) on your
+Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your
 machine by running:
 
 ```bash
-sh -c "$(curl -sSfL https://release.solana.com/LATEST_SOLANA_RELEASE_VERSION/install)"
+sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-You can replace `LATEST_SOLANA_RELEASE_VERSION` with the release tag matching
+You can replace `LATEST_RELEASE` with the release tag matching
 the software version of your desired release, or use one of the three symbolic
-channel names: `stable`, `beta`, or `edge`.
+channel names: `stable`, `beta`, or `edge`. To find the latest release, check 
+versions available [here](https://github.com/solana-labs/solana/releases).
 
 The following output indicates a successful update:
 
 ```text
-downloading LATEST_SOLANA_RELEASE_VERSION installer
+downloading LATEST_RELEASE installer
 Configuration: /home/solana/.config/solana/install/config.yml
 Active release directory: /home/solana/.local/share/solana/install/active_release
-* Release version: LATEST_SOLANA_RELEASE_VERSION
-* Release URL: https://github.com/solana-labs/solana/releases/download/LATEST_SOLANA_RELEASE_VERSION/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+* Release version: LATEST_RELEASE
+* Release URL: https://github.com/solana-labs/solana/releases/download/LATEST_RELEASE/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 Update successful
 ```
 
@@ -224,16 +224,21 @@ Copy and paste the following command, then press Enter to download the Solana
 installer into a temporary directory:
 
 ```bash
-curl https://release.solana.com/LATEST_SOLANA_RELEASE_VERSION/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
+curl https://release.solana.com/v1.8.5/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
+
+If `v1.8.5` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
 
 Copy and paste the following command, then press Enter to install the latest
 version of Solana. If you see a security pop-up by your system, please select
 to allow the program to run.
 
 ```bash
-C:\solana-install-tmp\solana-install-init.exe LATEST_SOLANA_RELEASE_VERSION
+C:\solana-install-tmp\solana-install-init.exe v1.8.5
 ```
+
+To find the latest release, check
+versions available [here](https://github.com/solana-labs/solana/releases).
 
 When the installer is finished, press Enter.
 

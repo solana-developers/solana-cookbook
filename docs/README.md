@@ -8,7 +8,7 @@ meta:
   content: The Solana Cookbook is a collection of simple examples and walkthroughs of how to build on Solana
 actions:
 - text: Get Started →
-  link: /getting-started/introduction.md
+  link: /recipes/getting-started.md
   type: primary
 features:
 - title: Community Driven
