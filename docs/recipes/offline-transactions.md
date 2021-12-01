@@ -6,7 +6,7 @@ title: Sending Offline Transactions
 
 ## Durable Nonce
 
-`RecentBlockhash` is an important value for a tx. Your tx will be rejected if you use an expired recent blockhash (aprox. 2 mins). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, you tx must
+`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
 
 1. use a `nonce` stored in `nonce account` as a recent blockhash
 2. put `nonce advance` operation in the first instruciton
