@@ -58,4 +58,7 @@ import * as bs58 from "bs58";
     ]);
     console.log(`txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`);
   }
+
+  // if this process takes too long, your recent blockhash will expire (after 150 blocks).
+  // you can use `durable nonce` to get rid of it.
 })();
