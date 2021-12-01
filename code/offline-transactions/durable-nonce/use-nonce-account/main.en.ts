@@ -20,7 +20,7 @@ import * as bs58 from "bs58";
   await connection.confirmTransaction(airdropSignature);
 
   // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
-  const alice = Keypair.fromSecretKey(
+  const nonceAccountAuth = Keypair.fromSecretKey(
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
@@ -32,19 +32,19 @@ import * as bs58 from "bs58";
     // nonce advance must be the first insturction
     SystemProgram.nonceAdvance({
       noncePubkey: nonceAccountPubkey,
-      authorizedPubkey: alice.publicKey,
+      authorizedPubkey: nonceAccountAuth.publicKey,
     }),
     // after that, you do what you really want to do, here we append a transfer instruction as an example.
     SystemProgram.transfer({
       fromPubkey: feePayer.publicKey,
-      toPubkey: alice.publicKey,
+      toPubkey: nonceAccountAuth.publicKey,
       lamports: 1,
     })
   );
   // assign `nonce` as recentBlockhash
   tx.recentBlockhash = nonceAccount.nonce;
   tx.feePayer = feePayer.publicKey;
-  tx.sign(feePayer, alice); /* fee payer + nonce account authority + ... */
+  tx.sign(feePayer, nonceAccountAuth); /* fee payer + nonce account authority + ... */
 
   console.log(`txhash: ${await connection.sendRawTransaction(tx.serialize())}`);
 })();
