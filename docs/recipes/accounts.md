@@ -84,9 +84,28 @@ It may fail because the result (pda) is on curve. You can use `findProgramAddres
 
 ### Sign a PDA
 
-The only way to sign a PDA is to use `invoke_signed` on program.
+We can use `invoke_signed` to sign a PDA.
 
+#### Program
 
+There is only one insuction, trasnfering 0.1 SOL to the account you passed. The from is a PDA which derived by seed, `escrow`.
+
+#### Client
+
+Pass accounts and data which program need.
+
+<CodeGroup>
+  <CodeGroupItem title="program(rust)" active>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
+
+  </CodeGroupItem>
+  <CodeGroupItem title="client(TS)" active>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
+
+  </CodeGroupItem>
+</CodeGroup>
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
 [2]: https://docs.solana.com/developing/programming-model/accounts#rent
