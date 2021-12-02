@@ -124,3 +124,15 @@ html.dark {
   // code blocks vars
   --code-hl-bg-color: #363b46;
 }
+
+.code-group__ul {
+  display: flex
+}
+
+.code-group__nav {
+  padding-right: 10px;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}

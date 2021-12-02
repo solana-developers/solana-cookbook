@@ -64,6 +64,12 @@ export default defineUserConfig<DefaultThemeOptions> ({
         },
         maxSuggestions: 10
       }
-    ]
+    ],
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components'),
+      },
+    ],
   ],
 });
