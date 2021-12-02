@@ -70,7 +70,7 @@ and account, check out [calculating rent exemption](accounts.md#calculating-rent
   </CodeGroupItem>
 </CodeGroup>
 
-## Adding memo
+## Adding Memo
 
 Any transaction can add a message making use of the [memo program][2].
 
