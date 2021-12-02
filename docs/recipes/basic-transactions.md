@@ -69,3 +69,29 @@ and account, check out [calculating rent exemption](accounts.md#calculating-rent
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Adding memo
+
+Any transaction can add a message making use of the [memo program][1].
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/basic-transactions/memo/memo.en.ts)
+
+  </CodeGroupItem>
+  <CodeGroupItem title="Wallet-Adapter">
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.en.tsx)
+
+  </CodeGroupItem>
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/basic-transactions/memo/memo.en.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+Currently the `programID` from the **Memo Program** has to be added manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+
+[1]: https://spl.solana.com/memo
