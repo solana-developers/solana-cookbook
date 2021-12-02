@@ -72,7 +72,7 @@ and account, check out [calculating rent exemption](accounts.md#calculating-rent
 
 ## Adding memo
 
-Any transaction can add a message making use of the [memo program][1].
+Any transaction can add a message making use of the [memo program][2].
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -94,4 +94,4 @@ Any transaction can add a message making use of the [memo program][1].
 
 Currently the `programID` from the **Memo Program** has to be added manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
-[1]: https://spl.solana.com/memo
+[2]: https://spl.solana.com/memo
