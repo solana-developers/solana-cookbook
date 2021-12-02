@@ -11,19 +11,40 @@ libraries require a Keypair or Wallet. If you are connecting to a
 wallet, you do not have to worry. However, if you are in need of a
 keypair, you will need to generate one.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Getting Keypair from a Secret
 
