@@ -47,6 +47,22 @@ import * as bs58 from "bs58";
   let aliceSignature = nacl.sign.detached(realDataNeedToSign, alice.secretKey);
 
   // 3. Recover Tranasction
+
+  // you can verify signatures before you recovering the transaction
+  let verifyFeePayerSignatureResult = nacl.sign.detached.verify(
+    realDataNeedToSign,
+    feePayerSignature,
+    feePayer.publicKey.toBytes() // you should use the raw pubkey (32 bytes) to verify
+  );
+  console.log(`verify feePayer signature: ${verifyFeePayerSignatureResult}`);
+
+  let verifyAliceSignatureResult = nacl.sign.detached.verify(
+    realDataNeedToSign,
+    aliceSignature,
+    alice.publicKey.toBytes()
+  );
+  console.log(`verify alice signature: ${verifyAliceSignatureResult}`);
+
   // there are two ways you can recover the tx
   // 3.a Recover Tranasction (use populate then addSignauture)
   {
