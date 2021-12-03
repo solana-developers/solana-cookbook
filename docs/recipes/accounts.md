@@ -84,11 +84,11 @@ It may fail because the result (pda) is on curve. You can use `findProgramAddres
 
 ### Sign a PDA
 
-We can use `invoke_signed` to sign a PDA.
+PDAs can only be signed for within the program. Below is a program example of signing with a PDA and calling the program with the client
 
 #### Program
 
-There is only one insuction, trasnfering 0.1 SOL to the account you passed. The from is a PDA which derived by seed, `escrow`.
+There is only one insuction, trasnfering 0.1 SOL to the account you passed. The `from` is a PDA which derived by seed, `escrow`. We use `invoke_signed` to sign the PDA.
 
 #### Client
 
