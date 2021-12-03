@@ -72,7 +72,7 @@ It may fail because the result (pda) is on curve. You can use `findProgramAddres
 
 2. Find Program Address
 
-`findProgramAddress` will add a extra byte in the end of your seed. It starts from 255 to 0 and return the first off-curve public key. You always get the same result if your pass the same program id and seed.
+`findProgramAddress` will add a extra byte in the end of your seed. It starts from 255 to 0 and return the first off-curve public key. You will always get the same result if you pass the same program id and seed
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
