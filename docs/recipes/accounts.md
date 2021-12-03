@@ -90,17 +90,20 @@ PDAs can only be signed for within the program. Below is a program example of si
 
 There is only one insuction, trasnfering 0.1 SOL to the account you passed. The `from` is a PDA which derived by seed, `escrow`. We use `invoke_signed` to sign the PDA.
 
+<CodeGroup>
+  <CodeGroupItem title="rust" active>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 #### Client
 
 Pass accounts and data which program need.
 
 <CodeGroup>
-  <CodeGroupItem title="program(rust)" active>
-
-@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
-
-  </CodeGroupItem>
-  <CodeGroupItem title="client(TS)" active>
+  <CodeGroupItem title="TS" active>
 
 @[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
 
