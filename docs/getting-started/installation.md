@@ -134,6 +134,13 @@ For Windows, please visit the [Rust installation site](https://www.rust-lang.org
 
 ## Install CLI
 
+### Mac M1
+
+The currently recommended path for installation on a mac m1 would be to use Rosetta. 
+
+Here is a full guide on the process:
+[Mac M1 Installation Guide]https://dev.to/nickgarfield/how-to-install-solana-dev-tools-on-an-m1-mac-kfn
+
 ### MacOS & Linux
 
 Open your favorite Terminal application

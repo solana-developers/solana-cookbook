@@ -2,9 +2,15 @@
 title: Ingredients
 ---
 
-# Ingredients
-There are a handful of ingredients for developers that give Solana that sweet taste. We all know everything that taste better, is better. Know what I am talking about? I am talking about what matters. Here is the high level pasture to table. Details get linked.
+## Overview
+There are a handful of ingredients for developers that give Solana that sweet taste. We all know everything that tastes better, is better. Know what I am talking about? I am talking about what matters. Here are the core ingredients that make up those savory dishes. 
 
+
+## Programs (smart contracts)
+
+## Clients (smart contracts)
+
+## Programs (smart contracts)
 
 
 

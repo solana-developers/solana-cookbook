@@ -17,16 +17,30 @@ export default defineUserConfig<DefaultThemeOptions> ({
             link: 'https://github.com/solana-dev-adv/solana-cookbook',
           }
         ],
-        sidebar: {
-          '/recipes/': [
-            {
-              text: 'Getting Started',
-              children: [
-                '/recipes/getting-started.md'
-              ]
-            },
-            {
-              text: 'Recipes',
+        sidebar: [
+          {
+            text: 'Getting Started',
+            children: [
+              '/getting-started/introduction.md',
+              '/getting-started/menu.md',
+              '/getting-started/installation.md',
+            ],
+          },
+          {
+            text: 'Ingredients',
+            children: [
+              '/ingredients/desert.md',
+              '/ingredients/programs.md',
+              '/ingredients/clients.md',
+              '/ingredients/transactions.md',
+              '/ingredients/instructions.md',
+              '/ingredients/accounts.md',
+              // '/ingredients/pda.md',
+              // '/ingredients/cpi.md',
+            ],
+          },
+          {
+            text: 'Recipes',
               children: [
                 '/recipes/local-development.md',
                 '/recipes/keypairs-and-wallets.md',
@@ -36,9 +50,30 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/staking.md',
                 '/recipes/offline-transactions.md',
               ]
-            }
-          ]
-        }
+          },
+        ],
+        // sidebar: {
+        //   '/recipes/': [
+        //     {
+        //       text: 'Getting Started',
+        //       children: [
+        //         '/recipes/getting-started.md'
+        //       ]
+        //     },
+        //     {
+        //       text: 'Recipes',
+        //       children: [
+        //         '/recipes/local-development.md',
+        //         '/recipes/keypairs-and-wallets.md',
+        //         '/recipes/basic-transactions.md',
+        //         '/recipes/accounts.md',
+        //         '/recipes/token.md',
+        //         '/recipes/staking.md',
+        //         '/recipes/offline-transactions.md',
+        //       ]
+        //     }
+        //   ]
+        // }
       }
     }
   },

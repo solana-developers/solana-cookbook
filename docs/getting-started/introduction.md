@@ -19,20 +19,13 @@ Let's get cookn! :man_cook:
 
 ## Chefs Overview
 
-#placehodler<br>
-Solana programs (smart contracts) get deployed to the Solana blockchain. Everyone interacts with these programs using clients, generally with a digital wallet. Wallets are associated with a users account address and used to sign and authorize transactions (with a keypair). Wallets are used to track a users balance, tokens, NFTs, and to interact with the entire Solana eco system. On Solana, the native token 'SOL' is referenced by programs and some clients in lamports (the micro units used to pay for fees and rent). Anyone can deploy a program to the Solana blockchain, and anyone can write a client in web3 or one of the many SDKs made available one your favorite language. The Solana blockchain is run by clusters of Nodes or Validators that is run by 1,000s of distributed operators all over the world and anyone can participate. Solana is an endless open universe of opportunity, built and maintained by Solana Labs and the greater community. The Solana ecosystem provides the world a censorless platform to create, develop, distribute, and connect everything and everyone.
+Solana programs (smart contracts) are deployed to the Solana blockchain. You interact with these programs using clients (web3, cli, SDK), generally using a wallet. Wallets are associated with a users account address and used to sign and authorize transactions (with a keypair). Wallets are used to track a users balance, tokens, NFTs, and to interact with the entire Solana eco system. On Solana, the native token 'SOL' is referenced by programs and some clients in lamports (the micro units used to pay for fees and rent). Anyone can deploy a program to the Solana blockchain, and anyone can write a client in web3 or one of the many SDKs made available one your favorite language. The Solana blockchain is run by clusters of Nodes or Validators that is run by thousands of distributed operators all over the world, and anyone can participate. Built and maintained by Solana Labs, Solana Blockchain provides the ecosystem and the world an open platform to create, develop, distribute, and connect everything and everyone. When you share we all benefit. WAGMI.
 
-#placeholder: diagram? table
-Clients (dApps, web3) <-> Solana (blockchain) <-> Programs (smart contracts)
-Finance
-Payments
-Gaming
-NFTs
-Music
-Social
-Entertainment
+Ready to start building the next gen of life changing dapps and programs!? 
 
-<strong>Next</strong>: Have a look at the Menu
+Yes Chef!
+
+<strong>Next up</strong>: Let's have a look at the [Menu](menu.md)
 
 <br/>
 
