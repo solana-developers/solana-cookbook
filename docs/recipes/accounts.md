@@ -51,7 +51,7 @@ Although PDA is derived by a program id, it doesn't means the PDA is owned by th
 
 ### Generate a PDA
 
-To calculate a PDA, you need
+To calculate a PDA, you need the following:
 
 1. seed
 2. program id
