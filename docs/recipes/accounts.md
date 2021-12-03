@@ -40,7 +40,7 @@ the amount of data you intend to store in the account.
 
 ## Program Derived Address
 
-[Prgoram dervied address (PDA)][3] is like a normal address but
+[Program derived address(PDA)][3] is like a normal address with the following differences:
 
 1. falling off ed25519 curve
 2. using program to sign instead of private key
