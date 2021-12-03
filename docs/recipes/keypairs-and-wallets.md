@@ -48,34 +48,66 @@ keypair, you will need to generate one.
 
 ## Getting Keypair from a Secret
 
-If you already have your secret, you can get your Keypair from secret
+If you already have your secret, you can get your Keypair from the secret
 to test out your dApp.
 
 1. From Bytes
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 2. From Base58 String
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 
 ## Verify a Keypair
@@ -83,19 +115,40 @@ to test out your dApp.
 If you are given a keypair, you can verify whether or not the secret
 matches the given public key
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Convert Mnemonic to Keypair
 
@@ -104,35 +157,77 @@ You can convert the mneomics to Keypairs for local testing.
 
 1. BIP39
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 2. BIP44
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Vanity PublicKeys
 
@@ -144,16 +239,37 @@ belongs to, making the key more easily identifiable.
 Note: The more characters in your vanity address, the longer it will
 take.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
