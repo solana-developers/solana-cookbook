@@ -13,6 +13,34 @@ the project's style when contributing new snippets of code.
 Currently we have "topics" under `/docs` and the code for those topics 
 lives under `/code/<topic>`.
 
+### Recipes
+
+Recipes are an overarching topic with a list of references of how to do
+things under that topic. The general structure is the following:
+
+```
+Code Reference Title
+
+Short Summary
+
+Code Snippet
+```
+
+### Ingredients
+
+Ingredients are longer form informational documentation on various topics.
+The general structure for writing an ingredient is the following:
+
+```
+Brief Summary/TLDR
+
+Fact Sheet
+
+Deep Dive
+
+Other Resources
+```
+
 ### Committing
 We are using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 for this repository.

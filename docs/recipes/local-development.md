@@ -13,36 +13,72 @@ environments:
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/local-development/connecting-cluster/connecting-cluster.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
 
 @[code](@/code/local-development/connecting-cluster/connecting-cluster.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 Finally, you can also connect to a private cluster, either one local or
 running remotely with the following:
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Airdropping SOL
 
@@ -50,19 +86,37 @@ When you're working locally, you need some SOL in order to send
 transactions. In non-mainnet environments you can receive SOL by
 airdropping it to your address
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Setting Up Local Validator
 

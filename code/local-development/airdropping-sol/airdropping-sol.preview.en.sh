@@ -1,0 +1,1 @@
+solana airdrop 1
