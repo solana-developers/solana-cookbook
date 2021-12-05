@@ -10,13 +10,23 @@ Create an account that the [System Program][1] owns. The Solana runtime will gra
 write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
 (`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/accounts/create-system-account/create-system-account.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-system-account/create-system-account.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Calculating Rent Exemption
 
@@ -90,25 +100,45 @@ PDAs can only be signed for within the program. Below is a program example of si
 
 There is only one insuction, trasnfering 0.1 SOL to the account you passed. The `from` is a PDA which derived by seed, `escrow`. We use `invoke_signed` to sign the PDA.
 
-<CodeGroup>
-  <CodeGroupItem title="rust" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
 
 @[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 #### Client
 
 Pass accounts and data which program need.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
 [2]: https://docs.solana.com/developing/programming-model/accounts#rent
