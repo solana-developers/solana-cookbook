@@ -27,16 +27,22 @@ export default defineUserConfig<DefaultThemeOptions> ({
             ],
           },
           {
+            text: 'Core Concepts',
+            children: [
+              // '/core-concepts/desert.md',
+              '/core-concepts/programs.md',
+              '/core-concepts/clients.md',
+              '/core-concepts/transactions.md',
+              '/core-concepts/instructions.md',
+              '/core-concepts/accounts.md',
+              // '/core-concepts/pda.md',
+              // '/core-concepts/cpi.md',
+            ],
+          },
+          {
             text: 'Ingredients',
             children: [
-              '/ingredients/desert.md',
-              '/ingredients/programs.md',
-              '/ingredients/clients.md',
-              '/ingredients/transactions.md',
-              '/ingredients/instructions.md',
-              '/ingredients/accounts.md',
-              // '/ingredients/pda.md',
-              // '/ingredients/cpi.md',
+              '/ingredients/get-program-accounts.md',
             ],
           },
           {
@@ -52,28 +58,6 @@ export default defineUserConfig<DefaultThemeOptions> ({
               ]
           },
         ],
-        // sidebar: {
-        //   '/recipes/': [
-        //     {
-        //       text: 'Getting Started',
-        //       children: [
-        //         '/recipes/getting-started.md'
-        //       ]
-        //     },
-        //     {
-        //       text: 'Recipes',
-        //       children: [
-        //         '/recipes/local-development.md',
-        //         '/recipes/keypairs-and-wallets.md',
-        //         '/recipes/basic-transactions.md',
-        //         '/recipes/accounts.md',
-        //         '/recipes/token.md',
-        //         '/recipes/staking.md',
-        //         '/recipes/offline-transactions.md',
-        //       ]
-        //     }
-        //   ]
-        // }
       }
     }
   },
