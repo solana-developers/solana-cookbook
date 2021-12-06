@@ -26,6 +26,12 @@ export default defineUserConfig<DefaultThemeOptions> ({
               ]
             },
             {
+              text: 'Ingredients',
+              children: [
+                '/recipes/ingredients/get-program-accounts.md'
+              ]
+            },
+            {
               text: 'Recipes',
               children: [
                 '/recipes/local-development.md',
