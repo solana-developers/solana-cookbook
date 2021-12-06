@@ -4,14 +4,12 @@ title: Menu
 
 # Menu
 
-Please choose from some of our top 
-<br>If you would like a recommendation, I suggest trying our fine [Ingredients](/getting-started/introduction.md)!
+Please choose from some of our top selections!
+<br>If you would like a recommendation, I suggest getting to know your [Ingredients](/ingredients/desert.md).
 
 # Entrees
-[Introduction](/getting-started/introduction.md)
-am totally New or just want a quick overview of Solana Development
 
-[Ingredients](/getting-started/introduction.md)
+[Ingredients](/ingredients/desert.md)
 want to know about the core concepts and compontents of clients and programs!
 
 [Installation](/getting-started/installation.md)
@@ -23,7 +21,7 @@ show me how to make a savory dish!
 [Clients and dApps](/recipes/web3.md)
 want to build clients and web3 dApps
 
-[Creating Programs (smart contracts)](/recipes/programs.md)
+[Creating Programs](/recipes/programs.md)
 want to build Programs
 
 [Tutorials and Guides](/recipes/programs.md)

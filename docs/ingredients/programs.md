@@ -1,8 +1,8 @@
 ---
-title: Programs (smart contracts)
+title: Programs
 ---
 
-# Programs (smart contracts)
+# Programs
 
 #### Takeout
 - Programs are STATELESS
