@@ -4,11 +4,11 @@ title: Get Program Accounts
 
 # Get Program Accounts
 
-## TLDR
+An RPC method that returns all accounts owned by a program. Currently not support pagination. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
 
-An RPC method that returns all accounts owned by a program. Does not support pagination. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
 
-## Fact Sheet
+::: tip 
+## Facts
 
 ### Parameters
 
@@ -37,6 +37,7 @@ By default `getProgramAccounts` will return an array of JSON objects with the fo
     - `data`: `string` | `object` - data associated with the account, either as encoded binary data or JSON format depending on the provided encoding parameter
     - `executable`: `boolean`, Indication if the account contains a program
     - `rentEpoch`: `number`, The epoch at which this account will next owe rent
+:::
 
 ## Deep Dive
 
