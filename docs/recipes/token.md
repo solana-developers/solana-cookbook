@@ -163,13 +163,23 @@ account, you also specific a mint too.
 When you mint tokens, you increase the supply and transfer the new tokens
 to a specific token account.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/mint-token/mint-token.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/mint-token/mint-token.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Transfer Token
 
