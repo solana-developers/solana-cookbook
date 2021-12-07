@@ -342,24 +342,43 @@ There are two ways to add balance for Wrapped SOL
 
 #### 1. By SOL Transfer
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/wrapped-sol/add-balance-by-sol.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
 
+  <template v-slot:preview>
+
+@[code](@/code/token/wrapped-sol/add-balance-by-sol.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 #### 2. By Token Transfer
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/wrapped-sol/add-balance-by-token.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/wrapped-sol/add-balance-by-token.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Get Token Account By Owner
 
