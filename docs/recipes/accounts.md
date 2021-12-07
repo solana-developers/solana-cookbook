@@ -140,6 +140,24 @@ Pass accounts and data which program need.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Get Program Accounts
+
+Return all accounts owned by a program. Refer to the [ingredients section](../ingredients/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+@[code](@/code/get-program-accounts/basic/basic.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/get-program-accounts/basic/basic.en.sh)
+
+  </CodeGroupItem>
+</CodeGroup>
+
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
 [2]: https://docs.solana.com/developing/programming-model/accounts#rent
 [3]: https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses

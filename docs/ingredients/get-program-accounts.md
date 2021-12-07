@@ -38,22 +38,6 @@ By default `getProgramAccounts` will return an array of JSON objects with the fo
     - `executable`: `boolean`, Indication if the account contains a program
     - `rentEpoch`: `number`, The epoch at which this account will next owe rent
 
-### Example Request
-
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
-
-@[code](@/code/get-program-accounts/basic/basic.en.ts)
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="CLI">
-
-@[code](@/code/get-program-accounts/basic/basic.en.sh)
-
-  </CodeGroupItem>
-</CodeGroup>
-
 ## Deep Dive
 
 `getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
@@ -66,7 +50,7 @@ Despite its usefulness, `getProgramAccounts` is often misunderstood due to its c
 
 To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a basic `getProgramAccounts` call would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../recipes/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
 
 ### `filters`
 The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
