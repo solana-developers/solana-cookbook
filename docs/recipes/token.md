@@ -207,13 +207,24 @@ You can transfer tokens from one token account to another token account.
 
 You can burn token if you are the token owner.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/burn-token/burn-token.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/burn-token/burn-token.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Close Token Account
 
