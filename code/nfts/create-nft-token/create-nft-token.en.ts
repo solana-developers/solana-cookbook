@@ -53,7 +53,9 @@ import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
     );
 
     // Checking balance of the user's associated account
-    const balance = await mintAccount.getAccountInfo(
+    const accountInfo = await mintAccount.getAccountInfo(
         userAssosciatedAccount.address
-    ).amount;
+    );
+    console.log("Balance: ", accountInfo.amount.toString());
+    
 })();
