@@ -305,14 +305,23 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
 
 Revoke will set delegate to null and set delegated amount to 0.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/revoke/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
 
+  <template v-slot:preview>
+
+@[code](@/code/token/revoke/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Wrapped SOL
 
