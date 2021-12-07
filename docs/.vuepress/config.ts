@@ -3,7 +3,7 @@ import type { DefaultThemeOptions } from "vuepress";
 import * as path from "path";
 
 
-export default defineUserConfig<DefaultThemeOptions> ({
+export default defineUserConfig<DefaultThemeOptions>({
   base: "/",
   lang: "en-US",
   title: "Solana Cookbook",
@@ -11,12 +11,12 @@ export default defineUserConfig<DefaultThemeOptions> ({
     locales: {
       '/': {
         navbar:
-        [
-          {
-            text: 'Contribute',
-            link: 'https://github.com/solana-dev-adv/solana-cookbook',
-          }
-        ],
+          [
+            {
+              text: 'Contribute',
+              link: 'https://github.com/solana-dev-adv/solana-cookbook',
+            }
+          ],
         sidebar: {
           '/recipes/': [
             {
@@ -31,6 +31,7 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/local-development.md',
                 '/recipes/keypairs-and-wallets.md',
                 '/recipes/basic-transactions.md',
+                '/recipes/serialization.md',
                 '/recipes/accounts.md',
                 '/recipes/token.md',
                 '/recipes/staking.md',
