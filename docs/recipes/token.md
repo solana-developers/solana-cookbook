@@ -135,13 +135,23 @@ mint, amount, and decimals.
 The token account has the token balance, which can be retrieved with a
 single call.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/get-token-balance/get-token-balance.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/get-token-balance/get-token-balance.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ::: tip
 A token account can only hold one kind of mint. When you specify a token
