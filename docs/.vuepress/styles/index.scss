@@ -136,3 +136,8 @@ html.dark {
 .flex-grow {
   flex-grow: 1;
 }
+
+// fix for code in tips
+.tip code {
+  background-color: var(--c-bg-lighter);
+}
