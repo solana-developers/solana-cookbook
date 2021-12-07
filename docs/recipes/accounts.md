@@ -10,13 +10,23 @@ Create an account that the [System Program][1] owns. The Solana runtime will gra
 write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
 (`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/accounts/create-system-account/create-system-account.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-system-account/create-system-account.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Calculating Rent Exemption
 
@@ -90,22 +100,60 @@ PDAs can only be signed for within the program. Below is a program example of si
 
 There is only one insuction, trasnfering 0.1 SOL to the account you passed. The `from` is a PDA which derived by seed, `escrow`. We use `invoke_signed` to sign the PDA.
 
-<CodeGroup>
-  <CodeGroupItem title="rust" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
 
 @[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 #### Client
 
 Pass accounts and data which program need.
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## Get Program Accounts
+
+Return all accounts owned by a program. Refer to the [ingredients section](../ingredients/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
-@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
+@[code](@/code/get-program-accounts/basic/basic.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="CLI">
+
+@[code](@/code/get-program-accounts/basic/basic.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
