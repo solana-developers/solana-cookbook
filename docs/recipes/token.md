@@ -185,13 +185,23 @@ to a specific token account.
 
 You can transfer tokens from one token account to another token account.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/transfer-token/transfer-token.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/transfer-token/transfer-token.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Burn Token
 
