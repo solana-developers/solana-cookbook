@@ -10,19 +10,23 @@ Creating tokens is done by creating what is called a "mint account".
 This mint account is later used to mint tokens to a token account and
 create the initial supply.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/create-mint-account/create-mint-account.en.ts)
 
-  </CodeGroupItem>
+  </template>
 
-  <CodeGroupItem title="CLI">
+  <template v-slot:preview>
 
-@[code](@/code/token/create-mint-account/create-mint-account.sh)
+@[code](@/code/token/create-mint-account/create-mint-account.preview.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Get Token Mint
 
