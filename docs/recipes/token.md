@@ -234,13 +234,23 @@ There are two situations:
 1. Wrapped SOL - Closing converts Wrapped SOL to SOL
 2. Other Tokens - You can close it only if token account's balance is 0.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/close-token-account/close-token-account.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/close-token-account/close-token-account.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Set Authority
 
