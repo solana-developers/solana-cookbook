@@ -17,16 +17,21 @@ export default defineUserConfig<DefaultThemeOptions> ({
             link: 'https://github.com/solana-dev-adv/solana-cookbook',
           }
         ],
-        sidebar: {
-          '/recipes/': [
-            {
-              text: 'Getting Started',
-              children: [
-                '/recipes/getting-started.md'
-              ]
-            },
-            {
-              text: 'Recipes',
+        sidebar: [
+          {
+            text: 'Getting Started',
+            children: [
+              '/getting-started/installation.md',
+            ],
+          },
+          {
+            text: 'Ingredients',
+            children: [
+              '/ingredients/get-program-accounts.md',        
+            ],
+          },
+          {
+            text: 'Recipes',
               children: [
                 '/recipes/local-development.md',
                 '/recipes/keypairs-and-wallets.md',
@@ -36,9 +41,8 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/staking.md',
                 '/recipes/offline-transactions.md',
               ]
-            }
-          ]
-        }
+          },
+        ],
       }
     }
   },
