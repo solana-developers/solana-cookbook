@@ -38,7 +38,7 @@ Typical files that make up a program?
 >   - state.rs: program objects, (de)serializing state
 >   - error.rs: program specific errors
 >
-> [Solana Starter Kit](https://hackmd.io/@ironaddicteddog/solana-starter-kit#PDA) - @ironaddicteddog (credit)
+> [Solana Starter Kit](https://hackmd.io/@ironaddicteddog/solana-starter-kit#PDA) - @ironaddicteddog
 
 Excellent. That wraps up programs on Solana. Have something to add? [Contribute](https://github.com/solana-dev-adv/solana-cookbook)!
 :::
