@@ -64,13 +64,24 @@ Ancillary Token Accounts are accounts that you manage by creating the
 specific keypair for them. Using a keypair on creation allows you to
 pick the specific public key you want for your token account.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/create-token-account/random.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/create-token-account/random.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 
 ### Associated Token Account (ATA)
 
@@ -78,13 +89,23 @@ Associated Token Accounts are deterministicly created
 accounts for every keypair. ATAs are the recommended method
 of managing token accounts.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/token/create-token-account/ata.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/create-token-account/ata.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Get Token Account
 
