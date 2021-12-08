@@ -1,20 +1,15 @@
-const feePayer = Keypair.fromSecretKey(bs58.decode(""));
-const funder = Keypair.fromSecretKey(bs58.decode(""));
-const wrappedSOLTokenAccountPubkey = new PublicKey("");
-const amount = 1 * 1e9; /* Wrapped SOL's decimals is 9 */
-
 let tx = new Transaction().add(
   // trasnfer SOL
   SystemProgram.transfer({
-    fromPubkey: funder.publicKey,
-    toPubkey: wrappedSOLTokenAccountPubkey,
+    fromPubkey: alice.publicKey,
+    toPubkey: ata,
     lamports: amount,
   }),
   // Sync Native instruction. @solana/spl-token will release it soon. Here use the raw instruction temporally.
   new TransactionInstruction({
     keys: [
       {
-        pubkey: wrappedSOLTokenAccountPubkey,
+        pubkey: ata,
         isSigner: false,
         isWritable: true,
       },
@@ -23,4 +18,4 @@ let tx = new Transaction().add(
     programId: TOKEN_PROGRAM_ID,
   })
 );
-await connection.sendTransaction(tx, [feePayer, funder]);
+console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice])}`);
