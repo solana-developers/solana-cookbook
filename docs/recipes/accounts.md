@@ -52,8 +52,8 @@ the amount of data you intend to store in the account.
 
 [Program derived address(PDA)][3] is like a normal address with the following differences:
 
-1. falling off ed25519 curve
-2. using program to sign instead of private key
+1. Falling off ed25519 curve
+2. Using program to sign instead of private key
 
 ::: tip
 Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
@@ -61,16 +61,10 @@ Although PDA is derived by a program id, it doesn't means the PDA is owned by th
 
 ### Generate a PDA
 
-To calculate a PDA, you need the following:
-
-1. seed
-2. program id
-
-There are two ways you can calculate a PDA
-
 1. Create Program Address
 
-It may fail because the result (pda) is on curve. You can use `findProgramAddress` to reserve your meaningful seed.
+This may fail because the result (pda) is on curve. You can use 
+`findProgramAddress` to reserve your meaningful seed.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -82,7 +76,10 @@ It may fail because the result (pda) is on curve. You can use `findProgramAddres
 
 2. Find Program Address
 
-`findProgramAddress` will add a extra byte in the end of your seed. It starts from 255 to 0 and return the first off-curve public key. You will always get the same result if you pass the same program id and seed
+`findProgramAddress` will add a extra byte at the end of your seed. 
+It starts from 255 to 0 and returns the first off-curve public key. 
+You will always get the same result if you pass the same program id 
+and seed.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -92,13 +89,16 @@ It may fail because the result (pda) is on curve. You can use `findProgramAddres
   </CodeGroupItem>
 </CodeGroup>
 
-### Sign a PDA
+### Sign with a PDA
 
-PDAs can only be signed for within the program. Below is a program example of signing with a PDA and calling the program with the client
+PDAs can only be signed for within the program. Below is a program 
+example of signing with a PDA and calling the program with the client.
 
 #### Program
 
-There is only one insuction, trasnfering 0.1 SOL to the account you passed. The `from` is a PDA which derived by seed, `escrow`. We use `invoke_signed` to sign the PDA.
+The below shows a single instruction that transfers SOL from a PDA that
+was derived by the seed `escrow` to an account passed. `invoke_signed` is
+used to sign with the PDA.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -119,8 +119,6 @@ There is only one insuction, trasnfering 0.1 SOL to the account you passed. The 
 </SolanaCodeGroup>
 
 #### Client
-
-Pass accounts and data which program need.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
