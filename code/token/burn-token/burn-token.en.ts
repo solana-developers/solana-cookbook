@@ -18,14 +18,13 @@ import * as bs58 from "bs58";
 
   const mintPubkey = new PublicKey("54dQ8cfHsW1YfKYpmdVZhWpb9iSi6Pac82Nf7sg3bVb");
 
-  const tokenAccountXPubkey = new PublicKey("FWZedVtyKQtP4CXhT7XDnLidRADrJknmZGA2qNjpTPg8");
-  const tokenAccountYPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const tokenAccountPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
 
   let tx = new Transaction().add(
     Token.createBurnInstruction(
       TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
       mintPubkey, // mint
-      tokenAccountYPubkey, // from (should be a token account)
+      tokenAccountPubkey, // from (should be a token account)
       alice.publicKey, // owner of token account
       [], // for multisig account, leave empty.
       1e8 // amount, if your deciamls is 8, 10^8 for 1 token
