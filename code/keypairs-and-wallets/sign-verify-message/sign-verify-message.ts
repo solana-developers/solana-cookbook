@@ -18,6 +18,5 @@ import { decodeUTF8 } from "tweetnacl-util";
   const result = nacl.sign.detached.verify(messageBytes, signature, keypair.publicKey.toBytes());
 
   console.log(result);
-  // true
 
 })();
