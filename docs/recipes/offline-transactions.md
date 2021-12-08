@@ -9,13 +9,23 @@ title: Sending Offline Transactions
 To create an offline transaction, you have to sign the transaction and then
 anyone can broadcast it on the network.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/offline-transactions/sign-transaction/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/offline-transactions/sign-transaction/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Durable Nonce
 
@@ -26,13 +36,23 @@ anyone can broadcast it on the network.
 
 ### Create Nonce Account
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/offline-transactions/durable-nonce/create-nonce-account/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/offline-transactions/durable-nonce/create-nonce-account/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ### Get Nonce Account
 
@@ -46,10 +66,20 @@ anyone can broadcast it on the network.
 
 ### Use Nonce Account
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/offline-transactions/durable-nonce/use-nonce-account/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/offline-transactions/durable-nonce/use-nonce-account/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
