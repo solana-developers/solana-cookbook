@@ -6,11 +6,9 @@ title: Get Program Accounts
 
 An RPC method that returns all accounts owned by a program. Currently not support pagination. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
 
-
-::: tip 
 ## Facts
 
-### Parameters
+::: tip Parameters
 
 - `programId`: `string` - Pubkey of the program to query, provided as a base58 encoded string
 - (optional) `configOrCommitment`: `object` - Configuration parameters containing the following optional fields:
@@ -26,7 +24,7 @@ An RPC method that returns all accounts owned by a program. Currently not suppor
         - `dataSize`: `number` - Compares the account data length with the provided data size
     - (optional) `withContext`: `boolean` - Wrap the result in an [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
 
-### Response
+##### Response
 
 By default `getProgramAccounts` will return an array of JSON objects with the following structure:
 
