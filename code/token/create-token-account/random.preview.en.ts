@@ -1,8 +1,6 @@
-const feePayer = Keypair.fromSecretKey(bs58.decode(""));
-const mintPubkey = new PublicKey("");
-
 // generate a new keypair for token account
-const tokenAccount = Keypair.fromSecretKey(bs58.decode("")); // or Keypair.generate();
+const tokenAccount = Keypair.generate();
+console.log(`token account: ${tokenAccount.publicKey.toBase58()}`);
 
 let tx = new Transaction().add(
   // create token account
@@ -21,5 +19,4 @@ let tx = new Transaction().add(
     alice.publicKey // owner of token account
   )
 );
-
-await connection.sendTransaction(tx, [feePayer, tokenAccount]);
+console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, tokenAccount])}`);

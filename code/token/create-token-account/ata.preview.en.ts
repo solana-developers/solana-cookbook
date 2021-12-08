@@ -1,6 +1,3 @@
-const feePayer = Keypair.fromSecretKey(bs58.decode(""));
-const mintPubkey = new PublicKey("");
-
 // calculate ATA
 let ata = await Token.getAssociatedTokenAddress(
   ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
@@ -8,6 +5,7 @@ let ata = await Token.getAssociatedTokenAddress(
   mintPubkey, // mint
   alice.publicKey // owner
 );
+console.log(`ATA: ${ata.toBase58()}`);
 
 let tx = new Transaction().add(
   Token.createAssociatedTokenAccountInstruction(
@@ -19,5 +17,4 @@ let tx = new Transaction().add(
     feePayer.publicKey // fee payer
   )
 );
-
-await connection.sendTransaction(tx, [feePayer]);
+console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
