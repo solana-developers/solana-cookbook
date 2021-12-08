@@ -18,14 +18,13 @@ import * as bs58 from "bs58";
 
   const mintPubkey = new PublicKey("54dQ8cfHsW1YfKYpmdVZhWpb9iSi6Pac82Nf7sg3bVb");
 
-  const tokenAccountXPubkey = new PublicKey("FWZedVtyKQtP4CXhT7XDnLidRADrJknmZGA2qNjpTPg8");
-  const tokenAccountYPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const tokenAccountPubkey = new PublicKey("FWZedVtyKQtP4CXhT7XDnLidRADrJknmZGA2qNjpTPg8");
 
   let tx = new Transaction().add(
     Token.createMintToInstruction(
       TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
       mintPubkey, // mint
-      tokenAccountXPubkey, // receiver (sholud be a token account)
+      tokenAccountPubkey, // receiver (sholud be a token account)
       alice.publicKey, // mint authority
       [], // only multisig account will use. leave it empty now.
       1e8 // amount. if your decimals is 8, you mint 10^8 for 1 token.
