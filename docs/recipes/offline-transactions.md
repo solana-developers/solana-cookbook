@@ -56,13 +56,25 @@ anyone can broadcast it on the network.
 
 ### Get Nonce Account
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/offline-transactions/durable-nonce/get-nonce-account/main.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/offline-transactions/durable-nonce/get-nonce-account/main.preview.en.ts)
+
+  </template>
+
+
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ### Use Nonce Account
 
