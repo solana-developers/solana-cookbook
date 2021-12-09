@@ -16,12 +16,12 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const tokenAccount = new PublicKey("5ZgpLUyTJQGazQTtvMa93KeJEzsSUJ53jW7ocMUTkLdw");
+  const tokenAccountPubkey = new PublicKey("5ZgpLUyTJQGazQTtvMa93KeJEzsSUJ53jW7ocMUTkLdw");
 
   let tx = new Transaction().add(
     Token.createCloseAccountInstruction(
       TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
-      tokenAccount, // token account which you want to close
+      tokenAccountPubkey, // token account which you want to close
       alice.publicKey, // destination
       alice.publicKey, // owner of token account
       [] // for multisig
