@@ -104,3 +104,50 @@ The client side instruction, now only needs to pass the state and payer accounts
 Running the above client side instruction, will lead to the following program log
 
 ![Program Log](./clock_program_log_2.png)
+
+## How to do Cross Program Invocation
+
+A cross program invocation, is simply put calling another program's instruction inside our program. One best example to put forth is Uniswap's `swap` functionality. The `UniswapV2Router` contract, calls the necessary logic to swap, and calls the `ERC20` contract's transfer function to swap from one person to another. The same way, we can call a program's instruction to have multitude of purposes. In this example, we will have a look at `SPL Token Program's transfer` instruction. The required accounts we would need for a transfer to happen are
+
+1. The Source Token Account (The account which we are holding our tokens)
+2. The Destination Token Account (The account which we would be transferring our tokens to)
+3. The Source Token Account's Holder (Our wallet address which we would be signing for)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/cpi-transfer/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/cpi-transfer/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+<br />
+The corresponding client instruction would be as follows. For knowing the mint and token creation instructions, please refer to the full code nearby.
+<br />
+<br />
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/cpi-transfer/client/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/cpi-transfer/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
