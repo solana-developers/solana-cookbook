@@ -138,6 +138,53 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+### Create a PDA
+
+Below is an
+example program for creating a PDA account owned by the program and an example for calling the program with the client.
+
+#### Program
+
+The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA using `invoke_signed` similar to as discussed above.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/program-derived-address/create-a-pda/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/create-a-pda/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+#### Client
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/program-derived-address/create-a-pda/client/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/create-a-pda/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 ## Get Program Accounts
 
 Return all accounts owned by a program. Refer to the [ingredients section](../ingredients/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
