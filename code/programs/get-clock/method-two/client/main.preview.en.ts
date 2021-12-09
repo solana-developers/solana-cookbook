@@ -1,6 +1,3 @@
-import { Transaction } from '@solana/web3.js';
-import { TransactionInstruction, PublicKey } from '@solana/web3.js';
-
 (async () => {
   const programId = new PublicKey(
     '4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk'

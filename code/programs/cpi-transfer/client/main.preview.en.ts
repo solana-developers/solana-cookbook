@@ -1,9 +1,3 @@
-import * as BN from 'bn.js';
-import { clusterApiUrl, Connection, Keypair } from '@solana/web3.js';
-import { Transaction, PublicKey } from '@solana/web3.js';
-import { TransactionInstruction } from '@solana/web3.js';
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-
 const PAYER_KEYPAIR = Keypair.generate();
 
 const DEFAULT_DECIMALS_COUNT = 9;

@@ -1,7 +1,3 @@
-import { SYSVAR_CLOCK_PUBKEY } from '@solana/web3.js';
-import { Transaction } from '@solana/web3.js';
-import { TransactionInstruction, PublicKey } from '@solana/web3.js';
-
 (async () => {
   const programId = new PublicKey(
     '77ezihTV6mTh2Uf3ggwbYF2NyGJJ5HHah1GrdowWJVD3'
