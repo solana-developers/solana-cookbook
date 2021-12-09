@@ -1,11 +1,3 @@
-const PAYER_KEYPAIR = Keypair.generate();
-
-const DEFAULT_DECIMALS_COUNT = 9;
-const TOKEN_TRANSFER_AMOUNT = 50 * 10 ** DEFAULT_DECIMALS_COUNT;
-const TOKEN_TRANSFER_AMOUNT_BUFFER = Buffer.from(
-  Uint8Array.of(...new BN(TOKEN_TRANSFER_AMOUNT).toArray('le', 8))
-);
-
 (async () => {
   const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
   const programId = new PublicKey(
