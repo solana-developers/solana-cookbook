@@ -193,3 +193,33 @@ One can send the required accounts via client as follows
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+
+## Verify Account
+
+Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one can do are
+
+1. Check if the expected signer account has actually signed
+2. Check if the expected state account's have been checked as writable
+3. Check if the expected state account's owner is the called program id
+4. If initializing the state for the first time, check if the account's already been initialized or not.
+5. Check if any cross program ids passed (whenever needed) are as expected.
+
+A basic instruction which initializes a hero state account, but with the above mentioned checks is defined below
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/verify-account/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/verify-account/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>

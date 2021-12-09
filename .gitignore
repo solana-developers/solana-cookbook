@@ -4,3 +4,4 @@ node_modules
 .idea
 docs/.vuepress/dist
 .DS_Store
+**/*/target
