@@ -1,3 +1,12 @@
+
+/// Instruction payload gets serialized
+#[derive(BorshSerialize)]
+pub struct Payload<'a> {
+    variant: u8,
+    key: &'a str,
+    value: &'a str,
+}
+
 /// Perform a mint transaction consisting of a key/value pair
 /// See submit_transaction below
 pub fn mint_transaction(
@@ -9,29 +18,13 @@ pub fn mint_transaction(
     mint_instruction_id: u8,
     commitment_config: CommitmentConfig,
 ) -> Result<Signature, Box<dyn std::error::Error>> {
-    // Serialize the strings for efficiency on deserializing in program
-    let data = vec![
-        vec![mint_instruction_id],
-        mint_key.try_to_vec().unwrap(),
-        mint_value.try_to_vec().unwrap(),
-    ];
-    // The Instruction::new_with_borsh() serializes the data vector as well.
+    // Setup the payload. `mint_instruction_id` is instruction variant index = 1
+    let data = Payload<`_> {
+        variant: mint_instruction_id,
+        key: mint_key,
+        value: mint_value,
+    };
     let instruction = Instruction::new_with_borsh(PROG_KEY.pubkey(), &data, accounts.to_vec());
-
-    // We could have optionally created a `struct` and let Solana SDK serialize the whole lot, eg.
-    // #[derive(BorshSerialize)]
-    // struct Minter<'a> {
-    //     variant: u8,
-    //     key: &'a str,
-    //     value: &'a str,
-    // }
-    // let data2 = Minter {
-    //     variant: mint_instruction_id,
-    //     key: mint_key,
-    //     value: mint_value,
-    // };
-    // let instruction = Instruction::new_with_borsh(PROG_KEY.pubkey(), &data2, accounts.to_vec());
-
     submit_transaction(rpc_client, wallet_signer, instruction, commitment_config)
 }
 
