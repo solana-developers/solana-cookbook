@@ -55,10 +55,6 @@ Now we pass the clock's sysvar public address via the client
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Running the above client side instruction, will lead to the following program log
-
-![Program Log](./clock_program_log_1.png)
-
 ### Accessing Clock directly inside an instruction
 
 Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKEY` from the client side.
@@ -100,10 +96,6 @@ The client side instruction, now only needs to pass the state and payer accounts
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
-
-Running the above client side instruction, will lead to the following program log
-
-![Program Log](./clock_program_log_2.png)
 
 ## How to do Cross Program Invocation
 
