@@ -65,6 +65,7 @@ pub fn process_instruction(
         source_token_account.clone(),
         destination_token_account.clone(),
         source_token_account_holder.clone(),
+        token_program.clone(),
     ];
 
     // Passing the TransactionInstruction to send

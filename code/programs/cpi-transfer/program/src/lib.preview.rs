@@ -17,6 +17,7 @@ let required_accounts_for_transfer = [
     source_token_account.clone(),
     destination_token_account.clone(),
     source_token_account_holder.clone(),
+    token_program.clone(),
 ];
 
 invoke(
