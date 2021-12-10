@@ -27,7 +27,7 @@ class Assignable {
 class Payload extends Assignable { }
 
 // Borsh needs a schema describing the payload
-const schema = new Map([
+const payloadSchema = new Map([
     [
         Payload,
         {
@@ -77,7 +77,7 @@ export async function mintKV(
     });
 
     // Serialize the payload
-    const mintSerBuf = borsh.serialize(schema, mint);
+    const mintSerBuf = borsh.serialize(payloadSchema, mint);
     // console.log(mintSerBuf)
     // => <Buffer 01 06 00 00 00 74 73 20 6b 65 79 0e 00 00 00 74 73 20 66 69 72 73 74 20 76 61 6c 75 65>
     // let mintPayloadCopy = borsh.deserialize(schema, Payload, mintSerBuf)

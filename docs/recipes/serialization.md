@@ -10,8 +10,8 @@ Serialization comes into play at a few points along Solana program and program a
 
 1. Serializing instruction data (Client)
 2. Deserializing instruction data (Program)
-3. Serializing/deserializing account data (Program)
-4. Deserializing data from an account (Client)
+3. Account Data Serialization (Program)
+4. Client Account Data Deserialization (Client)
 
 It is important that the above actions are all supported by the same serialization approach. The
 included snippets are demonstrating serializaation using [Borsh][1] with examples in Rust and Typescript.
@@ -90,7 +90,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## Serialization/deserialization of account data
+## Account Data Serialization
 
 The program account data block (from the sample repo) is layed out as
 
@@ -172,11 +172,25 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [3]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## Program Account Data from Client
+## Client Account Data Deserialization
+
+Clients can call Solana to fetch program owned account, in which the serialized
+data block is a part of the return. Deserializing requires knowing the data block
+layout.
+
+The layout of the account data was described [Here](#account-data-serialization)
+
 <CodeGroup>
   <CodeGroupItem title="TS" active>
+
+  @[code](@/code/serialization/clientdata/ts.client.data.en.ts)
+
   </CodeGroupItem>
 
   <CodeGroupItem title="Rust">
+
+  @[code](@/code/serialization/clientdata/rust.client.data.en.rs)
+
+
   </CodeGroupItem>
 </CodeGroup>
