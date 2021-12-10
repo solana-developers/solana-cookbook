@@ -153,7 +153,7 @@ matches the given public key
 ## Convert Mnemonic to Keypair
 
 Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mneomics to Keypairs for local testing.
+You can convert the mnemonic to Keypairs for local testing.
 
 1. BIP39
 
@@ -273,3 +273,33 @@ take.
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
+## Sign and Verify a Message
+
+The primary function of a keypair is to sign messages and enable
+verification of the signature. Verification of a signature allows 
+the recipient to be sure that the data was signed by the owner of a
+specific private key.
+
+To do so we will import the [TweetNaCl][1] crypto library.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/sign-verify-message/sign-verify-message.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/sign-verify-message/sign-verify-message.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+[1]: https://www.npmjs.com/package/tweetnacl

@@ -1,59 +1,60 @@
-import { defineUserConfig } from "vuepress";
-import type { DefaultThemeOptions } from "vuepress";
-import * as path from "path";
-
+import { defineUserConfig } from 'vuepress';
+import type { DefaultThemeOptions } from 'vuepress';
+import * as path from 'path';
 
 export default defineUserConfig<DefaultThemeOptions>({
-  base: "/",
-  lang: "en-US",
-  title: "Solana Cookbook",
+  base: '/',
+  lang: 'en-US',
+  title: 'Solana Cookbook',
   themeConfig: {
     locales: {
       '/': {
-        navbar:
-          [
-            {
-              text: 'Contribute',
-              link: 'https://github.com/solana-dev-adv/solana-cookbook',
-            }
-          ],
-        sidebar: {
-          '/recipes/': [
-            {
-              text: 'Getting Started',
-              children: [
-                '/recipes/getting-started.md'
-              ]
-            },
-            {
-              text: 'Recipes',
-              children: [
-                '/recipes/local-development.md',
-                '/recipes/keypairs-and-wallets.md',
-                '/recipes/basic-transactions.md',
-                '/recipes/serialization.md',
-                '/recipes/accounts.md',
-                '/recipes/token.md',
-                '/recipes/staking.md',
-                '/recipes/offline-transactions.md',
-              ]
-            }
-          ]
-        }
-      }
-    }
+        navbar: [
+          {
+            text: 'Contribute',
+            link: 'https://github.com/solana-dev-adv/solana-cookbook',
+          },
+        ],
+        sidebar: [
+          {
+            text: 'Getting Started',
+            children: ['/getting-started/installation.md'],
+          },
+          {
+            text: 'Ingredients',
+            children: ['/ingredients/get-program-accounts.md'],
+          },
+          {
+            text: 'Recipes',
+            children: [
+              '/recipes/local-development.md',
+              '/recipes/keypairs-and-wallets.md',
+              '/recipes/basic-transactions.md',
+              '/recipes/accounts.md',
+              '/recipes/programs.md',
+              '/recipes/serialization.md',
+              '/recipes/token.md',
+              '/recipes/staking.md',
+              '/recipes/offline-transactions.md',
+              '/recipes/name-service.md',
+            ],
+          },
+        ],
+      },
+    },
   },
   markdown: {
     importCode: {
-      handleImportPath: (str) => str.replace(/^@/, path.resolve(__dirname, "../../")),
+      handleImportPath: (str) =>
+        str.replace(/^@/, path.resolve(__dirname, '../../')),
     },
   },
   plugins: [
     [
       '@vuepress/plugin-google-analytics',
       {
-        'id': 'UA-213843360-1'
-      }
+        id: 'UA-213843360-1',
+      },
     ],
     [
       '@vuepress/plugin-search',
@@ -61,10 +62,10 @@ export default defineUserConfig<DefaultThemeOptions>({
         locales: {
           '/': {
             placeholder: 'Search',
-          }
+          },
         },
-        maxSuggestions: 10
-      }
+        maxSuggestions: 10,
+      },
     ],
     [
       '@vuepress/register-components',

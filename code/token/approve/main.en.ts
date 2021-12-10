@@ -16,12 +16,12 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const tokenAccountYPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const tokenAccountPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
 
   let tx = new Transaction().add(
     Token.createApproveInstruction(
       TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
-      tokenAccountYPubkey, // token account
+      tokenAccountPubkey, // token account
       feePayer.publicKey, // delegate
       alice.publicKey, // original auth
       [], // for multisig

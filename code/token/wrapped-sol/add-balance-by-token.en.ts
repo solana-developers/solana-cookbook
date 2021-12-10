@@ -43,5 +43,6 @@ import * as bs58 from "bs58";
     // close aux account
     Token.createCloseAccountInstruction(TOKEN_PROGRAM_ID, auxAccount.publicKey, alice.publicKey, alice.publicKey, [])
   );
+
   console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, auxAccount, alice])}`);
 })();
