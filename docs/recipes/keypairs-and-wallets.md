@@ -153,7 +153,7 @@ matches the given public key
 ## Convert Mnemonic to Keypair
 
 Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mneomics to Keypairs for local testing.
+You can convert the mnemonic to Keypairs for local testing.
 
 1. BIP39
 
