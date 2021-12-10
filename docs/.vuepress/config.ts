@@ -40,6 +40,7 @@ export default defineUserConfig<DefaultThemeOptions> ({
                 '/recipes/token.md',
                 '/recipes/staking.md',
                 '/recipes/offline-transactions.md',
+                '/recipes/name-service.md',
               ]
           },
         ],
