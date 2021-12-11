@@ -12,7 +12,9 @@ building block for developing on Solana.
 ::: tip Fact Sheet
 - Accounts are used to store data
 - Each account has a unique address
-- Accounts have a max size of 10MB
+- Accounts have a max size of 10mb
+- PDA accounts have a max size of 10kb
+- PDA accounts can be used to sign on behalf of a program
 - Account size is static
 - Account data storage is paid with rent
 - Default account owner is the System Program
@@ -28,6 +30,11 @@ There are 3 kinds of accounts on Solana:
 - Program accounts store executable programs
 - Native accounts that indicate native programs on Solana such as System, Stake, and Vote
 
+Within data accounts, there are 2 types:
+
+- System owned accounts
+- PDA(Program Derived Address) accounts
+
 Each account has an address (usually a public key) and an owner
 (address of a program account). The full field list an account stores
 is found below.
@@ -42,7 +49,7 @@ is found below.
 
 There are a few important ownership rules:
 
-- Only a data account's owner can modify its data and subtract lamports
+- Only a data account's owner can modify its data and debit lamports
 - Anyone is allowed to credit lamports to a data account
 - The owner of an account may assign a new owner if the account's data is zeroed out
 
@@ -60,17 +67,18 @@ To prevent an account from being deleted, you must pay rent.
 
 Storing data on accounts costs money to maintain, and it is funded by what is called 
 rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an 
-account, your account will be exempt from paying rent.
+account, your account will be exempt from paying rent. You can retrieve rent by closing
+the account and sending the lamports back to your wallet.
 
 Rent is paid during two different timings:
 
-1. When references by a transaction
+1. When referenced by a transaction
 2. Once an epoch
 
 A percentage of rent collected by accounts is destroyed, while the rest is distributed
-to validator acconunts at the end of every slot.
+to vote accounts at the end of every slot.
 
-If the account does not have enough to pay rent, the account will be dealloced and data
+If the account does not have enough to pay rent, the account will be deallocated and the data
 removed.
 
 ## Other Resources
