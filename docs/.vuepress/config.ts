@@ -31,6 +31,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: ['/getting-started/installation.md'],
           },
           {
+            text: 'Core Concepts',
+            children: ['/core-concepts/accounts.md']
+          },
+          {
             text: 'Ingredients',
             children: ['/ingredients/get-program-accounts.md'],
           },
