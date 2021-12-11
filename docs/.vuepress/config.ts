@@ -7,6 +7,16 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'en-US',
   title: 'Solana Cookbook',
   themeConfig: {
+    head: [
+      ['meta', { name: 'og:title', content: 'Solana Cookbook | Home to Solana References' }],
+      ['meta', { name: 'og:description', content: 'The Solana cookbook is a collection of useful examples and references for building on Solana' }],
+      ['meta', { name: 'og:image', content: 'https://solanacookbook.com/solana-card.jpeg' }],
+      ['meta', { name: 'og:image:alt', content: 'Solana splash card' }],
+      ['meta', { name: 'twitter:card', content: 'summary' }],
+      ['meta', { name: 'twitter:site', content: '@solanacookbook' }],
+      ['meta', { name: 'robots', content: 'index,follow,noodp' }],
+      ['meta', { name: 'googlebot', content: 'index,follow' }],
+    ],
     locales: {
       '/': {
         navbar: [
