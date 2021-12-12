@@ -24,7 +24,7 @@ const ACCOUNT_SPACE_BUFFER = Buffer.from(
   );
 
   // Our program's CPI instruction (create_account)
-  const creataAccountIx = new TransactionInstruction({
+  const createAccountIx = new TransactionInstruction({
     programId: programId,
     data: ACCOUNT_SPACE_BUFFER,
     keys: [
@@ -48,7 +48,7 @@ const ACCOUNT_SPACE_BUFFER = Buffer.from(
 
   const transaction = new Transaction();
   // Adding up all the above instructions
-  transaction.add(creataAccountIx);
+  transaction.add(createAccountIx);
 
   const txHash = await connection.sendTransaction(transaction, [
     PAYER_KEYPAIR,
