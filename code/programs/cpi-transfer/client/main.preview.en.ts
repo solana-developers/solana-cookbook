@@ -25,7 +25,7 @@
       },
       {
         isSigner: false,
-        isWritable: true,
+        isWritable: false,
         pubkey: TOKEN_PROGRAM_ID,
       },
     ],

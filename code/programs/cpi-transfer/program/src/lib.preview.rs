@@ -24,5 +24,3 @@ invoke(
     &required_accounts_for_transfer,
 )?;
 
-Ok(())
-
