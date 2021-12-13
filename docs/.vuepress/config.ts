@@ -32,7 +32,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'Core Concepts',
-            children: ['/core-concepts/accounts.md']
+            children: ['/core-concepts/accounts.md', '/core-concepts/programs.md']
           },
           {
             text: 'Ingredients',
