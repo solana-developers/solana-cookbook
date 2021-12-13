@@ -1,0 +1,28 @@
+[package]
+name = "solana-cli-template-program-bpf"
+version = "0.1.0"
+edition = "2018"
+license = "WTFPL"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+borsh = "0.9.0"
+lazy_static = "1.4.0"
+num-derive = "0.3"
+num_enum = "0.5.1"
+num-integer = "0.1.44"
+num-traits = "0.2"
+sol-template-shared = {path = "../shared"}
+solana-program = "1.8.2"
+thiserror = "1.0"
+
+[dev-dependencies]
+solana-program-test = "1.8.2"
+solana-sdk = "1.8.2"
+
+[lib]
+crate-type = ["cdylib", "lib"]

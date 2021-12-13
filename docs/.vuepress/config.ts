@@ -46,6 +46,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/recipes/basic-transactions.md',
               '/recipes/accounts.md',
               '/recipes/programs.md',
+              '/recipes/serialization.md',
               '/recipes/token.md',
               '/recipes/staking.md',
               '/recipes/nfts.md',
