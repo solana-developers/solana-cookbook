@@ -48,6 +48,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/recipes/programs.md',
               '/recipes/token.md',
               '/recipes/staking.md',
+              '/recipes/nfts.md',
               '/recipes/offline-transactions.md',
               '/recipes/name-service.md',
             ],
