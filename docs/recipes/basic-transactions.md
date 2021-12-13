@@ -8,23 +8,50 @@ title: Basic Transactions
 
 To sending SOL, you will need to interact with the [SystemProgram][1].
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.en.ts)
 
-  </CodeGroupItem>
-  <CodeGroupItem title="Wallet-Adapter">
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Wallet-Adapter">
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.en.tsx)
 
-  </CodeGroupItem>
-  <CodeGroupItem title="CLI">
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
+
+  </template>  
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
@@ -35,23 +62,50 @@ transferred. In order to send a SPL token, you need to know their
 SPL token account address. You can both get the address and send tokens
 with the following example.
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.ts)
 
-  </CodeGroupItem>
-  <CodeGroupItem title="Wallet-Adapter">
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Wallet-Adapter">
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.adapter.en.tsx)
 
-  </CodeGroupItem>
-  <CodeGroupItem title="CLI">
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.adapter.preview.en.tsx)
+
+  </template>  
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.sh)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 [1]: https://spl.solana.com/token
 
@@ -62,10 +116,73 @@ the transaction cost. As long as you are not create an account, this
 will be the final transaction cost. To find out more about costs to create
 and account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
 
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
 
 @[code](@/code/basic-transactions/calc-tx-cost/calc-tx-cost.en.ts)
 
-  </CodeGroupItem>
-</CodeGroup>
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-cost.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## Adding a Memo
+
+Any transaction can add a message making use of the [memo program][2].
+Currently the `programID` from the **Memo Program** has to be added
+manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/memo/memo.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/memo/memo.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Wallet-Adapter">
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.en.tsx)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
+
+  </template>  
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/memo/memo.en.sh)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/memo/memo.en.sh)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+[2]: https://spl.solana.com/memo

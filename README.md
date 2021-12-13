@@ -13,6 +13,53 @@ the project's style when contributing new snippets of code.
 Currently we have "topics" under `/docs` and the code for those topics 
 lives under `/code/<topic>`.
 
+### Recipes
+
+Recipes are an overarching topic with a list of references of how to do
+things under that topic. The general structure is the following:
+
+```
+Code Reference Title
+
+Short Summary
+
+Code Snippet
+```
+
+### Ingredients
+
+Ingredients are longer form informational documentation on various topics.
+The general structure for writing an ingredient is the following:
+
+```
+Brief Summary/TLDR
+
+Fact Sheet
+
+Deep Dive
+
+Other Resources
+```
+
+### Building
+
+We recommend building and running the documentation in a development container
+(requires Docker to be installed).
+A `Dockerfile` is included in the `.devcontainer` directory which can be built
+and run manually using docker or automatically by VS Code
+([Instructions here](https://code.visualstudio.com/docs/remote/containers)).
+
+To build and run perform the following commands in the terminal
+(within the container if using the dev container)
+
+```
+yarn install
+yarn start
+```
+
+It will take some time to start, the documentation can then be viewed
+at (http://localhost:8080/)
+
 ### Committing
 We are using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 for this repository.
