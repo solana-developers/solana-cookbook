@@ -1,4 +1,5 @@
-const borsh = require("borsh");
+import { serialize, deserialize, deserializeUnchecked } from 'borsh';
+import { Buffer } from 'buffer';
 import {
     Keypair,
     AccountMeta,
@@ -48,5 +49,5 @@ export async function getAccountData(connection: Connection, account: Keypair): 
         account.publicKey,
         'processed'
     );
-    return borsh.deserializeUnchecked(dataSchema, AccoundData, nameAccount.data)
+    return deserializeUnchecked(dataSchema, AccoundData, nameAccount.data)
 }

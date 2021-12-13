@@ -14,19 +14,9 @@ Serialization comes into play at a few points along Solana program and program a
 4. Client Account Data Deserialization (Client)
 
 It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serializaation using [Borsh][1] with examples in Rust and Typescript.
+included snippets are demonstrating serializaation using [Borsh](#resources) with examples in Rust and Typescript.
 
-The samples in the remainder of this document are excerpts as taken from this [Solana Template][2]
-
-In this sample program, there are 4 operations, identified by their Instruction variant index:
-1. Initialize an account (variant index = 0)
-2. Mint a key value pair for a single account (variant index = 1)
-3. Transfer a key value pair from one account to another (variant index = 2)
-4. Burn a key value pair from an account (variant index = 3)
-
-
-[1]: https://github.com/near/borsh-rs
-[2]: https://github.com/hashblock/solana-cli-program-template
+The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
 
 ## Setting up for Borsh Serialization
 Libraries for Borsh must be setup for the Rust program, Rust CLI, and Node
@@ -100,7 +90,7 @@ The program account data block (from the sample repo) is layed out as
 
 ### Pack
 
-A word about the [Pack][3] trait
+A word about the [Pack][1] trait
 
 The Pack trait makes it easier to hide the details of account data serialization/deserialization
 from your core Program instruction processing. So instead of putting all the serialize/deserialize
@@ -170,7 +160,7 @@ key value pair that we demonstrated above when sending instructions from a clien
 </CodeGroup>
 
 
-[3]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
+[1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
 ## Client Account Data Deserialization
 
@@ -194,3 +184,8 @@ The layout of the account data was described [Here](#account-data-serialization)
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Resources
+
+* [Borsh](https://github.com/near/borsh-rs)
+* [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)

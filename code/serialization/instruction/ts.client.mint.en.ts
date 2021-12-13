@@ -1,7 +1,8 @@
 
 // Include borsh functionality
 
-const borsh = require("borsh");
+import { serialize, deserialize, deserializeUnchecked } from 'borsh';
+import { Buffer } from 'buffer';
 
 // Get Solana
 import {
@@ -77,10 +78,10 @@ export async function mintKV(
     });
 
     // Serialize the payload
-    const mintSerBuf = borsh.serialize(payloadSchema, mint);
+    const mintSerBuf = Buffer.from(serialize(payloadSchema, mint));
     // console.log(mintSerBuf)
     // => <Buffer 01 06 00 00 00 74 73 20 6b 65 79 0e 00 00 00 74 73 20 66 69 72 73 74 20 76 61 6c 75 65>
-    // let mintPayloadCopy = borsh.deserialize(schema, Payload, mintSerBuf)
+    // let mintPayloadCopy = deserialize(schema, Payload, mintSerBuf)
     // console.log(mintPayloadCopy)
     // => Payload { id: 1, key: 'ts key', value: 'ts first value' }
 
