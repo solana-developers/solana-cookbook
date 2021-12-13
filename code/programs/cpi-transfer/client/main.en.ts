@@ -140,7 +140,7 @@ const TOKEN_TRANSFER_AMOUNT_BUFFER = Buffer.from(
       },
       {
         isSigner: false,
-        isWritable: true,
+        isWritable: false,
         pubkey: TOKEN_PROGRAM_ID,
       },
     ],

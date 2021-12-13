@@ -99,7 +99,9 @@ The client side instruction, now only needs to pass the state and payer accounts
 
 ## How to do Cross Program Invocation
 
-A cross program invocation, is simply put calling another program's instruction inside our program. One best example to put forth is Uniswap's `swap` functionality. The `UniswapV2Router` contract, calls the necessary logic to swap, and calls the `ERC20` contract's transfer function to swap from one person to another. The same way, we can call a program's instruction to have multitude of purposes. In this example, we will have a look at `SPL Token Program's transfer` instruction. The required accounts we would need for a transfer to happen are
+A cross program invocation, is simply put calling another program's instruction inside our program. One best example to put forth is Uniswap's `swap` functionality. The `UniswapV2Router` contract, calls the necessary logic to swap, and calls the `ERC20` contract's transfer function to swap from one person to another. The same way, we can call a program's instruction to have multitude of purposes.
+
+Lets have a look at our first example which is the `SPL Token Program's transfer` instruction. The required accounts we would need for a transfer to happen are
 
 1. The Source Token Account (The account which we are holding our tokens)
 2. The Destination Token Account (The account which we would be transferring our tokens to)
@@ -138,6 +140,50 @@ The corresponding client instruction would be as follows. For knowing the mint a
   <template v-slot:preview>
 
 @[code](@/code/programs/cpi-transfer/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction and this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+
+1. The payer account who funds the rent
+2. The account which is going to be created
+3. System Program account
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/cpi-transfer/program-system/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/cpi-transfer/program-system/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+The respective client side code will look as follows
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/cpi-transfer/client-system/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/cpi-transfer/client-system/main.preview.en.ts)
 
   </template>
 

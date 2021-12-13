@@ -52,6 +52,16 @@ pub fn process_instruction(
     );
 
     // Creating a new TransactionInstruction
+    /*
+        Internal representation of the instruction's return value (Result<Instruction, ProgramError>)
+
+        Ok(Instruction {
+            program_id: *token_program_id, // PASSED FROM USER
+            accounts,
+            data,
+        })
+    */
+
     let transfer_tokens_instruction = transfer(
         &token_program.key,
         &source_token_account.key,

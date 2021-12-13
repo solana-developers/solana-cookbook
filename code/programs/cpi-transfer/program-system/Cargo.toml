@@ -1,0 +1,12 @@
+[package]
+edition = "2021"
+name = "program-cpi-transfer-system"
+version = "0.1.0"
+
+[dependencies]
+borsh = "0.9.1"
+solana-program = "=1.8.5"
+spl-token = {version = "3.2.0", features = ["no-entrypoint"]}
+
+[lib]
+crate-type = ["cdylib", "lib"]
