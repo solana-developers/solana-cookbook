@@ -26,6 +26,9 @@ head:
     - name: twitter:site
       content: "@solanacookbook"
   - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/sharing-card.png"
+  - - meta
     - name: robots
       content: index,follow,noodp
   - - meta
