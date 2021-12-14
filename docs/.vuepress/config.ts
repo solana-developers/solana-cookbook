@@ -7,16 +7,6 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'en-US',
   title: 'Solana Cookbook',
   themeConfig: {
-    head: [
-      ['meta', { name: 'og:title', content: 'Solana Cookbook | Home to Solana References' }],
-      ['meta', { name: 'og:description', content: 'The Solana cookbook is a collection of useful examples and references for building on Solana' }],
-      ['meta', { name: 'og:image', content: 'https://solanacookbook.com/solana-card.jpeg' }],
-      ['meta', { name: 'og:image:alt', content: 'Solana splash card' }],
-      ['meta', { name: 'twitter:card', content: 'summary' }],
-      ['meta', { name: 'twitter:site', content: '@solanacookbook' }],
-      ['meta', { name: 'robots', content: 'index,follow,noodp' }],
-      ['meta', { name: 'googlebot', content: 'index,follow' }],
-    ],
     locales: {
       '/': {
         navbar: [
@@ -28,15 +18,25 @@ export default defineUserConfig<DefaultThemeOptions>({
         sidebar: [
           {
             text: 'Getting Started',
-            children: ['/getting-started/installation.md'],
+            children: [
+              '/',
+              '/getting-started/installation.md'
+            ],
           },
           {
             text: 'Core Concepts',
-            children: ['/core-concepts/accounts.md', '/core-concepts/programs.md', '/core-concepts/transactions.md']
+            children: [
+              '/core-concepts/accounts.md', 
+              '/core-concepts/programs.md', 
+              '/core-concepts/transactions.md',
+            ]
           },
           {
             text: 'Ingredients',
-            children: ['/ingredients/get-program-accounts.md'],
+            children: [
+              '/ingredients/get-program-accounts.md',
+              '/ingredients/serialization.md',
+            ],
           },
           {
             text: 'Recipes',
@@ -46,7 +46,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/recipes/basic-transactions.md',
               '/recipes/accounts.md',
               '/recipes/programs.md',
-              '/recipes/serialization.md',
               '/recipes/token.md',
               '/recipes/staking.md',
               '/recipes/nfts.md',
