@@ -4,7 +4,7 @@ title: Transactions
 
 # Transactions
 
-Clients can invoke [programs](./programs.md) by submitting a transaction to a cluster. A single transaction can include multiple instructions, each targeting its own program. When a transaction is submitted, the Solana [runtime](https://docs.solana.com/developing/programming-model/runtime) will process its instructions in order and atomically. If any part of an instruction fails, the entire transaction will fail.
+Clients can invoke [programs](./programs.md) by submitting a transaction to a cluster. A single transaction can include multiple instructions, each targeting its own program. When a transaction is submitted, the Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) will process its instructions in order and atomically. If any part of an instruction fails, the entire transaction will fail.
 
 ## Facts
 
@@ -27,7 +27,7 @@ Clients can invoke [programs](./programs.md) by submitting a transaction to a cl
 
 ## Deep Dive
 
-The Solana runtime requires both instructions and transactions to specify a list of all accounts they intended to read from or write to. By requiring these accounts in advance, the runtime is able to parallelize execution across all transactions.
+The Solana Runtime requires both instructions and transactions to specify a list of all accounts they intended to read from or write to. By requiring these accounts in advance, the runtime is able to parallelize execution across all transactions.
 
 When a transaction is submitted to a cluster, the runtime will process its instructions in order and atomically. For each instruction, the receiving program will interpret its data array and operate on its specified accounts. The program will either return successfully or with an error code. If an error is returned, the entire transaction will fail immediately.
 
