@@ -36,7 +36,12 @@ footer: MIT Licensed
 
 # Cooking with Solana
 
-The *Solana Cookbook* is a developer resource that provides the essential concepts and recipes for building applications on Solana. Each concept and recipe will focus on specific aspects of Solana development while providing more details and usage examples.
+The *Solana Cookbook* is a developer resource that 
+provides the essential concepts and recipes for 
+building applications on Solana. Each concept and 
+recipe will focus on specific aspects of Solana 
+development while providing more details and usage 
+examples.
 
 ## Contributing
 
