@@ -9,7 +9,7 @@ Any developer can write and deploy programs to the Solana blockchain. Programs (
 ## Facts
 
 ::: tip Fact Sheet
-- Programs process instructions from both end users and other programs
+- Programs process [instructions](./transactions) from both end users and other programs
 - All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
 - Programs themselves are stored in accounts marked as `executable`
 - All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
