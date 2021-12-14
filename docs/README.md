@@ -15,7 +15,7 @@ head:
       content: The Solana cookbook is a collection of useful examples and references for building on Solana
   - - meta
     - name: og:image
-      content: https://solanacookbook.com/solana-card.jpeg
+      content: https://solanacookbook.com/sharing-card.png
   - - meta
     - name: og:image:alt
       content: Solana splash card
@@ -36,11 +36,12 @@ footer: MIT Licensed
 
 # Cooking with Solana
 
-The *Solana Cookbook* is a collection of references and 
-concepts aimed at any level of developer. The goal of 
-the cookbook is to be a resource for a developer to use 
-while building on top of Solana, being able to quickly 
-access core code pieces.
+The *Solana Cookbook* is a developer resource that 
+provides the essential concepts and recipes for 
+building applications on Solana. Each concept and 
+recipe will focus on specific aspects of Solana 
+development while providing more details and usage 
+examples.
 
 ## Contributing
 
