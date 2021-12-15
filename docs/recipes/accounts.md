@@ -52,7 +52,7 @@ the amount of data you intend to store in the account.
 
 You can use `create account with seed` to manage your accounts instead of creating a bunch of different keypair.
 
-### Generate an account with seed
+### Generate
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -72,7 +72,7 @@ You can use `create account with seed` to manage your accounts instead of creati
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Creation
+### Create
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
