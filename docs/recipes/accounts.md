@@ -63,7 +63,7 @@ Although PDA is derived by a program id, it doesn't means the PDA is owned by th
 
 1. Create Program Address
 
-This may fail because the result (pda) is on curve. You can use 
+This may fail because the result (pda) is on curve. You can use
 `findProgramAddress` to reserve your meaningful seed.
 
 <CodeGroup>
@@ -76,9 +76,9 @@ This may fail because the result (pda) is on curve. You can use
 
 2. Find Program Address
 
-`findProgramAddress` will add a extra byte at the end of your seed. 
-It starts from 255 to 0 and returns the first off-curve public key. 
-You will always get the same result if you pass the same program id 
+`findProgramAddress` will add a extra byte at the end of your seed.
+It starts from 255 to 0 and returns the first off-curve public key.
+You will always get the same result if you pass the same program id
 and seed.
 
 <CodeGroup>
@@ -91,7 +91,7 @@ and seed.
 
 ### Sign with a PDA
 
-PDAs can only be signed for within the program. Below is a program 
+PDAs can only be signed for within the program. Below is a program
 example of signing with a PDA and calling the program with the client.
 
 #### Program
@@ -202,6 +202,54 @@ Return all accounts owned by a program. Refer to the [ingredients section](../in
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Close Accounts
+
+You can close an account (earse all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+
+#### Program
+
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/close-account/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/close-account/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+#### Client
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/close-account/client/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/close-account/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+
+
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
 [2]: https://docs.solana.com/developing/programming-model/accounts#rent
