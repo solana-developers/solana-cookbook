@@ -72,6 +72,25 @@ You can use `create account with seed` to manage your accounts instead of creati
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+### Creation
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/create-account-with-seed/creation/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-account-with-seed/creation/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 ## Program Derived Address
 
