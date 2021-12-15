@@ -248,8 +248,29 @@ You can close an account (earse all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Get SOL Balance
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
 
+  <template v-slot:default>
+
+@[code](@/code/accounts/get-balance/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/get-balance/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+::: tip
+If you want to get a token balance, you will need to know the address of token account. The more infotmation can refer to [Token Recipes](token.md)
+:::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
 [2]: https://docs.solana.com/developing/programming-model/accounts#rent
