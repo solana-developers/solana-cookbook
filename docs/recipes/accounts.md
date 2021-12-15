@@ -48,6 +48,31 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
+## Create Account With Seed
+
+You can use `create account with seed` to manage your accounts instead of creating a bunch of different keypair.
+
+### Generate an account with seed
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/create-account-with-seed/generate/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-account-with-seed/generate/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+
 ## Program Derived Address
 
 [Program derived address(PDA)][3] is like a normal address with the following differences:
