@@ -92,6 +92,27 @@ You can use `create account with seed` to manage your accounts instead of creati
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+### Tranasfer
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/create-account-with-seed/transfer/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-account-with-seed/transfer/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+
 ## Program Derived Address
 
 [Program derived address(PDA)][3] is like a normal address with the following differences:
