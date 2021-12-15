@@ -112,6 +112,9 @@ You can use `create account with seed` to manage your accounts instead of creati
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+::: tip
+Only an account owned by system program can transfer via system program.
+:::
 
 ## Program Derived Address
 
