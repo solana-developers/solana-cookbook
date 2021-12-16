@@ -273,7 +273,7 @@ Return all accounts owned by a program. Refer to the [ingredients section](../in
 
 ## Close Accounts
 
-You can close an account (earse all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
 
 #### Program
 
