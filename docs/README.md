@@ -15,7 +15,7 @@ head:
       content: The Solana cookbook is a collection of useful examples and references for building on Solana
   - - meta
     - name: og:image
-      content: https://solanacookbook.com/sharing-card.png
+      content: https://solanacookbook.com/cookbook-sharing-card.png
   - - meta
     - name: og:image:alt
       content: Solana splash card
@@ -27,7 +27,7 @@ head:
       content: "@solanacookbook"
   - - meta
     - name: twitter:image
-      content: "https://solanacookbook.com/sharing-card.png"
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
   - - meta
     - name: robots
       content: index,follow,noodp
