@@ -21,5 +21,8 @@ fn process_instruction(
         .unwrap();
     **source_account_info.lamports.borrow_mut() = 0;
 
+    let mut source_data = source_account_info.data.borrow_mut();
+    source_data.fill(0);
+
     Ok(())
 }
