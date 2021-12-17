@@ -92,7 +92,7 @@ You can use `create account with seed` to manage your accounts instead of creati
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Tranasfer
+### Transfer
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
