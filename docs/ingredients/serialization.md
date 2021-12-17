@@ -185,7 +185,58 @@ The layout of the account data was described [Here](#account-data-serialization)
   </CodeGroupItem>
 </CodeGroup>
 
+## Common Solana TS/JS Mappings
+
+The [Borsh Specification](#resources) contains most mappings for primitive and
+compound data types.
+
+The key to TS/JS is creating a Borsh Schema with a proper definition so the serialize
+and deserialize can generate or walk the respective inputs.
+
+Here we demonstrate serialization of primitives (numbers, strings) and compounds (fixed size array, Map)
+first in Typescript and the equivalent deserialization on the Rust side
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+  @[code](@/code/serialization/primitives/demo_primitives.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Rust">
+
+  @[code](@/code/serialization/primitives/src/main.rs)
+
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
+## Advanced Constructs
+
+We've shown how to create simple Payloads in previous examples. Sometimes
+Solana throws a fastball with certain types. This section will demonstrate
+proper mapping between TS/JS and Rust to handle those
+
+### COption
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+  @[code](@/code/serialization/coption/demo_coption.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Rust">
+
+  @[code](@/code/serialization/coption/src/main.rs)
+
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Resources
 
-* [Borsh](https://github.com/near/borsh-rs)
+* [Borsh Specification](https://borsh.io/)
+* [Rust Borsh](https://github.com/near/borsh-rs)
+* [TS/JS Borsh](https://github.com/near/borsh-js)
 * [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)
