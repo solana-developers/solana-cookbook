@@ -1,4 +1,4 @@
-const wallet = useWallet();
+const { wallet } = useWallet();
 const { setVisible } = useWalletModal();
 
 const onPromptClick: MouseEventHandler = (e) => {
@@ -7,6 +7,6 @@ const onPromptClick: MouseEventHandler = (e) => {
 };
 
 // Prompt the user to connect their wallet
-if (!wallet?.publicKey) {
+if (!wallet) {
   return <button onClick={onPromptClick}>Connect Wallet</button>;
 }

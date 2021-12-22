@@ -54,7 +54,7 @@ import { MouseEventHandler } from "react";
  * Opens a built-in modal that handles the connection flow for you.
  */
 const UseConnectedWalletOrPromptUser = () => {
-  const wallet = useWallet();
+  const { wallet } = useWallet();
   const { setVisible } = useWalletModal();
 
   const onPromptClick: MouseEventHandler = (e) => {
@@ -63,7 +63,7 @@ const UseConnectedWalletOrPromptUser = () => {
   };
 
   // Prompt the user to connect their wallet
-  if (!wallet?.publicKey) {
+  if (!wallet) {
     return <button onClick={onPromptClick}>Connect Wallet</button>;
   }
 
