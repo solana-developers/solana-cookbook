@@ -304,22 +304,22 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## Connect to Wallet
+## Connecting to a Wallet
 
-You can easily manage wallet connections in the frontend using Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) packages.
+Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
 
 ### React
 
-Install the following NPM packages in your React app:
+This snippet requires following dependencies:
 
 - `@solana/wallet-adapter-react`
 - `@solana/wallet-adapter-react-ui`
 - `@solana/wallet-adapter-base`
 - `@solana/wallet-adapter-wallets`
 
-These React libraries export hooks and Providers that we can use to access wallet connection states, namely `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. It is required that we wrap the React App with those providers to access those connection states.
+The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
 
-Additionally, can use `useWalletModal` and `WalletModalProvider` from `@solana/wallet-adapter-react-ui` to prompt users to connect their wallets and it will handle that flow for us - we just have to wait for the return type of `useWallet` to be truthy.
+Additionally, we can prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we can just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
