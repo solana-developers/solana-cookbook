@@ -30,8 +30,6 @@ export const Web3Provider: FC<PropsWithChildren<{}>> = ({ children }) => {
   );
 };
 
-const Routes = () => <div />;
-
 /**
  * Make sure to wrap the App with
  * ConnectionProvider, WalletProvider, and WalletModalProvider.
@@ -42,7 +40,7 @@ const Routes = () => <div />;
 export const App = () => {
   return (
     <Web3Provider>
-      <Routes />
+      <AppChild />
     </Web3Provider>
   );
 };
@@ -51,7 +49,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { MouseEventHandler } from "react";
 
-const UseConnectedWalletOrPromptUser = () => {
+const AppChild = () => {
   const { wallet } = useWallet();
   const { setVisible } = useWalletModal();
 
