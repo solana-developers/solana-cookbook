@@ -310,12 +310,11 @@ Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) librari
 
 ### React
 
-This snippet requires following dependencies:
+Run the following command to install the required dependencies:
 
-- `@solana/wallet-adapter-react`
-- `@solana/wallet-adapter-react-ui`
-- `@solana/wallet-adapter-base`
-- `@solana/wallet-adapter-wallets`
+```/bin/bash
+yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
+```
 
 The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
 
