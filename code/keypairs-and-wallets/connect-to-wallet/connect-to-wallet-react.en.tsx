@@ -31,10 +31,13 @@ export const Web3Provider: FC<PropsWithChildren<{}>> = ({ children }) => {
 };
 
 const Routes = () => <div />;
+
 /**
- * In addition to your typical CRA setup, make sure to wrap
- * your App contents with the necessary providers from @solana/wallet-adapter-react &
- * @solana/wallet-adapter-react-ui.
+ * Make sure to wrap the App with
+ * ConnectionProvider, WalletProvider, and WalletModalProvider.
+ * 
+ * If you have a lot of Providers already, you can combine them
+ * into a single wrapper (i.e. Web3Provider) instead.
  */
 export const App = () => {
   return (
@@ -48,23 +51,18 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { MouseEventHandler } from "react";
 
-/**
- * Example of using the connected wallet, if any, or
- * prompting the user to connect their wallet.
- * Opens a built-in modal that handles the connection flow for you.
- */
 const UseConnectedWalletOrPromptUser = () => {
   const { wallet } = useWallet();
   const { setVisible } = useWalletModal();
 
-  const onPromptClick: MouseEventHandler = (e) => {
-    e.preventDefault();
+  // Display the connection modal
+  const onRequestConnectWallet = () => {
     setVisible(true);
   };
-
-  // Prompt the user to connect their wallet
+  
+  // Prompt user to connect wallet
   if (!wallet) {
-    return <button onClick={onPromptClick}>Connect Wallet</button>;
+    return <button onClick={onRequestConnectWallet}>Connect Wallet</button>;
   }
 
   return (
