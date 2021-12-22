@@ -303,3 +303,39 @@ To do so we will import the [TweetNaCl][1] crypto library.
 </SolanaCodeGroup>
 
 [1]: https://www.npmjs.com/package/tweetnacl
+
+## Connect to Wallet
+
+You can easily manage wallet connections in the frontend using Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) packages.
+
+### React
+
+Install the following NPM packages in your React app:
+
+- `@solana/wallet-adapter-react`
+- `@solana/wallet-adapter-react-ui`
+- `@solana/wallet-adapter-base`
+- `@solana/wallet-adapter-wallets`
+
+These React libraries export hooks and Providers that we can use to access wallet connection states, namely `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. It is required that we wrap the React App with those providers to access those connection states.
+
+Additionally, can use `useWalletModal` and `WalletModalProvider` from `@solana/wallet-adapter-react-ui` to prompt users to connect their wallets and it will handle that flow for us - we just have to wait for the return type of `useWallet` to be truthy.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-react.en.tsx)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-react.preview.en.tsx)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
