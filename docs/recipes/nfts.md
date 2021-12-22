@@ -32,6 +32,63 @@ To create a NFT, you will need to interact with both the [SystemProgram][1] and 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 [2]: https://spl.solana.com/token
 
+## Mint an NFT
+
+To mint an NFT you have to:
+
+1. Upload the image to IPFS like Arweave
+2. Upload the json metadata to IPFS like Arweave
+3. Call metaplex to create an account for the NFT
+
+### Upload to Arweave
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/upload-arweave/upload-arweave.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/upload-arweave/upload-arweave.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+### Mint the NFT
+
+If you already have the image and metadata uploaded, you can mint
+the NFT with the following code.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/mint-nft/mint-nft.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/mint-nft/mint-nft.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+::: tip Note
+You cannot mint an NFT with a different creator that your wallet.
+If you run into creator issues, make sure your metadata lists you
+as the creator.
+:::
+
 ## Get NFT Metadata
 
 Metaplex NFTs have metadata that is stored on Arweave. In order
