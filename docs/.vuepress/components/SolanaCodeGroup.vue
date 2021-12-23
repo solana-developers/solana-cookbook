@@ -67,6 +67,30 @@ export default defineComponent({
       preview.value = !preview.value
     }
 
+    // Adapted from https://v3.vuejs.org/guide/render-function.html#complete-example
+    function getChildrenTextContent(children) {
+      return children
+        .map(node => {
+          // Ignore line numbers
+          if (node.props?.class === 'line-number') return ''
+
+          return typeof node.children === 'string'
+            ? node.children
+            : Array.isArray(node.children)
+            ? getChildrenTextContent(node.children)
+            : ''
+        })
+        .join('')
+    }
+
+    const copyActiveToClipboard = () => {
+      let activeItem = items.find((vnode, i) => i === activeIndex.value)
+      let children = preview.value ? activeItem.children['preview']() : activeItem.children['default']()
+      let code = getChildrenTextContent(children)
+      let data = [new ClipboardItem({ "text/plain": new Blob([code], { type: "text/plain" }) })]
+      navigator.clipboard.write(data)
+    }
+
     return () => {
       // NOTICE: here we put the `slots.default()` inside the render function to make
       // the slots reactive, otherwise the slot content won't be changed once the
@@ -154,9 +178,51 @@ export default defineComponent({
                   },
                   onClick: () => togglePreview(),
                 },
-                preview.value ? 'Show full code' : 'Show preview'
+                h(
+                  'svg', {
+                    width: '18',
+                    height: '18',
+                    viewBox: '0 0 24 24',
+                    fill: 'none'
+                  },
+                  h('path', {
+                    stroke: 'currentColor',
+                    'stroke-linecap': 'round',
+                    'stroke-linejoin': 'round',
+                    'stroke-width': 2,
+                    d: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'
+                  })
+                )
               )
-            )
+            ),
+            h(
+              'li',
+              { class: 'code-group__li' },
+              h(
+                'button',
+                {
+                  class: {
+                    'code-group__nav-tab': true,
+                  },
+                  onClick: () => copyActiveToClipboard(),
+                },
+                h(
+                  'svg', {
+                    width: '18',
+                    height: '18',
+                    viewBox: '0 0 24 24',
+                    fill: 'none'
+                  },
+                  h('path', {
+                    stroke: 'currentColor',
+                    'stroke-linecap': 'round',
+                    'stroke-linejoin': 'round',
+                    'stroke-width': 2,
+                    d: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'
+                  })
+                )
+              )
+            ),
           )
         ),
         items,
