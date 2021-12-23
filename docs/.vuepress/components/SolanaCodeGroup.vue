@@ -84,7 +84,7 @@ export default defineComponent({
     }
 
     const copyActiveToClipboard = () => {
-      let activeItem = items.find((vnode) => vnode.props.active === '' || vnode.props.active === true)
+      let activeItem = items.find((vnode, i) => i === activeIndex.value)
       let children = preview.value ? activeItem.children['preview']() : activeItem.children['default']()
       let code = getChildrenTextContent(children)
       let data = [new ClipboardItem({ "text/plain": new Blob([code], { type: "text/plain" }) })]
