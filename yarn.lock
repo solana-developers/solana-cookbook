@@ -548,10 +548,10 @@
     "@vuepress/utils" "2.0.0-beta.27"
     vue "^3.2.20"
 
-"@vuepress/shared-utils@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@vuepress/shared-utils/-/shared-utils-1.8.2.tgz#5ec1601f2196aca34ad82eed7c9be2d7948f705b"
-  integrity sha512-6kGubc7iBDWruEBUU7yR+sQ++SOhMuvKWvWeTZJKRZedthycdzYz7QVpua0FaZSAJm5/dIt8ymU4WQvxTtZgTQ==
+"@vuepress/shared-utils@^1.9.5":
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/@vuepress/shared-utils/-/shared-utils-1.9.5.tgz#8c6408f65ea6ea227046a2ae34470026cc51733c"
+  integrity sha512-WA6lq5YwbG3HX3yVhMsrsw6zqDUiiMsUsBJCk/gNwbWng/NTibR/f+DkUyD/tw8fYuNu5EDK8wPn+qyLhcrjJg==
   dependencies:
     chalk "^2.3.2"
     escape-html "^1.0.3"
