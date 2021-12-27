@@ -150,6 +150,46 @@ matches the given public key
 
 </SolanaCodeGroup>
 
+## Generate a Mnemonic phrase
+
+If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="CLI">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.sh)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.sh)
+
+  </template>  
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+
 ## Convert Mnemonic to Keypair
 
 Many wallet extensions use mnemonics to represent their secret keys.
