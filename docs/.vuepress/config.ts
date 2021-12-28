@@ -6,7 +6,10 @@ export default defineUserConfig<DefaultThemeOptions>({
   base: '/',
   lang: 'en-US',
   title: 'Solana Cookbook',
-  head: [['link', { rel: 'icon', href: '/solana_cookbook_lightmode.svg' }]],
+  head: [
+      ['link', { rel: 'icon', href: '/solana_cookbook_lightmode.svg' }],
+      ['script', { 'data-domain': "solanacookbook.com", src: "https://plausible.io/js/plausible.js"}]
+  ],
   themeConfig: {
     logo: '/solana_cookbook_lightmode.svg',
     logoDark: '/solana_cookbook_darkmode.svg',
