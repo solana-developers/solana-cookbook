@@ -1,5 +1,18 @@
 ---
 title: Keypairs and Wallets
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Keypairs and Wallets
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Keypairs and Wallets
+  - - meta
+    - name: description
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more Recipes for Building on Solana at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more Recipes for Building on Solana at The Solana cookbook.
 ---
 
 # Keypairs and Wallets

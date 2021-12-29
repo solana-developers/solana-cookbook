@@ -1,5 +1,18 @@
 ---
 title: Non Fungible Tokens (NFTs)
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Non Fungible Tokens (NFTs)
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Non Fungible Tokens (NFTs)
+  - - meta
+    - name: description
+      content: An NFT (Non Fungible Token) on Solana is an SPL-Token where only a single token has been minted. Learn more about Creating, Minting, Getting Metadata, Owner of NFTs and more Recipes at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: An NFT (Non Fungible Token) on Solana is an SPL-Token where only a single token has been minted. Learn more about Creating, Minting, Getting Metadata, Owner of NFTs and more Recipes at The Solana cookbook.
 ---
 
 # Non Fungible Tokens (NFTs)

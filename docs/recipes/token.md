@@ -1,5 +1,18 @@
 ---
 title: Interacting with Tokens
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Interacting with Tokens
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Interacting with Tokens
+  - - meta
+    - name: description
+      content: Start Interacting with Tokens, Mint, Transfer, Burn and Learn more Recipes for Building on Solana at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Start Interacting with Tokens, Mint, Transfer, Burn and Learn more Recipes for Building on Solana at The Solana cookbook.
 ---
 
 # Token

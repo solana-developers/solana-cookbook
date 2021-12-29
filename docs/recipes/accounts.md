@@ -1,5 +1,18 @@
 ---
-title: Accounts
+title: Account
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Account Recipes
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Account Recipes
+  - - meta
+    - name: description
+      content: Accounts can be used as System Account, With Seed and/or Program Derived Address. Learn about Accounts and more Recipes for Building on Solana at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Accounts can be used as System Account, With Seed and/or Program Derived Address. Learn about Accounts and more Recipes for Building on Solana at The Solana cookbook.
 ---
 
 # Accounts

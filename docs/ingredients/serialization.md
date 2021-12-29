@@ -1,5 +1,18 @@
 ---
 title: Serialization
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Serialization
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Serialization
+  - - meta
+    - name: description
+      content: Serialization is translating data so that it can be stored or transmitted and/or reconstructed. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Serialization is translating data so that it can be stored, transmitted and/or reconstructed. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
 ---
 
 # Serialization

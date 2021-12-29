@@ -1,5 +1,18 @@
 ---
 title: Accounts
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Accounts
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Accounts
+  - - meta
+    - name: description
+      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
 ---
 
 # Accounts
