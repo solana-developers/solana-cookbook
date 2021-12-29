@@ -1,5 +1,40 @@
 ---
 title: Sending Offline Transactions
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Sending Offline Transactions
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Sending Offline Transactions
+  - - meta
+    - name: description
+      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Offline Transaction
@@ -70,8 +105,6 @@ anyone can broadcast it on the network.
 @[code](@/code/offline-transactions/durable-nonce/get-nonce-account/main.preview.en.ts)
 
   </template>
-
-
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>

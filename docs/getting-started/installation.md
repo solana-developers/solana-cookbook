@@ -1,5 +1,40 @@
 ---
 title: Installation
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Installation
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Installation
+  - - meta
+    - name: description
+      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn about Installation and Getting Started on solana at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn more about Installation and Getting Started on solana at The Solana cookbook.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 ## Install Web3JS

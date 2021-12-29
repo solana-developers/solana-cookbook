@@ -1,5 +1,40 @@
 ---
 title: Programs
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Program Recipes
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Program Recipes
+  - - meta
+    - name: description
+      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Programs

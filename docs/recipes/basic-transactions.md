@@ -1,5 +1,40 @@
 ---
 title: Basic Transactions
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Basic Transactions
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Basic Transactions
+  - - meta
+    - name: description
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more Recipes for Building on Solana at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more Recipes for Building on Solana at The Solana cookbook.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Basic Transactions

@@ -1,5 +1,40 @@
 ---
 title: Name Service
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Name Service
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Name Service
+  - - meta
+    - name: description
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:description
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and Recipes at The Solana cookbook.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Name Service
