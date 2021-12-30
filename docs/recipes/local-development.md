@@ -86,6 +86,22 @@ environments:
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
 
@@ -121,6 +137,23 @@ running remotely with the following:
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
 
@@ -183,8 +216,22 @@ airdropping it to your address
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.ts)
 
   </template>
-
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.rs)
+
+  </template>  
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
 
