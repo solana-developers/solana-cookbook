@@ -27,6 +27,22 @@ keypair, you will need to generate one.
   </template>
 
   </SolanaCodeGroupItem>
+  
+  <SolanaCodeGroupItem title="Rust" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 
   <SolanaCodeGroupItem title="CLI">
 
@@ -69,6 +85,22 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
+   
+   <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 
   <SolanaCodeGroupItem title="CLI">
 
@@ -102,6 +134,22 @@ to test out your dApp.
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+   
+   <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.preview.en.rs)
 
   </template>
 
