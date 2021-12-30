@@ -59,6 +59,19 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
   </template>
 
   </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Python">
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.preview.en.py)
+
+  </template>  
+  </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="Wallet-Adapter">
   <template v-slot:default>
 
