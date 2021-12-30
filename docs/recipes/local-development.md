@@ -52,7 +52,7 @@ environments:
 
   </SolanaCodeGroupItem>
 
-  <SolanaCodeGroupItem title="Rust" active>
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -103,7 +103,7 @@ running remotely with the following:
 
   </SolanaCodeGroupItem>
 
-  <SolanaCodeGroupItem title="Rust" active>
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
