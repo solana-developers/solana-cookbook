@@ -85,6 +85,19 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
   </template>  
   </SolanaCodeGroupItem>
+   <SolanaCodeGroupItem title="Rust" active>
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/sending-sol/sending-sol.preview.rs)
+
+  </template>
+  </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
 
