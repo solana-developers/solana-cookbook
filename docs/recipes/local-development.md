@@ -194,6 +194,22 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </template>
 
   </SolanaCodeGroupItem>
+  
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ## Airdropping SOL
