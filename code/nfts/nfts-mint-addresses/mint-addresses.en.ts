@@ -1,6 +1,5 @@
 import { Connection } from '@metaplex/js';
-import { programs } from '@metaplex/js';
-const { metadata: { Metadata, MetadataProgram } } = programs
+import { Metadata, MetadataProgram } from '@metaplex-foundation/mpl-token-metadata';
 const connection = new Connection('mainnet-beta');
 const MAX_NAME_LENGTH = 32;
 const MAX_URI_LENGTH = 200;
@@ -11,7 +10,7 @@ const MAX_CREATOR_LEN = 32 + 1 + 1;
 
 const candyMachineId: string = 'BdNtsrV26ZHdqDFxmDfLib6CrcUNj4ePorhppHreRgER';
 
-async function fetchHashTable(hash: string){
+export async function fetchHashTable(hash: string){
   const metadataAccounts = await MetadataProgram.getProgramAccounts(
     connection,
     {
