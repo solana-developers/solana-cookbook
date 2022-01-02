@@ -174,16 +174,7 @@ Short Summary
 
 Code Snippet
 
-$ spl-token create-token
-Creating token AQoKYV7tYpTrFZN6P5oUufbQKAUr9mNYGe1TTJC9wajM
-Signature: 47hsLFxWRCg8azaZZPSnQR8DNTRsGyPNfUK7jqyzgt7wf9eag3nSnewqoZrVZHKm8zt3B6gzxhr91gdQ5qYrsRG4
 
-The unique identifier of the token is AQoKYV7tYpTrFZN6P5oUufbQKAUr9mNYGe1TTJC9wajM.
-
-Tokens when initially created by spl-token have no supply:
-
-$ spl-token supply AQoKYV7tYpTrFZN6P5oUufbQKAUr9mNYGe1TTJC9wajM
-0
 
 
 
