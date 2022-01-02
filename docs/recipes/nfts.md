@@ -155,8 +155,8 @@ If you have the mint key of an NFT, you can find its current owner
 by sneak-peeking at the largest token account for that mint key.
 
 Remember that NFTs have a supply of 1, and they are indivisible,
-meaning that only one token account will hold that token at any 
-point in time, whilst all other token accounts for that mint key will 
+meaning that only one token account will hold that token at any
+point in time, whilst all other token accounts for that mint key will
 have a balance of 0.
 
 Once the largest token account is identified, we can retrieve its owner.
@@ -173,6 +173,28 @@ Once the largest token account is identified, we can retrieve its owner.
   <template v-slot:preview>
 
 @[code](@/code/nfts/get-owner/get-owner.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## Get NFT Mint Addresses
+
+If you have the CandyMachine Address or ID, you can get the list of all NFT mint addresses generated from that CandyMachine via decoding their metadata, with the following code.
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/nfts-mint-addresses/mint-addresses.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/nfts-mint-addresses/mint-addresses-preview.en.ts)
 
   </template>
 
