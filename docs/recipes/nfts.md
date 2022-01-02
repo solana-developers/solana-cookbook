@@ -161,6 +161,10 @@ have a balance of 0.
 
 Once the largest token account is identified, we can retrieve its owner.
 
+## Composable standards in Solana NFTs
+
+
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
