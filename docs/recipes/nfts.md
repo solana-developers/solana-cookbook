@@ -163,7 +163,7 @@ Once the largest token account is identified, we can retrieve its owner.
 
 ## Composable standards in Solana NFTs
 
-# Comparing Composability standards on Ethereum: ERC-998
+### Comparing Composability standards on Ethereum: ERC-998
 
 
 
