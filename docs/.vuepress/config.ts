@@ -7,8 +7,8 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'en-US',
   title: 'Solana Cookbook',
   head: [
-      ['link', { rel: 'icon', href: '/solana_cookbook_lightmode.svg' }],
-      ['script', { 'data-domain': "solanacookbook.com", src: "https://plausible.io/js/plausible.js"}]
+    ['link', { rel: 'icon', href: '/solana_cookbook_lightmode.svg' }],
+    ['script', { 'data-domain': "solanacookbook.com", src: "https://plausible.io/js/plausible.js" }]
   ],
   themeConfig: {
     logo: '/solana_cookbook_lightmode.svg',
@@ -32,8 +32,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Core Concepts',
             children: [
-              '/core-concepts/accounts.md', 
-              '/core-concepts/programs.md', 
+              '/core-concepts/accounts.md',
+              '/core-concepts/programs.md',
               '/core-concepts/transactions.md',
             ]
           },
@@ -42,6 +42,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: [
               '/ingredients/get-program-accounts.md',
               '/ingredients/serialization.md',
+              '/ingredients/data-versioning.md',
             ],
           },
           {
