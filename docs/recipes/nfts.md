@@ -165,17 +165,47 @@ Once the largest token account is identified, we can retrieve its owner.
 
 ### Comparing Composability standards on Ethereum: ERC-998
 
+ERC998, the Crypto-composable standard was explored by Matt lockyer in designing token standards that introduced object composition over class inheritance. 
+
+Cryptokitties explored ERC-721 standards and breeding functions, which was the closest early analogy to composed assets existing as child assets. 
+
+In the standard explained in ERC-998, it allowed an ERC-998 token to own ERC-998, ERC-721 and ERC20 tokens. This allowed standard Ethereum assets to be composed into complex compositions and traded using a Single transfer. This included various possibilities in context of top-down & botton-up composables.
+
+Original Github issue: https://github.com/ethereum/EIPs/issues/998
+
+EIP & Github update on 998:
+
+https://eips.ethereum.org/EIPS/eip-998
+
+https://github.com/mattlockyer/composables-998/
+
+To elucidate on ethereum standards in contrast to SPL standards, here are a few considerations:
+
+1. Ethereum NFTs are tokens that are generated for each NFT collection
+2. Solana NFTs are all just ordinary SPL tokens with fixed supply
+3. Ethereum NFTs need to have different transfer functions through smart contracts
+4. Solana NFTs are easier to deploy and transfer without having to deploy contracts and transfer functions.
+
+### Code Snippet
+
+Considerations in Solana program library standards are a lot easier in comparison.
+
+Minting an NFT requires creating a new SPL Mint with the supply of one and decimals zero as described https://spl.solana.com/token#example-create-a-non-fungible-token
+
+Given the native SPL functions that control token supply and disabling of mint authority, Solana composable NFTs are essentially simple tokens with fixed supply that can be vaulted together.
+
+The metaplex standards have made it a lot easier to control composability given the ability for NFTs that can print limited edition child NFTs (Metadata + MasterEdition with max_supply of desirable numbers as composables)
+
+Instruction set for token metadata contract:
+
+https://github.com/metaplex-foundation/metaplex/blob/master/rust/token-vault/program/src/instruction.rs
 
 
+### Short Summary
 
-Short Summary
+Apart from the greatest convenience in gas considerations for Solana NFTs, it is noteworthy to notice that existence of Metadata and its sister PDA MasterEdition makes it a powerful combination for creators to have unique mints involving Metadata + MasterEditions with specific supply & NFTs that can print limited edition child NFTs.
 
-
-
-
-Code Snippet
-
-
+Composable token standards with Metaplex would prove to contribute to huge factors in blockchain gaming and metaverse assets since it is easier to prove ownership within composables with simpler contracts.
 
 
 
