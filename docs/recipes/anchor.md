@@ -188,6 +188,29 @@ The following `Accounts Deserializer` applies the previously declared implementa
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Sending Sol tokens from one pubkey to another
+In the following code snippet you'll see two important parts, one is the SendSol struct which is the data structure which holds necessary information regarding the transfer and gives that information to our function, all you need to know here is that `from: Signer<'info>,` holds the key of sender, `to:AccountInfo<'info>,` holds key of receiver and `system_program: Program<'info, System>` is the program facilitating the transfer. The 2nd part i.e the send_sol function takes in this struct along with the amount as parameters and then the ix variable will store the system instruction required for the transaction.
+Furthermore the last bit of this function will invoke the instruction to finally send the transaction.
+
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/anchor/Send-sol-in-program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/anchor/Send-sol-in-program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 [Program]: https://docs.rs/anchor-lang/latest/anchor_lang/attr.program.html
 [Context]: https://docs.rs/anchor-lang/latest/anchor_lang/struct.Context.html
 [DeriveAccounts]: https://docs.rs/anchor-lang/latest/anchor_lang/derive.Accounts.html
