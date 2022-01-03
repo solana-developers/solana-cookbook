@@ -102,6 +102,28 @@ Once a stake account is funded, the `Stake Authority` can delegate it to a valid
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Get Delegator by Validators
+
+Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [ingredients section](http://localhost:8080/ingredients/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Refernce](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/staking/get-delegators-by-validators/get-delegators-by-validators.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/staking/get-delegators-by-validators/get-delegators-by-validators.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 ## Deactivate Stake
 
 At anytime after a stake account is delegated, the `Stake Authority` can choose to deactivate the account. Deactivation can take several epochs to complete, and is required before any SOL is withdrawn.
