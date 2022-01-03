@@ -438,6 +438,21 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </template>
 
   </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/get-balance/main.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/get-balance/main.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ::: tip
