@@ -105,6 +105,21 @@ You can use `create account with seed` to manage your accounts instead of creati
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/create-account-with-seed/generate/main.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-account-with-seed/generate/main.preview.en.rs)
+
+  </template>
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ### Create
