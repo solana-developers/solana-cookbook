@@ -61,6 +61,21 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </template>
 
   </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/create-system-account/create-system-account.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/create-system-account/create-system-account.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ## Calculating Rent Exemption
