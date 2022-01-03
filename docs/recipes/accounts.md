@@ -96,7 +96,7 @@ You can use `create account with seed` to manage your accounts instead of creati
 ### Generate
 
 <SolanaCodeGroup>
-  <SolanaCodeGroupItem title="rust" active>
+  <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
@@ -116,7 +116,7 @@ You can use `create account with seed` to manage your accounts instead of creati
 ### Create
 
 <SolanaCodeGroup>
-  <SolanaCodeGroupItem title="rust" active>
+  <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
@@ -136,7 +136,7 @@ You can use `create account with seed` to manage your accounts instead of creati
 ### Transfer
 
 <SolanaCodeGroup>
-  <SolanaCodeGroupItem title="rust" active>
+  <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
