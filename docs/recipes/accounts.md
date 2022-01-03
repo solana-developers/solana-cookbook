@@ -76,6 +76,12 @@ the amount of data you intend to store in the account.
 
   </CodeGroupItem>
 
+  <CodeGroupItem title="Rust">
+
+@[code](@/code/accounts/rent-exemption/rent-exemption.en.rs)
+
+  </CodeGroupItem>
+
   <CodeGroupItem title="CLI">
 
 @[code](@/code/accounts/rent-exemption/rent-exemption.en.sh)
