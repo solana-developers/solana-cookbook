@@ -299,6 +299,11 @@ Return all accounts owned by a program. Refer to the [ingredients section](../in
 
   </CodeGroupItem>
 
+  <CodeGroupItem title="Rust">
+
+@[code](@/code/get-program-accounts/basic/basic.en.rs)
+
+  </CodeGroupItem>
   <CodeGroupItem title="CLI">
 
 @[code](@/code/get-program-accounts/basic/basic.en.sh)
