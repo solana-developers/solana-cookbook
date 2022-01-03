@@ -212,6 +212,12 @@ This may fail because the result (pda) is on curve. You can use
 @[code](@/code/accounts/program-derived-address/derived-a-pda/create-program-address.en.ts)
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="Rust">
+
+@[code](@/code/accounts/program-derived-address/derived-a-pda/create-program-address.en.rs)
+
+  </CodeGroupItem>
 </CodeGroup>
 
 2. Find Program Address
@@ -225,6 +231,12 @@ and seed.
   <CodeGroupItem title="TS" active>
 
 @[code](@/code/accounts/program-derived-address/derived-a-pda/find-program-address.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Rust">
+
+@[code](@/code/accounts/program-derived-address/derived-a-pda/find-program-address.en.rs)
 
   </CodeGroupItem>
 </CodeGroup>
