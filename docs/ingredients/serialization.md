@@ -151,7 +151,7 @@ processing of the account data using borsh.
 
 To complete the underlying serialization and deserialization:
 1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occrs
+2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
 
 **Note** that in the following we have a `u32` (4 bytes) parition in the data layout for
 `BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserizliation,
