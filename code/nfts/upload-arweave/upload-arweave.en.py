@@ -60,8 +60,3 @@ meta_transaction.send()
 metadata_url = API_URL+"/"+meta_transaction.id
 
 print(metadata_url)
-
-
-
-
-

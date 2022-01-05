@@ -19,8 +19,3 @@ meta_transaction.sign()
 meta_transaction.send()
 
 metadata_url = API_URL+"/"+meta_transaction.id
-
-
-
-
-
