@@ -93,6 +93,19 @@ To mint an NFT you have to:
   </template>
 
   </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Python">
+  <template v-slot:default>
+
+@[code](@/code/nfts/upload-arweave/upload-arweave.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/upload-arweave/upload-arweave.preview.en.py)
+
+  </template>  
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ### Mint the NFT
