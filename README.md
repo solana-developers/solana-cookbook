@@ -85,6 +85,6 @@ or create an issue and assign it to yourself.
 
 ### Contribution by drprk:
 
-https://github.com/solana-dev-adv/solana-cookbook/pull/149#issue-812766664
+Displayed in Pull request descriptions
 
 
