@@ -190,7 +190,7 @@ The following `Accounts Deserializer` applies the previously declared implementa
 
 ## Error Codes
 
-| Error 	| Code 	| Description 	| 
+| Code 	| Error 	| Description 	| 
 |------	|-------	|-------------	|
 | 100 | InstructionMissing | 8 byte instruction identifier not provided |     
 | 101 | InstructionFallbackNotFound | Fallback functions are not supported |     |
