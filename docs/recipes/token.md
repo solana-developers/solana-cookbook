@@ -186,6 +186,23 @@ single call.
   </template>
 
   </SolanaCodeGroupItem>
+
+<SolanaCodeGroupItem title="Rust" >
+
+  <template v-slot:default>
+
+@[code](@/code/token/get-token-balance/get-token-balance.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/token/get-token-balance/get-token-balance.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
 </SolanaCodeGroup>
 
 ::: tip
