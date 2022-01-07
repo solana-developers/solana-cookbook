@@ -188,6 +188,38 @@ The following `Accounts Deserializer` applies the previously declared implementa
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Error Codes
+
+| Code 	| Error 	| Description 	| 
+|------	|-------	|-------------	|
+| 100 | InstructionMissing | 8 byte instruction identifier not provided |     
+| 101 | InstructionFallbackNotFound | Fallback functions are not supported |     |
+| 102 | InstructionDidNotDeserialize | The program could not deserialize the given instruction |     |
+| 103 | InstructionDidNotSerialize | The program could not serialize the given instruction |     |
+| 120 | IdlInstructionStub | The program was compiled without idl instructions |     |
+| 121 | IdlInstructionInvalidProgram | The transaction was given an invalid program for the IDL instruction |     |
+| 140 | ConstraintMut | A mut constraint was violated |     |
+| 141 | ConstraintBelongsTo | A belongs_to constraint was violated |     |
+| 142 | ConstraintSigner | A signer constraint was violated |     |
+| 143 | ConstraintRaw | A raw constraint as violated |     |
+| 144 | ConstraintOwner | An owner constraint was violated |     |
+| 145 | ConstraintRentExempt | A rent exempt constraint was violated |     |
+| 146 | ConstraintSeeds | A seeds constraint was violated |     |
+| 147 | ConstraintExecutable | An executable constraint was violated |     |
+| 148 | ConstraintState | A state constraint was violated |     |
+| 149 | ConstraintAssociated | An associated constraint was violated |     |
+| 150 | ConstraintAssociatedInit | An associated init constraint was violated |     |
+| 160 | AccountDiscriminatorAlreadySet | The account discriminator was already set on this account |     |
+| 161 | AccountDiscriminatorNotFound | No 8 byte discriminator was found on the account |     |
+| 162 | AccountDiscriminatorMismatch | 8 byte discriminator did not match what was expected |     |
+| 163 | AccountDidNotDeserialize | Failed to deserialize the account |     |
+| 164 | AccountDidNotSerialize | Failed to serialize the account |     |
+| 165 | AccountNotEnoughKeys | Not enough account keys given to the instruction |     |
+| 166 | AccountNotMutable | The given account is not mutable |     |
+| 167 | AccountNotProgramOwned | The given account is not owned by the executing program |     |
+| 180 | StateInvalidAddress | The given state account does not have the correct address |     |
+| 299 | Deprecated | The API being used is deprecated and should no longer be used |     |
+
 [Program]: https://docs.rs/anchor-lang/latest/anchor_lang/attr.program.html
 [Context]: https://docs.rs/anchor-lang/latest/anchor_lang/struct.Context.html
 [DeriveAccounts]: https://docs.rs/anchor-lang/latest/anchor_lang/derive.Accounts.html
