@@ -13,9 +13,9 @@ the project's style when contributing new snippets of code.
 Currently we have "topics" under `/docs` and the code for those topics 
 lives under `/code/<topic>`.
 
-### Recipes
+### References
 
-Recipes are an overarching topic with a list of references of how to do
+References are an overarching topic with a list of references of how to do
 things under that topic. The general structure is the following:
 
 ```
@@ -26,10 +26,10 @@ Short Summary
 Code Snippet
 ```
 
-### Ingredients
+### Guides
 
-Ingredients are longer form informational documentation on various topics.
-The general structure for writing an ingredient is the following:
+Guides are longer form informational documentation on various topics.
+The general structure for writing a guide is the following:
 
 ```
 Brief Summary/TLDR

@@ -40,9 +40,9 @@ footer: MIT Licensed
 # Cooking with Solana
 
 The *Solana Cookbook* is a developer resource that 
-provides the essential concepts and recipes for 
+provides the essential concepts and references for 
 building applications on Solana. Each concept and 
-recipe will focus on specific aspects of Solana 
+reference will focus on specific aspects of Solana 
 development while providing more details and usage 
 examples.
 
@@ -59,8 +59,8 @@ Check out all open issues [here](https://github.com/solana-dev-adv/solana-cookbo
 
 The Solana Cookbook is split into different sections, each aimed at a different goal.
 
-| Section | Description |
+| Section       | Description |
 |---------------|-----------------------------------------------------------------|
 | Core Concepts | Building blocks of Solana that are good to know for development |
-| Ingredients   | Snack-sized guides about different tools for development        |
-| Recipes       | References to commonly needed code snippets                     |
+| Guides        | Snack-sized guides about different tools for development        |
+| References    | References to commonly needed code snippets                     |

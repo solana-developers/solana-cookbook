@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Basic Transactions
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more Recipes for Building on Solana at The Solana cookbook.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more Recipes for Building on Solana at The Solana cookbook.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

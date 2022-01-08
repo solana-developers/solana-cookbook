@@ -3,16 +3,16 @@ title: Account
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Account Recipes
+      content: Solana Cookbook | Account References
   - - meta
     - name: og:title
-      content: Solana Cookbook | Account Recipes
+      content: Solana Cookbook | Account References
   - - meta
     - name: description
-      content: Accounts can be used as System Account, With Seed and/or Program Derived Address. Learn about Accounts and more Recipes for Building on Solana at The Solana cookbook.
+      content: Accounts can be used as System Account and/or Program Derived Addresses. Learn about Accounts and more references for building on Solana at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Accounts can be used as System Account, With Seed and/or Program Derived Address. Learn about Accounts and more Recipes for Building on Solana at The Solana cookbook.
+      content: Accounts can be used as System Account and/or Program Derived Addresses. Learn about Accounts and more references for building on Solana at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -354,7 +354,7 @@ The below shows a single instruction `system_instruction::create_account` that c
 
 ## Get Program Accounts
 
-Return all accounts owned by a program. Refer to the [ingredients section](../ingredients/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -456,7 +456,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. The more infotmation can refer to [Token Recipes](token.md)
+If you want to get a token balance, you will need to know the address of token account. The more infotmation can refer to [Token References](token.md)
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram

@@ -14,14 +14,14 @@ The cookbook is layed out in 4 different sections.
 |-----------------|-----------------------------------------------------------------|
 | Getting Started | Resources for starting development on Solana                    |
 | Core Concepts   | Building blocks of Solana that are good to know for development |
-| Ingredients     | Snack-sized guides about different tools for development        |
-| Recipes         | References to commonly needed code snippets                     |
+| Guides          | Snack-sized guides about different tools for development        |
+| References      | References to commonly needed code snippets                     |
 
 Depending on what you are writing, it will live in one of these sections
 
-#### Recipes
+#### References
 
-Recipes are an overarching topic with a list of references of how to do
+References are an overarching topic with a list of references of how to do
 things under that topic. The general structure is the following:
 
 ```
@@ -32,10 +32,10 @@ Short Summary
 Code Snippet
 ```
 
-#### Ingredients
+#### Guides
 
-Ingredients are longer form informational documentation on various topics.
-The general structure for writing an ingredient is the following:
+Guides are longer form informational documentation on various topics.
+The general structure for writing a guide is the following:
 
 ```
 Brief Summary/TLDR
