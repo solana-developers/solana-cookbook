@@ -1,5 +1,5 @@
 ---
-title: Account Data Versioning
+title: Upgrading a Program's Account
 head:
   - - meta
     - name: title
@@ -37,74 +37,110 @@ head:
 footer: MIT Licensed
 ---
 
-# Account Data Versioning
+# Upgrading a Program Accounts
 
-## What is data versioning?
+## How can you upgrade a program's account?
 
-Fundamentally to version data means to create a unique reference for a collection of data. This reference can take the form of a query, an **ID**, or also commonly a datetime identifier.
+When you create a program, each account associated with that
+program will have a specific data structure. If you ever need
+to upgrade a program derived account, you end up having a bunch
+of leftover program derived accounts with the old structure.
 
-## Simple scenario
-1. You create a program that stores a `u64` value in your program's accounts data. For example, assuming you've initialized the account with a 1024k data block and an instruction to set `somevalue` to `50u64`. You'd end up with the serialized data layout shown below (using borsh serialization)
+With account versioning, you can upgrade your old accounts to
+the new structure.
 
-<img src="./versioning-solana-v0.png" alt="alt text" width="870" height="440">
+:::tip Note
+This is only one of many ways to upgrade PDAs.
+:::
 
-| ID | Best Practices |
+## Scenario
+
+To version our account data, we will be providing an **id** for each
+account. This id will allow us to identify the account version when
+we pass it to the program, and thus handle the account correctly.
+
+Take the following account state and program:
+
+<img src="./pav1.png" alt="Program Account v1">
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Account" active>
+
+  <template v-slot:default>
+
+@[code](@/code/data-versioning/account-v1.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/data-versioning/account-v1.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+<SolanaCodeGroupItem title="Instruction" active>
+
+  <template v-slot:default>
+
+@[code](@/code/data-versioning/rust.instruction.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/data-versioning/rust.instruction.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+<SolanaCodeGroupItem title="Processor" active>
+
+  <template v-slot:default>
+
+@[code](@/code/data-versioning/rust.processor.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/data-versioning/rust.processor.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+In our first version of an account, we are doing the following:
+
+| ID | Action |
 | - | - |
 |1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocate enough space for data growth
+|2| Allocating enough space for data growth
+|3| Initializing a number of constants to be used across program versions
+|4| Add an update account function under `fn conversion_logic` for future upgrades
 
-2. Now your planning a new release of your program where you want to add a **required** string property `somestring` and you're not sure how to deal with your program accounts that would be 'back level', like the one in the above diagram
+Let's say we want to upgrade our program's accounts now to include
+a new required field, the `somestring` field.
 
-| Possible Options |
-| - |
-| This document describes an '**upgrade in place**' strategy that detects data version changes when deserialing the account and 'uplifts' the old version layout to the new one while hiding this transition from your main program code
-| Solana has a new feature, not yet released at the time of this writing, that allows you to "reallocate" the account data size. You'd still need to take care of uplifting the data layout to include your new properties(s)
+If we didn't allocate extra space on the previous account, we could
+not upgrade the account and be stuck.
 
-The remainder of the document uses code extracted from a [Reference Implementation](#resources)
+## Upgrading the Account
 
-### Initial Program (Version 0)
-As the above diagram shows in the source code, we've already fit our controlling 'header' `ProgramAccountState` with a data version identifier and an embedded struct that holds the operational content `AccountContentCurrent`.
+In our new program we want to add a new property for the content state.
+The changes that follow are how we leveraged the initial program
+constructs as they come into use now.
 
-<CodeGroup>
-  <CodeGroupItem title="Account">
-
-  @[code](@/code/data-versioning/rust.account_state.en.rs)
-
-  </CodeGroupItem>
-</CodeGroup>
-
-| Line(s) | Note |
-| ------- | - |
-| 8 | We use Solana's `Pack` trait to generalize the serialization interface
-| 52-73| We use a number of constants that may seem redundant at first, but when we 'upgrade' our program their colors start to shine
-| 77 | We add an uplift strategy hook that, in our '0' version, just returns the current state. This will be a key area to modify if we add/delete our content properties
-
-The remainder of the program logic is fairly typical
-
-<CodeGroup>
-  <CodeGroupItem title="Instruction">
-
-  @[code](@/code/data-versioning/rust.instruction.en.rs)
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Processor">
-
-  @[code](@/code/data-versioning/rust.processor.en.rs)
-
-  </CodeGroupItem>
-</CodeGroup>
-
-### Updated Program (Version 1)
-In our new program we want to add a new property for the content state. The changes that follow are how we leveraged the initial program constructs as they come into use now.
-
-#### Account State
-Our first step is to adjust our content structures and fill codify the uplift logic in `fn conversion_logic`:
+### 1. Add account conversion logic
 
 <CodeGroup>
   <CodeGroupItem title="Account">
 
-  @[code](@/code/data-versioning/rust.account_state1.en.rs)
+@[code](@/code/data-versioning/rust.account_state1.en.rs)
 
   </CodeGroupItem>
 </CodeGroup>
@@ -115,27 +151,27 @@ Our first step is to adjust our content structures and fill codify the uplift lo
 | 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
 | 60 | We bump the `DATA_VERSION` constant
 | 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to uplift the previous content state to the new (current) content state
+| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'uplifting' the data structure is encapsulated behind `pack/unpack`
+We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
 
-  @[code](@/code/data-versioning/rust.instruction1.en.rs)
+@[code](@/code/data-versioning/rust.instruction1.en.rs)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="Processor">
 
-  @[code](@/code/data-versioning/rust.processor1.en.rs)
+@[code](@/code/data-versioning/rust.processor1.en.rs)
 
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'uplifted' account data layout
+After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
 
-<img src="./versioning-solana-v1.png" alt="alt text" width="430" height="220">
+<img src="./pav2.png" alt="Program Account v2">
 
 ## Resources
 
