@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Get Program Accounts
   - - meta
     - name: description
-      content: Get Program Accounts is An RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more Ingredients for your dish at The Solana cookbook.
+      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Get Program Accounts is An RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more Ingredients for your dish at The Solana cookbook.
+      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -84,7 +84,7 @@ Despite its usefulness, `getProgramAccounts` is often misunderstood due to its c
 
 To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../recipes/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
 
 ### `filters`
 The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.

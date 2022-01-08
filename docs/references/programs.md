@@ -3,16 +3,16 @@ title: Programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Program Recipes
+      content: Solana Cookbook | Solana Program References
   - - meta
     - name: og:title
-      content: Solana Cookbook | Program Recipes
+      content: Solana Cookbook | Solana Program References
   - - meta
     - name: description
-      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and Recipes at The Solana cookbook.
+      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and references at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and Recipes at The Solana cookbook.
+      content: Learn about Programs, Cross Program Invocation, Program Derived Address, more code Samples and references at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

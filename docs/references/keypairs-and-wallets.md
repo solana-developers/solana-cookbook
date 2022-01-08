@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Keypairs and Wallets
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more Recipes for Building on Solana at The Solana cookbook.
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more Recipes for Building on Solana at The Solana cookbook.
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

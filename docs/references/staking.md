@@ -12,7 +12,7 @@ head:
       content: stake SOL and earn rewards for helping secure the network.
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more Recipes for Building on Solana at The Solana cookbook.
+      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -104,7 +104,7 @@ Once a stake account is funded, the `Stake Authority` can delegate it to a valid
 
 ## Get Delegator by Validators
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [ingredients section](http://localhost:8080/ingredients/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Refernce](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
