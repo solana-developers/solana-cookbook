@@ -1,3 +1,5 @@
+# Web-App Transaction Signing 
+
 For web-app development you primarily sign transactions using the wallet(adapter) since that's where the real "money" comes from.  
 But some transactions need other signers (key-pairs), for example creating an account requires the signature of the owner 
 (which will normally be the wallet) but also the actual identity key-pair for the account.
