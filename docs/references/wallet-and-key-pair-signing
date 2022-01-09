@@ -1,0 +1,19 @@
+For web-app development you primarily sign transactions using the wallet(adapter) since that's where the real "money" comes from.  
+But some transactions need other signers (key-pairs), for example creating an account requires the signature of the owner 
+(which will normally be the wallet) but also the actual identity key-pair for the account.
+
+This snippet assumes you have strung together several instructions in a single transaction `txn` and you have an array of other keypairs `signers`.
+
+   // must set feePayer in order to use partialSign()
+
+    txn.feePayer = wallet.publicKey;
+    signers.map((signer)=>{txn.partialSign(signer)});
+
+    let signed = await wallet.signTransaction(txn);
+    console.log(signed);
+    let buf = signed.serialize();
+
+    // can't use sendTransaction since it expects a non-empty array of signers 
+    // (txn is already completely signed)
+
+    let send = await connection.sendRawTransaction(buf);
