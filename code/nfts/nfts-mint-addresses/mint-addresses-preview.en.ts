@@ -1,9 +1,23 @@
-const mintHashes: any = []
+const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
+  const metadataAccounts = await connection.getProgramAccounts(
+    TOKEN_METADATA_PROGRAM,
+    {
+      dataSlice: { offset: 33, length: 32 },
+      filters: [
+        { dataSize: MAX_METADATA_LEN },
+        {
+          memcmp: {
+            offset: CREATOR_ARRAY_START,
+            bytes: firstCreatorAddress.toBase58(),
+          },
+        },
+      ],
+    },
+  );
 
-for (let index = 0; index < metadataAccounts.length; index++){
-    const account = metadataAccounts[index];
-    const accountInfo: any = await connection.getParsedAccountInfo(account.pubkey);
-    const metadata = new Metadata(hash.toString(), accountInfo.value);
-    mintHashes.push(metadata.data.mint)
-    }
-console.log(mintHashes)
+  return metadataAccounts.map((metadataAccountInfo) => (
+    bs58.encode(metadataAccountInfo.account.data)
+  ));
+};
+
+getMintAddresses(candyMachineId);

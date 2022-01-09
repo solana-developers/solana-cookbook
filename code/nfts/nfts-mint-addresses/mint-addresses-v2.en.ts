@@ -12,6 +12,7 @@ const MAX_METADATA_LEN = 1 + 32 + 32 + MAX_DATA_SIZE + 1 + 1 + 9 + 172;
 const CREATOR_ARRAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
 
 const TOKEN_METADATA_PROGRAM = new PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
+const CANDY_MACHINE_V2_PROGRAM = new PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
 const candyMachineId = new PublicKey('ENTER_YOUR_CANDY_MACHINE_ID_HERE');
 
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
@@ -36,4 +37,11 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   ));
 };
 
-getMintAddresses(candyMachineId);
+const getCandyMachineCreator = async (candyMachine: PublicKey): Promise<[PublicKey, number]> => (
+  PublicKey.findProgramAddress(
+    [Buffer.from('candy_machine'), candyMachine.toBuffer()],
+    CANDY_MACHINE_V2_PROGRAM,
+  )
+);
+
+getMintAddresses(getCandyMachineCreator(candyMachineId));
