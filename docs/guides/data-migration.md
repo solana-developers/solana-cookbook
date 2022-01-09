@@ -1,18 +1,18 @@
 ---
-title: Upgrading a Program's Account
+title: Migrating Program Data Accounts
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Account Data Versioning
+      content: Solana Cookbook | Program Accounts Data Migration
   - - meta
     - name: og:title
-      content: Solana Cookbook | Account Data Versioning
+      content: Solana Cookbook | Program Accounts Data Migration
   - - meta
     - name: description
-      content: Fundamentally to version data means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Fundamentally to version data means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Upgrading a Program Accounts
+# Migrating a Programs Data Accounts
 
-## How can you upgrade a program's account?
+## How can you migrate a program's data accounts?
 
-When you create a program, each account associated with that
+When you create a program, each data account associated with that
 program will have a specific data structure. If you ever need
 to upgrade a program derived account, you end up having a bunch
 of leftover program derived accounts with the old structure.
@@ -50,12 +50,12 @@ With account versioning, you can upgrade your old accounts to
 the new structure.
 
 :::tip Note
-This is only one of many ways to upgrade PDAs.
+This is only one of many ways to migrate data in Program Owned Accounts (POA).
 :::
 
 ## Scenario
 
-To version our account data, we will be providing an **id** for each
+To version and migrate our account data, we will be providing an **id** for each
 account. This id will allow us to identify the account version when
 we pass it to the program, and thus handle the account correctly.
 
@@ -68,13 +68,13 @@ Take the following account state and program:
 
   <template v-slot:default>
 
-@[code](@/code/data-versioning/account-v1.en.rs)
+@[code](@/code/data-migration/account-v0.en.rs)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/data-versioning/account-v1.preview.en.rs)
+@[code](@/code/data-migration/account-v0.preview.en.rs)
 
   </template>
 
@@ -84,13 +84,13 @@ Take the following account state and program:
 
   <template v-slot:default>
 
-@[code](@/code/data-versioning/rust.instruction.en.rs)
+@[code](@/code/data-migration/rust.instruction.en.rs)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/data-versioning/rust.instruction.preview.en.rs)
+@[code](@/code/data-migration/rust.instruction.preview.en.rs)
 
   </template>
 
@@ -100,13 +100,13 @@ Take the following account state and program:
 
   <template v-slot:default>
 
-@[code](@/code/data-versioning/rust.processor.en.rs)
+@[code](@/code/data-migration/rust.processor.en.rs)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/data-versioning/rust.processor.preview.en.rs)
+@[code](@/code/data-migration/rust.processor.preview.en.rs)
 
   </template>
 
@@ -137,13 +137,23 @@ constructs as they come into use now.
 
 ### 1. Add account conversion logic
 
-<CodeGroup>
-  <CodeGroupItem title="Account">
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Account">
 
-@[code](@/code/data-versioning/rust.account_state1.en.rs)
+  <template v-slot:default>
 
-  </CodeGroupItem>
-</CodeGroup>
+@[code](@/code/data-migration/account-v1.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/data-migration/account-v1.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
 
 | Line(s) | Note |
 | ------- | - |
@@ -158,13 +168,13 @@ We then update our instructions, to add a new one for updating `somestring`, and
 <CodeGroup>
   <CodeGroupItem title="Instruction">
 
-@[code](@/code/data-versioning/rust.instruction1.en.rs)
+@[code](@/code/data-migration/rust.instruction1.en.rs)
 
   </CodeGroupItem>
 
   <CodeGroupItem title="Processor">
 
-@[code](@/code/data-versioning/rust.processor1.en.rs)
+@[code](@/code/data-migration/rust.processor1.en.rs)
 
   </CodeGroupItem>
 </CodeGroup>
