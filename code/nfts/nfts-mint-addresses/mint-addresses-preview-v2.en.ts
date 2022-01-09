@@ -5,4 +5,5 @@ const getCandyMachineCreator = async (candyMachine: PublicKey): Promise<[PublicK
   )
 );
 
-getMintAddresses(getCandyMachineCreator(candyMachineId));
+const candyMachineCreator = await getCandyMachineCreator(candyMachineId);
+getMintAddresses(candyMachineCreator[0]);
