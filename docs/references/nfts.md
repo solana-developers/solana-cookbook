@@ -197,6 +197,8 @@ Once the largest token account is identified, we can retrieve its owner.
 
 If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
 
+### Candy Machine V1
+
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
 
@@ -215,6 +217,8 @@ If you know the public key of the Candy Machine, you can get the list of all NFT
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
+### Candy Machine V2
 
 If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you can use it the same way we were for v1.
 

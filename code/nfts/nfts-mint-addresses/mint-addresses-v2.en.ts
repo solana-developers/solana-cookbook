@@ -49,5 +49,9 @@ const getCandyMachineCreator = async (candyMachine: PublicKey): Promise<[PublicK
   )
 );
 
-const candyMachineCreator = await getCandyMachineCreator(candyMachineId);
-getMintAddresses(candyMachineCreator[0]);
+(async () => {
+
+  const candyMachineCreator = await getCandyMachineCreator(candyMachineId);
+  getMintAddresses(candyMachineCreator[0]);
+
+})();
