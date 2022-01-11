@@ -49,7 +49,7 @@ Serialization comes into play at a few points along Solana program and program a
 4. Client Account Data Deserialization (Client)
 
 It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serializaation using [Borsh](#resources) with examples in Rust and Typescript.
+included snippets are demonstrating serialization using [Borsh](#resources) with examples in Rust and Typescript.
 
 The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
 

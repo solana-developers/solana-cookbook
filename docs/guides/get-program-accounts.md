@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Get Program Accounts
 
-An RPC method that returns all accounts owned by a program. Currently not support pagination. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
+An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
 
 ## Facts
 
