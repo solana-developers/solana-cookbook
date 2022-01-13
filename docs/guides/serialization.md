@@ -54,7 +54,7 @@ included snippets are demonstrating serialization using [Borsh](#resources) with
 The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
 
 ## Setting up for Borsh Serialization
-Libraries for Borsh must be setup for the Rust program, Rust CLI, and Node
+Libraries for Borsh must be setup for the Rust program, Rust CLI, Node and/or Python CLI
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -63,7 +63,7 @@ Libraries for Borsh must be setup for the Rust program, Rust CLI, and Node
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="CLI" active>
+  <CodeGroupItem title="Rust CLI" active>
 
   @[code](@/code/serialization/setup/Cargo.cli.en.toml)
 
@@ -75,13 +75,19 @@ Libraries for Borsh must be setup for the Rust program, Rust CLI, and Node
 
   </CodeGroupItem>
 
+  <CodeGroupItem title="Python CLI" active>
+
+  @[code](@/code/serialization/setup/requirements.txt)
+
+  </CodeGroupItem>
+
 </CodeGroup>
 
 ## Serializing Instruction data
 If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
 inbound instruction data.
 
-In this template, an instruction data block is a serialized array containing
+In this template, an instruction data block is a serialized array containing, with examples:
 
 |Instruction (Variant index) | Serialized Key | Serialized Value
 | - | - | -
@@ -96,6 +102,12 @@ In the following example we assume the program owned account has been initialize
   <CodeGroupItem title="TS Client" active>
 
   @[code](@/code/serialization/instruction/ts.client.mint.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Python Client" active>
+
+  @[code](@/code/serialization/instruction/python.client.py)
 
   </CodeGroupItem>
 
@@ -212,6 +224,12 @@ The layout of the account data was described [Here](#account-data-serialization)
 
   </CodeGroupItem>
 
+  <CodeGroupItem title="Python" active>
+
+  @[code](@/code/serialization/clientdata/python.client.data.py)
+
+  </CodeGroupItem>
+
   <CodeGroupItem title="Rust">
 
   @[code](@/code/serialization/clientdata/rust.client.data.en.rs)
@@ -225,16 +243,22 @@ The layout of the account data was described [Here](#account-data-serialization)
 The [Borsh Specification](#resources) contains most mappings for primitive and
 compound data types.
 
-The key to TS/JS is creating a Borsh Schema with a proper definition so the serialize
+The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
 and deserialize can generate or walk the respective inputs.
 
 Here we demonstrate serialization of primitives (numbers, strings) and compounds (fixed size array, Map)
-first in Typescript and the equivalent deserialization on the Rust side
+first in Typescript, then in Python and then equivalent deserialization on the Rust side
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
   @[code](@/code/serialization/primitives/demo_primitives.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Python" active>
+
+  @[code](@/code/serialization/primitives/python.demo_primitives.py)
 
   </CodeGroupItem>
 
@@ -274,4 +298,6 @@ proper mapping between TS/JS and Rust to handle those
 * [Borsh Specification](https://borsh.io/)
 * [Rust Borsh](https://github.com/near/borsh-rs)
 * [TS/JS Borsh](https://github.com/near/borsh-js)
+* [Python Borsh](https://github.com/near/borsh-construct-py)
+* [Python Borsh Documentation](https://near.github.io/borsh-construct-py/)
 * [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)
