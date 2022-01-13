@@ -70,7 +70,7 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.preview.en.py)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="Wallet-Adapter">
   <template v-slot:default>
@@ -83,7 +83,7 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
    <SolanaCodeGroupItem title="Rust" active>
   <template v-slot:default>
@@ -109,12 +109,40 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
+
+## Transferring Lamports
+
+Your Solana Program can transfer lamports from one account to another
+without 'invoking' the System program. The fundemental rule is that
+your program can transfer lamports from any account **owned** by your program
+to any account at all.
+
+The recipient account *does not have to be* an account owned by your program.
+
+### Scenario
+You program performs certain instructions (the `instruction_handler` function below)
+that charges  a 'tax', or service fee (the `transfer_service_fee_lamports` function),
+for performing the operation. The cost of this fee is 5 lamports.
+
+The protocol in the instruction is that the 'from' account is the
+first entry in the `&[AccountInfo]` array and the account you've setup to
+receive the fees is the second entry in the array:
+
+<CodeGroup>
+  <CodeGroupItem title="Program">
+
+  @[code](@/code/basic-transactions/transferring-lamports/transferring-lamports.rs)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 
 ## Sending SPL-Tokens
 
@@ -150,7 +178,7 @@ with the following example.
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
@@ -163,7 +191,7 @@ with the following example.
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
@@ -228,7 +256,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
@@ -241,7 +269,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 @[code](@/code/basic-transactions/memo/memo.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
