@@ -1,6 +1,6 @@
 # Solana Cookbook
 
-The Solana Cookbook is meant to house small digestable code snippets
+The Solana Cookbook is meant to house small digestible code snippets
 for someone that has no experience with blockchain or Solana to be able
 to grab and go.
 
@@ -28,7 +28,7 @@ Code Snippet
 
 ### Guides
 
-Guides are longer form informational documentation on various topics.
+Guides are longer from informational documentation on various topics.
 The general structure for writing a guide is the following:
 
 ```
@@ -66,10 +66,10 @@ for this repository.
 
 To choose a task or make your own, do the following:
 
-1. [Add an issue](https://github.com/solana-dev-adv/solana-cookbook/issues/new) for the task and assign to yourself or comment on the issue
+1. [Add an issue](https://github.com/solana-dev-adv/solana-cookbook/issues/new) for the task and assign it to yourself or comment on the issue
 2. Make a draft PR referencing the issue.
 
-General flow for making a contribution:
+The general flow for making a contribution:
 
 1. Fork the repo on GitHub
 2. Clone the project to your own machine
@@ -84,6 +84,6 @@ You can find tasks on the [project board](https://github.com/solana-dev-adv/sola
 or create an issue and assign it to yourself.
 
 ### Contribution Rewards
-First 25 succesful contributers to the Solana Cookbook will get an exculsive Glasseater NFT from the [Superteam DAO](https://superteam.fun). Use this NFT to get direct access to exclusive Solana Ecosystem jobs. If you have already contirbuted, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!
+The first 25 successful contributors to the Solana Cookbook will get an exclusive Glasseater NFT from the [Superteam DAO](https://superteam.fun). Use this NFT to get direct access to exclusive Solana Ecosystem jobs. If you have already contributed, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!
 
 Happy Cooking!
