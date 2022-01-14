@@ -44,6 +44,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/guides/serialization.md',
               '/guides/data-migration.md',
               '/guides/account-maps.md',
+              '/guides/retrying-transactions.md',
             ],
           },
           {

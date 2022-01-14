@@ -70,7 +70,7 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.preview.en.py)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="Wallet-Adapter">
   <template v-slot:default>
@@ -83,7 +83,7 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
    <SolanaCodeGroupItem title="Rust" active>
   <template v-slot:default>
@@ -109,7 +109,7 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
@@ -150,7 +150,7 @@ with the following example.
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
@@ -163,7 +163,7 @@ with the following example.
 
 @[code](@/code/basic-transactions/sending-spl-token/sending-spl-token.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
@@ -228,7 +228,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 @[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
@@ -241,7 +241,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 @[code](@/code/basic-transactions/memo/memo.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
