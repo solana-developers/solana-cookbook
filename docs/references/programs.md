@@ -42,7 +42,7 @@ footer: MIT Licensed
 ## Transferring Lamports
 
 Your Solana Program can transfer lamports from one account to another
-without 'invoking' the System program. The fundemental rule is that
+without 'invoking' the System program. The fundamental rule is that
 your program can transfer lamports from any account **owned** by your program
 to any account at all.
 
