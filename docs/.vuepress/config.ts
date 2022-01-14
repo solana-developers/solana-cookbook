@@ -43,6 +43,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/guides/get-program-accounts.md',
               '/guides/serialization.md',
               '/guides/data-migration.md',
+              '/guides/account-maps.md',
             ],
           },
           {
