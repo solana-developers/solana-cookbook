@@ -87,6 +87,22 @@ environments:
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -133,6 +149,22 @@ running remotely with the following:
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
 
   </template>
 
@@ -194,6 +226,22 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
   
   <SolanaCodeGroupItem title="Rust">
 
@@ -232,6 +280,22 @@ airdropping it to your address
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.ts)
 
   </template>
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
   </SolanaCodeGroupItem>
 
   <SolanaCodeGroupItem title="Rust">
