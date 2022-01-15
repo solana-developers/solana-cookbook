@@ -71,8 +71,8 @@ To create a NFT, you will need to interact with both the [SystemProgram][1] and 
 
 To mint an NFT you have to:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
+1. Upload the image to IPFS or Arweave
+2. Upload the json metadata to IPFS or Arweave
 3. Call metaplex to create an account for the NFT
 
 ### Upload to Arweave
