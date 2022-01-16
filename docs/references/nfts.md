@@ -43,7 +43,14 @@ footer: MIT Licensed
 
 An NFT on Solana is simply an SPL-Token where only a single token has been minted.
 
-To create a NFT, you will need to interact with both the [SystemProgram][1] and the [TokenProgram][2].
+To create a NFT, you will need to interact with both the [SystemProgram][1] and the [TokenProgram][2]. 
+
+::: tip Note
+For information regarding the Solana `NFT` protocol standard, refeer to
+documenation on the [Metaplex][3] site which describes the current standard
+protocol for NFTs which are expected to be forward compatiable with
+major wallets.
+:::
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -66,6 +73,7 @@ To create a NFT, you will need to interact with both the [SystemProgram][1] and 
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 [2]: https://spl.solana.com/token
+[3]: https://github.com/metaplex-foundation/metaplex/blob/master/ARCHITECTURE.md
 
 ## Mint an NFT
 
