@@ -62,6 +62,22 @@ keypair, you will need to generate one.
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
   
   <SolanaCodeGroupItem title="Rust" >
 
@@ -120,6 +136,22 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
    
    <SolanaCodeGroupItem title="Rust">
 
@@ -173,6 +205,22 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/from-bs58.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
    
    <SolanaCodeGroupItem title="Rust">
 
@@ -210,6 +258,22 @@ matches the given public key
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+   <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.py)
 
   </template>
 
@@ -254,6 +318,22 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="CLI">
 
   <template v-slot:default>
@@ -292,6 +372,22 @@ You can convert the mnemonic to Keypairs for local testing.
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.preview.py)
 
   </template>
 
@@ -379,6 +475,22 @@ take.
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="CLI">
 
   <template v-slot:default>
@@ -418,6 +530,22 @@ To do so we will import the [TweetNaCl][1] crypto library.
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/sign-verify-message/sign-verify-message.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/sign-verify-message/sign-verify-message.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/sign-verify-message/sign-verify-message.preview.en.py)
 
   </template>
 
