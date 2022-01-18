@@ -39,6 +39,23 @@ footer: MIT Licensed
 
 # Token
 
+## What do I need to get started with SPL-Tokens?
+
+Every time you interact with tokens on Solana, you are actually
+interacting with the Solana Program Library Token, or SPL-Token
+standard. The SPL-Token standard requires a specific library to
+be used, which you can find below based on your language.
+
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+
+```
+"@solana/spl-token": "^0.1.8"
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 ## Create Token
 
 Creating tokens is done by creating what is called a "mint account".

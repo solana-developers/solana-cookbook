@@ -64,7 +64,7 @@ Benefits of using local-test-validator include:
 ## Setting Up Connections
 
 When you are working on Solana development, you will need to connect
-to a specific RPC API endpoint. Solana has 3 public development 
+to a specific RPC API endpoint. Solana has 3 public development
 environments:
 - mainnet-beta https://api.mainnet-beta.solana.com
 - devnet https://api.devnet.solana.com
@@ -82,6 +82,22 @@ environments:
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.py)
 
   </template>
 
@@ -113,7 +129,7 @@ environments:
 
 @[code](@/code/local-development/connecting-cluster/connecting-cluster.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
@@ -138,6 +154,22 @@ running remotely with the following:
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -153,7 +185,7 @@ running remotely with the following:
   </template>
 
   </SolanaCodeGroupItem>
-  
+
   <SolanaCodeGroupItem title="CLI">
   <template v-slot:default>
 
@@ -165,7 +197,7 @@ running remotely with the following:
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.sh)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
@@ -194,7 +226,23 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </template>
 
   </SolanaCodeGroupItem>
-  
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -214,7 +262,7 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
 
 ## Airdropping SOL
 
-When you're working locally, you need some SOL in order to send 
+When you're working locally, you need some SOL in order to send
 transactions. In non-mainnet environments you can receive SOL by
 airdropping it to your address
 
@@ -234,6 +282,22 @@ airdropping it to your address
   </template>
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
   <template v-slot:default>
 
@@ -245,7 +309,7 @@ airdropping it to your address
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.rs)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 
   <SolanaCodeGroupItem title="CLI">
@@ -259,7 +323,117 @@ airdropping it to your address
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.sh)
 
-  </template>  
+  </template>
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## Using mainnet accounts and programs
+
+Oftentimes, local tests rely on programs and accounts available only on mainnet. The Solana CLI allows to both:
+* download any of these to file, and
+* load them into your local validator at genesis, i.e. any time solana-test-validator is started fresh (e.g. the first time you run it in your environment, or when you run it with the `--reset` option).
+
+### Accounts
+
+It is for instance possible to download to file the SRM token mint account like so:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
+
+@[code](@/code/local-development/using-mainnet-accounts/dump-accounts.en.sh)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/using-mainnet-accounts/dump-accounts.preview.en.sh)
+
+  </template>
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+Loading it to your localnet is then done by passing the account's file and destination address (on the local cluster) when starting the validator:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-accounts.preview.en.sh)
+
+  </template>
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-accounts.en.sh)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Programs
+
+Similarly, it is for instance possible to download the Serum Dex v3 program like so:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:default>
+
+@[code](@/code/local-development/using-mainnet-accounts/dump-programs.en.sh)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/using-mainnet-accounts/dump-programs.preview.en.sh)
+
+  </template>
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+Loading it to your localnet is then done by passing the program's file and destination address (on the local cluster) when starting the validator:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-programs.preview.en.sh)
+
+  </template>
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-programs.en.sh)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Putting it all together
+
+You can then download as many accounts/programs as required for your testing, and load them all when starting your validator:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-all.preview.en.sh)
+
+  </template>
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/using-mainnet-accounts/load-all.en.sh)
+
+  </template>
+
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>

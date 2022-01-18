@@ -188,6 +188,53 @@ The following `Accounts Deserializer` applies the previously declared implementa
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Testing and logging with Anchor 
+
+Creating a project using `anchor init example-project --javascript`. <br>
+`anchor init` creates a basic Solana Program for us, in addition to some simple tests. These tests are written using the [Mocha](https://mochajs.org/) framework
+
+Taking an example of a simple counter program.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/anchor/testing-with-anchor/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/anchor/testing-with-anchor/program/src/define-increment.preview.lib.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+Testing initialization & incrementing logic of the above program: <br>
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="JS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/anchor/testing-with-anchor/client/testing-with-anchor.js)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+Running the above using `anchor test` you can expect a similar output: <br>
+```  example-project
+Your transaction signature pBw6u3eSH6Z5cGJycfyC9KtfyRFRT8BcjwqrgGyysFX3Gep3toz37gnVYquU7UPDZjrMyJyanDXTFis2G4JpnrG
+    ✔ Is initialized! (280ms)
+count is 0
+count is 1
+    ✔ Is incrementing! (432ms)
+```
 ## Error Codes
 
 | Code 	| Error 	| Description 	| 
