@@ -8,7 +8,7 @@ If you're coming from Ethereum, you must be familiar with Solidity's `mapping` d
 
 Solana's Account model, as we know, unlike Ethereum, separates program data and its state into different accounts. Learn more about Solana's Account model [here][AccountCookbook].
 
-This presents us with a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. There are multiple ways to do this in Solana, some of which are shown below,
+This presents us with a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. One way to do this is using [PDAs][CreatePDA], or Program Derived Addresses.
 
 ## Deriving Accounts using PDAs
 
@@ -39,7 +39,45 @@ The code is as shown below,
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Vanilla Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/account-maps/deriving-pda/vanilla-pda-map.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/account-maps/deriving-pda/vanilla-pda-map.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/account-maps/deriving-pda/client.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/account-maps/deriving-pda/client.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
 </SolanaCodeGroup>
 
 
 [AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
+[CreatePDA]: http://localhost:8080/references/programs.html#create-a-program-derived-address
