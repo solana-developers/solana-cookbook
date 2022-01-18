@@ -64,16 +64,16 @@ A struct deriving all the accounts used by an instruction. The program can't rea
 
 Some [`#[account(..)] attributes`][AccountAttr] usually used are:
 
-| Attribute  | Description                                        |
-|------------|----------------------------------------------------|
-| init       | Tells to initialize the account.                   | 
-| mut        | Tells to persists any changes made to the account. |
-| payer      | Tells who fund for the account.                    |
-| space      | Tells how many space is going to use the account. Value used for calculate the rent-exemption amount that is going to fund the payer.                           |
-| has_one    | Checks if the target field on the account matches the target field in the struct deriving Accounts. |
-| owner      | Checks if the account owner matches the target owner specified. |
-| seeds      | Tells and checks the seeds for the PDA of the account. If using `init` and the PDA is used already or using `mut` and the seeds doesn't match, it'll throw an error. |
-| dump      | Tells the value `u8` that completes the seeds to get a valid PDA. |
+| Attribute | Description                                        |
+|-----------|----------------------------------------------------|
+| init      | Tells to initialize the account.                   | 
+| mut       | Tells to persists any changes made to the account. |
+| payer     | Tells who fund for the account.                    |
+| space     | Tells how many space is going to use the account. Value used for calculate the rent-exemption amount that is going to fund the payer.                           |
+| has_one   | Checks if the target field on the account matches the target field in the struct deriving Accounts. |
+| owner     | Checks if the account owner matches the target owner specified. |
+| seeds     | Tells and checks the seeds for the PDA of the account. If using `init` and the PDA is used already or using `mut` and the seeds doesn't match, it'll throw an error. |
+| bump      | Tells the value `u8` that completes the seeds to get a valid PDA. |
 
 #### Types
 
