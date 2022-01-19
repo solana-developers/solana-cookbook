@@ -155,7 +155,7 @@ By default, `sendTransaction` will perform three preflight checks prior to submi
 - Check that the referenced blockhash is within the last 150 blocks
 - Simulate the transaction against the bank slot specified by the `preflightCommitment`
 
-In the event that any of these three preflight checks fail, `sendTransaction` will raise an error prior to submitting the transaction. Preflight checks can often be the difference between losing a transaction and allowing a client to gracefully handle an error. To ensure that these common errors are accounted for, it is recommended that developers do not set `skipPreflight` to `false`.
+In the event that any of these three preflight checks fail, `sendTransaction` will raise an error prior to submitting the transaction. Preflight checks can often be the difference between losing a transaction and allowing a client to gracefully handle an error. To ensure that these common errors are accounted for, it is recommended that developers keep `skipPreflight` set to `false`.
 
 ### When to Re-Sign Transactions
 
