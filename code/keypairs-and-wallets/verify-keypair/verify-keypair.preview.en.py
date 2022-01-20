@@ -8,5 +8,5 @@ keys = [
     ]
 keypair = Keypair.from_secret_key(bytes(keys))
 
-if (PublicKey.to_base58(keypair.public_key) == PublicKey.to_base58(public_key)):
-    print ("Keypair Verification Successful")
+print(keypair.public_key.to_base58() == public_key.to_base58())
+# True

@@ -220,13 +220,13 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
   <SolanaCodeGroupItem title="Wallet-Adapter">
   <template v-slot:default>
 
-@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.en.tsx)
+@[code](@/code/basic-transactions/memo/memo.adapter.en.tsx)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/basic-transactions/sending-sol/sending-sol.adapter.preview.en.tsx)
+@[code](@/code/basic-transactions/memo/memo.adapter.preview.en.tsx)
 
   </template>
   </SolanaCodeGroupItem>
