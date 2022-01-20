@@ -78,6 +78,49 @@ On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the r
 
 </SolanaCodeGroup>
 
+## Using a single Map Account
+
+A trivial method to implement mapping would be to have an account which explicitly stores a map of keys. An example is shown below,
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Vanilla Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/account-maps/trivial/vanilla-trivial-map.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/account-maps/trivial/vanilla-trivial-map.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+The client-side code to test the above program would look like something as shown below,
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/account-maps/trivial/client.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/account-maps/trivial/client.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+
 
 [AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
 [CreatePDA]: http://localhost:8080/references/programs.html#create-a-program-derived-address
