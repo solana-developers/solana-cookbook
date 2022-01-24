@@ -37,15 +37,15 @@ head:
 footer: MIT Licensed
 ---
 
-## Install Web3JS
+## Install Web3.js
 
-There's a few libraries that you can use to get you started with javascript or typescript on Solana.<br/>
+There are a few libraries that you can use to get started with javascript or typescript on Solana.<br/>
 
 ### Web3.js
 
-`@solana/web3.js` is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the chain.
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the blockchain.
 
-You can install using the following:
+You can install with the following:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +81,10 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-`@solana/spl-token` is a library that contains many of the javascript/typescript bindings to interact with spl-tokens.
-    You can use this library to mint, transfer, and more with spl-tokens.
+`@solana/spl-token` is a library that contains many of the javascript/typescript bindings needed to interact with SPL tokens.
+    You can use this library to mint new SPL tokens, transfer tokens, and more.
 
-You can install this library with one of the following:
+You can install this library with the following:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -122,7 +122,7 @@ npm install --save @solana/spl-token
 
 There is a collection of libraries that can help bootstrap wallet connections within Solana called wallet-adapter.
     Currently the package supports use within Angular, Vue.js, and React. Wallet-adapter can quickstart your dApp
-    integration with wallets like Phantom, Solflare, and more.
+    integration with wallets like [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), and more.
 
 You can install this library with the following:
 
@@ -169,12 +169,11 @@ For Windows, please visit the [Rust installation site](https://www.rust-lang.org
 
 ## Install CLI
 
-### MacOS & Linux
+### macOS & Linux
 
-Open your favorite Terminal application
+Open your favorite Terminal application.
 
-Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your
-machine by running:
+Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your machine by running:
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
@@ -204,7 +203,8 @@ Please update your PATH environment variable to include the solana programs:
 ```
 
 If you get the above message, copy and paste the recommended command below
-it to update `PATH`
+it to update `PATH`.
+
 Confirm you have the desired version of `solana` installed by running:
 
 ```bash
@@ -214,9 +214,9 @@ solana --version
 After a successful install, `solana-install update` may be used to easily
 update the Solana software to a newer version at any time.
 
-#### Downloading Binaries(Linux)
+#### Downloading Binaries (Linux)
 
-Alternatively you can build from binaries instead of using solana-install.
+Alternatively, you can build from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
@@ -229,9 +229,9 @@ cd solana-release/
 export PATH=$PWD/bin:$PATH
 ```
 
-#### Downloading Binaries(MacOS)
+#### Downloading Binaries (macOS)
 
-Alternatively you can build from binaries instead of using solana-install.
+Alternatively, you can build from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
@@ -248,12 +248,12 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-Open a Command Prompt (`cmd.exe`) as an Administrator
+Open a Command Prompt (`cmd.exe`) as an Administrator.
 
 Search for Command Prompt in the Windows search bar. When the Command
 Prompt app appears, right-click and select “Open as Administrator”.
 If you are prompted by a pop-up window asking “Do you want to allow this app to
-make changes to your device?”, click Yes.
+make changes to your device?”, click 'Yes'.
 
 Copy and paste the following command, then press Enter to download the Solana
 installer into a temporary directory:
@@ -278,9 +278,11 @@ versions available [here](https://github.com/solana-labs/solana/releases).
 When the installer is finished, press Enter.
 
 Close the command prompt window and re-open a new command prompt window as a
-normal user
-Search for "Command Prompt" in the search bar, then left click on the
-Command Prompt app icon, no need to run as Administrator)
+normal user.
+
+Search for "Command Prompt" in the search bar, then left-click on the
+Command Prompt app icon (no need to run as Administrator).
+
 Confirm you have the desired version of `solana` installed by entering:
 
 ```bash
@@ -292,7 +294,7 @@ update the Solana software to a newer version at any time.
 
 #### Downloading Binaries
 
-Alternatively you can build from binaries instead of using solana-install.
+Alternatively, you can build from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),

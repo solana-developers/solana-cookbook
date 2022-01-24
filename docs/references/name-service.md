@@ -145,7 +145,7 @@ In order to resolve a subdomain you need to:
 
 ## Find all the domain names owned by a public key
 
-You can retreive all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

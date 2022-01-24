@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Programs
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (also known as smart contracts) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
 
 ## Facts
 
@@ -97,14 +97,13 @@ Once deployed to an environment, clients can interact with on-chain programs via
 
 ### Deploying Programs
 
-Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program
-):
+Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program):
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) containing BPF bytecode and uploaded to the Solana cluster. Programs live in accounts just like everything else on Solana, except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
+When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (containing BPF bytecode) and uploaded to the Solana cluster. Programs live in accounts (much like everything else on Solana), except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
 
 Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader is responsible for administering the program’s account and making it available to clients via the `program_id`. All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`) and parameters always include:
 - `program_id`: `pubkey`
