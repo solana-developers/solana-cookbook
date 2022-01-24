@@ -336,7 +336,7 @@ Oftentimes, local tests rely on programs and accounts available only on mainnet.
 
 ### Accounts
 
-It is for instance possible to download to file the SRM token mint account like so:
+It is possible to download the SRM token mint account to file:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -377,7 +377,7 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 ### Programs
 
-Similarly, it is for instance possible to download the Serum Dex v3 program like so:
+Similarly, it is possible to download the Serum Dex v3 program:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

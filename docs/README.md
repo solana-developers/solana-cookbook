@@ -43,14 +43,14 @@ The *Solana Cookbook* is a developer resource that
 provides the essential concepts and references for 
 building applications on Solana. Each concept and 
 reference will focus on specific aspects of Solana 
-development while providing more details and usage 
+development while providing additional details and usage 
 examples.
 
 ## Contributing
 
 The Cookbook is designed in a way that makes it easy for 
-new Solana developers to contribute to. Even if you 
-don't know how to do something, the contributing to the 
+new Solana developers to contribute. Even if you 
+don't know how to do something, contributing to the 
 cookbook is a great way to learn!
 
 Check out all open issues [here](https://github.com/solana-dev-adv/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-dev-adv/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.

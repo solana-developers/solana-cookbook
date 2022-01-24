@@ -140,4 +140,4 @@ pull request!
 ## Contribution Rewards
 
 All those who successfully contribute to the Solana Cookbook will get an exclusive 
-Glasseater NFT from the Superteam DAO. If you have already contirbuted, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!
+Glasseater NFT from the Superteam DAO. If you have already contributed, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!

@@ -68,7 +68,7 @@ There are 3 kinds of accounts on Solana:
 Within data accounts, there are 2 types:
 
 - System owned accounts
-- PDA(Program Derived Address) accounts
+- PDA (Program Derived Address) accounts
 
 Each account has an address (usually a public key) and an owner
 (address of a program account). The full field list an account stores
@@ -100,7 +100,7 @@ To prevent an account from being deleted, you must pay rent.
 
 ### Rent
 
-Storing data on accounts costs money to maintain, and it is funded by what is called 
+Storing data on accounts costs SOL to maintain, and it is funded by what is called 
 rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an 
 account, your account will be exempt from paying rent. You can retrieve rent by closing
 the account and sending the lamports back to your wallet.
@@ -124,4 +124,4 @@ removed.
 
 ### Credit
 
-This core concept is credited to Pencilflip. [Follow him on twitter](https://twitter.com/intent/user?screen_name=pencilflip).
+This core concept is credited to Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
