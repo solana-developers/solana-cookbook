@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 ## Sending SOL
 
-To sending SOL, you will need to interact with the [SystemProgram][1].
+To send SOL, you will need to interact with the [SystemProgram][1].
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -116,11 +116,9 @@ To sending SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## Sending SPL-Tokens
+## Sending SPL Tokens
 
-Any tokens other than SOL currently use the [Token Program][1] to be
-transferred. In order to send a SPL token, you need to know their
-SPL token account address. You can both get the address and send tokens
+Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
 with the following example.
 
 <SolanaCodeGroup>
