@@ -244,4 +244,35 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
+## Setting Transaction Wide Compute Units
+
+Prior to 1.9.2 each instruction in a transaction received a 200_000 Compute Unit Budget.
+
+Starting with 1.9.2 the model changed where, by default, a transaction wide Compute Unit budget is 200_000.
+And this means that each instruction will now **_draws down_** from the transaction budget which may starve latter instructions and
+fail the whole transaction.
+
+To increase the Compute Unit budget for the transaction, create an instruction that sets the Compute Budget for the transaction as the first instruction. Not lines 3 and 8 in the Log Output tab:
+
+<CodeGroup>
+  <CodeGroupItem title="Solana Program">
+
+  @[code](@/code/basic-transactions/compute-budget/solana_program.rs)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Rust Client">
+
+  @[code](@/code/basic-transactions/compute-budget/rust_client.rs)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Log Output">
+
+  @[code](@/code/basic-transactions/compute-budget/log_output.txt)
+
+  </CodeGroupItem>
+</CodeGroup>
+
+
 [2]: https://spl.solana.com/memo

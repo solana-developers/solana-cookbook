@@ -45,6 +45,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/guides/data-migration.md',
               '/guides/account-maps.md',
               '/guides/retrying-transactions.md',
+              '/guides/debugging-solana-programs.md',
             ],
           },
           {
