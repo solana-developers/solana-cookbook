@@ -41,12 +41,12 @@ const dataSchema = new Map([
 /**
  * Fetch program account data
  * @param {Connection} connection - Solana RPC connection
- * @param {Keypair} wallet - Wallet for signing and payment
+ * @param {PublicKey} account - Public key for account whose data we want
  * @return {Promise<AccoundData>} - Keypair
  */
-export async function getAccountData(connection: Connection, account: Keypair): Promise<AccoundData> {
+export async function getAccountData(connection: Connection, account: PublicKey): Promise<AccoundData> {
     let nameAccount = await connection.getAccountInfo(
-        account.publicKey,
+        account,
         'processed'
     );
     return deserializeUnchecked(dataSchema, AccoundData, nameAccount.data)
