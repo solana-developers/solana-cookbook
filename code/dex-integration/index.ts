@@ -80,7 +80,7 @@ const [_openOrders, _bump] = await PublicKey.findProgramAddress(
 
 const size = 10;
 const price = 1;
-let usdcPosted = new BN(marketClient.decoded.quoteLotSize.toNumber()).mul(marketClient.baseSizeNumberToLots(size).mul(marketClient.priceNumberToLots(price)));
+//let usdcPosted = new BN(marketClient.decoded.quoteLotSize.toNumber()).mul(marketClient.baseSizeNumberToLots(size).mul(marketClient.priceNumberToLots(price)));
 await marketClient.placeOrder(
     connection,
     {
