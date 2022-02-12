@@ -1,5 +1,6 @@
 //For creating a custom orderbook from the client side, we would need to
 //make a faucet that would make it easy to fund the market maker accounts.
+
 import { token } from "@project-serum/anchor/dist/cjs/utils";
 import { TOKEN_PROGRAM_ID, Token , } from "@solana/spl-token";
 import { Connection, clusterApiUrl, Keypair, Signer, sendAndConfirmRawTransaction, sendAndConfirmTransaction, Transaction, SystemProgram, PublicKey } from "@solana/web3.js";
@@ -71,7 +72,8 @@ async function createHershCoins(mintCount: number) {
   return HershCoins;
 }
 
-// creates a funded 
+// creates a funded market maker account to place orders with.
+//this would come in handy if you want to test your market and to make dummy trades in your market.
 async function createFundedAccount(payer: Keypair, mints, newAccount: Keypair) {
   if(!newAccount){
     newAccount =  Keypair.generate();
