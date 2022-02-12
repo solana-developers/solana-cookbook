@@ -45,7 +45,7 @@ There are a number of options and supporting tools for testing and debugging a S
 
 ::: tip Fact Sheet
 - The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
-your program interactivly (e.g. in vscode).
+your program interactively (e.g. in vscode).
 - The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
 testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
 program are ignored_**.
@@ -114,7 +114,7 @@ as displaying program validator logs and `msg!` outputs from your program:
 5. Insert the following at line 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
 6. Click `Run Test` above the `test_validator_transaction()` function
 
-This will load the validator node then allowing you to construct a transaciton (the Rust way) and
+This will load the validator node then allowing you to construct a transaction (the Rust way) and
 submit to the node using the `RcpClient`.
 
 The program's output will also print out in the editor terminal. For example (simplified):

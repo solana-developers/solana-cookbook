@@ -172,8 +172,8 @@ To complete the underlying serialization and deserialization:
 1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
 2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
 
-**Note** that in the following we have a `u32` (4 bytes) parition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserizliation,
+**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
+`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
 checks that the length of the slice you are deserializing agrees with the amount of
 data it reads prior to actually recombobulation of the receiving object. The approach
 demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
