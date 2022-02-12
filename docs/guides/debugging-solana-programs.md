@@ -71,14 +71,14 @@ You'll see that the program is a pretty simple and basically just logs the conte
 the program entrypoint function: `process_instruction`
 
 1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
-execute the `async fn test_transaction()` test. You will see the log messages in the vscode terminal below
+execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
 the source.
 ```bash
 running 1 test
-[2022-02-04T10:50:47.559692000Z INFO  solana_program_test] "bpf_program_template" program loaded as native code
-[2022-02-04T10:50:47.690504000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM invoke [1]
-[2022-02-04T10:51:20.957129000Z DEBUG solana_runtime::message_processor::stable_log] Program log: process_instruction: 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM: 1 accounts, data=[1, 2, 3]
-[2022-02-04T10:51:20.957185000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
+"bpf_program_template" program loaded as native code
+Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM invoke [1]
+Program log: process_instruction: 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM: 1 accounts, data=[1, 2, 3]
+Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
@@ -117,21 +117,15 @@ as displaying program validator logs and `msg!` outputs from your program:
 This will load the validator node then allowing you to construct a transaciton (the Rust way) and
 submit to the node using the `RcpClient`.
 
-The program's output will also print out in the editor terminal. For example:
+The program's output will also print out in the editor terminal. For example (simplified):
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
 Waiting for fees to stabilize 2...
-[2022-02-04T12:10:05.893033000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM invoke [1]
-[2022-02-04T12:10:05.893276000Z DEBUG solana_runtime::message_processor::stable_log] Program log: process_instruction: 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM: 1 accounts, data=[1, 2, 3]
-[2022-02-04T12:10:05.893302000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM consumed 13027 of 200000 compute units
-[2022-02-04T12:10:05.893422000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
-[2022-02-04T12:10:05.921115000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM invoke [1]
-[2022-02-04T12:10:05.921272000Z DEBUG solana_runtime::message_processor::stable_log] Program log: process_instruction: 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM: 1 accounts, data=[1, 2, 3]
-[2022-02-04T12:10:05.921289000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM consumed 13027 of 200000 compute units
-[2022-02-04T12:10:05.921373000Z DEBUG solana_runtime::message_processor::stable_log] Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
-[2022-02-04T12:10:06.043227000Z DEBUG solana_runtime::message_processor::stable_log] Program Vote111111111111111111111111111111111111111 invoke [1]
-[2022-02-04T12:10:06.043970000Z DEBUG solana_runtime::message_processor::stable_log] Program Vote111111111111111111111111111111111111111 success
+Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM invoke [1]
+Program log: process_instruction: 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM: 1 accounts, data=[1, 2, 3]
+Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM consumed 13027 of 200000 compute units
+Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
