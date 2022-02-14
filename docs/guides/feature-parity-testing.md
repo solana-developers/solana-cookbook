@@ -171,8 +171,70 @@ solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 If you open another terminal, while the validator is running, and `solana feature status` you will see
 features deactivated that were found deactivated in devnet
 
+## Full Parity Testing Programmatically
+For those who control running the test validator within their test code, modifying
+the test validator activated/deactivated features is possible using TestValidatorGenesis. With
+Solana 1.9.6 a function has been added to the validator builder to support this.
+
+At the root of your program folder, create a new folder called `tests` and add a `parity_test.rs`
+file. Here is the boiler place functions (boiler-plate if you will) used by each test
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Test Boiler Plate" active>
+
+  <template v-slot:default>
+
+@[code](@/code/feature-parity-testing/preamble.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/feature-parity-testing/preamble_short.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+We can now add test functions in the body of `mod test {...}` to demonstrate default
+validator setup (all features enabled) and then disabling the `transaction wide compute cap` as
+per previous examples running `solana-test-validator` from the command line.
+
+<CodeGroup>
+  <CodeGroupItem title="All Features Test">
+
+  @[code](@/code/feature-parity-testing/deactivate_one.rs)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Disable Tx CU Test" active>
+
+  @[code](@/code/feature-parity-testing/deactivate_two.rs)
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+Alternatively, the [scfs engine gadget](#resources) can produce a full vector of deactivated
+features for a cluster. The following demonstrates using that engine to get a list
+of all deactivated features for devnet.
+
+<CodeGroup>
+  <CodeGroupItem title="Devnet Parity">
+
+  @[code](@/code/feature-parity-testing/deactivate_scfs.rs)
+
+  </CodeGroupItem>
+
+</CodeGroup>
+
+
 Happy Testing!
 
 
 ## Resources
 [scfsd](https://github.com/FrankC01/solana-gadgets/tree/main/rust/scfsd)
+
+[gadget-scfs](https://github.com/FrankC01/solana-gadgets/tree/main/rust/gadgets-scfs)
