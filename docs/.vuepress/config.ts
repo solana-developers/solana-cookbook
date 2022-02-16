@@ -35,6 +35,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/core-concepts/accounts.md',
               '/core-concepts/programs.md',
               '/core-concepts/transactions.md',
+              '/core-concepts/pdas.md',
             ]
           },
           {
