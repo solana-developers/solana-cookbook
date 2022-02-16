@@ -241,7 +241,7 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 </SolanaCodeGroup>
 
-## Getting all NFTs from wallet
+## Get all NFTs from wallet
 
 You can retrieve all the NFTs for a public key using the following code. We are using `findDataByOwner` which under-the-hood doing batched calls of
 `getMultipleAccountsInfo` (via Account.getInfos). If you are interested you can check the actual code [here](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L253)
