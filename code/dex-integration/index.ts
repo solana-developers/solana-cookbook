@@ -24,63 +24,69 @@ let openOrders: PublicKey | undefined = undefined;
 
 
 async() => {
-let HershUsdcMarket;
-let clientId = new BN(1234);
-//creating mints and token accounts for markets.
-let usdcMintandAccount = await createCustomTokenandMint(payer.publicKey, connection, new BN("10_000_000_000") , decimals);
-let HershMintandAccount = await createCustomTokenandMint(payer.publicKey, connection, new BN("10_000_000_000") , decimals);
-// a market maker account that will own the market to just pass it in the initOpenOrders instruction.
-let marketMaker = new Keypair();
-//creating a permissioned market for usdc and hersh custom market (ik this is personalized but you get the idea of a custom market).
- HershUsdcMarket = await list(
-    connection,  
-    payer,
-    HershMintandAccount,
-    usdcMintandAccount, 
-    new BN("10"),
-    new BN("100"),
-    DEX_PID,
-    0,
-);
-//loading a market client to interact with the market.
-const marketClient = await Market.load(
-    connection,
-    HershUsdcMarket.market,
-    {},
-    DEX_PID );
+    
+    //declaring the global variable for our custom market.
+    let HershUsdcMarket;
+    let clientId = new BN(1234);
+    
+    //creating mints and token accounts for markets.
+    let usdcMintandAccount = await createCustomTokenandMint(payer.publicKey, connection, new BN("10_000_000_000") , decimals);
+    let HershMintandAccount = await createCustomTokenandMint(payer.publicKey, connection, new BN("10_000_000_000") , decimals);
+    
+    // a market maker account that will own the market to just pass it in the initOpenOrders instruction.
+    let marketMaker = new Keypair();
+    
+    //creating a permissioned market for usdc and hersh custom market (ik this is personalized but you get the idea of a custom market).
+     HershUsdcMarket = await list(
+        connection,  
+        payer,
+        HershMintandAccount,
+        usdcMintandAccount, 
+        new BN("10"),
+        new BN("100"),
+        DEX_PID,
+        0,
+    );
+    //loading a market client to interact with the market.
+    const marketClient = await Market.load(
+        connection,
+        HershUsdcMarket.market,
+        {},
+        DEX_PID );
 
-//creating an open orders account for the user that will store user's open order data.
-// this is a necessary account to be initialized before placing orders.
-// step1: generating an openOrders PDA for the user.
-const [_openOrders, _bump] = await PublicKey.findProgramAddress(
-    [utf8.encode("open-orders-init"), 
-    payer.publicKey.toBuffer(),
-    marketClient.publicKey.toBuffer()],
-    DEX_PID,
-    //programId (if you're using a proxy program)
-);
-     openOrders = _openOrders;
-// step 2: Initializing the openOrders account with the market client.
-    const tx2 = new Transaction();
-    tx2.add(
-    DexInstructions.initOpenOrders({
-        market: marketClient.address,
-        openOrders,
-        owner: payer.publicKey,
-        programId: DEX_PID,
-        marketAuthority: marketMaker.publicKey,
-    }));
-    const signature = await sendAndConfirmTransaction(connection,tx2,[payer]);
-    console.log(signature);
+    //creating an open orders account for the user that will store user's open order data.
+    // this is a necessary account to be initialized before placing orders.
+    
+    // step1: generating an openOrders PDA for the user.
+    const [_openOrders, _bump] = await PublicKey.findProgramAddress(
+        [utf8.encode("open-orders-init"), 
+        payer.publicKey.toBuffer(),
+        marketClient.publicKey.toBuffer()],
+        DEX_PID,
+        //programId (if you're using a proxy program)
+    );
+         openOrders = _openOrders;
+    
+    // step 2: Initializing the openOrders account with the market client.
+        const tx2 = new Transaction();
+        tx2.add(
+        DexInstructions.initOpenOrders({
+            market: marketClient.address,
+            openOrders,
+            owner: payer.publicKey,
+            programId: DEX_PID,
+            marketAuthority: marketMaker.publicKey,
+        }));
+        const signature = await sendAndConfirmTransaction(connection,tx2,[payer]);
+        console.log(signature);
 
     
-    
+ //===================================================================================================================================================================   
 // Now we can place orders on the market.
 // 1) a buy order.
-
 const size = 10;
 const price = 1;
-//let usdcPosted = new BN(marketClient.decoded.quoteLotSize.toNumber()).mul(marketClient.baseSizeNumberToLots(size).mul(marketClient.priceNumberToLots(price)));
+let usdcPosted = new BN(marketClient.decoded.quoteLotSize.toNumber()).mul(marketClient.baseSizeNumberToLots(size).mul(marketClient.priceNumberToLots(price)));
 await marketClient.placeOrder(
     connection,
     {
@@ -92,6 +98,7 @@ await marketClient.placeOrder(
      orderType: 'postOnly' // or 'limit' or 'ioc'
     }
 )
+//=========================================================================================================================== 
 // 2) a sell order.
 await marketClient.placeOrder(
     connection,
@@ -104,6 +111,7 @@ await marketClient.placeOrder(
      orderType: 'limit' // or 'postOnly' or 'ioc'
     }
 )
+//============================================================================================================================
 // 3) a cancel order.
 //returning the previous state of the user's OpenOrders account.
 const beforeAccountState = await serum.OpenOrders.load(connection, openOrders, DEX_PID);
@@ -127,5 +135,21 @@ const afterAccountState = await serum.OpenOrders.load(connection, openOrders, DE
 
 
 
+//============================================================================================================================
+//closing open orders account.
+
+const tx4 = new Transaction();
+tx4.add(
+    DexInstructions.closeOpenOrders({
+        market: marketClient.address,
+        openOrders,
+        owner: payer.publicKey,
+        programId: DEX_PID,
+        solWallet: payer
+    }
+));
+const signature2 = await sendAndConfirmTransaction(connection,tx4,[payer]);
+console.log(signature2);
+//==============================================================================================================================
 
 }
