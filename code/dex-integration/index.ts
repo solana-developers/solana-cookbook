@@ -152,4 +152,64 @@ const signature2 = await sendAndConfirmTransaction(connection,tx4,[payer]);
 console.log(signature2);
 //==============================================================================================================================
 
+    
+//==============================================================================================================================
+// Placing multiple sell and buy orders.
+//NOTE: Some arguments passed are arbitrary this is just a demo code to make the developer familiar 
+//with the serum-ts library.
+const size2 = 10;
+const price2 = 2;
+for(let k = 0; k< 10; k+=1){
+    const tx5 = new Transaction();
+    tx5.add(
+        DexInstructions.newOrderV3({
+            market: marketClient.address,
+            openOrders,
+            payer: usdcMintandAccount[1],
+            owner: payer.publicKey,
+            requestQueue: HershUsdcMarket.requestQueue,
+            eventQueue: HershUsdcMarket.eventQueue,
+            bids: k,
+            asks: 0,
+            baseVault: HershMintandAccount[1],
+            quoteVault: usdcMintandAccount[1],
+            side: 0 ,
+            limitPrice: price2,
+            maxBaseQuantity: 100,
+            maxQuoteQuantity: 1000,
+            orderType: 'limit',
+            clientId: clientId,
+            programId: DEX_PID,
+            selfTradeBehavior: 1,
+        }));
+        
+        const sizeAsk = 10;
+        const priceAsk = 10;
+        for(let k = 0; k < 10; k+= 1){
+            const txASk = new Transaction();
+            txASk.add(
+                DexInstructions.newOrderV3({
+                market: marketClient.address,
+                openOrders,
+                payer: usdcMintandAccount[1],
+                owner: payer.publicKey,
+                requestQueue: HershUsdcMarket.requestQueue,
+                eventQueue: HershUsdcMarket.eventQueue,
+                bids: k,
+                asks: 0,
+                baseVault: usdcMintandAccount[1],
+                quoteVault: HershMintandAccount[1],
+                side: 1, //specifying the side as 1 for ask.,
+                limitPrice: price2,
+                maxBaseQuantity: 100,
+                maxQuoteQuantity: 1000,
+                orderType: 'limit', //limit order
+                clientId: clientId,
+                programId: DEX_PID,
+                selfTradeBehavior: 1, // sefltrade behavior is 1 for cancelProvide, check https://github.com/project-serum/serum-dex/blob/master/dex/src/instruction.rs#L68
+            }));
+            
+        }
+
+}
 }
