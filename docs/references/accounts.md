@@ -451,6 +451,22 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 @[code](@/code/accounts/get-balance/main.preview.en.rs)
 
   </template>
+  
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/get-balance/main.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/get-balance/main.preview.en.py)
+
+  </template>
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>

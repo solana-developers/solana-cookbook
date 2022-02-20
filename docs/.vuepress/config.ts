@@ -35,6 +35,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/core-concepts/accounts.md',
               '/core-concepts/programs.md',
               '/core-concepts/transactions.md',
+              '/core-concepts/pdas.md',
             ]
           },
           {
@@ -46,6 +47,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/guides/account-maps.md',
               '/guides/retrying-transactions.md',
               '/guides/debugging-solana-programs.md',
+              '/guides/feature-parity-testing.md',
             ],
           },
           {
