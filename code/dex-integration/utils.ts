@@ -45,6 +45,7 @@ export async function list(
         space: 165,
         programId: TOKEN_PROGRAM_ID,
       }),
+        
       // creating a token account for quote currency i.e. currency used to buy or sell base currency
       SystemProgram.createAccount({
         fromPubkey: wallet.publicKey,
@@ -53,11 +54,15 @@ export async function list(
         space: 165,
         programId: TOKEN_PROGRAM_ID,
       }),
+        
+      //intializing a baseVault that will store the base currency tokens
       TokenInstructions.initializeAccount({
         account: baseVault.publicKey,
         mint: baseMint,
         owner: vaultOwner,
       }),
+        
+      // intializing a quoteVault that will store the quote currency tokens 
       TokenInstructions.initializeAccount({
         account: quoteVault.publicKey,
         mint: quoteMint,
@@ -67,6 +72,7 @@ export async function list(
   
     const tx2 = new Transaction();
     tx2.add(
+        
       // this instruction is used to create a new instance of the market account
       SystemProgram.createAccount({
         fromPubkey: wallet.publicKey,
@@ -77,6 +83,7 @@ export async function list(
         space: MARKET_STATE_LAYOUT_V3.span,
         programId: dexProgramId,
       }),
+        
       // this instruction is used to create a request queue account where 
       // the placed orders or cancelled orders that are yet to be processed are stored.
       SystemProgram.createAccount({
@@ -86,6 +93,7 @@ export async function list(
         space: 5120 + 12,
         programId: dexProgramId,
       }),
+        
       // this one creates an event queue account where the events of whether the orders
       // are fulfilled or not are stored.
       SystemProgram.createAccount({
@@ -95,6 +103,7 @@ export async function list(
         space: 262144 + 12,
         programId: dexProgramId,
       }),
+        
       // this instruction creates a Bid account where the data of the bids (Buy) order is stored.
       SystemProgram.createAccount({
         fromPubkey: wallet.publicKey,
@@ -103,6 +112,7 @@ export async function list(
         space: 65536 + 12,
         programId: dexProgramId,
       }),
+        
        // this instruction creates a Ask account where the data of the asks (Sell) order is stored.
       SystemProgram.createAccount({
         fromPubkey: wallet.publicKey,
@@ -111,6 +121,7 @@ export async function list(
         space: 65536 + 12,
         programId: dexProgramId,
       }),
+        
       // the following instruction is imported from the serum-ts library and is used to call the on-chain instruction to initialize market.
       DexInstructions.initializeMarket({
         market: market.publicKey,
