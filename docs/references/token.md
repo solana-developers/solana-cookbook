@@ -162,7 +162,7 @@ of managing token accounts.
 ## Get Token Account
 
 Every token account has information on the token such as the owner,
-mint, amount, and decimals.
+mint, amount(balance), and decimals.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
