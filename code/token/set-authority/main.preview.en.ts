@@ -1,12 +1,25 @@
-let tx = new Transaction().add(
-  Token.createSetAuthorityInstruction(
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+// 1) use build-in function
+{
+  let txhash = await setAuthority(
+    connection, // connection
+    feePayer, // payer
     mintPubkey, // mint acocunt || token account
-    feePayer.publicKey, // new auth (you can pass `null` to close it)
-    "MintTokens", // authority type, there are 4 types => 'MintTokens' | 'FreezeAccount' | 'AccountOwner' | 'CloseAccount'
-    alice.publicKey, // original auth
-    [] // for multisig
-  )
-);
+    alice, // current authority
+    AuthorityType.MintTokens, // authority type
+    randomGuy.publicKey // new authority (you can pass `null` to close it)
+  );
+}
 
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+// or
+
+// 2) compose by yourself
+{
+  let tx = new Transaction().add(
+    createSetAuthorityInstruction(
+      mintPubkey, // mint acocunt || token account
+      alice.publicKey, // current auth
+      AuthorityType.MintTokens, // authority type
+      randomGuy.publicKey // new auth (you can pass `null` to close it)
+    )
+  );
+}

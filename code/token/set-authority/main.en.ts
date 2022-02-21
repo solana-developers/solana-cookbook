@@ -1,5 +1,5 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { AuthorityType, createSetAuthorityInstruction, setAuthority, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -16,18 +16,46 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const mintPubkey = new PublicKey("54dQ8cfHsW1YfKYpmdVZhWpb9iSi6Pac82Nf7sg3bVb");
+  const randomGuy = Keypair.generate();
+  console.log(`random guy: ${randomGuy.publicKey.toBase58()}`);
 
-  let tx = new Transaction().add(
-    Token.createSetAuthorityInstruction(
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  const mintPubkey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+
+  // authority type
+
+  // 1) for mint account
+  // AuthorityType.MintTokens
+  // AuthorityType.FreezeAccount
+
+  // 2) for token account
+  // AuthorityType.AccountOwner
+  // AuthorityType.CloseAccount
+
+  // 1) use build-in function
+  {
+    let txhash = await setAuthority(
+      connection, // connection
+      feePayer, // payer
       mintPubkey, // mint acocunt || token account
-      feePayer.publicKey, // new auth (you can pass `null` to close it)
-      "MintTokens", // authority type, there are 4 types => 'MintTokens' | 'FreezeAccount' | 'AccountOwner' | 'CloseAccount'
-      alice.publicKey, // original auth
-      [] // for multisig
-    )
-  );
+      alice, // current authority
+      AuthorityType.MintTokens, // authority type
+      randomGuy.publicKey // new authority (you can pass `null` to close it)
+    );
+    console.log(`txhash: ${txhash}`);
+  }
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+  // or
+
+  // 2) compose by yourself
+  {
+    let tx = new Transaction().add(
+      createSetAuthorityInstruction(
+        mintPubkey, // mint acocunt || token account
+        alice.publicKey, // current auth
+        AuthorityType.MintTokens, // authority type
+        feePayer.publicKey // new auth (you can pass `null` to close it)
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+  }
 })();
