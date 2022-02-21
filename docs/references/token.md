@@ -50,7 +50,7 @@ be used, which you can find below based on your language.
   <CodeGroupItem title="TS" active>
 
 ```
-"@solana/spl-token": "^0.1.8"
+"@solana/spl-token": "^0.2.0"
 ```
 
   </CodeGroupItem>
