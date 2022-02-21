@@ -1,5 +1,5 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { createRevokeInstruction, revoke } from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -18,14 +18,27 @@ import * as bs58 from "bs58";
 
   const tokenAccountPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
 
-  let tx = new Transaction().add(
-    Token.createRevokeInstruction(
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  // 1) use build-in function
+  {
+    let txhash = await revoke(
+      connection, // connection
+      feePayer, // payer
       tokenAccountPubkey, // token account
-      alice.publicKey, // original auth
-      [] // for multisig
-    )
-  );
+      alice // owner of token account
+    );
+    console.log(`txhash: ${txhash}`);
+  }
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+  // or
+
+  // 2) compose by yourself
+  {
+    let tx = new Transaction().add(
+      createRevokeInstruction(
+        tokenAccountPubkey, // token account
+        alice.publicKey // owner of token account
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+  }
 })();
