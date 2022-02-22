@@ -9,9 +9,9 @@ from solana.rpc.api import Client
 
 # Instruction variants for target program
 class InstructionVariant(IntEnum):
-    INITIALIZE = (0,)
-    MINT = (1,)
-    TRANSFER = (2,)
+    INITIALIZE = 0
+    MINT = 1
+    TRANSFER = 2
     BURN = 3
 
 
