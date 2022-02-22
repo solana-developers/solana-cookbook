@@ -35,7 +35,7 @@ def mint_kv(
         wallet_kp: Keypair,
         mintKey: str,
         mintValue: str) -> RPCResponse:
-    """Mint with a key/vaue pair to an account"""
+    """Mint with a key/value pair to an account"""
     # Construct the program payload for Mint invariant
     payload_ser = construct_payload(
         InstructionVariant.MINT, mintKey, mintValue)
