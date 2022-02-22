@@ -13,9 +13,9 @@ primitiveSchema = CStruct(
 
 
 def common():
-    map = dict()
-    map["cookbook"] = "recipe"
-    map["recipe"] = "ingredient"
+    mapping = dict()
+    mapping["cookbook"] = "recipe"
+    mapping["recipe"] = "ingredient"
 
     # Serialize
     dser = primitiveSchema.build({
@@ -24,7 +24,7 @@ def common():
         'U32': 4294967295,
         "FIXED_STRING_ARRAY": ['hello', 'world'],
         "FIXED_U8_ARRAY": [1, 2, 3, 4, 5],
-        "MAP_STRING_STRING": map})
+        "MAP_STRING_STRING": mapping})
     print(dser)
     # => b'\xff\xff\xff\xff\xff\xff\xff\x05\x00\x00\x00hello\x05\x00\x00\x00world\x01\x02\x03\x04\x05\x02\x00\x00\x00\x08\x00\x00\x00cookbook\x06\x00\x00\x00recipe\x06\x00\x00\x00recipe\n\x00\x00\x00ingredient'
     # Deserialize
