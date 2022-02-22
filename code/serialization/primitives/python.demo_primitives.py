@@ -13,9 +13,7 @@ primitiveSchema = CStruct(
 
 
 def common():
-    mapping = dict()
-    mapping["cookbook"] = "recipe"
-    mapping["recipe"] = "ingredient"
+    mapping = {"cookbook": "recipe", "recipe": "ingredient"}
 
     # Serialize
     dser = primitiveSchema.build({
