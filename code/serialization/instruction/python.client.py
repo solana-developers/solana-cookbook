@@ -1,4 +1,4 @@
-from borsh_construct import *
+from borsh_construct import String, CStruct, U8
 from enum import IntEnum
 from solana.rpc.types import RPCResponse
 from solana.transaction import Transaction, TransactionInstruction, AccountMeta
