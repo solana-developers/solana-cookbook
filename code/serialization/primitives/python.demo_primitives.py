@@ -9,7 +9,7 @@ primitiveSchema = CStruct(
         "FIXED_STRING_ARRAY" / String[2],
         "FIXED_U8_ARRAY" / U8[5],
         "MAP_STRING_STRING" / HashMap(String, String)
-    })
+)
 
 
 def common():
