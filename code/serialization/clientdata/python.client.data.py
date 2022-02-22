@@ -1,5 +1,5 @@
 import base64
-from borsh_construct import *
+from borsh_construct import CStruct, U8, U32, HashMap, String
 from solana.rpc.commitment import Commitment
 from solana.publickey import PublicKey
 from solana.rpc.api import Client
