@@ -1,25 +1,24 @@
 import base64
-from borsh_construct import *
-from solana.rpc.commitment import Commitment
+from borsh_construct import CStruct, U8, U32, HashMap, String
+from solana.rpc.commitment import Confirmed
 from solana.publickey import PublicKey
 from solana.rpc.api import Client
 
 
 # Schema to deserialize program's account data
-accountSchema = CStruct(
+account_schema = CStruct(
     "initialized" / U8,
     "map_length" / U32,
     "map" / HashMap(String, String)
 )
 
 
-def getAccountInfo(client: Client, account_pk: PublicKey):
+def get_account_info(client: Client, account_pk: PublicKey):
     """Fetch account information from RPC, parse out the data and deserialize"""
-    comm = Commitment("confirmed")
-    res = client.get_account_info(account_pk, comm, encoding='base64')
+    res = client.get_account_info(account_pk, Confirmed, encoding='base64')
     data = res['result']
     if isinstance(data, dict):
-        return accountSchema.parse(base64.urlsafe_b64decode(data['value']['data'][0]))
+        return account_schema.parse(base64.urlsafe_b64decode(data['value']['data'][0]))
     else:
         raise AttributeError(f'Unknown RPC result {data}')
 
