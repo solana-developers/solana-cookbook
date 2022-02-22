@@ -1,5 +1,15 @@
-import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction, SystemProgram } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID, AccountLayout, NATIVE_MINT, ASSOCIATED_TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { clusterApiUrl, Connection, Keypair, Transaction, SystemProgram } from "@solana/web3.js";
+import {
+  TOKEN_PROGRAM_ID,
+  NATIVE_MINT,
+  getMinimumBalanceForRentExemptAccount,
+  getAssociatedTokenAddress,
+  ACCOUNT_SIZE,
+  createInitializeAccountInstruction,
+  createTransferInstruction,
+  closeAccountInstructionData,
+  createCloseAccountInstruction,
+} from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -17,11 +27,9 @@ import * as bs58 from "bs58";
   );
 
   // remember to create ATA first
-  let ata = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID,
-    TOKEN_PROGRAM_ID,
-    NATIVE_MINT,
-    alice.publicKey
+  let ata = await getAssociatedTokenAddress(
+    NATIVE_MINT, // mint
+    alice.publicKey // owner
   );
 
   let auxAccount = Keypair.generate();
@@ -32,16 +40,16 @@ import * as bs58 from "bs58";
     SystemProgram.createAccount({
       fromPubkey: alice.publicKey,
       newAccountPubkey: auxAccount.publicKey,
-      space: AccountLayout.span,
-      lamports: (await Token.getMinBalanceRentForExemptAccount(connection)) + amount, // rent + amount
+      space: ACCOUNT_SIZE,
+      lamports: (await getMinimumBalanceForRentExemptAccount(connection)) + amount, // rent + amount
       programId: TOKEN_PROGRAM_ID,
     }),
     // init token account
-    Token.createInitAccountInstruction(TOKEN_PROGRAM_ID, NATIVE_MINT, auxAccount.publicKey, alice.publicKey),
+    createInitializeAccountInstruction(auxAccount.publicKey, NATIVE_MINT, alice.publicKey),
     // transfer WSOL
-    Token.createTransferInstruction(TOKEN_PROGRAM_ID, auxAccount.publicKey, ata, alice.publicKey, [], amount),
+    createTransferInstruction(auxAccount.publicKey, ata, alice.publicKey, amount),
     // close aux account
-    Token.createCloseAccountInstruction(TOKEN_PROGRAM_ID, auxAccount.publicKey, alice.publicKey, alice.publicKey, [])
+    createCloseAccountInstruction(auxAccount.publicKey, alice.publicKey, alice.publicKey)
   );
 
   console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, auxAccount, alice])}`);

@@ -1,5 +1,5 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { approveChecked, createApproveCheckedInstruction } from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -16,18 +16,39 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const tokenAccountPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const randomGuy = Keypair.generate();
 
-  let tx = new Transaction().add(
-    Token.createApproveInstruction(
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  const mintPubkey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+  const tokenAccountPubkey = new PublicKey("GMxZfDmpR1b3vdJYXHzdF5noVLQogZuUAsDHHQ3ytPfV");
+
+  // 1) use build-in function
+  {
+    let txhash = await approveChecked(
+      connection, // connection
+      feePayer, // fee payer
+      mintPubkey, // mint
       tokenAccountPubkey, // token account
-      feePayer.publicKey, // delegate
-      alice.publicKey, // original auth
-      [], // for multisig
-      1 // allowed amount
-    )
-  );
+      randomGuy.publicKey, // delegate
+      alice, // owner of token account
+      1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+      8 // decimals
+    );
+    console.log(`txhash: ${txhash}`);
+  }
+  // or
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+  // 2) compose by yourself
+  {
+    let tx = new Transaction().add(
+      createApproveCheckedInstruction(
+        tokenAccountPubkey, // token account
+        mintPubkey, // mint
+        randomGuy.publicKey, // delegate
+        alice.publicKey, // owner of token account
+        1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+        8 // decimals
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+  }
 })();

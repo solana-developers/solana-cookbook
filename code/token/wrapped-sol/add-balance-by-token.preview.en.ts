@@ -3,16 +3,14 @@ let tx = new Transaction().add(
   SystemProgram.createAccount({
     fromPubkey: alice.publicKey,
     newAccountPubkey: auxAccount.publicKey,
-    space: AccountLayout.span,
-    lamports: (await Token.getMinBalanceRentForExemptAccount(connection)) + amount, // rent + amount
+    space: ACCOUNT_SIZE,
+    lamports: (await getMinimumBalanceForRentExemptAccount(connection)) + amount, // rent + amount
     programId: TOKEN_PROGRAM_ID,
   }),
   // init token account
-  Token.createInitAccountInstruction(TOKEN_PROGRAM_ID, NATIVE_MINT, auxAccount.publicKey, alice.publicKey),
+  createInitializeAccountInstruction(auxAccount.publicKey, NATIVE_MINT, alice.publicKey),
   // transfer WSOL
-  Token.createTransferInstruction(TOKEN_PROGRAM_ID, auxAccount.publicKey, ata, alice.publicKey, [], amount),
+  createTransferInstruction(auxAccount.publicKey, ata, alice.publicKey, amount),
   // close aux account
-  Token.createCloseAccountInstruction(TOKEN_PROGRAM_ID, auxAccount.publicKey, alice.publicKey, alice.publicKey, [])
+  createCloseAccountInstruction(auxAccount.publicKey, alice.publicKey, alice.publicKey)
 );
-
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, auxAccount, alice])}`);
