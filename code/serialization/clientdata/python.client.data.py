@@ -6,7 +6,7 @@ from solana.rpc.api import Client
 
 
 # Schema to deserialize program's account data
-accountSchema = CStruct(
+account_schema = CStruct(
     "initialized" / U8,
     "map_length" / U32,
     "map" / HashMap(String, String)
@@ -19,7 +19,7 @@ def getAccountInfo(client: Client, account_pk: PublicKey):
     res = client.get_account_info(account_pk, comm, encoding='base64')
     data = res['result']
     if isinstance(data, dict):
-        return accountSchema.parse(base64.urlsafe_b64decode(data['value']['data'][0]))
+        return account_schema.parse(base64.urlsafe_b64decode(data['value']['data'][0]))
     else:
         raise AttributeError(f'Unknown RPC result {data}')
 
