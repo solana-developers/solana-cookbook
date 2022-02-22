@@ -191,10 +191,10 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
 
 ### Usage
 
-The following pulls it altogether and demonstrates how the program interacts with the `ProgramAccountState`
+The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
 which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
 
-First when we want to initialize a brand new account
+First when we want to initialize a brand new account:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -205,7 +205,7 @@ First when we want to initialize a brand new account
 </CodeGroup>
 
 Now we can operate on our other instructions as the following demonstrates minting a new
-key value pair that we demonstrated above when sending instructions from a client
+key value pair that we demonstrated above when sending instructions from a client:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -253,8 +253,8 @@ compound data types.
 The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
 and deserialize can generate or walk the respective inputs.
 
-Here we demonstrate serialization of primitives (numbers, strings) and compounds (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side
+Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
+first in Typescript, then in Python and then equivalent deserialization on the Rust side:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
