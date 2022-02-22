@@ -16,7 +16,7 @@ class InstructionVariant(IntEnum):
 
 
 # Schema for sending instructionVariants to on-chain sample program
-payloadSchema = CStruct(
+payload_schema = CStruct(
     "initialized" / U8,
     "key" / String,
     "value" / String
@@ -25,10 +25,10 @@ payloadSchema = CStruct(
 
 def construct_payload(instructionVariant: InstructionVariant, key: str, value: str):
     """Generate a serialized instructionVariant"""
-    return payloadSchema.build({'instructionVariant_id': instructionVariant, 'key': key, 'value': value})
+    return payload_schema.build({'instructionVariant_id': instructionVariant, 'key': key, 'value': value})
 
 
-def mintKv(
+def mint_kv(
         client: Client,
         program_pk: PublicKey,
         account_pk: PublicKey,
@@ -42,7 +42,7 @@ def mintKv(
 
     # print(payload_ser)
     # => b'\x01\n\x00\x00\x00python key\x0c\x00\x00\x00python value'
-    # mint_payload_copy = payloadSchema.parse(payload_ser)
+    # mint_payload_copy = payload_schema.parse(payload_ser)
     # print(mint_payload_copy)
     # => Container:
     # =>     initialized = 1
