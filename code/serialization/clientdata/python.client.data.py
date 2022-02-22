@@ -13,7 +13,7 @@ account_schema = CStruct(
 )
 
 
-def getAccountInfo(client: Client, account_pk: PublicKey):
+def get_account_info(client: Client, account_pk: PublicKey):
     """Fetch account information from RPC, parse out the data and deserialize"""
     res = client.get_account_info(account_pk, Confirmed, encoding='base64')
     data = res['result']
