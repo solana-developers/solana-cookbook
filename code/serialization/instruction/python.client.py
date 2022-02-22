@@ -19,9 +19,9 @@ class InstructionVariant(IntEnum):
 payload_schema = CStruct("id" / U8, "key" / String, "value" / String)
 
 
-def construct_payload(instructionVariant: InstructionVariant, key: str, value: str):
+def construct_payload(instruction_variant: InstructionVariant, key: str, value: str):
     """Generate a serialized instructionVariant"""
-    return payload_schema.build({"id": instructionVariant, "key": key, "value": value})
+    return payload_schema.build({"id": instruction_variant, "key": key, "value": value})
 
 
 def mint_kv(
@@ -29,12 +29,12 @@ def mint_kv(
     program_pk: PublicKey,
     account_pk: PublicKey,
     wallet_kp: Keypair,
-    mintKey: str,
-    mintValue: str,
+    mint_key: str,
+    mint_value: str,
 ) -> RPCResponse:
     """Mint with a key/value pair to an account"""
     # Construct the program payload for Mint invariant
-    payload_ser = construct_payload(InstructionVariant.MINT, mintKey, mintValue)
+    payload_ser = construct_payload(InstructionVariant.MINT, mint_key, mint_value)
 
     # print(payload_ser)
     # => b'\x01\n\x00\x00\x00python key\x0c\x00\x00\x00python value'
