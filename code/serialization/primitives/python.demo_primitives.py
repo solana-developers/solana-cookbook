@@ -1,5 +1,5 @@
 import base64
-from borsh_construct import *
+from borsh_construct import U8, U16, U32, String, HashMap
 
 # Schema to deserialize various types
 primitiveSchema = CStruct(
