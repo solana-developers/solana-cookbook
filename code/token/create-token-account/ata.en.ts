@@ -1,5 +1,9 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction, SystemProgram } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import {
+  createAssociatedTokenAccount,
+  getAssociatedTokenAddress,
+  createAssociatedTokenAccountInstruction,
+} from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -16,26 +20,45 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const mintPubkey = new PublicKey("54dQ8cfHsW1YfKYpmdVZhWpb9iSi6Pac82Nf7sg3bVb");
+  const mintPubkey = new PublicKey("2SKpuBU9ksneBZD4nqbZkw75NE11HsSHsGRtW2BZh5aQ");
 
-  // calculate ATA
-  let ata = await Token.getAssociatedTokenAddress(
-    ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
-    mintPubkey, // mint
-    alice.publicKey // owner
-  );
-  console.log(`ATA: ${ata.toBase58()}`);
-
-  let tx = new Transaction().add(
-    Token.createAssociatedTokenAccountInstruction(
-      ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  // 1) use build-in function
+  {
+    let ata = await createAssociatedTokenAccount(
+      connection, // connection
+      feePayer, // fee payer
       mintPubkey, // mint
-      ata, // ata
-      alice.publicKey, // owner of token account
-      feePayer.publicKey // fee payer
-    )
-  );
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
+      alice.publicKey // owner,
+    );
+    console.log(`ATA: ${ata.toBase58()}`);
+  }
+
+  // or
+
+  // 2) composed by yourself
+  {
+    // calculate ATA
+    let ata = await getAssociatedTokenAddress(
+      mintPubkey, // mint
+      alice.publicKey // owner
+    );
+    console.log(`ATA: ${ata.toBase58()}`);
+
+    // if your wallet is off-curve, you should use
+    // let ata = await getAssociatedTokenAddress(
+    //   mintPubkey, // mint
+    //   alice.publicKey // owner
+    //   true, // allowOwnerOffCurve
+    // );
+
+    let tx = new Transaction().add(
+      createAssociatedTokenAccountInstruction(
+        feePayer.publicKey, // payer
+        ata, // ata
+        alice.publicKey, // owner
+        mintPubkey // mint
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
+  }
 })();

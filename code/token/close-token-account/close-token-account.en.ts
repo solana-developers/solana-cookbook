@@ -1,5 +1,5 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { closeAccount, createCloseAccountInstruction } from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -16,17 +16,31 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const tokenAccountPubkey = new PublicKey("5ZgpLUyTJQGazQTtvMa93KeJEzsSUJ53jW7ocMUTkLdw");
+  const tokenAccountPubkey = new PublicKey("2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5");
 
-  let tx = new Transaction().add(
-    Token.createCloseAccountInstruction(
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  // 1) use build-in function
+  {
+    let txhash = await closeAccount(
+      connection, // connection
+      feePayer, // payer
       tokenAccountPubkey, // token account which you want to close
       alice.publicKey, // destination
-      alice.publicKey, // owner of token account
-      [] // for multisig
-    )
-  );
+      alice // owner of token account
+    );
+    console.log(`txhash: ${txhash}`);
+  }
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+  // or
+
+  // 2) compose by yourself
+  {
+    let tx = new Transaction().add(
+      createCloseAccountInstruction(
+        tokenAccountPubkey, // token account which you want to close
+        alice.publicKey, // destination
+        alice.publicKey // owner of token account
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+  }
 })();

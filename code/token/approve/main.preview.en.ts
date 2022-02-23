@@ -1,12 +1,28 @@
-let tx = new Transaction().add(
-  Token.createApproveInstruction(
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+// 1) use build-in function
+{
+  let txhash = await approveChecked(
+    connection, // connection
+    feePayer, // fee payer
+    mintPubkey, // mint
     tokenAccountPubkey, // token account
-    feePayer.publicKey, // delegate
-    alice.publicKey, // original auth
-    [], // for multisig
-    1 // allowed amount
-  )
-);
+    randomGuy.publicKey, // delegate
+    alice, // owner of token account
+    1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+    8 // decimals
+  );
+}
+// or
 
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+// 2) compose by yourself
+{
+  let tx = new Transaction().add(
+    createApproveCheckedInstruction(
+      tokenAccountPubkey, // token account
+      mintPubkey, // mint
+      randomGuy.publicKey, // delegate
+      alice.publicKey, // owner of token account
+      1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+      8 // decimals
+    )
+  );
+}

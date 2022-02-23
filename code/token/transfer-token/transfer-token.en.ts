@@ -1,5 +1,5 @@
-import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction, SystemProgram } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
+import { createTransferCheckedInstruction, TOKEN_PROGRAM_ID, transferChecked } from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -16,23 +16,40 @@ import * as bs58 from "bs58";
     bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
   );
 
-  const mintPubkey = new PublicKey("54dQ8cfHsW1YfKYpmdVZhWpb9iSi6Pac82Nf7sg3bVb");
+  const mintPubkey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
 
-  const tokenAccountXPubkey = new PublicKey("FWZedVtyKQtP4CXhT7XDnLidRADrJknmZGA2qNjpTPg8");
-  const tokenAccountYPubkey = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const tokenAccountXPubkey = new PublicKey("2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5");
+  const tokenAccountYPubkey = new PublicKey("GMxZfDmpR1b3vdJYXHzdF5noVLQogZuUAsDHHQ3ytPfV");
 
-  let tx = new Transaction().add(
-    Token.createTransferCheckedInstruction(
-      TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+  // 1) use build-in function
+  {
+    let txhash = await transferChecked(
+      connection, // connection
+      feePayer, // payer
       tokenAccountXPubkey, // from (should be a token account)
       mintPubkey, // mint
       tokenAccountYPubkey, // to (should be a token account)
-      alice.publicKey, // owner of from
-      [], // for multisig account, leave empty.
+      alice, // from's owner
       1e8, // amount, if your deciamls is 8, send 10^8 for 1 token
       8 // decimals
-    )
-  );
+    );
+    console.log(`txhash: ${txhash}`);
+  }
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+  // or
+
+  // 2) compose by yourself
+  {
+    let tx = new Transaction().add(
+      createTransferCheckedInstruction(
+        tokenAccountXPubkey, // from (should be a token account)
+        mintPubkey, // mint
+        tokenAccountYPubkey, // to (should be a token account)
+        alice.publicKey, // from's owner
+        1e8, // amount, if your deciamls is 8, send 10^8 for 1 token
+        8 // decimals
+      )
+    );
+    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+  }
 })();

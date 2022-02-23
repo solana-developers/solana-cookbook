@@ -1,12 +1,27 @@
-let tx = new Transaction().add(
-  Token.createBurnInstruction(
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+// 1) use build-in function
+{
+  let txhash = await burnChecked(
+    connection, // connection
+    feePayer, // payer
+    tokenAccountPubkey, // token account
     mintPubkey, // mint
-    tokenAccountPubkey, // from (should be a token account)
-    alice.publicKey, // owner of token account
-    [], // for multisig account, leave empty.
-    1e8 // amount, if your deciamls is 8, 10^8 for 1 token
-  )
-);
+    alice, // owner
+    1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+    8
+  );
+}
 
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + token authority */])}`);
+// or
+
+// 2) compose by yourself
+{
+  let tx = new Transaction().add(
+    createBurnCheckedInstruction(
+      tokenAccountPubkey, // token account
+      mintPubkey, // mint
+      alice.publicKey, // owner of token account
+      1e8, // amount, if your deciamls is 8, 10^8 for 1 token
+      8 // decimals
+    )
+  );
+}
