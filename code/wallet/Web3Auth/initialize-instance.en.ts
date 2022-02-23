@@ -1,6 +1,7 @@
 import {clusterApi, Connection } from "@solana/web3.js";
 
-import Torus from "@toruslab/solana-embed";
+import Torus from "@toruslabs/solana-embed";
+
 (async ()=>{
   const torus = new Torus();
 

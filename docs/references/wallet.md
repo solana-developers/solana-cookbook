@@ -41,25 +41,25 @@ footer: MIT Licensed
 
 ## What is a wallet?
 
-A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, and send transactions. There are a multitude of crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
+A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, and send transactions. There are many crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
 
 ## Social Logins on Solana
 
-**Torus Solana Wallet** allows users to sign in using their existing Web2 Oauth Providers(Facebook, Google, Twitter etc) into Web3 dapps. It provides a user-friendly and non-custodial approach to managing assets and identity. It removes technical barriers and reduces the learning curve for digital ownership and identity for all users by providing a wrapper around private key management. 
+[**Web3Auth**](https://docs.web3auth.io/) allows users to sign in using their existing Web2 OAuth Providers(Facebook, Google, Twitter etc.) into Web3 dapps. It provides a user-friendly and [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) approach to managing assets and identity. It removes technical barriers and reduces the learning curve for digital ownership for all users by providing a wrapper around private key management. 
 
 ## Integration Guide
 
-This tutorial will guide you over a basic example to integrate social logins using Web3Auth in your dapp.
+This tutorial will guide you over a basic example to integrate social logins in your dapp.
 
 ### Installing Dependencies
 
-To start using the wallet with a dapp, you need to install `@toruslab/solana-embed`. You can use popular package managers like yarn and npm to download them.
+To start using the wallet with a dapp, you can install `@toruslabs/solana-embed`. You can use popular package managers like yarn and npm to download them.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
 
 ```bash
-yarn add @toruslab/solana-embed
+yarn add @toruslabs/solana-embed
 ```
 
   </CodeGroupItem>
@@ -67,13 +67,15 @@ yarn add @toruslab/solana-embed
   <CodeGroupItem title="NPM">
 
 ```bash
-npm install --save @toruslab/solana-embed
+npm install --save @toruslabs/solana-embed
 ```
 
   </CodeGroupItem>
 </CodeGroup>
 
-### Initialize instance and import solana sdk
+### Import the SDK and initialize
+
+In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You can pass other configuration options while initializing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,17 +95,13 @@ npm install --save @toruslab/solana-embed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-In above code snippet, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. We can pass other configuration options while initializing for customizing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
-
 ### Trigger user login​
 
-Simply call `torus.login()` to trigger user login wherever it makes sense in your application lifecycle
-
-Calling login without any parameter will open a modal for user to select all supported logins.
+Simply call `torus.login()` to trigger a login wherever it makes sense in your application lifecycle. Calling login method without any parameter will open a modal for user to select all supported logins.
 
 ![](./assets/Web3Auth/login-modal.png)
 
-After successfull login, it will return array of public key. The first element of the array is the current wallet public key
+After successful login, the method will return an array of public keys. The first element of the array is the current wallet public key
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -125,9 +123,7 @@ After successfull login, it will return array of public key. The first element o
 
 ### Using torus instance to fetch user account detail​
 
-After logging in wallet, it provides us interface for interactions like signing transactions and messages.
-
-It also provides us with an interface to access user login information like user's email, profile image etc.
+The torus instance provides an interface for interactions like signing transactions and messages in a logged-in state. It can also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,8 +144,6 @@ It also provides us with an interface to access user login information like user
 </SolanaCodeGroup>
 
 ### Using Torus Solana API to sign a message.
-
-Using the Torus instance, dapps can call methods on the wallet.
 
 In order to send a message for the user to sign, the web application must provide a UTF-8 encoded string as a Uint8Array.
 
@@ -177,9 +171,9 @@ Similarly, you can also use [signTransaction](https://docs.tor.us/solana-wallet/
 
 ### Using torus Solana API to send a transaction.​
 
-To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance and pass in a `Transaction` instance.
+To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance and pass in the `Transaction`.
 
-The wallet opens a confirmation window, which on approval signs and sends the transaction to the chain.
+The wallet opens a confirmation window. After approval, the SDK signs and sends the transaction to the chain.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -199,9 +193,9 @@ The wallet opens a confirmation window, which on approval signs and sends the tr
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using Torus Solana Api to initiate top up.​
+### Top-ups​
 
-Currently Torus Solana Api supports top up from Moonpay.
+Currently, the API supports topups from Moonpay.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,7 +215,7 @@ Currently Torus Solana Api supports top up from Moonpay.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Log out handler
+### Logout
 
 To logout user, it simply requires you to call the `logout` function on torus wallet instance.
 
