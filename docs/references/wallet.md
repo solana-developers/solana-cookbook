@@ -199,30 +199,6 @@ The wallet opens a confirmation window, which on approval signs and sends the tr
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using Torus Solana API to send a gasless transactions.​
-
-To send gasless transaction, first we need to get the feePayer's public key. This public key is scoped to every application.
-
-Then instantiate a Transaction with the feePayer and send it out using Torus sendTransaction api.s
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/wallet/Web3Auth/gasless-transaction.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/wallet/Web3Auth/gasless-transaction.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
-
 ### Using Torus Solana Api to initiate top up.​
 
 Currently Torus Solana Api supports top up from Moonpay.
