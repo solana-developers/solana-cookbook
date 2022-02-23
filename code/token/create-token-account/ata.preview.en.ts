@@ -1,20 +1,23 @@
-// calculate ATA
-let ata = await Token.getAssociatedTokenAddress(
-  ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-  TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
-  mintPubkey, // mint
-  alice.publicKey // owner
-);
-console.log(`ATA: ${ata.toBase58()}`);
-
-let tx = new Transaction().add(
-  Token.createAssociatedTokenAccountInstruction(
-    ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+// 1) use build-in function
+{
+  let ata = await createAssociatedTokenAccount(
+    connection, // connection
+    feePayer, // fee payer
     mintPubkey, // mint
-    ata, // ata
-    alice.publicKey, // owner of token account
-    feePayer.publicKey // fee payer
-  )
-);
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
+    alice.publicKey // owner,
+  );
+}
+
+// or
+
+// 2) composed by yourself
+{
+  let tx = new Transaction().add(
+    createAssociatedTokenAccountInstruction(
+      feePayer.publicKey, // payer
+      ata, // ata
+      alice.publicKey, // owner
+      mintPubkey // mint
+    )
+  );
+}

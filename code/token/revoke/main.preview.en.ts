@@ -1,10 +1,21 @@
-let tx = new Transaction().add(
-  Token.createRevokeInstruction(
-    TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+// 1) use build-in function
+{
+  let txhash = await revoke(
+    connection, // connection
+    feePayer, // payer
     tokenAccountPubkey, // token account
-    alice.publicKey, // original auth
-    [] // for multisig
-  )
-);
+    alice // owner of token account
+  );
+}
 
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + origin auth */])}`);
+// or
+
+// 2) compose by yourself
+{
+  let tx = new Transaction().add(
+    createRevokeInstruction(
+      tokenAccountPubkey, // token account
+      alice.publicKey // owner of token account
+    )
+  );
+}

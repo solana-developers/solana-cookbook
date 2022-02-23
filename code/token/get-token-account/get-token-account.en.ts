@@ -1,52 +1,33 @@
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
-import { AccountLayout, u64 } from "@solana/spl-token";
+import { getAccount } from "@solana/spl-token";
 
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-  const tokenAccount = new PublicKey("DRS5CSgPQp4uvPPcUA34tckfYFNUPNBJi77fVbnSfQHr");
+  const tokenAccountPubkey = new PublicKey("2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5");
 
-  // 1. use getParsedAccountInfo
+  let tokenAccount = await getAccount(connection, tokenAccountPubkey);
+  console.log(tokenAccount);
+  /*
   {
-    let accountInfo = await connection.getParsedAccountInfo(tokenAccount);
-    // console.log(`raw data: ${JSON.stringify(accountInfo.value.data["parsed"]["info"])}`);
-    console.log(`isNative: ${accountInfo.value.data["parsed"]["info"]["isNative"]}`);
-    console.log(`mint: ${accountInfo.value.data["parsed"]["info"]["mint"]}`);
-    console.log(`owner: ${accountInfo.value.data["parsed"]["info"]["owner"]}`);
-    console.log(`decimals: ${accountInfo.value.data["parsed"]["info"]["tokenAmount"]["decimals"]}`);
-    console.log(`amount: ${accountInfo.value.data["parsed"]["info"]["tokenAmount"]["amount"]}`);
-    console.log(`delegate: ${accountInfo.value.data["parsed"]["info"]["delegate"]}`);
-    if (accountInfo.value.data["parsed"]["info"]["delegate"] === undefined) {
-      console.log(`delegate amount: 0}`);
-    } else {
-      console.log(`delegate amount: ${accountInfo.value.data["parsed"]["info"]["delegatedAmount"]["amount"]}`);
-    }
-    console.log(`closeAuthority: ${accountInfo.value.data["parsed"]["info"]["closeAuthority"]}`);
+    address: PublicKey {
+      _bn: <BN: 16aef79dfadb39ffedb3b6f77688b8c162b18bb9cba2ffefe152303629ae3030>
+    },
+    mint: PublicKey {
+      _bn: <BN: 7351e5e067cc7cfefef42e78915d3c513edbb8adeeab4d9092e814fe68c39fec>
+    },
+    owner: PublicKey {
+      _bn: <BN: df30e6ca0981c1a677eed6f7cb46b2aa442ca9b7a10a10e494badea4b9b6944f>
+    },
+    amount: 0n,
+    delegate: null,
+    delegatedAmount: 0n,
+    isInitialized: true,
+    isFrozen: false,
+    isNative: false,
+    rentExemptReserve: null,
+    closeAuthority: null
   }
+  */
 
-  console.log("======");
-
-  // 2. use getAccountInfo then deserialize data
-  {
-    let accountInfo = await connection.getAccountInfo(tokenAccount);
-    let tokenAccountInfo = AccountLayout.decode(accountInfo.data);
-    // console.log(`raw data: ${tokenAccountInfo}`);
-    console.log(`isNative: ${tokenAccountInfo.isNativeOption === 1}`);
-    console.log(`mint: ${new PublicKey(tokenAccountInfo.mint)}`);
-    console.log(`owner: ${new PublicKey(tokenAccountInfo.owner)}`);
-    // console.log(`decimals: `); actually decimals is stored in `mint` not in token account
-    console.log(`amount: ${u64.fromBuffer(tokenAccountInfo.amount)}`);
-    if (tokenAccountInfo.delegateOption === 1) {
-      console.log(`delegate: ${new PublicKey(tokenAccountInfo.delegate)}`);
-      console.log(`delegate amount: ${u64.fromBuffer(tokenAccountInfo.delegatedAmount)}`);
-    } else {
-      console.log(`delegate: undefined`);
-      console.log(`delegate amount: ${u64.fromBuffer(tokenAccountInfo.delegatedAmount)}`);
-    }
-    if (tokenAccountInfo.closeAuthorityOption === 1) {
-      console.log(`closeAuthority: ${new PublicKey(tokenAccountInfo.closeAuthority)}`);
-    } else {
-      console.log(`closeAuthority: undefined`);
-    }
-  }
 })();
