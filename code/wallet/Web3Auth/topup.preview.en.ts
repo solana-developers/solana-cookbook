@@ -1,4 +1,4 @@
-const paymentStatus = await torus.initateTopup("rampnetwork");
+const paymentStatus = await torus.initateTopup("moonpay");
 
 // topup with custom address
-const paymentStatus = torus.initateTopup("rampnetwork", { selectedAddress : "< Recipient's Solana Public Key(base58) >"});
+const paymentStatus = torus.initateTopup("moonpay", { selectedAddress : "< Recipient's Solana Public Key(base58) >"});
