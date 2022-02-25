@@ -243,9 +243,29 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 ## How to get all NFTs from a wallet?
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
- 
+When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs. Remember that NFTs can be identified by the token supply, which should be 1.
+You can get all the token accounts first using the [`getParsedTokenAccountsByOwner`]('https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedTokenAccountsByOwner') method in the Connection object from the web3.js library.
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/get-all-nfts/get-all-tokenaccounts.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/get-all-nfts/get-all-tokenaccounts.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+Once you get all the token accounts, you can identify which ones are NFTs by checking the token amount. That value must be equal to 1.
+
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
 
@@ -258,6 +278,26 @@ This can all be done using [`findDataByOwner`](https://github.com/metaplex-found
   <template v-slot:preview>
 
 @[code](@/code/nfts/get-all-nfts/get-all-nfts.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+Finally, you can fetch the metadata associated to each NFT account using the `MetadataProgram` bindings from the [`Metaplex`](https://www.npmjs.com/package/@metaplex/js) javascript SDK. 
+ 
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/get-all-nfts/get-metadata.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/get-all-nfts/get-metadata.preview.en.ts)
 
   </template>
 
