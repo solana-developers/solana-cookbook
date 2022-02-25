@@ -241,4 +241,6 @@ To logout user, it simply requires you to call the `logout` function on torus wa
 
 * [solana-embed](https://github.com/torusresearch/solana-embed)
 * [Api Reference](https://docs.web3auth.io/solana-wallet/api-reference/class)
-* [Sample Implementation](https://demo-solana.tor.us/) 
+* [Hosted Demo](https://demo-solana.tor.us/)
+* [Sample React Integration](https://github.com/torusresearch/solana-embed-react-demo)
+* [Solana Wallet](https://solana.tor.us/)
