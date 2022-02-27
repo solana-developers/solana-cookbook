@@ -1,12 +1,12 @@
 ---
-title: Basic Transactions
+title: Sending Transactions
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Basic Transactions
+      content: Solana Cookbook | Sending Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Basic Transactions
+      content: Solana Cookbook | Sending Transactions
   - - meta
     - name: description
       content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
@@ -34,12 +34,11 @@ head:
   - - meta
     - name: googlebot
       content: index,follow
-footer: MIT Licensed
 ---
 
-# Basic Transactions
+# Sending Transactions
 
-## Sending SOL
+## How to send SOL
 
 To send SOL, you will need to interact with the [SystemProgram][1].
 
@@ -116,7 +115,7 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## Sending SPL Tokens
+## How to send SPL-Tokens
 
 Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
 with the following example.
@@ -168,7 +167,7 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## Calculating Transaction Cost
+## How to calculate transaction cost
 
 The number of signatures a transaction requires are used to calculate
 the transaction cost. As long as you are not create an account, this
@@ -193,7 +192,7 @@ and account, check out [calculating rent exemption](accounts.md#calculating-rent
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Adding a Memo
+## How to add a memo to a transaction
 
 Any transaction can add a message making use of the [memo program][2].
 Currently the `programID` from the **Memo Program** has to be added
@@ -244,24 +243,23 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## Setting Transaction Wide Compute Units
+## How to increase compute budget for a transaction
 
-Prior to 1.9.2 each instruction in a transaction received a 200_000 Compute Unit Budget.
+Compute budget for a single transaction can be increased by adding an instruction
+call to the Compute Budget Program. By default, the compute budget is set to 200k
+compute units, and can be increased up to 1.4M compute units.
 
-Starting with 1.9.2 the model changed where, by default, a transaction wide Compute Unit budget is 200_000.
-And this means that each instruction will now **_draws down_** from the transaction budget which may starve latter instructions and
-fail the whole transaction.
-
-To increase the Compute Unit budget for the transaction, create an instruction that sets the Compute Budget for the transaction as the first instruction. Not lines 3 and 8 in the Log Output tab:
+**Note**: To increase the compute budget for a transaction, you must make the 
+first instruction of the transaction the instruction that sets the budget.
 
 <CodeGroup>
-  <CodeGroupItem title="Solana Program">
+  <CodeGroupItem title="Program">
 
   @[code](@/code/basic-transactions/compute-budget/solana_program.rs)
 
   </CodeGroupItem>
 
-  <CodeGroupItem title="Rust Client">
+  <CodeGroupItem title="Rust">
 
   @[code](@/code/basic-transactions/compute-budget/rust_client.rs)
 

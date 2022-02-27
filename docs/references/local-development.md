@@ -334,7 +334,7 @@ Oftentimes, local tests rely on programs and accounts available only on mainnet.
 * Download Programs and Accounts
 * Load Programs and Accounts to a local validator
 
-### How to load accounts from mainnet?
+### How to load accounts from mainnet
 
 It is possible to download the SRM token mint account to file:
 
@@ -375,7 +375,7 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 </SolanaCodeGroup>
 
-### How to load programs from mainnet?
+### How to load programs from mainnet
 
 Similarly, it is possible to download the Serum Dex v3 program:
 
