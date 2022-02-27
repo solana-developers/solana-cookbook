@@ -1,18 +1,18 @@
 ---
-title: Serialization
+title: Serializing Data
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Serialization
+      content: Solana Cookbook | Serializing Data
   - - meta
     - name: og:title
-      content: Solana Cookbook | Serialization
+      content: Solana Cookbook | Serializing Data
   - - meta
     - name: description
-      content: Serialization is translating data so that it can be stored or transmitted and/or reconstructed. Learn about Serialization and more guides at The Solana cookbook.
+      content: Learn how to serialize and deserialize data on Solana
   - - meta
     - name: og:description
-      content: Serialization is translating data so that it can be stored, transmitted and/or reconstructed. Learn about Serialization and more guides at The Solana cookbook.
+      content: Learn how to serialize and deserialize data on Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,19 +37,19 @@ head:
 footer: MIT Licensed
 ---
 
-# Serialization
+# Serializing Data
 
 When we talk about serialization we mean both serializing data as well as deserialization of data.
 
 Serialization comes into play at a few points along Solana program and program accounts lifecycle:
 
-1. Serializing instruction data (Client)
-2. Deserializing instruction data (Program)
-3. Account Data Serialization (Program)
-4. Client Account Data Deserialization (Client)
+1. Serializing instruction data on to client
+2. Deserializing instruction data on the program
+3. Serializing Account data on the program
+4. Deserializing Account Data on the client
 
 It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources) with examples in Rust and Typescript.
+included snippets are demonstrating serialization using [Borsh](#resources).
 
 The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
 
@@ -84,7 +84,7 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## Serializing Instruction Data
+## How to serialize instruction data on the client
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
@@ -122,7 +122,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## Deserialization of instruction data
+## How to deserialize instruction data on the program
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -133,7 +133,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## Account Data Serialization
+## How to serialize account data on the program
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
@@ -217,7 +217,7 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## Client Account Data Deserialization
+## How to deserialize account data on the client
 
 Clients can call Solana to fetch program owned account, in which the serialized
 data block is a part of the return. Deserializing requires knowing the data block
