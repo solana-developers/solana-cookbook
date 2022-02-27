@@ -1,18 +1,18 @@
 ---
-title: Non Fungible Tokens (NFTs)
+title: NFTs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Non Fungible Tokens (NFTs)
+      content: Solana Cookbook | NFTs
   - - meta
     - name: og:title
-      content: Solana Cookbook | Non Fungible Tokens (NFTs)
+      content: Solana Cookbook | NFTs
   - - meta
     - name: description
-      content: An NFT (Non Fungible Token) on Solana is an SPL-Token where only a single token has been minted. Learn more about Creating, Minting, Getting Metadata, Owner of NFTs and more references at The Solana cookbook.
+      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
   - - meta
     - name: og:description
-      content: An NFT (Non Fungible Token) on Solana is an SPL-Token where only a single token has been minted. Learn more about Creating, Minting, Getting Metadata, Owner of NFTs and more references at The Solana cookbook.
+      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,37 +39,9 @@ footer: MIT Licensed
 
 # Non Fungible Tokens (NFTs)
 
-## Create an NFT
+## How to create an NFT
 
-An NFT on Solana is simply an SPL-Token where only a single token has been minted.
-
-To create a NFT, you will need to interact with both the [SystemProgram][1] and the [TokenProgram][2].
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/nfts/create-nft-token/create-nft-token.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/nfts/create-nft-token/create-nft-token.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-
-</SolanaCodeGroup>
-
-[1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
-[2]: https://spl.solana.com/token
-
-## Mint an NFT
-
-To mint an NFT you have to:
+To create an NFT you have to:
 
 1. Upload the image to IPFS like Arweave
 2. Upload the json metadata to IPFS like Arweave
@@ -137,7 +109,7 @@ If you run into creator issues, make sure your metadata lists you
 as the creator.
 :::
 
-## Get NFT Metadata
+## How to get NFT Metadata
 
 Metaplex NFTs have metadata that is stored on Arweave. In order
 to get the Arweave metadata, you must get the Metaplex PDA and
@@ -162,7 +134,7 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## Get the owner of an NFT
+## How to get the owner of an NFT
 
 If you have the mint key of an NFT, you can find its current owner
 by sneak-peeking at the largest token account for that mint key.
@@ -193,7 +165,7 @@ Once the largest token account is identified, we can retrieve its owner.
 
 </SolanaCodeGroup>
 
-## Get NFT Mint Addresses
+## How to get NFT Mint Addresses
 
 If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
 

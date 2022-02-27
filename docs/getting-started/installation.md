@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Installation
   - - meta
     - name: description
-      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn about Installation and Getting Started on solana at The Solana cookbook.
+      content: Learn how to get started on Solana with tutorials, guides, and examples.
   - - meta
     - name: og:description
-      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn more about Installation and Getting Started on solana at The Solana cookbook.
+      content: Learn how to get started on Solana with tutorials, guides, and examples.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

@@ -1,5 +1,5 @@
 ---
-title: Account
+title: Accounts
 head:
   - - meta
     - name: title
@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Account References
   - - meta
     - name: description
-      content: Accounts can be used as System Account and/or Program Derived Addresses. Learn about Accounts and more references for building on Solana at The Solana cookbook.
+      content: Learn more about accounts on Solana and how to use them in your programs.
   - - meta
     - name: og:description
-      content: Accounts can be used as System Account and/or Program Derived Addresses. Learn about Accounts and more references for building on Solana at The Solana cookbook.
+      content: Learn more about accounts on Solana and how to use them in your programs.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Accounts
 
-## Create a System Account
+## How to create a system account
 
 Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
 write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
@@ -78,7 +78,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Calculating Rent Exemption
+## How to calculate account cost
 
 Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account can be made entirely exempt
 from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
@@ -104,9 +104,9 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Account With Seed
+## How to create accounts with seeds
 
-You can use `create account with seed` to manage your accounts instead of creating a bunch of different keypair.
+You can use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
 
 ### Generate
 
@@ -203,39 +203,20 @@ You can use `create account with seed` to manage your accounts instead of creati
 Only an account owned by system program can transfer via system program.
 :::
 
-## Program Derived Address
+## How to create PDAs
 
 [Program derived address(PDA)][3] is like a normal address with the following differences:
 
 1. Falling off ed25519 curve
 2. Using program to sign instead of private key
 
+**Note**: PDA accounts can only be created on the program. The address can be created client side.
+
 ::: tip
 Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
 :::
 
 ### Generate a PDA
-
-1. Create Program Address
-
-This may fail because the result (pda) is on curve. You can use
-`findProgramAddress` to reserve your meaningful seed.
-
-<CodeGroup>
-  <CodeGroupItem title="TS" active>
-
-@[code](@/code/accounts/program-derived-address/derived-a-pda/create-program-address.en.ts)
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Rust">
-
-@[code](@/code/accounts/program-derived-address/derived-a-pda/create-program-address.en.rs)
-
-  </CodeGroupItem>
-</CodeGroup>
-
-2. Find Program Address
 
 `findProgramAddress` will add a extra byte at the end of your seed.
 It starts from 255 to 0 and returns the first off-curve public key.
@@ -255,55 +236,6 @@ and seed.
 
   </CodeGroupItem>
 </CodeGroup>
-
-### Sign with a PDA
-
-PDAs can only be signed for within the program. Below is a program
-example of signing with a PDA and calling the program with the client.
-
-#### Program
-
-The below shows a single instruction that transfers SOL from a PDA that
-was derived by the seed `escrow` to an account passed. `invoke_signed` is
-used to sign with the PDA.
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="rust" active>
-
-  <template v-slot:default>
-
-@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.preview.rs)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
-
-#### Client
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
 
 ### Create a PDA
 
@@ -352,7 +284,56 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Program Accounts
+## How to sign with a PDA
+
+PDAs can only be signed for within the program. Below is a program
+example of signing with a PDA and calling the program with the client.
+
+### Program
+
+The below shows a single instruction that transfers SOL from a PDA that
+was derived by the seed `escrow` to an account passed. `invoke_signed` is
+used to sign with the PDA.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/program/src/lib.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+### Client
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/program-derived-address/sign-a-pda/client/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## How to get program accounts
 
 Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
 
@@ -375,7 +356,7 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## Close Accounts
+## How to close accounts
 
 You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
 
@@ -420,7 +401,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get SOL Balance
+## How to get account balance
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -472,7 +453,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. The more infotmation can refer to [Token References](token.md)
+If you want to get a token balance, you will need to know the address of token account. For more information, see [Token References](token.md)
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram

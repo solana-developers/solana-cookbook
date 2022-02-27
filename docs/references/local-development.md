@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Local Development
 
-## Setting Up Local Validator
+## Starting a Local Validator
 
 Testing your program code locally can be a lot more reliable than
 testing on devnet, and can help you test before trying it out on devnet.
@@ -61,7 +61,7 @@ Benefits of using local-test-validator include:
 - Configurable epoch length (`--slots-per-epoch ...`)
 - Jump to an arbitrary slot (`--warp-slot ...`)
 
-## Setting Up Connections
+## Connecting to Environments
 
 When you are working on Solana development, you will need to connect
 to a specific RPC API endpoint. Solana has 3 public development
@@ -202,7 +202,7 @@ running remotely with the following:
 
 </SolanaCodeGroup>
 
-## Subscribing to WebSocket
+## Subscribing to Events
 
 Websockets provide a pub/sub interface where you can listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can instead receive those updates only when they happen.
 
@@ -260,7 +260,7 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Airdropping SOL
+## Getting Test SOL
 
 When you're working locally, you need some SOL in order to send
 transactions. In non-mainnet environments you can receive SOL by
@@ -328,13 +328,13 @@ airdropping it to your address
 
 </SolanaCodeGroup>
 
-## Using mainnet accounts and programs
+## Using Mainnet Accounts and Programs
 
 Oftentimes, local tests rely on programs and accounts available only on mainnet. The Solana CLI allows to both:
-* download any of these to file, and
-* load them into your local validator at genesis, i.e. any time solana-test-validator is started fresh (e.g. the first time you run it in your environment, or when you run it with the `--reset` option).
+* Download Programs and Accounts
+* Load Programs and Accounts to a local validator
 
-### Accounts
+### How to load accounts from mainnet
 
 It is possible to download the SRM token mint account to file:
 
@@ -375,7 +375,7 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 </SolanaCodeGroup>
 
-### Programs
+### How to load programs from mainnet
 
 Similarly, it is possible to download the Serum Dex v3 program:
 
@@ -409,28 +409,6 @@ Loading it to your localnet is then done by passing the program's file and desti
   <template v-slot:default>
 
 @[code](@/code/local-development/using-mainnet-accounts/load-programs.en.sh)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-
-</SolanaCodeGroup>
-
-### Putting it all together
-
-You can then download as many accounts/programs as required for your testing, and load them all when starting your validator:
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="CLI">
-  <template v-slot:preview>
-
-@[code](@/code/local-development/using-mainnet-accounts/load-all.preview.en.sh)
-
-  </template>
-
-  <template v-slot:default>
-
-@[code](@/code/local-development/using-mainnet-accounts/load-all.en.sh)
 
   </template>
 

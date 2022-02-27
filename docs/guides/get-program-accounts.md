@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Get Program Accounts
   - - meta
     - name: description
-      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
+      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
   - - meta
     - name: og:description
-      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
+      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -34,7 +34,6 @@ head:
   - - meta
     - name: googlebot
       content: index,follow
-footer: MIT Licensed
 ---
 
 # Get Program Accounts
@@ -92,7 +91,7 @@ The most common parameter to use with `getProgramAccounts` is the `filters` arra
 #### `dataSize`
 In the case of the Token Program, we can see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We can visualize how this data is laid out using the below illustration.
 
-![Account Size](./account-size.png)
+![Account Size](./get-program-accounts/account-size.png)
 
 If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We can achieve this with the `memcmp` filter.
 
@@ -106,7 +105,7 @@ It's important to note that `memcmp` will only return results that are an exact 
 
 In keeping with our Token Program example, we can amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we can see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
 
-![Account Size](./memcmp.png)
+![Account Size](./get-program-accounts/memcmp.png)
 
 We can invoke this query via the following example:
 
