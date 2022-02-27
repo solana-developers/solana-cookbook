@@ -61,7 +61,7 @@ we pass it to the program, and thus handle the account correctly.
 
 Take the following account state and program:
 
-<img src="./pav1.png" alt="Program Account v1">
+<img src="./data-migration/pav1.png" alt="Program Account v1">
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account" active>
@@ -181,7 +181,7 @@ We then update our instructions, to add a new one for updating `somestring`, and
 
 After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
 
-<img src="./pav2.png" alt="Program Account v2">
+<img src="./data-migration/pav2.png" alt="Program Account v2">
 
 ## Resources
 

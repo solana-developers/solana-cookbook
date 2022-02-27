@@ -90,7 +90,7 @@ solana feature status -ul   // Displays for local, requires running solana-test-
 Alternatively, you could use a tool like [scfsd](#resources) to observe all feature state across clusters
 which would display, partial screen shown here, and does not require `solana-test-validator` to be running:
 
-<img src="./scfsd.png" alt="Feature Status Heatmap">
+<img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
 ## Parity Testing
 As noted above, the `solana-test-validator` activates **all** features automagically.

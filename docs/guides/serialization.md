@@ -86,7 +86,7 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 ## Serializing Instruction Data
 
-<img src="./ser1.png" alt="Serialize Instruction Data">
+<img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
 If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
 inbound instruction data.
@@ -124,7 +124,7 @@ In the following example we assume the program owned account has been initialize
 
 ## Deserialization of instruction data
 
-<img src="./ser2.png" alt="Deserialize Instruction Data">
+<img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
 
@@ -135,7 +135,7 @@ In the following example we assume the program owned account has been initialize
 
 ## Account Data Serialization
 
-<img src="./ser3.png" alt="Account Data Serialization">
+<img src="./serialization/ser3.png" alt="Account Data Serialization">
 
 The program account data block (from the sample repo) is layed out as
 
