@@ -50,7 +50,7 @@ be used, which you can find below based on your language.
   <CodeGroupItem title="TS" active>
 
 ```
-"@solana/spl-token": "^0.1.8"
+"@solana/spl-token": "^0.2.0"
 ```
 
   </CodeGroupItem>
@@ -162,7 +162,7 @@ of managing token accounts.
 ## Get Token Account
 
 Every token account has information on the token such as the owner,
-mint, amount, and decimals.
+mint, amount(balance), and decimals.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
