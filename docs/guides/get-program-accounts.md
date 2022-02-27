@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Get Program Accounts
   - - meta
     - name: description
-      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
+      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
   - - meta
     - name: og:description
-      content: Get Program Accounts is a RPC method that returns all accounts owned by a program. Learn about Getting Program Accounts and more guides at The Solana cookbook.
+      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
