@@ -1,4 +1,6 @@
 <template>
+<center class="code-info-title">Press 	&lt;&#47;&gt; button to view full source</center>
+
   <div
     class="code-group-item"
     :class="{ 'code-group-item__active': active }"
