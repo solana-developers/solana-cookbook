@@ -13,6 +13,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   themeConfig: {
     logo: '/solana_cookbook_lightmode.svg',
     logoDark: '/solana_cookbook_darkmode.svg',
+    contributors: false,
     locales: {
       '/': {
         navbar: [
