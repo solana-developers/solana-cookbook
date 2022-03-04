@@ -1,3 +1,41 @@
+---
+title: Integrations
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Composability and Integrations
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Composability and Integrations
+  - - meta
+    - name: description
+      content: Composability is innovation. Building on top of protocols on Solana unlocks new capabilities and possibilities.
+  - - meta
+    - name: og:description
+      content: Composability is innovation. Building on top of protocols on Solana unlocks new capabilities and possibilities.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+---
+
 # Getting Started with Integrations
 
 The Solana Cookbook integrations provides a set of examples and references for anyone

@@ -77,6 +77,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: 'Integrations',
               children: [
                 '/integrations',
+                '/integrations/serum.md',
               ],
             }
           ]
