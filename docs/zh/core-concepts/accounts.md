@@ -109,7 +109,7 @@ footer: MIT Licensed
 
 当一个账户没有足够的余额支付租金时，这个账户会被释放，数据会被清除。
 
-## 其他资源
+## 其他资料
 
 - [Solana账户模型](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
 - [官方文档](https://docs.solana.com/developing/programming-model/accounts)

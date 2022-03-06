@@ -105,7 +105,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: '核心概念',
             children: [
               '/zh/core-concepts/accounts.md',
-              // '/zh/core-concepts/programs.md',
+              '/zh/core-concepts/programs.md',
               // '/zh/core-concepts/transactions.md',
               // '/zh/core-concepts/pdas.md',
             ]
