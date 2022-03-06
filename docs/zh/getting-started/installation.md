@@ -39,13 +39,14 @@ footer: MIT Licensed
 
 ## 安装Web3.js
 
-开始用JavaScript或者TypeScript在Solana编程时，这里的几个库是你可以用到的。<br/>
+用JavaScript或者TypeScript进行Solana编程时，你会用到下面的几个库。<br/>
 
 ### Web3.js
 
-[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) 这个库提供了很多基础功能，用于与Solana交互，发送交易，从区块链上读取数据。
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/)
+这个库提供了很多用于与Solana交互，发送交易，从区块链上读取数据等操作的基础功能。
 
-可以用以下代码安装：
+可以用以下命令安装：
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +82,10 @@ npm install --save @solana/web3.js
 
 ### SPL代币（SPL-Token）
 
-`@solana/spl-token` 这个库提供了很多用于与SPL代币（SPL tokens）交互所需的JavaScript/TypeScript的绑定函数。
+`@solana/spl-token` 这个库提供了很多用于与SPL代币（SPL tokens）交互所需的JavaScript/TypeScript绑定函数。
     可以用这个库来铸造新的SPL代币，进行转账，以及其他操作。
 
-可以用以下代码安装：
+可以用以下命令安装：
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -120,11 +121,11 @@ npm install --save @solana/spl-token
 
 ### 钱包适配器（Wallet-Adapter）
 
-有一组用于搭建Solana公链钱包连接的库，称为钱包适配器。
+这是一组用于连接Solana公链钱包的库，称为钱包适配器。
     目前这些软件包支持Angular，Vue.js，以及React。钱包适配器可以帮助你的dApp很快的与诸如[Phantom](https://phantom.app/)，
     [Solflare](https://solflare.com/)以及其他一些钱包进行整合。
 
-可以用以下代码安装：
+可以用以下命令安装：
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -165,7 +166,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   </CodeGroupItem>
 </CodeGroup>
 
-Windows用户请参阅[Rust installation site](https://www.rust-lang.org/tools/install).
+Windows用户请参阅[Rust安装指引](https://www.rust-lang.org/tools/install).
 
 ## 安装命令行工具
 
@@ -173,7 +174,7 @@ Windows用户请参阅[Rust installation site](https://www.rust-lang.org/tools/i
 
 打开Terminal。
 
-将 `LATEST_RELEASE` 替换为你想要的版本，用以下脚本在你的系统上安装 [latest Solana release](https://github.com/solana-labs/solana/releases)：
+将 `LATEST_RELEASE` 替换为你想要的版本，用以下脚本在你的系统上安装 [最新版本Solana](https://github.com/solana-labs/solana/releases)：
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
