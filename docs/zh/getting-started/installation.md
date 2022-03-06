@@ -3,10 +3,10 @@ title: 安装
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | 安装
+      content: Solana秘籍 | 安装
   - - meta
     - name: og:title
-      content: Solana Cookbook | 安装
+      content: Solana秘籍 | 安装
   - - meta
     - name: description
       content: 利用教程、指南和例子，学习如何开始使用Solana。
