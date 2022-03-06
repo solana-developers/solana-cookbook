@@ -120,9 +120,6 @@ npm install --save @solana/spl-token
 
 ### 钱包适配器（Wallet-Adapter）
 
-There is a collection of libraries that can help bootstrap wallet connections within Solana called wallet-adapter.
-    Currently the package supports use within Angular, Vue.js, and React. Wallet-adapter can quickstart your dApp
-    integration with wallets like [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), and more.
 有一组用于搭建Solana公链钱包连接的库，称为钱包适配器。
     目前这些软件包支持Angular，Vue.js，以及React。钱包适配器可以帮助你的dApp很快的与诸如[Phantom](https://phantom.app/)，
     [Solflare](https://solflare.com/)以及其他一些钱包进行整合。
@@ -176,7 +173,6 @@ Windows用户请参阅[Rust installation site](https://www.rust-lang.org/tools/i
 
 打开Terminal。
 
-Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your machine by running:
 将 `LATEST_RELEASE` 替换为你想要的版本，用以下脚本在你的系统上安装 [latest Solana release](https://github.com/solana-labs/solana/releases)：
 
 ```bash

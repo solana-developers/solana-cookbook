@@ -81,8 +81,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: '开始使用',
             children: [
-              // '/zh/',
-              // '/zh/getting-started/installation.md'
+              '/zh/',
+              '/zh/getting-started/installation.md'
             ],
           },
           {
