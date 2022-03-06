@@ -1,40 +1,40 @@
 ---
 title: Solana秘籍
 head:
-- - meta
-- name: title
-  content: Solana秘籍 | Solana参考书
-- - meta
-- name: og:title
-  content: Solana秘籍 | Solana参考书
-- - meta
-- name: description
-  content: Solana秘籍由一系列在Solana公链编程中实用的例子、参考所组成
-- - meta
-- name: og:description
-  content: Solana秘籍由一系列在Solana公链编程中实用的例子、参考所组成
-- - meta
-- name: og:image
-  content: https://solanacookbook.com/cookbook-sharing-card.png
-- - meta
-- name: og:image:alt
-  content: Solana splash card
-- - meta
-- name: twitter:card
-  content: summary
-- - meta
-- name: twitter:site
-  content: "@solanacookbook"
-- - meta
-- name: twitter:image
-  content: "https://solanacookbook.com/cookbook-sharing-card.png"
-- - meta
-- name: robots
-  content: index,follow,noodp
-- - meta
-- name: googlebot
-  content: index,follow
-  footer: MIT Licensed
+  - - meta
+    - name: title
+      content: Solana秘籍 | Solana参考书
+  - - meta
+    - name: og:title
+      content: Solana秘籍 | Solana参考书
+  - - meta
+    - name: description
+      content: Solana秘籍由一系列在Solana公链编程中实用的例子、参考所组成
+  - - meta
+    - name: og:description
+      content: Solana秘籍由一系列在Solana公链编程中实用的例子、参考所组成
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Solana秘籍
@@ -48,7 +48,7 @@ head:
 Solana秘籍的设计力图让新的Solana开发者也能容易的贡献代码。
 即使你还不太了解如何做项目，贡献代码也是一个很好的学习过程！
 
-[这里](https://github.com/solana-dev-adv/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-dev-adv/solana-cookbook#contributing)
+[这里](https://github.com/solana-dev-adv/solana-cookbook/issues)
 可以查看所有待解决的issue。
 
 如果你觉得还有其他哪些建议，可以新建一个issue.
