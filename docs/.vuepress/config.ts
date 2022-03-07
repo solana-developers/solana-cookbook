@@ -16,6 +16,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     contributors: false,
     locales: {
       '/': {
+        selectLanguageName: 'English',
         navbar: [
           {
             text: 'Contribute',
@@ -84,6 +85,73 @@ export default defineUserConfig<DefaultThemeOptions>({
           ]
         },
       },
+      '/zh/': {
+        selectLanguageName: '中文',
+        navbar: [
+          {
+            text: '贡献代码',
+            link: 'https://github.com/solana-dev-adv/solana-cookbook',
+          },
+        ],
+        sidebar: [
+          {
+            text: '开始使用',
+            children: [
+              '/zh/',
+              '/zh/getting-started/installation.md'
+            ],
+          },
+          {
+            text: '核心概念',
+            children: [
+              '/zh/core-concepts/accounts.md',
+              '/zh/core-concepts/programs.md',
+              // '/zh/core-concepts/transactions.md',
+              // '/zh/core-concepts/pdas.md',
+            ]
+          },
+          {
+            text: '指南',
+            children: [
+              // '/zh/guides/get-program-accounts.md',
+              // '/zh/guides/serialization.md',
+              // '/zh/guides/data-migration.md',
+              // '/zh/guides/account-maps.md',
+              // '/zh/guides/retrying-transactions.md',
+              // '/zh/guides/debugging-solana-programs.md',
+              // '/zh/guides/feature-parity-testing.md',
+            ],
+          },
+          {
+            text: '参考',
+            children: [
+              // '/zh/references/local-development.md',
+              // '/zh/references/keypairs-and-wallets.md',
+              // '/zh/references/basic-transactions.md',
+              // '/zh/references/accounts.md',
+              // '/zh/references/programs.md',
+              // '/zh/references/token.md',
+              // '/zh/references/anchor.md',
+              // '/zh/references/staking.md',
+              // '/zh/references/nfts.md',
+              // '/zh/references/offline-transactions.md',
+              // '/zh/references/name-service.md',
+            ],
+          },
+        ],
+      }
+    },
+  },
+  locales: {
+    // The key is the path for the locale to be nested under.
+    // As a special case, the default locale can use '/' as its path.
+    "/": {
+      lang: "en-US",
+      title: "Solana Cookbook",
+    },
+    "/zh/": {
+      lang: "zh-CN",
+      title: "Solana秘籍",
     },
   },
   markdown: {
@@ -106,6 +174,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           '/': {
             placeholder: 'Search',
           },
+          '/zh/': {
+            placeholder: '搜索',
+          }
         },
         maxSuggestions: 10,
       },
