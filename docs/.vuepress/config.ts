@@ -106,8 +106,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: [
               '/zh/core-concepts/accounts.md',
               '/zh/core-concepts/programs.md',
-              // '/zh/core-concepts/transactions.md',
-              // '/zh/core-concepts/pdas.md',
+              '/zh/core-concepts/transactions.md',
+              '/zh/core-concepts/pdas.md',
             ]
           },
           {
