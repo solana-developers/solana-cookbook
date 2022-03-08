@@ -16,7 +16,6 @@ export default defineUserConfig<DefaultThemeOptions>({
     contributors: false,
     locales: {
       '/': {
-        selectLanguageName: 'English',
         navbar: [
           {
             text: 'Contribute',
