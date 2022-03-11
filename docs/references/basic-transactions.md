@@ -252,19 +252,41 @@ compute units, and can be increased up to 1.4M compute units.
 **Note**: To increase the compute budget for a transaction, you must make the 
 first instruction of the transaction the instruction that sets the budget.
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/compute-budget/computeBudget.en.tsx)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/compute-budget/computeBudget.preview.en.tsx))
+
+  </template>
+
+  </SolanaCodeGroupItem>
+  <SolanaCodeGroupItem title="Rust">
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/compute-budget/computeBudget.en.rs))
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/compute-budget/computeBudget.preview.en.rs))
+
+  </template>
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+Program Logs Example:
+
 <CodeGroup>
-  <CodeGroupItem title="Program">
-
-  @[code](@/code/basic-transactions/compute-budget/solana_program.rs)
-
-  </CodeGroupItem>
-
-  <CodeGroupItem title="Rust">
-
-  @[code](@/code/basic-transactions/compute-budget/rust_client.rs)
-
-  </CodeGroupItem>
-
   <CodeGroupItem title="Log Output">
 
   @[code](@/code/basic-transactions/compute-budget/log_output.txt)
