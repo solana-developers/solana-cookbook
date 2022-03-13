@@ -50,7 +50,9 @@ async def test_initialized_base_account(
 ) -> None:
     base_account = await program.account["BaseAccount"].fetch(initialized_base_account.public_key)
     assert base_account.authority == provider.wallet.public_key
-    assert base_account.count == 0
+    count = base_account.count
+    assert count == 0
+    print(f"Count is {count}")
 
 
 @mark.asyncio
@@ -69,4 +71,6 @@ async def test_increment(
     )
     base_account = await program.account["BaseAccount"].fetch(initialized_base_account.public_key)
     assert base_account.authority == provider.wallet.public_key
-    assert base_account.count == 1
+    count = base_account.count
+    assert count == 1
+    print(f"Count is {count}")
