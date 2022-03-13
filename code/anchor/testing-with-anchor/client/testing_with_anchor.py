@@ -7,9 +7,7 @@ from anchorpy import Program, Provider, Context
 from anchorpy.pytest_plugin import workspace_fixture
 from anchorpy.workspace import WorkspaceType
 
-
 workspace = workspace_fixture(".")
-
 
 @fixture(scope="module")
 def program(workspace: WorkspaceType) -> Program:
