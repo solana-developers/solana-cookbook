@@ -225,6 +225,16 @@ Testing initialization & incrementing logic of the above program: <br>
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/anchor/testing-with-anchor/client/testing_with_anchor.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 Running the above using `anchor test` you can expect a similar output: <br>
