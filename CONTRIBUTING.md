@@ -109,7 +109,7 @@ further.
 
 ### Adding Content
 
-There's a list of needed content tracked on the [project board](https://github.com/solana-dev-adv/solana-cookbook/projects/1) of this repository.
+There's a list of needed content tracked on the [project board](https://github.com/solana-developers/solana-cookbook/projects/1) of this repository.
 The board is kept up to date with all work being worked on.
 
 To start work, do the following:

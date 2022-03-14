@@ -19,7 +19,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         navbar: [
           {
             text: 'Contribute',
-            link: 'https://github.com/solana-dev-adv/solana-cookbook',
+            link: 'https://github.com/solana-developers/solana-cookbook',
           },
           {
             text: 'Integrations',
@@ -89,7 +89,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         navbar: [
           {
             text: '贡献代码',
-            link: 'https://github.com/solana-dev-adv/solana-cookbook',
+            link: 'https://github.com/solana-developers/solana-cookbook',
           },
         ],
         sidebar: [

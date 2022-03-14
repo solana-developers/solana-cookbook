@@ -48,7 +48,7 @@ footer: MIT Licensed
 Solana秘籍的设计力图让新的Solana开发者也能容易的贡献代码。
 即使你还不太了解如何做项目，贡献代码也是一个很好的学习过程！
 
-[这里](https://github.com/solana-dev-adv/solana-cookbook/issues)
+[这里](https://github.com/solana-developers/solana-cookbook/issues)
 可以查看所有待解决的issue。
 
 如果你觉得还有其他哪些建议，可以新建一个issue.
