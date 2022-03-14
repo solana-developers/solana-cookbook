@@ -169,6 +169,27 @@ Once the largest token account is identified, we can retrieve its owner.
 
 If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
 
+## How to update metadata
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/update-metadata/update-metadata.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/update-metadata/update-metadata-preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ### Candy Machine V1
 
 <SolanaCodeGroup>
