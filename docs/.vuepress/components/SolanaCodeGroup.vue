@@ -225,6 +225,11 @@ export default defineComponent({
             ),
           )
         ),
+        h(
+          'div',
+          { class: 'code-info-title' },
+          "Press </> button to view full source"
+        ),
         items,
       ])
     }
