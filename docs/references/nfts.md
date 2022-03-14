@@ -134,8 +134,6 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to update NFT metadata
-
 ## How to transfer NFT
 
 <SolanaCodeGroup>
