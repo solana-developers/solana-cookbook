@@ -66,7 +66,7 @@ for this repository.
 
 To choose a task or make your own, do the following:
 
-1. [Add an issue](https://github.com/solana-dev-adv/solana-cookbook/issues/new) for the task and assign it to yourself or comment on the issue
+1. [Add an issue](https://github.com/solana-developers/solana-cookbook/issues/new) for the task and assign it to yourself or comment on the issue
 2. Make a draft PR referencing the issue.
 
 The general flow for making a contribution:
@@ -80,7 +80,7 @@ The general flow for making a contribution:
 **NOTE**: Be sure to merge the latest from "upstream" before making a 
 pull request!
 
-You can find tasks on the [project board](https://github.com/solana-dev-adv/solana-cookbook/projects/1) 
+You can find tasks on the [project board](https://github.com/solana-developers/solana-cookbook/projects/1) 
 or create an issue and assign it to yourself.
 
 ### Contribution Rewards

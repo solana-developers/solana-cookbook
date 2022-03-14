@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Recipes for everything Solana",
   "main": "index.js",
-  "repository": "https://github.com/solana-dev-adv/solana-cookbook",
+  "repository": "https://github.com/solana-developers/solana-cookbook",
   "scripts": {
     "start": "vuepress dev docs",
     "build": "vuepress build docs"

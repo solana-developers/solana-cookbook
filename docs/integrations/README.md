@@ -55,4 +55,4 @@ Adapt and build on top of other programs or libraries and unlock new capabilitie
 ## Contributing
 
 If you are interested in contributing to integrations, please checkout the [contribution
-guidelines](https://github.com/solana-dev-adv/solana-cookbook/blob/master/CONTRIBUTING.md).
+guidelines](https://github.com/solana-developers/solana-cookbook/blob/master/CONTRIBUTING.md).
