@@ -134,6 +134,29 @@ decode the account data.
 
 </SolanaCodeGroup>
 
+## How to update NFT metadata
+
+## How to transfer NFT
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/transfer-nft/transfer-nft.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/transfer-nft/transfer-nft.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## How to get the owner of an NFT
 
 If you have the mint key of an NFT, you can find its current owner
