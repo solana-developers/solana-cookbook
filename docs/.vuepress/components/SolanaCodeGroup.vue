@@ -225,11 +225,11 @@ export default defineComponent({
             ),
           )
         ),
-        h(
+        h('div', [preview.value ?   h(
           'div',
           { class: 'code-info-title' },
           "Press </> button to view full source"
-        ),
+        ) :  null]),
         items,
       ])
     }
