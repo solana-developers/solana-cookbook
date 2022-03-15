@@ -14,6 +14,15 @@ export default defineUserConfig<DefaultThemeOptions>({
     logo: '/solana_cookbook_lightmode.svg',
     logoDark: '/solana_cookbook_darkmode.svg',
     contributors: false,
+    algolia: {
+      apiKey: '1831a64a81ffef4f85d5c0aa28cb801f',
+      indexName: 'solanacookbook',
+      // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
+      appId: 'QMKSKREFKN',
+      algoliaOptions: {
+        hitsPerPage: 10,
+      },
+    },
     locales: {
       '/': {
         navbar: [
@@ -184,6 +193,35 @@ export default defineUserConfig<DefaultThemeOptions>({
       '@vuepress/register-components',
       {
         componentsDir: path.resolve(__dirname, './components'),
+      },
+    ],
+    [
+      '@vuepress/docsearch',
+      {
+        apiKey: '1831a64a81ffef4f85d5c0aa28cb801f',
+        indexName: 'solanacookbook',
+        appId: 'QMKSKREFKN',
+        algoliaOptions: {
+          hitsPerPage: 10,
+        },
+        locales: {
+          '/': {
+            placeholder: 'Search',
+            translations: {
+              button: {
+                buttonText: 'Search',
+              },
+            },
+          },
+          '/zh/': {
+            placeholder: '搜索文档',
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+              },
+            },
+          },
+        },
       },
     ],
   ],
