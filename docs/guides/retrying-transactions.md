@@ -61,7 +61,7 @@ In Solana, there is no concept of a mempool. All transactions, whether they are 
 
 The vast majority of end-users will submit transactions via an RPC server. When a client submits a transaction, the receiving RPC node will in turn attempt to broadcast the transaction to both the current and next leaders. Until the transaction is processed by a leader, there is no record of the transaction outside of what the client and the relaying RPC nodes are aware of. In the case of a TPU client, rebroadcast and leader forwarding is handled entirely by the client software.
 
-![Transaction Journey](./tx-journey.png)
+![Transaction Journey](./retrying-transactions/tx-journey.png)
 
 ### How RPC Nodes Broadcast Transactions
 
@@ -76,7 +76,7 @@ When an RPC node broadcasts a transaction, it will attempt to forward the transa
 - [Proof of History Service](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/poh/src/poh_service.rs)
 - [Broadcast Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L136)
 
-![TPU Overview](./tpu-jito-labs.png)
+![TPU Overview](./retrying-transactions/tpu-jito-labs.png)
 <small style="display:block;text-align:center;">Image Courtesy of Jito Labs</small>
 
 Of these five phases, the Fetch Stage is responsible for receiving transactions. Within the Fetch Stage, validators will categorize incoming transactions according to three ports:
@@ -96,17 +96,17 @@ If the network drops a transaction, it will most likely do so before the transac
 
 There are also two lesser known reasons why a transaction may be dropped before it is processed. The first scenario involves transactions that are submitted via an RPC pool. Occasionally, part of the RPC pool can be sufficiently ahead of the rest of the pool. This can cause issues when nodes within the pool are required to work together. In this example, the transaction’s [recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) is queried from the advanced part of the pool (Backend A). When the transaction is submitted to the lagging part of the pool (Backend B), the nodes will not recognize the advanced blockhash and will drop the transaction. This can be detected upon transaction submission if developers enable [preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) on `sendTransaction`.
 
-![Dropped via RPC Pool](./dropped-via-rpc-pool.png)
+![Dropped via RPC Pool](./retrying-transactions/dropped-via-rpc-pool.png)
 
 Temporarily network forks can also result in dropped transactions. If a validator is slow to replay its blocks within the Banking Stage, it may end up creating a minority fork. When a client builds a transaction, it’s possible for the transaction to reference a `recentBlockhash` that only exists on the minority fork.  After the transaction is submitted, the cluster can then switch away from its minority fork before the transaction is processed. In this scenario, the transaction is dropped due to the blockhash not being found.
 
-![Dropped due to Minority Fork (Before Processed)](./dropped-minority-fork-pre-process.png)
+![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
 ### After a transaction is processed and before it is finalized
 
 In the event a transaction references a `recentBlockhash` from a minority fork, it’s still possible for the transaction to be processed. In this case, however, it would be processed by the leader on the minority fork. When this leader attempts to share its processed transactions with the rest of the network, it would fail to reach consensus with the majority of validators that do not recognize the minority fork. At this time, the transaction would be dropped before it could be finalized.
 
-![Dropped due to Minority Fork (After Processed)](./dropped-minority-fork-post-process.png)
+![Dropped due to Minority Fork (After Processed)](./retrying-transactions/dropped-minority-fork-post-process.png)
 
 ## Handling Dropped Transactions
 

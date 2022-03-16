@@ -53,7 +53,7 @@ new Solana developers to contribute. Even if you
 don't know how to do something, contributing to the 
 cookbook is a great way to learn!
 
-Check out all open issues [here](https://github.com/solana-dev-adv/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-dev-adv/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
+Check out all open issues [here](https://github.com/solana-developers/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-developers/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
 
 ## How to Read the Cookbook
 

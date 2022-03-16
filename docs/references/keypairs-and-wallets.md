@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Keypairs and Wallets
 
-## Generating a Keypair
+## How to generate a new Keypair
 
 Many of the different actions you can take with the various Solana
 libraries require a Keypair or Wallet. If you are connecting to a
@@ -107,13 +107,13 @@ keypair, you will need to generate one.
 
 @[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
-## Getting Keypair from a Secret
+## How to restore a Keypair from a secret
 
 If you already have your secret, you can get your Keypair from the secret
 to test out your dApp.
@@ -181,7 +181,7 @@ to test out your dApp.
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -240,8 +240,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-
-## Verify a Keypair
+## How to verify a Keypair
 
 If you are given a keypair, you can verify whether or not the secret
 matches the given public key
@@ -291,13 +290,13 @@ matches the given public key
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
-## Generate a Mnemonic phrase
+## How to generate a mnemonic phrase
 
 If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
 
@@ -346,14 +345,13 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 @[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
-
-## Convert Mnemonic to Keypair
+## How to restore a Keypair from a mnemonic phrase
 
 Many wallet extensions use mnemonics to represent their secret keys.
 You can convert the mnemonic to Keypairs for local testing.
@@ -405,7 +403,7 @@ You can convert the mnemonic to Keypairs for local testing.
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -442,21 +440,25 @@ You can convert the mnemonic to Keypairs for local testing.
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
-## Vanity PublicKeys
+## How to generate a vanity address
 
-Vanity publickeys are keys that have start with specific characters.
-For example, a person may want a publickey to start with "elv1s", or
-maybe even "cook". These can help other people remember who the key
-belongs to, making the key more easily identifiable.
+Vanity publickeys, or custom addresses are keys that have start with
+specific characters. For example, a person may want a publickey to
+start with "elv1s", or maybe even "cook". These can help other people
+remember who the key belongs to, making the key more easily identifiable.
 
 Note: The more characters in your vanity address, the longer it will
 take.
+
+::: warning
+You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+:::
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -503,16 +505,16 @@ take.
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
-## Sign and Verify a Message
+## How to sign and verify messages with wallets
 
 The primary function of a keypair is to sign messages and enable
-verification of the signature. Verification of a signature allows 
+verification of the signature. Verification of a signature allows
 the recipient to be sure that the data was signed by the owner of a
 specific private key.
 
@@ -555,7 +557,7 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## Connecting to a Wallet
+## How to connect to a wallet
 
 Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
 

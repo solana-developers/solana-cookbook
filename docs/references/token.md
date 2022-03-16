@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Interacting with Tokens
   - - meta
     - name: description
-      content: Start Interacting with Tokens, Mint, Transfer, Burn and Learn more references for Building on Solana at The Solana cookbook.
+      content: Learn how to use, transfer, and more with tokens on Solana
   - - meta
     - name: og:description
-      content: Start Interacting with Tokens, Mint, Transfer, Burn and Learn more references for Building on Solana at The Solana cookbook.
+      content: Learn how to use, transfer, and more with tokens on Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -56,7 +56,7 @@ be used, which you can find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Token
+## How to create a new Token
 
 Creating tokens is done by creating what is called a "mint account".
 This mint account is later used to mint tokens to a token account and
@@ -80,7 +80,7 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Token Mint
+## How to get a token mint
 
 In order to get the current supply, authority, or decimals a token has,
 you will need to get the account info for the token mint.
@@ -103,39 +103,10 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Create Token Account
+## How to create a token account
 
 A token account is required in order to hold tokens. Every token mint
 has a different token account associated with it.
-
-There are two ways you can create token account.
-
-### Ancillary Token Accounts
-
-Ancillary Token Accounts are accounts that you manage by creating the
-specific keypair for them. Using a keypair on creation allows you to
-pick the specific public key you want for your token account.
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/token/create-token-account/random.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/token/create-token-account/random.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
-
-
-### Associated Token Account (ATA)
 
 Associated Token Accounts are deterministicly created
 accounts for every keypair. ATAs are the recommended method
@@ -159,7 +130,7 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Token Account
+## How to get a Token Account
 
 Every token account has information on the token such as the owner,
 mint, amount(balance), and decimals.
@@ -182,7 +153,7 @@ mint, amount(balance), and decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Token Balance
+## How to get a token account's balance
 
 The token account has the token balance, which can be retrieved with a
 single call.
@@ -227,7 +198,7 @@ A token account can only hold one kind of mint. When you specify a token
 account, you also specific a mint too.
 :::
 
-## Mint Token
+## How to mint tokens
 
 When you mint tokens, you increase the supply and transfer the new tokens
 to a specific token account.
@@ -250,7 +221,7 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Transfer Token
+## How to transfer tokens
 
 You can transfer tokens from one token account to another token account.
 
@@ -272,7 +243,7 @@ You can transfer tokens from one token account to another token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Burn Token
+## How to burn tokens
 
 You can burn token if you are the token owner.
 
@@ -295,7 +266,7 @@ You can burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Close Token Account
+## How to close token accounts
 
 You can close a token account if you don't want to use it anymore.
 There are two situations:
@@ -321,7 +292,7 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Set Authority
+## How to set authority on token accounts or mints
 
 You can set/update authority. There are 4 types:
 
@@ -348,7 +319,7 @@ You can set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Approve (Delegate)
+## How to approve a token delegate
 
 You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
 
@@ -370,7 +341,7 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Revoke (Delegate)
+## How to revoke a token delegate
 
 Revoke will set delegate to null and set delegated amount to 0.
 
@@ -392,7 +363,7 @@ Revoke will set delegate to null and set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Wrapped SOL
+## How to manage wrapped SOL
 
 Wrapped SOL just like any other token mint. The difference is using `syncNative`
 and creating token accounts specifically on the `NATIVE_MINT` address.
@@ -449,7 +420,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Token Account By Owner
+## How to get all token accounts by owner
 
 You can fetch token accounts by owner. There are two ways to do it.
 

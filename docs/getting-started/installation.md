@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Installation
   - - meta
     - name: description
-      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn about Installation and Getting Started on solana at The Solana cookbook.
+      content: Learn how to get started on Solana with tutorials, guides, and examples.
   - - meta
     - name: og:description
-      content: Install Javascript or Typescript and Rust SDKs for Development on Solana. Learn more about Installation and Getting Started on solana at The Solana cookbook.
+      content: Learn how to get started on Solana with tutorials, guides, and examples.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -216,7 +216,7 @@ update the Solana software to a newer version at any time.
 
 #### Downloading Binaries (Linux)
 
-Alternatively, you can build from binaries instead of using solana-install.
+Alternatively, you can install from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
@@ -231,7 +231,7 @@ export PATH=$PWD/bin:$PATH
 
 #### Downloading Binaries (macOS)
 
-Alternatively, you can build from binaries instead of using solana-install.
+Alternatively, you can install from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
@@ -294,7 +294,7 @@ update the Solana software to a newer version at any time.
 
 #### Downloading Binaries
 
-Alternatively, you can build from binaries instead of using solana-install.
+Alternatively, you can install from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
