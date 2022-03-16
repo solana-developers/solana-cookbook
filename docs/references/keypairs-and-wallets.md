@@ -591,3 +591,32 @@ Additionally, we can prompt users to connect by using `useWalletModal` to toggle
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
+### Vue
+
+Run the following command to install the required dependencies:
+
+```/bin/bash
+npm install solana-wallets-vue @solana/wallet-adapter-wallets
+```
+
+The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [here](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="Vue" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-vue.en.vue)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-vue.preview.en.vue)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
