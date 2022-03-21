@@ -78,7 +78,7 @@ keypair, you will need to generate one.
   </template>
 
   </SolanaCodeGroupItem>
-  
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -152,7 +152,7 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
-   
+
    <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -221,7 +221,7 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
-   
+
    <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -614,6 +614,35 @@ The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugi
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-vue.preview.en.vue)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Svelte
+
+Run the following command to install the required dependencies:
+
+```/bin/bash
+npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
+```
+
+The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [here](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="Svelte" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-svelte.en.html)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-svelte.preview.en.html)
 
   </template>
 
