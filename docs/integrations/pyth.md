@@ -42,6 +42,14 @@ Pyth is an Oracle used to get real-world financial and crypto market data. Pyth 
 
 ## How to use Pyth in Client
 
+Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read onChain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [here](https://www.npmjs.com/package/@pythnetwork/client)
+
 ## How to use Pyth in Anchor
 
-## Resources
+Pyth provides a Rust Crate which can be used by on-chain programs or off-chain application's to consume pyth's data.
+
+## Other Resources
+
+- [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
+- [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)
+- [Rust Example Code](https://github.com/project-serum/anchor/tree/master/tests/pyth)
