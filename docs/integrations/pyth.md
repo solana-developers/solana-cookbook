@@ -67,6 +67,25 @@ Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. Th
 
 Pyth provides a Rust Crate which can be used by on-chain programs or off-chain application's to consume pyth's data.
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/pyth/on-chain/on-chain.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/pyth/on-chain/on-chain.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## Other Resources
 
 - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
