@@ -1,3 +1,10 @@
+import * as web3 from "@solana/web3.js"
+import * as pyth from "@pythnetwork/client"
+
+const connection = new web3.Connection(
+    web3.clusterApiUrl('devnet'),
+    'confirmed',
+  );
 const pythConnection = new pyth.PythConnection(connection,pyth.getPythProgramKeyForCluster('devnet'));
 
 pythConnection.onPriceChange((product,price) => {
