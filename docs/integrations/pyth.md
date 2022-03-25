@@ -72,13 +72,13 @@ Pyth provides a Rust Crate which can be used by on-chain programs or off-chain a
 
   <template v-slot:default>
 
-@[code](@/code/pyth/on-chain/on-chain.en.ts)
+@[code](@/code/pyth/on-chain/on-chain.en.rs)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/pyth/on-chain/on-chain.preview.en.ts)
+@[code](@/code/pyth/on-chain/on-chain.preview.en.rs)
 
   </template>
 
