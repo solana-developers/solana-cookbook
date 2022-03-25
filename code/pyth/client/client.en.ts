@@ -1,7 +1,8 @@
 import * as web3 from "@solana/web3.js"
 import * as pyth from "@pythnetwork/client"
 
-const connection = new web3.Connection(
+(async () => {
+  const connection = new web3.Connection(
     web3.clusterApiUrl('devnet'),
     'confirmed',
   );
@@ -15,5 +16,6 @@ pythConnection.onPriceChange((product,price) => {
         console.log(`${product.symbol}: price currently unavailable. status is ${price.status}`)
       }
 })
-
 pythConnection.start();
+})();
+
