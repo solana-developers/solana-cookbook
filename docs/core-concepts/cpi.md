@@ -47,6 +47,7 @@ Cross Program Invocations allow Solana programs to call instructions from other 
 
 - Cross Program Invocations enable for programs to call instructions on other programs, allowing for the composibility of Solana programs.
 - Program Derived Addresess (PDAs) can be used by one program to sign for Cross Program Invocations of instructions on another program.
+- CPI calls are currently limited to a depth of 4
 
   :::
 
@@ -56,7 +57,7 @@ Cross Program Invocations allow Solana programs to call instructions from other 
 
 Consider the example of a Puppet Program and a Puppet Master Program. The Puppet Master Program will be used to invoke an instruction on the Puppet Program.
 
-![Puppet and Puppet Master Programs](./cpi_1.jpeg)
+![Puppet and Puppet Master Programs](./cpi_1.png)
 
 The Puppet Program has two instructions.
 
@@ -71,15 +72,15 @@ The Puppet Master Program has one instruction.
 
 Pull String is a CPI of the Set Data instruction on the Puppet Program to update the Data field of the Puppet Account created by the Puppet Program.
 
-![User Call Initialize Function](./cpi_2.jpeg)
+![User Call Initialize Function](./cpi_2.png)
 
 A user calls the Initialize instruction on the Puppet Program.
 
-![Puppet Program creates Puppet Account](./cpi_3.jpeg)
+![Puppet Program creates Puppet Account](./cpi_3.png)
 
 The Puppet Program then creates a Puppet Account with an empty Data field.
 
-![User Calls Pull String Function](./cpi_4.jpeg)
+![User Calls Pull String Function](./cpi_4.png)
 
 The user calls the Pull String instruction on the Puppet Master Program and provides a User_Input of 100. The Pull String instruction then calls the Set Data instruction on the Puppet Program and sets the empty Data field on the Puppet Account to the User_Input of 100.
 
