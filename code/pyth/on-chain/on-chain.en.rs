@@ -1,48 +1,16 @@
 use anchor_lang::prelude::*;
+use pyth_client::{self, load_price, Price};
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("6B7XgKFmo73geJY8ZboSpLhkTumvwXeCXBpeP7nCT35w");
 
 #[program]
-pub mod pyth_get_price {
+pub mod pyth_test {
     use super::*;
 
-    pub fn get_price(ctx: Context<PythGetPrice>) -> Result<()> {
-        // setup accounts
-        let pyth_product_info = &ctx.accounts.pyth_product;
-        let pyth_product_data = &pyth_product_info.try_borrow_data()?;
-        let product_account = *pyth_client::load_product(pyth_product_data).unwrap();
-
-        // security checks
-        if product_account.magic != pyth_client::MAGIC {
-            msg!("Pyth product account provided is not a valid Pyth account");
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        if product_account.atype != pyth_client::AccountType::Product as u32 {
-            msg!("Pyth product account provided is not a valid Pyth product account");
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        if product_account.ver != pyth_client::VERSION_2 {
-            msg!("Pyth product account provided has a different version than the Pyth client");
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        if !product_account.px_acc.is_valid() {
-            msg!("Pyth product price account is invalid");
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        let pyth_price_pubkey = Pubkey::new(&product_account.px_acc.val);
-        if &pyth_price_pubkey != &ctx.accounts.pyth_price.key() {
-            msg!("Pyth product price account does not match the Pyth price provided");
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        let pyth_price_info = &ctx.accounts.pyth_price;
+    pub fn get_sol_price(ctx: Context<SolPrice>) -> Result<()> {
+        let pyth_price_info = &ctx.accounts.pyth_account;
         let pyth_price_data = &pyth_price_info.try_borrow_data()?;
-        let price_account = *pyth_client::load_price(pyth_price_data).unwrap();
-
+        let price_account: Price = *load_price(pyth_price_data).unwrap();
 
         msg!("price_account .. {:?}", pyth_price_info.key);
         msg!("price_type ... {:?}", price_account.ptype);
@@ -53,7 +21,10 @@ pub mod pyth_get_price {
 }
 
 #[derive(Accounts)]
-pub struct PythGetPrice<'info> {
-    pub pyth_product: AccountInfo<'info>,
-    pub pyth_price: AccountInfo<'info>,
+pub struct SolPrice<'info> {
+    #[account(mut)]
+    pub user_account: Signer<'info>,
+    pub pyth_account: UncheckedAccount<'info>,
+    pub system_program: UncheckedAccount<'info>,
+    pub rent: Sysvar<'info, Rent>,
 }
