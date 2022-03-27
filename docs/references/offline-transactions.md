@@ -62,6 +62,37 @@ anyone can broadcast it on the network.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## Partial Sign Transaction
+
+When a transaction requires multiple signatures, you can partially sign it.
+The other signers can then sign and broadcast it on the network.
+
+Some examples of when this is useful:
+
+- Send an SPL token in return for payment
+- Sign a transaction so that you can later verify its authenticity
+- Call custom programs in a transaction that require your signature
+
+In this example Bob sends Alice an SPL token in return for her payment:
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/offline-transactions/partial-sign/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/offline-transactions/partial-sign/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 ## Durable Nonce
 
 `RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
