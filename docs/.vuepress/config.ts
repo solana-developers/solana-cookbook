@@ -89,6 +89,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/integrations',
                 '/integrations/serum.md',
                 '/integrations/pyth.md',
+                '/integrations/mango.md',
               ],
             }
           ]
