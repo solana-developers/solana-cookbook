@@ -181,3 +181,8 @@ about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/mast
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+
+## Other Resources
+
+- [Client Libraries](https://docs.mango.markets/development-resources/client-libraries)
+- [Mango Docs](https://docs.mango.markets)
