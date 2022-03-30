@@ -71,7 +71,7 @@ In this Code-snippet we are going to look into how create a payment request URL 
 
 ### Creating a SPL Token payment request
 
-In this Code-snippet we are going to look into how create a payment request in which a User can transfer a token of a specific mint type accepted by the merchant.
+In this Code-snippet we are going to look into how create a payment request for a user who can transfer tokens of a specific mint accepted by the merchant.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
