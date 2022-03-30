@@ -69,3 +69,115 @@ tokens. The current v3 group is `mainnet.1`.
   </SolanaCodeGroupItem>
   
 </SolanaCodeGroup>
+
+## How to create a Mango Account
+
+A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
+you to trade that Group’s markets. You can find the reference [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
+This snippet uses the @solana/wallet-adapter packages.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+  
+  <template v-slot:default>
+
+@[code](@/code/mango/create-account/create-account.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/create-account/create-account.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## How to deposit USDC into a Mango Account
+After creating a mango account, you'll need to fund it with tokens for trading. 
+You can find the reference for the deposit method [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
+This snippet uses the @solana/wallet-adapter packages
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/mango/deposit/deposit.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/deposit/deposit.preview.en.ts)  
+
+  </template>
+  
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## How to place a spot order
+Mango uses Serum DEX for spot markets. You can place a spot order by doing this. 
+You can find the reference for the placeSpotOrder function [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+    
+  <template v-slot:default>
+
+@[code](@/code/mango/place-spot-order/place-spot-order.en.ts) 
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/place-spot-order/place-spot-order.preview.en.ts)
+
+  </template>
+ 
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## How to load bids
+You can load bids from a Market. Mango uses Serum DEX for markets. You can find out more about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/mango/load-bids/load-bids.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/load-bids/load-bids.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## How to load asks
+You can load asks from a Market. Mango uses Serum DEX for markets. ou can find out more 
+about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/mango/load-asks/load-asks.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/load-asks/load-asks.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
