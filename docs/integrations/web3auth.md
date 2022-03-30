@@ -1,5 +1,5 @@
 ---
-title: Wallet
+title: web3Auth (Torus Wallet)
 head:
   - - meta
     - name: title

@@ -1,5 +1,5 @@
 ---
-title: Integrations
+title: Getting Started
 head:
   - - meta
     - name: title
