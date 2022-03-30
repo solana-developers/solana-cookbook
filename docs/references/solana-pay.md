@@ -46,8 +46,27 @@ To start getting payments using Solana pay you need to have a native SOL address
 
 Let's Look into how you can integrate Solana Pay in your Application and start accepting SOL.
 
-### Get payment in SOL
+### Creating a Payment request Link and QR Code
 
-In this Code-snippet we are going to see how you as a merchant can start accepting payments in SOL.
+In this Code-snippet we are going to look into how create a payment request URL and encode it into a QR Code
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/solana-pay/create-payment/create-payment.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/solana-pay/create-payment/create-payment.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ### Get payment in SPL Token
