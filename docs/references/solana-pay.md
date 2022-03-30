@@ -46,7 +46,7 @@ To start getting payments using Solana pay you need to have a native SOL address
 
 Let's Look into how you can integrate Solana Pay in your Application and start accepting SOL.
 
-### Creating a Payment request Link and QR Code
+### Creating a SOL Payment request
 
 In this Code-snippet we are going to look into how create a payment request URL and encode it into a QR Code
 
@@ -55,13 +55,13 @@ In this Code-snippet we are going to look into how create a payment request URL 
 
   <template v-slot:default>
 
-@[code](@/code/solana-pay/create-payment/create-payment.en.ts)
+@[code](@/code/solana-pay/sol-payment/sol-payment.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/solana-pay/create-payment/create-payment.preview.en.ts)
+@[code](@/code/solana-pay/sol-payment/sol-payment.preview.en.ts)
 
   </template>
 
@@ -69,4 +69,25 @@ In this Code-snippet we are going to look into how create a payment request URL 
 
 </SolanaCodeGroup>
 
-### Get payment in SPL Token
+### Creating a SPL Token payment request
+
+In this Code-snippet we are going to look into how create a payment request in which a User can transfer a token of a specific mint type accepted by the merchant.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/solana-pay/spl-payment/spl-payment.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/solana-pay/spl-payment/spl-payment.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
