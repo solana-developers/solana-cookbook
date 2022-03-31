@@ -1,0 +1,1 @@
+await torus.logout()
