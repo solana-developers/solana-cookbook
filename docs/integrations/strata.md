@@ -137,4 +137,4 @@ on a dex. You can read more about these [here](https://docs.strataprotocol.com/m
 ## Other Resources
 
 - [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create and manage Strata tokens
-- [Strata Launchpad](https://app.strata.launchpad.com/launchpad) - Launch a token using the GUI
+- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token using the GUI
