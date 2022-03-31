@@ -3,10 +3,10 @@ title: web3Auth (Torus Wallet)
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Wallet
+      content: Solana Cookbook | web3Auth (Torus Wallet)
   - - meta
     - name: og:title
-      content: Solana Cookbook | Wallet
+      content: Solana Cookbook | web3Auth (Torus Wallet)
   - - meta
     - name: description
       content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana at The Solana cookbook.
