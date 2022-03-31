@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Cross Program Invocation (CPIs)
+# Cross Program Invocation (CPI)
 
 Cross Program Invocations allow Solana programs to call instructions from other programs and enables Solana programs to interact with each other.
 
