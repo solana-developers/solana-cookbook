@@ -45,7 +45,7 @@ Cross Program Invocation allow Solana programs to call instructions from other p
 
 ::: tip Fact Sheet
 
-- Cross Program Invocations enable for programs to call instructions on other programs, allowing for the composibility of Solana programs.
+- Cross Program Invocation enable programs to call instructions on other programs, allowing for the composability across Solana programs.
 - Program Derived Addresses (PDAs) can be used to invoke signatures across programs.
 - CPI calls are currently limited to a depth of 4
 
