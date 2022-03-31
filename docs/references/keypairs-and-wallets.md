@@ -78,7 +78,7 @@ keypair, you will need to generate one.
   </template>
 
   </SolanaCodeGroupItem>
-  
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -107,7 +107,7 @@ keypair, you will need to generate one.
 
 @[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -152,7 +152,7 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
-   
+
    <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -181,7 +181,7 @@ to test out your dApp.
 
 @[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -221,7 +221,7 @@ to test out your dApp.
   </template>
 
   </SolanaCodeGroupItem>
-   
+
    <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -239,7 +239,6 @@ to test out your dApp.
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
-
 
 ## How to verify a Keypair
 
@@ -291,7 +290,7 @@ matches the given public key
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -346,12 +345,11 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 @[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip39.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
-
 
 ## How to restore a Keypair from a mnemonic phrase
 
@@ -405,7 +403,7 @@ You can convert the mnemonic to Keypairs for local testing.
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip39.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -442,7 +440,7 @@ You can convert the mnemonic to Keypairs for local testing.
 
 @[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -450,13 +448,17 @@ You can convert the mnemonic to Keypairs for local testing.
 
 ## How to generate a vanity address
 
-Vanity publickeys, or custom addresses are keys that have start with 
-specific characters. For example, a person may want a publickey to 
-start with "elv1s", or maybe even "cook". These can help other people 
+Vanity publickeys, or custom addresses are keys that have start with
+specific characters. For example, a person may want a publickey to
+start with "elv1s", or maybe even "cook". These can help other people
 remember who the key belongs to, making the key more easily identifiable.
 
 Note: The more characters in your vanity address, the longer it will
 take.
+
+::: warning
+You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+:::
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -503,7 +505,7 @@ take.
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.sh)
 
-  </template>  
+  </template>
 
   </SolanaCodeGroupItem>
 
@@ -512,7 +514,7 @@ take.
 ## How to sign and verify messages with wallets
 
 The primary function of a keypair is to sign messages and enable
-verification of the signature. Verification of a signature allows 
+verification of the signature. Verification of a signature allows
 the recipient to be sure that the data was signed by the owner of a
 specific private key.
 
@@ -583,6 +585,64 @@ Additionally, we can prompt users to connect by using `useWalletModal` to toggle
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-react.preview.en.tsx)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Vue
+
+Run the following command to install the required dependencies:
+
+```/bin/bash
+npm install solana-wallets-vue @solana/wallet-adapter-wallets
+```
+
+The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [here](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="Vue" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-vue.en.vue)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-vue.preview.en.vue)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Svelte
+
+Run the following command to install the required dependencies:
+
+```/bin/bash
+npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
+```
+
+The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [here](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="Svelte" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-svelte.en.html)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-svelte.preview.en.html)
 
   </template>
 

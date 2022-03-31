@@ -88,6 +88,8 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 '/integrations',
                 '/integrations/serum.md',
+                '/integrations/pyth.md',
+                '/integrations/web3auth.md',
               ],
             }
           ]
