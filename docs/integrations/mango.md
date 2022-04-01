@@ -74,7 +74,8 @@ tokens. The current v3 group is `mainnet.1`.
 
 A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
 you to trade that Group’s markets. You can find the reference [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
-This snippet uses the @solana/wallet-adapter packages.
+The Typescript snippet uses the @solana/wallet-adapter packages. In order to create a valid instruction, the Rust snippet uses the mango-v3 repository as a crate.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -88,6 +89,22 @@ This snippet uses the @solana/wallet-adapter packages.
   <template v-slot:preview>
 
 @[code](@/code/mango/create-account/create-account.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
+
+  <template v-slot:default>
+
+@[code](@/code/mango/create-account/create-account.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/mango/create-account/create-account.preview.en.rs)
 
   </template>
 
