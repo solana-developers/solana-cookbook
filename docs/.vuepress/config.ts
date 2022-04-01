@@ -89,7 +89,12 @@ export default defineUserConfig<DefaultThemeOptions>({
           "/integrations": [
             {
               text: "Integrations",
-              children: ["/integrations", "/integrations/serum.md"],
+              children: [
+                "/integrations",
+                "/integrations/serum.md",
+                "/integrations/pyth.md",
+                "/integrations/web3auth.md",
+              ],
             },
           ],
         },
