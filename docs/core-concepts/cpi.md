@@ -3,16 +3,16 @@ title: Cross Program Invocation (CPIs)
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Accounts
+      content: Solana Cookbook | Cross Program Invocation (CPIs)
   - - meta
     - name: og:title
-      content: Solana Cookbook | Accounts
+      content: Solana Cookbook | Cross Program Invocation (CPIs)
   - - meta
     - name: description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
+      content: Cross Program Invocation allow Solana programs to call instructions from other program and enable composability between Solana programs. Learn about Accounts and more Core Concepts at The Solana cookbook.
   - - meta
     - name: og:description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
+      content: Cross Program Invocation allow Solana programs to call instructions from other programs and enable composability between Solana programs. Learn about Accounts and more Core Concepts at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -82,7 +82,19 @@ The Puppet Program then creates a Puppet Account with an empty Data field.
 
 ![User Calls Pull String Function](./cpi_4.png)
 
-The user calls the Pull String instruction on the Puppet Master Program and provides a User_Input of 100. The Pull String instruction then calls the Set Data instruction on the Puppet Program and sets the empty Data field on the Puppet Account to the User_Input of 100.
+The user calls the Pull String instruction on the Puppet Master Program and provides a User_Input of 100. The Pull String instruction then invokes the Set Data instruction on the Puppet Program and sets the empty Data field on the Puppet Account to the User_Input of 100.
+
+### Cross Program Invocation
+
+`invoke()` is used to invoke cross-program instruction.
+
+@[code](@/code/cpi/invoke.rs)
+
+`invoke_signed()` is used to invoke cross-program instruction with program signatures (PDA).
+
+@[code](@/code/cpi/invoke_signed.rs)
+
+If the CPI by a program is signed with a PDA, `invoke_signed()` instead of `invoke()` should be used.
 
 ## Other Resources
 
