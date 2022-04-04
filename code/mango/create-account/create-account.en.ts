@@ -24,14 +24,5 @@ import { IDS, MangoClient, Config } from "@blockworks-foundation/mango-client";
   const connection = new Connection(clusterUrl, 'singleGossip');
   const client = new MangoClient(connection, mangoProgramIdPk);
   const mangoGroup = await client.getMangoGroup(mangoGroupKey);
-
-  /**
-   * Create a new Mango Account
-   *
-   * @param mangoGroup The MangoGroup to associate the account with
-   * @param owner
-   * @param accountNum Forms part of the seed for the new account PDA. It 
-   * should be unique for each account with a particular owner.
-   */
   const mangoAccount = await client.createMangoAccount(mangoGroup, wallet?.adapter, 23);
 })();

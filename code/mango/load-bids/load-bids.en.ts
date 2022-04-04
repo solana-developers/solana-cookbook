@@ -1,6 +1,6 @@
 import { Connection, PublicKey } from "@solana/web3.js";
 import { Market } from '@project-serum/serum';
-import { IDS, Config } from "@blockworks-foundation/mango-client";
+import { IDS, Config, getSpotMarketByBaseSymbol } from "@blockworks-foundation/mango-client";
 
 (async () => {
   
@@ -15,8 +15,7 @@ import { IDS, Config } from "@blockworks-foundation/mango-client";
 
   const clusterUrl = IDS.cluster_urls[cluster];
   const connection = new Connection(clusterUrl, 'singleGossip');
-  const marketAddress = new PublicKey('...');
-  const programAddress = new PublicKey('...');
-  const market = await Market.load(connection, marketAddress, {}, programAddress);
+  const marketConfig = getSpotMarketByBaseSymbol(groupConfig, "SOL");
+  const market = await Market.load(connection, marketConfig.publicKey, {}, groupConfig.serumProgramId);
   const bids = market.loadBids(connection);
 })();

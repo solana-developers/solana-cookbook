@@ -1,7 +1,7 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { Market } from '@project-serum/serum';
-import { IDS, MangoClient, Config, getTokenAccountsByOwnerWithWrappedSol } from "@blockworks-foundation/mango-client";
+import { IDS, MangoClient, Config, getSpotMarketByBaseSymbol } from "@blockworks-foundation/mango-client";
 
 (async () => {
   const { wallet } = useWallet();
@@ -26,9 +26,8 @@ import { IDS, MangoClient, Config, getTokenAccountsByOwnerWithWrappedSol } from 
   const client = new MangoClient(connection, mangoProgramIdPk);
   const mangoGroup = await client.getMangoGroup(mangoGroupKey);
   const mangoAccount = await client.createMangoAccount(mangoGroup, wallet?.adapter, 23);
-  const marketAddress = new PublicKey('...');
-  const programAddress = new PublicKey('...');
-  const market = await Market.load(connection, marketAddress, {}, programAddress);
+  const marketConfig = getSpotMarketByBaseSymbol(groupConfig, "SOL");
+  const market = await Market.load(connection, marketConfig.publicKey, {}, groupConfig.serumProgramId);
   await client.placeSpotOrder(
     mangoGroup,
     mangoAccount,
