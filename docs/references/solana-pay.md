@@ -3,16 +3,16 @@ title: Solana Pay
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Solana Pay Reference
+      content: Solana Cookbook | Solana Pay
   - - meta
     - name: og:title
-      content: Solana Cookbook | Solana Pay Reference
+      content: Solana Cookbook | Solana Pay
   - - meta
     - name: description
       content: Learn how to use Solana Pay
   - - meta
     - name: og:description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: Learn to use Solana pay to accept payment's in SOL and SPL tokens.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,7 +38,7 @@ head:
 
 # Solana Pay
 
-**@solana/pay** is a JavaScript library for facilitating commerce on Solana by using a token transfer URL scheme. The URL scheme ensures that no matter the wallet or service used, the payment request must be created and interpreted in one standard way.
+**@solana/pay** is a JavaScript library for facilitating commerce on Solana by using a token transfer URL scheme. The URL scheme ensures that no matter the wallet or service used, the payment request must be created and interpreted in one standard way. Know more about the Solana Pay Specifications [here](https://docs.solanapay.com/spec)
 
 ## How to receive payments with Solana pay
 
@@ -48,7 +48,7 @@ Let's Look into how you can integrate Solana Pay in your Application and start a
 
 ### Creating a SOL Payment request
 
-In this Code-snippet we are going to look into how create a payment request URL and encode it into a QR Code
+To create a SOL payment request, we first generate a QR code with a payment request URI.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -71,7 +71,7 @@ In this Code-snippet we are going to look into how create a payment request URL 
 
 ### Creating a SPL Token payment request
 
-In this Code-snippet we are going to look into how create a payment request for a user who can transfer tokens of a specific mint accepted by the merchant.
+To create a SPL token payment request, we first generate a QR code with a payment request URI.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
