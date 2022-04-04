@@ -15,11 +15,13 @@ import { NATIVE_MINT } from "@solana/spl-token";
       frac: 2,
     }),
   });
-  const { tokenBonding } = await tokenBondingSdk.createTokenBonding({
+  const { tokenBonding, baseMint, targetMint } = await tokenBondingSdk.createTokenBonding({
     curve,
     baseMint: NATIVE_MINT,
     targetMintDecimals: 2,
     buyBaseRoyaltyPercentage: 5,
     buyTargetRoyaltyPercentage: 5,
   });
+
+  console.log(`You can use ${baseMint.toBase58()} to buy ${targetMint.toBase58()} using the bonding curve at address ${tokenBonding.toBase58()}`);
 })();

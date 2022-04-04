@@ -47,7 +47,8 @@ More in-depth docs are available [here](docs.strataprotocol.com). You can also u
 ## How to create a fully managed token
 
 A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
-token, with no need for pools or liquidity providers. 
+token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata and an associated bonding curve.
+The bonding curve manages the liquidity, pricing, and supply of that token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -112,7 +113,7 @@ token, with no need for pools or liquidity providers.
 ## How to bootstrap liquidity
 
 Strata can also sell tokens where you would like to manually manage the supply. This can be useful for liquidity bootstrapping before listing your token
-on a dex. You can read more about these [here](https://docs.strataprotocol.com/marketplace/lbc or launch your own at [Strata Launchpad](app.strataprotocol.com)
+on a dex. You can read more about these [here](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
 
 
 <SolanaCodeGroup>
