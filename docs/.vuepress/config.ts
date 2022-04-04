@@ -90,6 +90,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/integrations/serum.md',
                 '/integrations/pyth.md',
                 '/integrations/strata.md',
+                '/integrations/web3auth.md',
               ],
             }
           ]
