@@ -91,9 +91,10 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 "/integrations",
                 "/integrations/serum.md",
-                "/integrations/pyth.md",
-                "/integrations/web3auth.md",
                 "/integrations/solana-pay.md",
+                "/integrations/pyth.md",
+                "/integrations/strata.md",
+                "/integrations/web3auth.md",
               ],
             },
           ],
