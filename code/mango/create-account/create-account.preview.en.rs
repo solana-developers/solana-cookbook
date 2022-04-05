@@ -1,0 +1,17 @@
+invoke(
+  &mango_v3::instruction::create_mango_account(
+    *mango_program.key,
+    *mango_account_ai.key,
+    *mango_account_ai.key,
+    *user.key,
+    *system_program.key,
+    *user.key,
+    *account_num
+  ),
+  &[
+    mango_program.clone(),
+    user.clone(),
+    system_program.clone(),
+    mango_account_ai.clone(),
+  ]
+)?;

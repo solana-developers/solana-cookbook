@@ -93,6 +93,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/integrations/serum.md",
                 "/integrations/solana-pay.md",
                 "/integrations/pyth.md",
+                "/integrations/mango.md",
                 "/integrations/strata.md",
                 "/integrations/web3auth.md",
               ],
