@@ -43,15 +43,15 @@ trade cryptoassets through an on-chain risk engine.
 You can connect to Mango's on-chain program using the Client API libraries.
 You'll also need the Solana javascript API library.
 
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-  <template v-slot:default>
-
-@[code](@/code/mango/js-libraries/js-libraries.en.ts)
-
-  </template>
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
+<CodeGroup>
+  <CodeGroupItem title="TS" active>
+  
+```
+"@blockworks-foundation/mango-client": "^3.3.27",
+"@solana/web3.js": "^1.37.0"
+```
+  </CodeGroupItem>
+</CodeGroup>
 
 ## How to get a Mango Group
 
