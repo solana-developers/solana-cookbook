@@ -94,7 +94,7 @@ To create a SPL token payment request, we first generate a QR code with a paymen
 
 ## Other Resources
 
-[website](https://solanapay.com/)
-[docs](https://docs.solanapay.com/)
-[github](https://github.com/solana-labs/solana-pay)
-[point-of-sale-demo](https://solana-labs.github.io/solana-pay/app/new?recipient=GvHeR432g7MjN9uKyX3Dzg66TqwrEWgANLnnFZXMeyyj&label=Solana+Pay)
+- [website](https://solanapay.com/)
+- [docs](https://docs.solanapay.com/)
+- [github](https://github.com/solana-labs/solana-pay)
+- [point-of-sale-demo](https://solana-labs.github.io/solana-pay/app/new?recipient=GvHeR432g7MjN9uKyX3Dzg66TqwrEWgANLnnFZXMeyyj&label=Solana+Pay)
