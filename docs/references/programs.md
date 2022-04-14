@@ -334,3 +334,23 @@ A basic instruction which initializes a hero state account, but with the above m
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+
+## How to read multiple instructions from a transaction
+
+Since Solana allows us to take a peek at all of the instructions in the current transaction. We can store them in a variable and 
+iterate over them. We can do many things with this, like checking for suspicious transactions. 
+
+1. Read the number of instructions in the current transaction.
+2. Loop through the number of instructions
+3. Check for errors within the loop
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+  <template v-slot:default>
+
+@[code](@/code/programs/read-multiple-instructions/program/lib.rs)
+
+  </template>
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
