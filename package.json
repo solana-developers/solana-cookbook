@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.3.0",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.36",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.38",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.36",
     "@vuepress/plugin-register-components": "^2.0.0-beta.36",
     "@vuepress/plugin-search": "^2.0.0-beta.36",
