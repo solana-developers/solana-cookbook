@@ -124,9 +124,47 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 </SolanaCodeGroup>
 
-## Depositing X_Y LP tokens in a Farm
+## Farming of X_Y LP tokens
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/orca/farm/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/orca/farm/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Withdraw X_Y LP tokens from a farm
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/orca/farm_withdraw/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/orca/farm_withdraw/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Withdraw X and Y tokens, from X_Y LP tokens
 

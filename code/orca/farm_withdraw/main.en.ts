@@ -19,19 +19,10 @@ import Decimal from "decimal.js";
   );
   const orca = getOrca(connection);
   try {
-    const orcaSolPool = orca.getPool(OrcaPoolConfig.ORCA_SOL);
-    const solToken = orcaSolPool.getTokenB();
-    const solAmount = new Decimal(0.1);
-    const quote = await orcaSolPool.getQuote(solToken, solAmount);
-    const orcaAmount = quote.getMinOutputAmount();
-    const swapPayload = await orcaSolPool.swap(
-      owner,
-      solToken,
-      solAmount,
-      orcaAmount
-    );
-    const swapTxId = await swapPayload.execute();
-    console.log("Swapped:", swapTxId, "\n");
+    const orcaSolFarm = orca.getFarm(OrcaFarmConfig.ORCA_SOL_AQ);
+    const farmBalance = await orcaSolFarm.getFarmBalance(owner.publicKey); // withdraw the entire balance
+    const farmWithdrawPayload = await orcaSolFarm.withdraw(owner, farmBalance);
+    const farmWithdrawTxId = await farmWithdrawPayload.execute();
   } catch (error) {
     console.warn(error);
   }
