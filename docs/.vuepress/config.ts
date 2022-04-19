@@ -74,7 +74,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/references/accounts.md',
                 '/references/programs.md',
                 '/references/token.md',
-                '/references/anchor.md',
                 '/references/staking.md',
                 '/references/nfts.md',
                 '/references/offline-transactions.md',
