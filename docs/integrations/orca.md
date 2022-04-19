@@ -84,7 +84,45 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 ## Performing Swap on Orca
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/orca/swap/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/orca/swap/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## Deposit X and Y tokens to get X_Y LP tokens
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/orca/get_LP/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/orca/get_LP/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## Depositing X_Y LP tokens in a Farm
 
