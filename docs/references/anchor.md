@@ -39,7 +39,8 @@ The `value` parameter indicates an input to the program.
 
 ### Accounts Deserializers
 
-A struct deriving all the accounts used by an instruction. The program can't read other accounts after. Here is possible to define if an account is initialized or modified by the instruction, if an account is using a PDA, and execute accounts validation.
+A struct deriving all the accounts used by an instruction. They are pieces of code used to deserialize pieces of serialized code. In Anchor
+everything is borsh. So the accounts get borsh serialized and anchor's account macros deserialize them automatically.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
