@@ -168,6 +168,25 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 ## Withdraw X and Y tokens, from X_Y LP tokens
 
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/orca/pool_withdraw/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/orca/pool_withdraw/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## Other Resources
 
 - [Orca TypeScript SDK](https://www.npmjs.com/package/@orca-so/sdk)
