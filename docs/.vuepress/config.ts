@@ -91,6 +91,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/integrations/mango.md',
                 '/integrations/strata.md',
                 '/integrations/web3auth.md',
+                '/integrations/react-native.md',
               ],
             }
           ]
