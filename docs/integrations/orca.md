@@ -63,6 +63,8 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 ## Initialization Orca Object
 
+In this Code we are initializing the orca object with a connection pointing to mainnet.
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -84,6 +86,8 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 ## Performing Swap on Orca
 
+We use the orca Object to get a pool object and all the supported pools by orca are under the OrcaPoolConfig object. We use the pool object to swap tokens for that pool.
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -103,7 +107,9 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 </SolanaCodeGroup>
 
-## Deposit X and Y tokens to get X_Y LP tokens
+## Deposit X and Y tokens to get X-Y LP tokens
+
+Here we are using the same pool object defined before to deposit token X and Y to the pool and get X-Y LP tokens after depositing.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -124,7 +130,9 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 </SolanaCodeGroup>
 
-## Farming of X_Y LP tokens
+## Farming of X-Y LP tokens
+
+In this code the X-Y LP tokens are deposited to a Farm to earn some rewards.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -145,7 +153,9 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 </SolanaCodeGroup>
 
-## Withdraw X_Y LP tokens from a farm
+## Withdraw X-Y LP tokens from a farm
+
+Here we are using the pool object and the owner to withdraw the LP token's deposited in the Farm.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,7 +176,9 @@ npm install @orca-so/sdk @solana/web3.js decimal.js
 
 </SolanaCodeGroup>
 
-## Withdraw X and Y tokens, from X_Y LP tokens
+## Withdraw X and Y tokens, from X-Y LP tokens
+
+Here we are using the pool object and the owner to withdraw X and Y token's deposited in the pool.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
