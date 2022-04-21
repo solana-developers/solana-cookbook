@@ -42,6 +42,74 @@ Jupiter is the key liquidity aggregator for Solana, offering the widest range of
 
 ## How to use Jupiter Core Library
 
+Jupiter Core SDK is used to interact with the Jupiter on-chain programs, which gives us a list of best possible routes for performing a token swap.
+
+### Installation
+
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add @jup-ag/core
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install @jup-ag/core
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Fetching Token list from Jupiter
+
+The List of Tokens are being fetched from Jupiter for a specific ENV like mainnet-beta or devnet.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/token-list/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/token-list/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Loading the Jupiter instance
+
+Jupiter instace is being created with the provided configurations. There are alot of options present to know more about it. [link](https://docs.jup.ag/jupiter-core/full-guide)
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/loading-instance/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/loading-instance/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## How to use Jupiter in Client
 
 ## How to use Jupiter API
