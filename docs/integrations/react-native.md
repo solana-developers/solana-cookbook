@@ -3,16 +3,16 @@ title: React Native
 head:
 - - meta
 - name: title
-  content: Solana Cookbook | Using React Native with @solana/web3.js
+  content: Solana Cookbook | Using React Native with Solana
 - - meta
 - name: og:title
-  content: Solana Cookbook | Using React Native with @solana/web23.js
+  content: Solana Cookbook | Using React Native with Solana
 - - meta
 - name: description
-  content: React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities
+  content: In this tutorial, you learn how to use Solana in your React Native apps.
 - - meta
 - name: og:description
-  content: React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities
+  content: In this tutorial, you learn how to use Solana in your React Native apps.
 - - meta
 - name: og:image
   content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,15 +36,17 @@ head:
   content: index,follow
 ---
 
-# React Native
+# React Native and Solana
 
-React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities.
+React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities. Powered with the Solana SDK, this is a great platform to quickly build performant native Crypto apps.
+
+The fastest way to start with React Native and Solana is by using the [Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native). 
 
 ## How to use @solana/web3.js in a React Native app
 
 In this tutorial you will learn how to create a new React Native app and install and configure the `@solana/web3.js` SDK, and its dependencies. 
 
-If you want to add the `@solana/web3.js` SDK to an existing app, you can skip the first step and start by installing the dependencies.
+If you already have an existing app, skip to [installing the dependencies](#install-dependencies).
 
 ### Create a new app
 
@@ -74,7 +76,7 @@ import 'react-native-url-polyfill/auto'
 
 ### Update `metro.config.js`
 
-In this step, we will configure the `metro` configuration so it will load files with the `cjs` extension.
+In this step, we will configure the `metro` configuration, so it will load files with the `cjs` extension.
 
 Open the file `metro.config.js` in the root of your project and replace the content with the snippet below:
 
@@ -104,13 +106,17 @@ module.exports = async () => {
 
 ### Update `App.tsx`
 
-In this step, we can use the Solana SDK.
+Let's add a web3.js example into our app!
 
 Open the file `App.tsx` and add the following code inside the `App` function:
 
+In this example, we set up a connection to Solana Devnet and when the components load, we get the version of the cluster we connected to and store the version in the component state.
+
+Additionally, this example shows how to generate and store a keypair.
+
 ```typescript
 const conn = new Connection(clusterApiUrl('devnet'));
-const [res, setRes] = useState<any>('');
+const [version, setVersion] = useState<any>('');
 const [keypair, setKeypair] = useState<Keypair>(() => Keypair.generate());
 
 const randomKeypair = () => {
@@ -118,19 +124,19 @@ const randomKeypair = () => {
 };
 
 useEffect(() => {
-  if (res) {
+  if (version) {
     return;
   }
-  conn.getVersion().then(r => setRes(r));
-}, [res, setRes]);
+  conn.getVersion().then(r => setVersion(r));
+}, [version, setVersion]);
 ```
 
 Lastly, in the template (or `render function`) add the following markup:
 
 
 ```tsx
-{res ? (
-  <Section title="Version">{JSON.stringify(res, null, 2)}</Section>
+{version ? (
+  <Section title="Version">{JSON.stringify(version, null, 2)}</Section>
 ) : null}
 {keypair ? (
   <Section title="Keypair">{JSON.stringify(keypair?.publicKey?.toBase58(), null, 2)}</Section>
@@ -155,6 +161,11 @@ npx react-native run-ios
 ```
 
 If all went well, you should see a React Native app being started in your iOS simulator that retrieves the version of the Solana Devnet.
+
+## Solana DApp Scaffold for React Native
+
+If you want to hit the ground running, you can download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
+
 
 ## Common issues when using @solana/web3.js in a React Native app
 
