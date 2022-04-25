@@ -170,22 +170,46 @@ with the following example.
 ## How to calculate transaction cost
 
 The number of signatures a transaction requires are used to calculate
-the transaction cost. As long as you are not create an account, this
+the transaction cost. As long as you are not creating an account, this
 will be the final transaction cost. To find out more about costs to create
-and account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
+an account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
 
+The two examples below show the two ways currently available to calculate estimated transaction cost.
+
+The first example uses `getEstimatedFee`, which is a new method on the `Transaction` class, while the second example uses `getFeeForMessage` which replaces `getFeeCalculatorForBlockhash` on the `Connection` class.
+
+### getEstimatedFee
 <SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
+    <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-cost.en.ts)
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-cost.preview.en.ts)
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+### getFeeForMessage
+<SolanaCodeGroup>
+    <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees-for-message.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees-for-message.preview.en.ts)
 
   </template>
 
