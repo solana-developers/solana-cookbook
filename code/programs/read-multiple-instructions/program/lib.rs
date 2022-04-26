@@ -1,5 +1,11 @@
-use anchor_lang::prelude::*;
-use arrayref::array_ref;
+use anchor_lang::{
+    prelude::*,
+    solana_program::{
+        sysvar,
+        serialize_utils::{read_pubkey,read_u16}
+    }
+};
+
 
 declare_id!("8DJXJRV8DBFjJDYyU9cTHBVK1F1CTCi6JUBDVfyBxqsT");
 
@@ -7,57 +13,52 @@ declare_id!("8DJXJRV8DBFjJDYyU9cTHBVK1F1CTCi6JUBDVfyBxqsT");
 pub mod cookbook {
     use super::*;
 
-    pub fn print_name(ctx: Context<PrintName>, name: String) -> Result<()> {
-        msg!("Hello, {}!", name);
-        Ok(())
-    }
+    pub fn read_multiple_instruction<'info>(ctx: Context<ReadMultipleInstruction>, creator_bump: u8) -> Result<()> {
+        let instruction_sysvar_account = &ctx.accounts.instruction_sysvar_account;
 
-    pub fn print_time(ctx: Context<PrintTime>) -> Result<()> {
-        let clock = Clock::get().unwrap();
+        let instruction_sysvar_account_info = instruction_sysvar_account.to_account_info();
 
-        msg!("It is {}", clock.unix_timestamp);
+        let id = "8DJXJRV8DBFjJDYyU9cTHBVK1F1CTCi6JUBDVfyBxqsT";
 
-        Ok(())
-    }
+        let instruction_sysvar = instruction_sysvar_account_info.data.borrow();
 
-    pub fn print_random(ctx: Context<PrintRandom>) -> Result<()> {
-        let recent_slothashes = &ctx.accounts.slot_hashes;
-        let signer = &ctx.accounts.authority;
+        let mut idx = 0;
 
-        if recent_slothashes.key().to_string() != "SysvarS1otHashes111111111111111111111111111" {
-            return err!(MyError::InvalidSlotHashesKey);
+        let num_instructions = read_u16(&mut idx, &instruction_sysvar)
+        .map_err(|_| MyError::NoInstructionFound)?;
+
+        for index in 0..num_instructions {
+            let mut current = 2 + (index * 2) as usize;
+            let start = read_u16(&mut current, &instruction_sysvar).unwrap();
+
+            current = start as usize;
+            let num_accounts = read_u16(&mut current, &instruction_sysvar).unwrap();
+            current += (num_accounts as usize) * (1 + 32);
+            let program_id = read_pubkey(&mut current, &instruction_sysvar).unwrap();
+
+            if program_id != id
+            {
+                msg!("Transaction had ix with program id {}", program_id);
+                return Err(MyError::SuspiciousTransaction.into());
+            }
         }
 
-        let slots = recent_slothashes.data.borrow();
-        let key_bytes = signer.key().to_bytes();
-        let mut combo = vec![0u8; 32];
-        for i in 0..key_bytes.len() {
-            combo[i] = key_bytes[i] + slots[i];
-        }
-        let parsed = array_ref![combo, 4, 8];
-        let random = u64::from_le_bytes(*parsed);
-
-        msg!("Random number: {}", random);
-
         Ok(())
     }
+
 }
 
 #[derive(Accounts)]
-pub struct PrintName {}
-
-#[derive(Accounts)]
-pub struct PrintTime {}
-
-#[derive(Accounts)]
-pub struct PrintRandom<'info> {
-    /// CHECK: did check in function
-    pub slot_hashes: UncheckedAccount<'info>,
-    pub authority: Signer<'info>,
+#[instruction(creator_bump:u8)]
+pub struct ReadMultipleInstruction<'info> {
+    #[account(address = sysvar::instructions::id())]
+    instruction_sysvar_account: UncheckedAccount<'info>
 }
 
 #[error_code]
 pub enum MyError {
-    #[msg("Incorrect SlotHashes ID")]
-    InvalidSlotHashesKey,
+    #[msg("No instructions found")]
+    NoInstructionFound,
+    #[msg("Suspicious transaction detected")]
+    SuspiciousTransaction
 }
