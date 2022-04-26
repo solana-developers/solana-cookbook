@@ -357,23 +357,3 @@ iterate over them. We can do many things with this, like checking for suspicious
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
-
-The respective client side code will look as follows
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/programs/read-multiple-instructions/client/main.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-  
-@[code](@/code/programs/read-multiple-instructions/client/main.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
