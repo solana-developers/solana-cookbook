@@ -199,6 +199,8 @@ npm install @jup-ag/react-hook
 
 ### Adding the Provider
 
+We need to setup the JupiterProvider in order to use the useJupiter Hook Through the React App.
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -219,6 +221,8 @@ npm install @jup-ag/react-hook
 </SolanaCodeGroup>
 
 ### Fetching the List of Tokens
+
+All the Available Tokens that can be swapped for a Given Network is fetched using this piece of code.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -241,6 +245,8 @@ npm install @jup-ag/react-hook
 
 ### Setting up the State
 
+InputMint and OutputMint is being added to the state so that it can be used later or can be changed by the user.
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -261,6 +267,29 @@ npm install @jup-ag/react-hook
 </SolanaCodeGroup>
 
 ### Using the useJupiter react hook
+
+The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/useJupiter/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/useJupiter/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Performing the Swap
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
