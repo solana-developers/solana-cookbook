@@ -26,4 +26,6 @@ interface Token {
     // routeCacheDuration: CACHE_DURATION_MS
     // wrapUnwrapSOL: true (default) | false
   });
+
+  const routeMap = jupiter.getRouteMap();
 })();

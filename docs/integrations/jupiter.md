@@ -110,7 +110,176 @@ Jupiter instace is being created with the provided configurations. There are alo
 
 </SolanaCodeGroup>
 
-## How to use Jupiter in Client
+### Getting the RouteMap
+
+The RouteMap identifies what tokens you can swap to given an input token. The route map only contains token mint addresses and no meta data.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/route-map/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/route-map/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Getting the routes for given Input and Output token
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/routes/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/routes/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Execute the Token Swap
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/routes/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/routes/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## How to use Jupiter in a Client Application
+
+### Installing the Package
+
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add @jup-ag/react-hook
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install @jup-ag/react-hook
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Adding the Provider
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/providerSetup/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/providerSetup/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Fetching the List of Tokens
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/react-token-list/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/react-token-list/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Setting up the State
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/inputSetup/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/inputSetup/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Using the useJupiter react hook
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/useJupiter/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/useJupiter/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
 
 ## How to use Jupiter API
 
