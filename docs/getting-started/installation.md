@@ -259,17 +259,17 @@ Copy and paste the following command, then press Enter to download the Solana
 installer into a temporary directory:
 
 ```bash
-curl https://release.solana.com/v1.8.5/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
+curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-If `v1.8.5` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
+If `v1.9.16` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
 
 Copy and paste the following command, then press Enter to install the latest
 version of Solana. If you see a security pop-up by your system, please select
 to allow the program to run.
 
 ```bash
-C:\solana-install-tmp\solana-install-init.exe v1.8.5
+C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
 To find the latest release, check
