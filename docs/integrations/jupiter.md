@@ -46,6 +46,8 @@ Jupiter Core SDK is used to interact with the Jupiter on-chain programs, which g
 
 ### Installation
 
+@jup-ag/core is the Core package used to interact with jupiter on-chain programs to perform swaps between two possible token pairs.
+
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
 
@@ -66,7 +68,7 @@ npm install @jup-ag/core
 
 ### Fetching Token list from Jupiter
 
-The List of Tokens are being fetched from Jupiter for a specific ENV like mainnet-beta or devnet.
+All the possible tokens that can be swapped with jupiter for a given network is being fetched.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -89,7 +91,7 @@ The List of Tokens are being fetched from Jupiter for a specific ENV like mainne
 
 ### Loading the Jupiter instance
 
-Jupiter instace is being created with the provided configurations. There are alot of options present to know more about it. [link](https://docs.jup.ag/jupiter-core/full-guide)
+Jupiter instace is being created with the provided configurations. There are alot of options present to tinker with to know more about it. go [here](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -177,7 +179,7 @@ The RouteMap identifies what tokens you can swap to given an input token. The ro
 
 ## How to use Jupiter in a Client Application
 
-### Installing the Package
+### Installation
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -314,9 +316,123 @@ After providing all the data to the useJupiter Hook. We can use the jupiter inst
 
 ## How to use Jupiter API
 
+This is the easiest way to interact with jupiter programs to swap any 2 provided tokens.
+
+### Installation
+
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn i @solana/web3.js
+yarn i cross-fetch
+yarn i @project-serum/anchor
+yarn i bs58
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm i @solana/web3.js
+npm i cross-fetch
+npm i @project-serum/anchor
+npm i bs58
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### Import Libraries and Setup the Connection
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/installationapi/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/installationapi/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Getting the Route Map
+
+This API retrives all the available tokens that are possible to be swapped using jupiter. It only returns the token mint and not the token metadata.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/retriveapi/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/retriveapi/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Getting the Seralized Transaction to perform Swap
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/getTxapi/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/getTxapi/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### Executing the Swap Transaction
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/executeapi/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/executeapi/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
 ## Other Resources
 
-<!-- - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
-- [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)
-- [Rust Example Code](https://github.com/project-serum/anchor/tree/master/tests/pyth)
-- [Anchor Example Code](https://github.com/0xPratik/pyth-anchor-example) -->
+- [Main Docs](https://docs.jup.ag/)
+- [Jupiter Core Example Code](https://github.com/jup-ag/jupiter-core-example)
+- [Jupiter React Example Code](https://github.com/jup-ag/jupiter-api-nextjs-example)
+- [Jupiter API Example Code](https://github.com/jup-ag/api-arbs-example)
