@@ -296,6 +296,62 @@ matches the given public key
 
 </SolanaCodeGroup>
 
+## How to check if a public key has an associated private key
+
+In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You can check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve can be controlled by users with wallets.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+
 ## How to generate a mnemonic phrase
 
 If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
