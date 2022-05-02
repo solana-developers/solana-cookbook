@@ -222,7 +222,7 @@ We need to setup the JupiterProvider in order to use the useJupiter Hook Through
 
 ### Fetching the List of Tokens
 
-All the Available Tokens that can be swapped for a Given Network is fetched using this piece of code.
+All the possible Tokens that can be swapped for a Given Network is fetched.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -245,7 +245,7 @@ All the Available Tokens that can be swapped for a Given Network is fetched usin
 
 ### Setting up the State
 
-InputMint and OutputMint is being added to the state so that it can be used later or can be changed by the user.
+InputMint and OutputMint is being added to the state so that it can be used later to swap tokens between them or can be changed by the user.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -268,7 +268,7 @@ InputMint and OutputMint is being added to the state so that it can be used late
 
 ### Using the useJupiter react hook
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped.
+The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [here](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -290,6 +290,8 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 </SolanaCodeGroup>
 
 ### Performing the Swap
+
+After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the exchange function
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
