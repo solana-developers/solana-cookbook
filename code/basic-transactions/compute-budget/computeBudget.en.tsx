@@ -1,6 +1,5 @@
 import { BN } from '@project-serum/anchor';
-import { Transaction } from '@solana/web3.js';
-import { Keypair, Connection, LAMPORTS_PER_SOL, sendAndConfirmTransaction, TransactionInstruction, PublicKey, SystemProgram } from '@solana/web3.js';
+import { Keypair, Connection, LAMPORTS_PER_SOL, sendAndConfirmTransaction, ComputeBudgetProgram, SystemProgram, Transaction } from '@solana/web3.js';
 
 (async () => {
   const payer = Keypair.generate();
@@ -18,20 +17,16 @@ import { Keypair, Connection, LAMPORTS_PER_SOL, sendAndConfirmTransaction, Trans
 
 await connection.confirmTransaction(airdropSignature);
 
-  const data = Buffer.from(
-    Uint8Array.of(0, ...new BN(256000).toArray("le", 4))
-  );
-  const additionalComputeBudgetInstruction = new TransactionInstruction({
-    keys: [],
-    programId: new PublicKey("ComputeBudget111111111111111111111111111111"),
-    data,
+  const additionalComputeBudgetInstruction = ComputeBudgetProgram.requestUnits({
+    units: 400000,
+    additionalFee: 0
   });
   const transaction = new Transaction()
     .add(additionalComputeBudgetInstruction)
     .add(SystemProgram.transfer({
       fromPubkey: payer.publicKey,
       toPubkey: toAccount,
-      lamports: 1,
+      lamports: 10000000,
     }));
 
   const signature = await sendAndConfirmTransaction(connection, transaction, [payer]);
