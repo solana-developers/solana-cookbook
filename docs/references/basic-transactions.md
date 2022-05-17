@@ -195,6 +195,22 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Python" active>
+
+  <template v-slot:default>
+
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees.en.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/basic-transactions/calc-tx-cost/calc-tx-est-fees.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ### getFeeForMessage
