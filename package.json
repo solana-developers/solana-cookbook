@@ -6,7 +6,8 @@
   "repository": "https://github.com/solana-developers/solana-cookbook",
   "scripts": {
     "start": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "prepare": "husky install"
   },
   "author": "solana developer advocates",
   "license": "MIT",
@@ -17,6 +18,12 @@
     "@vuepress/plugin-register-components": "^2.0.0-beta.36",
     "@vuepress/plugin-search": "^2.0.0-beta.36",
     "@vuepress/shared-utils": "^1.8.2",
+    "husky": "^8.0.1",
+    "lint-staged": ">=10",
+    "prettier": "^2.6.2",
     "vuepress": "^2.0.0-beta.36"
+  },
+  "lint-staged": {
+    "*.{js,css,ts}": "prettier --write"
   }
 }
