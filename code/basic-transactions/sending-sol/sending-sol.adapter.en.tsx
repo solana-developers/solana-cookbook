@@ -14,7 +14,7 @@ export const SendTenLamportToRandomAddress: FC = () => {
       SystemProgram.transfer({
         fromPubkey: publicKey,
         toPubkey: Keypair.generate().publicKey,
-        lamports: 10,
+        lamports: 1_000_000,
       })
     );
 

@@ -23,7 +23,7 @@ import {
 
   await connection.confirmTransaction(airdropSignature);
 
-  const lamportsToSend = 10;
+  const lamportsToSend = 1_000_000;
 
   const transferTransaction = new Transaction()
     .add(SystemProgram.transfer({
