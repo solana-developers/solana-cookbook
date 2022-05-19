@@ -12,9 +12,9 @@ if slug.len() > 10 || content.len() > 20 || title.len() > 50 {
 let account_info_iter = &mut accounts.iter();
 
 let authority_account = next_account_info(account_info_iter)?;
-    let blog_account = next_account_info(account_info_iter)?;
-    let post_account = next_account_info(account_info_iter)?;
-    let system_program = next_account_info(account_info_iter)?;
+let blog_account = next_account_info(account_info_iter)?;
+ let post_account = next_account_info(account_info_iter)?;
+let system_program = next_account_info(account_info_iter)?;
 
     if !authority_account.is_signer {
         return Err(ProgramError::MissingRequiredSignature);
