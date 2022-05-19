@@ -4,7 +4,9 @@ import { getAccount } from "@solana/spl-token";
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-  const tokenAccountPubkey = new PublicKey("2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5");
+  const tokenAccountPubkey = new PublicKey(
+    "2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5"
+  );
 
   let tokenAccount = await getAccount(connection, tokenAccountPubkey);
   console.log(tokenAccount);
@@ -29,5 +31,4 @@ import { getAccount } from "@solana/spl-token";
     closeAuthority: null
   }
   */
-
 })();

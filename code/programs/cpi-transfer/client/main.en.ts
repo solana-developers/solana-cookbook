@@ -7,16 +7,16 @@ import {
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from "@solana/web3.js";
 import {
   AccountLayout,
   MintLayout,
   Token,
   TOKEN_PROGRAM_ID,
   u64,
-} from '@solana/spl-token';
+} from "@solana/spl-token";
 
-import * as BN from 'bn.js';
+import * as BN from "bn.js";
 
 // Users
 const PAYER_KEYPAIR = Keypair.generate();
@@ -31,13 +31,13 @@ const DESTINATION_TOKEN_ACCOUNT = Keypair.generate();
 const DEFAULT_DECIMALS_COUNT = 9;
 const TOKEN_TRANSFER_AMOUNT = 50 * 10 ** DEFAULT_DECIMALS_COUNT;
 const TOKEN_TRANSFER_AMOUNT_BUFFER = Buffer.from(
-  Uint8Array.of(...new BN(TOKEN_TRANSFER_AMOUNT).toArray('le', 8))
+  Uint8Array.of(...new BN(TOKEN_TRANSFER_AMOUNT).toArray("le", 8))
 );
 
 (async () => {
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
-    'EfYK91eN3AqTwY1C34W6a33qGAtQ8HJYVhNv7cV4uMZj'
+    "EfYK91eN3AqTwY1C34W6a33qGAtQ8HJYVhNv7cV4uMZj"
   );
 
   const mintDataSpace = MintLayout.span;

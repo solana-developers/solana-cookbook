@@ -8,7 +8,7 @@
     "start": "vuepress dev docs",
     "build": "vuepress build docs",
     "prepare": "husky install",
-    "format":"prettier --write"
+    "format": "prettier --write ."
   },
   "author": "solana developer advocates",
   "license": "MIT",

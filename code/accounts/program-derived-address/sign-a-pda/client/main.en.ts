@@ -12,22 +12,33 @@ import * as bs58 from "bs58";
 
 (async () => {
   // program id
-  const programId = new PublicKey("4wQC2yuVt4rbcPeYLK8WngqbYLg7UAahVjRFrK3NBjP6");
+  const programId = new PublicKey(
+    "4wQC2yuVt4rbcPeYLK8WngqbYLg7UAahVjRFrK3NBjP6"
+  );
 
   // connection
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
   // setup fee payer
   const feePayer = Keypair.generate();
-  const feePayerAirdropSignature = await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL);
+  const feePayerAirdropSignature = await connection.requestAirdrop(
+    feePayer.publicKey,
+    LAMPORTS_PER_SOL
+  );
   await connection.confirmTransaction(feePayerAirdropSignature);
 
   // setup pda
-  let [pda, bump] = await PublicKey.findProgramAddress([Buffer.from("escrow")], programId);
+  let [pda, bump] = await PublicKey.findProgramAddress(
+    [Buffer.from("escrow")],
+    programId
+  );
   console.log(`bump: ${bump}, pubkey: ${pda.toBase58()}`);
 
   // require 1 SOL for the transfering in the program
-  const pdaAirdropSignature = await connection.requestAirdrop(pda, LAMPORTS_PER_SOL);
+  const pdaAirdropSignature = await connection.requestAirdrop(
+    pda,
+    LAMPORTS_PER_SOL
+  );
   await connection.confirmTransaction(pdaAirdropSignature);
 
   // create a random `to`

@@ -1,3 +1,3 @@
-(async()=>{
-    const userInfo = await torus.getUserInfo(); // user profile info (email address etc)
+(async () => {
+  const userInfo = await torus.getUserInfo(); // user profile info (email address etc)
 })();

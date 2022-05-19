@@ -1,8 +1,8 @@
 (async () => {
-while (!done && getUnixTs() - startTime < timeout) {
+  while (!done && getUnixTs() - startTime < timeout) {
     connection.sendRawTransaction(rawTransaction, {
-        skipPreflight: true,
+      skipPreflight: true,
     });
     await sleep(300);
-}
+  }
 })();

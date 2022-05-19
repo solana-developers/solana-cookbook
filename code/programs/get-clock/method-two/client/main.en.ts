@@ -7,14 +7,14 @@ import {
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from "@solana/web3.js";
 
 (async () => {
   const programId = new PublicKey(
-    '4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk'
+    "4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk"
   );
 
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
   // Airdropping 1 SOL
   const feePayer = Keypair.generate();

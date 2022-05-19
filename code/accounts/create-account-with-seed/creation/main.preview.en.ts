@@ -10,4 +10,6 @@ const tx = new Transaction().add(
   })
 );
 
-console.log(`txhash: ${await sendAndConfirmTransaction(connection, tx, [feePayer, base])}`);
+console.log(
+  `txhash: ${await sendAndConfirmTransaction(connection, tx, [feePayer, base])}`
+);

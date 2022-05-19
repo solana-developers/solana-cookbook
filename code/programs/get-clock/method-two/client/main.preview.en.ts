@@ -1,6 +1,6 @@
 (async () => {
   const programId = new PublicKey(
-    '4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk'
+    "4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk"
   );
 
   // No more requirement to pass clock sys var key

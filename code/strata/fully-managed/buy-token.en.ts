@@ -1,6 +1,4 @@
-import {
-  SplTokenBonding
-} from "@strata-foundation/spl-token-bonding";
+import { SplTokenBonding } from "@strata-foundation/spl-token-bonding";
 import * as anchor from "@project-serum/anchor";
 
 (async () => {

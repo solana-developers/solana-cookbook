@@ -3,8 +3,7 @@
   import { WalletMultiButton } from "@svelte-on-solana/wallet-adapter-ui";
 </script>
 
-{#if $walletStore?.connected}
-  Wallet with public key {$walletStore.publicKey} successfully connected!
-{:else}
-  <WalletMultiButton />
+{#if $walletStore?.connected} Wallet with public key {$walletStore.publicKey}
+successfully connected! {:else}
+<WalletMultiButton />
 {/if}

@@ -1,4 +1,11 @@
-import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction, SystemProgram } from "@solana/web3.js";
+import {
+  clusterApiUrl,
+  Connection,
+  PublicKey,
+  Keypair,
+  Transaction,
+  SystemProgram,
+} from "@solana/web3.js";
 import {
   TOKEN_PROGRAM_ID,
   createInitializeAccountInstruction,
@@ -14,15 +21,21 @@ import * as bs58 from "bs58";
 
   // 5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8
   const feePayer = Keypair.fromSecretKey(
-    bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
+    bs58.decode(
+      "588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2"
+    )
   );
 
   // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
   const alice = Keypair.fromSecretKey(
-    bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
+    bs58.decode(
+      "4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp"
+    )
   );
 
-  const mintPubkey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+  const mintPubkey = new PublicKey(
+    "8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV"
+  );
 
   // 1) use build-in function
   {
@@ -60,6 +73,11 @@ import * as bs58 from "bs58";
         alice.publicKey // owner of token account
       )
     );
-    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, tokenAccount])}`);
+    console.log(
+      `txhash: ${await connection.sendTransaction(tx, [
+        feePayer,
+        tokenAccount,
+      ])}`
+    );
   }
 })();

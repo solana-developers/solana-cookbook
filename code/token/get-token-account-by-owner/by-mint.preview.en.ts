@@ -1,1 +1,3 @@
-let response = await connection.getParsedTokenAccountsByOwner(owner, { mint: mint });
+let response = await connection.getParsedTokenAccountsByOwner(owner, {
+  mint: mint,
+});

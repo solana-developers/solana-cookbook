@@ -1,7 +1,7 @@
 (async () => {
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
-    'EfYK91eN3AqTwY1C34W6a33qGAtQ8HJYVhNv7cV4uMZj'
+    "EfYK91eN3AqTwY1C34W6a33qGAtQ8HJYVhNv7cV4uMZj"
   );
 
   const transferTokensIx = new TransactionInstruction({
