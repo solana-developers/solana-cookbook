@@ -6,13 +6,9 @@ const transaction = new web3.Transaction().add(
     toTokenAccount.address,
     fromWallet.publicKey,
     [],
-    1,
-  ),
+    1
+  )
 );
 
 // Sign transaction, broadcast, and confirm
-await web3.sendAndConfirmTransaction(
-  connection,
-  transaction,
-  [fromWallet]
-);
+await web3.sendAndConfirmTransaction(connection, transaction, [fromWallet]);

@@ -23,9 +23,13 @@ import * as bs58 from "bs58";
   // create a example tx, alice transfer to bob and feePayer is `feePayer`
   // alice and feePayer are signer in this tx
   const feePayer = Keypair.generate();
-  await connection.confirmTransaction(await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL));
+  await connection.confirmTransaction(
+    await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL)
+  );
   const alice = Keypair.generate();
-  await connection.confirmTransaction(await connection.requestAirdrop(alice.publicKey, LAMPORTS_PER_SOL));
+  await connection.confirmTransaction(
+    await connection.requestAirdrop(alice.publicKey, LAMPORTS_PER_SOL)
+  );
   const bob = Keypair.generate();
 
   // 1. Create Transaction
@@ -43,7 +47,10 @@ import * as bs58 from "bs58";
   // 2. Sign Transaction
   // use any lib you like, the main idea is to use ed25519 to sign it.
   // the return signature should be 64 bytes.
-  let feePayerSignature = nacl.sign.detached(realDataNeedToSign, feePayer.secretKey);
+  let feePayerSignature = nacl.sign.detached(
+    realDataNeedToSign,
+    feePayer.secretKey
+  );
   let aliceSignature = nacl.sign.detached(realDataNeedToSign, alice.secretKey);
 
   // 3. Recover Tranasction
@@ -71,7 +78,9 @@ import * as bs58 from "bs58";
     recoverTx.addSignature(alice.publicKey, Buffer.from(aliceSignature));
 
     // 4. Send transaction
-    console.log(`txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`);
+    console.log(
+      `txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`
+    );
   }
 
   // or
@@ -84,7 +93,9 @@ import * as bs58 from "bs58";
     ]);
 
     // 4. Send transaction
-    console.log(`txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`);
+    console.log(
+      `txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`
+    );
   }
 
   // if this process takes too long, your recent blockhash will expire (after 150 blocks).

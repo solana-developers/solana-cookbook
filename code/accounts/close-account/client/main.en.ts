@@ -15,11 +15,16 @@ import {
 
   // setup fee payer
   const feePayer = Keypair.generate();
-  const feePayerAirdropSignature = await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL);
+  const feePayerAirdropSignature = await connection.requestAirdrop(
+    feePayer.publicKey,
+    LAMPORTS_PER_SOL
+  );
   await connection.confirmTransaction(feePayerAirdropSignature);
 
   // remember to deploy your program first
-  const programId = new PublicKey("An47uBJ8kY7hzKPzDyRoFSsDHkZFY9vkfUGpTViWqLFz");
+  const programId = new PublicKey(
+    "An47uBJ8kY7hzKPzDyRoFSsDHkZFY9vkfUGpTViWqLFz"
+  );
 
   // 1. create an account to your program
   let newAccount = Keypair.generate();
@@ -34,7 +39,12 @@ import {
       programId: programId,
     })
   );
-  console.log(`create account txhash: ${await connection.sendTransaction(createNewAccountTx, [feePayer, newAccount])}`);
+  console.log(
+    `create account txhash: ${await connection.sendTransaction(
+      createNewAccountTx,
+      [feePayer, newAccount]
+    )}`
+  );
 
   // 2. close your account
   let closeAccountTx = new Transaction().add(
@@ -54,5 +64,9 @@ import {
       programId: programId,
     })
   );
-  console.log(`close account txhash: ${await connection.sendTransaction(closeAccountTx, [feePayer])}`);
+  console.log(
+    `close account txhash: ${await connection.sendTransaction(closeAccountTx, [
+      feePayer,
+    ])}`
+  );
 })();

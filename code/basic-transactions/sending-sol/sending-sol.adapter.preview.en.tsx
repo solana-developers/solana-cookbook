@@ -8,4 +8,4 @@ const transaction = new Transaction().add(
 
 const signature = await sendTransaction(transaction, connection);
 
-await connection.confirmTransaction(signature, 'processed');
+await connection.confirmTransaction(signature, "processed");

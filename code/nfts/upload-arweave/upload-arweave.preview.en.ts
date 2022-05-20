@@ -1,31 +1,31 @@
-    // 1. Upload image to Arweave
-    const data = fs.readFileSync('./code/nfts/arweave-upload/lowres-dog.png');
-    
-    const transaction = await arweave.createTransaction({
-        data: data
-    });
-    
-    transaction.addTag('Content-Type', 'image/png');
-    
-    const wallet = await arweave.wallets.getWalletFromFile('wallet.json');
-    await arweave.transactions.sign(transaction, wallet);
-    
-    const response = await arweave.transactions.post(transaction);
-    console.log(response);
+// 1. Upload image to Arweave
+const data = fs.readFileSync("./code/nfts/arweave-upload/lowres-dog.png");
 
-    const { id } = response;
-    const imageUrl = id ? `https://arweave.net/${id}` : undefined;
+const transaction = await arweave.createTransaction({
+  data: data,
+});
 
-    // 2. Upload metadata to Arweave
+transaction.addTag("Content-Type", "image/png");
 
-    const metadataRequest = JSON.stringify(metadata);
-    
-    const metadataTransaction = await arweave.createTransaction({
-        data: metadataRequest
-    });
-    
-    metadataTransaction.addTag('Content-Type', 'application/json');
-    
-    await arweave.transactions.sign(metadataTransaction, wallet);
-    
-    await arweave.transactions.post(metadataTransaction);    
+const wallet = await arweave.wallets.getWalletFromFile("wallet.json");
+await arweave.transactions.sign(transaction, wallet);
+
+const response = await arweave.transactions.post(transaction);
+console.log(response);
+
+const { id } = response;
+const imageUrl = id ? `https://arweave.net/${id}` : undefined;
+
+// 2. Upload metadata to Arweave
+
+const metadataRequest = JSON.stringify(metadata);
+
+const metadataTransaction = await arweave.createTransaction({
+  data: metadataRequest,
+});
+
+metadataTransaction.addTag("Content-Type", "application/json");
+
+await arweave.transactions.sign(metadataTransaction, wallet);
+
+await arweave.transactions.post(metadataTransaction);

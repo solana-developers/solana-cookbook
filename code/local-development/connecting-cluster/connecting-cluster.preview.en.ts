@@ -1,1 +1,1 @@
-const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");

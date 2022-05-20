@@ -24,6 +24,6 @@ let tx = new Transaction().add(
     mint.publicKey, // mint pubkey
     8, // decimals
     alice.publicKey, // mint authority
-    alice.publicKey, // freeze authority (you can use `null` to disable it. when you disable it, you can't turn it on again)
+    alice.publicKey // freeze authority (you can use `null` to disable it. when you disable it, you can't turn it on again)
   )
 );

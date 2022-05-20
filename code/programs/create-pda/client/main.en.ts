@@ -7,14 +7,14 @@ import {
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from "@solana/web3.js";
 
 const PAYER_KEYPAIR = Keypair.generate();
 
 (async () => {
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
-    '6eW5nnSosr2LpkUGCdznsjRGDhVb26tLmiM1P8RV1QQp'
+    "6eW5nnSosr2LpkUGCdznsjRGDhVb26tLmiM1P8RV1QQp"
   );
 
   // Airdop to Payer
@@ -23,7 +23,7 @@ const PAYER_KEYPAIR = Keypair.generate();
   );
 
   const [pda, bump] = await PublicKey.findProgramAddress(
-    [Buffer.from('customaddress'), PAYER_KEYPAIR.publicKey.toBuffer()],
+    [Buffer.from("customaddress"), PAYER_KEYPAIR.publicKey.toBuffer()],
     programId
   );
 

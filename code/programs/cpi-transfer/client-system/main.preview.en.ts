@@ -1,7 +1,7 @@
 (async () => {
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
-    'DkuQ5wsndkzXfgqDB6Lgf4sDjBi4gkLSak1dM5Mn2RuQ'
+    "DkuQ5wsndkzXfgqDB6Lgf4sDjBi4gkLSak1dM5Mn2RuQ"
   );
 
   // Airdropping some SOL

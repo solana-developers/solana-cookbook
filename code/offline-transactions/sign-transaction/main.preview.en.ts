@@ -6,7 +6,9 @@
   recoverTx.addSignature(alice.publicKey, Buffer.from(aliceSignature));
 
   // 4. Send transaction
-  console.log(`txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`);
+  console.log(
+    `txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`
+  );
 }
 
 // or
@@ -19,5 +21,7 @@
   ]);
 
   // 4. Send transaction
-  console.log(`txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`);
+  console.log(
+    `txhash: ${await connection.sendRawTransaction(recoverTx.serialize())}`
+  );
 }
