@@ -270,8 +270,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 ## How to increase compute budget for a transaction
 
 Compute budget for a single transaction can be increased by adding an instruction
-call to the Compute Budget Program. By default, the compute budget is set to 200k
-compute units, and can be increased up to 1.4M compute units.
+call to the Compute Budget Program. By default the compute budget is set to 1.4M compute units.
 
 **Note**: To increase the compute budget for a transaction, you must make the 
 first instruction of the transaction the instruction that sets the budget.
