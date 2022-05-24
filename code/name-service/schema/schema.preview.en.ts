@@ -28,3 +28,4 @@ export class NameRegistryState {
       this.owner = new PublicKey(obj.owner);
       this.class = new PublicKey(obj.class);
     }
+  }
