@@ -1,21 +1,21 @@
-import { clusterApiUrl, Connection, Keypair } from '@solana/web3.js';
-import { LAMPORTS_PER_SOL, PublicKey, SystemProgram } from '@solana/web3.js';
-import { Transaction, TransactionInstruction } from '@solana/web3.js';
+import { clusterApiUrl, Connection, Keypair } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, PublicKey, SystemProgram } from "@solana/web3.js";
+import { Transaction, TransactionInstruction } from "@solana/web3.js";
 
-import * as BN from 'bn.js';
+import * as BN from "bn.js";
 
 // Users
 const PAYER_KEYPAIR = Keypair.generate();
 const GENERAL_STATE_KEYPAIR = Keypair.generate();
 
 const ACCOUNT_SPACE_BUFFER = Buffer.from(
-  Uint8Array.of(...new BN(100).toArray('le', 8))
+  Uint8Array.of(...new BN(100).toArray("le", 8))
 );
 
 (async () => {
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
-    'DkuQ5wsndkzXfgqDB6Lgf4sDjBi4gkLSak1dM5Mn2RuQ'
+    "DkuQ5wsndkzXfgqDB6Lgf4sDjBi4gkLSak1dM5Mn2RuQ"
   );
 
   // Airdropping some SOL

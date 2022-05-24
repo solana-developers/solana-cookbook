@@ -14,7 +14,9 @@ let tx = new Transaction().add(
 // assign `nonce` as recentBlockhash
 tx.recentBlockhash = nonceAccount.nonce;
 tx.feePayer = feePayer.publicKey;
-tx.sign(feePayer, nonceAccountAuth); /* fee payer + nonce account authority + ... */
+tx.sign(
+  feePayer,
+  nonceAccountAuth
+); /* fee payer + nonce account authority + ... */
 
 console.log(`txhash: ${await connection.sendRawTransaction(tx.serialize())}`);
-

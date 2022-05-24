@@ -4,7 +4,7 @@ await client.placeSpotOrder(
   mangoGroup.mangoCache,
   market,
   wallet?.adapter,
-  'buy',
+  "buy",
   3,
   3.5
-)
+);

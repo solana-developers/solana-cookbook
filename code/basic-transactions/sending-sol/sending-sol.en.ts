@@ -4,7 +4,7 @@ import {
   SystemProgram,
   LAMPORTS_PER_SOL,
   Transaction,
-  sendAndConfirmTransaction
+  sendAndConfirmTransaction,
 } from "@solana/web3.js";
 
 (async () => {
@@ -13,24 +13,27 @@ import {
 
   const connection = new Connection(
     "https://api.devnet.solana.com",
-    'confirmed',
+    "confirmed"
   );
 
   const airdropSignature = await connection.requestAirdrop(
     fromKeypair.publicKey,
-    LAMPORTS_PER_SOL,
+    LAMPORTS_PER_SOL
   );
 
   await connection.confirmTransaction(airdropSignature);
 
-  const lamportsToSend = 10;
+  const lamportsToSend = 1_000_000;
 
-  const transferTransaction = new Transaction()
-    .add(SystemProgram.transfer({
+  const transferTransaction = new Transaction().add(
+    SystemProgram.transfer({
       fromPubkey: fromKeypair.publicKey,
       toPubkey: toKeypair.publicKey,
-      lamports: lamportsToSend
-    }))
+      lamports: lamportsToSend,
+    })
+  );
 
-  await sendAndConfirmTransaction(connection, transferTransaction, [fromKeypair]);
+  await sendAndConfirmTransaction(connection, transferTransaction, [
+    fromKeypair,
+  ]);
 })();

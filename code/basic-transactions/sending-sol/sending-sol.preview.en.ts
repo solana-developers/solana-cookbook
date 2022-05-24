@@ -1,8 +1,9 @@
-const transferTransaction = new Transaction()
-  .add(SystemProgram.transfer({
+const transferTransaction = new Transaction().add(
+  SystemProgram.transfer({
     fromPubkey: fromKeypair.publicKey,
     toPubkey: toKeypair.publicKey,
-    lamports: lamportsToSend
-  }))
+    lamports: lamportsToSend,
+  })
+);
 
 await sendAndConfirmTransaction(connection, transferTransaction, [fromKeypair]);

@@ -8,14 +8,14 @@ import {
   SYSVAR_CLOCK_PUBKEY,
   Transaction,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from "@solana/web3.js";
 
 (async () => {
   const programId = new PublicKey(
-    '77ezihTV6mTh2Uf3ggwbYF2NyGJJ5HHah1GrdowWJVD3'
+    "77ezihTV6mTh2Uf3ggwbYF2NyGJJ5HHah1GrdowWJVD3"
   );
 
-  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
   // Airdropping 1 SOL
   const feePayer = Keypair.generate();

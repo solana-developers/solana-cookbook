@@ -1,4 +1,7 @@
-import { SplTokenBonding, ExponentialCurveConfig } from "@strata-foundation/spl-token-bonding";
+import {
+  SplTokenBonding,
+  ExponentialCurveConfig,
+} from "@strata-foundation/spl-token-bonding";
 import * as anchor from "@project-serum/anchor";
 import { NATIVE_MINT } from "@solana/spl-token";
 
@@ -15,13 +18,16 @@ import { NATIVE_MINT } from "@solana/spl-token";
       frac: 2,
     }),
   });
-  const { tokenBonding, baseMint, targetMint } = await tokenBondingSdk.createTokenBonding({
-    curve,
-    baseMint: NATIVE_MINT,
-    targetMintDecimals: 2,
-    buyBaseRoyaltyPercentage: 5,
-    buyTargetRoyaltyPercentage: 5,
-  });
+  const { tokenBonding, baseMint, targetMint } =
+    await tokenBondingSdk.createTokenBonding({
+      curve,
+      baseMint: NATIVE_MINT,
+      targetMintDecimals: 2,
+      buyBaseRoyaltyPercentage: 5,
+      buyTargetRoyaltyPercentage: 5,
+    });
 
-  console.log(`You can use ${baseMint.toBase58()} to buy ${targetMint.toBase58()} using the bonding curve at address ${tokenBonding.toBase58()}`);
+  console.log(
+    `You can use ${baseMint.toBase58()} to buy ${targetMint.toBase58()} using the bonding curve at address ${tokenBonding.toBase58()}`
+  );
 })();

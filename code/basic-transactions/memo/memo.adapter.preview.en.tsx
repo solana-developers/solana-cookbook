@@ -9,11 +9,11 @@ const transaction = new Transaction().add(
 await transaction.add(
   new TransactionInstruction({
     keys: [{ pubkey: publicKey, isSigner: true, isWritable: true }],
-    data: Buffer.from('Data to send in transaction', 'utf-8'),
+    data: Buffer.from("Data to send in transaction", "utf-8"),
     programId: new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"),
   })
-)
+);
 
 const signature = await sendTransaction(transaction, connection);
 
-await connection.confirmTransaction(signature, 'processed');
+await connection.confirmTransaction(signature, "processed");

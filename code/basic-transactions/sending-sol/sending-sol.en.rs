@@ -12,7 +12,7 @@ fn main() {
     let to = Keypair::new();
     let topubkey = Signer::pubkey(&to);
 
-    let lamports_to_send = 69;
+    let lamports_to_send = 1_000_000;
 
     let rpc_url = String::from("https://api.devnet.solana.com");
     let connection = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed());

@@ -27,8 +27,7 @@
 <WalletProvider {localStorageKey} {wallets} autoConnect />
 <ConnectionProvider {network} />
 
-{#if $walletStore?.connected}
-  Wallet with public key {$walletStore.publicKey} successfully connected!
-{:else}
-  <WalletMultiButton />
+{#if $walletStore?.connected} Wallet with public key {$walletStore.publicKey}
+successfully connected! {:else}
+<WalletMultiButton />
 {/if}

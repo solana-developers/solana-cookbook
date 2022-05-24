@@ -14,7 +14,10 @@ import {
   const feePayer = Keypair.generate();
 
   // Fund our wallet with 1 SOL
-  const airdropSignature = await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL);
+  const airdropSignature = await connection.requestAirdrop(
+    feePayer.publicKey,
+    LAMPORTS_PER_SOL
+  );
   await connection.confirmTransaction(airdropSignature);
 
   const nonceAccountAuth = Keypair.generate();
@@ -27,7 +30,9 @@ import {
     SystemProgram.createAccount({
       fromPubkey: feePayer.publicKey,
       newAccountPubkey: nonceAccount.publicKey,
-      lamports: await connection.getMinimumBalanceForRentExemption(NONCE_ACCOUNT_LENGTH),
+      lamports: await connection.getMinimumBalanceForRentExemption(
+        NONCE_ACCOUNT_LENGTH
+      ),
       space: NONCE_ACCOUNT_LENGTH,
       programId: SystemProgram.programId,
     }),
@@ -38,5 +43,7 @@ import {
     })
   );
 
-  console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`);
+  console.log(
+    `txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`
+  );
 })();

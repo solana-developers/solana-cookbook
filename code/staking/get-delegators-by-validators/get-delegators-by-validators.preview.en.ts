@@ -16,12 +16,14 @@ const accounts = await connection.getParsedProgramAccounts(STAKE_PROGRAM_ID, {
       },
     },
   ],
-})
+});
 
 console.log(`Accounts for program ${STAKE_PROGRAM_ID}: `);
-console.log(`Total number of delegators found for ${VOTE_PUB_KEY} is: ${accounts.length}`)
+console.log(
+  `Total number of delegators found for ${VOTE_PUB_KEY} is: ${accounts.length}`
+);
 if (accounts.length)
-  console.log(`Sample delegator:`, JSON.stringify(accounts[0]))
+  console.log(`Sample delegator:`, JSON.stringify(accounts[0]));
 
 /*
 // Output

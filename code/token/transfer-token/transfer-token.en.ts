@@ -1,5 +1,15 @@
-import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
-import { createTransferCheckedInstruction, TOKEN_PROGRAM_ID, transferChecked } from "@solana/spl-token";
+import {
+  clusterApiUrl,
+  Connection,
+  PublicKey,
+  Keypair,
+  Transaction,
+} from "@solana/web3.js";
+import {
+  createTransferCheckedInstruction,
+  TOKEN_PROGRAM_ID,
+  transferChecked,
+} from "@solana/spl-token";
 import * as bs58 from "bs58";
 
 (async () => {
@@ -8,18 +18,28 @@ import * as bs58 from "bs58";
 
   // 5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8
   const feePayer = Keypair.fromSecretKey(
-    bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
+    bs58.decode(
+      "588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2"
+    )
   );
 
   // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
   const alice = Keypair.fromSecretKey(
-    bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
+    bs58.decode(
+      "4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp"
+    )
   );
 
-  const mintPubkey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+  const mintPubkey = new PublicKey(
+    "8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV"
+  );
 
-  const tokenAccountXPubkey = new PublicKey("2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5");
-  const tokenAccountYPubkey = new PublicKey("GMxZfDmpR1b3vdJYXHzdF5noVLQogZuUAsDHHQ3ytPfV");
+  const tokenAccountXPubkey = new PublicKey(
+    "2XYiFjmU1pCXmC2QfEAghk6S7UADseupkNQdnRBXszD5"
+  );
+  const tokenAccountYPubkey = new PublicKey(
+    "GMxZfDmpR1b3vdJYXHzdF5noVLQogZuUAsDHHQ3ytPfV"
+  );
 
   // 1) use build-in function
   {
@@ -50,6 +70,11 @@ import * as bs58 from "bs58";
         8 // decimals
       )
     );
-    console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, alice /* fee payer + owner */])}`);
+    console.log(
+      `txhash: ${await connection.sendTransaction(tx, [
+        feePayer,
+        alice /* fee payer + owner */,
+      ])}`
+    );
   }
 })();

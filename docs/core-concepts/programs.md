@@ -117,7 +117,7 @@ Once invoked, programs are executed by the Solana Runtime.
 - [Official Documentation](https://docs.solana.com/developing/on-chain-programs/overview)
 - [SPL Documentation](https://spl.solana.com/)
 - [Program Deploys by Justin Starry](https://jstarry.notion.site/Program-deploys-29780c48794c47308d5f138074dd9838)
-- [Solana Starter Kit by Iron Addicted Dog](https://hackmd.io/@ironaddicteddog/solana-starter-kit)
+- [Solana Starter Kit by Iron Addicted Dog](https://book.solmeet.dev/notes/solana-starter-kit)
 - [Programming on Solana by Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [An Introduction to the Solana Blockchain by Hana](https://2501babe.github.io/posts/solana101.html)
 - [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html)

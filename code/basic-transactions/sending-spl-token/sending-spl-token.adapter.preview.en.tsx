@@ -5,10 +5,10 @@ const transaction = new Transaction().add(
     toTokenAccount.address,
     fromWallet.publicKey,
     [],
-    1,
+    1
   )
 );
 
 const signature = await sendTransaction(transaction, connection);
 
-await connection.confirmTransaction(signature, 'processed');
+await connection.confirmTransaction(signature, "processed");

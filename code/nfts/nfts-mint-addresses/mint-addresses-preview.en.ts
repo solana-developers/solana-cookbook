@@ -17,12 +17,12 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
           },
         },
       ],
-    },
+    }
   );
 
-  return metadataAccounts.map((metadataAccountInfo) => (
+  return metadataAccounts.map((metadataAccountInfo) =>
     bs58.encode(metadataAccountInfo.account.data)
-  ));
+  );
 };
 
 getMintAddresses(candyMachineId);

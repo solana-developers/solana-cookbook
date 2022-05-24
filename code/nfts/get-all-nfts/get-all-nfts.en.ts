@@ -1,13 +1,16 @@
-import { Connection } from '@metaplex/js'; 
-import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
-import { PublicKey } from '@solana/web3.js';
+import { Connection } from "@metaplex/js";
+import { Metadata } from "@metaplex-foundation/mpl-token-metadata";
+import { PublicKey } from "@solana/web3.js";
 
 (async () => {
-  const connection = new Connection('mainnet-beta');
-  const ownerPublickey = 'OWNER_PUBLICK_KEY';
-  const nftsmetadata = await Metadata.findDataByOwner(connection, ownerPublickey);
+  const connection = new Connection("mainnet-beta");
+  const ownerPublickey = "OWNER_PUBLICK_KEY";
+  const nftsmetadata = await Metadata.findDataByOwner(
+    connection,
+    ownerPublickey
+  );
 
-  console.log(nftsmetadata)
+  console.log(nftsmetadata);
   /*
   {
     0: MetadataData {

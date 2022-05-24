@@ -3,7 +3,9 @@ let tx = new Transaction().add(
   SystemProgram.createAccount({
     fromPubkey: feePayer.publicKey,
     newAccountPubkey: nonceAccount.publicKey,
-    lamports: await connection.getMinimumBalanceForRentExemption(NONCE_ACCOUNT_LENGTH),
+    lamports: await connection.getMinimumBalanceForRentExemption(
+      NONCE_ACCOUNT_LENGTH
+    ),
     space: NONCE_ACCOUNT_LENGTH,
     programId: SystemProgram.programId,
   }),
@@ -14,5 +16,6 @@ let tx = new Transaction().add(
   })
 );
 
-console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`);
-
+console.log(
+  `txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`
+);

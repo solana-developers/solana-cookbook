@@ -10,14 +10,14 @@ client: Client = Client("https://api.devnet.solana.com")
 sender = Keypair.generate()
 receiver = Keypair.generate()
 
-airdrop = client.request_airdrop(sender.public_key, LAMPORT_PER_SOL)
+airdrop = client.request_airdrop(sender.public_key, 1 * LAMPORT_PER_SOL)
 airdrop_signature = airdrop["result"]
 client.confirm_transaction(airdrop_signature)
 
 transaction = Transaction().add(transfer(TransferParams(
     from_pubkey=sender.public_key,
     to_pubkey=receiver.public_key,
-    lamports=10)
+    lamports=1_000_000)
 ))
 
 client.send_transaction(transaction, sender)

@@ -11,7 +11,7 @@ The following is a set of guidelines on how to contribute
 The cookbook is layed out in 4 different sections.
 
 | Section         | Description                                                     |
-|-----------------|-----------------------------------------------------------------|
+| --------------- | --------------------------------------------------------------- |
 | Getting Started | Resources for starting development on Solana                    |
 | Core Concepts   | Building blocks of Solana that are good to know for development |
 | Guides          | Snack-sized guides about different tools for development        |
@@ -68,13 +68,13 @@ at (http://localhost:8080/)
 
 ### Code Previews
 
-The Solana Cookbook utilizes code previews to articulate exactly what code is needed 
+The Solana Cookbook utilizes code previews to articulate exactly what code is needed
 for a reference, as well as the full source so that developers can reference any variables
 needed.
 
 While the preview highlights the needed code, it does not have to run alone.
 
-We use the preview component `<SolanaCodeGroup>` with each language's snippet with 
+We use the preview component `<SolanaCodeGroup>` with each language's snippet with
 `<SolanaCodeGroupItem>`.
 
 #### Example Preview
@@ -85,10 +85,11 @@ Let's take the following code for getting a `Keypair` from a `secret`:
 import { Keypair } from "@solana/web3.js";
 
 const secret = Uint8Array.from([
-      174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138, 189, 224, 216, 117,
-      173, 10, 149, 53, 45, 73, 251, 237, 246, 15, 185, 186, 82, 177, 240, 148, 69, 241, 227, 167, 80, 141, 89, 240,
-      121, 121, 35, 172, 247, 68, 251, 226, 218, 48, 63, 176, 109, 168, 89, 238, 135,
-    ]);
+  174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56,
+  222, 53, 138, 189, 224, 216, 117, 173, 10, 149, 53, 45, 73, 251, 237, 246, 15,
+  185, 186, 82, 177, 240, 148, 69, 241, 227, 167, 80, 141, 89, 240, 121, 121,
+  35, 172, 247, 68, 251, 226, 218, 48, 63, 176, 109, 168, 89, 238, 135,
+]);
 
 (async () => {
   const keypair = Keypair.fromSecretKey(secret);
@@ -101,8 +102,8 @@ The preview for the above code could be:
 const keypair = Keypair.fromSecretKey(secret);
 ```
 
-The developer can see exactly the method required to get a Keypair from a secret key 
-in the preview, but can view the full source on the component to understand the example 
+The developer can see exactly the method required to get a Keypair from a secret key
+in the preview, but can view the full source on the component to understand the example
 further.
 
 ## How Can I Contribute?
@@ -134,10 +135,10 @@ General flow for making a contribution:
 4. Push your work back up to your fork
 5. Submit a Pull request so that we can review your changes
 
-**NOTE**: Be sure to merge the latest from "upstream" before making a 
+**NOTE**: Be sure to merge the latest from "upstream" before making a
 pull request!
 
 ## Contribution Rewards
 
-All those who successfully contribute to the Solana Cookbook will get an exclusive 
+All those who successfully contribute to the Solana Cookbook will get an exclusive
 Glasseater NFT from the Superteam DAO. If you have already contributed, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!

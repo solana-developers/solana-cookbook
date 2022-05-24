@@ -6,7 +6,7 @@ import {
   PublicKey,
   Transaction,
   TransactionInstruction,
-  sendAndConfirmTransaction
+  sendAndConfirmTransaction,
 } from "@solana/web3.js";
 
 (async () => {
@@ -15,32 +15,37 @@ import {
 
   const connection = new Connection(
     "https://api.devnet.solana.com",
-    'confirmed',
+    "confirmed"
   );
 
   const airdropSignature = await connection.requestAirdrop(
     fromKeypair.publicKey,
-    LAMPORTS_PER_SOL,
+    LAMPORTS_PER_SOL
   );
 
   await connection.confirmTransaction(airdropSignature);
 
   const lamportsToSend = 10;
 
-  const transferTransaction = new Transaction()
-    .add(SystemProgram.transfer({
+  const transferTransaction = new Transaction().add(
+    SystemProgram.transfer({
       fromPubkey: fromKeypair.publicKey,
       toPubkey: toKeypair.publicKey,
-      lamports: lamportsToSend
-    }))
+      lamports: lamportsToSend,
+    })
+  );
 
   await transferTransaction.add(
     new TransactionInstruction({
-      keys: [{ pubkey: fromKeypair.publicKey, isSigner: true, isWritable: true }],
-      data: Buffer.from('Data to send in transaction', 'utf-8'),
+      keys: [
+        { pubkey: fromKeypair.publicKey, isSigner: true, isWritable: true },
+      ],
+      data: Buffer.from("Data to send in transaction", "utf-8"),
       programId: new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"),
     })
-  )
+  );
 
-  await sendAndConfirmTransaction(connection, transferTransaction, [fromKeypair]);
+  await sendAndConfirmTransaction(connection, transferTransaction, [
+    fromKeypair,
+  ]);
 })();

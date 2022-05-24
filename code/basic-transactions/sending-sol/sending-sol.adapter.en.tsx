@@ -1,7 +1,7 @@
-import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, SystemProgram, Transaction } from '@solana/web3.js';
-import React, { FC, useCallback } from 'react';
+import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { Keypair, SystemProgram, Transaction } from "@solana/web3.js";
+import React, { FC, useCallback } from "react";
 
 export const SendTenLamportToRandomAddress: FC = () => {
   const { connection } = useConnection();
@@ -14,13 +14,13 @@ export const SendTenLamportToRandomAddress: FC = () => {
       SystemProgram.transfer({
         fromPubkey: publicKey,
         toPubkey: Keypair.generate().publicKey,
-        lamports: 10,
+        lamports: 1_000_000,
       })
     );
 
     const signature = await sendTransaction(transaction, connection);
 
-    await connection.confirmTransaction(signature, 'processed');
+    await connection.confirmTransaction(signature, "processed");
   }, [publicKey, sendTransaction, connection]);
 
   return (

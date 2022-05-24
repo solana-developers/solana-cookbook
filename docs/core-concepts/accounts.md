@@ -45,15 +45,16 @@ building block for developing on Solana.
 ## Facts
 
 ::: tip Fact Sheet
+
 - Accounts are used to store data
 - Each account has a unique address
-- Accounts have a max size of 10mb
-- PDA accounts have a max size of 10kb
+- Accounts have a max size of 10MB (10 Mega Bytes)
+- PDA accounts have a max size of 10KB (10 Kilo Bytes)
 - PDA accounts can be used to sign on behalf of a program
 - Account size is static
 - Account data storage is paid with rent
 - Default account owner is the System Program
-:::
+  :::
 
 ## Deep Dive
 
@@ -75,7 +76,7 @@ Each account has an address (usually a public key) and an owner
 is found below.
 
 | Field      | Description                                    |
-|------------|------------------------------------------------|
+| ---------- | ---------------------------------------------- |
 | lamports   | The number of lamports owned by this account   |
 | owner      | The program owner of this account              |
 | executable | Whether this account can process instructions  |
@@ -90,8 +91,8 @@ There are a few important ownership rules:
 
 Program accounts do not store state.
 
-For example, if you have a counter program that lets you increment a counter, you 
-must create two accounts, one account to store the program's code, and one to store 
+For example, if you have a counter program that lets you increment a counter, you
+must create two accounts, one account to store the program's code, and one to store
 the counter.
 
 ![](./account_example.jpeg)
@@ -100,8 +101,8 @@ To prevent an account from being deleted, you must pay rent.
 
 ### Rent
 
-Storing data on accounts costs SOL to maintain, and it is funded by what is called 
-rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an 
+Storing data on accounts costs SOL to maintain, and it is funded by what is called
+rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an
 account, your account will be exempt from paying rent. You can retrieve rent by closing
 the account and sending the lamports back to your wallet.
 
