@@ -20,7 +20,7 @@ let tx = new Transaction().add(
         pubkey: SystemProgram.programId,
         isSigner: false,
         isWritable: false,
-      }
+      },
     ],
     data: Buffer.from(new Uint8Array([data_size, bump])),
     programId: programId,
@@ -28,4 +28,3 @@ let tx = new Transaction().add(
 );
 
 console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
-})();
