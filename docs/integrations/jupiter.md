@@ -40,10 +40,6 @@ head:
 
 Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
 
-## How to use Jupiter Core Library
-
-Jupiter Core SDK is used to interact with the Jupiter on-chain programs, which gives us  a list of best possible routes for performing a token swap.
-
 ### Installation
 
 @jup-ag/core is the Core package used to interact with jupiter on-chain programs to perform swaps between two possible token pairs.
