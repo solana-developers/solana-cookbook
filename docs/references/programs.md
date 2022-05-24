@@ -148,11 +148,45 @@ The client side instruction, now only needs to pass the state and payer accounts
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
+## How to change account size
+
+You can change a program owned account's size with the use 
+of `realloc`. `realloc` can resize an account up to 10KB.
+When you use `realloc` to increase the size of an account,
+you must transfer lamports in order to keep that account
+rent-exempt.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/programs/realloc/realloc.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/programs/realloc/realloc.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
 ## How to do Cross Program Invocation
 
-A cross program invocation, is simply put calling another program's instruction inside our program. One best example to put forth is Uniswap's `swap` functionality. The `UniswapV2Router` contract, calls the necessary logic to swap, and calls the `ERC20` contract's transfer function to swap from one person to another. The same way, we can call a program's instruction to have multitude of purposes.
+A cross program invocation, is simply put calling another 
+program's instruction inside our program. One best example 
+to put forth is Uniswap's `swap` functionality. The 
+`UniswapV2Router` contract, calls the necessary logic to 
+swap, and calls the `ERC20` contract's transfer function 
+to swap from one person to another. The same way, we can 
+call a program's instruction to have multitude of purposes.
 
-Lets have a look at our first example which is the `SPL Token Program's transfer` instruction. The required accounts we would need for a transfer to happen are
+Lets have a look at our first example which is the 
+`SPL Token Program's transfer` instruction. The required 
+accounts we would need for a transfer to happen are
 
 1. The Source Token Account (The account which we are holding our tokens)
 2. The Destination Token Account (The account which we would be transferring our tokens to)
