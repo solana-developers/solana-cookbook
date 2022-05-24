@@ -21,24 +21,28 @@ interface Token {
   const jupiter = await Jupiter.load({
     connection,
     cluster: ENV,
-    user: USER_KEYPAIR, // or public key
-    // platformFeeAndAccounts:  NO_PLATFORM_FEE,
-    // routeCacheDuration: CACHE_DURATION_MS
-    // wrapUnwrapSOL: true (default) | false
+    user: USER_KEYPAIR, 
   });
 
   const routeMap = jupiter.getRouteMap();
 
   const inputToken = "So11111111111111111111111111111111111111112";
   const outputToken = "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt";
-  const inputAmount = 1; // Input UI amount
-  const slippage = 1; // 1% slippage
+  const inputAmount = 1; 
+  const slippage = 1; 
 
   const routes = await jupiter.computeRoutes({
-    inputMint: new PublicKey(inputToken), // Mint address of the input token
-    outputMint: new PublicKey(outputToken), // Mint address of the output token
-    inputAmount, // raw input amount of tokens
-    slippage, // The slippage in % terms
-    forceFetch: false, // false is the default value => will use cache if not older than routeCacheDuration
+    inputMint: new PublicKey(inputToken), 
+    outputMint: new PublicKey(outputToken),
+    inputAmount, 
+    slippage,
+    forceFetch: false, 
   });
+
+  const { execute } = await jupiter.exchange({
+    routeInfo: routes.routesInfos[0],
+  });
+  
+  const swapResult: any = await execute(); 
+  
 })();

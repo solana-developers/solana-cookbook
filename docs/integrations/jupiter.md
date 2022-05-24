@@ -42,7 +42,7 @@ Jupiter is the key liquidity aggregator for Solana, offering the widest range of
 
 ## How to use Jupiter Core Library
 
-Jupiter Core SDK is used to interact with the Jupiter on-chain programs, which gives us a list of best possible routes for performing a token swap.
+Jupiter Core SDK is used to interact with the Jupiter on-chain programs, which gives us  a list of best possible routes for performing a token swap.
 
 ### Installation
 
@@ -91,7 +91,7 @@ All the possible tokens that can be swapped with jupiter for a given network is 
 
 ### Loading the Jupiter instance
 
-Jupiter instace is being created with the provided configurations. There are alot of options present to tinker with to know more about it. go [here](https://docs.jup.ag/jupiter-core/full-guide)
+Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [here](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -114,7 +114,7 @@ Jupiter instace is being created with the provided configurations. There are alo
 
 ### Getting the RouteMap
 
-The RouteMap identifies what tokens you can swap to given an input token. The route map only contains token mint addresses and no meta data.
+The RouteMap identifies what tokens can be swapped for a given input token. The route map only contains token mint addresses and no metadata.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -136,6 +136,7 @@ The RouteMap identifies what tokens you can swap to given an input token. The ro
 </SolanaCodeGroup>
 
 ### Getting the routes for given Input and Output token
+The `computeRoutes` methods takes in the input Mint address and the output Mint address and gives all the possibles routes in order of best price first.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -157,19 +158,20 @@ The RouteMap identifies what tokens you can swap to given an input token. The ro
 </SolanaCodeGroup>
 
 ### Execute the Token Swap
+The `exchange` method is called here which constructs the transaction for a given route.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/jupiter/routes/main.en.ts)
+@[code](@/code/jupiter/swap/main.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/jupiter/routes/main.preview.en.ts)
+@[code](@/code/jupiter/swap/main.preview.en.ts)
 
   </template>
 
@@ -177,7 +179,7 @@ The RouteMap identifies what tokens you can swap to given an input token. The ro
 
 </SolanaCodeGroup>
 
-## How to use Jupiter in a Client Application
+## How to use Jupiter in a React Application
 
 ### Installation
 
@@ -201,7 +203,7 @@ npm install @jup-ag/react-hook
 
 ### Adding the Provider
 
-We need to setup the JupiterProvider in order to use the useJupiter Hook Through the React App.
+We are setting up the JupiterProvider here in order to use the useJupiter Hook Through out the React App. The cluster parameter is set  as **mainnet-beta** in order to get a wide variety of tokens but if you wish you could change it to **devnet** as well
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -224,7 +226,7 @@ We need to setup the JupiterProvider in order to use the useJupiter Hook Through
 
 ### Fetching the List of Tokens
 
-All the possible Tokens that can be swapped for a Given Network is fetched.
+All the possible Tokens that can be swapped in a Given Network is fetched stored in the state.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -247,7 +249,7 @@ All the possible Tokens that can be swapped for a Given Network is fetched.
 
 ### Setting up the State
 
-InputMint and OutputMint is being added to the state so that it can be used later to swap tokens between them or can be changed by the user.
+InputMint and OutputMint are state that is added in order for it to be  swapped among each other or can be taken from the user as well.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -293,20 +295,20 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 ### Performing the Swap
 
-After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the exchange function
+After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the `exchange` method
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/jupiter/useJupiter/main.en.ts)
+@[code](@/code/jupiter/reactSwap/main.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/jupiter/useJupiter/main.preview.en.ts)
+@[code](@/code/jupiter/reactSwap/main.preview.en.ts)
 
   </template>
 
@@ -344,30 +346,9 @@ npm i bs58
   </CodeGroupItem>
 </CodeGroup>
 
-### Import Libraries and Setup the Connection
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/jupiter/installationapi/main.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/jupiter/installationapi/main.preview.en.ts)
-
-  </template>
-
-  </SolanaCodeGroupItem>
-
-</SolanaCodeGroup>
-
 ### Getting the Route Map
 
-This API retrives all the available tokens that are possible to be swapped using jupiter. It only returns the token mint and not the token metadata.
+This API retrieves all the available tokens that can be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that can be swapped for SOL in this case.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -388,7 +369,8 @@ This API retrives all the available tokens that are possible to be swapped using
 
 </SolanaCodeGroup>
 
-### Getting the Seralized Transaction to perform Swap
+### Getting the Serialized Transaction to perform Swap
+POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that can be added to this api like **wrapUnwrapSOL** and **feeAccount** to learn more about it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -410,6 +392,7 @@ This API retrives all the available tokens that are possible to be swapped using
 </SolanaCodeGroup>
 
 ### Executing the Swap Transaction
+A Transaction object is created and then its getting signed by the user.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

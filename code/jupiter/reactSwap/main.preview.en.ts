@@ -1,8 +1,5 @@
-const onClickSwapBestRoute = async () => {
-  // Routes returned by Jupiter are always sorted by their outAmount
-  // Therefore the best route is always the first route in the array
-  const bestRoute = routes[0];
 
+(async() => {
   await exchange({
     wallet: {
       sendTransaction: wallet.sendTransaction,
@@ -21,14 +18,6 @@ const onClickSwapBestRoute = async () => {
       });
     },
   });
+})()
 
-  console.log({ swapResult });
 
-  if ("error" in swapResult) {
-    console.log("Error:", swapResult.error);
-  } else if ("txid" in swapResult) {
-    console.log("Sucess:", swapResult.txid);
-    console.log("Input:", swapResult.inputAmount);
-    console.log("Output:", swapResult.outputAmount);
-  }
-};

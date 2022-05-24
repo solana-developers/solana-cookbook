@@ -10,28 +10,28 @@ const JupiterApp = () => {
   );
 
   useEffect(() => {
-    // Fetch token list from Jupiter API
+
     fetch(TOKEN_LIST_URL[ENV])
       .then((response) => response.json())
       .then((result) => setTokens(result));
   }, []);
 
   const jupiter = useJupiter({
-    amount: 1 * 10 ** 6, // raw input amount of tokens
+    amount: 1 * 10 ** 6,
     inputMint,
     outputMint,
-    slippage: 1, // 1% slippage
-    debounceTime: 250, // debounce ms time before refresh
+    slippage: 1, 
+    debounceTime: 250, 
   });
 
   const {
-    allTokenMints, // all the token mints that is possible to be input
-    routeMap, // routeMap, same as the one in @jup-ag/core
-    exchange, // exchange
-    refresh, // function to refresh rates
-    lastRefreshTimestamp, // timestamp when the data was last returned
-    loading, // loading states
-    routes, // all the routes from inputMint to outputMint
+    allTokenMints, 
+    routeMap, 
+    exchange,
+    refresh,
+    lastRefreshTimestamp, 
+    loading,
+    routes,
     error,
   } = jupiter;
 
