@@ -8,8 +8,8 @@ import {
 import * as nacl from "tweetnacl";
 
 const sleep = async (ms: number) => {
-  return new Promise(r => setTimeout(r, ms));
-}
+  return new Promise((r) => setTimeout(r, ms));
+};
 
 (async () => {
   const payer = Keypair.generate();
@@ -31,12 +31,13 @@ const sleep = async (ms: number) => {
     feePayer: payer.publicKey,
     blockhash: blockhashResponse.value.blockhash,
     lastValidBlockHeight: lastValidBlockHeight,
-  })
-    .add(SystemProgram.transfer({
+  }).add(
+    SystemProgram.transfer({
       fromPubkey: payer.publicKey,
       toPubkey: toAccount,
       lamports: 1000000,
-    }));
+    })
+  );
   const message = transaction.serializeMessage();
   const signature = nacl.sign.detached(message, payer.secretKey);
   transaction.addSignature(payer.publicKey, Buffer.from(signature));
