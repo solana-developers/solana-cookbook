@@ -4,4 +4,4 @@ const { execute } = await jupiter.exchange({
 });
 
 
-const swapResult: any = await execute();
+const swapResult = await execute();
