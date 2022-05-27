@@ -11,7 +11,7 @@
     );
   
     const txid = await connection.sendTransaction(transaction, [wallet.payer], {
-      skipPreflight: true,
+      skipPreflight: false,
     });
     await connection.confirmTransaction(txid);
   
