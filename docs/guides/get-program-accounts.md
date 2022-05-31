@@ -115,6 +115,12 @@ We can invoke this query via the following example:
 @[code](@/code/get-program-accounts/memcmp/memcmp.en.ts)
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="Rust Client" active>
+
+@[code](@/code/get-program-accounts/memcmp/memcmp.en.rs)
+
+  </CodeGroupItem>
 </CodeGroup>
 
 ### `dataSlice`
