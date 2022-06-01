@@ -121,6 +121,12 @@ We can invoke this query via the following example:
 @[code](@/code/get-program-accounts/memcmp/memcmp.en.rs)
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="cURL" active>
+
+@[code](@/code/get-program-accounts/memcmp/memcmp.en.sh)
+
+  </CodeGroupItem>
 </CodeGroup>
 
 ### `dataSlice`
