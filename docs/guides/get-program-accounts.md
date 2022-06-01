@@ -121,6 +121,12 @@ We can invoke this query via the following example:
 @[code](@/code/get-program-accounts/memcmp/memcmp.en.rs)
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="cURL" active>
+
+@[code](@/code/get-program-accounts/memcmp/memcmp.en.sh)
+
+  </CodeGroupItem>
 </CodeGroup>
 
 ### `dataSlice`
@@ -138,6 +144,18 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   <CodeGroupItem title="TS" active>
 
 @[code](@/code/get-program-accounts/dataSlice/dataSlice.en.ts)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Rust Client" active>
+
+@[code](@/code/get-program-accounts/dataSlice/dataSlice.en.rs)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="cURL" active>
+
+@[code](@/code/get-program-accounts/dataSlice/dataSlice.en.sh)
 
   </CodeGroupItem>
 </CodeGroup>
