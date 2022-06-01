@@ -140,6 +140,18 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
 @[code](@/code/get-program-accounts/dataSlice/dataSlice.en.ts)
 
   </CodeGroupItem>
+
+  <CodeGroupItem title="Rust Client" active>
+
+@[code](@/code/get-program-accounts/dataSlice/dataSlice.en.rs)
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="cURL" active>
+
+@[code](@/code/get-program-accounts/dataSlice/dataSlice.en.sh)
+
+  </CodeGroupItem>
 </CodeGroup>
 
 By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
