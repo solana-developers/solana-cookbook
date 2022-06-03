@@ -92,6 +92,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/integrations/strata.md',
                 '/integrations/web3auth.md',
                 '/integrations/react-native.md',
+                '/integrations/switchboard.md',
               ],
             }
           ]
