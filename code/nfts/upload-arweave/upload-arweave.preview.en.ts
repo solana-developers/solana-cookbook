@@ -7,13 +7,13 @@ const transaction = await arweave.createTransaction({
 
 transaction.addTag("Content-Type", "image/png");
 
-const wallet = await arweave.wallets.getWalletFromFile("wallet.json");
+const wallet = JSON.parse(fs.readFileSync("wallet.json", "utf-8"))
 await arweave.transactions.sign(transaction, wallet);
 
 const response = await arweave.transactions.post(transaction);
 console.log(response);
 
-const { id } = response;
+const id = transaction.id;
 const imageUrl = id ? `https://arweave.net/${id}` : undefined;
 
 // 2. Upload metadata to Arweave
