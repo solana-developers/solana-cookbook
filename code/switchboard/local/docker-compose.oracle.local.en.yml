@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  switchboard:
+    image: "switchboardlabs/node:dev-v2-5-28-22a"
+    network_mode: host
+    restart: always
+    environment:
+      - LIVE=1
+      - CLUSTER=devnet
+      - RPC_URL=${RPC_URL}
+      - ORACLE_KEY=${ORACLE_KEY}
+      - HEARTBEAT_INTERVAL=15
+    volumes:
+      - ./configs.json:/configs.json
+secrets:
+  PAYER_SECRETS:
+    file: /filesystem/path/to/keypair.json

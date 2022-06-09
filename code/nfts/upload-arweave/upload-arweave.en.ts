@@ -27,7 +27,7 @@ import Arweave from "arweave";
 
   const id = transaction.id;
   const imageUrl = id ? `https://arweave.net/${id}` : undefined;
-  console.log('imageUrl', imageUrl)
+  console.log("imageUrl", imageUrl);
 
   // Upload metadata to Arweave
 
@@ -75,8 +75,8 @@ import Arweave from "arweave";
   metadataTransaction.addTag("Content-Type", "application/json");
 
   await arweave.transactions.sign(metadataTransaction, wallet);
-  
-  console.log('metadata txid', metadataTransaction.id)
+
+  console.log("metadata txid", metadataTransaction.id);
 
   console.log(await arweave.transactions.post(metadataTransaction));
 })();
