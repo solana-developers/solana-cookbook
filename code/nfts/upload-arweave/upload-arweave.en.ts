@@ -19,7 +19,8 @@ import Arweave from "arweave";
 
   transaction.addTag("Content-Type", "image/png");
 
-  const wallet = await arweave.wallets.getWalletFromFile("wallet.json");
+  const wallet = JSON.parse(fs.readFileSync("wallet.json", "utf-8"))
+  
   await arweave.transactions.sign(transaction, wallet);
 
   const response = await arweave.transactions.post(transaction);
