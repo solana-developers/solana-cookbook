@@ -38,9 +38,9 @@ head:
 
 # Switchboard
 
-Switchboard is a protocol that allows builders to unlock the power of Solana by creating high performance data feeds from any API. Switchboard can be used for various applications like getting current price of an asset for lending, getting the current weath or flight data and determining current NBA match status.
+Switchboard is a protocol that allows builders to unlock the power of Solana by creating high performance data feeds from any API. Switchboard can be used for various applications like getting current price of an asset for lending, getting the current weather or flight data and determining current NBA match status.
 
-## How to use Switchboard on Client Side
+## How to use Aggregator Feeds in Switchboard on client side
 
 Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
 . This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
@@ -89,7 +89,7 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 </SolanaCodeGroup>
 
 
-## How to use switchboard in programs
+## How to use Aggregator Feeds in programs
 Switchboard provides a crate called **switchboard_v2**
 Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
@@ -114,10 +114,10 @@ Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v
 
 </SolanaCodeGroup>
 
-# How to create an oracle on client side
+## How to create an oracle on client side
 Switchboard's unique feature is that it allows you to create your own oracle and run it locally.
 
-## Create an oracle
+### Create an oracle
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -137,10 +137,10 @@ Switchboard's unique feature is that it allows you to create your own oracle and
 
 </SolanaCodeGroup>
 
-## Run on oracle locally
+### Run an oracle locally
 You can run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
 
-### Requirements
+#### Requirements
  - Docker-compose
 
 Create a docker-compose.yml file with the environment variables in [Oracle Config](/integrations/switchboard.html#oracle-config)
@@ -318,3 +318,7 @@ Run the container using `docker-compose up`
   
 
 </SolanaCodeGroup>
+
+## How to Create a Feed from the Publisher
+THe official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
+Check it out [here](https://docs.switchboard.xyz/feed/publisher).
