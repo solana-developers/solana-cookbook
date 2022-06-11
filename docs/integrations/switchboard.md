@@ -322,3 +322,10 @@ Run the container using `docker-compose up`
 ## How to Create a Feed from the Publisher
 THe official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
 Check it out [here](https://docs.switchboard.xyz/feed/publisher).
+
+## Other Resources
+
+- [Client Api Docs](https://docs.switchboard.xyz/api/ts/)
+- [Rust Api Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
+- [Switchboard Docs](https://docs.switchboard.xyz/)
+- [Intro to Switchboard](https://switchboardxyz.medium.com/intro-to-switchboard-6cce70f1bf8a)
