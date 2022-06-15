@@ -10,7 +10,7 @@ pub mod get_result {
    
     pub fn get_result(ctx: Context<GetResult>) -> Result<()> {
         let aggregator = &ctx.accounts.aggregator_feed;
-        let val: u64 = AggregatorAccountData::new(aggregator)?
+        let val: f64 = AggregatorAccountData::new(aggregator)?
             .get_result()?
             .try_into()?;
 

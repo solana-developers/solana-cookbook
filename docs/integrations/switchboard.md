@@ -38,9 +38,9 @@ head:
 
 # Switchboard
 
-Switchboard is a protocol that allows builders to unlock the power of Solana by creating high performance data feeds from any API. Switchboard can be used for various applications like getting current price of an asset for lending, getting the current weather or flight data and determining current NBA match status.
+Switchboard is an Oracle protocol that enables developers to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource developers can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
 
-## How to use Aggregator Feeds in Switchboard on client side
+## Data Feeds
 
 Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
 . This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
@@ -89,11 +89,13 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 </SolanaCodeGroup>
 
 
-## How to use Aggregator Feeds in programs
+
+
+
+### Read data from an aggregator feed in program
 Switchboard provides a crate called **switchboard_v2**
 Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
-### Read data from an aggregator feed in program
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -114,7 +116,11 @@ Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v
 
 </SolanaCodeGroup>
 
-## How to create an oracle on client side
+### How to Create a Feed from the Publisher
+The official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
+Check it out [here](https://docs.switchboard.xyz/feed/publisher).
+
+## Oracles
 Switchboard's unique feature is that it allows you to create your own oracle and run it locally.
 
 ### Create an oracle
@@ -237,8 +243,8 @@ Run the container using `docker-compose up`
   </tbody>
 </table>
 
-## How to use Verifiable Randomness
-
+## Verifiable Random Function(VRF)
+A Verifiable Random Function (VRF) is a public-key pseudorandom function that provides proofs that its outputs were calculated correctly
 ### Reading a VRF account
 
 <SolanaCodeGroup>
@@ -319,13 +325,19 @@ Run the container using `docker-compose up`
 
 </SolanaCodeGroup>
 
-## How to Create a Feed from the Publisher
-THe official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
-Check it out [here](https://docs.switchboard.xyz/feed/publisher).
 
-## Other Resources
+## Resources
+### APIs and Libraries
+ - [Switchboard Task Types](https://docs.switchboard.xyz/api/tasks)
+ - [Rust API Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
+ - [Typescript API Docs](https://docs.switchboard.xyz/api/ts)
+ - [Python API Docs](https://docs.switchboard.xyz/api/py)
+ - [CLI Docs](https://docs.switchboard.xyz/api/cli)
+### Examples
+ - [[Client] Custom Data Feed Walkthrough](https://github.com/switchboard-xyz/switchboard-v2/tree/main/packages/feed-walkthrough)
+ - [[Program] Anchor Feed Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-feed-parser)
+ - [[Program] Anchor VRF Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-vrf-parser)
+### More Information
+ - [Protocol Documentation](https://docs.switchboard.xyz/introduction)
+ - [SuperteamDAO Deep Dive](https://crawling-cent-d6b.notion.site/The-Switchboard-Deep-Dive-717df6ba0b92465e8118351466257a0f)
 
-- [Client Api Docs](https://docs.switchboard.xyz/api/ts/)
-- [Rust Api Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
-- [Switchboard Docs](https://docs.switchboard.xyz/)
-- [Intro to Switchboard](https://switchboardxyz.medium.com/intro-to-switchboard-6cce70f1bf8a)
