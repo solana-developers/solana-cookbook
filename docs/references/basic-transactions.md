@@ -267,13 +267,16 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to increase compute budget for a transaction
+## How to change compute budget for a transaction
 
 Compute budget for a single transaction can be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set to 1.4M compute units, with a max of 1.4M compute units. The less compute you use, the less the transaction costs.
+call to the Compute Budget Program. By default the compute budget is set the product 
+of 200k compute units * number of instructions, with a max of 1.4M compute units. 
+The less compute you use, the less the transaction costs.
 
-**Note**: To increase the compute budget for a transaction, you must make the 
-first instruction of the transaction the instruction that sets the budget.
+**Note**: To change the compute budget for a transaction, you must make the 
+one of the first three instructions of the transaction the instruction that 
+sets the budget.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
