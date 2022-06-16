@@ -321,7 +321,21 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
   </template>
 
   </SolanaCodeGroupItem>
-  
+   <SolanaCodeGroupItem title="Rust" active>
+
+  <template v-slot:default>
+
+@[code](@/code/switchboard/on-chain/request.vrf.on-chain.en.rs)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/switchboard/on-chain/request.vrf.on-chain.preview.en.rs)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
 
