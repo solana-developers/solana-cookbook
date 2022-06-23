@@ -1,65 +1,15 @@
-import { Connection } from "@metaplex/js";
-import { Metadata } from "@metaplex-foundation/mpl-token-metadata";
-import { PublicKey } from "@solana/web3.js";
+import { Metaplex, keypairIdentity } from "@metaplex-foundation/js";
+import { Connection, clusterApiUrl, Keypair, PublicKey } from "@solana/web3.js";
 
 (async () => {
-  const connection = new Connection("mainnet-beta");
-  const ownerPublickey = "OWNER_PUBLICK_KEY";
-  const nftsmetadata = await Metadata.findDataByOwner(
-    connection,
-    ownerPublickey
-  );
+  const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+  const keypair = Keypair.generate();
 
-  console.log(nftsmetadata);
-  /*
-  {
-    0: MetadataData {
-      collection: undefined
-      data: MetadataDataData {
-        creators: Array(1)
-          0: Creator
-          address: "6FVxrqH9FFtEFo643pYx8w5GqfYRS8uWA5hZMUn1VNFr"
-          share: 100
-          verified: 1
-          length: 1
-        name: "Crimson Matt"
-        sellerFeeBasisPoints: 1000
-        symbol: ""
-        uri: "https://arweave.net/DCGABWBYFHctLR5iWVEFhCaR3EW_AHyvk-WJV0DZ78Q"
-      } 
-      editionNonce: 255
-      isMutable: 0
-      key: 4
-      mint: "HV91gRBArNUcR7fMUUuHJXbM4MaKcq3kJB89woHXyz6T"
-      primarySaleHappened: 0
-      tokenStandard: 3
-      updateAuthority: "6FVxrqH9FFtEFo643pYx8w5GqfYRS8uWA5hZMUn1VNFr"
-      uses: undefined
-    },
+  const metaplex = new Metaplex(connection);
+  metaplex.use(keypairIdentity(keypair));
 
-    1: MetadataData {
-      collection: undefined
-      data: MetadataDataData {
-        creators: Array(1)
-          0: Creator
-          address: "6FVxrqH9FFtEFo643pYx8w5GqfYRS8uWA5hZMUn1VNFr"
-          share: 100
-          verified: 1
-          length: 1
-        name: "Crimson Matt"
-        sellerFeeBasisPoints: 1000
-        symbol: ""
-        uri: "https://arweave.net/DCGABWBYFHctLR5iWVEFhCaR3EW_AHyvk-WJV0DZ78Q"
-      } 
-      editionNonce: 255
-      isMutable: 0
-      key: 4
-      mint: "4EK5YJRuqxiQEtrTQQZBZfnsFFza8atDxUViw6KSWA8L"
-      primarySaleHappened: 0
-      tokenStandard: 3
-      updateAuthority: "6FVxrqH9FFtEFo643pYx8w5GqfYRS8uWA5hZMUn1VNFr"
-      uses: undefined
-    }
-  }
-  */
+  const owner = new PublicKey("2R4bHmSBHkHAskerTHE6GE1Fxbn31kaD5gHqpsPySVd7");
+  const allNFTs = await metaplex.nfts().findAllByOwner(owner);
+
+  console.log(allNFTs);
 })();

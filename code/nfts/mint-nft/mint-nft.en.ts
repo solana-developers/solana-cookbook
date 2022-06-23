@@ -1,24 +1,31 @@
-import { actions, utils, programs, NodeWallet } from "@metaplex/js";
+import { Metaplex, keypairIdentity } from "@metaplex-foundation/js";
 import {
-  clusterApiUrl,
   Connection,
+  clusterApiUrl,
   Keypair,
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-  const keypair = Keypair.generate();
+  const keypair = Keypair.fromSecretKey(
+    Buffer.from(JSON.parse(process.env.SOLANA_KEYPAIR!.toString()))
+  );
+
+  const metaplex = new Metaplex(connection);
+  metaplex.use(keypairIdentity(keypair));
+
   const feePayerAirdropSignature = await connection.requestAirdrop(
     keypair.publicKey,
     LAMPORTS_PER_SOL
   );
   await connection.confirmTransaction(feePayerAirdropSignature);
 
-  const mintNFTResponse = await actions.mintNFT({
-    connection,
-    wallet: new NodeWallet(keypair),
-    uri: "https://34c7ef24f4v2aejh75xhxy5z6ars4xv47gpsdrei6fiowptk2nqq.arweave.net/3wXyF1wvK6ARJ_9ue-O58CMuXrz5nyHEiPFQ6z5q02E",
+  const mintNFTResponse = await metaplex.nfts().create({
+    uri: "https://ffaaqinzhkt4ukhbohixfliubnvpjgyedi3f2iccrq4efh3s.arweave.net/KUAIIbk6p8oo4XHRcq0U__C2r0mwQaNl0gQow4Qp9yk",
     maxSupply: 1,
   });
 
