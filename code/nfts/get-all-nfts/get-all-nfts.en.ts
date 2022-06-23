@@ -4,7 +4,7 @@ import { PublicKey } from "@solana/web3.js";
 
 (async () => {
   const connection = new Connection("mainnet-beta");
-  const ownerPublickey = "OWNER_PUBLICK_KEY";
+  const ownerPublickey = "OWNER_PUBLIC_KEY";
   const nftsmetadata = await Metadata.findDataByOwner(
     connection,
     ownerPublickey
