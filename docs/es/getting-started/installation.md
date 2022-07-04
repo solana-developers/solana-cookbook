@@ -45,7 +45,7 @@ Hay pocas librerías que necesitas para empezar con JavaScript o TypeScript en S
 
 [@solana/web3.js](https://github.com/solana-labs/solana-web3.js) es una librería que tiene todas las herramientas básicas para interactuar con Solana, enviar transacciones, y leer desde la blockchain.
 
-Lo podes instalar con algunos de los siguientes comandos:
+Lo puedes instalar con algunos de los siguientes comandos:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,7 +81,7 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-[@solana/spl-token](https://spl.solana.com/token) es una librería que contiene muchos de los bindings de JavaScript/TypeScript necesarios para interactuar con los tokens SPL. Podes usar esta librería para mintear nuevos tokens SPL, transferir tokens, y más.
+[@solana/spl-token](https://spl.solana.com/token) es una librería que contiene muchos de los bindings de JavaScript/TypeScript necesarios para interactuar con los tokens SPL. Puedes usar esta librería para mintear nuevos tokens SPL, transferir tokens, y más.
 
 
 You can install this library with the following:
@@ -121,7 +121,7 @@ npm install --save @solana/spl-token
 ### Wallet-Adapter
 Es una colección de librerías llamada wallet-adapter que te ayudan a conectarte a cualquier wallet dentro de Solana. Actualmente este paquete soporta usos con Svelte, Angular, Vue.js, y React. Wallet-adapter puede empezar rápidamente a integrar tu dAppp con wallets como [Phantom](https://phantom.app), [Solflare](https://solflare.com), y más.
 
-Lo podes instalar con algunos de los siguientes comandos:
+Lo puedes instalar con algunos de los siguientes comandos:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -168,7 +168,7 @@ Para Windows por favor visita el [sitio de instalación de Rust](https://www.rus
 
 ### macOS & Linux
 
-Abrí tu app terminal favorita.
+Abre tu app terminal favorita.
 
 Reemplaza `LATEST_RELEASE` con la versión deseada e instala la [última release de Solana](https://github.com/solana-labs/solana/releases) en tu máquina corriendo:
 
@@ -176,7 +176,7 @@ Reemplaza `LATEST_RELEASE` con la versión deseada e instala la [última release
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-Podes reemplazar `LATEST_RELEASE` con algún tag de release que se identifique con la versión de release que desees, o uses uno de los 3 canales simbólicos: `stable`, `beta`, o `edge`. Para encontrar la última release, chequea las versiones disponibles [aquí](https://github.com/solana-labs/solana/releases).
+Puedes reemplazar `LATEST_RELEASE` con algún tag de release que se identifique con la versión de release que desees, o uses uno de los 3 canales simbólicos: `stable`, `beta`, o `edge`. Para encontrar la última release, chequea las versiones disponibles [aquí](https://github.com/solana-labs/solana/releases).
 
 La siguiente salida indica una actualización exitosa:
 
@@ -207,9 +207,9 @@ Después de una instalación exitosa, `solana-install update` puede ser usado pa
 
 #### Downloading Binaries (Linux)
 
-Alternativamente podes instalar los binarios en vez de utilizar solana-install.
+Alternativamente puedes instalar los binarios en vez de utilizar solana-install.
 
-Descargas los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, después extraer el archivo:
+Descarga los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, después extrae el archivo:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -219,9 +219,9 @@ export PATH=$PWD/bin:$PATH
 
 #### Downloading Binaries (macOS)
 
-Alternativamente podes instalar los binarios en vez de utilizar solana-install.
+Alternativamente puedes instalar los binarios en vez de utilizar solana-install.
 
-Descargas los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-apple-darwin.tar.bz2**, después extraer el archivo:
+Descarga los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-apple-darwin.tar.bz2**, después extrae el archivo:
 
 ```bash
 tar jxf solana-release-x86_64-apple-darwin.tar.bz2
@@ -233,7 +233,7 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-Abrí el Símbolo del sistema o Command Prompt (`cmd.exe`) como un Administrador.
+Abre el Símbolo del sistema o Command Prompt (`cmd.exe`) como un Administrador.
 
 Buscar el Símbolo del Sistema o Command prompt en la barra de búsqueda de Windows. Cuando el Símbolo del Sistema aparezca, hacer click derecho y seleccionar "Abrir como administrador". Si te aparece una ventana preguntandote "Queres permitir a esta app que realice cambios en tu dispositivo?", clickea en "Si".
 
@@ -255,7 +255,7 @@ Para encontrar la última release, chequea las versiones disponibles [acá](http
 
 Cuando el instalador esta terminado, presiona Enter.
 
-Cerra el Símbolo del Sistema o Command Prompt y re-abrí un nuevo Símbolo del Sistema como un usuario normal.
+Cerra el Símbolo del Sistema o Command Prompt y re-abre un nuevo Símbolo del Sistema como un usuario normal.
 
 Busca "Símbolo del Sistema" o "Command Prompt" en la barra de búsqueda, y hace click izquierdo en el mismo (no es necesario correrlo como Administrador).
 
@@ -269,27 +269,27 @@ Después de una instalación exitosa, `solana-install update` puede ser usado pa
 
 #### Downloading Binaries
 
-Alternativamente podes instalar los binarios en vez de utilizar solana-install.
+Alternativamente puedes instalar los binarios en vez de utilizar solana-install.
 
-Descargas los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-pc-windows-msvc.tar.bz2**, después extraer el archivo usando WinZip o alguna herramienta similar.
+Descarga los binarios navegando hacia [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), descargando **solana-release-x86_64-pc-windows-msvc.tar.bz2**, después extrae el archivo usando WinZip o alguna herramienta similar.
 
-Abrí un Símbolo del Sistema y navega a la carpeta donde extrajiste los binarios y ejecuta los siguientes comandos:
+Abre un Símbolo del Sistema y navega a la carpeta donde extrajiste los binarios y ejecuta los siguientes comandos:
 
 ```bash
 cd solana-release/
 set PATH=%cd%/bin;%PATH%
 ```
 
-### Construir desde el Código Fuente
+### Compilación desde el Código Fuente
 
-Sino pudiste usar los binarios pre-armados o preferís armarlos desde el código fuente navega a [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest) y descarga el archivo de código fuente. Extraé el código y construí los binarios con:
+Sino pudiste usar los binarios pre-armados o prefieres compilarlos desde el código fuente navega a [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest) y descarga el archivo de código fuente. Extrae el código y compila los binarios con:
 
 ```bash
 ./scripts/cargo-install-all.sh .
 export PATH=$PWD/bin:$PATH
 ```
 
-Podes ejecutar el siguiente comando para obtener el mismo resultado que con los binarios pre-armados.
+Puedes ejecutar el siguiente comando para obtener el mismo resultado que con los binarios pre-armados.
 
 ```bash
 solana-install init

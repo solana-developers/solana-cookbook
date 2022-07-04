@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Inicio a las Referencias de Solana
   - - meta
     - name: description
-      content: El Solana Cookbook es una colección de ejemplos útiles y referencias para construir en Solana
+      content: Solana Cookbook es una colección de ejemplos útiles y referencias para desarrollar en Solana
   - - meta
     - name: og:description
-      content: El Solana Cookbook es una colección de ejemplos útiles y referencias para construir en Solana
+      content: Solana Cookbook es una colección de ejemplos útiles y referencias para desarrollar en Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,12 +39,12 @@ footer: MIT Licensed
 
 # Cocinando en Solana
 
-El Solana Cookbook es un recurso para desarrolladores que provee de los conceptos esenciales y referencias para construir aplicaciones en Solana.
-Cada concepto y referencia se enfocará es aspectos específicos del desarrollo en Soalana mientras provee detalles adicionales y ejemplos de uso.
+Solana Cookbook es un recurso para desarrolladores. Brinda conceptos esenciales y referencias para desarrollar aplicaciones en Solana.
+Cada concepto y referencia se enfocará en aspectos específicos del desarrollo en Solana brindando detalles adicionales y ejemplos de uso.
 
 ## Contribuyendo
 
-El Cookbook esta diseñado en una manera que hace que sea fácil para nuevos desarrolladores de Solana a contribuir. Incluso si no sabes como hacer algo, contribuir al Cookbook es una gran manera de aprender!
+Solana Cookbook esta diseñado de tal forma que hace fácil que nuevos desarrolladores de Solana puedan contribuir. Incluso si no sabes cómo hacer algo ¡contribuir al Cookbook es una gran manera de aprender!
 
 Chequea todos los issues abiertos [acá](https://github.com/solana-developers/solana-cookbook/issues). Las guías de contribución [acá](https://github.com/solana-developers/solana-cookbook#contributing). Si encontras que el Cookbook le falta una sugerencia, por favor agrega un issue.
 
