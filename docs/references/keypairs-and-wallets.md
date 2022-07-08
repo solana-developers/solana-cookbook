@@ -412,7 +412,7 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 Many wallet extensions use mnemonics to represent their secret keys.
 You can convert the mnemonic to Keypairs for local testing.
 
-1. BIP39
+1. BIP39 - creating a single wallet
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -465,7 +465,9 @@ You can convert the mnemonic to Keypairs for local testing.
 
 </SolanaCodeGroup>
 
-2. BIP44
+2. BIP44 (multiple wallets, also known HD wallets)
+
+You can make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
