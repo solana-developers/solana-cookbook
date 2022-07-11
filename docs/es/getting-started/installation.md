@@ -235,7 +235,7 @@ export PATH=$PWD/bin:$PATH
 
 Abre el Símbolo del sistema o Command Prompt (`cmd.exe`) como un Administrador.
 
-Buscar el Símbolo del Sistema o Command prompt en la barra de búsqueda de Windows. Cuando el Símbolo del Sistema aparezca, hacer click derecho y seleccionar "Abrir como administrador". Si te aparece una ventana preguntandote "Queres permitir a esta app que realice cambios en tu dispositivo?", clickea en "Si".
+Busca el Símbolo del Sistema o Command prompt en la barra de búsqueda de Windows. Cuando el Símbolo del Sistema aparezca, hacer click derecho y seleccionar "Abrir como administrador". Si te aparece una ventana preguntandote "Queres permitir a esta app que realice cambios en tu dispositivo?", clickea en "Si".
 
 Copiar y pegar el siguiente comando, después apretar Entre para descargar el instalador de solana en una carpeta temporal.
 
