@@ -155,6 +155,58 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
       },
+      "/es/": {
+        selectLanguageName: "Spanish",
+        navbar: [
+          {
+            text: "Contribuir",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: [
+          {
+            text: "Primeros pasos",
+            children: ["/es/", "/es/getting-started/installation.md"],
+          },
+          {
+            text: "Conceptos clave",
+            children: [
+              "/es/core-concepts/accounts.md",
+              "/es/core-concepts/programs.md",
+              "/es/core-concepts/transactions.md",
+              "/es/core-concepts/pdas.md",
+            ],
+          },
+          {
+            text: "指南",
+            children: [
+              // '/es/guides/get-program-accounts.md',
+              // '/zh/guides/serialization.md',
+              // '/zh/guides/data-migration.md',
+              // '/zh/guides/account-maps.md',
+              // '/zh/guides/retrying-transactions.md',
+              // '/zh/guides/debugging-solana-programs.md',
+              // '/zh/guides/feature-parity-testing.md',
+            ],
+          },
+          {
+            text: "参考",
+            children: [
+              // '/zh/references/local-development.md',
+              // '/zh/references/keypairs-and-wallets.md',
+              // '/zh/references/basic-transactions.md',
+              // '/zh/references/accounts.md',
+              // '/zh/references/programs.md',
+              // '/zh/references/token.md',
+              // '/zh/references/anchor.md',
+              // '/zh/references/staking.md',
+              // '/zh/references/nfts.md',
+              // '/zh/references/offline-transactions.md',
+              // '/zh/references/name-service.md',
+            ],
+          },
+        ],
+      },
     },
   },
   locales: {
@@ -167,6 +219,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/zh/": {
       lang: "zh-CN",
       title: "Solana秘籍",
+    },
+    "/es/": {
+      lang: "es",
+      title: "Solana Cookbook",
     },
   },
   markdown: {
