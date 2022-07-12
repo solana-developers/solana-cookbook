@@ -3,10 +3,10 @@ title: Instalación
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Instalación
+      content: Libro de recetas de Solana | Instalación
   - - meta
     - name: og:title
-      content: Solana Cookbook | Instalación
+      content: Libro de recetas de Solana | Instalación
   - - meta
     - name: description
       content: Aprendé como empezar en Solana con tutoriales, guías, y ejemplos.

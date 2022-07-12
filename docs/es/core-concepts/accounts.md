@@ -3,10 +3,10 @@ title: Cuentas
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Cuentas
+      content: Libro de recetas de Solana | Cuentas
   - - meta
     - name: og:title
-      content: Solana Cookbook | Cuentas
+      content: Libro de recetas de Solana | Cuentas
   - - meta
     - name: description
       content: Las cuentas son una pieza fundamental en el desarrollo de Solana. Aprende más sobre las cuentas de Solana y otros conceptos en el libro de recetas de Solana.
