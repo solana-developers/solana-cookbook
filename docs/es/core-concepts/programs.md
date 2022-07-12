@@ -1,18 +1,18 @@
 ---
-title: Programs
+title: Programas
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Programs
+      content: Libro de recetas de Solana | Programas
   - - meta
     - name: og:title
-      content: Solana Cookbook | Programs
+      content: Libro de recetas de Solana | Programas
   - - meta
     - name: description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programas (también conocidos como contratos inteligentes) sirven como la base de toda la actividad dentro de la cadena de bloques. Aprende más sobre Programas y otros conceptos del core de Solana en el libro de recetas de Solana.
   - - meta
     - name: og:description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programas (también conocidos como contratos inteligentes) sirven como la base de toda la actividad dentro de la cadena de bloques. Aprende más sobre Programas y otros conceptos del core de Solana en el libro de recetas de Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,87 +37,87 @@ head:
 footer: MIT Licensed
 ---
 
-# Programs
+# Programas
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+Cualquier desarrollador puede escribir e implementar programas en la cadena de bloques de Solana. Los programas (conocidos como contratos inteligentes en otros protocolos) sirven como base para la actividad dentro de la cadena de bloques, potenciando desde DeFi y NFTs hasta redes sociales y juegos.
 
-## Facts
+## Hechos
 
 ::: tip Fact Sheet
-- Programs process [instructions](./transactions) from both end users and other programs
-- All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
-- Programs themselves are stored in accounts marked as `executable`
-- All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Developers most commonly write programs in Rust or C++, but can choose any language that targets the [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) backend
-- All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`); parameters always include:
+- Los programas procesan [instrucciones](./transactions) de otros programas y de usuarios finales
+- Todos los programas son *stateless* (sin estado): Los datos con los que interactúan son almacenados en [cuentas](./accounts.md) que son enviadas al programa en instrucciones
+- Los mismos programas son almacenadas en cuentas marcadas como `executable` (ejecutables)
+- El dueño de todos los programas es [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) y es ejectuado por el [Runtime de Solana](https://docs.solana.com/developing/programming-model/runtime)
+- Los programadores comunmente utilizan Rust y C++ para escribir programas, pero pueden elegir cualquier lenguaje que compile con el backend de [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) para [LLVM](https://llvm.org/)
+- Todos los programas tienen un punto único de entrada donde se procesan las instrucciones (i.e. `process_instruction`); los parámetros siempre incluyen:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
     - `instruction_data`: `byte array`
 :::
 
-## Deep Dive
+## Un vistazo más profundo
 
-Unlike most other blockchains, Solana completely separates code from data. All data that programs interact with are stored in separate accounts and passed in as references via instructions. This model allows for a single generic program to operate across various accounts without requiring additional deployments. Common examples of this pattern are seen across the Native and SPL Programs.
+A diferencia de la mayoría de cadenas de bloques, Solana separa completamente el código de los datos. Todos los datos con los que interactúan los programas se almacenan en cuentas separadas y se envían a través de instrucciones. Este modelo permite que un único programa genérico funcione en varias cuentas sin necesidad de implementaciones adicionales. Se ven ejemplos comunes de este patrón en los programas nativos y SPL.
 
 ### Native Programs & The Solana Program Library (SPL)
 
-Solana comes equipped with a number of programs that serve as core building blocks for on-chain interactions. These programs are divided into [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and [Solana Program Library (SPL) Programs](https://spl.solana.com/).
+Solana viene equipado con programas que sirven como bloques de construcción para interactuar con la cadena de bloques. Estos programas están dividos en [Programas nativos](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) y [Programas de la librería de programas (SPL)](https://spl.solana.com/).
 
-Native Programs provide the base functionality that is required to operate validators. Among these programs, the most well known is the [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) which is responsible for administering new accounts and transferring SOL between two parties.
+Los programas nativos brindan la funcionalidad base que es requerida para operar validadores. Entre estos programas el más conocido es el [Programa del sistema (System Program)](https://docs.solana.com/developing/runtime-facilities/programs#system-program) que es responsable de administrar las cuentas y transferir SOL.
 
-SPL Programs support a number of on-chain activities, including creating, swapping, and lending tokens, as well as generating stake pools and maintaining an on-chain name service. The [SPL Token Program](https://spl.solana.com/token) can be invoked directly via the CLI, while others like the [Associated Token Account Program](https://spl.solana.com/associated-token-account) are usually composed with custom programs.
+Los programas de la librería de programas soportan otras actividades dentro de la cadena de bloques como crear tokens, intercambiarlos, prestar tokens, así como generar pools de staking y mantener el servicio de nombres dentro de la cadena de bloques. El [Programa de Token (SPL Token Program)](https://spl.solana.com/token) puede ser invocado directamente desde el CLI (Command Line Interface), mientras que otros como el [Programa de cuentas asociadas a token (Associated Token Account Program)](https://spl.solana.com/associated-token-account) son usados dentro de otros programas.
 
-### Writing Programs
+### Escribiendo programas
 
-Programs are most commonly developed with Rust or C++, but can be developed with any language that targets the LLVM’s BPF backend. Recent initiatives by [Neon Labs](https://neon-labs.org/) and [Solang](https://solang.readthedocs.io/en/latest/) enable [EVM](https://ethereum.org/en/developers/docs/evm/) compatibility and allow developers to write programs in Solidity.
+Los Programas están escritos comunmente en Rust o C++, pero pueden ser desarrollado con cualquier lenguaje que compile al backend BPF de LLVM. Iniciativas recientes de [Neon Labs](https://neon-labs.org/) y [Solang](https://solang.readthedocs.io/en/latest/) habilitan la compatibilidad con [EVM](https://ethereum.org/en/developers/docs/evm/) para permitir a desarrolladores escribir programas con Solidity.
 
-Most Rust-based programs adhere to the following architecture:
+La mayoría de programas de Rust siguen la siguiente arquitectura:
 
-| File           | Description                                   |
-|----------------|-----------------------------------------------|
-| lib.rs         | Registering modules                           |
-| entrypoint.rs  | Entrypoint to the program                     |
-| instruction.rs | Program API, (de)serializing instruction data |
-| processor.rs   | Program logic                                 |
-| state.rs       | Program objects, (de)serializing state        |
-| error.rs       | Program-specific errors                       |
+| Arcguvi        | Descripción                                     |
+|----------------|-------------------------------------------------|
+| lib.rs         | Registro de módulos                             |
+| entrypoint.rs  | Punto de entrada para el programa               |
+| instruction.rs | API del programa, deserializa las instrucciones |
+| processor.rs   | Lógica del programa                             |
+| state.rs       | Objetos del programa, deserializa el estado     |
+| error.rs       | Errores específicos del programa                |
 
-Recently, [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
+Recientemente, [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html) se ha convertido en el framework más popular para desarrollar programas. Anchor es un framework que reduce el boilerplate y facilita la deserialización para los programas desarrollados en Rust.
 
-Programs are usually developed and tested against Localhost and Devnet environments before being deployed to Testnet or Mainnet. Solana supports the following environments:
+Los programas normalmente son desarrollados y testeados en los entornos Localhost y Devnet antes de ser desplegados a Testnet y Mainnet. Solana soporta los siguientes entornos:
 
-| Cluster Environment  | RPC Connection URL                                                        |
+| Entorno del cluster  | URL de conexión RPC                                                       |
 |----------------------|---------------------------------------------------------------------------|
 | Mainnet-beta         | https://api.mainnet-beta.solana.com                                       |
 | Testnet              | https://api.testnet.solana.com                                            |
 | Devnet               | https://api.devnet.solana.com                                             |
 | Localhost            | Default port: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
 
-Once deployed to an environment, clients can interact with on-chain programs via [RPC connections](https://docs.solana.com/developing/clients/jsonrpc-api) to the respective cluster.
+Una vez desplegado a un entorno, los clientes pueden interactuar con el programa dentro de la cadena de bloques utilizando [Conexiones RPC](https://docs.solana.com/developing/clients/jsonrpc-api) apuntando al cluster correspondiente.
 
-### Deploying Programs
+### Desplegando Programas
 
-Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program):
+Los desarrolladores pueden desplegar sus programas utilizando el [CLI](https://docs.solana.com/cli/deploy-a-program):
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (containing BPF bytecode) and uploaded to the Solana cluster. Programs live in accounts (much like everything else on Solana), except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
+Cuando un programa es desplegado, es compilado a un [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (conteniendo el bytecode de BPF) y subido al cluster de Solana. Los Programas viven en cuentas (como casi todo en Solana), con la excepción de aquellas marcadas como `executable` y asignadas al BPF Loader. La dirección del programa desplegada se llama `program_id` y es usada para llamar al programa.
 
-Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader is responsible for administering the program’s account and making it available to clients via the `program_id`. All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`) and parameters always include:
+Solana soporta múltiples BPF Loaders, siendo el último el [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). El BPF Loader es responsable de administrar las cuentas del programa y hacerlas accesibles a los clientes a través del `program_id`. Todos los programas tienen un único punto de entrada donde se procesan las instrucciones (i.e. `process_instruction`) y los parámetros siempre incluyen:
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`
 
-Once invoked, programs are executed by the Solana Runtime.
+Una vez llamado, los Programas son ejecutados por el Runtime de Solana.
 
 ## Other Resources
 
-- [Official Documentation](https://docs.solana.com/developing/on-chain-programs/overview)
-- [SPL Documentation](https://spl.solana.com/)
-- [Program Deploys by Justin Starry](https://jstarry.notion.site/Program-deploys-29780c48794c47308d5f138074dd9838)
-- [Solana Starter Kit by Iron Addicted Dog](https://book.solmeet.dev/notes/solana-starter-kit)
-- [Programming on Solana by Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
-- [An Introduction to the Solana Blockchain by Hana](https://2501babe.github.io/posts/solana101.html)
+- [Documentación oficial](https://docs.solana.com/developing/on-chain-programs/overview)
+- [Documentación de SPL](https://spl.solana.com/)
+- [Despliegue de Programas por Justin Starry](https://jstarry.notion.site/Program-deploys-29780c48794c47308d5f138074dd9838)
+- [Kit de inicio de Solana por Iron Addicted Dog](https://book.solmeet.dev/notes/solana-starter-kit)
+- [Programando en Solana por Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
+- [Una introducción a la cadena de bloques por Hana](https://2501babe.github.io/posts/solana101.html)
 - [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html)
