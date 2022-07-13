@@ -59,7 +59,7 @@ Cualquier desarrollador puede escribir e implementar programas en la cadena de b
 
 A diferencia de la mayoría de cadenas de bloques, Solana separa completamente el código de los datos. Todos los datos con los que interactúan los programas se almacenan en cuentas separadas y se envían a través de instrucciones. Este modelo permite que un único programa genérico funcione en varias cuentas sin necesidad de implementaciones adicionales. Se ven ejemplos comunes de este patrón en los programas nativos y SPL.
 
-### Native Programs & The Solana Program Library (SPL)
+### Programas nativos & La librería de Programas de Solana (SPL)
 
 Solana viene equipado con programas que sirven como bloques de construcción para interactuar con la cadena de bloques. Estos programas están dividos en [Programas nativos](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) y [Programas de la librería de programas (SPL)](https://spl.solana.com/).
 
