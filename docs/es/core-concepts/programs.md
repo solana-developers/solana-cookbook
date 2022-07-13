@@ -43,7 +43,7 @@ Cualquier desarrollador puede escribir e implementar programas en la cadena de b
 
 ## Hechos
 
-::: tip Fact Sheet
+::: tip Hoja de hechos
 - Los programas procesan [instrucciones](./transactions) de otros programas y de usuarios finales
 - Todos los programas son *stateless* (sin estado): Los datos con los que interactúan son almacenados en [cuentas](./accounts.md) que son enviadas al programa en instrucciones
 - Los mismos programas son almacenadas en cuentas marcadas como `executable` (ejecutables)
