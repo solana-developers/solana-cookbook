@@ -163,49 +163,51 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: "https://github.com/solana-developers/solana-cookbook",
           },
         ],
-        sidebar: [
-          {
-            text: "Primeros pasos",
-            children: ["/es/", "/es/getting-started/installation.md"],
-          },
-          {
-            text: "Conceptos clave",
-            children: [
-              "/es/core-concepts/accounts.md",
-              "/es/core-concepts/programs.md",
-              "/es/core-concepts/transactions.md",
-              "/es/core-concepts/pdas.md",
-            ],
-          },
-          {
-            text: "指南",
-            children: [
-              // '/es/guides/get-program-accounts.md',
-              // '/zh/guides/serialization.md',
-              // '/zh/guides/data-migration.md',
-              // '/zh/guides/account-maps.md',
-              // '/zh/guides/retrying-transactions.md',
-              // '/zh/guides/debugging-solana-programs.md',
-              // '/zh/guides/feature-parity-testing.md',
-            ],
-          },
-          {
-            text: "参考",
-            children: [
-              // '/zh/references/local-development.md',
-              // '/zh/references/keypairs-and-wallets.md',
-              // '/zh/references/basic-transactions.md',
-              // '/zh/references/accounts.md',
-              // '/zh/references/programs.md',
-              // '/zh/references/token.md',
-              // '/zh/references/anchor.md',
-              // '/zh/references/staking.md',
-              // '/zh/references/nfts.md',
-              // '/zh/references/offline-transactions.md',
-              // '/zh/references/name-service.md',
-            ],
-          },
-        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Primeros pasos",
+              children: ["/es/", "/es/getting-started/installation.md"],
+            },
+            {
+              text: "Conceptos clave",
+              children: [
+                "/es/core-concepts/accounts.md",
+                "/es/core-concepts/programs.md",
+                "/es/core-concepts/transactions.md",
+                "/es/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guías",
+              children: [
+                // '/es/guides/get-program-accounts.md',
+                // '/es/guides/serialization.md',
+                // '/es/guides/data-migration.md',
+                // '/es/guides/account-maps.md',
+                // '/es/guides/retrying-transactions.md',
+                // '/es/guides/debugging-solana-programs.md',
+                // '/es/guides/feature-parity-testing.md',
+              ],
+            },
+            {
+              text: "Referencias",
+              children: [
+                // '/es/references/local-development.md',
+                // '/es/references/keypairs-and-wallets.md',
+                // '/es/references/basic-transactions.md',
+                // '/es/references/accounts.md',
+                // '/es/references/programs.md',
+                // '/es/references/token.md',
+                // '/es/references/anchor.md',
+                // '/es/references/staking.md',
+                // '/es/references/nfts.md',
+                // '/es/references/offline-transactions.md',
+                // '/es/references/name-service.md',
+              ],
+            },
+          ],
+        }
       },
     },
   },
