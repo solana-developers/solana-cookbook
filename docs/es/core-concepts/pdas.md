@@ -1,18 +1,18 @@
 ---
-title: Program Derived Addresses (PDAs)
+title: Direcciones derivadas de programa (PDAs)
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | PDAs
+      content: Libro de recetas de Solana | PDAs
   - - meta
     - name: og:title
-      content: Solana Cookbook | PDAs
+      content: Libro de recetas de Solana | PDAs
   - - meta
     - name: description
-      content: PDAs are home to accounts that are designed to be controlled by a specific program. Learn about PDAs and more Core Concepts at The Solana cookbook.
+      content: PDAs son cuentas diseñadas específicamente para ser controladas por programas. Aprende más sobre PDAs y otros conceptos del core de Solana en el libro de recetas de Solana.
   - - meta
     - name: og:description
-      content: PDAs are home to accounts that are designed to be controlled by a specific program. Learn about PDAs and more Core Concepts at The Solana cookbook.
+      content: PDAs son cuentas diseñadas específicamente para ser controladas por programas. Aprende más sobre PDAs y otros conceptos del core de Solana en el libro de recetas de Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,43 +37,43 @@ head:
 footer: MIT Licensed
 ---
 
-# Program Derived Addresses (PDAs)
+# Direcciones derivadas de programa (PDAs)
 
-Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs can programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
+Direcciones derivadas de programa (PDAs) son cuentas diseñadas específicamente para ser controladas por programas. Con PDAs, los programas puede firmar para ciertas direcciones sin la necesidad de una llave privada. PDAs sirven como la base para la [Invocación entre programas](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), que permite la composición entre apps de Solana.
 
-## Facts
+## Hechos
 
-::: tip Fact Sheet
-- PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
-- `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
-- A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve
-- Programs can sign for their PDAs by providing the seeds and bump to [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
-- A PDA can only be signed by the program from which it was derived
-- In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
+::: tip Hola de hechos
+- PDAs son cadenas de 32 bytes que lucen como llaves públicas pero no tienen una llave privada relacionada
+- `findProgramAddress` deriva de forma determinista un PDA de un programId y unas semillas (colección de bytes)
+- Un bump (un byte) es usado para empujar a un potencial PDA fuera de la curva elíptica ed25519
+- Los programas pueden firmar por sus PDAs usando sus seeds y bump [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
+- Un PDA solo puede ser firmado por el programa del cual ha sido derivada
+- Además de permitir a los programas firmar diferentes instrucciones, PDAs también brindan una interfaz tipo hashmap para [indexar cuentas](../guides/account-maps.md)
 :::
 
-# Deep Dive
+# Un vistazo más profundo
 
-PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
+Los PDA son un componente esencial para desarrollar programas en Solana. Con las PDA, los programas pueden firmar cuentas mientras garantizan que ningún usuario externo pueda generar una firma válida para la misma. Además de firmar cuentas, ciertos programas también pueden modificar cuentas en sus PDA.
 
 ![Accounts matrix](./account-matrix.png)
 
 <small style="text-align:center;display:block;">Image courtesy of <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
 
-### Generating PDAs
+### Generando PDAs
 
-To understand the concept behind PDAs, it may be helpful to consider that PDAs are not technically created, but rather found. PDAs are generated from a combination of seeds (such as the string `“vote_account”`) and a program id. This combination of seeds and program id is then run through a sha256 hash function to see whether or not they generate a public key that lies on the ed25519 elliptic curve.
+Para entender el concepto detrás de las PDA, puede ser útil considerar que las PDA no se crean técnicamente, sino que se encuentran. Los PDA se generan a partir de una combinación de semillas (como la cadena `“vote_account”`) y un id de programa. Esta combinación de semillas y de un id de programa luego se ejecuta a través de una función hash sha256 para ver si generan o no una clave pública que se encuentra en la curva elíptica ed25519.
 
-In running our program id and seeds through a hash function, there is a ~50% chance that we actually end up with a valid public key that does lie on the elliptic curve. In this case, we simply add something to fudge our input a little bit and try again. The technical term for this fudge factor is a bump. In Solana, we start with bump = 255 and simply iterate down through bump = 254, bump = 253, etc. until we get an address that is not on the elliptic curve. This may seem rudimentary, but once found it gives us a deterministic way of deriving the same PDA over and over again. 
+Al ejecutar el id del programa y las semillas de nuestro programa a través de una función hash, hay una probabilidad de ~50% de que en realidad terminemos con una clave pública válida que se encuentre en la curva elíptica. En este caso, simplemente agregamos algo para modificar un poco nuestra entrada y lo intentamos de nuevo. El término técnico para este algo es un bump. En Solana, comenzamos con bump = 255 y simplemente iteramos hacia abajo, bump = 254, bump = 253, etc. hasta que obtengamos una dirección que no esté en la curva elíptica. Esto puede parecer rudimentario, pero una vez encontrado nos da una forma determinista de derivar el mismo PDA una y otra vez.
 
-![PDA on the ellipitic curve](./pda-curve.png)
+![PDA en la curva elíptica](./pda-curve.png)
 
-### Interacting with PDAs
+### Interactuando con PDAs
 
-When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program can then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
+Cuando un PDA es generado, `findProgramAddress` retorna la dirección y el bump usado para sacar la dirección fuera de la curva elíptica. Con el bump, un programa puede [firmar](../references/accounts.md#sign-with-a-pda) por cualquier transacción que requiera el PDA. Para firmar, los programas deben pasar la instrucción, la lista de las cuentas, las semillas y el bump usado para derivar el PDA a la función `invoke_signed`. Además de firmar para instrucciones, PDAs también deben firmar su propia creación con `invoke_signed`.
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
+Cuando se crean PDAs, es común [guardar el bump y los seeds](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) en los datos de la misma cuenta. Esto permite a los desarrolladores validar fácilmente un PDA sin tener que enviar el bump como argumento en la instrucción.
 
 ## Other Resources
-- [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
-- [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
+- [Documentación oficial](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
+- [Entendiendo las direcciones derivadas de programa](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
