@@ -3,16 +3,16 @@ title: 솔라나 핸드북
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Home to Solana References
+      content: 솔라나 핸드북 | 솔라나 개발의 모든 것
   - - meta
     - name: og:title
-      content: Solana Cookbook | Home to Solana References
+      content: 솔라나 핸드북 | 솔라나 개발의 모든 것
   - - meta
     - name: description
-      content: The Solana cookbook is a collection of useful examples and references for building on Solana
+      content: 솔라나 핸드북은 솔라나 개발을 위한 여러 예시와 코드를 포함하고 있습니다.
   - - meta
     - name: og:description
-      content: The Solana cookbook is a collection of useful examples and references for building on Solana
+      content: 솔라나 핸드북은 솔라나 개발을 위한 여러 예시와 코드를 포함하고 있습니다.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
