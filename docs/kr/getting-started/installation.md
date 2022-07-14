@@ -263,41 +263,29 @@ Command prompt를 닫고 새로운 command prompt를 일반 유저로 열어주�
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+설치 후 `solana-install update` 을 이용하여 새로운 버전으로 손쉽게 업데이트가 가능합니다.
+#### Binaries 설치하기
 
-#### Downloading Binaries
+`solana-install`을 대신하여 binaries를 설치할 수 있습니다.
 
-Alternatively, you can install from binaries instead of using solana-install.
+[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest) 로 이동하여 **solana-release-x86_64-pc-windows-msvc.tar.bz2**를 설치 후 WinZip과 같은 앱으로 압축을 풀어주세요.
 
-Download the binaries by navigating to
-[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-pc-windows-msvc.tar.bz2**, then extract the
-archive using WinZip or similar.
-
-Open a Command Prompt and navigate to the directory into which you extracted
-the binaries and run:
-
+Command Prompt를 연 후 압축이 해제된 directory로 이동 후 다음 커맨드를 실행시켜주세요:
 ```bash
 cd solana-release/
 set PATH=%cd%/bin;%PATH%
 ```
 
-### Build From Source
+### 소스를 이용하여 빌드하기
 
-If you are unable to use the prebuilt binaries or prefer to build it yourself
-from source, navigate to
-[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-and download the **Source Code** archive. Extract the code and build the
-binaries with:
+Prebuilt binaries를 사용할 수 없거나 직접 소스를 이용하여 빌드하고 싶다면 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest) 에서 **Source Code** archive를 설치하세요. 다음을 이용하여 binaries를 빌드할 수 있습니다:
 
 ```bash
 ./scripts/cargo-install-all.sh .
 export PATH=$PWD/bin:$PATH
 ```
 
-You can then run the following command to obtain the same result as with
-prebuilt binaries:
+빌드 후 다음 커맨드를 이용하여 prebuilt binaries와 같은 기능을 사용할 수 있습니다:
 
 ```bash
 solana-install init
