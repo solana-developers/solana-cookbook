@@ -37,51 +37,48 @@ head:
 footer: MIT Licensed
 ---
 
-# Accounts
+# Accounts (계정)
 
-Accounts within Solana are used to store state. They are an essential
-building block for developing on Solana.
+솔라나에서 계정은 state를 저장하기 위하여 사용됩니다. 계정은 솔라나의 기초적인 구조에 꼭 필요한 컨셉입니다.
 
-## Facts
+## 팩트체크
 
-::: tip Fact Sheet
+::: tip 팩트 시트
 
-- Accounts are used to store data
-- Each account has a unique address
-- Accounts have a max size of 10MB (10 Mega Bytes)
-- PDA accounts have a max size of 10KB (10 Kilo Bytes)
-- PDA accounts can be used to sign on behalf of a program
-- Accounts size are fixed at creation time, but can be adjusted using [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
-- Account data storage is paid with rent
-- Default account owner is the System Program
+- 계정은 데이터를 저장하기 위하여 사용된다
+- 각 계정은 고유한 주소를 가진다
+- 계정은 10MB의 최대 용량을 가진다
+- PDA 계정은 10KB의 최대 용량을 가진다
+- PDA 계정은 프로그램을 대신하여 사인을 할 수 있다 
+- 계정 용량은 생성시에 고정이 되어 있지만 [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)를 이용하여 바꿀 수 있다
+- 계정 데이터 저장소는 rent(임대료)를 지불하여 사용한다
+- 계정 주인은 System Program으로 기본값 설정이 되어있다.
   :::
 
-## Deep Dive
+## 자세한 설명
 
-### Account Model
+### 계정 모델
 
-There are 3 kinds of accounts on Solana:
+솔라나에는 세가지 종류의 계정이 있습니다:
 
-- Data accounts store data
-- Program accounts store executable programs
-- Native accounts that indicate native programs on Solana such as System, Stake, and Vote
+- 데이터 계정: 데이터를 저장하는 계정
+- 프로그램 계정: 실행 가능한 프로그램을 저장하는 계정
+- 네이티브 계정: 시스템, 지분, 투표와 같은 솔라나의 네이티브 프로그램을 지칭하는 계정
 
-Within data accounts, there are 2 types:
+데이터 계정은 두 가지 종류로 나뉘어집니다:
 
-- System owned accounts
-- PDA (Program Derived Address) accounts
+- 시스템 소유 계정
+- PDA (프로그램 파생 주소) 계정
 
-Each account has an address (usually a public key) and an owner
-(address of a program account). The full field list an account stores
-is found below.
+각 계정은 주소 (공공 키)가 있으며 주인 (프로그램 계정의 주소)이 있습니다. 다음 표는 계정이 저장하는 정보를 설명합니다.
 
-| Field      | Description                                    |
+| 필드        | 설명                                    |
 | ---------- | ---------------------------------------------- |
-| lamports   | The number of lamports owned by this account   |
-| owner      | The program owner of this account              |
-| executable | Whether this account can process instructions  |
-| data       | The raw data byte array stored by this account |
-| rent_epoch | The next epoch that this account will owe rent |
+| lamports   | 계정이 소유한 lamport의 개수                        |
+| owner      | 계정의 프로그램 주인                                |
+| executable | 계정이 지시 (instructions)들을 실행시킬 수 있는지 여부   |
+| data       | 계정에 저장된 처리 전 바이트 배열 데이터 (raw data byte array)|
+| rent_epoch | 계정이 임대료를 지불해야하는 다음 epoch                 |
 
 There are a few important ownership rules:
 

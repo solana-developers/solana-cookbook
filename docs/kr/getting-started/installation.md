@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: 설치하기
 head:
   - - meta
     - name: title
