@@ -71,7 +71,7 @@ To load the polyfills, we open the file `index.js` in the root of the project an
 
 ```javascript
 import 'react-native-get-random-values';
-import 'react-native-url-polyfill/auto'
+import 'react-native-url-polyfill/auto';
 ```
 
 ### Update `metro.config.js`
