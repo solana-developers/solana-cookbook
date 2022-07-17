@@ -98,23 +98,21 @@ footer: MIT Licensed
 
 계정에 데이터를 저장하기 위해서 SOL을 임대료로 지불해야합니다. 2년동안 계정 임대료 지불에 요규되는 최소 밸런스를 유지할 시 임대료를 더 이상 지불하지 않아도 됩니다. 임대료를 회수하기 위해서 계정 사용을 종료시키고 lamports를 본인 지갑으로 전송할 수 있습니다.
 
-Rent is paid during two different timings:
+임대료는 두가지 상황에서 지불됩니다:
 
-1. When referenced by a transaction
-2. Once an epoch
+1. Transaction에 참조 (포함) 되었을때
+2. 매 epoch마다
 
-A percentage of rent collected by accounts is destroyed, while the rest is distributed
-to vote accounts at the end of every slot.
+계정에서 지불한 임대료의 일부는 파괴 (burn)되며, 나머지는 투표 계정들에게 매 슬롯의 마지막에 배분됩니다.
 
-If the account does not have enough to pay rent, the account will be deallocated and the data
-removed.
+만약 계정이 임대료를 지불해야하는 만큼의 lamport를 소유하고 있지 않으면 계정은 다른 곳으로 배정되며 (deallocate) 데이터는 삭제됩니다.
 
-## Other Resources
+## 유용한 정보
 
-- [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
-- [Official Documentation](https://docs.solana.com/developing/programming-model/accounts)
+- [솔라나 계정 모델](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
+- [공식 문서](https://docs.solana.com/developing/programming-model/accounts)
 - [pencilflip account thread](https://twitter.com/pencilflip/status/1452402100470644739)
 
-### Credit
+### 크레딧
 
 This core concept is credited to Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
