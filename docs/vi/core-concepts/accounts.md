@@ -74,7 +74,7 @@ Mỗi Account lại có một địa chỉ (thường là public key - khoá cô
 
 | Trường     | Mô tả                                                      |
 | ---------- | ---------------------------------------------------------- |
-| lamports   | Số ượng lamports trong Account đóng                        |
+| lamports   | Số lượng lamports trong Account đóng                        |
 | owner      | Địa chỉ Program Account đang kiếm soát Account đó          |
 | executable | Account này có thể thực thi các chỉ thị hay không?         |
 | data       | Dữ liệu thô dưới dạng các bytes được lưu trữ trong Account |

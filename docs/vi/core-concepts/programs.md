@@ -45,9 +45,9 @@ Bất kỳ lập trình viên nào đều có thể viết và triển khai mộ
 
 ::: tip Những điều có thể bạn chưa biết
 - Program sẽ xử lý các [chỉ thị](./transactions) từ cả người dùng và các Program khác
-- Tất cả các Program đều là *stateless*: mọi dữ liệu mà Program tương tác đều được lưu trên những [accounts](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
-- Bản thân Program được lưu bên trong những accounts dược đánh dấu là `executable`
-- Tất cả Program đều có owned là [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
+- Tất cả các Program đều là *stateless*: mọi dữ liệu mà Program tương tác đều được lưu trên những [Account](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
+- Bản thân Program được lưu bên trong những Account dược đánh dấu là `executable`
+- Tất cả Program được sở hữu bởi [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
 - Hầu hết các lập trình viên đều phát triển Program bằng Rust hoặc C++, nhưng bạn vẫn có thể lựa chọn bất kỳ ngôn ngữ lập trình mà có hỗ trợ [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) của [LLVM](https://llvm.org/)
 - Mọi Program chỉ có duy nhất một điểm truy cập nơi mà các chỉ thị được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
     - `program_id`: `pubkey`
@@ -57,13 +57,13 @@ Bất kỳ lập trình viên nào đều có thể viết và triển khai mộ
 
 ## Chi tiết
 
-Không giống như hấu hết các blockchain khác, Solana tách bạch giữ code và dữ liệu. Tất cả dữ liệu mà chương trình cần tương tác sẽ được lưu ở các accounts tách biệt và được truyền thông qua các tham chiếu ở câu chỉ thị. Mô hình này cho phép một chương trình chung có thể hoạt động trên nhiều kiểu accounts khác nhau mà không cần tái cơ cấu lại chương trình. Một ví dụ hay gặp của mô hình này là Native Programs và SPL Programs.
+Không giống như hấu hết các blockchain khác, Solana tách bạch giữa code và dữ liệu. Tất cả dữ liệu mà chương trình cần tương tác sẽ được lưu ở các Account tách biệt và được truyền thông qua các tham chiếu ở câu chỉ thị. Mô hình này cho phép một chương trình chung có thể hoạt động trên nhiều kiểu Account khác nhau mà không cần tái cơ cấu lại chương trình. Một ví dụ hay gặp của mô hình này là Native Programs và SPL Programs.
 
 ### Native Programs & Solana Program Library (SPL) Programs
 
 Solana được trang bị sẵn một số Program nền tảng và được dùng để xây dựng các tương tác on-chain. Những Program này thường được chia thành [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và [Solana Program Library (SPL) Programs](https://spl.solana.com/).
 
-Native Programs cung cấp các chức năng cơ sở và cần thiết để vận hành các validators. Trong các Program này, chương trình được biết đến rộng rãi nhất là [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program). System Program chịu trách nhiệm cho việc cấp phát Account mới, cũng như chuyển SOL giữa các accounts khác nhau.
+Native Programs cung cấp các chức năng cơ sở và cần thiết để vận hành các validators. Trong các Program này, chương trình được biết đến rộng rãi nhất là [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program). System Program chịu trách nhiệm cho việc cấp phát Account mới, cũng như chuyển SOL giữa các Account khác nhau.
 
 SPL Programs hỗ trợ một số các hoạt động on-chain bao gồm tạo tokens, trao đổi tokens, cho vay tokens, cũng như tạo stake pools, và duy trì name service. [SPL Token Program](https://spl.solana.com/token) có thể được gọi trực tiếp thông qua Solana CLI, hoặc bằng cách khác hơn như là [Associated Token Account Program](https://spl.solana.com/associated-token-account). Associated Token Account Program thường được kết hợp với các chương trình tuỳ chỉnh để gọi đến SPL Token Program hơn là gọi độc lập. 
 

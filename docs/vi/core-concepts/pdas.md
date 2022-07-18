@@ -39,41 +39,41 @@ footer: MIT Licensed
 
 # Program Derived Addresses (PDAs)
 
-Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs can programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
+Program Derived Addresses (hay còn gọi vắn tắt là PDA) là những Account được thiết kế cho các Program có thể kiểm soát. Với PDA, Program có thể lập trình được chữ ký cho một số địa chỉ cụ thể mà không cần khoá riêng tư - private key. PDA là cơ sở để hiện thực [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), trong đó Solana cho phép các Program có thể tương tác cũng như kết hợp với nhau để tạo nên một hệ thống phức tạp hơn.
 
-## Facts
+## Có thể bạn chưa biết
 
-::: tip Fact Sheet
-- PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
-- `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
-- A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve
-- Programs can sign for their PDAs by providing the seeds and bump to [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
-- A PDA can only be signed by the program from which it was derived
-- In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
+::: tip Những điều có thể bạn chưa biết
+- PDA là một chuỗi 32 byte tương tự khoá công khai - public keys, nhưng lại không tồn tại khoá riêng tư tương ứng
+- `findProgramAddress` được dùng để suy ra một PDA từ thông tin `program_id` và `seeds` (một tập hợp các bytes)
+- Một `bump` (có giá trị 1 byte) được dùng để tạo ra một PDA khả dĩ nằm ngoài đường cong ellipitic ed25519.
+- Program có thể tạo ra chữ cho PDA bằng cách cung cấp `seeds` và `bump` cho hàm [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
+- Một PDA chỉ có thể được ký bởi Program mà nó được suy ra.
+- Ngoài việc cho phép Program chó thể ký lên các chỉ thị, PDA cũng cung cấp một giao diện giống với hashmap dành cho việc [đánh chỉ số Account](../guides/account-maps.md)
 :::
 
-# Deep Dive
+# Chi tiết
 
-PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
+PDA là một khối cơ sở cho việc lập trình trên Solana. Với PDA, Program có thể ký cho nhiều Account trong khi đảm bảo rằng không tồn tại người dùng nào có thể giả mạo chữ ký cho cùng Account đó. Ngoài việc tạo ra chữ ký, Program cũng có thể chỉnh sửa Account được sở hữu bởi PDA của nó.
 
 ![Accounts matrix](./account-matrix.png)
 
-<small style="text-align:center;display:block;">Image courtesy of <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
+<small style="text-align:center;display:block;">Hình ảnh được cho phép bời <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
 
-### Generating PDAs
+### Cách sinh PDA
 
-To understand the concept behind PDAs, it may be helpful to consider that PDAs are not technically created, but rather found. PDAs are generated from a combination of seeds (such as the string `“vote_account”`) and a program id. This combination of seeds and program id is then run through a sha256 hash function to see whether or not they generate a public key that lies on the ed25519 elliptic curve.
+Để hiểu được khái niệm đằng sau PDA, là cần thiết để làm rõ rằng PDA không phải được "tạo ra" mà là "tìm ra". PDA được sinh ra từ quá trình kết hợp giữa `seeds` (ví dụ như chuỗi ký tự `“vote_account”`) và `program_id`. Việc kết hợp này được cho qua một hàm băm - sha256 - để thử xem giá trị tạo ra có phải là một khoá công khai nằm ngoài đường cong ellipitic ed25519 hay không.
 
-In running our program id and seeds through a hash function, there is a ~50% chance that we actually end up with a valid public key that does lie on the elliptic curve. In this case, we simply add something to fudge our input a little bit and try again. The technical term for this fudge factor is a bump. In Solana, we start with bump = 255 and simply iterate down through bump = 254, bump = 253, etc. until we get an address that is not on the elliptic curve. This may seem rudimentary, but once found it gives us a deterministic way of deriving the same PDA over and over again. 
+Quá trình thử này sẽ có xác suất 50/50. Nghĩa là sẽ có 50% cơ hội quá trình sinh ra một khoá công khai nằm trên đường cong ellipitic ed25519. Trong trường hợp đó, chúng ta đơn giản chỉ cần thêm một vài bit vào đầu vào để thử lại. Những bit được thêm vào trong thuật ngữ kỹ thuật được gọi là bump. Trong Solana, chúng ta bắt đầu với bump = 255 và tiếp tục giảm xuống 254, 253 cứ thể cho đến khi tìm được địa chỉ PDA không nằm trên đường cong ellipitic. Việc này có vẻ thô sơ, nhưng thực ra nó lại cho chúng ta một phương pháp bất biến để suy ra PDA cho các lần thử khác nhau, miễn là cùng một giá trị đầu vào.
 
 ![PDA on the ellipitic curve](./pda-curve.png)
 
-### Interacting with PDAs
+### Tương tác với PDAs
 
-When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program can then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
+Khi một PDA được sinh ra, `findProgramAddress` sé trả về hai giá trị là địa chỉ của PDA và `bump` dùng để đảm bảo PDA này ngoài đường cong ellipitic. Với giá trị `bump` này, Program có thể [ký lên](../references/accounts.md#sign-with-a-pda) bất kỳ chỉ thị nào có chứa PDA của nó về sau. Để ký, Program phải truyền cho chỉ thị một danh sách các Account, các `seeds` và `bump` dùng để suy ra PDA vào hàm `invoke_signed`. Ngoài việc ký lên chỉ thị, PDA còn ký cho việc tạo ra chính bản thân nó thông qua hàm `invoke_signed`.
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
+Khi phát triển ứng dụng với PDA, thường thì bạn sẽ phải [lưu bump](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) trong dữ liệu Account. Điều này cho phép lập trình viên có thể kiểm tra PDA mà không cần truyền bump vào dữ liệu đầu vào của chỉ thị.
 
-## Other Resources
-- [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
+## Các nguồn tài liệu khác
+- [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
