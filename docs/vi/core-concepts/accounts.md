@@ -39,12 +39,11 @@ footer: MIT Licensed
 
 # Accounts
 
-Accounts within Solana are used to store state. They are an essential
-building block for developing on Solana.
+Accounts trong lập trình Solana được hiểu như một vùng nhớ để lưu dữ liệu. Chúng là một khối cơ sở trong quá trình phát triển ứng dụng trên Solana.
 
-## Facts
+## Có thể bạn chưa biết
 
-::: tip Fact Sheet
+::: tip Có thể bạn chưa biết
 
 - Accounts are used to store data
 - Each account has a unique address

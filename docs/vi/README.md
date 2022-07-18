@@ -1,5 +1,5 @@
 ---
-title: Cooking with Solana
+title: Nhập môn Solana
 head:
   - - meta
     - name: title
@@ -37,30 +37,26 @@ head:
 footer: MIT Licensed
 ---
 
-# Cooking with Solana
+# Nhập môn Solana
 
-The *Solana Cookbook* is a developer resource that 
-provides the essential concepts and references for 
-building applications on Solana. Each concept and 
-reference will focus on specific aspects of Solana 
-development while providing additional details and usage 
-examples.
+Cuốn sách *Toàn tập Solana* là một tài liệu lập trình hướng đến việc cung cấp nhưng khái niệm căn bản và tài liệu tham khảo cho quá trình xây dựng ứng dụng trên Solana. Mỗi khái niệm hoặc tài liệu tham khảo không những tập trung vào những khía cạnh cụ thể trên Solana mà còn cung cấp các chi tiết giảng giải cũng như ví dụ mẫu cho lập trình viên.
 
-## Contributing
+## Đóng góp
 
-The Cookbook is designed in a way that makes it easy for 
-new Solana developers to contribute. Even if you 
-don't know how to do something, contributing to the 
-cookbook is a great way to learn!
+Toàn tập Solana được thiết kế sao cho các lập trình viên mới trên Solana cũng có thể dễ dàng tham gia đóng góp và xây dựng. Ngay cả khi bạn chưa có ý tưởng nào cho các sản phẩm cá nhân hoặc tổ chức của bạn, tham gia góp ý cũng là một cách rất hay để bạn có thể trau dồi.
 
-Check out all open issues [here](https://github.com/solana-developers/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-developers/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
+Xem qua tất cả các đóng góp [tại dây](https://github.com/solana-developers/solana-cookbook/issues). Cách thức góp ý được trình bày [tại đây](https://github.com/solana-developers/solana-cookbook#contributing). Nếu bạn cảm thấy Toàn tập Solana đang thiếu sót ở bất kỳ điểm nào, vui lòng tạo mới một góp ý thông qua các đường dẫn bên trên.
 
-## How to Read the Cookbook
+## Cấu trúc của Toàn tập Solana
 
-The Solana Cookbook is split into different sections, each aimed at a different goal.
+Toàn tập Solana được chia thành các mục cụ thể, và ở mỗi mục sẽ trình bày, giải thích các mục tiêu khác nhau.
 
-| Section       | Description |
-|---------------|-----------------------------------------------------------------|
-| Core Concepts | Building blocks of Solana that are good to know for development |
-| Guides        | Snack-sized guides about different tools for development        |
-| References    | References to commonly needed code snippets                     |
+| Mục               | Mục tiêu                                                                       |
+|-------------------|--------------------------------------------------------------------------------|
+| Khái niệm căn bản | Xây dựng các khối cơ sở của Solana cần thiết cho quá trình phát triển ứng dụng |
+| Hướng dẫn         | Các hướng dẫn nhanh về bộ công cụ hữu ích cho quá trình phát triển ứng dụng    |
+| Tham khảo         | Các mẫu code thường gặp trong quá trình phát triển ứng dụng                    |
+
+## Lời của dịch giả
+
+Phiên bản Tiếng Việt của Toàn tập Solana được dịch lại từ phiên bản Tiếng Anh - [Solana Cookbook](https://solanacookbook.com/). Vì đây là một tài liệu kỹ thuật cũng như để đảm bảo tính nhất quán, một số thuật ngữ chuyên ngành sẽ được giữ nguyên và không được dịch sang các từ thay thế ở Tiếng Việt. Ngoài ra, một số hình minh hoạ có thể được cập nhập chậm và vẫn phải dùng hình ảnh gốc ở bản Tiếng Anh. Hi vọng bạn đọc thông cảm và có thời gian học tập vui vẻ. Chúc cộng đồng Solana Việt Nam ngày càng phát triển về chất và lượng.

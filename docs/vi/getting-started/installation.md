@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Cài đặt
 head:
   - - meta
     - name: title
@@ -37,15 +37,15 @@ head:
 footer: MIT Licensed
 ---
 
-## Install Web3.js
+## Cài đặt Web3.js
 
-There are a few libraries that you can use to get started with javascript or typescript on Solana.<br/>
+Có rất nhiều thư viện Javascript hoặc Typescript bạn có thể dùng để tương tác với Solana.<br/>
 
 ### Web3.js
 
-[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the blockchain.
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) là một thư viện phổ biến và hỗ trợ nhiều công cụ thiết yếu cho việc lập trình trên Solana. Ví dụ như đọc dữ liệu từ blockchain, kí giao dịch, gửi giao dịch.
 
-You can install with the following:
+Bạn có thể cài đặt thông qua các bước sau:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +81,9 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-`@solana/spl-token` is a library that contains many of the javascript/typescript bindings needed to interact with SPL tokens.
-You can use this library to mint new SPL tokens, transfer tokens, and more.
+`@solana/spl-token` là một thư viện chứa rất nhiều hàm con (Javascript/Typescript) để tương tác với SPL tokens (Chuẩn token trên Solana). Bạn có thể dùng nó để tạo SPL token mới, chuyển/nhận token, vân vân.
 
-You can install this library with the following:
+Bạn có thể cài đặt thông qua các bước sau:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -120,11 +119,9 @@ npm install --save @solana/spl-token
 
 ### Wallet-Adapter
 
-There is a collection of libraries that can help bootstrap wallet connections within Solana called wallet-adapter.
-Currently the package supports use within Svelte, Angular, Vue.js, and React. Wallet-adapter can quickstart your dApp
-integration with wallets like [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), and more.
+Đây là một tập hợp các thư viện viết sẵn giúp bạn nhanh chóng tạo kết nối giữa ứng dụng và ví người người dùng trên Solana. Hiện tại, thư viện đang hỗ trợ Svelte, Angular, Vue.js và React. Wallet-adaper có thể tạo kết nối với các ví diện tử như [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), và nhiều ví khác.
 
-You can install this library with the following:
+Để cài đặt thư viện, bạn cần thông qua các bước sau dây:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -146,7 +143,7 @@ npm install --save @solana/wallet-adapter-wallets \
   </CodeGroupItem>
 </CodeGroup>
 
-## Install Rust
+## Cài đặt Rust
 
 <CodeGroup>
   <CodeGroupItem title="MACOS" active>
@@ -165,26 +162,23 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   </CodeGroupItem>
 </CodeGroup>
 
-For Windows, please visit the [Rust installation site](https://www.rust-lang.org/tools/install).
+Trên Windows, vui lòng tham khảo [Trang chủ cài đặt Rust](https://www.rust-lang.org/tools/install).
 
-## Install CLI
+## Cài đặt CLI
 
 ### macOS & Linux
 
-Open your favorite Terminal application.
+Mở ứng dụng Terminal ưa thích của bạn.
 
-Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your machine by running:
+Thay `LATEST_RELEASE` với phiên bản mong muốn và tiến hành cài [phiên bản của Solana](https://github.com/solana-labs/solana/releases) trên máy tính của bạn bằng câu lệnh:
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-You can replace `LATEST_RELEASE` with the release tag matching
-the software version of your desired release, or use one of the three symbolic
-channel names: `stable`, `beta`, or `edge`. To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+Bạn có thể thay `LATEST_RELEASE` với các nhãn phiên bản ứng với phiên bản mong muốn, hoặc có thể sử dụng 3 nhãn đại diện là `stable`, `beta`, hoặc `edge`. Để tìm phiên bản mới nhất, bạn có thể tham khảo danh sách phiên bản có sẵn [tại đây](https://github.com/solana-labs/solana/releases).
 
-The following output indicates a successful update:
+Nếu màn hình Terminal của bạn hiển thị những dòng bên dưới, điều đó có nghĩa là bạn đã cài đặt thành công.
 
 ```text
 downloading LATEST_RELEASE installer
@@ -195,33 +189,29 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-Depending on your system, the end of the installer messaging may prompt you
-to
+Tuỳ vào hệ thống của bạn, dòng cuối của thông báo cài đặt có thể hiển thị là:
 
 ```bash
 Please update your PATH environment variable to include the solana programs:
 ```
 
-If you get the above message, copy and paste the recommended command below
-it to update `PATH`.
+Nếu nhận được thông báo trên, bạn cần sao chép câu lệnh ngay dưới thông báo và cập nhật vào `PATH`.
 
-Confirm you have the desired version of `solana` installed by running:
+Để xác nhập cài đặt thông công và phiên bản đã cài, bạn có thể chạy câu lệnh sau:
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+Sau khi đã cài đặt hoàn tất, câu lệnh `solana-install update` có thể được sử dụng để cập nhật các phiên bản Solana về sau.
 
-#### Downloading Binaries (Linux)
+#### Tải Binaries (Linux)
 
-Alternatively, you can install from binaries instead of using solana-install.
+Khác hơn, bạn cũng có thể cài đặt bằng bản binaries.
 
-Download the binaries by navigating to
+Tải bản binaries bằng cách truy cập
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, then extract the
-archive:
+sau đó tải **solana-release-x86_64-unknown-linux-msvc.tar.bz2** và giải nén tệp:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -229,14 +219,13 @@ cd solana-release/
 export PATH=$PWD/bin:$PATH
 ```
 
-#### Downloading Binaries (macOS)
+#### Tải Binaries (macOS)
 
-Alternatively, you can install from binaries instead of using solana-install.
+Khác hơn, bạn cũng có thể cài đặt bằng bản binaries.
 
-Download the binaries by navigating to
+Tải bản binaries bằng cách truy cập
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-apple-darwin.tar.bz2**, then extract the
-archive:
+sau đó tải **solana-release-x86_64-apple-darwin.tar.bz2** và giải nén tệp:
 
 ```bash
 tar jxf solana-release-x86_64-apple-darwin.tar.bz2
@@ -248,82 +237,65 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-Open a Command Prompt (`cmd.exe`) as an Administrator.
+Mở Command Prompt (`cmd.exe`) với quyền Administrator.
 
-Search for Command Prompt in the Windows search bar. When the Command
-Prompt app appears, right-click and select “Open as Administrator”.
-If you are prompted by a pop-up window asking “Do you want to allow this app to
-make changes to your device?”, click 'Yes'.
+Bạn có thể tìm Command Prompt bằng thanh tìm kiếm trên Windows. Một khi tìm thấy Command Prompt, nhấp chuột phải và chọn “Open as Administrator”. Nếu xuất hiện thông báo “Do you want to allow this app to make changes to your device?”, vui lòng chọn 'Yes'.
 
-Copy and paste the following command, then press Enter to download the Solana
-installer into a temporary directory:
+Chép và dán câu lệnh bên dưới. Sau đó, nhấn Enter để tải bộ cài đặt Solana và thư mục tạm:
 
 ```bash
 curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-If `v1.9.16` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
+Nếu `v1.9.16` không phải là phiên bản bạn muốn cài đặt, vui lòng tìm phiên bản thích hợp [tại đây](https://github.com/solana-labs/solana/releases).
 
-Copy and paste the following command, then press Enter to install the latest
-version of Solana. If you see a security pop-up by your system, please select
-to allow the program to run.
+Chép và dán câu lệnh sau, cũng như nhấn Enter để cài đặt. Nếu có bất kỳ thông báo an toàn nào từ hệ thống, vui lòng cho phép chương trình tiếp tục quá trình cài đặt.
 
 ```bash
 C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
-To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+Để tìm các phiên bản, vui lòng truy cập danh sách [tại đây](https://github.com/solana-labs/solana/releases).
 
-When the installer is finished, press Enter.
+Khi nào cài đọc hoàn thành, nhấn Enter để kết thúc.
 
-Close the command prompt window and re-open a new command prompt window as a
-normal user.
+Đóng của sổ Command Prompt hiện hành, đồng thời mở một cửa sổ Command Prompt mới với quyền truy cập là User.
 
-Search for "Command Prompt" in the search bar, then left-click on the
-Command Prompt app icon (no need to run as Administrator).
+Tìm "Command Prompt" trong thanh tìm kiếm, sau đó nhấp chuột trái và biểu tượng Command Prompt (không cần thiết phải chạy dưới quyền Administrator).
 
-Confirm you have the desired version of `solana` installed by entering:
+Xác nhận phiên bản `solana` đã cài bằng cách:
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+Một khi đã hoàn tất, câu lệnh `solana-install update` có thể được sử dụng để cập nhật các phiên bản Solana về sau.
 
-#### Downloading Binaries
+#### Tải Binaries
 
-Alternatively, you can install from binaries instead of using solana-install.
+Khác hơn, bạn cũng có thể cài đặt bằng bản binaries.
 
-Download the binaries by navigating to
+Tải bản binaries bằng cách truy cập vào
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-pc-windows-msvc.tar.bz2**, then extract the
-archive using WinZip or similar.
+sau đó tải **solana-release-x86_64-pc-windows-msvc.tar.bz2** và giải nén tệp bằng WinZip hoặc phần mềm tương tự.
 
-Open a Command Prompt and navigate to the directory into which you extracted
-the binaries and run:
+Mở một cửa sổ Command Prompt và điều hướng vào thư mục đã giải nén đồng thời chạy câu lệnh:
 
 ```bash
 cd solana-release/
 set PATH=%cd%/bin;%PATH%
 ```
 
-### Build From Source
+### Biên dịch từ mã nguồn
 
-If you are unable to use the prebuilt binaries or prefer to build it yourself
-from source, navigate to
-[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-and download the **Source Code** archive. Extract the code and build the
-binaries with:
+Nếu bạn không thể sử dụng bản biên dịch sẵn binaries, hoặc muốn biên dịch thủ công từ mã nguồn, vui lòng truy cập [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), và tải tệp nến của **Source Code**. Giải nén và biên dịch binaries bằng câu lệnh:
 
 ```bash
 ./scripts/cargo-install-all.sh .
 export PATH=$PWD/bin:$PATH
 ```
 
-You can then run the following command to obtain the same result as with
-prebuilt binaries:
+Sau đó, bạn phải chạy lệnh bên dưới để đặt được kết quả giống với bản binaries biên dịch sẵn:
 
 ```bash
 solana-install init

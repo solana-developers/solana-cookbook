@@ -164,14 +164,14 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: "Tích hợp",
-            link: "/integrations",
+            link: "/vi/integrations",
           },
         ],
         sidebar: {
           "/vi/": [
             {
-              text: "Bắt đầu",
-              children: ["/vi/", "/getting-started/installation.md"],
+              text: "Mở đầu",
+              children: ["/vi/", "/vi/getting-started/installation.md"],
             },
             {
               text: "Khái niệm căn bản",
@@ -243,7 +243,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     "/vi/": {
       lang: "vi-VN",
-      title: "Sách Solana",
+      title: "Toàn tập Solana",
     },
   },
   markdown: {
