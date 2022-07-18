@@ -37,19 +37,19 @@ head:
 footer: MIT Licensed
 ---
 
-# Programs
+# Program
 
-Bất kỳ lập trình viên nào đều có thể viết và triển khai một chương trình trên Solana. Programs (hay được biết đến với tên gọi là Smart Contract trên các blockchain khác) sẽ là nền tảng cho các hoạt động on-chain; thứ giúp tạo nên đa số các hình thái từ DeFi, NFTs cho đến Mạng xã hội và Trò chơi.
+Bất kỳ lập trình viên nào đều có thể viết và triển khai một chương trình trên Solana. Program (hay được biết đến với tên gọi là Smart Contract trên các blockchain khác) sẽ là nền tảng cho các hoạt động on-chain; thứ giúp tạo nên đa số các hình thái từ DeFi, NFTs cho đến Mạng xã hội và Trò chơi.
 
 ## Có thể bạn chưa biết
 
 ::: tip Những điều có thể bạn chưa biết
-- Programs sẽ xử lý các [chỉ thị](./transactions) từ cả người dùng và các programs khác
-- Tất cả các programs đều là *stateless*: mọi dữ liệu mà program tương tác đều được lưu trên những [accounts](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
-- Bản thân programs được lưu bên trong những accounts dược đánh dấu là `executable`
-- Tất cả programs đều có owned là [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Hầu hết các lập trình viên đều phát triển program bằng Rust hoặc C++, nhưng bạn vẫn có thể lựa chọn bất kỳ ngôn ngữ lập trình mà có hỗ trợ [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) của [LLVM](https://llvm.org/)
-- Mọi programs chỉ có duy nhất một điểm truy cập nơi mà các chỉ thị được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
+- Program sẽ xử lý các [chỉ thị](./transactions) từ cả người dùng và các Program khác
+- Tất cả các Program đều là *stateless*: mọi dữ liệu mà Program tương tác đều được lưu trên những [accounts](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
+- Bản thân Program được lưu bên trong những accounts dược đánh dấu là `executable`
+- Tất cả Program đều có owned là [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
+- Hầu hết các lập trình viên đều phát triển Program bằng Rust hoặc C++, nhưng bạn vẫn có thể lựa chọn bất kỳ ngôn ngữ lập trình mà có hỗ trợ [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) của [LLVM](https://llvm.org/)
+- Mọi Program chỉ có duy nhất một điểm truy cập nơi mà các chỉ thị được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
     - `instruction_data`: `byte array`
@@ -61,30 +61,30 @@ Không giống như hấu hết các blockchain khác, Solana tách bạch giữ
 
 ### Native Programs & Solana Program Library (SPL) Programs
 
-Solana trang bị sẵn một số programs nền tảng dùng để xây dựng các tương tác on-chain. Nhưng programs này thường được chia thành [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và [Solana Program Library (SPL) Programs](https://spl.solana.com/).
+Solana được trang bị sẵn một số Program nền tảng và được dùng để xây dựng các tương tác on-chain. Những Program này thường được chia thành [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và [Solana Program Library (SPL) Programs](https://spl.solana.com/).
 
-Native Programs cung cấp các chức năng cơ sở và cần thiết để vận hành các validators. Trong các programs này, chương trình được biết đến rộng rãi nhất là [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program). System Program chịu trách nhiệm cho việc cấp phát account mới, cũng như chuyển SOL giữa các accounts khác nhau.
+Native Programs cung cấp các chức năng cơ sở và cần thiết để vận hành các validators. Trong các Program này, chương trình được biết đến rộng rãi nhất là [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program). System Program chịu trách nhiệm cho việc cấp phát Account mới, cũng như chuyển SOL giữa các accounts khác nhau.
 
 SPL Programs hỗ trợ một số các hoạt động on-chain bao gồm tạo tokens, trao đổi tokens, cho vay tokens, cũng như tạo stake pools, và duy trì name service. [SPL Token Program](https://spl.solana.com/token) có thể được gọi trực tiếp thông qua Solana CLI, hoặc bằng cách khác hơn như là [Associated Token Account Program](https://spl.solana.com/associated-token-account). Associated Token Account Program thường được kết hợp với các chương trình tuỳ chỉnh để gọi đến SPL Token Program hơn là gọi độc lập. 
 
 ### Viết một Program
 
-Programs hầu như được phát triển dựa trên Rust hoặc C++. Tuy nhiên bạn vẫn có thể phát triển bằng bất kỳ ngôn ngữ nào miễn là hỗ trợ BPF của LLVM. Hiện tại, lập trình viên cũng có thể chuyển đổi smart contract trên EVM được viết bằng Solidity thông qua dự án được khỏi xướng bởi [Neon Labs](https://neon-labs.org/) và [Solang](https://solang.readthedocs.io/en/latest/).
+Program hầu như được phát triển dựa trên Rust hoặc C++. Tuy nhiên bạn vẫn có thể phát triển bằng bất kỳ ngôn ngữ nào miễn là hỗ trợ BPF của LLVM. Hiện tại, lập trình viên cũng có thể chuyển đổi smart contract trên EVM được viết bằng Solidity thông qua dự án được khởi xướng bởi [Neon Labs](https://neon-labs.org/) và [Solang](https://solang.readthedocs.io/en/latest/).
 
-Đa số các programs dự trên Rust đều bám sát cái kiến trúc sau:
+Đa số các Program dự trên Rust đều bám sát kiến trúc sau:
 
 | Tệp            | Mô tả                                                            |
 |----------------|------------------------------------------------------------------|
-| lib.rs         | Để đăng ký các modules                                           |
-| entrypoint.rs  | Điểm truy cập của program                                        |
+| lib.rs         | Đăng ký các modules                                              |
+| entrypoint.rs  | Điểm truy cập của Program                                        |
 | instruction.rs | Program API, tuần tự và phi tuần tự hoá dữ liệu đầu vào          |
 | processor.rs   | Luận lý của Program                                              |
 | state.rs       | Các đối tượng của Program, tuần tự và phi tuần tự hoá trạng thái |
 | error.rs       | Định nghĩa lỗi của Program                                       |
 
-Hiện tại, [Anchor](https://github.com/coral-xyz/anchor) đang nổi lên như là một framework phổ biến giúp phát triển programs nhanh chóng hơn. Anchor được lấy cảm hứng nhiều từ Ruby on Rails nhằm giảm thiểu các mẫu code lặp lại, đồng thời chuẩn hoá việc tuần tự và phi tuần tự hoá dữ liệu trong quá trình phát triển bằng Rust.
+Hiện tại, [Anchor](https://github.com/coral-xyz/anchor) đang nổi lên như là một framework phổ biến giúp phát triển Program nhanh chóng hơn. Anchor được lấy cảm hứng nhiều từ Ruby on Rails nhằm giảm thiểu các mẫu code lặp lại, đồng thời chuẩn hoá việc tuần tự và phi tuần tự hoá dữ liệu trong quá trình phát triển bằng Rust.
 
-Programs thường được phát triển và kiểm thử trên môi trường localhost và devnet trước khi được triển khai trên testnet hoặc mainnet. Solana hỗ trợ các môi trường sau:
+Program thường được phát triển và kiểm thử trên môi trường localhost và devnet trước khi được triển khai trên testnet hoặc mainnet. Solana hỗ trợ các môi trường sau:
 
 | Cụm môi trường       | Đường dẫn kết nối RPC                                                      |
 |----------------------|----------------------------------------------------------------------------|
@@ -95,22 +95,22 @@ Programs thường được phát triển và kiểm thử trên môi trường 
 
 Sau khi triển khai lên một môi trường cụ thể, người dùng có thể tương tác với chúng on-chain thông qua [kết nối RPC](https://docs.solana.com/developing/clients/jsonrpc-api) tương ứng.
 
-### Triển khai Programs
+### Triển khai Program
 
-Lập trình viên có thể triển khai programs của họ thông qua [CLI](https://docs.solana.com/cli/deploy-a-program):
+Lập trình viên có thể triển khai Program của họ thông qua [CLI](https://docs.solana.com/cli/deploy-a-program):
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-Khi một program được triển khai, nó sẽ được biên dịch thành một [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (có chứa BPF bytecode) và được tải lên mạng Solana. Programs được lưu trữ trong account (giống như hấu hết mọi thứ trên Solana), ngoại trừ việc được đánh đấu là `executable` và `owner` được gán cho BPF Loader. Địa chỉ của account này sẽ được gọi là `program_id` và được sử dụng nhưng là tham chiếu cho program trong các giao dịch ở tương lai.
+Khi một Program được triển khai, nó sẽ được biên dịch thành một [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (có chứa BPF bytecode) và được tải lên mạng Solana. Program được lưu trữ trong Account (giống như hấu hết mọi thứ trên Solana), ngoại trừ việc được đánh đấu là `executable` và `owner` được gán cho BPF Loader. Địa chỉ của Account này sẽ được gọi là `program_id` và được sử dụng nhưng là tham chiếu cho Program trong các giao dịch ở tương lai.
 
-Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). BPF Loader chịu trách nhiệm cho việc điều hành các account của programs và cho phép người dùng tương tác bằng `program_id`. Tất cả programs chỉ có một điểm truy cập duy nhất noi mà các chỉ thị sẽ được ghi nhận và xử lý (cụ thể là `process_instruction`) với các tham số bao gồm
+Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). BPF Loader chịu trách nhiệm cho việc điều hành các Account của Program và cho phép người dùng tương tác bằng `program_id`. Tất cả Program chỉ có một điểm truy cập duy nhất, nơi mà các chỉ thị sẽ được ghi nhận và xử lý (cụ thể là `process_instruction`) với các tham số bao gồm:
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`
 
-Mỗi khi được gọi, program sẽ được thực thi bởi Solana Runtime.
+Mỗi khi được gọi, Program sẽ được thực thi bởi Solana Runtime.
 
 ## Các nguồn tài liệu khác
 

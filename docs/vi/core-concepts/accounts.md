@@ -37,21 +37,21 @@ head:
 footer: MIT Licensed
 ---
 
-# Accounts
+# Account
 
-Accounts trong lập trình Solana được hiểu như một vùng nhớ để lưu dữ liệu. Chúng là một khối cơ sở trong quá trình phát triển ứng dụng trên Solana.
+Account trong lập trình Solana được hiểu như một vùng nhớ để lưu dữ liệu. Chúng là một khối cơ sở trong quá trình phát triển ứng dụng trên Solana.
 
 ## Có thể bạn chưa biết
 
 ::: tip Những điều có thể bạn chưa biết
 
-- Accounts đươc dùng để lưu trữ dữ liệu
-- Mỗi account sẽ có một địa chỉ duy nhất
-- Accounts có kích thước tối đa là 10MB (10 Mega Bytes)
-- PDA accounts có kích thước tối đa là 10KB (10 Kilo Bytes)
-- PDA accounts có thể dùng để ký đại diện cho một program
-- Kích thước accounts được cố định tại thời điểm khởi tạo, nhưng vẫn có thể điều chỉnh bằng [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
-- Vùng nhớ dữ liệu được cấp phát cho account phải được thuê bằng cách trả phí
+- Account đươc dùng để lưu trữ dữ liệu
+- Mỗi Account sẽ có một địa chỉ duy nhất
+- Account có kích thước tối đa là 10MB (10 Mega Bytes)
+- PDA Account có kích thước tối đa là 10KB (10 Kilo Bytes)
+- PDA Account có thể dùng để ký đại diện cho một program
+- Kích thước Account được cố định tại thời điểm khởi tạo, nhưng vẫn có thể điều chỉnh bằng [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
+- Vùng nhớ dữ liệu được cấp phát cho Account phải được thuê bằng cách trả phí
 - Account owner trong trường hợp mặc định sẽ là System Program
   :::
 
@@ -59,53 +59,53 @@ Accounts trong lập trình Solana được hiểu như một vùng nhớ để 
 
 ### Cấu trúc Account
 
-Có 3 kiểu account trên Solana:
+Có 3 kiểu Account trên Solana:
 
-- Data accounts dùng để lưu trữ dữ liệu
-- Program accounts dùng để lưu chương trình thực thi
-- Native accounts ám chỉ native programs trên Solana như là System, Stake, và Vote
+- Data Accounts dùng để lưu trữ dữ liệu
+- Program Accounts dùng để lưu chương trình thực thi
+- Native Accounts ám chỉ native programs trên Solana như là System, Stake, và Vote
 
-Kiểu data accounts lại có 2 kiểu con:
+Kiểu Data Account lại có 2 kiểu con:
 
-- Accounts được sở hữu bởi System
-- PDA (Program Derived Address) accounts
+- Account được sở hữu bởi System
+- PDA (Program Derived Address) Accounts
 
-Mỗi account lại có một địa chỉ (thường là public key - khoá công khai) và một owner (địa chỉ của một program account). Đầy đủ các trường của một account được trình bày ở bảng dưới.
+Mỗi Account lại có một địa chỉ (thường là public key - khoá công khai) và một owner (địa chỉ của một Program Account). Đầy đủ các trường của một Account được trình bày ở bảng dưới.
 
 | Trường     | Mô tả                                                      |
 | ---------- | ---------------------------------------------------------- |
-| lamports   | Số ượng lamports trong account đóng                        |
-| owner      | Địa chỉ program account đang kiếm soát account đó          |
+| lamports   | Số ượng lamports trong Account đóng                        |
+| owner      | Địa chỉ Program Account đang kiếm soát Account đó          |
 | executable | Account này có thể thực thi các chỉ thị hay không?         |
-| data       | Dữ liệu thô dưới dạng các bytes được lưu trữ trong account |
-| rent_epoch | Kỳ hạn thuê vùng nhớ tiếp theo cho account                 |
+| data       | Dữ liệu thô dưới dạng các bytes được lưu trữ trong Account |
+| rent_epoch | Kỳ hạn thuê vùng nhớ tiếp theo cho Account                 |
 
 Có một vài quy tắc quan trọng về quyền sở hữu:
 
-- Chỉ owner mới được chỉnh sửa cũng như rút số lamports từ một data account
-- Bất kỳ ai cũng được phép nạp lamports vào một data account
-- Owner của một account có thể được gán cho một owner mới khi và chỉ khi vùng nhớ của account đó được hoàn trả
+- Chỉ owner mới được chỉnh sửa cũng như rút số lamports từ một Data Account
+- Bất kỳ ai cũng được phép nạp lamports vào một Data Account
+- Owner của một Account có thể được gán cho một owner mới khi và chỉ khi vùng nhớ của Account đó được hoàn trả
 
-Program accounts không được lưu bất kỳ trạng thái.
+Program Accounts không được lưu bất kỳ trạng thái.
 
-Ví dụ, nếu bạn có một chương trình đếm trên một program account và cho phép tăng bộ đếm lên sau mỗi lần tương tác, bạn phải tạo tối thiểu 2 accounts. Trong đó, một cho program account để lưu code thực thi, và một cho data account để lưu dữ liệu bộ đếm.
+Ví dụ, nếu bạn có một chương trình đếm trên một Program Account và cho phép tăng bộ đếm lên sau mỗi lần tương tác, bạn phải tạo tối thiểu 2 Account. Trong đó, một cho Program Account để lưu code thực thi, và một cho Data Account để lưu dữ liệu bộ đếm.
 
 ![](./account_example.jpeg)
 
-Để tránh việc một account bị xoá, bạn phải trả chi phí để thuê vùng nhớ cho account đó.
+Để tránh việc một Account bị xoá, bạn phải trả chi phí để thuê vùng nhớ cho Account đó.
 
 ### Thuê
 
-Lưu trữ dữ liệu vào accounts và duy trì account đó sẽ phát sinh chi phí SOL. Chi phí này được gọi là chi phí thuê. Nếu chi phí thuê được duy trì ở mức tối thiểu là 2 năm cho account đó, thì bạn sẽ được miễn phí lưu trữ. Bạn cũng có thể thu hồi lại phí cọc bằng cách đóng account. Số lamports cọc sẽ được hoàn trả về địa chỉ ví của bạn.
+Lưu trữ dữ liệu vào Account và duy trì Account đó sẽ phát sinh chi phí SOL. Chi phí này được gọi là chi phí thuê. Nếu chi phí thuê được duy trì ở mức tối thiểu là 2 năm cho Account đó, thì bạn sẽ được miễn phí lưu trữ. Bạn cũng có thể thu hồi lại phí cọc bằng cách đóng Account. Số lamports cọc sẽ được hoàn trả về địa chỉ ví của bạn.
 
 Chi phí thuê được tính toán và chi trả ở 2 thời điểm khác nhau:
 
-1. Khi có bất kỳ giao dịch nào có tham khảo đến account đó.
+1. Khi có bất kỳ giao dịch nào có tham khảo đến Account đó.
 2. Định kỳ mỗi epoch.
 
-Một phần của chi phí thuê thu được sẽ được tiêu huỷ, trong khi phần còn lại sẽ được phân chia cho các vote account sau mỗi slot.
+Một phần của chi phí thuê thu được sẽ được tiêu huỷ, trong khi phần còn lại sẽ được phân chia cho các Vote Account sau mỗi slot.
 
-Nếu một account không đủ cọc để chi trả phí thuê, account đó sẽ bị thu hồi và toàn bộ dữ liệu sẽ bị xoá.
+Nếu một Account không đủ cọc để chi trả phí thuê, Account đó sẽ bị thu hồi và toàn bộ dữ liệu sẽ bị xoá.
 
 ## Các nguồn tài liệu khác
 
