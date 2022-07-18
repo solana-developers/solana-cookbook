@@ -39,83 +39,83 @@ footer: MIT Licensed
 
 # Programs
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+Bất kỳ lập trình viên nào đều có thể viết và triển khai một chương trình trên Solana. Programs (hay được biết đến với tên gọi là Smart Contract trên các blockchain khác) sẽ là nền tảng cho các hoạt động on-chain; thứ giúp tạo nên đa số các hình thái từ DeFi, NFTs cho đến Mạng xã hội và Trò chơi.
 
-## Facts
+## Có thể bạn chưa biết
 
-::: tip Fact Sheet
-- Programs process [instructions](./transactions) from both end users and other programs
-- All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
-- Programs themselves are stored in accounts marked as `executable`
-- All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Developers most commonly write programs in Rust or C++, but can choose any language that targets the [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) backend
-- All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`); parameters always include:
+::: tip Những điều có thể bạn chưa biết
+- Programs sẽ xử lý các [chỉ thị](./transactions) từ cả người dùng và các programs khác
+- Tất cả các programs đều là *stateless*: mọi dữ liệu mà program tương tác đều được lưu trên những [accounts](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
+- Bản thân programs được lưu bên trong những accounts dược đánh dấu là `executable`
+- Tất cả programs đều có owned là [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
+- Hầu hết các lập trình viên đều phát triển program bằng Rust hoặc C++, nhưng bạn vẫn có thể lựa chọn bất kỳ ngôn ngữ lập trình mà có hỗ trợ [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) của [LLVM](https://llvm.org/)
+- Mọi programs chỉ có duy nhất một điểm truy cập nơi mà các chỉ thị được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
     - `instruction_data`: `byte array`
 :::
 
-## Deep Dive
+## Chi tiết
 
-Unlike most other blockchains, Solana completely separates code from data. All data that programs interact with are stored in separate accounts and passed in as references via instructions. This model allows for a single generic program to operate across various accounts without requiring additional deployments. Common examples of this pattern are seen across the Native and SPL Programs.
+Không giống như hấu hết các blockchain khác, Solana tách bạch giữ code và dữ liệu. Tất cả dữ liệu mà chương trình cần tương tác sẽ được lưu ở các accounts tách biệt và được truyền thông qua các tham chiếu ở câu chỉ thị. Mô hình này cho phép một chương trình chung có thể hoạt động trên nhiều kiểu accounts khác nhau mà không cần tái cơ cấu lại chương trình. Một ví dụ hay gặp của mô hình này là Native Programs và SPL Programs.
 
-### Native Programs & The Solana Program Library (SPL)
+### Native Programs & Solana Program Library (SPL) Programs
 
-Solana comes equipped with a number of programs that serve as core building blocks for on-chain interactions. These programs are divided into [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and [Solana Program Library (SPL) Programs](https://spl.solana.com/).
+Solana trang bị sẵn một số programs nền tảng dùng để xây dựng các tương tác on-chain. Nhưng programs này thường được chia thành [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và [Solana Program Library (SPL) Programs](https://spl.solana.com/).
 
-Native Programs provide the base functionality that is required to operate validators. Among these programs, the most well known is the [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) which is responsible for administering new accounts and transferring SOL between two parties.
+Native Programs cung cấp các chức năng cơ sở và cần thiết để vận hành các validators. Trong các programs này, chương trình được biết đến rộng rãi nhất là [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program). System Program chịu trách nhiệm cho việc cấp phát account mới, cũng như chuyển SOL giữa các accounts khác nhau.
 
-SPL Programs support a number of on-chain activities, including creating, swapping, and lending tokens, as well as generating stake pools and maintaining an on-chain name service. The [SPL Token Program](https://spl.solana.com/token) can be invoked directly via the CLI, while others like the [Associated Token Account Program](https://spl.solana.com/associated-token-account) are usually composed with custom programs.
+SPL Programs hỗ trợ một số các hoạt động on-chain bao gồm tạo tokens, trao đổi tokens, cho vay tokens, cũng như tạo stake pools, và duy trì name service. [SPL Token Program](https://spl.solana.com/token) có thể được gọi trực tiếp thông qua Solana CLI, hoặc bằng cách khác hơn như là [Associated Token Account Program](https://spl.solana.com/associated-token-account). Associated Token Account Program thường được kết hợp với các chương trình tuỳ chỉnh để gọi đến SPL Token Program hơn là gọi độc lập. 
 
-### Writing Programs
+### Viết một Program
 
-Programs are most commonly developed with Rust or C++, but can be developed with any language that targets the LLVM’s BPF backend. Recent initiatives by [Neon Labs](https://neon-labs.org/) and [Solang](https://solang.readthedocs.io/en/latest/) enable [EVM](https://ethereum.org/en/developers/docs/evm/) compatibility and allow developers to write programs in Solidity.
+Programs hầu như được phát triển dựa trên Rust hoặc C++. Tuy nhiên bạn vẫn có thể phát triển bằng bất kỳ ngôn ngữ nào miễn là hỗ trợ BPF của LLVM. Hiện tại, lập trình viên cũng có thể chuyển đổi smart contract trên EVM được viết bằng Solidity thông qua dự án được khỏi xướng bởi [Neon Labs](https://neon-labs.org/) và [Solang](https://solang.readthedocs.io/en/latest/).
 
-Most Rust-based programs adhere to the following architecture:
+Đa số các programs dự trên Rust đều bám sát cái kiến trúc sau:
 
-| File           | Description                                   |
-|----------------|-----------------------------------------------|
-| lib.rs         | Registering modules                           |
-| entrypoint.rs  | Entrypoint to the program                     |
-| instruction.rs | Program API, (de)serializing instruction data |
-| processor.rs   | Program logic                                 |
-| state.rs       | Program objects, (de)serializing state        |
-| error.rs       | Program-specific errors                       |
+| Tệp            | Mô tả                                                            |
+|----------------|------------------------------------------------------------------|
+| lib.rs         | Để đăng ký các modules                                           |
+| entrypoint.rs  | Điểm truy cập của program                                        |
+| instruction.rs | Program API, tuần tự và phi tuần tự hoá dữ liệu đầu vào          |
+| processor.rs   | Luận lý của Program                                              |
+| state.rs       | Các đối tượng của Program, tuần tự và phi tuần tự hoá trạng thái |
+| error.rs       | Định nghĩa lỗi của Program                                       |
 
-Recently, [Anchor](https://github.com/coral-xyz/anchor) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
+Hiện tại, [Anchor](https://github.com/coral-xyz/anchor) đang nổi lên như là một framework phổ biến giúp phát triển programs nhanh chóng hơn. Anchor được lấy cảm hứng nhiều từ Ruby on Rails nhằm giảm thiểu các mẫu code lặp lại, đồng thời chuẩn hoá việc tuần tự và phi tuần tự hoá dữ liệu trong quá trình phát triển bằng Rust.
 
-Programs are usually developed and tested against Localhost and Devnet environments before being deployed to Testnet or Mainnet. Solana supports the following environments:
+Programs thường được phát triển và kiểm thử trên môi trường localhost và devnet trước khi được triển khai trên testnet hoặc mainnet. Solana hỗ trợ các môi trường sau:
 
-| Cluster Environment  | RPC Connection URL                                                        |
-|----------------------|---------------------------------------------------------------------------|
-| Mainnet-beta         | https://api.mainnet-beta.solana.com                                       |
-| Testnet              | https://api.testnet.solana.com                                            |
-| Devnet               | https://api.devnet.solana.com                                             |
-| Localhost            | Default port: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
+| Cụm môi trường       | Đường dẫn kết nối RPC                                                      |
+|----------------------|----------------------------------------------------------------------------|
+| Mainnet-beta         | https://api.mainnet-beta.solana.com                                        |
+| Testnet              | https://api.testnet.solana.com                                             |
+| Devnet               | https://api.devnet.solana.com                                              |
+| Localhost            | Port mặc định: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
 
-Once deployed to an environment, clients can interact with on-chain programs via [RPC connections](https://docs.solana.com/developing/clients/jsonrpc-api) to the respective cluster.
+Sau khi triển khai lên một môi trường cụ thể, người dùng có thể tương tác với chúng on-chain thông qua [kết nối RPC](https://docs.solana.com/developing/clients/jsonrpc-api) tương ứng.
 
-### Deploying Programs
+### Triển khai Programs
 
-Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program):
+Lập trình viên có thể triển khai programs của họ thông qua [CLI](https://docs.solana.com/cli/deploy-a-program):
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (containing BPF bytecode) and uploaded to the Solana cluster. Programs live in accounts (much like everything else on Solana), except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
+Khi một program được triển khai, nó sẽ được biên dịch thành một [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (có chứa BPF bytecode) và được tải lên mạng Solana. Programs được lưu trữ trong account (giống như hấu hết mọi thứ trên Solana), ngoại trừ việc được đánh đấu là `executable` và `owner` được gán cho BPF Loader. Địa chỉ của account này sẽ được gọi là `program_id` và được sử dụng nhưng là tham chiếu cho program trong các giao dịch ở tương lai.
 
-Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader is responsible for administering the program’s account and making it available to clients via the `program_id`. All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`) and parameters always include:
+Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). BPF Loader chịu trách nhiệm cho việc điều hành các account của programs và cho phép người dùng tương tác bằng `program_id`. Tất cả programs chỉ có một điểm truy cập duy nhất noi mà các chỉ thị sẽ được ghi nhận và xử lý (cụ thể là `process_instruction`) với các tham số bao gồm
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`
 
-Once invoked, programs are executed by the Solana Runtime.
+Mỗi khi được gọi, program sẽ được thực thi bởi Solana Runtime.
 
-## Other Resources
+## Các nguồn tài liệu khác
 
-- [Official Documentation](https://docs.solana.com/developing/on-chain-programs/overview)
-- [SPL Documentation](https://spl.solana.com/)
+- [Tài liệu chính thống](https://docs.solana.com/developing/on-chain-programs/overview)
+- [Tài liệu SPL](https://spl.solana.com/)
 - [Program Deploys by Justin Starry](https://jstarry.notion.site/Program-deploys-29780c48794c47308d5f138074dd9838)
 - [Solana Starter Kit by Iron Addicted Dog](https://book.solmeet.dev/notes/solana-starter-kit)
 - [Programming on Solana by Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
