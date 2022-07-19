@@ -1,12 +1,12 @@
 ---
-title: Migrating Program Data Accounts
+title: Di chuyển dữ liệu cho Program Account
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Program Accounts Data Migration
+      content: Solana Cookbook | Di chuyển dữ liệu cho Program Account
   - - meta
     - name: og:title
-      content: Solana Cookbook | Program Accounts Data Migration
+      content: Solana Cookbook | Di chuyển dữ liệu cho Program Account
   - - meta
     - name: description
       content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
@@ -37,29 +37,23 @@ head:
 footer: MIT Licensed
 ---
 
-# Migrating a Programs Data Accounts
+# Di chuyển dữ liệu một Program Account
 
-## How can you migrate a program's data accounts?
+## Làm thế nào để có thể di chuyển dữ liệu trong Program Account?
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+Khi bạn tạo một Program, mỗi Account dữ liệu sẽ được gán cho Program đó với cấu trục dữ liệu cụ thể. Nếu bạn từng nâng cấp Program và Program này dùng để suy ra các PDA, bạn chắc hẳn đã phải đau đầu với hàng tá những Account với cấu trúc gắn với Program cũ.
 
-With account versioning, you can upgrade your old accounts to
-the new structure.
+Với việc đánh phiên bản cho Account, bạn có thể dễ dàng nâng cấp cấu trúc mới cho các Account cũ .
 
-:::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+:::tip Lưu ý
+Đây chỉ là một trong rất nhiều cách khác nhau để di chuyển dữ liệu trong Program Owned Accounts (POA).
 :::
 
-## Scenario
+## Ngữ cảnh
 
-To version and migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+Để đánh phiên bản và di chuyển dữ liệu trong Account, chúng ta sẽ phải cung cấp một **id** cho từng Account. Id này sẽ cho phép chúng ta định rõ phiên bản của Account khi truyền nó cho Program, và như vậy có thể xử lý Account một cách chính xác.
 
-Take the following account state and program:
+Quan sát trạng thái bên dưới của Account và Program:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,28 +108,24 @@ Take the following account state and program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+Trong phiên bản đầu tiên của Account, chúng ta thực hiện các bước sau:
 
-| ID | Action |
+| # | Mô tả |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| Thêm trường `data_version` vào dữ liệu. Nó có thể đơn giản là số thứ tự (`u8`) hoặc có thể phức tạp hơn thế.
+|2| Phân phát một vùng nhớ đủ chứa dữ liệu
+|3| Khởi tạo một hằng số biễu diễn phiên bản cho các Program khác nhau
+|4| Thêm một hàm cập nhật Account với tên `fn conversion_logic` cho các nâng cấp trong tương lai
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
+Giả sử, chúng ta muốn nâng cấp các Account của Program bằng cách thêm một trường mới với tên `somestring`.
 
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+Nếu chúng ta không phân phát đủ vùng nhớ cho trường mới thêm cho các Account trước đó, quá trình nâng cấp Account sẽ bị mắc kẹt.
 
-## Upgrading the Account
+## Nâng cấp Account
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+Trong Program mới, chúng ta muốn thêm một thuộc tính mới cho nội dung của Account. Những thay đổi bên dưới trình bày cách chúng ta tận dụng cơ cấu Program ban đầu cho phiên bản hiện tại.
 
-### 1. Add account conversion logic
+### 1. Thêm luận lý để chuyển đổi Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -155,15 +145,15 @@ constructs as they come into use now.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-| Line(s) | Note |
+| Dòng | Mô tả |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | Chúng ta đã thêm `solana_program::borsh::try_from_slice_unchecked` của Solana để đơn giản hoá việc đọc các tập dữ liệu con từ khối dữ liệu cha
+| 13-26| Ở đây, chúng ta phải giữ lại phiên bản cũ, `AccountContentOld` tại dòng 24, trước khi mở rộng nó thành `AccountContentCurrent` tại dòng 17.
+| 60 | Nâng cấp lại hằng số `DATA_VERSION`
+| 71 | Chúng ta giờ đã có một phiên bản cũ, đồng thời lưu lại kích thước của nó
+| 86 | Cuối cùng là thêm luận lý cho quá trình nâng cấp phiên bản dữ liệu cũ thành phiên bản hiện hành
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+Sau đó chúng ta cập nhật hàm mới để thêm vào trường `somestring` và khai báo luận lý của chỉ thị mới trong `processor`. Lưu ý việc nâng cấp cấu trúc dữ liệu đã được đóng gói trong `pack/unpack`.
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,12 +169,12 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+Sau khi xây dựng và áp dụng chỉ thị `VersionProgramInstruction::SetString(String)`, chúng ta sẽ thấy dữ liệu Account được cập nhật sẽ được sắp xếp như sau:
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
-## Resources
+## <a name="resources"></a> Các nguồn tài liệu khác
 
-* [Borsh Specification](https://borsh.io/)
+* [Mô tả Borsh](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)
 * [Reference Implementation](https://github.com/FrankC01/versioning-solana)

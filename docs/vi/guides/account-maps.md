@@ -4,35 +4,35 @@ title: Account Maps
 
 # Account Maps
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+Map là một kiểu cấu trúc thường dùng trong lập trình và bao gồm một **key** tương ứng với một **value**. Cặp key-value có thể là bất kỳ kiểu dữ liệu nào trong đó key như là chìa khoá định danh dữ liệu được lưu trong value. Do đó, với mỗi key, chũng ta có thể thêm, xoá, cập nhật dữ liệu vào value một cách hiệu quả.
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [here][AccountCookbook].
+Mô hình Account trong Solana, như đã biết, yêu cầu dữ liệu của Program và các trạng thái của nó phải được lưu ở những Account riêng biệt. Những Account này có một địa chỉ định danh tương ứng và mô hình đó rất giống với map! Tìm hiểu thêm về mô hình Account trong Solana [tại đây][AccountCookbook].
 
-So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
+Như vậy, dễ hiểu khi mà ta lưu **values** vào những Account tách biệt và dùng **key** để truy vấn dữ liệu trong **values**. Tuy nhiên, điều này lại gây ra một số vấn đề như là:
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember and retrieve the required value.
+* Những địa chỉ đề cập hầu hết không phải là một **keys** lý tưởng, khi mà bạn cần phải ghi nhớ tất cả chúng để truy vấn các dữ liệu tương ứng.
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* Những địa chỉ đề cập bên trên được tham chiếu bằng khoá công khai của những **Keypairs** (cặp khoá) khác nhau, trong đó khoá công khai bắt buộc phải có khoá riêng tư tương ứng. Khoá riêng tư lại cần thiết để ký các chỉ thị và lại bắt buộc chúng ta phải lưu ở một nơi nào đó, điều mà thật sự **không** được khuyến khích trong thực tiễn.
 
-This presents a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+Điếu đó dẫn đến rất nhiều vấn đề cho lập trình viên muốn hiện thực `Map` trực tiếp vào Program trên Solana. Giờ hãy quan sát một vài cách để giải quyết vấn đề trên.
 
-## Deriving PDAs
+## Tìm PDA
 
-PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
+PDA là viết tắt [Program Derived Address][PDA]. Chúng là những địa chỉ được **tìm thấy** thông qua tập hợp gồm `seeds` và `program_id`.
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, can sign an instruction with the key, provided the seeds as well. Learn more about this [here][CPI].
+Điểm đặc biệt của PDA là chúng **không** tồn tại khoá riêng tư tương ứng. Điều này bởi vì những địa chỉ này không nằm trên đường cong ED25519. Vì vậy, **duy nhất** Program sinh ra PDA mới có thể ký lên các chỉ thị cho các PDA đó bằng `seeds`. Tìm hiểu thêm [tại đây][CPI].
 
-Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
+Sau khi đã nắm được khái niệm PDA, chúng ta có thể sử dụng để tạo kiểu Map! Hãy lấy ví dụ một **Blog** Program để hiểu rõ hơn cách sử dụng.
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, and each post is **mapped** to a certain blog.
+Trong Blog Program, chúng ta muốn mỗi `User` sẽ có một trang `Blog`. Bài blog có thể có nhiều `Posts`. Cụ thể hơn, mỗi `User` sẽ **map** đến một trang `Blog`. Nhiều bài `Posts` sẽ **được map** về một trang `Blog`.
 
-In short, there is a `1:1` mapping between a user and his/her blog, whereas a `1:N` mapping between a blog and its posts.
+`User` sẽ có kết nối `1:1` với `Blog` trong khi `Blog` sẽ có kết nối `1:N` với `Posts`.
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, and possibly a prefix of **"blog"**, to act as a type identifier.
+Với `1:1`, chúng ta mong mốn địa chỉ của trang blog có thể được suy ra **độc nhất** từ địa chỉ người dùng. Cơ chế này sẽ giúp chúng ta lấy được dữ liệu của blog khi biết được địa chỉ chử sở hữu blog đó. Hiển nhiên, `seeds` cho `Blog` phải chứa **địa chỉ chủ sở hữu**, và có thể thêm một tiền tố như **"blog"** để giúp chú thích.
 
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, and a prefix of **"post"**, to act as a type identifier. 
+Với `1:N`, chúng ta mong muốn địa chỉ mỗi bài post sẽ được suy ra từ **không chỉ** địa chỉ trang blog mà còn từ cách thành tố khác giúp tạo ra `N` địa chỉ bài post trong một trang blog. Trong ví dụ bên dưới, mỗi địa chỉ bài post được suy ra bằng địa chỉ trang blog, một thành tố phụ - **slug** - để định danh cho mỗi bài post, và tiền tố **"post"** để chú thích.
 
-The code is as shown below, 
+Code mẫu được viết như sau:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -69,7 +69,7 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+Ở phía người dùng, họ có thể sử dụng `PublicKey.findProgramAddress()` để tìm ra địa chỉ của `Blog` và `Post` mong muốn thông qua địa chỉ ví đầu vào. Các địa chỉ vừa tìm thấy có thể được truyền vào `connection.getAccountInfo()` để truy vấn dữ liệu trong Account tương ứng. Ví dụ bên dưới sẽ minh hoạ điều đó:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -90,17 +90,17 @@ On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the r
 
 </SolanaCodeGroup>
 
-## Single Map Account
+## Map bằng Account đơn
 
-Another way to implement mapping would be to have a `BTreeMap` data structure explicitly stored in a single account. This account's address itself could be a PDA, or the public key of a generated Keypair.
+Một cách khác hơn đển hiện thực map là dùng cấu trúc `BTreeMap` để lưu dữ liệu lên một Account duy nhất. Địa chỉ của Account này có thể là PDA, hoặc có thể là khoá công khai của một cặp khoá được sinh ra thủ công.
 
-This method of mapping accounts is not ideal because of the following reasons,
+Phương pháp này thường có một vài hạn chế:
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* Bạn đầu tiên phải khởi tạo Account để lưu `BTreeMap` trước khi có thể thêm bất kỳ key-value nào vào bên trong nó. Sau đó, bạn sẽ phải lưu địa chỉ này một nơi nào đó để dùng cho việc cập nhật dữ liệu về sau.
 
-* There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
+* Có nhiều giới hạn lưu trữ cho một Account như là dung lượng tối đa của một Account là **10 megabytes** và không thể cho phép `BTreeMap` có thể lưu trữ một số lượng lớn các cặp key-value.
 
-Hence, after considering your use-case, you can implement this method as shown below,
+Tuy vào tính huống của riêng ứng dụng, bạn có thể cân nhắc sử dụng nó như sau:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -120,7 +120,7 @@ Hence, after considering your use-case, you can implement this method as shown b
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client-side code to test the above program would look like something as shown below,
+Về phía người dùng có thể kiểm tra Program trên bằng đoạn code mẫu bên dưới:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -142,6 +142,6 @@ The client-side code to test the above program would look like something as show
 
 
 
-[AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
+[AccountCookbook]: https://solanacookbook.com/vi/core-concepts/accounts.html
 [PDA]: https://solanacookbook.com/references/accounts.html#program-derived-address
 [CPI]: https://solanacookbook.com/references/programs.html#create-a-program-derived-address
