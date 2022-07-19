@@ -112,7 +112,7 @@ Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là
 
 Mỗi khi được gọi, Program sẽ được thực thi bởi Solana Runtime.
 
-## Các nguồn tài liệu khác
+## <a name="resources"></a> Các nguồn tài liệu khác
 
 - [Tài liệu chính thống](https://docs.solana.com/developing/on-chain-programs/overview)
 - [Tài liệu SPL](https://spl.solana.com/)

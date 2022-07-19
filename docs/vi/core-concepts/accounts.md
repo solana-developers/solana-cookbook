@@ -107,7 +107,7 @@ Một phần của chi phí thuê thu được sẽ được tiêu huỷ, trong 
 
 Nếu một Account không đủ cọc để chi trả phí thuê, Account đó sẽ bị thu hồi và toàn bộ dữ liệu sẽ bị xoá.
 
-## Các nguồn tài liệu khác
+## <a name="resources"></a> Các nguồn tài liệu khác
 
 - [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
 - [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/accounts)

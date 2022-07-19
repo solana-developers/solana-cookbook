@@ -82,7 +82,7 @@ Tất cả Transaction yêu cầu ít nhất một Account là `writable` để 
 
 Tại thời điểm được viết, 50% phí giao dịch sẽ được thưởng cho Validator để sinh ra block, trong khi 50% còn lại sẽ được đốt. Bằng cơ cấu như vậy, Validator được khuyến khích phải xử lý càng nhiều Transaction càng tốt trong thời hạn được đề cử.
 
-## Các nguồn tài liệu khác
+## <a name="resources"></a> Các nguồn tài liệu khác
 
 - [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/transactions)
 - [Transaction Structure](https://solana.wiki/docs/solidity-guide/transactions/#solana-transaction-structure)

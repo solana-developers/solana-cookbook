@@ -1,12 +1,12 @@
 ---
-title: Get Program Accounts
+title: Đọc Program Account
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Get Program Accounts
+      content: Solana Cookbook | Đọc Program Account
   - - meta
     - name: og:title
-      content: Solana Cookbook | Get Program Accounts
+      content: Solana Cookbook | Đọc Program Account
   - - meta
     - name: description
       content: Learn how to query data on Solana using getProgramAccounts and accountsDB
@@ -36,78 +36,80 @@ head:
       content: index,follow
 ---
 
-# Get Program Accounts
+# Đọc Program Account
 
-An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
+`getProgramAccounts` là một phương thức RPC giúp lấy dữ liệu của tất cả các Account được sở hữu bởi Program. Lưu ý, phân trang vẫn chưa được hỗ trợ tại thời điểm hiện tại. Việc gọi `getProgramAccounts` nên có thêm các tham số `dataSlice` và/hoặc `filters` để cải thiện thời gian trả về với kết quả mong muốn.
 
-## Facts
+## Có thể bạn chưa biết
 
-::: tip Parameters
+::: tip Tham số
 
-- `programId`: `string` - Pubkey of the program to query, provided as a base58 encoded string
-- (optional) `configOrCommitment`: `object` - Configuration parameters containing the following optional fields:
-    - (optional) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-    - (optional) `encoding`: `string` - Encoding for account data, either: `base58`, `base64`, or `jsonParsed`. Note, web3js users should instead use [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
-    - (optional) `dataSlice`: `object` - Limit the returned account data based on:
-        - `offset`: `number` - Number of bytes into account data to begin returning
-        - `length`: `number` - Number of bytes of account data to return
-    - (optional) `filters`: `array` - Filter results using the following filter objects:
-        - `memcmp`: `object` - Match a series of bytes to account data:
-            - `offset`: `number` - Number of bytes into account data to begin comparing
-            - `bytes`: `string` - Data to match, as base58 encoded string limited to 129 bytes
-        - `dataSize`: `number` - Compares the account data length with the provided data size
-    - (optional) `withContext`: `boolean` - Wrap the result in an [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+- `programId`: `string` - Khoá công khai của Program cần truy vấn và biểu diễn dưới dạng base58
+- (Tuỳ chọn) `configOrCommitment`: `object` - Tham số cài đặt có chứa các trường tuỳ chọn sau:
+    - (Tuỳ chọn) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
+    - (Tuỳ chọn) `encoding`: `string` - Kiểu mã hoá dữ liệu, một trong các kiểu sau: `base58`, `base64`, `jsonParsed`. Lưu ý, người dùng web3js nên sử dụng [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+    - (Tuỳ chọn) `dataSlice`: `object` - Giới hạn các Account trả về dựa trên:
+        - `offset`: `number` - Vị trí bắt đầu cho dữ liệu được trả về của Account
+        - `length`: `number` - Độ dài dữ liệu của Account cần trả về và được tính từ vị trí bắt đầu
+    - (Tuỳ chọn) `filters`: `array` - Lọc các kết quả bằng các sử dụng các bộ lọc sau:
+        - `memcmp`: `object` - Lọc bằng cách so sánh một chuỗi dữ liệu dưới dạng các bytes với dữ liệu Account
+            - `offset`: `number` - Vị trí bắt đầu trong dữ liệu Account dùng để so sánh 
+            - `bytes`: `string` - Dữ liệu cần so sánh, được truyền vào dưới dạng base58 và không quá 129 bytes
+        - `dataSize`: `number` - Lọc theo độ lớn của dữ liệu Account
+    - (Tuỳ chọn) `withContext`: `boolean` - Đóng gói kết quả vào một đối tượng [RpcResponse JSON](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
 
-##### Response
+##### Trả về
 
-By default `getProgramAccounts` will return an array of JSON objects with the following structure:
+Mặc định `getProgramAccounts` sẽ trả về một mảng các đối tượng JSON với cấu trúc như sau:
 
-- `pubkey`: `string` - The account pubkey as a base58 encoded string
-- `account`: `object` - a JSON object, with the following sub fields:
-    - `lamports`: `number`, number of lamports assigned to the account
-    - `owner`: `string`, The base58 encoded pubkey of the program the account has been assigned to
-    - `data`: `string` | `object` - data associated with the account, either as encoded binary data or JSON format depending on the provided encoding parameter
-    - `executable`: `boolean`, Indication if the account contains a program
-    - `rentEpoch`: `number`, The epoch at which this account will next owe rent
+- `pubkey`: `string` - Địa chỉ của Account và được mã hoá base58
+- `account`: `object` - Là một đối tượng JSON với các trường con như sau:
+    - `lamports`: `number`, sô dư lamports của Account
+    - `owner`: `string`, Địa chỉ của Program sở hữu Account và được mã hoá base58
+    - `data`: `string` | `object` - Dữ liệu của Account và được biểu diễn dưới dạng, hoặc là binary, hoặc là JSON, tuỳ vào tham số `encoding` lúc truyền vào
+    - `executable`: `boolean`, Nhãn đánh dấu nếu Account này chứa một Program và có thể thực thi
+    - `rentEpoch`: `number`, Kỳ hạn thuê tiếp theo của Account
 :::
 
-## Deep Dive
+## Chi tiết
 
-`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
+`getProgramAccounts` là một phương thức RPC rất linh hoạt và có khả năng trả về tất cả các Account được sở hữu bởi một Program. Chúng ta có thể sử dụng `getProgramAccounts` cho nhiều loại truy vấn khác nhau, ví dụ như:
 
-- All token accounts for a particular wallet
-- All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
-- All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
+- Tất cả các Account của một ví cụ thể
+- Tất cả các Account cho một mint (hoặc thường được gọi là token đối với các blockchain khác) (i.e. Tất cả người giữ token [SRM](https://www.projectserum.com/))
+- Tất cả các Account theo ý muốn của một Program cụ thể (i.e. Tất cả Account người dùng của ứng dụng [Mango](https://mango.markets/))
 
-Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope can result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
+Mặc dù hữu dụng là vậy, `getProgramAccounts` chỉ thường bị dùng sai vì các hạn chế hiện tại. Nhiều câu truy vấn được hỗ trợ bởi `getProgramAccounts` yêu cầu các nốt RPC phải quét một khối lượng rất lớn các dữ liệu. Những câu truy vấn như vậy không chỉ lớn về dung lượng dữ liệu và còn lớn về khối lượng tính toán. Tất yếu, việc gọi quá nhiều về cả tần suất và khối lượng dẫn đến kết nối sẽ bị ngắt. Ngoài ra, tại thời điểm cuốn sách được viết, `getProgramAccounts` vẫn chưa hỗ trợ phân trang. Nếu kết quả truy vấn quá lớn, nó sẽ được cắt bỏ đi.
 
-To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
+Để tránh các hạn chế này, `getProgramAccounts` giới thiệu các tham số dùng cho việc lọc và sơ chế kết quả, ví dụ như: `dataSlice`, `filters` với tuỳ chọn `memcmp` và `dataSize`. Bằng cách kết hợp các tham số trên, chúng ta có thể giảm thiểu phạm vi truy vấn với kích thước dữ liệu được kiểm soát và dễ đoán hơn.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+Một ví dụ thường thấy của `getProgramAccounts` là tương tác với [SPL-Token Program](https://spl.solana.com/token). Truy vấn tất cả các Account được sở hữu bởi Token Program với một câu [truy vấn thuần tuý](../references/accounts.md#get-program-accounts) không có lọc sẽ dẫn đến một số lượng dữ liệu trả về khổng lồ. Thay vào đó, bằng cách bổ sung các tham số, chúng ta có thể truy vấn một cách hiệu quả chỉ những dữ liệu mình cần.
 
 ### `filters`
-The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
 
+Tham số phổ biến nhất được dùng kèm với `getProgramAccounts` chính là mảng các `filters`. Mảng này chấp nhận 2 kiểu lọc là `dataSize` và `memcmp`. Trước khi sử dụng một trong hai, chúng ta nên hiểu được dữ liệu cần truy vấn sẽ có chứa dữ liệu gì? hình thái ra sao? tuần tự hoá như thế nào?
 #### `dataSize`
-In the case of the Token Program, we can see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We can visualize how this data is laid out using the below illustration.
+
+Trong trường hợp Token Program, chúng ta có thể thấy rằng [độ dài của Token Account là 165 bytes](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Đặc biệt, một Token Account có 8 trường con, với mỗi trường có độ dài vùng nhớ biết trước. Chúng ta có thể mường tượng cách dữ liệu được sắp xếp bằng minh hoạ sau.
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We can achieve this with the `memcmp` filter.
+Nếu chúng ta muốn tìm tất cả Token Account sở hữu bởi chỉ riêng ví của mình, chúng ta có thể thêm `{ dataSize: 165 }` và `filters` để thu hẹp pham vi câu truy vấn và chỉ lấy những Account có độ dài chính xác 165 bytes. Tuy vậy, nó vẫn là chưa đủ. Chúng ta cần thêm một điều kiện để chỉ lọc các Account được sở hữu bởi ví của mình. Để là được điều đó, chúng ta phải sử dụng `memcmp`.
 
 #### `memcmp`
-The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we can query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
 
-- `offset`: The position at which to begin comparing data. This position is measured in bytes and is expressed as an integer.
-- `bytes`: The data that should match the account's data. This is represented as a base-58 encoded string should be limited to less than 129 bytes.
+Điều kiện lọc `memcmp`, hoặc "memory comparison" (phép so sánh vùng nhớ), cho phép chúng ta so sánh dữ liệu truyền vào với bất kỳ vùng nhớ nào được lưu trong Account. Đặc biệt, chúng ta có thể truy vấn chỉ những Account mà khớp với một đoạn dữ liệu tại một vị trí cụ thể. `memcmp` yêu cầu 2 tham số:
 
-It's important to note that `memcmp` will only return results that are an exact match on `bytes`. Currently, it does not support comparisons for values that are less than or greater than the `bytes` we provide.
+- `offset`: Vị trí bắt đầu để so sánh dữ liệu. Vị trí này thường được tính theo bytes và biễu diễn dưới dạng số nguyên.
+- `bytes`: Dữ liệu dùng để đối chiếu với dữ liệu trong Account. Dữ liệu này nên được biểu diễn dưới dạng base58 và không quá 129 bytes.
 
-In keeping with our Token Program example, we can amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we can see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
+Một điều quan trọng cần lưu ý là `memcmp` chỉ trả về các kết quả khớp chính xác trên từng `bytes`. Và hiện tại không hỗ trợ các phép so sánh lớn hơn hoặc nhỏ hơn cho `bytes`.
+
+Sử dụng lại ví dụ Token Program bên trên, chúng ta diều chỉnh câu truy vấn chỉ trả về những Token Account mà được sở hữu bởi chính mình. Khi nhìn vào một Token Account, chúng ta biết được 2 trường đầu tiên lưu trong Token Account là 2 khoá công khai với độ dài là 32 bytes. Biết rằng `owner` là trường thứ 2, chúng ta nên khởi tạo `memcmp` với `offset` là 32. Từ đó, chúng ta sẽ lọc được những Account của mình bằng cách truyền địa chỉ ví vào `bytes`.
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-We can invoke this query via the following example:
+Chúng ta có thể gọi câu truy vấn này thông qua ví dụ sau:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -131,14 +133,14 @@ We can invoke this query via the following example:
 
 ### `dataSlice`
 
-Outside of the two filter parameters, the third most common parameter for `getProgramAccounts` is `dataSlice`. Unlike the `filters` parameter, `dataSlice` will not reduce the number of accounts returned by a query. Instead, `dataSlice` will limit the amount of data for each account.
+Ngoài 2 tham số bộ lọc được nhắc đến ở trên, một tham số thứ 3 cho `getProgramAccounts` cũng phổ biến không kém đó là `dataSlice`. Không giống như `filters`, `dataSlice` sẽ không giảm số lượng Account trả về. Thay vào đó, `dataSlice` sẽ giúp giới hạn số lượng dữ liệu trả về trên mỗi Account.
 
-Much like `memcmp`, `dataSlice` accepts two arguments:
+Cũng giống với `memcmp`, `dataSlice` có 2 tham số con:
 
-- `offset`: The position (in number of bytes) at which to begin returning account data
-- `length`: The number of bytes which should be returned
+- `offset`: Vị trí bắt đầu của dữ liệu mong muốn trả về
+- `length`: Số lượng bytes trả về tính từ vị trí bắt đầu
 
-`dataSlice` is particularly useful when we run queries on a large dataset but don’t actually care about the account data itself. An example of this would be if we wanted to find the number of token accounts (i.e. number of token holders) for a particular token mint.
+`dataSlice` rất hữu ích trong thực tế khi mà chúng ta có thể truy vấn một khối lượng lớn dữ liệu đồng thời bỏ qua các trường không cần thiết trong dữ liệu Account. Một ví dụ cho trường hợp này là khi chúng ta muốn tính số lượng Token Account (cụ thể là số người nắm giữ token) cho một mint cụ thể.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,9 +162,9 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   </CodeGroupItem>
 </CodeGroup>
 
-By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
+Vời việc kết hợp giữ 3 tham số (`dataSlice`, `dataSize`, và `memcmp`), chúng ta có thể giới hạn phạm vi truy vấn một cách hiệu quả với chỉ các kết quả trả về mà chúng ta quan tâm.
 
-## Other Resources
+## <a name="resources"></a> Các nguồn tài liệu khác
 
 - [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
 - [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)

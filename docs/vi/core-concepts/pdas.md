@@ -74,6 +74,6 @@ Khi một PDA được sinh ra, `findProgramAddress` sé trả về hai giá tr�
 
 Khi phát triển ứng dụng với PDA, thường thì bạn sẽ phải [lưu bump](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) trong dữ liệu Account. Điều này cho phép lập trình viên có thể kiểm tra PDA mà không cần truyền bump vào dữ liệu đầu vào của chỉ thị.
 
-## Các nguồn tài liệu khác
+## <a name="resources"></a> Các nguồn tài liệu khác
 - [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)

@@ -1,12 +1,12 @@
 ---
-title: Serializing Data
+title: Tuần tự hoá dữ liệu
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Serializing Data
+      content: Solana Cookbook | Tuần tự hoá dữ liệu
   - - meta
     - name: og:title
-      content: Solana Cookbook | Serializing Data
+      content: Solana Cookbook | Tuần tự hoá dữ liệu
   - - meta
     - name: description
       content: Learn how to serialize and deserialize data on Solana
@@ -37,25 +37,24 @@ head:
 footer: MIT Licensed
 ---
 
-# Serializing Data
+# Tuần tự hoá dữ liệu
 
-When we talk about serialization we mean both serializing data as well as deserialization of data.
+Khi nói đến tuần tự hoá nghĩa là tác giả đang muốn đề cập đến cả tuần tự và phi tuần tự hoá dữ liệu.
 
-Serialization comes into play at a few points along Solana program and program accounts lifecycle:
+Tuần tự hoá tham gia vào một vài điểm trong vòng đời của Solana Program và Program Account:
 
-1. Serializing instruction data on to client
-2. Deserializing instruction data on the program
-3. Serializing Account data on the program
-4. Deserializing Account Data on the client
+1. Tuần tự hoá dữ liệu câu chỉ thị được gửi từ người dùng
+2. Phi tuần tự hoá dữ liệu chỉ thị trong Program
+3. Tuần tự hoá dữ liệu Account trong Program
+4. Phi tuần tự hoá dữ liệu Account ở phía người dùng
 
-It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources).
+Một điều quan trọng là tất cả các quá trình bên trên đều được hỗ trợ bởi duy nhất một phương pháp tuần tự hoá. Một vài đoạn code mẫu trong bài sẽ sử dụng [Borsh](#resources) để làm ví dụ.
 
-The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
+Phần còn lại sẽ được trích dẫn hầu hết từ [Solana CLI Program Template](#resources).
 
-## Setting up for Borsh Serialization
+## Cài đặt Tuần tự hoá Borsh
 
-Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or Python client.
+Những thư viện lập trình cho Borsh phải được cài đặt tương thích với chương trình Rust, Node, và/hoặc Python.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -84,23 +83,22 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## How to serialize instruction data on the client
+## Làm thế nào để tuần tự hoá dữ liệu chỉ thị ở phía người dùng
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
-If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
-inbound instruction data.
+Nếu bạn đang tuần tự hoá dữ liệu của một chỉ thị ở phía người dùng để gửi lên Program, bạn cần chắc chắn rằng Program sẽ phi tuần tự hoá chỉ thị đó và đúng nguyên bản ban đầu.
 
-In this template, an instruction data block is a serialized array containing, with examples:
+Trong mẫu sau, một khối dữ liệu chỉ thị được chứa trong một mảng tuần tự như sau:
 
-| Instruction (Variant index) | Serialized Key                 | Serialized Value               |
+| Chỉ thị (Chỉ mục)           | Khoá tuần tự                   | Giá trị tuần tự                |
 | --------------------------- | ------------------------------ | ------------------------------ |
-| Initialize (0)              | not applicable for instruction | not applicable for instruction |
+| Initialize (0)              | Bất khả thi cho chỉ thị        | Bất khả thi cho chỉ thị        |
 | Mint (1)                    | "foo"                          | "bar"                          |
-| Transfer (2)                | "foo"                          | not applicable for instruction |
-| Burn (2)                    | "foo"                          | not applicable for instruction |
+| Transfer (2)                | "foo"                          | Bất khả thi cho chỉ thị        |
+| Burn (3)                    | "foo"                          | Bất khả thi cho chỉ thị        |
 
-In the following example we assume the program owned account has been initialized
+Trong ví dụ sau đây, giả sử Program sở hữu Account đã được khởi tạo từ trước.
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -133,31 +131,27 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to serialize account data on the program
+## <a name="account-data-serialization"></a> Làm thế nào để tuần tự hoá dữ liệu Account trên Program
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-The program account data block (from the sample repo) is layed out as
+Một khối dữ liệu Account của Program (từ repo mẫu) được sắp xếp như sau:
 
-| Byte 0           | Bytes 1-4                     | Remaining Byte up to 1019                   |
-| ---------------- | ----------------------------- | ------------------------------------------- |
-| Initialized flag | length of serialized BTreeMap | BTreeMap (where key value pairs are stored) |
+| Byte 0           | Bytes 1-4                               | Bytes còn lại (lên đến 1019)                |
+| ---------------- | --------------------------------------- | ------------------------------------------- |
+| Cờ khởi tạo      | Độ dài của BTreeMap đã được tuần tự hoá | BTreeMap (nơi lưu trữ các cặp key-value)    |
 
-### Pack
+### Pack (Đóng gói)
 
-A word about the [Pack][1] trait
+Từ [Pack][1] ở đây có nghĩa là một Trait (Đặc điểm) trong Rust.
 
-The Pack trait makes it easier to hide the details of account data serialization/deserialization
-from your core Program instruction processing. So instead of putting all the serialize/deserialize
-log in the program processing code, it encapsulates the details behind (3) functions:
+Pack giúp quá trình tuần tự và phi tuần hoá ẩn đi những chi tiết phức tạp bên dưới, đồng thời cung cấp tính dễ đọc cho quá trình xử lý các chỉ thị trong Program. Thay vì đặt tất cả các đoạn mã tuần tự và phi tuần tự hoá trực tiếp trong quá trình xử lý của Program, chúng nên được trừu tượng hoá và đóng gói lại thành những hàm chức năng (3):
 
-1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
-   is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` and checks if account has been initialized.
-3. `pack` - Calls your Pack implementation of `pack_into_slice`
+1. `unpack_unchecked` - Cho phép bạn phi tuần tự hoá dữ liệu Account mà không quan tấm Account đã khởi tạo hay chứa. Nó khá hữu ích khi bạn cần xử lý hàm Initialization (chỉ mục 0).
+2. `unpack` - Gọi `unpack_from_slice` trong hiện thực Pack của bạn và kiểm tra xem Account đã được khởi tạo hay chưa.
+3. `pack` - Gọi `pack_into_slice` trong hiện thực Pack của bạn.
 
-Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data using borsh.
+Dưới đây là một hiện thực Pack cho chương tình mẫu của chúng ta. Theo sau đó là đoạn code mẫu xử lý dữ liệu Account thực bằng Borsh.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -167,19 +161,14 @@ processing of the account data using borsh.
   </CodeGroupItem>
 </CodeGroup>
 
-### Serialization/Deserialization
+### Tuần tự hoá và Phi tuần tự hoá
 
-To complete the underlying serialization and deserialization:
+Để hoàn thành các hàm tuần tự và phi tuần tự hoá cơ sở:
 
-1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
+1. `sol_template_shared::pack_into_slice` - Điểm thực sự diễn ra quá trình tuần tự hoá
+2. `sol_template_shared::unpack_from_slice` - Điểm thực sự diễn ra quá trình phi tuần tự hoá
 
-**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
-checks that the length of the slice you are deserializing agrees with the amount of
-data it reads prior to actually recombobulation of the receiving object. The approach
-demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STROAGE` pointer.
+**Lưu ý** rằng trong code mẫu bên dưới, chúng ta có một vùng nhớ 4 bytes cho `u32` dành cho `BTREE_LENGTH` ngay trước `BTREE_STORAGE`. Việc này giúp Borsh, trong quá trình phi tuần tự hoá, có thể kiểm tra độ lớn của vùng nhớ mà nó cần phải trích xuất để xử lý, cũng như tái tạo lại đối tượng đã được tuần tự hoá trước đây. Phương pháp này được minh hoạ bên dưới khi mà `BTREE_LENGTH` được đọc trước tiên nhắm lấy được kích thước của `slice` ra khỏi con trỏ `BTREE_STROAGE`.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -189,12 +178,11 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
   </CodeGroupItem>
 </CodeGroup>
 
-### Usage
+### Cách dùng
 
-The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
-which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
+Sau đây, chúng ta sẽ tổng hợp lại tất cả các đoạn code mẫu bên trên và giải thích cách mà Program tương tác với `ProgramAccountState`. Trong đó, `ProgramAccountState` là đóng gói của trạng thái khởi tạo của Account cũng như `BTreeMap` cho các cặp key-value.
 
-First when we want to initialize a brand new account:
+Đầu tiên, để khởi tạo một Account mới hoàn toàn:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -204,8 +192,7 @@ First when we want to initialize a brand new account:
   </CodeGroupItem>
 </CodeGroup>
 
-Now we can operate on our other instructions as the following demonstrates minting a new
-key value pair that we demonstrated above when sending instructions from a client:
+Sau đó, chúng ta có thể dùng chúng trong quá trình xử lý của các chỉ thị. Ví như minh hoạ bên dưới có thể tiếp nhận chỉ thị từ phía người dùng và gán một cặp key-value vào trong `ProgramAccountState` đã khởi tạo bên trên.
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -217,13 +204,11 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## How to deserialize account data on the client
+## Làm thế nào để tuần hoá dữ liệu Account ở phía người dùng
 
-Clients can call Solana to fetch program owned account, in which the serialized
-data block is a part of the return. Deserializing requires knowing the data block
-layout.
+Người dùng có thể gọi Solana để lấy dữ liệu dưới dạng các khối dữ liệu đã được tuần tự hoá. Quá trình phi tuần tự hoá dữ liệu này cần người dùng phải hiểu được cấu trúc của dữ liệu gốc.
 
-The layout of the account data was described [Here](#account-data-serialization)
+Cấu trúc của dữ liệu Account được định nghĩa [ở đây](#account-data-serialization)
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -245,16 +230,13 @@ The layout of the account data was described [Here](#account-data-serialization)
   </CodeGroupItem>
 </CodeGroup>
 
-## Common Solana TS/JS Mappings
+## Mapping cơ bản bằng TS/JS cho Solana
 
-The [Borsh Specification](#resources) contains most mappings for primitive and
-compound data types.
+[Mô tả của Borsh](#resources) chứa hầu hết các mapping cho các dữ liệu nguyên thuỷ và các dữ liệu phức.
 
-The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize can generate or walk the respective inputs.
+Mấu chốt trong TS/JS, và kể cả Python, là tạo ra một Borsh Schema với các định nghĩa chính xác sao cho việc tuần tự và phi tuần tuận hoá có thể vận hành được trên dữ liệu đầu vào.
 
-Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side:
+Sau đây là một minh hoạ về tuần tự hoá dữ liệu nguyên thuỷ (`numbers`, `strings`) và dữ liệu phức (`array` với kích thức cố định, `Map`) trong Typescript hoặc Python. Tiếp đến là phi tuần tự hoá dữ liệu đó bằng Rust.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -278,10 +260,7 @@ first in Typescript, then in Python and then equivalent deserialization on the R
 
 ## Advanced Constructs
 
-We've shown how to create simple Payloads in previous examples. Sometimes
-Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS and Rust to handle those
-
+Chúng ta đã đi qua nội dung cơ bản ở các ví dụ trước. Nhưng ngoài ra, Solana còn có một vài kiểu dự liệu tự định nghĩa khác. Trong phần này, chúng ta tìm hiểu qua các xử lý chúng bằng TS/JS và Rust.
 ### COption
 
 <CodeGroup>
@@ -298,7 +277,7 @@ proper mapping between TS/JS and Rust to handle those
   </CodeGroupItem>
 </CodeGroup>
 
-## Resources
+## <a name="resources"></a> Các nguồn tài liệu khác
 
 - [Borsh Specification](https://borsh.io/)
 - [Rust Borsh](https://github.com/near/borsh-rs)
