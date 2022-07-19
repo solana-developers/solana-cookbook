@@ -155,6 +155,60 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
       },
+      "/es/": {
+        selectLanguageName: "Spanish",
+        navbar: [
+          {
+            text: "Contribuir",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Primeros pasos",
+              children: ["/es/", "/es/getting-started/installation.md"],
+            },
+            {
+              text: "Conceptos clave",
+              children: [
+                "/es/core-concepts/accounts.md",
+                "/es/core-concepts/programs.md",
+                "/es/core-concepts/transactions.md",
+                "/es/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guías",
+              children: [
+                // '/es/guides/get-program-accounts.md',
+                // '/es/guides/serialization.md',
+                // '/es/guides/data-migration.md',
+                // '/es/guides/account-maps.md',
+                // '/es/guides/retrying-transactions.md',
+                // '/es/guides/debugging-solana-programs.md',
+                // '/es/guides/feature-parity-testing.md',
+              ],
+            },
+            {
+              text: "Referencias",
+              children: [
+                // '/es/references/local-development.md',
+                // '/es/references/keypairs-and-wallets.md',
+                // '/es/references/basic-transactions.md',
+                // '/es/references/accounts.md',
+                // '/es/references/programs.md',
+                // '/es/references/token.md',
+                // '/es/references/anchor.md',
+                // '/es/references/staking.md',
+                // '/es/references/nfts.md',
+                // '/es/references/offline-transactions.md',
+                // '/es/references/name-service.md',
+              ],
+            },
+          ],
+        }
+      },
     },
   },
   locales: {
@@ -167,6 +221,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/zh/": {
       lang: "zh-CN",
       title: "Solana秘籍",
+    },
+    "/es/": {
+      lang: "es",
+      title: "Solana Cookbook",
     },
   },
   markdown: {
