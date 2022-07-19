@@ -83,7 +83,7 @@ Những thư viện lập trình cho Borsh phải được cài đặt tương t
 
 </CodeGroup>
 
-## Làm thế nào để tuần tự hoá dữ liệu chỉ thị ở phía người dùng
+## Làm thế nào để tuần tự hoá dữ liệu của các chỉ thị từ phía người dùng
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
@@ -120,7 +120,7 @@ Trong ví dụ sau đây, giả sử Program sở hữu Account đã được kh
   </CodeGroupItem>
 </CodeGroup>
 
-## How to deserialize instruction data on the program
+## Làm thế nào để phi tuần tự hoá dữ liệu của các chỉ thị trên Program
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -258,7 +258,7 @@ Sau đây là một minh hoạ về tuần tự hoá dữ liệu nguyên thuỷ 
   </CodeGroupItem>
 </CodeGroup>
 
-## Advanced Constructs
+## Kiểu dữ liệu nâng cao
 
 Chúng ta đã đi qua nội dung cơ bản ở các ví dụ trước. Nhưng ngoài ra, Solana còn có một vài kiểu dự liệu tự định nghĩa khác. Trong phần này, chúng ta tìm hiểu qua các xử lý chúng bằng TS/JS và Rust.
 ### COption
