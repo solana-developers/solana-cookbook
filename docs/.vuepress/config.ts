@@ -181,13 +181,13 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "Guías",
               children: [
-                // '/es/guides/get-program-accounts.md',
-                // '/es/guides/serialization.md',
-                // '/es/guides/data-migration.md',
-                // '/es/guides/account-maps.md',
-                // '/es/guides/retrying-transactions.md',
-                // '/es/guides/debugging-solana-programs.md',
-                // '/es/guides/feature-parity-testing.md',
+                '/es/guides/get-program-accounts.md',
+                '/es/guides/serialization.md',
+                '/es/guides/data-migration.md',
+                '/es/guides/account-maps.md',
+                '/es/guides/retrying-transactions.md',
+                '/es/guides/debugging-solana-programs.md',
+                '/es/guides/feature-parity-testing.md',
               ],
             },
             {
