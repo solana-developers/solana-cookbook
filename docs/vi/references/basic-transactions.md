@@ -1,18 +1,18 @@
 ---
-title: Sending Transactions
+title: Gửi Transaction
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Transactions
+      content: Toàn tập Solana | Gửi Transaction
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Transactions
+      content: Toàn tập Solana | Gửi Transaction
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
+      content: Tìm hiểu nền tảng về Transaction như là gửi SOL, SPL-Tokens, tính toán chi phí gửi transaction, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
+      content: Tìm hiểu nền tảng về Transaction như là gửi SOL, SPL-Tokens, tính toán chi phí gửi transaction, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,11 +36,11 @@ head:
       content: index,follow
 ---
 
-# Sending Transactions
+# Gửi Transaction
 
-## How to send SOL
+## Làm thế nào để gửi SOL
 
-To send SOL, you will need to interact with the [SystemProgram][1].
+Để gửi SOL, bạn sẽ cần tương tác với [SystemProgram][1].
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -115,10 +115,9 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## How to send SPL-Tokens
+## Làm thế nào để gửi SPL-Tokens
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
-with the following example.
+Sử dụng [Token Program][1] để gửi SPL Tokens. Để gửi SPL token, bạn cần biết địa chỉ token account tương ứng SPL Token được gửi. Bạ có thể biết được địa chỉ gửi và nhận bằng cí dụ dưới đây.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,16 +166,13 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## How to calculate transaction cost
+## Làm thế nào để tính chi phí gửi transaction
 
-The number of signatures a transaction requires are used to calculate
-the transaction cost. As long as you are not creating an account, this
-will be the final transaction cost. To find out more about costs to create
-an account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
+Số lượng chữ ký bên trong một transaction sẽ phản ánh chi phí cho transaction đó. CHỉ cần bạn không tạo mới account, đó cũng chính là chi phí phải trả cho transaction đó. Trong trường hợp phát sinh chi phí thuê, tham khảo [tính toán phí thuê](accounts.md#calculating-rent-exemption).
 
-The two examples below show the two ways currently available to calculate estimated transaction cost.
+Hai ví dụ sau đây sẽ trình bày 2 cách hiện hành để ước tính chi phí của một transaction.
 
-The first example uses `getEstimatedFee`, which is a new method on the `Transaction` class, while the second example uses `getFeeForMessage` which replaces `getFeeCalculatorForBlockhash` on the `Connection` class.
+Ví dụ đầu tiên sử dụng `getEstimatedFee`, là một phương thức mới được thêm vào lớp `Transaction`, trong khi ví dụ 2 sử dụng `getFeeForMessage`, là phương thức thay thế cho `getFeeCalculatorForBlockhash` trong lớp `Connection`.
 
 ### getEstimatedFee
 <SolanaCodeGroup>
@@ -216,11 +212,9 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to add a memo to a transaction
+## Làm thế nào để thêm ghi chú và một transaction
 
-Any transaction can add a message making use of the [memo program][2].
-Currently the `programID` from the **Memo Program** has to be added
-manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+Bất kỳ transaction nào cũng có thể được thêm một ghi chú thông qua [memo program][2]. Hiện tại, `programID` của **Memo Program** có thể thêm thủ công bằng địa chỉ `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -267,16 +261,11 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget for a transaction
+## Làm thế nào để thay đổi ngân sách tính toán cho một transaction
 
-Compute budget for a single transaction can be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set the product 
-of 200k compute units * number of instructions, with a max of 1.4M compute units. 
-The less compute you use, the less the transaction costs.
+Ngân sách tính toán cho một transaction có thể thay đổi được bằng cách thêm vào một chỉ thị gọi đến Compute Budget Program. Mặc định, ngân sách tính toán được thiết lập ở mức 200k đơn vị tính toán nhân với số lượng chỉ thị và không vượt quá 1.4M đơn vị tính toán. Càng ít bước tính toán, chi phí bỏ ra sẽ càng ít.
 
-**Note**: To change the compute budget for a transaction, you must make the 
-one of the first three instructions of the transaction the instruction that 
-sets the budget.
+**Lưu ý**: Để thay đổi ngân sách tính toán, bạn phải chắc rằng chỉ thị đầu tiên trong 3 chỉ thị của transaction là thiết lập ngân sách.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -310,7 +299,7 @@ sets the budget.
 
 </SolanaCodeGroup>
 
-Program Logs Example:
+Ví dụ kết quả in ra của Program:
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">
