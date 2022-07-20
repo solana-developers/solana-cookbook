@@ -3,16 +3,16 @@ title: Cài đặt
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Installation
+      content: Toàn tập Solana | Cài đặt
   - - meta
     - name: og:title
-      content: Solana Cookbook | Installation
+      content: Toàn tập Solana | Cài đặt
   - - meta
     - name: description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: Tìm hiểu làm thế nào để bắt đầu với Solana thông qua các hướng dẫn, bài giảng, và ví dụ mẫu.
   - - meta
     - name: og:description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: Tìm hiểu làm thế nào để bắt đầu với Solana thông qua các hướng dẫn, bài giảng, và ví dụ mẫu.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

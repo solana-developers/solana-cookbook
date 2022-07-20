@@ -3,16 +3,16 @@ title: Thử lại Transaction
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Thử lại Transaction
+      content: Toàn tập Solana | Thử lại Transaction
   - - meta
     - name: og:title
-      content: Solana Cookbook | Thử lại Transaction
+      content: Toàn tập Solana | Thử lại Transaction
   - - meta
     - name: description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
+      content: Thi thoảng, một Transaction hợp lệ vẫn có thể bị hỏng trước khi được ghi nhận vào block. Để giải quyết vấn đề đó, lập trình viên phải phát triển các cơ chế lan truyền tuỳ chỉnh. Chi tiết về Thử lại Transaction và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
+      content: Thi thoảng, một Transaction hợp lệ vẫn có thể bị hỏng trước khi được ghi nhận vào block. Để giải quyết vấn đề đó, lập trình viên phải phát triển các cơ chế lan truyền tuỳ chỉnh. Chi tiết về Thử lại Transaction và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

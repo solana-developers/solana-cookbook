@@ -1,5 +1,41 @@
 ---
 title: Account Maps
+head:
+  - - meta
+    - name: title
+      content: Toàn tập Solana | Account Maps
+  - - meta
+    - name: og:title
+      content: Toàn tập Solana | Account Maps
+  - - meta
+    - name: description
+      content: Account Map là một kiểu cấu trúc dữ liệu hữu ích và thường dùng trong lập trình Solana. Chi tiết về Nâng cấp dữ liệu cho Account Map và các khái niệm cơn bản khác trong Toàn tập Solana.
+  - - meta
+    - name: og:description
+      content: Account Map là một kiểu cấu trúc dữ liệu hữu ích và thường dùng trong lập trình Solana. Chi tiết về Nâng cấp dữ liệu cho Account Map và các khái niệm cơn bản khác trong Toàn tập Solana.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
+---
 ---
 
 # Account Maps

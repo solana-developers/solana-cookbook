@@ -3,16 +3,16 @@ title: Programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Programs
+      content: Toàn tập Solana | Programs
   - - meta
     - name: og:title
-      content: Solana Cookbook | Programs
+      content: Toàn tập Solana | Programs
   - - meta
     - name: description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programs (hay thường được biết đến với tên gọi smart contracts) xây dựng nền tảng cho các hoạt động on-chain. Chi tiết về Programs và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programs (hay thường được biết đến với tên gọi smart contracts) xây dựng nền tảng cho các hoạt động on-chain. Chi tiết về Programs và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

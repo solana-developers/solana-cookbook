@@ -1,18 +1,18 @@
 ---
-title: Di chuyển dữ liệu cho Program Account
+title: Nâng cấp dữ liệu cho Program Account
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Di chuyển dữ liệu cho Program Account
+      content: Toàn tập Solana | Nâng cấp dữ liệu cho Program Account
   - - meta
     - name: og:title
-      content: Solana Cookbook | Di chuyển dữ liệu cho Program Account
+      content: Toàn tập Solana | Nâng cấp dữ liệu cho Program Account
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Cơ bản về thông tin phiên bản hỗ trở nâng cấp nghĩa là tạo ra những tham chiếu độc lập cho từng tập dữ liệu. Tham chiếu này có thể là một câu truy vấn, một mã định danh, hay thường hơn là ngày tháng. Chi tiết về Nâng cấp dữ liệu cho Program Account và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Cơ bản về thông tin phiên bản hỗ trở nâng cấp nghĩa là tạo ra những tham chiếu độc lập cho từng tập dữ liệu. Tham chiếu này có thể là một câu truy vấn, một mã định danh, hay thường hơn là ngày tháng. Chi tiết về Nâng cấp dữ liệu cho Program Account và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,21 +37,21 @@ head:
 footer: MIT Licensed
 ---
 
-# Di chuyển dữ liệu một Program Account
+# Nâng cấp dữ liệu một Program Account
 
-## Làm thế nào để có thể di chuyển dữ liệu trong Program Account?
+## Làm thế nào để có thể nâng cấp dữ liệu trong Program Account?
 
 Khi bạn tạo một Program, mỗi Account dữ liệu sẽ được gán cho Program đó với cấu trục dữ liệu cụ thể. Nếu bạn từng nâng cấp Program và Program này dùng để suy ra các PDA, bạn chắc hẳn đã phải đau đầu với hàng tá những Account với cấu trúc gắn với Program cũ.
 
 Với việc đánh phiên bản cho Account, bạn có thể dễ dàng nâng cấp cấu trúc mới cho các Account cũ .
 
 :::tip Lưu ý
-Đây chỉ là một trong rất nhiều cách khác nhau để di chuyển dữ liệu trong Program Owned Accounts (POA).
+Đây chỉ là một trong rất nhiều cách khác nhau để nâng cấp dữ liệu trong Program Owned Accounts (POA).
 :::
 
 ## Ngữ cảnh
 
-Để đánh phiên bản và di chuyển dữ liệu trong Account, chúng ta sẽ phải cung cấp một **id** cho từng Account. Id này sẽ cho phép chúng ta định rõ phiên bản của Account khi truyền nó cho Program, và như vậy có thể xử lý Account một cách chính xác.
+Để đánh phiên bản và nâng cấp dữ liệu trong Account, chúng ta sẽ phải cung cấp một **id** cho từng Account. Id này sẽ cho phép chúng ta định rõ phiên bản của Account khi truyền nó cho Program, và như vậy có thể xử lý Account một cách chính xác.
 
 Quan sát trạng thái bên dưới của Account và Program:
 

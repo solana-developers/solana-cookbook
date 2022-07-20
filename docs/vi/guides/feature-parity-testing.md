@@ -3,16 +3,16 @@ title: Đề xuất Kiểm thử Parity
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Đề xuất Kiểm thử Testing
+      content: Toàn tập Solana | Đề xuất Kiểm thử Parity
   - - meta
     - name: og:title
-      content: Solana Cookbook | Đề xuất Kiểm thử Testing
+      content: Toàn tập Solana | Đề xuất Kiểm thử Parity
   - - meta
     - name: description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: Đề xuất rất đa dạng trên các môi trường Solana khác nhau. Để xuất Kiểm thử Parity đảm bảo kiểm soát các kết quả đầu ra.
   - - meta
     - name: og:description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: Đề xuất rất đa dạng trên các môi trường Solana khác nhau. Để xuất Kiểm thử Parity đảm bảo kiểm soát các kết quả đầu ra.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

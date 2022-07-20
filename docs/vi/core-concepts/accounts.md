@@ -3,16 +3,16 @@ title: Accounts
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Accounts
+      content: Toàn tập Solana | Accounts
   - - meta
     - name: og:title
-      content: Solana Cookbook | Accounts
+      content: Toàn tập Cookbook | Accounts
   - - meta
     - name: description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
+      content: Account là khối cơ sở cở bản nhất trong lập trình Solana. Chi tiết về Account và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Solana cookbook.
+      content: Account là khối cơ sở cở bản nhất trong lập trình Solana. Chi tiết về Account và các khái niệm cơn bản khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

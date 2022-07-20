@@ -1,18 +1,18 @@
 ---
-title: Đọc Program Account
+title: Đọc dữ liệu Program Account
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Đọc Program Account
+      content: Toàn tập Solana | Đọc dữ liệu Program Account
   - - meta
     - name: og:title
-      content: Solana Cookbook | Đọc Program Account
+      content: Toàn tập Solana | Đọc dữ liệu Program Account
   - - meta
     - name: description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: Tìm hiểu các truy vấn dữ liệu trên Solana bằng getProgramAccounts và accountsDB.
   - - meta
     - name: og:description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: Tìm hiểu các truy vấn dữ liệu trên Solana bằng getProgramAccounts và accountsDB.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

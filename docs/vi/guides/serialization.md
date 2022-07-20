@@ -3,16 +3,16 @@ title: Tuần tự hoá dữ liệu
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Tuần tự hoá dữ liệu
+      content: Toàn tập Solana | Tuần tự hoá dữ liệu
   - - meta
     - name: og:title
-      content: Solana Cookbook | Tuần tự hoá dữ liệu
+      content: Toàn tập Solana | Tuần tự hoá dữ liệu
   - - meta
     - name: description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Tìm hiểu về tuần tự hoá và phi tuần tự hoá trên Solana
   - - meta
     - name: og:description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Tìm hiểu về tuần tự hoá và phi tuần tự hoá trên Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

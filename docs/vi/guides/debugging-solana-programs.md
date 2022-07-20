@@ -3,16 +3,16 @@ title: Soát lỗi chương trình trên Solana
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Soát lỗi chương trình trên Solana
+      content: Toàn tập Solana | Soát lỗi chương trình trên Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Soát lỗi chương trình trên Solana
+      content: Toàn tập Solana | Soát lỗi chương trình trên Solana
   - - meta
     - name: description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: Có một số phương pháp và công cụ hỗ trợ cho kiểm thử và soát lỗi một chương trình BPF trên Solana.
   - - meta
     - name: og:description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: Có một số phương pháp và công cụ hỗ trợ cho kiểm thử và soát lỗi một chương trình BPF trên Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
