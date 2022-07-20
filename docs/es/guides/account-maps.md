@@ -1,38 +1,73 @@
 ---
-title: Account Maps
+title: Cómo usar Map en cuentas
+head:
+  - - meta
+    - name: title
+      content: Libro de recetas de Solana | Cómo usar Map en cuentas
+  - - meta
+    - name: og:title
+      content: Libro de recetas de Solana | Cómo usar Map en cuentas
+  - - meta
+    - name: description
+      content: Las estructuras Map (clave/valor) son comunmente usadas para almacenar datos. Aprende cómo usar la estructura Map en el libro de recetas de Solana.
+  - - meta
+    - name: og:description
+      content: Las estructuras Map (clave/valor) son comunmente usadas para almacenar datos. Aprende cómo usar la estructura Map en el libro de recetas de Solana.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
-# Account Maps
+# Cómo usar Map en cuentas
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+Los mapas son estructuras de datos que usamos con frecuencia en la programación para asociar una **clave** con un **valor** de algún tipo. La clave y el valor pueden ser de cualquier tipo arbitrario y la clave actúa como un identificador para un valor dado que se está guardando. Luego, dada su clave, nos permite insertar, recuperar y actualizar estos valores de manera eficiente.
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [here][AccountCookbook].
+El modelo de cuenta de Solana, como sabemos, requiere que los datos del programa y sus datos de estado relevantes se almacenen en diferentes cuentas. Estas cuentas tienen una dirección asociada a ellas. ¡Esto, en sí mismo, actúa como un mapa! Obtenga más información sobre el modo de cuenta de Solana [aquí] [AccountCookbook].
 
-So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
+Por lo tanto, tendría sentido almacenar sus **valores** en cuentas separadas, siendo su dirección la **clave** necesaria para recuperar el valor. Pero esto trae algunos problemas, tales como,
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember and retrieve the required value.
+* Las direcciones mencionadas anteriormente probablemente no sean las **claves** ideales porque son difíciles de recordar.
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* Las direcciones mencionadas anteriormente se referían a claves públicas de diferentes **Pares de claves**, donde cada clave pública (o *dirección*) tendría asociada una **clave privada**. Se requeriría esta clave privada para firmar diferentes instrucciones cuando sea necesario, lo que requiere que almacenemos la clave privada en algún lugar, ¡lo cual definitivamente **no** se recomienda!
 
-This presents a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+Esto presenta un problema al que se enfrentan muchos desarrolladores de Solana, que es implementar una lógica similar a `Map` en sus programas. Veamos un par de formas para solucionar este problema,
 
-## Deriving PDAs
+## Derivando PDAs
 
-PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
+PDA significa [Program Derived Address][PDA] o en español, direcciones derivadas de programa, que de forma simple podemos decir que son cuentas **derivadas** de un conjunto de semillas y un id de programa (o _dirección_). 
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, can sign an instruction with the key, provided the seeds as well. Learn more about this [here][CPI].
+Lo único de las PDA es que estas direcciones **no** están asociadas con ninguna clave privada. Esto se debe a que estas direcciones no se encuentran en la curva ED25519. Por lo tanto, **solo** el programa, del cual se derivó esta _dirección_, puede firmar una instrucción con las semillas y el id del programa. Obtenga más información sobre esto [aquí][CPI].
 
-Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
+Ahora que tenemos una idea de lo que son las PDA, ¡utilicémoslas para mapear algunas cuentas! Tomaremos un ejemplo de un programa **Blog** para demostrar cómo se implementaría.
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, and each post is **mapped** to a certain blog.
+En este programa de Blog, nos gustaría que cada 'Usuario' tuviera un solo 'Blog'. Este blog podría tener cualquier número de 'Publicaciones'. Eso significaría que estamos **asignando** a cada usuario a un blog, y cada publicación está **asignada** a un blog determinado.
 
-In short, there is a `1:1` mapping between a user and his/her blog, whereas a `1:N` mapping between a blog and its posts.
+En resumen, hay un mapeo `1:1` entre un usuario y su blog, mientras que un mapeo `1:N` entre un blog y sus publicaciones.
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, and possibly a prefix of **"blog"**, to act as a type identifier.
+Para el mapeo `1:1`, nos gustaría que la dirección de un blog se derive **solo** de su usuario, lo que nos permitiría recuperar un blog, dada su autoridad (o _usuario_). Por lo tanto, las semillas de un blog consistirían en su **clave de autoridad** y posiblemente un prefijo de **"blog"**, para actuar como un identificador de tipo.
 
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, and a prefix of **"post"**, to act as a type identifier. 
+Para el mapeo `1:N`, nos gustaría que la dirección de cada publicación se derive **no solo** del blog con el que está asociada, sino también de otro **identificador**, lo que nos permite diferenciar entre `N ` número de publicaciones en el blog. En el siguiente ejemplo, la dirección de cada publicación se deriva de la **clave del blog**, un **slug** para identificar cada publicación y un prefijo de **"publicación"**, para actuar como un identificador de tipo.
 
-The code is as shown below, 
+El código es como se muestra a continuación,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -69,7 +104,7 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+En el lado del cliente, puede usar `PublicKey.findProgramAddress()` para obtener la dirección de cuenta requerida `Blog` y `Post`, que puede pasar a `connection.getAccountInfo()` para obtener los datos de la cuenta. A continuación se muestra un ejemplo,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -90,17 +125,17 @@ On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the r
 
 </SolanaCodeGroup>
 
-## Single Map Account
+## Map simple
 
-Another way to implement mapping would be to have a `BTreeMap` data structure explicitly stored in a single account. This account's address itself could be a PDA, or the public key of a generated Keypair.
+Otra forma de implementar el mapeo sería tener una estructura de datos `BTreeMap` almacenada explícitamente en una sola cuenta. La propia dirección de esta cuenta podría ser una PDA o la clave pública de un par de claves generadas.
 
-This method of mapping accounts is not ideal because of the following reasons,
+Este método de asignación de cuentas no es ideal por las siguientes razones:
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* Primero tendrá que inicializar la cuenta que almacena el `BTreeMap`, antes de poder insertarle los pares clave-valor necesarios. Luego, también deberá almacenar la dirección de esta cuenta en algún lugar, para actualizarla cuando se necesite.
 
-* There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
+* Existen limitaciones de memoria para una cuenta, donde una cuenta puede tener un tamaño máximo de **10 megabytes**, lo que restringe el `BTreeMap` para almacenar una gran cantidad de pares clave-valor.
 
-Hence, after considering your use-case, you can implement this method as shown below,
+Por lo tanto, después de considerar su caso de uso, puede implementar este método como se muestra a continuación,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -120,7 +155,7 @@ Hence, after considering your use-case, you can implement this method as shown b
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client-side code to test the above program would look like something as shown below,
+El código del lado del cliente para probar el programa anterior se vería como se muestra a continuación,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -142,6 +177,6 @@ The client-side code to test the above program would look like something as show
 
 
 
-[AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
-[PDA]: https://solanacookbook.com/references/accounts.html#program-derived-address
-[CPI]: https://solanacookbook.com/references/programs.html#create-a-program-derived-address
+[AccountCookbook]: https://solanacookbook.com/es/core-concepts/accounts.html
+[PDA]: https://solanacookbook.com/references/es/accounts.html#program-derived-address
+[CPI]: https://solanacookbook.com/references/es/programs.html#create-a-program-derived-address

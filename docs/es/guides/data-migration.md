@@ -1,18 +1,18 @@
 ---
-title: Migrating Program Data Accounts
+title: Migrando cuentas de datos de programas
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Program Accounts Data Migration
+      content: Libro de recetas de Solana | Migrando cuentas de datos de programas
   - - meta
     - name: og:title
-      content: Solana Cookbook | Program Accounts Data Migration
-  - - meta
-    - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Libro de recetas de Solana | Migrando cuentas de datos de programas
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Fundamentalmente, para versionar datos para dar soporte a una migración significa crear una referencia única para una colección de datos. Esta referencia puede tomar la forma de una consulta, un ID o también comúnmente un identificador de fecha y hora. Aprende sobre Serialización y más ingredientes para tu plato en el Libro de recetas de Solana.
+  - - meta
+    - name: og:description
+      content: Fundamentalmente, para versionar datos para dar soporte a una migración significa crear una referencia única para una colección de datos. Esta referencia puede tomar la forma de una consulta, un ID o también comúnmente un identificador de fecha y hora. Aprende sobre Serialización y más ingredientes para tu plato en el Libro de recetas de Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,29 +37,29 @@ head:
 footer: MIT Licensed
 ---
 
-# Migrating a Programs Data Accounts
+# Migración de cuentas de datos de programas
 
-## How can you migrate a program's data accounts?
+## ¿Cómo se pueden migrar las cuentas de datos de un programa?
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+Cuando crea un programa, cada cuenta de datos asociada con ese
+programa tendrá una estructura de datos específica. Si alguna vez necesitas
+actualizar una cuenta derivada del programa, puedes terminar teniendo un montón
+de inconsistencias de cuentas derivadas del programa con la estructura anterior.
 
-With account versioning, you can upgrade your old accounts to
-the new structure.
+Con el control de versiones de la cuenta, puede actualizar sus cuentas antiguas a
+la nueva estructura.
 
-:::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+:::tip Nota
+Esta es solo una de las muchas formas de migrar datos en Cuentas de propiedad del programa (POA).
 :::
 
-## Scenario
+## Escenario
 
-To version and migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+Para versionar y migrar los datos de nuestra cuenta, proporcionaremos un **id** para cada
+cuenta. Este identificador nos permitirá identificar la versión de la cuenta cuando
+se lo pasamos al programa, y ​​así manejar correctamente la cuenta.
 
-Take the following account state and program:
+Tomemos como ejemplo el siguiente estado de cuenta y programa:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,28 +114,27 @@ Take the following account state and program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+En nuestra primera versión de una cuenta, estamos haciendo lo siguiente:
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| Incluir un campo de 'versión de datos' en los datos. Puede ser un ordinal incremental simple (por ejemplo, u8) o algo más sofisticado
+|2| Asignar suficiente espacio para el crecimiento de datos
+|3| Inicializar una cantidad de constantes para usar en todas las versiones del programa
+|4| Agregar una función `fn conversion_logic` para las futuras actualizaciones de cuenta
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
+Digamos que queremos actualizar las cuentas de nuestro programa para incluir
+un nuevo campo obligatorio, el campo `somestring`.
 
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+Si no asignáramos espacio adicional en la cuenta anterior, podríamos
+no actualizar la cuenta y quedaría atascada.
 
-## Upgrading the Account
+## Actualizando la cuenta
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+En nuestro nuevo programa queremos agregar una nueva propiedad para el contenido del estado.
+Los cambios a continuación muestran cómo aprovechamos la estructura inicial del programa para agregar el nuevo campo.
 
-### 1. Add account conversion logic
+### 1. Agregar la lógica de conversión de cuenta
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -157,13 +156,13 @@ constructs as they come into use now.
 
 | Line(s) | Note |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | Hemos agregado `solana_program::borsh::try_from_slice_unchecked` de Solana para simplificar la lectura de subconjuntos del bloque de datos más grande
+| 13-26| Aquí hemos conservado la estructura de contenido anterior, `AccountContentOld` línea 24, antes de extender `AccountContentCurrent` a partir de la línea 17.
+| 60 | Actualizamos la constante `DATA_VERSION`
+| 71 | Ahora tenemos una versión 'anterior' y queremos saber su tamaño
+| 86 | El Coup de grâce está agregando la plomería para actualizar el contenido del estado anterior al estado nuevo (actual)
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+Luego actualizamos nuestras instrucciones, para agregar `somestring` y el procesador para manejar la nueva instrucción. Tenga en cuenta que la "actualización" de la estructura de datos está encapsulada detrás de `pack/unpack`.
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,12 +178,12 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+Después de crear y enviar una instrucción: `VersionProgramInstruction::SetString(String)` ahora tenemos el siguiente diseño de datos de cuenta 'actualizado'
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
 ## Resources
 
-* [Borsh Specification](https://borsh.io/)
+* [Especificación de Borsh](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)
-* [Reference Implementation](https://github.com/FrankC01/versioning-solana)
+* [Referencia de la implementación](https://github.com/FrankC01/versioning-solana)
