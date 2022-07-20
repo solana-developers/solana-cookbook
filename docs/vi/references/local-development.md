@@ -1,18 +1,18 @@
 ---
-title: Local Development
+title: Lập trình ở Local
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Local Development
+      content: Toàn tập Solana | Lập trình ở Local
   - - meta
     - name: og:title
-      content: Solana Cookbook | Local Development
+      content: Toàn tập Solana | Lập trình ở Local
   - - meta
     - name: description
-      content: Setup Local Validator for local developer environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: Cài đặt một local validator cho môi trường lập trình dưới local và nhận SOL để kiểm thử. Chi tiết về Lập trình ở Local và các tài liệu tham khảo khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: Cài đặt một local validator cho môi trường lập trình dưới local và nhận SOL để kiểm thử. Chi tiết về Lập trình ở Local và các tài liệu tham khảo khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,38 +37,35 @@ head:
 footer: MIT Licensed
 ---
 
-# Local Development
+# Lập trình ở Local
 
-## Starting a Local Validator
+## Khởi chạy Local Validator
 
-Testing your program code locally can be a lot more reliable than
-testing on devnet, and can help you test before trying it out on devnet.
+Kiểm thử program của bạn trên máy cá nhân sẽ nhanh và đáng tin cậy hơn nhiều so với devnet. Quá trình này giúp bạn có thể kiểm tra chương trình trước khi triển khai và kiểm thứ chúng trên devnet.
 
-You can setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
-and running
+Bạn có thể thiết lập `local-test-validator` bằng cách cài đặt [bộ công cụ solana](/vi/getting-started/installation.md#cai-đat-cli) và chạy lệnh sau:
 
 ```console
 solana-test-validator
 ```
 
-Benefits of using local-test-validator include:
+Lợi ích của việc chạy `local-test-validator` gồm:
 
-- No RPC rate-limits
-- No airdrop limits
-- Direct on-chain program deployment (`--bpf-program ...`)
-- Clone accounts from a public cluster, including programs (`--clone ...`)
-- Configurable transaction history retention (`--limit-ledger-size ...`)
-- Configurable epoch length (`--slots-per-epoch ...`)
-- Jump to an arbitrary slot (`--warp-slot ...`)
+- Không giới hạn truy vấn RPC
+- Không giới hạn số lượng SOL nhận được để kiểm thử
+- Triển khai trực tiếp program lên on-chain (`--bpf-program ...`)
+- Sao chép account từ các mạng công cộng, bao gồm cả các program (`--clone ...`)
+- Có thể điều chỉnh số lượng lịch sử transaction (`--limit-ledger-size ...`)
+- Có thể điều chỉnh độ dài epoch (`--slots-per-epoch ...`)
+- Nhảy đến bấy kỳ chỗ trống nào (`--warp-slot ...`)
 
-## Connecting to Environments
+## Kết nối đến môi trường
 
-When you are working on Solana development, you will need to connect
-to a specific RPC API endpoint. Solana has 3 public development
-environments:
-- mainnet-beta https://api.mainnet-beta.solana.com
-- devnet https://api.devnet.solana.com
-- testnet https://api.testnet.solana.com
+Một khi bắt đầu làm việc với môi trường phát triển ứng dụng trên Solana, bạn sẽ cần phải kết nối ứng dụng của bạn đến một điểm RPC API cụ thể. Solana có 3 môi trường công cộng cho quá trình phát triển ứng dụng:
+
+- mainnet-beta: https://api.mainnet-beta.solana.com
+- devnet: https://api.devnet.solana.com
+- testnet: https://api.testnet.solana.com
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,8 +131,7 @@ environments:
 
 </SolanaCodeGroup>
 
-Finally, you can also connect to a private cluster, either one local or
-running remotely with the following:
+Cuối cùng bạn cũng có thể kết nối đến các mạng riêng, hoặc từ một điểm truy cập cá nhân, hoặc từ một dịch vụ từ xa ví dụ như:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -202,13 +198,13 @@ running remotely with the following:
 
 </SolanaCodeGroup>
 
-## Subscribing to Events
+## Lắng nghe các sự kiện
 
-Websockets provide a pub/sub interface where you can listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can instead receive those updates only when they happen.
+Websockets cung cấp một giao diện pub/sub để bạn có thể lắng nghe các sự kiện cụ thể. Thay vì liên tục gọi vào các điểm thông tin thông qua HTTP để thường xuyên cập nhật dữ liệu, bạn có thể nhận được dữ liệu cập nhật mỗi khi có thay đổi xảy ra.
 
-Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint and registers a websocket client when you create a new `Connection` instance (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
+[`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) trong web3 của Solana sẽ chủ động tạo ra một kết nối websocket mỗi khi bạn tạo mới `Connection` (chi tiết mã nguồn [tại đây](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
-The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the websocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
+Lớp `Connection` sẽ cung cấp các phương thức pub/sub - tất cả chúng đều bắt đầu với tiền tố `on`, giống như các `emitter`. Khi bạn gọi vào một phương thức nghe, nó sẽ đăng ký một sự kiện mới vào websocket người dùng của `Connection` vừa tạo. Ví dụ cho phương thức pub/sub bên dưới sẽ sử dụng [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). Hàm gọi lại (callback) sẽ nhận các tham số và cập nhật lại trạng thái mới (tham khảo ví dụ [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback)).
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -260,11 +256,9 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Getting Test SOL
+## Nhận SOL để kiểm thử
 
-When you're working locally, you need some SOL in order to send
-transactions. In non-mainnet environments you can receive SOL by
-airdropping it to your address
+Khi bạn làm việc trên môi trường địa phương, bạn sẽ phải cần một ít SOL để gửi transaction. Trong các môi trường không phải mainnet, bạn có thể nhận được SOL miễn phí.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -328,15 +322,15 @@ airdropping it to your address
 
 </SolanaCodeGroup>
 
-## Using Mainnet Accounts and Programs
+## Sử dụng Accounts và Programs trên Mainnet
 
-Oftentimes, local tests rely on programs and accounts available only on mainnet. The Solana CLI allows to both:
-* Download Programs and Accounts
-* Load Programs and Accounts to a local validator
+Thường xuyên, các bài kiểm thử trên môi trường địa phương sẽ dùng đến các account và program chỉ sẵn có trên mainnet. Solana CLI cho phép:
+* Tải xuống Programs và Accounts
+* Cài đặt Programs và Accounts vào local validator
 
-### How to load accounts from mainnet
+### Làm thế nào để cài đặt accounts từ mainnet
 
-It is possible to download the SRM token mint account to file:
+Bạn có thể tải xuống mint account của SRM vào một tập tin:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -355,7 +349,7 @@ It is possible to download the SRM token mint account to file:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the account's file and destination address (on the local cluster) when starting the validator:
+Sau đó, cài đặt nó vào môi trường localnet của bạn bằng cách truyền tập tin ở trên và địa chỉ đích (trên môi trường địa phương) khi bắt đầu khởi chạy validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -375,9 +369,9 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 </SolanaCodeGroup>
 
-### How to load programs from mainnet
+### Làm thế nào để cải đặt programs từ mainnet
 
-Similarly, it is possible to download the Serum Dex v3 program:
+Tương tự, bạn phải tải xuống program của Serum Dex v3:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -396,7 +390,7 @@ Similarly, it is possible to download the Serum Dex v3 program:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the program's file and destination address (on the local cluster) when starting the validator:
+Cài đặt nó vào localnet được thực hiện bằng cách truyền tập tin program và địa chỉ đích (trên môi trường đại phương) khi bắt đầu khởi chạy validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

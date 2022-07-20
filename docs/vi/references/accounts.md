@@ -3,16 +3,16 @@ title: Accounts
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Account References
+      content: Toàn tập Solana | Tài liệu tham khảo cho Account
   - - meta
     - name: og:title
-      content: Solana Cookbook | Account References
+      content: Toàn tập Solana | Tài liệu tham khảo cho Account
   - - meta
     - name: description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: Tìm hiểu chi tiết về Account trên Solana và cách sử dụng trong lập trình Program.
   - - meta
     - name: og:description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: Tìm hiểu chi tiết về Account trên Solana và cách sử dụng trong lập trình Program.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,11 +39,9 @@ footer: MIT Licensed
 
 # Accounts
 
-## How to create a system account
+## Làm thế nào để tạo một System Account
 
-Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
-write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
-(`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
+Tạo một System Account nghĩa là tạo một Account với chủ sở hữu là [System Program][1]. Khi thực thi, Solana sẽ được gán vào một Account, truy cân để ghi dữ liệu, hoặc chuyển lamports. Khi khởi tạo Account, chúng ta phải phân phát một vùng nhớ với đọ dài cố định trước tiên (`space`) và số lamports đủ để thuê vùng nhớ đó. [Phí thuê][2] là chi phí trả cho việc giữ vùng nhớ của Account tồn tại trên Solana.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -78,11 +76,9 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to calculate account cost
+## Tính chi phí cho một account
 
-Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account can be made entirely exempt
-from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
-the amount of data you intend to store in the account.
+Để giữ account tồn tại trên Solana, bạn sẽ phải bỏ ra một khoảng [phí thuê][2]. Một account có thể được miễn phí hoàn toàn nếu cọc đủ số phí thuê tối thiểu 2 năm. Để tính toán được, bạn cần phải biết chính xác độ lớn dữ liệu sẽ được lưu vào account đó.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -104,11 +100,11 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create accounts with seeds
+## Làm thế ào để tạo account với seeds
 
-You can use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
+Bạn có thể sử dụng `createAccountWithSeed` để tiện quản lý thay vì phải tạo hàng tá những cặp khoá ngẫu nhiên.
 
-### Generate
+### Tìm Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,7 +139,7 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Create
+### Tạo Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -179,7 +175,7 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Transfer
+### Chuyển lamports
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -200,28 +196,25 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
 </SolanaCodeGroup>
 
 ::: tip
-Only an account owned by system program can transfer via system program.
+Chỉ khi account được sở hữu bởi System Program mới có thể chuyển lamports thông qua System Program.
 :::
 
-## How to create PDAs
+## Cách tạo PDAs
 
-[Program derived address(PDA)][3] is like a normal address with the following differences:
+[Program derived address(PDA)][3] giống như một địa chỉ bình thường với vài điểm khác biệt như sau:
 
-1. Falling off ed25519 curve
-2. Using program to sign instead of private key
+1. Nằm ngoài đường cong ed25519
+2. Sử dụng program để ký thay vì khoá riêng tư
 
-**Note**: PDA accounts can only be created on the program. The address can be created client side.
+**Lưu ý**: PDA có thể được tạo bởi Program. Địa chỉ của PDA có thể được tạo ở phí người dùng.
 
 ::: tip
-Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
+Mặc dù PDA có thể được suy ra bằng `program_id`, nó không có nghĩa là PDA phải được sở hữu bởi cùng một Program. (Ví dụ, bạn có thể khởi tạo một PDA như là một Token Account và được kiểm soát bởi Token Program)
 :::
 
-### Generate a PDA
+### Sinh ra một PDA
 
-`findProgramAddress` will add a extra byte at the end of your seed.
-It starts from 255 to 0 and returns the first off-curve public key.
-You will always get the same result if you pass the same program id
-and seed.
+`findProgramAddress` sẽ nhận một byte phụ ở cuối `seed` và được gọi là `bump`. Bump bắt đầu từ 255 và kết thúc ở 0. Giá trị bump đầu tiên khiến cho địa chỉ PDA nằm ngoài đường cong ed25519 sẽ được chấp nhận. Như vậy, bạn sẽ luôn thu được kết qua giống nhau nếu truyền vào cùng một `program_id` và `seed`.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -237,14 +230,13 @@ and seed.
   </CodeGroupItem>
 </CodeGroup>
 
-### Create a PDA
+### Tạo một PDA
 
-Below is an
-example program for creating a PDA account owned by the program and an example for calling the program with the client.
+Bên dưới là một ví dụ Program tạo ra và sở hữu một PDA Account và một ví dụ truy vấn Program từ người dùng.
 
 #### Program
 
-The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA using `invoke_signed` similar to as discussed above.
+Ví dụ bên dưới thể hiện một chỉ thị đơn `system_instruction::create_account` dùng để tạo một PDA Account với dung sai là `space` và phí thuê là `rent_lamports`. Chi thị được ký bằng PDA thông qua hàm `invoke_signed` tương tự như đã trình bày bên trên.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -264,7 +256,7 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### Client
+#### Người dùng
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -284,16 +276,13 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to sign with a PDA
+## Làm thế nào để ký bằng PDA
 
-PDAs can only be signed for within the program. Below is a program
-example of signing with a PDA and calling the program with the client.
+PDA duy nhất chỉ có thể dược ký bằng Program. Bên dưới là một Program ví dụ của việc ký bằng PDA và truy vấn program đó từ người dùng.
 
 ### Program
 
-The below shows a single instruction that transfers SOL from a PDA that
-was derived by the seed `escrow` to an account passed. `invoke_signed` is
-used to sign with the PDA.
+Ví dụ bên dưới trình bày một chỉ thị đơn dùng để chuyển SOL từ PDA với seed là `escrow` đến một account được truyền vào. `invoke_signed` được dùng để PDA ký.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -313,7 +302,7 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Client
+### Người dùng
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -333,9 +322,9 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get program accounts
+## Làm thế nào để truy vấn các account của một program
 
-Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+Để truy vấn tất cả các account được sở hữu bởi một program, tham khảo [phần hướng dẫn](../guides/get-program-accounts.md) để hiểu về hàm `getProgramAccounts` và tham số của nó.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -356,9 +345,9 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## How to close accounts
+## Làm thế nào để đóng account
 
-You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+Bạn có thể đóng một account (xoá hết dữ liệu bên trong) bằng cách rút toàn bộ SOL bên trong account đó. (Tham khảo [phí thuê][2] để hiểu rõ)
 
 #### Program
 
@@ -381,7 +370,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### Client
+#### Người dùng
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -401,7 +390,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get account balance
+## Làm thế nào để truy vấn số dư của một account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -453,7 +442,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. For more information, see [Token References](token.md)
+Nếu bạn muốn đọc số dư token, bạn sẽ cần biết địa chỉ của token account. Tham khảo [Token References](token.md) để hiểu rõ.
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
