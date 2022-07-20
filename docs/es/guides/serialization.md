@@ -1,18 +1,18 @@
 ---
-title: Serializing Data
+title: Serializando datos
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Serializing Data
+      content: Libro de recetas de Solana | Serializando datos
   - - meta
     - name: og:title
-      content: Solana Cookbook | Serializing Data
+      content: Libro de recetas de Solana | Serializando datos
   - - meta
     - name: description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Aprende como serializar y deserealizar datos en Solana
   - - meta
     - name: og:description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Aprende como serializar y deserealizar datos en Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,25 +37,27 @@ head:
 footer: MIT Licensed
 ---
 
-# Serializing Data
+# Serializando datos
 
-When we talk about serialization we mean both serializing data as well as deserialization of data.
+Cuando hablamos de serialización, nos referimos tanto a la serialización de datos como a la deserialización de datos.
 
-Serialization comes into play at a few points along Solana program and program accounts lifecycle:
+La serialización entra en juego en algunos puntos a lo largo del ciclo de vida de las cuentas del programa y los 
+programa en Solana:
 
-1. Serializing instruction data on to client
-2. Deserializing instruction data on the program
-3. Serializing Account data on the program
-4. Deserializing Account Data on the client
+1. Serialización de datos de instrucciones en el cliente
+2. Deserializar datos de instrucción en el programa
+3. Serialización de datos de la cuenta en el programa
+4. Deserialización de datos de cuenta en el cliente
 
-It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources).
+Es importante que todas las acciones anteriores estén respaldadas por el mismo enfoque de serialización. Los fragmentos 
+(snippets) incluidos demuestran la serialización mediante [Borsh](#resources).
 
-The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
+Los ejemplos en el resto de este documento son extractos tomados de la 
+[Plantilla del programa CLI de Solana](#resources)
 
-## Setting up for Borsh Serialization
+## Configuración para la serialización con Borsh
 
-Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or Python client.
+Las bibliotecas para Borsh deben configurarse para el programa Rust, el cliente Rust, el cliente Node y/o Python.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -84,23 +86,23 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## How to serialize instruction data on the client
+## Cómo serializar datos de instrucciones en el cliente
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
-If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
-inbound instruction data.
+Si está serializando datos de instrucciones de salida para enviar a un programa, debe reflejar cómo el programa 
+deserializa el datos de instrucciones entrantes.
 
-In this template, an instruction data block is a serialized array containing, with examples:
+En esta plantilla, un bloque de datos de instrucción es una matriz serializada que contiene, con ejemplos:
 
-| Instruction (Variant index) | Serialized Key                 | Serialized Value               |
-| --------------------------- | ------------------------------ | ------------------------------ |
-| Initialize (0)              | not applicable for instruction | not applicable for instruction |
-| Mint (1)                    | "foo"                          | "bar"                          |
-| Transfer (2)                | "foo"                          | not applicable for instruction |
-| Burn (2)                    | "foo"                          | not applicable for instruction |
+| Instrucción (Índice variable) | Llave serializada              | Valor serializado              |
+| ----------------------------- | ------------------------------ | ------------------------------ |
+| Initialize (0)                | no aplica para la instrucción  | no aplica para la instrucción  |
+| Mint (1)                      | "foo"                          | "bar"                          |
+| Transfer (2)                  | "foo"                          | no aplica para la instrucción  |
+| Burn (2)                      | "foo"                          | no aplica para la instrucción  |
 
-In the following example we assume the program owned account has been initialized
+En el siguiente ejemplo, asumimos que la cuenta propiedad del programa se ha inicializado
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -133,31 +135,34 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to serialize account data on the program
+## Cómo serializar los datos de la cuenta en el programa
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-The program account data block (from the sample repo) is layed out as
+El bloque de datos de la cuenta del programa (como se ve en el repositorio) está estructurado de la siguiente manera:
 
-| Byte 0           | Bytes 1-4                     | Remaining Byte up to 1019                   |
-| ---------------- | ----------------------------- | ------------------------------------------- |
-| Initialized flag | length of serialized BTreeMap | BTreeMap (where key value pairs are stored) |
+| Byte 0                  | Bytes 1-4                         | Bytes hasta 1019                                       |
+| ----------------------- | --------------------------------- | ------------------------------------------------------ |
+| bandera de inicializado | longitud del BTreeMap serializado | BTreeMap (donde los pares clave/valor son almacenados) |
 
 ### Pack
 
-A word about the [Pack][1] trait
+Unas palabras sobre el trait [Pack][1]
 
-The Pack trait makes it easier to hide the details of account data serialization/deserialization
-from your core Program instruction processing. So instead of putting all the serialize/deserialize
-log in the program processing code, it encapsulates the details behind (3) functions:
+El trait Pack hace que sea más fácil ocultar los detalles de la serialización/deserialización de los datos de la cuenta
+en el procesamiento de instrucciones de su programa principal. En lugar de poner la serialización/deserialización 
+en el código del programa, encapsula los detalles por detrás de (3) funciones:
 
-1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
-   is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` and checks if account has been initialized.
-3. `pack` - Calls your Pack implementation of `pack_into_slice`
+1. `unpack_unchecked` - Le permite deserializar una cuenta sin validar si se ha inicializado. Es útil cuando realmente 
+está procesando la función de inicialización (índice 0)
+2. `unpack` - LLama a tu implementación de `unpack_from_slice` y valida si la cuenta se ha inicializado.
+3. `pack` - LLama a tu implementación de `pack_into_slice`
 
 Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data using borsh.
+processing of the account data using borsh. 
+
+Aquí está la implementación del trait Pack para nuestro programa de ejemplo. Seguido del procesamiento actual de la 
+cuenta usando borsh.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -167,19 +172,18 @@ processing of the account data using borsh.
   </CodeGroupItem>
 </CodeGroup>
 
-### Serialization/Deserialization
+### Serialización/Deserealización
 
-To complete the underlying serialization and deserialization:
+Para completar la serialización y deserialización internamente:
 
-1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
+1. `sol_template_shared::pack_into_slice` - Donde la serialización ocurre realmente
+2. `sol_template_shared::unpack_from_slice` - Donde la deserialización ocurre realmente
 
-**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
-checks that the length of the slice you are deserializing agrees with the amount of
-data it reads prior to actually recombobulation of the receiving object. The approach
-demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STROAGE` pointer.
+**Ten en cuenta** que tenemos una partición `u32` (4 bytes) en el diseño de datos para
+`BTREE_LENGTH` que precede a `BTREE_STORAGE`. Esto se debe a que borsh, durante la deserialización,
+comprueba que la longitud del segmento que está deserializando coincide con la cantidad de
+datos que lee antes de la recombinación real del objeto receptor. El enfoque que se muestra a continuación primero 
+lee `BTREE_LENGTH` para obtener el tamaño para hacer `slice` del puntero `BTREE_STROAGE`.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -191,10 +195,10 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
 
 ### Usage
 
-The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
-which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
+Lo siguiente es el consolidado y demuestra cómo el programa interactúa con `ProgramAccountState`
+que encapsula el indicador de inicialización, así como el `BTreeMap` interno para nuestros pares clave/valor.
 
-First when we want to initialize a brand new account:
+Primero cuando queremos inicializar una cuenta nueva:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -204,8 +208,8 @@ First when we want to initialize a brand new account:
   </CodeGroupItem>
 </CodeGroup>
 
-Now we can operate on our other instructions as the following demonstrates minting a new
-key value pair that we demonstrated above when sending instructions from a client:
+Ahora podemos operar en nuestras otras instrucciones como se puede apreciar al hacer mint de un nuevo
+par clave/valor que anteriormente demostramos cuando enviamos instrucciones desde un cliente:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -217,13 +221,12 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## How to deserialize account data on the client
+## Cómo deserializar los datos de la cuenta en el cliente
 
-Clients can call Solana to fetch program owned account, in which the serialized
-data block is a part of the return. Deserializing requires knowing the data block
-layout.
+Los clientes pueden llamar a Solana para obtener la cuenta propiedad del programa, en la que la respuesta es un bloque 
+de datos serializado. La deserialización requiere conocer la estructura del bloque de datos.
 
-The layout of the account data was described [Here](#account-data-serialization)
+La estructura del bloque de datos se muestra [aquí](#account-data-serialization)
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -245,16 +248,16 @@ The layout of the account data was described [Here](#account-data-serialization)
   </CodeGroupItem>
 </CodeGroup>
 
-## Common Solana TS/JS Mappings
+## Mappins comunes de Solana TS/JS
 
-The [Borsh Specification](#resources) contains most mappings for primitive and
-compound data types.
+La [especificación de Borsh](#resources) contiene la mayoría de los mapeos para primitivos y
+tipos de datos compuestos.
 
-The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize can generate or walk the respective inputs.
+La clave para TS/JS y Python es crear un esquema de Borsh con una definición adecuada para que la serialización
+y deserialización puede generar o recorrer las respectivas entradas.
 
-Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side:
+Aquí demostramos la serialización de primitivos (números, cadenas) y tipos compuestos (matriz de tamaño fijo, Map)
+primero en Typescript, luego en Python y luego la deserialización equivalente en el lado de Rust:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -276,11 +279,11 @@ first in Typescript, then in Python and then equivalent deserialization on the R
   </CodeGroupItem>
 </CodeGroup>
 
-## Advanced Constructs
+## Construcciones avanzadas
 
-We've shown how to create simple Payloads in previous examples. Sometimes
-Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS and Rust to handle those
+Hemos mostrado cómo crear cargas útiles simples en ejemplos anteriores. Algunas veces
+Solana lanza una bola rápida con ciertos tipos. Esta sección demostrará el mapeo adecuado entre TS/JS y Rust 
+para manejar esos casos:
 
 ### COption
 
@@ -298,11 +301,11 @@ proper mapping between TS/JS and Rust to handle those
   </CodeGroupItem>
 </CodeGroup>
 
-## Resources
+## Recursos
 
-- [Borsh Specification](https://borsh.io/)
+- [Especificación de Borsh](https://borsh.io/)
 - [Rust Borsh](https://github.com/near/borsh-rs)
 - [TS/JS Borsh](https://github.com/near/borsh-js)
 - [Python Borsh](https://github.com/near/borsh-construct-py)
 - [Python Borsh Documentation](https://near.github.io/borsh-construct-py/)
-- [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)
+- [Programa CLI de Solana Template2](https://github.com/hashblock/solana-cli-program-template)
