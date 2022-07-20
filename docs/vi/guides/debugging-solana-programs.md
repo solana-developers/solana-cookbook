@@ -1,12 +1,12 @@
 ---
-title: Debugging Solana Programs
+title: Soát lỗi chương trình trên Solana
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: Solana Cookbook | Soát lỗi chương trình trên Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: Solana Cookbook | Soát lỗi chương trình trên Solana
   - - meta
     - name: description
       content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
@@ -37,42 +37,33 @@ head:
 footer: MIT Licensed
 ---
 
-# Debugging Solana Programs
+# Soát lỗi chương trình trên Solana
 
-There are a number of options and supporting tools for testing and debugging a Solana program.
+Có một vài lựa chọn và công cụ hỗ trợ cho việc kiểm thử và soát lỗi một chương trình trên Solana.
 
-## Facts
+## Có thể bạn chưa biết
 
-::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
-your program interactively (e.g. in vscode).
-- The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
-testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
-program are ignored_**.
-- The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
-command line Rust applications or Javascript/Typescript applications using web3.
-- For all the above, liberal use of `msg!` macro in your program is recommended at the start and then
-removing them as you test and ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
-can eventually fail your program by hitting the Compute Unit budget caps.
+::: tip Những điều có thể bạn chưa biết
+- Crate `solana-program-test` cho phép tạo nên một môi trường tiêu chuẩn **_local runtime_** để bạn có thể kiểm thử và soát lỗi chương trình một cách trực quan (ví dụ như trong vscode).
+- Crate `solana-validator` cho phép sử dụng `solana-test-validator` để chạy các bước kiểm thử một cách tin cậy trên **_local validator node_**. Bạn có thể chạy từ trình biên tập **_tuy nhiên các điểm dừng trong chương trình sẽ bị bỏ qua_**.
+- Công cụ CLI `solana-test-validator` giúp khởi chạy và tải Program cũng nhưng thực thi các Transaction từ Rust CLI hoặc từ web3js.
+- Trong tất cả các trường hợp trên, việc sử dụng macro `msg!` được khuyến khích tại thời điểm phát triển ban đầu, tuy nhiên cần xoá chúng một khi đã hoàn tất kiểm thử. Nên nhớ rằng `msg!` cũng tiêu tốn tài nguyên tính toán hay còn gọi là Compute Units. Program của bạn có thể bị lỗi một khi đạt đến giới hạn trần của Compute Unit.
 :::
 
-The steps in the following sections use the [solana-program-bpf-template](#resources). Clone that to your
-machine:
+Những ví dụ ở các phần tiếp theo sẽ sử dụng  [solana-program-bpf-template](#resources). Vui lòng tải về máy bằng câu lệnh:
+
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
 code .
 ```
-## Runtime Testing and Debugging in editor
+## Môi trường kiểm thử và soát lỗi trong trình biên tập
 
-Open the file `src/lib.rs`
+Mở tệp `src/lib.rs`
 
-You'll see that the program is a pretty simple and basically just logs the content received by
-the program entrypoint function: `process_instruction`
+Bạn sẽ thấy ngay một Program khá đơn giản và chỉ in ra nội dụng nhận được từ điểm tiếp nhận chỉ thị: `process_instruction`
 
-1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
-execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
-the source.
+1. Vào mục `#[cfg(test)]` và chọn `Run Tests`. Nó sẽ chạy trình biên dịch sau dó thực thi bài kiểm thử `async fn test_transaction()` ngay sau đó. Bạn sẽ thấy một thông báo đơn gian in ra ở cửa sổ lệnh (Terminal) của vscode như dưới:
 ```bash
 running 1 test
 "bpf_program_template" program loaded as native code
@@ -82,42 +73,34 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
-2. Set a breakpoint on the programs `msg!` line (11)
-3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
-now you can examine data, step through functions, etc., etc..
+2. Thiết lập các điểm dừng tại `msg!` trong (11) trong chương trình 
+3. Quay lại mô-đun kiểm thử, chọn `Debug` và trong khoảng vài giây trình soát lỗi sẽ dừng tại điểm đánh dấu. Bây giờ bạn có thể kiểm tra dữ liệu dần các hàm, các biến, vân vân.
 
-These tests are also run from the command line with:
-`cargo test` or `cargo test-bpf`. Of course any breakpoints will be ignored.
+Các bước kiểm thử cũng có thể được khởi chạy bằng câu lệnh: `cargo test` hoặc `cargo test-bpf`. Tất nhiên các điểm đánh dấu dừng sẽ bị bỏ qua.
 
-How groovy can you get!
+Chúc mừng bạn đã hoàn thành quá trình kiểm thử và sát lỗi.
 
-:::tip Note
-Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
-will not behave as they would when running in validator node. This is why the gang at Solana gave us
-Local Validator Node testing!
+:::tip Lưu ý
+Nhớ rằng bạn đang dùng một nốt local (địa phương) validator cho nên các System Program, blockhash, vân vân, sẽ không phản ánh hoặc xử lý đúng như trên các validator thuộc mạnh chính. Đó là lý do tại sao Solana gọi chúng là kiểm thử bằng nốt Local Validator!
 :::
 
 
-## Local Validator Node Testing in editor
+## Kiểm thử bằng nốt Local Validator trong trình biên tập
 
-Integration testing using programmatic loading of a local validator node is defined in the
-`tests/integration.rs` file.
+Các tập tin khai báo trong `tests/integration.rs` sẽ được quá trình kiểm thử đọc và tải vào nốt local validator.
 
-By default, the template repo integration tests will only be runnable from the command line
-using `cargo test-bpf`. The following steps will enable you to run within the editor as well
-as displaying program validator logs and `msg!` outputs from your program:
+Mặc định, các mẫu có sẵn cho việc tích hợp các bài kiểm thử sẽ chỉ có thể chạy từ câu lệnh `cargo test-bpf`. Các bước sau đây sẽ tìm hiểu cách chạy chúng trong trình biên tập cũng như in kết quả nhật ký của validator và lệnh in `msg!` từ Program của bạn. 
 
-1. In the repo directory run `cargo build-bpf` to build the sample program
-2. In the editor, open `tests/integration.rs`
-3. Comment out line 1 -> `// #![cfg(feature = "test-bpf")]`
-4. On line 19 change it to read: `.add_program("target/deploy/bpf_program_template", program_id)`
-5. Insert the following at line 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
-6. Click `Run Test` above the `test_validator_transaction()` function
+1. Trong thư mục gốc của dự án, chạy `cargo build-bpf` để biên dịch chương trình mẫu
+2. Trong trình biên tập, mở tập tin `tests/integration.rs`
+3. Chuyển dòng 1 thành câu nhận xét -> `// #![cfg(feature = "test-bpf")]`
+4. Để tải chương trình đã biên dịch, ở dòng 19 thay bằng: `.add_program("target/deploy/bpf_program_template", program_id)`
+5. Thêm câu lệnh sau vào dòng 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
+6. Chọn `Run Test` phí trên hàm `test_validator_transaction()`
 
-This will load the validator node then allowing you to construct a transaction (the Rust way) and
-submit to the node using the `RcpClient`.
+Quá trình này sẽ khởi chạy nốt validator sau đó cho phép bạn tạo một Transaction (bằng Rust) và gửi nó đến nốt bằng `RcpClient`.
 
-The program's output will also print out in the editor terminal. For example (simplified):
+Kết quả đầu ra của chương trình sẽ in ra cửa sổ lệnh của trình biên tập. Ví dụ:
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -130,28 +113,27 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-Debugging here will allow you to debug the functions and methods used in the **_test body_** but will
-not breakpoint in your program.
 
-The bee's knees eh?
+Soát lỗi ở đây sẽ cho phép bạn dò được các hàm, phương thức đã sử dụng trong **_nội dung bài kiểm thử_** ngoại trừ các điểm dừng được đánh dấu trong chương trình.
 
-## Local Validator Node Testing from Client Apps
-Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
-from the command line.
+Điều này có vẻ lời hơi phiền nhỉ!
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
-[JavaScript or Typescript clients](#resources)
+## Kiểm thử bằng nốt Local Validator trên ứng dụng người dùng
 
-See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
-1. Open a terminal in the repo folder
-2. Run `solana config set -ul` to set the configuration to point to local
-3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. Open another terminal and run `solana logs` to start the log streamer
-5. You can then run your client program and observe program output in the terminal where you started the log streamer
+Cuối cùng, bạn có thể khởi chạy một nốt local validator và tải lên Program của bạn cũng như bất kỳ Account bằng câu của `solana-test-validator`.
 
-Now that is the cat's pajamas YO!
+Bằng cách này, bạn sẽ cần một ứng dụng người dùng, hoặc là bằng Rust với [RcpClient](#resources), hoặc là bằng [ứng dụng JavaScript/Typescript](#resources)
 
-## Resources
+Chạy `solana-test-validator --help` để hiểu thêm về các chi tiết cũng như tham số truyền vào. Ví dụ bên dưới là một cài đặt đơn giản nhất:
+1. Mở cửa sổ lệnh tại vị trí thử mục gốc của dự án
+2. Chạy `solana config set -ul` để trỏ cài đặt về môi trường địa phương
+3. Chạy `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
+4. Mở một cửa sổ lệnh khác và chạy`solana logs` để bắt đầu theo dõi kết quả trả ra.
+5. Bạn có thể chạy ứng dụng người sau đó và quan sát kết quả đầu ra chửa chương trình bằng cửa sổ lệnh được khởi chạy ở bước 4
+
+Giờ đây bạn đã thành thạo mọi thứ rồi đấy!
+
+## <a name="resources"></a> Các nguồn tài liệu khác
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
 
 [RcpClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)

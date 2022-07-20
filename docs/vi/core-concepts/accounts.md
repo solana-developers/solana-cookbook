@@ -113,6 +113,6 @@ Nếu một Account không đủ cọc để chi trả phí thuê, Account đó 
 - [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/accounts)
 - [pencilflip account thread](https://twitter.com/pencilflip/status/1452402100470644739)
 
-### Cám ơn
+### Lời cảm ơn
 
 Khái niệm căn bản này được đóng góp của Pencilflip. [Theo dõi anh ấy trên Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
