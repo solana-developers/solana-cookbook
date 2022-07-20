@@ -1,18 +1,18 @@
 ---
-title: Keypairs and Wallets
+title: Cặp khoá và Ví
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Keypairs and Wallets
+      content: Toàn tập Solana | Cặp khoá và Ví
   - - meta
     - name: og:title
-      content: Solana Cookbook | Keypairs and Wallets
+      content: Toàn tập Solana | Cặp khoá và Ví
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: Tìm hiểu về Cặp khoá và Ví, ký và xác nhận tin nhắn, cũng như các tài liệu tham khảo khác cho lập trình trên Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: Tìm hiểu về Cặp khoá và Ví, ký và xác nhận tin nhắn, cũng như các tài liệu tham khảo khác cho lập trình trên Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,14 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Keypairs and Wallets
+# Cặp khoá và Ví
 
-## How to generate a new Keypair
+## Làm thế nào để sinh Cặp khoá
 
-Many of the different actions you can take with the various Solana
-libraries require a Keypair or Wallet. If you are connecting to a
-wallet, you do not have to worry. However, if you are in need of a
-keypair, you will need to generate one.
+Có rất nhiều chức năng trong các thư viện Solana để tương tác được bạn sẽ phải cần có Cặp khoá hoặc Ví. Nếu bạn đang kết nối với một ví, bạn sẽ không phải lo lắng chuyện đó nữa. Tuy nhiên, nếu bạn đang cần một Cặp khoá, bạn sẽ phải sinh ra chúng.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -113,12 +110,11 @@ keypair, you will need to generate one.
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a secret
+## Làm thế nào để phục hồi một Cặp khoá từ khoá riêng tư
 
-If you already have your secret, you can get your Keypair from the secret
-to test out your dApp.
+Nếu bạn đã có khoá riêng tư, bạn có thể phục hồi lại cặp khoá từ khoá riêng tư đó và dùng nố để kết nối với dApp của bạn.
 
-1. From Bytes
+1. Từ Bytes
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -187,7 +183,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-2. From Base58 String
+2. Từ chuỗi Base58
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -240,10 +236,9 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-## How to verify a Keypair
+## Làm thế nào để kiểm tra một cặp khoá
 
-If you are given a keypair, you can verify whether or not the secret
-matches the given public key
+Nếu bạn được cho một cặp khoá, bạn có thể xác nhận rằng cặp khoá đó có khớp giữa khoá riêng tư và khoá công khai hay không.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -296,9 +291,9 @@ matches the given public key
 
 </SolanaCodeGroup>
 
-## How to check if a public key has an associated private key
+## Làm thế nào để kiểm tra nếu một khoá công khai không tồn tại khoá riêng tư tương Ứng
 
-In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You can check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve can be controlled by users with wallets.
+Trong một vài trường hợp đặc biệt (ví dụ như PDA), khoá công khai sẽ không hề tồn tại khoá riêng tư tương ứng với nó. Bạn có thể kiểm tra được điều này bằng cách thử xem khoá công khai có nằm trên đường cong ed25519 hay không. Chỉ những khoá công khai nằm trên đường cong mới có khoá riêng tư, hay nói cách khác là được kiểm soát bởi một ví người dùng.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -352,9 +347,9 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 </SolanaCodeGroup>
 
 
-## How to generate a mnemonic phrase
+## Làm thế nào để sinh ra cụm mnemonic
 
-If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
+Nếu bạn đang tạo ví, bạn sẽ cần sinh ra một cụm mnemonic để người dùng có thể lưu và phục hồi lại ví trong trường hợp cần.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -407,12 +402,11 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a mnemonic phrase
+## Làm thế nào để phục hồi lại cặp khoá từ cụm mnemonic
 
-Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mnemonic to Keypairs for local testing.
+Có rất nhiều ví sử dụng cụm mnemonics để biểu diễn khoá riêng tư. Bạn có thể chuyển đổi giữa mnemonic và cặp khoá để kiểm thử dưới môi trường địa phương.
 
-1. BIP39 - creating a single wallet
+1. BIP39 - tạo một ví đơn
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -465,9 +459,9 @@ You can convert the mnemonic to Keypairs for local testing.
 
 </SolanaCodeGroup>
 
-2. BIP44 (multiple wallets, also known HD wallets)
+2. BIP44 - nhiều ví, thường được biết đến với tên gọi ví HD (Hierarchical Deterministic - Phân quyền Tất định)
 
-You can make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
+Bạn có thể tạo nhiều ví từ một seed đơn và được gọi là ví HD:
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -504,18 +498,14 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
 </SolanaCodeGroup>
 
-## How to generate a vanity address
+## Làm thế nào để sinh một địa chỉ danh nghĩa
 
-Vanity publickeys, or custom addresses are keys that have start with
-specific characters. For example, a person may want a publickey to
-start with "elv1s", or maybe even "cook". These can help other people
-remember who the key belongs to, making the key more easily identifiable.
+Địa chỉ danh nghĩa, hay địa chỉ tuỳ chỉnh là những địa chỉ với các tiền tố là những ký tự cụ thể. Ví dụ, một người muốn một khoá công khai sao cho nó bắt đầu với cụm từ "elv1s", hoặc "cook". Những đại chỉ nào giúp người khác có thể biết được chủ sở hữu của khoá và thuận tiện cho việc nhận dạng hơn.
 
-Note: The more characters in your vanity address, the longer it will
-take.
+Lưu ý: Càng nhiều ký tự tiền tố trong đại chỉ danh nghĩa, sẽ càng yêu cầu nhiều thời gian tính toán hơn.
 
 ::: warning
-You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+Bạn nên sử dụng CLI cho nhiệm vụ này. Ví dụ trên Python và TypeScript chỉ nhằm mục đích minh hoạ và có hiệu suất chậm hơn rất nhiều so với CLI.
 :::
 
 <SolanaCodeGroup>
@@ -569,14 +559,11 @@ You should just use the CLI for this task. The Python and TypeScript examples ar
 
 </SolanaCodeGroup>
 
-## How to sign and verify messages with wallets
+## Làm thế nào ký và kiểm tra tinh nhắn bằng ví
 
-The primary function of a keypair is to sign messages and enable
-verification of the signature. Verification of a signature allows
-the recipient to be sure that the data was signed by the owner of a
-specific private key.
+Một chức năng cơ bản của một cặp khoá là ký một tin nhắn và cho phép kiểm tra chữ ký cùng tin nhắn đó. Wuas trình xác nhận một chữ ký cho phép người nhận chắc chắn rằng dữ liệu được ký là do chủ sở hữu thực sự của cặp khoá ký lên.
 
-To do so we will import the [TweetNaCl][1] crypto library.
+Để làm được điều đó chúng ta cần sử dụng thư viện mật mã học [TweetNaCl][1].
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -615,21 +602,21 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## How to connect to a wallet
+## Làm thế nào để kết nối ví
 
-Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
+Thư viện [wallet-adapter](https://github.com/solana-labs/wallet-adapter) của Solana sẽ giúp cho việc quản lý và kết nối ví trở nên hết sức đơn giản.
 
 ### React
 
-Run the following command to install the required dependencies:
+Chạy đoạn mã bên dưới để cài đặt các thử viện cần thiết:
 
 ```/bin/bash
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
+Thư viện React wallet-adapter cho phép lập trình viên duy trì kết nối cũng như truy cập vào các trạng thái của ví thông qua `Hook` và `Context Provider` như `useWallet`, `WalletProvider`, `useConnection`, và `ConnectionProvider`. Ứng dụng React phải được bọc bởi `WalletProvider` và `ConnectionProvider`.
 
-Additionally, we can prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we can just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+Ngoài ra, lập trình viên cũng có thể hiển thị kết nối đến người dùng bằng cách sử dụng `useWalletModal` để mở một cửa sổ thông báo. Lưu ý, bạn cần phải bọc toàn bộ ứng dụng bằng `WalletModalProvider` từ thư viện `@solana/wallet-adapter-react-ui`. Cửa sổ kết nối sẽ xử lý tất cả các bước kết nối nên chúng ta chỉ cần lắng nghe sự kiện kết nối ví thành công. `useWallet` sẽ trả về giá trị khác rỗng là `wallet` nếu kết nối thành công. Ngược lại, nó sẽ trả về rỗng nếu kết nối chưa thành công hoặc người dùng đã ngắt kết nối.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -652,13 +639,13 @@ Additionally, we can prompt users to connect by using `useWalletModal` to toggle
 
 ### Vue
 
-Run the following command to install the required dependencies:
+Chạy đoạn mã sau đây để cài các thư viện cần thiết:
 
 ```/bin/bash
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [here](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+Plugin [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) cho phép chúng ta khởi tạo một vùng nhớ cho ví và tạo một thuộc tính `$wallet` mới với phạm vi toàn cục. Thuộc tính này có thể được truy cập ở bất kỳ một thành phần nào. Tất cả các thuộc tính và phương thức bạn có thể lấy từ `useWallet()` đều được trình bày [ở đây](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). Chúng ta cũng cần cài và hiển thị thành phần `WalletMultiButton` để cho phép người dùng có thể chọn ví cũng như kết nối ví.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -681,13 +668,13 @@ The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugi
 
 ### Svelte
 
-Run the following command to install the required dependencies:
+Chạy đoạn mã sau đây để cài các thư viện cần thiết:
 
 ```/bin/bash
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [here](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+Gói [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) cho phép thêm một Svelte Store (`$walletStore`) có khả năng truy xuất từ các tập tin JS, TS or/and Svelte bên trong dự án được tạo từ Svelte Template hoặc SvelteKit. Sử dụng mã nguồn tham khảo [tại đây](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) bạn có thể sử dụng bộ tiếp hợp cho SSR và cả SPA. Gói giao diện người dùng có chứa một thành phần là `<WalletMultiButton />`, nó cho phép người dùng có thể chọn và tạo kết nối đến ví.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>
