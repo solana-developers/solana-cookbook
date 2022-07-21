@@ -1,18 +1,18 @@
 ---
-title: Writing Programs
+title: Xây dựng Programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Solana Program References
+      content: Toàn tập Solana | Xây dựng Programs
   - - meta
     - name: og:title
-      content: Solana Cookbook | Solana Program References
+      content: Toàn tập Solana | Xây dựng Programs
   - - meta
     - name: description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: Tìm hiểu làm thế nào để xây dựng Program trên Solana, cũng như gọi hàm giữa các program, được dữ liệu account, và nhiều tài liệu tham khảo khác trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: Tìm hiểu làm thế nào để xây dựng Program trên Solana, cũng như gọi hàm giữa các program, được dữ liệu account, và nhiều tài liệu tham khảo khác trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,16 +36,13 @@ head:
       content: index,follow
 ---
 
-# Writing Programs
+# Xây dựng Program
 
-## How to transfer SOL in a program
+## Làm thế nào để chuyển SOL trong một program
 
-Your Solana Program can transfer lamports from one account to another
-without 'invoking' the System program. The fundamental rule is that
-your program can transfer lamports from any account **owned** by your program
-to any account at all.
+Program trên Solana có thể chuyển lamports ừ một account đến một account khác mà không cần đến 'truy vấn thuần' System program. Một luật cơ bản đó là program của bạn có thể chuyển lamports từ bất kỳ account nào mà nó sở hữu đến gần như hầu hết các account khác.
 
-The recipient account *does not have to be* an account owned by your program.
+Tuy nhiên, account nhận *không được* là account sở hữu bởi chương chình đó.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -55,18 +52,18 @@ The recipient account *does not have to be* an account owned by your program.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get clock in a program
+## Làm thế nào để lấy thời gian trong một program
 
-Getting a clock can be done in two ways
+Đọc thời gian có thể được hoàn thành bằng 2 cách:
 
-1. Passing `SYSVAR_CLOCK_PUBKEY` into an instruction
-2. Accessing Clock directly inside an instruction.
+1. Truyền `SYSVAR_CLOCK_PUBKEY` và trong chỉ thị.
+2. Truy cập trực thiếp vào Clock bên trong chi thị.
 
-It is nice to know both the methods, because some legacy programs still expect the `SYSVAR_CLOCK_PUBKEY` as an account.
+Cả hai cách đều hoạt động tốt, vì một vài program cũ vẫn còn dùng `SYSVAR_CLOCK_PUBKEY` như một account truyền vào trong chỉ thị.
 
-### Passing Clock as an account inside an instruction
+### Truyền Clock như là một account trong chỉ thị
 
-Let's create an instruction which receives an account for initializing and the sysvar pubkey
+Giả sử chúng ta khởi tạo một chỉ thị nhận vào một account để khởi tạo và địa chỉ `sysvar`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -86,7 +83,7 @@ Let's create an instruction which receives an account for initializing and the s
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now we pass the clock's sysvar public address via the client
+Bây giờ, chúng ta truyền địa chỉ `clock` của `sysvar` thông qua đoạn mã ở phía người dùng
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -106,9 +103,9 @@ Now we pass the clock's sysvar public address via the client
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Accessing Clock directly inside an instruction
+### Truy cập Clock trực tiếp bên trong chỉ thị
 
-Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKEY` from the client side.
+Giả sử chúng ta tạo ra một chỉ thị tương tự như trên nhưng sẽ không truyền vào `SYSVAR_CLOCK_PUBKEY` từ phía người dùng.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -128,7 +125,7 @@ Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKE
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client side instruction, now only needs to pass the state and payer accounts.
+Chỉ thị ở phía người dùng giờ chỉ cần truyền duy nhất trạng thái và account chịu phí.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,13 +145,9 @@ The client side instruction, now only needs to pass the state and payer accounts
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to change account size
+## Làm thế nào để thay đổi kích thước account
 
-You can change a program owned account's size with the use 
-of `realloc`. `realloc` can resize an account up to 10KB.
-When you use `realloc` to increase the size of an account,
-you must transfer lamports in order to keep that account
-rent-exempt.
+Bạn có thể thay đổi kích thước của một account sở hữu bởi program với hàm `realloc`. `realloc` có thể thay đổi kích cỡ của account lên đến 10KB. Khi sử dụng `realloc` để tăng kích thước của một account, bạn phải chuyển thêm lamports vào cọc để giữ cho account được miễn phí thuê.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -174,23 +167,15 @@ rent-exempt.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to do Cross Program Invocation
+## Làm thế nào để gọi giữa các program (Cross Program Invocation - CPI)
 
-A cross program invocation, is simply put calling another 
-program's instruction inside our program. One best example 
-to put forth is Uniswap's `swap` functionality. The 
-`UniswapV2Router` contract, calls the necessary logic to 
-swap, and calls the `ERC20` contract's transfer function 
-to swap from one person to another. The same way, we can 
-call a program's instruction to have multitude of purposes.
+Một CPI hiểu đơn giản là gọi chỉ thị của một program từ một program khác. Một ví dụ kinh điển là hàm `swap` trong Uniswap. Chương trình `UniswapV2Router`, là chương trình xử lý luận lý cho quá trình hoán đổi các loại token, sẽ gọi qua chương trình `ERC20` để thực hiện chức năng chuyển token từ đó hoán đổi các token với nhau. Tương tự vậy, chúng ta muốn có thể gọi chỉ thị của một program cho nhiều mục đích khác nhau.
 
-Lets have a look at our first example which is the 
-`SPL Token Program's transfer` instruction. The required 
-accounts we would need for a transfer to happen are
+CÙng nhau xem qua ví dụ đầu tiên về chỉ thị `transfer` của SPL Token Program. Những account cần thiết chúng ta cần truyền vào sẽ là:
 
-1. The Source Token Account (The account which we are holding our tokens)
-2. The Destination Token Account (The account which we would be transferring our tokens to)
-3. The Source Token Account's Holder (Our wallet address which we would be signing for)
+1. Token Account nguồn (Account mà chúng ta đang giữ token)
+2. Token Account đích (Account chúng ta muốn chuyển token tới)
+3. Chủ sở hữu Token Account nguồn (Địa chỉ ví của chúng ta và sẽ dùng để ký)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -209,10 +194,9 @@ accounts we would need for a transfer to happen are
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
-<br />
-The corresponding client instruction would be as follows. For knowing the mint and token creation instructions, please refer to the full code nearby.
-<br />
-<br />
+
+Chỉ thị ở phía người dùng sẽ trông giống như bên dưới. Để biết cách tạo mint và token account, vui òng tham khảo các đoạn mã bên cạnh.
+
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -231,11 +215,11 @@ The corresponding client instruction would be as follows. For knowing the mint a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction and this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+Bây giờ hãy thử cùng nhau xem qua một ví dụ khác với chỉ thị `create_account` của System Program. Lần này, chúng ta không cần phải truyền `token_program` như là một account trong hàm `invoke`. Ngoài ra, bạn vẫn cần phải truyền `program_id` trong câu chỉ thị dẫn và trong trường hợp này `program_id` sẽ là địa chỉ System Program, ("11111111111111111111111111111111"). Các account truyền vào sẽ là:
 
-1. The payer account who funds the rent
-2. The account which is going to be created
-3. System Program account
+1. Account chịu phí để trả phí thuê
+2. Account để được tạo
+3. Account cho System Program
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -255,7 +239,7 @@ Now let's take a look at another example, which is `System Program's create_acco
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The respective client side code will look as follows
+Tương tự code ở phía người dùng sẽ giống như sau:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -275,9 +259,10 @@ The respective client side code will look as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a PDA
+## Làm thế nào để tạo PDA
 
-A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds and a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One can generate a PDA using `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space and set the state to it. A normal Keypair account can be created outside of our program and then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
+Một PDA đơn giản là một account sở hữu bởi một program, và không có khoá riêng tư tương ứng. Chữ ký cho account này sẽ được ký bằng tập hợp gồm seeds, bump (để đảm bảo account không nằm trên đường cong ed25519). "**Tìm ra**" một PDA là khác với "**tạo ra**" nó. Một người có thể tìm ra PDA bằng `Pubkey::find_program_address`. Tạo ra PDA lại có nghĩa là khởi tạo vùng nhớ cho account đó và thiết lập các trạng thái cho nó. Một account từ cặp khoá có thể được tạo bên ngoài program, sau đó được truyền lên cho program khởi tạo nó. Không may cho PDA, chúng lại cần được khởi tạo on-chain bởi vì điều hiển nhiên là nó không có khoá riêng tư tương ứng để tạo chữ ký cho nó. Do đó, chúng ta phải sử dụng `invoke_signed` kèm với seeds của PDA và chữ ký địa chỉ chịu phí để khỏi tạo PDA đó.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -297,7 +282,7 @@ A Program Derived Address is simply an account owned by the program, but has no 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-One can send the required accounts via client as follows
+Bạn có thể gửi những account cần thiết từ phía người dùng như sau:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -317,9 +302,9 @@ One can send the required accounts via client as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read accounts
+## Làm thế nào để đọc Account
 
-Almost all instructions in Solana would require atleast 2 - 3 accounts, and they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable and returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts and requiring to parse each of them.
+Hầu hết tất cả chỉ thị trên Solana có thể yêu cầu tối thiểu 2-3 account, và chúng sẽ được tham chiếu thông qua chỉ thị dựa trên thứ tự được thiết lập sẵn. Công việc sẽ khá đơn giản nếu bạn đọc đã nắm rõ phương thức `iter()`trong Rust, thay vì tham chiếu tuwngf account bằng chỉ số. Phương thức `next_account_info` cơ bản sẽ lần lướt rút các account trong mảng các account. Thử quan sát ví dụ bên dưới với một câu chỉ thị đơn giản bao gồm nhiều account và cần được trải ra.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -339,17 +324,17 @@ Almost all instructions in Solana would require atleast 2 - 3 accounts, and they
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to verify accounts
+## Làm thế nào để kiểm tra account
 
-Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one can do are
+Bởi vì program trên Solana không lưu giữ trạng thái (stateless), một người tạo program như chúng ta sẽ cần đảm bảo các account truyền lên phải được kiểm tra hợp lệ kỹ càng nhất có thể để tránh các account giả mạo nhằm mục đích khai thác lỗ hổng của program. Những bài kiểm tra cơ bản bạn có thể thực hiện gồm:
 
-1. Check if the expected signer account has actually signed
-2. Check if the expected state account's have been checked as writable
-3. Check if the expected state account's owner is the called program id
-4. If initializing the state for the first time, check if the account's already been initialized or not.
-5. Check if any cross program ids passed (whenever needed) are as expected.
+1. Kiểm tra xem accouunt cần ký đã ký chưa
+2. Kiểm tra xem account cần ghi cho phép ghi hay chưa (cụ thể là `writable`)
+3. Kiểm tra xem chủ sở hữu account có phải là program đang được gọi hay không
+4. Nếu là lần khởi tạo đầu, kiểm tra xem account đã từng được khởi tạo hay chưa
+5. Kiểm tra các địa chỉ program sẽ được gọi cpi có đúng kỳ vọng hay không
 
-A basic instruction which initializes a hero state account, but with the above mentioned checks is defined below
+Ví dụ một chỉ thị khởi tạo `hello_state_account` và sử dụng cách bài kiểm tra bên trên như sau:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -369,10 +354,9 @@ A basic instruction which initializes a hero state account, but with the above m
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read multiple instructions from a transaction
+## Làm thế nào để đọc nhiều chỉ thị từ một Transaction
 
-Solana allows us to take a peek at all of the instructions in the current transaction. We can store them in a variable and 
-iterate over them. We can do many things with this, like checking for suspicious transactions. 
+Solana cho phép xử lý tất các các chỉ thị trong transaction hiện tại. Bạn có thể lưu chúng vào một biến và tương tác dần với chúng. Bạn có thể làm rất nhiều thứ với chúng, ví như kiểm tra các transaction đáng nghi.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
