@@ -3,7 +3,7 @@
   let txhash = await setAuthority(
     connection, // connection
     feePayer, // payer
-    mintPubkey, // mint acocunt || token account
+    mintPubkey, // mint account || token account
     alice, // current authority
     AuthorityType.MintTokens, // authority type
     randomGuy.publicKey // new authority (you can pass `null` to close it)

@@ -82,7 +82,7 @@ Most Rust-based programs adhere to the following architecture:
 | state.rs       | Program objects, (de)serializing state        |
 | error.rs       | Program-specific errors                       |
 
-Recently, [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
+Recently, [Anchor](https://github.com/coral-xyz/anchor) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
 
 Programs are usually developed and tested against Localhost and Devnet environments before being deployed to Testnet or Mainnet. Solana supports the following environments:
 
@@ -120,4 +120,4 @@ Once invoked, programs are executed by the Solana Runtime.
 - [Solana Starter Kit by Iron Addicted Dog](https://book.solmeet.dev/notes/solana-starter-kit)
 - [Programming on Solana by Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [An Introduction to the Solana Blockchain by Hana](https://2501babe.github.io/posts/solana101.html)
-- [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html)
+- [Anchor](https://github.com/coral-xyz/anchor)
