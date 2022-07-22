@@ -80,10 +80,10 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## How to get mint information from a mint account
 
 In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+you will need to get the account info for the mint accont.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -105,7 +105,7 @@ you will need to get the account info for the token mint.
 
 ## How to create a token account
 
-A token account is required in order to hold tokens. Every token mint
+A token account is required in order to hold tokens. Every mint account
 has a different token account associated with it.
 
 Associated Token Accounts are deterministicly created
@@ -130,7 +130,7 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## How to get information from a Token Account
 
 Every token account has information on the token such as the owner,
 mint, amount(balance), and decimals.
