@@ -3,16 +3,16 @@ title: Staking
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Staking
+      content: Toàn tập Solana | Staking
   - - meta
     - name: og:title
-      content: Solana Cookbook | Staking
+      content: Toàn tập Solana | Staking
   - - meta
     - name: description
-      content: stake SOL and earn rewards for helping secure the network.
+      content: Stake SOL và kiếm phần thưởng có thể giúp tăng độ an toàn cho mạng lưới. Tìm hiểu thêm về Tạo Stake Accounts, Uỷ quyền Stake, Rút Stake, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Solana cookbook.
+      content: Stake SOL và kiếm phần thưởng có thể giúp tăng độ an toàn cho mạng lưới. Tìm hiểu thêm về Tạo Stake Accounts, Uỷ quyền Stake, Rút Stake, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,11 +39,9 @@ footer: MIT Licensed
 
 # Staking
 
+## Truy vấn danh sách Validators hiện tại
 
-
-## Get Current Validators
-
-We can stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+Chúng ta có thể stake SOL và kiếm phần thưởng cho việc nâng cao an toàn mạng lưới. Để stake, bạn phải uỷ quyền SOL có các validators người sẽ thực hiện việc xử lý các giao dịch.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -58,9 +56,9 @@ We can stake SOL and earn rewards for helping secure the network. To stake, we d
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Stake Account
+## Tạo một Stake Account
 
-All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created and managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` and `Withdrawal Authority`.
+Tất cả các chỉ thị staking sẽ được đảm nhiệm bởi [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Để bắt đầu, chúng ta tạo ra một [Stake Account](https://docs.solana.com/staking/stake-accounts). Stake Account được tạo ra và quản lý rất khác so với một [System Account](accounts.md#create-a-system-account) chuẩn. Thực tế, chúng ta phải đặt `Stake Authority` và `Withdrawal Authority` của account đó.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,9 +78,9 @@ All staking instructions are handled by the [Stake Program](https://docs.solana.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Delegate Stake
+## Uỷ quyền Stake
 
-Once a stake account is funded, the `Stake Authority` can delegate it to a validator. Each stake account can only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
+Một khi stake account đã được cọc, `Stake Authority` có thể uỷ quyền của nó cho một validator. Mỗi stake account có thể chỉ uỷ quyền cho một validator tại một thời điểm. Thêm nữa, tất cả token trong account hoặc là phải để được uỷ quyền, hoặc là phải không uỷ quyền cho bất kỳ ai. Khi đã uỷ quyền, sẽ phải tốn một và epoch để stake account có thể hoạt động.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,9 +100,9 @@ Once a stake account is funded, the `Stake Authority` can delegate it to a valid
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Delegator by Validators
+## Truy vấn các nhà uỷ quyền bằng validator
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+Nhiều account có thể stake và một validator cụ thể. Để truy vấn tất cả các staker, bạn sẽ sử dụng `getProgramAccounts` hoặc `getParsedProgramAccounts` API. Tham khảo [Phần hướng dẫn](/guides/get-program-accounts.html) cho nhiều thông tin hơn. Stake account có độ dài là 200 bytes với `Voter Public Key` bắt đầu ở bytes thứ 124. [Tham khảo](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs).
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -124,9 +122,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Deactivate Stake
+## Dừng stake
 
-At anytime after a stake account is delegated, the `Stake Authority` can choose to deactivate the account. Deactivation can take several epochs to complete, and is required before any SOL is withdrawn.
+Bất kỳ lúc nào sau khi một stake account được uỷ quyền, `Stake Authority` có thể được chọn để dừng account.  Dừng stake có thể mất một khoảng thời gian để hoàn thành, và phải được hoàn thành trước có thể rút SOL.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -146,9 +144,9 @@ At anytime after a stake account is delegated, the `Stake Authority` can choose 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Withdraw Stake
+## Rút Stake
 
-Once deactivated, the `Withdrawal Authority` can withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
+Một khi đã dừng stake, `Withdrawal Authority` có thể rút SOL về lại một system account. Và khi một stake account không còn được uỷ quyền cũng như có số dư là 0 SOL, nó sẽ bị huỷ ngay lập tức.
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->
