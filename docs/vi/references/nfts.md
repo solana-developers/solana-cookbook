@@ -3,16 +3,16 @@ title: NFTs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | NFTs
+      content: Toàn tập Solana | NFTs
   - - meta
     - name: og:title
-      content: Solana Cookbook | NFTs
+      content: Toàn tập Solana | NFTs
   - - meta
     - name: description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Tìm hiểu làm thế nào để truy vấn NFT metadata, chủ sỡ hữu NFT, đúc NFT, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Tìm hiểu làm thế nào để truy vấn NFT metadata, chủ sỡ hữu NFT, đúc NFT, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,15 +39,15 @@ footer: MIT Licensed
 
 # Non Fungible Tokens (NFTs)
 
-## How to create an NFT
+## Làm thế nào để tạo một NFT
 
-To create an NFT you have to:
+Để tạo một NFT bạn phải:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
-3. Call metaplex to create an account for the NFT
+1. Đăng tải ảnh lên IPFS ví như Arweave
+2. Đăng tải json metadata lên IPFS ví như Arweave
+3. Gọi metaplex để tạo một account cho NFT
 
-### Upload to Arweave
+### Đăng tải lên Arweave
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +80,9 @@ To create an NFT you have to:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Mint the NFT
+### Đúc NFT
 
-If you already have the image and metadata uploaded, you can mint
-the NFT with the following code.
+Nếu bạn đã đăng tải ảnh mà metadata, bạn có thể đúc NFT với đoạn mã bên dưới.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,17 +102,13 @@ the NFT with the following code.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-::: tip Note
-You cannot mint an NFT with a different creator that your wallet.
-If you run into creator issues, make sure your metadata lists you
-as the creator.
+::: tip Lưu ý
+Bạn không thể đúc một NFY với một người tạo khác ngoài ví của bạn. Nếu bạn gặp phải vấn đề người tạo, bạn nên đảm bảo rằng metadata liệt kê bạn là người tạo. 
 :::
 
-## How to get NFT Metadata
+## Làm thế nào để truy vấn NFT Metadata
 
-Metaplex NFTs have metadata that is stored on Arweave. In order
-to get the Arweave metadata, you must get the Metaplex PDA and
-decode the account data.
+Các Metaplex NFT có metadata được lưu trên Arweave. Để có thể truy vấn được Arweave metadata, bạn phải thông qua Metaplex PDA và giải mã dữ liệu trong account đó.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,17 +129,13 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to get the owner of an NFT
+## Làm thế nào để truy vấn chủ sở hữu của một NFTs
 
-If you have the mint key of an NFT, you can find its current owner
-by sneak-peeking at the largest token account for that mint key.
+Nếu bạn có địa chỉ mint của một NFT, bạn có thể tìm được chủ sở hữu hiện tại của nó bằng truy vấn token account lớn nhất của địa chỉ mint đó.
 
-Remember that NFTs have a supply of 1, and they are indivisible,
-meaning that only one token account will hold that token at any
-point in time, whilst all other token accounts for that mint key will
-have a balance of 0.
+Nhớ rằng vì tổng cung của NFT là 1, và chúng không thể chia nhỏ hơn, nên chỉ có duy nhất một token account sẽ chứa token đó ở mọi lúc. Tất cả các token account khác sẽ có số dư là 0.
 
-Once the largest token account is identified, we can retrieve its owner.
+Một khi token account lớn nhất được xác định, chúng ta có thể truy vấn chủ sỡ hữu của nó.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -165,9 +156,9 @@ Once the largest token account is identified, we can retrieve its owner.
 
 </SolanaCodeGroup>
 
-## How to get NFT Mint Addresses
+## Làm thế nào để truy vấn địa chỉ mint của NFT
 
-If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+Nếu bạn biết khoá công khai của Candy Machine, bạn có thể truy vấn được tất cả địa chỉ NFT mint được sinh ra từ Candy Machine đó bằng cách sử dụng đoạn mã bên dưới. Chú ý rằng chúng ta có thể sử dụng bộ lọc `memcmp` bên dưới bởi vì, trong v1, người tạo đầu tiên luôn là địa chỉ của Candy Machine.
 
 ### Candy Machine V1
 
@@ -192,7 +183,7 @@ If you know the public key of the Candy Machine, you can get the list of all NFT
 
 ### Candy Machine V2
 
-If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you can use it the same way we were for v1.
+Nếu bạn đang sử dụng Candy Machine v2, bạn sẽ cần truy cập vào địa chỉ "Candy Machine Creator" của nó. Địa chỉ này đơn giản là một PDA với seeds là `candy_machine` và địa chỉ Candy Machine v2. Một khi bạn có địa chỉ người tạo, bạn có thể sử dụng nó tương tự như cách mà chúng ta đã làm ở v1.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -213,10 +204,9 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 </SolanaCodeGroup>
 
-## How to get all NFTs from a wallet?
+## Làm thế nào để truy vấn tất cả NFT từ một ví?
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+Khi truy vấn tất cả NFT từ một ví, bạn sẽ cần đọc tất cả token account và sau đó suy ra từng NFT một. Tất cả có thể thực hiện chỉ bằng hàm [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) từ thử viện Metaplex JS.
  
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
