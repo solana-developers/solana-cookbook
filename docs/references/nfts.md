@@ -76,7 +76,7 @@ To create an NFT you have to:
 
 @[code](@/code/nfts/upload-arweave/upload-arweave.preview.en.py)
 
-  </template>  
+  </template>
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
@@ -104,7 +104,7 @@ the NFT with the following code.
 </SolanaCodeGroup>
 
 ::: tip Note
-You cannot mint an NFT with a different creator that your wallet.
+You cannot mint an NFT with a different creator than your wallet.
 If you run into creator issues, make sure your metadata lists you
 as the creator.
 :::
@@ -217,7 +217,7 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
 This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
- 
+
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
 
