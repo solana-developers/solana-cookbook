@@ -1,18 +1,18 @@
 ---
-title: Interacting with Tokens
+title: Tương tác với Tokens
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Toàn tập Solana | Tương tác với Tokens
   - - meta
     - name: og:title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Toàn tập Solana | Tương tác với Tokens
   - - meta
     - name: description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: Tìm hiểu các sử dụng, chuyển và hơn thế nữa với tokens trên Solana
   - - meta
     - name: og:description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: Tìm hiểu các sử dụng, chuyển và hơn thế nữa với tokens trên Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,12 +39,9 @@ footer: MIT Licensed
 
 # Token
 
-## What do I need to get started with SPL-Tokens?
+## Tôi nên cần gì để bắt đầu với SPL-Tokens?
 
-Every time you interact with tokens on Solana, you are actually
-interacting with the Solana Program Library Token, or SPL-Token
-standard. The SPL-Token standard requires a specific library to
-be used, which you can find below based on your language.
+Mỗi khi bạn tương tác với token trên Solana, bạn thực chất đang tương tác với Solana Program Library Token, gọi tắt là SPL-Token Standard. Chuẩn SPL-Token yêu cầu một thư viện đặc thù để sử dụng và bạn có thể tìm thấy bên dưới tuỳ vào ngôn ngữ lập trình của bạn.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -56,11 +53,9 @@ be used, which you can find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new Token
+## Làm thế nào để tạo một token mới
 
-Creating tokens is done by creating what is called a "mint account".
-This mint account is later used to mint tokens to a token account and
-create the initial supply.
+Tạo mới token có thể thực hiện bằng cách tạo một "mint account". Account này sẽ được sử dụng lưu đúc token cho token account và ghi nhớ tổng cung cung khởi tạo.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +75,9 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## Làm thế nào để đọc truy vấn token mint
 
-In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+Để có thể đọc tổng cung hiện tại, chủ sở hữu, hoặc số chữ số phần thập phân (decimals) mà token định nghĩa, bạn sẽ cần lấy dữ liệu dữ liệu mint account.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,14 +97,11 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a token account
+## <a name="create-token-account"></a> Làm thế nào để tạo một token account
 
-A token account is required in order to hold tokens. Every token mint
-has a different token account associated with it.
+Một token account là bắt buộc cần có để chứa tokens. Mỗi token mint có một token account khác nhau tương ứng với nó.
 
-Associated Token Accounts are deterministicly created
-accounts for every keypair. ATAs are the recommended method
-of managing token accounts.
+Associated Token Accounts (ATA) được tạo một cách "bất biến" cho các cặp khoá. ATA là phương pháp khuyên dùng để quản lý token account.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -130,10 +121,9 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## Làm thế nào để truy vấn token acount
 
-Every token account has information on the token such as the owner,
-mint, amount(balance), and decimals.
+Mỗi token account chứa thông tin về chủ sỡ hữu token, loại mint, só dư, và số chữ số phần thập phân.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,10 +143,9 @@ mint, amount(balance), and decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token account's balance
+## Làm thế nào để truy vấn số dư của token account
 
-The token account has the token balance, which can be retrieved with a
-single call.
+Thông tin số dư token của một token account có thể được truy vấn bằng một hàm gọi duy nhất.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -194,14 +183,12 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token
-account, you also specific a mint too.
+Một token account chỉ có thể chứa một loại mint duy nhất. Khi bạn khai báo token account, bạn cũng phải chỉ rõ lại mint.
 :::
 
-## How to mint tokens
+## Làm thế nào để dúc token
 
-When you mint tokens, you increase the supply and transfer the new tokens
-to a specific token account.
+Khi bạn đúc token, bạn tăng số lượng tổng cung và chuyển số lược token mới cho token account mong muốn.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,9 +208,9 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to transfer tokens
+## Làm thế nào để chuyển token
 
-You can transfer tokens from one token account to another token account.
+Bạn có thể chuyển token từ một token account đến một token account khác.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,10 +230,9 @@ You can transfer tokens from one token account to another token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to burn tokens
+## Làm thế nào để đốt token
 
-You can burn token if you are the token owner.
-
+Bạn có thể đốt (huỷ) token nếu bạn là chủ sỡ hữu của token đó.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,13 +252,12 @@ You can burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to close token accounts
+## Làm thế nào để đóng một token account
 
-You can close a token account if you don't want to use it anymore.
-There are two situations:
+Bạn có thể đóng một token account nếu bạn không muốn dùng nó nữa. Sẽ có 2 trường hợp:
 
-1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You can close it only if token account's balance is 0.
+1. Wrapped SOL - Đóng và chuyển Wrapped SOL thành SOL
+2. Các Token khác - Bạn có thể đóng chỉ khi số dư của token account là 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -292,9 +277,9 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to set authority on token accounts or mints
+## Làm thế nào để thiết lập chủ sở hữu cho token account và mint
 
-You can set/update authority. There are 4 types:
+Bạn có thể thiết lập hoặc cập nhật chủ sỡ hữu. Có 4 loại:
 
 1. MintTokens (mint account)
 2. FreezeAccount (mint account)
@@ -319,9 +304,9 @@ You can set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to approve a token delegate
+## Làm thế nào để uỷ quyền cho một token đại diện (delegate)
 
-You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+Bạn có thể thiết lập một đại diện với một số lượng cho phép. Sau khi thiết lập xong, người đại diện sẽ giống như một chủ sỡ hữu khác của token account của bạn. `Một token account chỉ có thể uỷ quyền cho một account tại một thời điểm`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -341,9 +326,9 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to revoke a token delegate
+## Làm thế nào để thu hồi một token đại diện
 
-Revoke will set delegate to null and set delegated amount to 0.
+Thu hồi sẽ thiết lập biến `delegate` về `null` và số dư uỷ quyền về 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -363,24 +348,23 @@ Revoke will set delegate to null and set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to manage wrapped SOL
+## Làm thế nào để quản lý wrapped SOL
 
-Wrapped SOL just like any other token mint. The difference is using `syncNative`
-and creating token accounts specifically on the `NATIVE_MINT` address.
+Wrapped SOL cũng chỉ giống như các lại token mint khác. Điểm khác là bạn có thể sử dụng `syncNative` và tạo token account dựa trên địa chỉ `NATIVE_MINT`.
 
-### Create Token Account
+### Tạo token account
 
-Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+Tương tự [Làm thế nào để tạo một token account](#create-token-account) nhưng thay địa chỉ mint với `NATIVE_MINT`
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### Add Balance
+### Thêm số dư
 
-There are two ways to add balance for Wrapped SOL
+Có hai cách để thêm số dư cho Wrapped SOL
 
-#### 1. By SOL Transfer
+#### 1. Bằng cách chuyển SOL
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -400,7 +384,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. By Token Transfer
+#### 2. Bằng cách chuyển Token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -420,11 +404,11 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get all token accounts by owner
+## Làm thế nào để truy vấn tất cả token account của một Chủ
 
-You can fetch token accounts by owner. There are two ways to do it.
+Bạn có thể truy vấn tất cả token account của cùng một chủ. Có 2 cách để thực hiện.
 
-1. Get All Token Account
+1. Lấy tất cả token account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -444,7 +428,7 @@ You can fetch token accounts by owner. There are two ways to do it.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. Filter By Mint
+2. Lọc bằng mint
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
