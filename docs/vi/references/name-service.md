@@ -1,18 +1,18 @@
 ---
-title: Name Service
+title: Dịch vụ tên miền
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Name Service
+      content: Toàn tập Solana | Dịch vụ tên miền
   - - meta
     - name: og:title
-      content: Solana Cookbook | Name Service
+      content: Toàn tập Solana | Dịch vụ tên miền
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: Dịch vụ đăng ký tên miền lưu trữ thông tin về tên miền. Tìm hiểu thêm về Phân giải tên miền SOL, Tra cứu Tên miền đảo/Tên miền con, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: Dịch vụ đăng ký tên miền lưu trữ thông tin về tên miền. Tìm hiểu thêm về Phân giải tên miền SOL, Tra cứu Tên miền đảo/Tên miền con, và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,16 +37,16 @@ head:
 footer: MIT Licensed
 ---
 
-# Name Service
+# Dịch vụ tên miền
 
-## Name registry
+## Dịch vụ đăng ký tên miền
 
-The name registry stores information about the domain name. It is made of two things:
+Dịch vụ đăng ký tên miền lưu trữ thông tin về tên miền. Nó được cấu tạo bởi 2 phần:
 
-- The header
-- The data
+- Phần mào đầu
+- Phàn dữ liệu
 
-The data for a domain name is always prefixed by the header, below is the structure of the header in JS:
+Dữ liệu cho tên miền lưu được đứng trước bởi một phần mào đầu, bên dưới là cấu trúc của phần mào đầu trong JS:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -67,12 +67,9 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 </SolanaCodeGroup>
 
-## Resolving SOL domains
+## Phân giải tên miền SOL
 
-.SOL domains are unique, human-friendly domain names
-that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You can convert
-.SOL domains to their publicKey with the following:
+Tên miền .SOL là các tên miền độc nhất, dễ đọc, và có thể chuyển đổi thành khoá công khai. Nhiều ví sử dụng chúng như là một tuỳ chọn khác cho việc gửi nhận token và SOL. Bạn có chuyển đổi tên miền .SOL thành khoá công khai tương ứng với ví dụ bên dưới:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,9 +90,9 @@ another option to send tokens or SOL. You can convert
 
 </SolanaCodeGroup>
 
-## Reverse look up
+## Tra cứu ngược
 
-This can be used to resolve the domain name from its public key
+Tra cứu ngược có thể được sử dụng để phân giải tên miền từ khoá công khai của nó.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -116,13 +113,13 @@ This can be used to resolve the domain name from its public key
 
 </SolanaCodeGroup>
 
-## Subdomain look up
+## Tra cứu tên miền con
 
-In order to resolve a subdomain you need to:
+Để phân giải một tên miền con bạn cần phải:
 
-1. Get the parent domain key
-2. Get the subdomain key
-3. Retrieve the account info
+1. Truy vấn khoá của tên miền cha
+2. Truy vấn khoá của tên miền con
+3. Truy vấn thông tin account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,9 +140,9 @@ In order to resolve a subdomain you need to:
 
 </SolanaCodeGroup>
 
-## Find all the domain names owned by a public key
+## Tìm tất cả tên miền được sở hữu bởi một khoá công khai
 
-You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+Bạn có thể truy vấn tất cả tên miền của một ví bằng hàm `getProgramAccounts` với bộ lọc `memcmp`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,9 +163,9 @@ You can retrieve all the domain names of a wallet by doing a `getProgramAccounts
 
 </SolanaCodeGroup>
 
-## Resolve a Twitter handle
+## Phân giải một Twitter Handle
 
-Twitter handles can be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Twitter handles có thể được [đăng ký trên dịch tên miền Solana](https://naming.bonfida.org/#/twitter-registration) và được dùng giống như tên miền .SOL
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -189,9 +186,9 @@ Twitter handles can be [registered on the Solana name service](https://naming.bo
 
 </SolanaCodeGroup>
 
-## Reverse look up of a Twitter handle
+## Tra cứu ngược của một Twitter Handle
 
-In order to find the SOL address associated to a Twitter handle you can perform a reverse look up
+Để tìm địa chỉ SOL tương ứng với một Twitter handle, bạn có thể thực hiện tra cứu ngược
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
