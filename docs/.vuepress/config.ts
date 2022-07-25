@@ -181,13 +181,13 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "Guías",
               children: [
-                // '/es/guides/get-program-accounts.md',
-                // '/es/guides/serialization.md',
-                // '/es/guides/data-migration.md',
-                // '/es/guides/account-maps.md',
-                // '/es/guides/retrying-transactions.md',
-                // '/es/guides/debugging-solana-programs.md',
-                // '/es/guides/feature-parity-testing.md',
+                '/es/guides/get-program-accounts.md',
+                '/es/guides/serialization.md',
+                '/es/guides/data-migration.md',
+                '/es/guides/account-maps.md',
+                '/es/guides/retrying-transactions.md',
+                '/es/guides/debugging-solana-programs.md',
+                '/es/guides/feature-parity-testing.md',
               ],
             },
             {
@@ -209,6 +209,79 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         }
       },
+      "/vi/": {
+        selectLanguageName: "Tiếng Việt",
+        navbar: [
+          {
+            text: "Đóng góp",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Tích hợp",
+            link: "/vi/integrations",
+          },
+        ],
+        sidebar: {
+          "/vi/": [
+            {
+              text: "Mở đầu",
+              children: ["/vi/", "/vi/getting-started/installation.md"],
+            },
+            {
+              text: "Khái niệm căn bản",
+              children: [
+                "/vi/core-concepts/accounts.md",
+                "/vi/core-concepts/programs.md",
+                "/vi/core-concepts/transactions.md",
+                "/vi/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Hướng dẫn",
+              children: [
+                "/vi/guides/get-program-accounts.md",
+                "/vi/guides/serialization.md",
+                "/vi/guides/data-migration.md",
+                "/vi/guides/account-maps.md",
+                "/vi/guides/retrying-transactions.md",
+                "/vi/guides/debugging-solana-programs.md",
+                "/vi/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Tham khảo",
+              children: [
+                "/vi/references/local-development.md",
+                "/vi/references/keypairs-and-wallets.md",
+                "/vi/references/basic-transactions.md",
+                "/vi/references/accounts.md",
+                "/vi/references/programs.md",
+                "/vi/references/token.md",
+                "/vi/references/staking.md",
+                "/vi/references/nfts.md",
+                "/vi/references/offline-transactions.md",
+                "/vi/references/name-service.md",
+              ],
+            },
+          ],
+          "/vi/integrations": [
+            {
+              text: "Tích hợp",
+              children: [
+                "/vi/integrations",
+                "/vi/integrations/serum.md",
+                "/vi/integrations/pyth.md",
+                "/vi/integrations/switchboard.md",
+                "/vi/integrations/mango.md",
+                "/vi/integrations/strata.md",
+                "/vi/integrations/web3auth.md",
+                "/vi/integrations/react-native.md",
+                "/vi/integrations/jupiter.md",
+              ],
+            },
+          ],
+        },
+      },
     },
   },
   locales: {
@@ -225,6 +298,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/es/": {
       lang: "es",
       title: "Solana Cookbook",
+    },
+    "/vi/": {
+      lang: "vi-VN",
+      title: "Toàn tập Solana",
     },
   },
   markdown: {
@@ -249,6 +326,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/zh/": {
             placeholder: "搜索",
+          },
+          "/vi/": {
+            placeholder: "Tìm kiếm",
           },
         },
         maxSuggestions: 10,
@@ -283,6 +363,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "搜索文档",
+              },
+            },
+          },
+          "/vi/": {
+            placeholder: "Tìm kiếm",
+            translations: {
+              button: {
+                buttonText: "Tìm kiếm",
               },
             },
           },
