@@ -1,18 +1,18 @@
 ---
-title: Sending Offline Transactions
+title: Gửi Transactions Ngoại tuyến
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Toàn tập Solana | Gửi Transactions Ngoại tuyến
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Toàn tập Solana | Gửi Transactions Ngoại tuyến
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: Sau khi ký một Transaction ngoại tuyến, bất kỳ ai cũng có thể gửi nó lên trên mạng lưới. Tìm hiểu Gửi Transactions Ngoại tuyến và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: Sau khi ký một Transaction ngoại tuyến, bất kỳ ai cũng có thể gửi nó lên trên mạng lưới. Tìm hiểu Gửi Transactions Ngoại tuyến và nhiều tài liệu tham khảo khác cho lập trình Solana trong Toàn tập Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,12 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Offline Transaction
+# Transaction Ngoại tuyến
 
-## Sign Transaction
+## Ký Transaction
 
-To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+Để tạo một transaction ngoại tuyến, bạn phải ký lên transaction và sau đó bất kỳ ai đều có thể gửi transaction đó lên trên mạng lưới.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -62,18 +61,17 @@ anyone can broadcast it on the network.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Partial Sign Transaction
+## Ký một phần Transaction
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+Khi một transaction yêu cầu nhiều chữ ký, bạn có thể ký một phần của nó. Những chữ ký khác sẽ được ký sau đó và sẽ được gửi đi nếu đủ chữ ký cần thiết.
 
-Some examples of when this is useful:
+Một vài ví dụ khi nào bạn nên dùng:
 
-- Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
-- Call custom programs in a transaction that require your signature
+- Gửi một SPL token để thanh toán
+- Ký một transaction để bạn có thể kiểm tra tính đúng đắn của nó sau này
+- Gọi một program tuỳ chỉnh bằng một transaction yêu cầu chữ ký của bạn
 
-In this example Bob sends Alice an SPL token in return for her payment:
+Trong ví dụ này Bob sẽ gửi có Alice một SPL token thể thanh toán cho cô ấy:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,14 +91,14 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Durable Nonce
+## Nonce vĩnh viễn
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash` là một giá trị quan trọng cho một transaction. Transaction của bạn sẽ bị từ chối nếu bạn sử dụng một blockhash đã quá hạn (sau 150 blocks). Bạ có thể sử dụng `durable nonce` để có được một blockhash không bao giờ hết hạn. Để kích hoạt cơ chế, transaction của bạn phải
 
-1. use a `nonce` stored in `nonce account` as a recent blockhash
-2. put `nonce advance` operation in the first instruciton
+1. Sử dụng một `nonce` lưu trong `nonce account` như là blockhash hiện tại
+2. Đặt cơ chế `nonce advance` trong chỉ thị đầu tiên
 
-### Create Nonce Account
+### Tạo Nonce Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -120,7 +118,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Get Nonce Account
+### Truy vấn Nonce Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -140,7 +138,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Use Nonce Account
+### Sử dụng Nonce Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
