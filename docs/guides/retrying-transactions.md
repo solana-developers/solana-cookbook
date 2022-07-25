@@ -171,7 +171,7 @@ In the event that any of these three preflight checks fail, `sendTransaction` wi
 
 Despite all attempts to rebroadcast, there may be times in which a client is required to re-sign a transaction. Before re-signing any transaction, it is **very important** to ensure that the initial transaction’s blockhash has expired. If the initial blockhash is still valid, it is possible for both transactions to be accepted by the network. To an end-user, this would appear as if they unintentionally sent the same transaction twice.
 
-In Solana, a dropped transaction can be safely discarded once the blockhash it references is older than the `lastValidBlock` received from `getRecentBlockhash`. Developers can conveniently check this for a given blockhash via [isBlockhashValid](https://docs.solana.com/developing/clients/jsonrpc-api#isblockhashvalid). Once a blockhash is invalidated, clients may re-sign with a newly-queried blockhash.
+In Solana, a dropped transaction can be safely discarded once the blockhash it references is older than the `lastValidBlockHeight` received from `getLatestBlockhash`. Developers should keep track of this `lastValidBlockHeight` by querying [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) and comparing with `blockHeight` in the response. Once a blockhash is invalidated, clients may re-sign with a newly-queried blockhash.
 
 ## Acknowledgements
 
