@@ -71,7 +71,7 @@ tokens. The current v3 group is `mainnet.1`. Here's a table showing the various 
 
 
 :::tip Note
-If you wish to use the v2 groups, you'll have to use the v2 client library. You can find it [here](https://github.com/blockworks-foundation/mango-client-ts)
+If you wish to use the v2 groups, you'll have to use the v2 client library. You can find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-ts)
 :::
 
 
@@ -97,7 +97,7 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
 ## How to create a Mango Account
 
 A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
-you to trade that Group’s markets. You can find the reference [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
+you to trade that Group’s markets. You can find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -135,7 +135,7 @@ you to trade that Group’s markets. You can find the reference [here](https://b
 
 ## How to deposit USDC into a Mango Account
 After creating a mango account, you'll need to fund it with tokens for trading. 
-You can find the reference for the deposit method [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
+You can find the reference for the deposit method [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -157,9 +157,9 @@ You can find the reference for the deposit method [here](https://blockworks-foun
 
 ## How to place a spot order
 Mango interacts with Serum Protocol to place spot orders on markets. You can place a spot 
-order by doing this. You can find the reference for the placeSpotOrder function [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
+order by doing this. You can find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango has a config file that contains information on groups, markets, tokens and oracles, 
-you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
+you can find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -182,7 +182,7 @@ you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/
 ## How to load bids
 Mango uses the market information from Serum Protocol to load bids. You can load 
 them directly from Serum to work with on Mango. You can find out more about Serum's 
-markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -205,7 +205,7 @@ markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/se
 ## How to load asks
 Mango uses the market information from Serum Protocol to load asks. 
 You can load them directly from Serum to work with on Mango. You can find out more 
-about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+about Serum's markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

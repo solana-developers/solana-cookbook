@@ -42,7 +42,7 @@ Pyth is an Oracle used to get real-world financial and crypto market data. Pyth 
 
 ## How to use Pyth in Client
 
-Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [here](https://www.npmjs.com/package/@pythnetwork/client)
+Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [ที่นี่](https://www.npmjs.com/package/@pythnetwork/client)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

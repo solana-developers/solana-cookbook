@@ -43,7 +43,7 @@ Switchboard is an Oracle protocol that enables developers to source data on-chai
 ## Data Feeds
 
 Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
-. This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
+. This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [ที่นี่](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
 )
 
 ### Read data from an aggregator feed
@@ -94,7 +94,7 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 ### Read data from an aggregator feed in program
 Switchboard provides a crate called **switchboard_v2**
-Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
+Learn more about this [ที่นี่](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
 
 <SolanaCodeGroup>
@@ -118,7 +118,7 @@ Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v
 
 ### How to Create a Feed from the Publisher
 The official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
-Check it out [here](https://docs.switchboard.xyz/feed/publisher).
+Check it out [ที่นี่](https://docs.switchboard.xyz/feed/publisher).
 
 ## Oracles
 Switchboard's unique feature is that it allows you to create your own oracle and run it locally.

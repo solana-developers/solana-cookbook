@@ -48,7 +48,7 @@ footer: MIT Licensed
 
 คู่มือนี้ออกแบบมาให้ง่ายสำหรับนักพัฒนา Solana ที่จะร่วมกันเขียน ถึงแม้ว่าคุณจะยังไม่รู้ว่าจะทำอะไรยังไง การเริ่มจากช่วยกันเขียนก็เป็นการเริ่มต้นที่ดีนะ!
 
-ลองดู issues ที่เปิดอยู่ [here](https://github.com/solana-developers/solana-cookbook/issues). แนวทางการช่วยกัน [here](https://github.com/solana-developers/solana-cookbook#contributing). ถ้าคุณเจอว่าคู่มือเราขาดอะไรไป ก็เปิด issue ได้เลย
+ลองดู issues ที่เปิดอยู่ [ที่นี่](https://github.com/solana-developers/solana-cookbook/issues). แนวทางการช่วยกัน [ที่นี่](https://github.com/solana-developers/solana-cookbook#contributing). ถ้าคุณเจอว่าคู่มือเราขาดอะไรไป ก็เปิด issue ได้เลย
 
 ## วิธีอ่านคู่มือ
 

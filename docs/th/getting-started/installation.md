@@ -182,7 +182,7 @@ sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 You can replace `LATEST_RELEASE` with the release tag matching
 the software version of your desired release, or use one of the three symbolic
 channel names: `stable`, `beta`, or `edge`. To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+versions available [ที่นี่](https://github.com/solana-labs/solana/releases).
 
 The following output indicates a successful update:
 
@@ -262,7 +262,7 @@ installer into a temporary directory:
 curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-If `v1.9.16` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
+If `v1.9.16` is not your desired version, find the latest release [ที่นี่](https://github.com/solana-labs/solana/releases).
 
 Copy and paste the following command, then press Enter to install the latest
 version of Solana. If you see a security pop-up by your system, please select
@@ -273,7 +273,7 @@ C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
 To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+versions available [ที่นี่](https://github.com/solana-labs/solana/releases).
 
 When the installer is finished, press Enter.
 

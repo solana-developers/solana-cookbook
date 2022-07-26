@@ -87,7 +87,7 @@ All the possible tokens that can be swapped with jupiter for a given network is 
 
 ### Loading the Jupiter instance
 
-Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [here](https://docs.jup.ag/jupiter-core/full-guide)
+Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [ที่นี่](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -268,7 +268,7 @@ InputMint and OutputMint are state that is added in order for it to be  swapped 
 
 ### Using the useJupiter react hook
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [here](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
