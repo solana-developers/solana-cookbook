@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 On some occasions, a seemingly valid transaction may be dropped before it is included in a block. This most often occurs during periods of network congestion, when an RPC node fails to rebroadcast the transaction to the [leader](https://docs.solana.com/terminology#leader). To an end-user, it may appear as if their transaction disappears entirely. While RPC nodes are equipped with a generic rebroadcasting algorithm, application developers are also capable of developing their own custom rebroadcasting logic.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - RPC nodes will attempt to rebroadcast transactions using a generic algorithm

@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs can programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
@@ -74,6 +74,6 @@ When a PDA is generated, `findProgramAddress` will return both the address and t
 
 When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 - [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)

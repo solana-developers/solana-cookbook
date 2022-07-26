@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - Programs process [instructions](./transactions) from both end users and other programs
@@ -112,7 +112,7 @@ Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF 
 
 Once invoked, programs are executed by the Solana Runtime.
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Official Documentation](https://docs.solana.com/developing/on-chain-programs/overview)
 - [SPL Documentation](https://spl.solana.com/)

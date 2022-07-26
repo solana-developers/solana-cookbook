@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 Clients can invoke [programs](./programs.md) by submitting a transaction to a cluster. A single transaction can include multiple instructions, each targeting its own program. When a transaction is submitted, the Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) will process its instructions in order and atomically. If any part of an instruction fails, the entire transaction will fail.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - Instructions are the most basic operational unit on Solana
@@ -82,7 +82,7 @@ All transactions require at least one `writable` account to sign the transaction
 
 At the time of this writing, 50% of all transaction fees are collected by the validator that produces the block, while the remaining 50% are burned. This structure works to incentivize validators to process as many transactions as possible during their slots in the leader schedule.
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Official Documentation](https://docs.solana.com/developing/programming-model/transactions)
 - [Transaction Structure](https://solana.wiki/docs/solidity-guide/transactions/#solana-transaction-structure)

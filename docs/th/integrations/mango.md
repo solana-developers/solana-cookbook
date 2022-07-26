@@ -225,7 +225,7 @@ about Serum's markets [ที่นี่](https://github.com/project-serum/seru
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Client Libraries](https://docs.mango.markets/development-resources/client-libraries)
 - [Mango Docs](https://docs.mango.markets)

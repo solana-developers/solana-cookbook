@@ -409,7 +409,7 @@ A Transaction object is created and then its getting signed by the user.
 
 </SolanaCodeGroup>
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Main Docs](https://docs.jup.ag/)
 - [Jupiter Core Example Code](https://github.com/jup-ag/jupiter-core-example)

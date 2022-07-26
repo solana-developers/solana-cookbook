@@ -42,7 +42,7 @@ footer: MIT Licensed
 Accounts within Solana are used to store state. They are an essential
 building block for developing on Solana.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 
@@ -117,7 +117,7 @@ to vote accounts at the end of every slot.
 If the account does not have enough to pay rent, the account will be deallocated and the data
 removed.
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
 - [Official Documentation](https://docs.solana.com/developing/programming-model/accounts)

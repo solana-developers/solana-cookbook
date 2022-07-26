@@ -40,7 +40,7 @@ head:
 
 An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Parameters
 
@@ -162,7 +162,7 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
 
 By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
 - [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)

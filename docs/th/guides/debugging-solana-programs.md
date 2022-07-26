@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 There are a number of options and supporting tools for testing and debugging a Solana program.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug

@@ -42,7 +42,7 @@ footer: MIT Licensed
 When testing your program, assurances that it will run the same in various clusters is essential to both quality and
 producing expected outcomes.
 
-## Facts
+## เรื่องน่ารู้
 
 ::: tip Fact Sheet
 - Features are capabilities that are introduced to Solana validators and require activation to be used.

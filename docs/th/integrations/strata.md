@@ -135,7 +135,7 @@ on a dex. You can read more about these [ที่นี่](https://docs.strata
 
 </SolanaCodeGroup>
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create and manage Strata tokens
 - [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token using the GUI

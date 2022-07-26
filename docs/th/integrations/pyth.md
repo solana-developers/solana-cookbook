@@ -86,7 +86,7 @@ Pyth provides a Rust Crate which can be used by on-chain programs or off-chain a
 
 </SolanaCodeGroup>
 
-## Other Resources
+## แหล่งข้อมูลอื่น
 
 - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
 - [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)
