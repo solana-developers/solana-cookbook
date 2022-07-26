@@ -1,18 +1,18 @@
 ---
-title: Cooking with Solana
+title: Cooking กับ Solana
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Home to Solana References
+      content: คู่มือ Solana | แหล่งอ้างอิง Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Home to Solana References
+      content: คู่มือ Solana | แหล่งอ้างอิง Solana
   - - meta
     - name: description
-      content: The Solana cookbook is a collection of useful examples and references for building on Solana
+      content: คู่มือ Solana คือที่รวบรวมตัวอย่าง และข้อมูลอ้างอิงสำหรับการสร้างสิ่งต่างๆ บน Solana
   - - meta
     - name: og:description
-      content: The Solana cookbook is a collection of useful examples and references for building on Solana
+      content: คู่มือ Solana คือที่รวบรวมตัวอย่าง และข้อมูลอ้างอิงสำหรับการสร้างสิ่งต่างๆ บน Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,30 +37,25 @@ head:
 footer: MIT Licensed
 ---
 
-# Cooking with Solana
+# Cooking กับ Solana
 
-The *Solana Cookbook* is a developer resource that 
-provides the essential concepts and references for 
-building applications on Solana. Each concept and 
-reference will focus on specific aspects of Solana 
-development while providing additional details and usage 
-examples.
+*คู่มือ Solana* คือแหล่งข้อมูลสำหรับนักพัฒนา ที่จะให้แนวความคิดหลักๆ 
+และข้อมูลอ้างอิงสำหรับสร้าง applications บน Solana โดยแต่ละแนวความคิด
+และข้อมูลอ้างอิงจะเน้นในแต่ละมุมมองของการพัฒนา Solana โดยจะให้รายละเอียดเพิ่มเติม
+รวมไปถึงตัวอย่างการใช้งานอีกด้วย
 
-## Contributing
+## ร่วมกันเขียน
 
-The Cookbook is designed in a way that makes it easy for 
-new Solana developers to contribute. Even if you 
-don't know how to do something, contributing to the 
-cookbook is a great way to learn!
+คู่มือนี้ออกแบบมาให้ง่ายสำหรับนักพัฒนา Solana ที่จะร่วมกันเขียน ถึงแม้ว่าคุณจะยังไม่รู้ว่าจะทำอะไรยังไง การเริ่มจากช่วยกันเขียนก็เป็นการเริ่มต้นที่ดีนะ!
 
-Check out all open issues [here](https://github.com/solana-developers/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-developers/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
+ลองดู issues ที่เปิดอยู่ [here](https://github.com/solana-developers/solana-cookbook/issues). แนวทางการช่วยกัน [here](https://github.com/solana-developers/solana-cookbook#contributing). ถ้าคุณเจอว่าคู่มือเราขาดอะไรไป ก็เปิด issue ได้เลย
 
-## How to Read the Cookbook
+## วิธีอ่านคู่มือ
 
-The Solana Cookbook is split into different sections, each aimed at a different goal.
+คู่มือ Solana แบ่งเป็นหลายส่วน โดยแต่ละส่วนจะเน้นคนละเป้าหมายกัน
 
-| Section       | Description |
-|---------------|-----------------------------------------------------------------|
-| Core Concepts | Building blocks of Solana that are good to know for development |
-| Guides        | Snack-sized guides about different tools for development        |
-| References    | References to commonly needed code snippets                     |
+| ส่วน           | คำอธิบาย |
+|---------------|---------------------------------------|
+| แนวความคิดหลัก  | สร้างความรู้ที่ควรจะรู้สำหรับการพัฒนาบน Solana  |
+| แนวทาง        | แนวทางของแต่ละเครื่องมือสำหรับการพัฒนา       |
+| อ้างอิง         | ส่วนอ้างอิงที่มักจะมี code สั้นๆ อยู่ด้วย          |
