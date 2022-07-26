@@ -3,10 +3,10 @@ title: Feature Parity Testing
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Feature Parity Testing
+      content: คู่มือ Solana | Feature Parity Testing
   - - meta
     - name: og:title
-      content: Solana Cookbook | Feature Parity Testing
+      content: คู่มือ Solana | Feature Parity Testing
   - - meta
     - name: description
       content: Features vary by Solana cluster. Feature testing ensures predictable results.

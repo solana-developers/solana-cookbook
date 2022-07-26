@@ -3,10 +3,10 @@ title: Serum
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Building on Serum
+      content: คู่มือ Solana | Building on Serum
   - - meta
     - name: og:title
-      content: Solana Cookbook | Building on Serum
+      content: คู่มือ Solana | Building on Serum
   - - meta
     - name: description
       content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.

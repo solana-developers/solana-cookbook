@@ -3,10 +3,10 @@ title: Sending Offline Transactions
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: description
       content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.

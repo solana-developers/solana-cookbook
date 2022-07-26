@@ -1,18 +1,18 @@
 ---
-title: Installation
+title: การติดตั้ง
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Installation
+      content: คู่มือ Solana | การติดตั้ง
   - - meta
     - name: og:title
-      content: Solana Cookbook | Installation
+      content: คู่มือ Solana | การติดตั้ง
   - - meta
     - name: description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: เริ่มต้นเรียนรู้ Solana ด้วยแบบฝึกหัด, แนวทาง และตัวอย่าง.
   - - meta
     - name: og:description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: เริ่มต้นเรียนรู้ Solana ด้วยแบบฝึกหัด, แนวทาง และตัวอย่าง.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,15 +37,15 @@ head:
 footer: MIT Licensed
 ---
 
-## Install Web3.js
+## ติดตั้ง Web3.js
 
-There are a few libraries that you can use to get started with javascript or typescript on Solana.<br/>
+จะมี libraries บางตัวที่คุณสามารถใช้มันเริ่มเขียน javascript หรือ typescript บน Solana.<br/>
 
 ### Web3.js
 
-[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the blockchain.
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) คือ library ที่มีเครื่องมือพื้นฐานมากมายสำหรับการทำงานเบื้องต้น, ส่ง transactions, หรือเอาไว้อ่านข้อมูลจาก blockchain.
 
-You can install with the following:
+คุณสามาถติดตั้งได้ตามนี้:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +81,9 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-`@solana/spl-token` is a library that contains many of the javascript/typescript bindings needed to interact with SPL tokens.
-You can use this library to mint new SPL tokens, transfer tokens, and more.
+`@solana/spl-token` คือ library ที่ประกอบไปด้วย javascript/typescript ที่เอาไว้ทำงานกับ SPL tokens คุณสามารถใช้ library นี้ mint SPL tokens ใหม่, ส่ง token และอื่นๆ อีกมากมาย
 
-You can install this library with the following:
+คุณสามาถติดตั้ง library ได้ตามนี้:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -120,11 +119,11 @@ npm install --save @solana/spl-token
 
 ### Wallet-Adapter
 
-There is a collection of libraries that can help bootstrap wallet connections within Solana called wallet-adapter.
-Currently the package supports use within Svelte, Angular, Vue.js, and React. Wallet-adapter can quickstart your dApp
-integration with wallets like [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), and more.
 
-You can install this library with the following:
+จะมี libraries ที่ช่วยทำให้ wallet สามารถติดต่อกับ Solana เรียกว่า wallet-adapter
+ตอนนี้จะมี package รองรับการใช้งานร่วมกับ Svelte, Angular, Vue.js, และ React. Wallet-adapter จะช่วย dApp ให้ติดต่อกับ wallets อย่าง [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), และ wallets อื่นๆ 
+
+คุณสามาถติดตั้ง library ได้ตามนี้:
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -146,7 +145,7 @@ npm install --save @solana/wallet-adapter-wallets \
   </CodeGroupItem>
 </CodeGroup>
 
-## Install Rust
+## ติดตั้ง Rust
 
 <CodeGroup>
   <CodeGroupItem title="MACOS" active>
@@ -165,26 +164,24 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   </CodeGroupItem>
 </CodeGroup>
 
-For Windows, please visit the [Rust installation site](https://www.rust-lang.org/tools/install).
+สำหรับ Windows กรุณาไปที่ [Rust installation site](https://www.rust-lang.org/tools/install).
 
-## Install CLI
+## ติดตั้ง CLI
 
 ### macOS & Linux
 
-Open your favorite Terminal application.
+เปิด Terminal ของคุณขึ้นมา
 
-Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your machine by running:
+แล้วแทนที่ `LATEST_RELEASE` ด้วย version ที่คุณต้องการ และติดตั้ง [Solana release ล่าสุด](https://github.com/solana-labs/solana/releases) บนเครื่องของคุณด้วยการ run:
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-You can replace `LATEST_RELEASE` with the release tag matching
-the software version of your desired release, or use one of the three symbolic
-channel names: `stable`, `beta`, or `edge`. To find the latest release, check
-versions available [ที่นี่](https://github.com/solana-labs/solana/releases).
+คุณสามารถแทน `LATEST_RELEASE` ด้วย release tag ที่ตรงกับ version ที่คุณต้องการ หรือใช้ channel `stable`, `beta`, หรือ `edge` ก็ได้
+ถ้าอยากรู้ว่า release ล่าสุดคืออะไรลองไปดู [ที่นี่](https://github.com/solana-labs/solana/releases).
 
-The following output indicates a successful update:
+ถ้า update สำเร็จจะเจอ output แบบข้างล่างนี้ :
 
 ```text
 downloading LATEST_RELEASE installer
@@ -195,33 +192,29 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-Depending on your system, the end of the installer messaging may prompt you
-to
+ตอนติดตั้งขั้นสุดท้ายอาจจะมีข้อความยืนยัน ซึ่งจะแตกต่างกันไประหว่างระบบ
 
 ```bash
 Please update your PATH environment variable to include the solana programs:
 ```
 
-If you get the above message, copy and paste the recommended command below
-it to update `PATH`.
+ถ้าเจอข้อความนี้ ให้คัดลอก และวางคำสั่งตามที่ขึ้นแนะนำเพื่อที่จะ update `PATH`
 
-Confirm you have the desired version of `solana` installed by running:
+ลอง run คำสั่งนี้เพื่อยืนยันการติดตั้ง `solana` ว่า version ตรงกับที่ต้องการ:
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+หลังจากที่ติดตั้งสำเร็จแล้ว เราสามารถใช้คำสั่ง `solana-install update` เพื่อ update Solana เมื่อไหร่ก็ได้ตามต้องการ
 
 #### Downloading Binaries (Linux)
 
-Alternatively, you can install from binaries instead of using solana-install.
+นอกจากนี้ คุณยังสามารถติดตั้งจาก binaries แทนที่จะใช้ solana-install ได้ด้วย
 
-Download the binaries by navigating to
+ทำการโหลด binaries โดยไปที่
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, then extract the
-archive:
+โหลด **solana-release-x86_64-unknown-linux-msvc.tar.bz2** แล้วแตก archive:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -231,12 +224,11 @@ export PATH=$PWD/bin:$PATH
 
 #### Downloading Binaries (macOS)
 
-Alternatively, you can install from binaries instead of using solana-install.
+นอกจากนี้ คุณยังสามารถติดตั้งจาก binaries แทนที่จะใช้ solana-install ได้ด้วย
 
-Download the binaries by navigating to
+ทำการโหลด binaries โดยไปที่
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-apple-darwin.tar.bz2**, then extract the
-archive:
+โหลด **solana-release-x86_64-apple-darwin.tar.bz2**, แล้วแตก archive:
 
 ```bash
 tar jxf solana-release-x86_64-apple-darwin.tar.bz2
@@ -248,61 +240,52 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-Open a Command Prompt (`cmd.exe`) as an Administrator.
+เปิด Command Prompt (`cmd.exe`) ในฐานะ Administrator.
 
-Search for Command Prompt in the Windows search bar. When the Command
-Prompt app appears, right-click and select “Open as Administrator”.
-If you are prompted by a pop-up window asking “Do you want to allow this app to
-make changes to your device?”, click 'Yes'.
+ค้นหา Command Prompt ด้วย Windows search bar. เมื่อ Command
+Prompt app ปรากฏ, click ขวาและเลือก “Open as Administrator”.
+ถ้าเจอ pop-up ถามว่า “Do you want to allow this app to
+make changes to your device?”, ให้ตอบ 'Yes'.
 
-Copy and paste the following command, then press Enter to download the Solana
-installer into a temporary directory:
+คัดลอก และวางคำสั่งด้านล่าง และกด Enter เพื่อโหลด Solana installer ลงใน temporary directory:
 
 ```bash
 curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-If `v1.9.16` is not your desired version, find the latest release [ที่นี่](https://github.com/solana-labs/solana/releases).
+ถ้า `v1.9.16` ไม่ใช่ version ที่คุณต้องการ ให้ลองไปหา release อื่นๆ [ที่นี่](https://github.com/solana-labs/solana/releases).
 
-Copy and paste the following command, then press Enter to install the latest
-version of Solana. If you see a security pop-up by your system, please select
-to allow the program to run.
+คัดลอก และวางคำสั่งด้านล่าง และกด Enter เพื่อติดตั้ง Solana version ล่าสุด ถ้าเจอ pop-up ก็ให้เลือก allow เพื่อ run program
 
 ```bash
 C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
-To find the latest release, check
-versions available [ที่นี่](https://github.com/solana-labs/solana/releases).
+ถ้าต้องการหา release อื่นๆ ให้ไป [ที่นี่](https://github.com/solana-labs/solana/releases).
 
-When the installer is finished, press Enter.
+เมื่อติดตั้งสำเร็จให้กด Enter.
 
-Close the command prompt window and re-open a new command prompt window as a
-normal user.
+ปิดหน้าต่าง command prompt และเปิด command prompt ใหม่ในฐานะ user
 
-Search for "Command Prompt" in the search bar, then left-click on the
-Command Prompt app icon (no need to run as Administrator).
+ค้นหา Command Prompt ด้วย search bar กด click ซ้ายที่ Command Prompt app icon (ไม่ต้อง run ด้วย Administrator)
 
-Confirm you have the desired version of `solana` installed by entering:
+ลอง run คำสั่งนี้เพื่อยืนยันการติดตั้ง `solana` ว่า version ตรงกับที่ต้องการ:
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+หลังจากที่ติดตั้งสำเร็จแล้ว เราสามารถใช้คำสั่ง `solana-install update` เพื่อ update Solana เมื่อไหร่ก็ได้ตามต้องการ
 
 #### Downloading Binaries
 
-Alternatively, you can install from binaries instead of using solana-install.
+นอกจากนี้ คุณยังสามารถติดตั้งจาก binaries แทนที่จะใช้ solana-install ได้ด้วย
 
-Download the binaries by navigating to
+ทำการโหลด binaries โดยไปที่
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-pc-windows-msvc.tar.bz2**, then extract the
-archive using WinZip or similar.
+โหลด **solana-release-x86_64-pc-windows-msvc.tar.bz2**, แล้วแตก archive ด้วย WinZip หรือโปรแกรมอื่นๆ
 
-Open a Command Prompt and navigate to the directory into which you extracted
-the binaries and run:
+เปิด Command Prompt แล้วไปที่ directory ที่แตก archive ไว้แล้ว run คำสั่ง:
 
 ```bash
 cd solana-release/
@@ -311,19 +294,16 @@ set PATH=%cd%/bin;%PATH%
 
 ### Build From Source
 
-If you are unable to use the prebuilt binaries or prefer to build it yourself
-from source, navigate to
+ถ้าคุณไม่สามารถใช้ prebuilt binaries หรืออยากจะ build เองให้ไปที่ 
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-and download the **Source Code** archive. Extract the code and build the
-binaries with:
+และโหลด **Source Code** archive. แตก code ออกมา และ build binaries ด้วยคำสั่ง:
 
 ```bash
 ./scripts/cargo-install-all.sh .
 export PATH=$PWD/bin:$PATH
 ```
 
-You can then run the following command to obtain the same result as with
-prebuilt binaries:
+คุณสามารถ run คำสั่งด้านล่างเพื่อให้ได้ผลแบบเดียวกับ prebuilt binaries:
 
 ```bash
 solana-install init

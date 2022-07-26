@@ -3,10 +3,10 @@ title: Jupiter
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Swap tokens using Jupiter
+      content: คู่มือ Solana | Swap tokens using Jupiter
   - - meta
     - name: og:title
-      content: Solana Cookbook | Swap tokens using Jupiter
+      content: คู่มือ Solana | Swap tokens using Jupiter
   - - meta
     - name: description
       content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.

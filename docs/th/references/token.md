@@ -3,10 +3,10 @@ title: Interacting with Tokens
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Interacting with Tokens
+      content: คู่มือ Solana | Interacting with Tokens
   - - meta
     - name: og:title
-      content: Solana Cookbook | Interacting with Tokens
+      content: คู่มือ Solana | Interacting with Tokens
   - - meta
     - name: description
       content: Learn how to use, transfer, and more with tokens on Solana

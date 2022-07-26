@@ -3,10 +3,10 @@ title: Getting Started
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Composability and Integrations
+      content: คู่มือ Solana | Composability and Integrations
   - - meta
     - name: og:title
-      content: Solana Cookbook | Composability and Integrations
+      content: คู่มือ Solana | Composability and Integrations
   - - meta
     - name: description
       content: Composability is innovation. Building on top of protocols on Solana unlocks new capabilities and possibilities.
@@ -38,7 +38,7 @@ head:
 
 # Getting Started with Integrations
 
-The Solana Cookbook integrations provides a set of examples and references for anyone
+The คู่มือ Solana integrations provides a set of examples and references for anyone
 to build on top of other protocols on Solana. 
 
 The power of Solana comes from the ability to integrate with other protocols,

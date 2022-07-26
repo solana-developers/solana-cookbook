@@ -3,10 +3,10 @@ title: Pyth
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Using Pyth to get OnChain data
+      content: คู่มือ Solana | Using Pyth to get OnChain data
   - - meta
     - name: og:title
-      content: Solana Cookbook | Using Pyth to get OnChain data
+      content: คู่มือ Solana | Using Pyth to get OnChain data
   - - meta
     - name: description
       content: Pyth is an Oracle used to get real-word financial data onChain.

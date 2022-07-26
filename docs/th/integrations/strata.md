@@ -3,10 +3,10 @@ title: Strata
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Building on Strata Protocol
+      content: คู่มือ Solana | Building on Strata Protocol
   - - meta
     - name: og:title
-      content: Solana Cookbook | Building on Strata Protocol
+      content: คู่มือ Solana | Building on Strata Protocol
   - - meta
     - name: description
       content: Strata is a protocol for launching tokens on Solana. Learn how to use and build on top of Strata.

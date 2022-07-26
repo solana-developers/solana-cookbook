@@ -3,10 +3,10 @@ title: Transactions
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Transactions
+      content: คู่มือ Solana | Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Transactions
+      content: คู่มือ Solana | Transactions
   - - meta
     - name: description
       content: Transaction are bundles of Multiple operational units on Solana. Learn more about Transaction and Core Concepts at The Solana cookbook.

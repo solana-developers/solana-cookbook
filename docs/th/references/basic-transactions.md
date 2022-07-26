@@ -3,10 +3,10 @@ title: Sending Transactions
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Transactions
+      content: คู่มือ Solana | Sending Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Transactions
+      content: คู่มือ Solana | Sending Transactions
   - - meta
     - name: description
       content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.

@@ -3,10 +3,10 @@ title: Get Program Accounts
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Get Program Accounts
+      content: คู่มือ Solana | Get Program Accounts
   - - meta
     - name: og:title
-      content: Solana Cookbook | Get Program Accounts
+      content: คู่มือ Solana | Get Program Accounts
   - - meta
     - name: description
       content: Learn how to query data on Solana using getProgramAccounts and accountsDB

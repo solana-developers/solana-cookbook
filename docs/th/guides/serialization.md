@@ -3,10 +3,10 @@ title: Serializing Data
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Serializing Data
+      content: คู่มือ Solana | Serializing Data
   - - meta
     - name: og:title
-      content: Solana Cookbook | Serializing Data
+      content: คู่มือ Solana | Serializing Data
   - - meta
     - name: description
       content: Learn how to serialize and deserialize data on Solana

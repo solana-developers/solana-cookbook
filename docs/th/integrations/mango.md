@@ -3,10 +3,10 @@ title: Mango Markets
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Building on Mango Markets
+      content: คู่มือ Solana | Building on Mango Markets
   - - meta
     - name: og:title
-      content: Solana Cookbook | Building on Mango Markets
+      content: คู่มือ Solana | Building on Mango Markets
   - - meta
     - name: description
       content: Mango Markets offers the industry standard for decentralized, cross-margin trading. Learn how to use and build on top of Mango Markets.

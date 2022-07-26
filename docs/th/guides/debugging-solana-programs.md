@@ -3,10 +3,10 @@ title: Debugging Solana Programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: คู่มือ Solana | Debugging Solana Programs
   - - meta
     - name: og:title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: คู่มือ Solana | Debugging Solana Programs
   - - meta
     - name: description
       content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.

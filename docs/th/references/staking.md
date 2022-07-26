@@ -3,10 +3,10 @@ title: Staking
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Staking
+      content: คู่มือ Solana | Staking
   - - meta
     - name: og:title
-      content: Solana Cookbook | Staking
+      content: คู่มือ Solana | Staking
   - - meta
     - name: description
       content: stake SOL and earn rewards for helping secure the network.

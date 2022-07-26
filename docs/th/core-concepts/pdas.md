@@ -3,10 +3,10 @@ title: Program Derived Addresses (PDAs)
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | PDAs
+      content: คู่มือ Solana | PDAs
   - - meta
     - name: og:title
-      content: Solana Cookbook | PDAs
+      content: คู่มือ Solana | PDAs
   - - meta
     - name: description
       content: PDAs are home to accounts that are designed to be controlled by a specific program. Learn about PDAs and more Core Concepts at The Solana cookbook.

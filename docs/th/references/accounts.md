@@ -3,10 +3,10 @@ title: Accounts
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Account References
+      content: คู่มือ Solana | Account References
   - - meta
     - name: og:title
-      content: Solana Cookbook | Account References
+      content: คู่มือ Solana | Account References
   - - meta
     - name: description
       content: Learn more about accounts on Solana and how to use them in your programs.

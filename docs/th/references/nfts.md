@@ -3,10 +3,10 @@ title: NFTs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | NFTs
+      content: คู่มือ Solana | NFTs
   - - meta
     - name: og:title
-      content: Solana Cookbook | NFTs
+      content: คู่มือ Solana | NFTs
   - - meta
     - name: description
       content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more

@@ -3,10 +3,10 @@ title: Switchboard
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Using Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | Using Switchboard to create Onchain data feeds
   - - meta
     - name: og:title
-      content: Solana Cookbook | Using Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | Using Switchboard to create Onchain data feeds
   - - meta
     - name: description
       content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.

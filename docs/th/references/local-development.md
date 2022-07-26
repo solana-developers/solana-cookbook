@@ -3,10 +3,10 @@ title: Local Development
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Local Development
+      content: คู่มือ Solana | Local Development
   - - meta
     - name: og:title
-      content: Solana Cookbook | Local Development
+      content: คู่มือ Solana | Local Development
   - - meta
     - name: description
       content: Setup Local Validator for local developer environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana at The Solana cookbook.

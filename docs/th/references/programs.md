@@ -3,10 +3,10 @@ title: Writing Programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Solana Program References
+      content: คู่มือ Solana | Solana Program References
   - - meta
     - name: og:title
-      content: Solana Cookbook | Solana Program References
+      content: คู่มือ Solana | Solana Program References
   - - meta
     - name: description
       content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
