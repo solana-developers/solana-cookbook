@@ -82,7 +82,7 @@ footer: MIT Licensed
 
 ### Đúc NFT
 
-Nếu bạn đã đăng tải ảnh mà metadata, bạn có thể đúc NFT với đoạn mã bên dưới.
+Nếu bạn đã đăng tải ảnh và metadata, bạn có thể đúc NFT với đoạn mã bên dưới.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,7 +103,7 @@ Nếu bạn đã đăng tải ảnh mà metadata, bạn có thể đúc NFT vớ
 </SolanaCodeGroup>
 
 ::: tip Lưu ý
-Bạn không thể đúc một NFY với một người tạo khác ngoài ví của bạn. Nếu bạn gặp phải vấn đề người tạo, bạn nên đảm bảo rằng metadata liệt kê bạn là người tạo. 
+Bạn không thể đúc một NFT với một địa chỉ khác ngoài ví của bạn. Nếu bạn gặp phải vấn đề địa chỉ người tạo, bạn nên đảm bảo rằng metadata liệt kê bạn là người tạo hợp lệ. 
 :::
 
 ## Làm thế nào để truy vấn NFT Metadata
@@ -206,7 +206,7 @@ Nếu bạn đang sử dụng Candy Machine v2, bạn sẽ cần truy cập vào
 
 ## Làm thế nào để truy vấn tất cả NFT từ một ví?
 
-Khi truy vấn tất cả NFT từ một ví, bạn sẽ cần đọc tất cả token account và sau đó suy ra từng NFT một. Tất cả có thể thực hiện chỉ bằng hàm [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) từ thử viện Metaplex JS.
+Khi truy vấn tất cả NFT từ một ví, bạn sẽ cần đọc tất cả token account và sau đó suy ra từng NFT một. Tất cả có thể thực hiện chỉ bằng hàm [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) từ thư viện Metaplex JS.
  
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

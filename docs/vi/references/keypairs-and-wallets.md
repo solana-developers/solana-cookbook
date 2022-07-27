@@ -608,7 +608,7 @@ Thư viện [wallet-adapter](https://github.com/solana-labs/wallet-adapter) củ
 
 ### React
 
-Chạy đoạn mã bên dưới để cài đặt các thử viện cần thiết:
+Chạy đoạn mã bên dưới để cài đặt các thư viện cần thiết:
 
 ```/bin/bash
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
