@@ -4,9 +4,9 @@ import { getMint } from "@solana/spl-token";
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-  const mint = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+  const mintAccountPublicKey = new PublicKey("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
 
-  let mintAccount = await getMint(connection, mint);
+  let mintAccount = await getMint(connection, mintAccountPublicKey);
 
   console.log(mintAccount);
   /*
