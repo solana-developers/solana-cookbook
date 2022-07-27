@@ -1,1 +1,1 @@
-let mintAccount = await getMint(connection, mint);
+let mintAccount = await getMint(connection, mintAccountPublicKey);
