@@ -38,7 +38,7 @@ head:
 
 # React Native and Solana
 
-React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities. Powered with the Solana SDK, this is a great platform to quickly build performant native Crypto apps.
+React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling นักพัฒนา to use the React framework along with native platform capabilities. Powered with the Solana SDK, this is a great platform to quickly build performant native Crypto apps.
 
 The fastest way to start with React Native and Solana is by using the [Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native). 
 

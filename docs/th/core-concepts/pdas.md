@@ -52,7 +52,7 @@ Program Derived Addresses (PDAs) are home to accounts that are designed to be co
 - In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
 :::
 
-# Deep Dive
+# ลงลึก
 
 PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
 
@@ -72,7 +72,7 @@ In running our program id and seeds through a hash function, there is a ~50% cha
 
 When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program can then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
+When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows นักพัฒนา to easily validate a PDA without having to pass in the bump as an instruction argument.
 
 ## แหล่งข้อมูลอื่น
 - [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)

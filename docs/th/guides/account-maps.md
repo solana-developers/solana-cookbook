@@ -14,7 +14,7 @@ So, it would make sense to store your **values** in separate accounts, with its 
 
 * The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
 
-This presents a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+This presents a problem many Solana นักพัฒนา face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
 
 ## Deriving PDAs
 

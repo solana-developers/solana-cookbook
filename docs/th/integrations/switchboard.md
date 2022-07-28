@@ -38,7 +38,7 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables developers to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource developers can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
+Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
 
 ## Data Feeds
 

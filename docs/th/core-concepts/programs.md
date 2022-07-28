@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Programs
   - - meta
     - name: description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programs (ซึ่งก็คือ smart contracts) เป็นส่วนรากฐานของการทำงาน on-chain, เรียนรู้เกี่ยวกับ Programs และแนวคิดหลักๆ ได้ที่คู่มือ Solana
   - - meta
     - name: og:description
-      content: Programs (also known as smart contracts) serve as the foundation for on-chain activity. Learn about Programs and more Core Concepts at The Solana cookbook.
+      content: Programs (ซึ่งก็คือ smart contracts) เป็นส่วนรากฐานของการทำงาน on-chain, เรียนรู้เกี่ยวกับ Programs และแนวคิดหลักๆ ได้ที่คู่มือ Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,52 +39,53 @@ footer: MIT Licensed
 
 # Programs
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+
+นักพัฒนาสามารถเขียน และปล่อย (deploy) programs บน Solana blockchain. Programs (ซึ่งก็คือ smart contracts บน protocols อื่นๆ) เป็นส่วนรากฐานของการทำงาน on-chain, ทำได้ทุกอย่างตั้งแต่ DeFi และ NFTs จนไปถึง Social Media และ Gaming.
 
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- Programs process [instructions](./transactions) from both end users and other programs
-- All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
-- Programs themselves are stored in accounts marked as `executable`
-- All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Developers most commonly write programs in Rust or C++, but can choose any language that targets the [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) backend
-- All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`); parameters always include:
+- Programs ประมวลผล [instructions](./transactions) ทั้งที่มาจาก end users และมาจาก programs อื่นๆ
+- ทุกๆ programs จะเป็น *stateless*: และ data ที่มันทำงานด้วยจะถูกเก็บแยกไว้ที่ [accounts](./accounts.md) ที่ส่งผ่านมาทาง instructions
+- Programs จะถูกเก็บใน accounts ที่ระบุไว้ว่า `executable`
+- ทุกๆ programs จะมีเจ้าของคือ [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) และจะถูกดำเนินการ (executed) โดย [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
+- นักพัฒนาจะเขียน programs ด้วยภาษา Rust หรือ C++, แต่ก็สามารถเลือกภาษาใดๆ ก็ได้ที่ target [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) ได้
+- ทุกๆ programs จะมีทางเข้า  (entry point) ทางเดียว ซึ่งเป็นที่ที่ instruction จะถูกดำเนินการ(`process_instruction`); parameters จะต้องมีสิ่งเหล่านี้เสมอ:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
     - `instruction_data`: `byte array`
 :::
 
-## Deep Dive
+## ลงลึก
 
-Unlike most other blockchains, Solana completely separates code from data. All data that programs interact with are stored in separate accounts and passed in as references via instructions. This model allows for a single generic program to operate across various accounts without requiring additional deployments. Common examples of this pattern are seen across the Native and SPL Programs.
+Solana ไม่เหมือน blockchains อื่นๆ ตรงที่เราจะแยก code กับ data ออกจากกัน ทุกๆ data ที่ programs จะใช้จะถูกเก็บไว้ใน account อีกตัวแยกกัน และ programs จะรับเป็นชุดข้อมูลอ้างอิง (references) ไปถึง account เหล่านั้นผ่านรูปแบบชุดคำสั่ง (instructions) การทำแบบนี้จะทำให้ program สามารถทำงานข้าม หรือเรียกใช้ accounts ต่างๆ โดยไม่ต้อง deploy ใหม่ ตัวอย่างรูปแบบ (pattern) เหล่านี้สามารถเห็นได้ในทั้ง Native และ SPL Programs
 
-### Native Programs & The Solana Program Library (SPL)
+### Native Programs และ The Solana Program Library (SPL)
 
-Solana comes equipped with a number of programs that serve as core building blocks for on-chain interactions. These programs are divided into [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and [Solana Program Library (SPL) Programs](https://spl.solana.com/).
+Solana มาพร้อมกับ programs หลายตัวที่ใช้สำหรับการทำงาน on-chain. โดยที่ programs จะแบ่งเป็น [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) และ [Solana Program Library (SPL) Programs](https://spl.solana.com/).
 
-Native Programs provide the base functionality that is required to operate validators. Among these programs, the most well known is the [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) which is responsible for administering new accounts and transferring SOL between two parties.
+Native Programs มีไว้สำหรับการทำงานของ validators โดยตัวที่รู้จักกันมากคือ [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) ที่จะคอยรับผิดชอบดูแล accounts ใหม่ และส่ง(transfer) SOL ไปมา.
 
-SPL Programs support a number of on-chain activities, including creating, swapping, and lending tokens, as well as generating stake pools and maintaining an on-chain name service. The [SPL Token Program](https://spl.solana.com/token) can be invoked directly via the CLI, while others like the [Associated Token Account Program](https://spl.solana.com/associated-token-account) are usually composed with custom programs.
+SPL Programs มีไว้ทำงาน on-chain หลายอย่าง, ทั้งสร้าง (creating), สลับ (swapping), และเช่า (lending) โทเคน (tokens), และยังมีไว้สร้าง stake pools และดูแล on-chain name service อีกด้วย โดย [SPL Token Program](https://spl.solana.com/token) จะสามารถเรียกใช้ (invoke) ได้โดยตรงผ่าน CLI, ในขณะที่  [Associated Token Account Program](https://spl.solana.com/associated-token-account) จะถูกประกอบขึ้นมาด้วย programs ที่ทำขึ้นมาเอง.
 
-### Writing Programs
+### เขียน Programs
 
-Programs are most commonly developed with Rust or C++, but can be developed with any language that targets the LLVM’s BPF backend. Recent initiatives by [Neon Labs](https://neon-labs.org/) and [Solang](https://solang.readthedocs.io/en/latest/) enable [EVM](https://ethereum.org/en/developers/docs/evm/) compatibility and allow developers to write programs in Solidity.
+Programs ส่วนใหญ่จะเขียนด้วย Rust หรือ C++, แต่ก็สามารถเลือกภาษาใดๆ ก็ได้ที่ target LLVM’s BPF ได้ นอกจากนี้จากความร่วมมือของ [Neon Labs](https://neon-labs.org/) และ [Solang](https://solang.readthedocs.io/en/latest/) ทำให้สามารถสนับสนุน [EVM](https://ethereum.org/en/developers/docs/evm/) ซึ่งทำให้นักพัฒนาสามารถเขียน programs ด้วย Solidity ได้.
 
-Most Rust-based programs adhere to the following architecture:
+programs ที่เขียนด้วย Rust จะยึดโครงสร้างนี้:
 
-| File           | Description                                   |
+| ไฟล์ (File)     | คำอธิบาย                                       |
 |----------------|-----------------------------------------------|
-| lib.rs         | Registering modules                           |
-| entrypoint.rs  | Entrypoint to the program                     |
+| lib.rs         | ลงทะเบียน modules                              |
+| entrypoint.rs  | ทางเข้า (Entrypoint) ของ program               |
 | instruction.rs | Program API, (de)serializing instruction data |
 | processor.rs   | Program logic                                 |
 | state.rs       | Program objects, (de)serializing state        |
 | error.rs       | Program-specific errors                       |
 
-Recently, [Anchor](https://github.com/coral-xyz/anchor) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
+ในตอนนี้, [Anchor](https://github.com/coral-xyz/anchor) เป็น framework ที่นิยมสำหรับพัฒนา programs. Anchor คือ framework ที่มีแนวทางชัดเจน (opinionated), คล้ายกับ Ruby on Rails ที่ลดการเขียนอะไรซ้ำๆ และช่วยให้การแกะ (de)serialization สะดวกขึ้นสำหรับการพัฒนาด้วย Rust.
 
-Programs are usually developed and tested against Localhost and Devnet environments before being deployed to Testnet or Mainnet. Solana supports the following environments:
+Programs ปกติแล้วจะถูกพัฒนา (dev) และทดสอบ(test) บนสิ่งแวดล้อม(environments) Localhost และ Devnet ก่อนที่จะ deploy ไปบน Testnet หรือ Mainnet. Solana จะสนับสนุน environments ต่อไปนี้:
 
 | Cluster Environment  | RPC Connection URL                                                        |
 |----------------------|---------------------------------------------------------------------------|
@@ -93,24 +94,24 @@ Programs are usually developed and tested against Localhost and Devnet environme
 | Devnet               | https://api.devnet.solana.com                                             |
 | Localhost            | Default port: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
 
-Once deployed to an environment, clients can interact with on-chain programs via [RPC connections](https://docs.solana.com/developing/clients/jsonrpc-api) to the respective cluster.
+เมื่อ deployed ไปบน environment แล้วผู้ใช้ (clients) จะสามารถใช้งาน on-chain programs ผ่าน [RPC connections](https://docs.solana.com/developing/clients/jsonrpc-api) ไปที่ cluster ตามที่เลือกไว้.
 
 ### Deploying Programs
 
-Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program):
+นักพัฒนาสามารถ deploy programs ผ่าน [CLI](https://docs.solana.com/cli/deploy-a-program):
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (containing BPF bytecode) and uploaded to the Solana cluster. Programs live in accounts (much like everything else on Solana), except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
+เมื่อ program ถูก deploy ไปแล้ว, มันจะถูกแปลง (compile) เป็น [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (ประกอบไปด้วย BPF bytecode) และถูก upload ไปที่ Solana cluster. Programs จะอยู่ใน accounts (บน Solana ทุกอย่างอยุ่ใน accounts), ต่างตรงที่ accounts นี้จะมีสถานะ `executable` และถูกมอบหมายให้ BPF Loader. ที่อยู่ (address) ของ account เหล่านี้จะถูกเรียกว่า `program_id` และจะเอาไว้อ้างอิงในการทำ transactions ต่อไป.
 
-Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader is responsible for administering the program’s account and making it available to clients via the `program_id`. All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`) and parameters always include:
+Solana สนับสนุน BPF Loaders หลายแบบ, เช่น [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader จะรับผิดชอบดูแล program’s account และทำให้ clients ใช้ได้ผ่าน `program_id`. ทุก programs มี entry point ทางเดียว และเป็นที่ประมวลผล instruction (`process_instruction`) และ parameters ที่จะต้องมีเสมอคือ:
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`
 
-Once invoked, programs are executed by the Solana Runtime.
+เมื่อเกิดการเรียกใช้ (invoke) programs มันจะถูกดำเนินการ (execute) โดย Solana Runtime.
 
 ## แหล่งข้อมูลอื่น
 

@@ -71,7 +71,7 @@ By default `getProgramAccounts` will return an array of JSON objects with the fo
     - `rentEpoch`: `number`, The epoch at which this account will next owe rent
 :::
 
-## Deep Dive
+## ลงลึก
 
 `getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
 

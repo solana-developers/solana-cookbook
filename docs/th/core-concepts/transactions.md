@@ -60,7 +60,7 @@ Clients can invoke [programs](./programs.md) by submitting a transaction to a cl
 - Transactions are limited to 1232 bytes
 :::
 
-## Deep Dive
+## ลงลึก
 
 The Solana Runtime requires both instructions and transactions to specify a list of all accounts they intended to read from or write to. By requiring these accounts in advance, the runtime is able to parallelize execution across all transactions.
 
