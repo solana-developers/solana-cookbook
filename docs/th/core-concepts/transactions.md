@@ -66,7 +66,7 @@ Solana Runtime ต้องการให้ทั้ง instructions และ
 
 เมื่อ transaction ถูก submit ไปที่ cluster แล้ว, ตัว runtime จะ process instructions ตามลำดับ และทำในระดับ atomic. สำหรับแต่ละ instruction,  program ที่รับไปจะแปล (interpret) data array และทำงานบน accounts ที่กำหนดไว้. program จะส่งผลสำเร็จ หรือความผิดพลาด (error code) กลับมา. ถ้าส่ง error กลับมา ทั้ง transaction จะ fail ทันที.
 
-transaction ที่เป็นการถอนเงิน (debit) จาก account หรือจะแก้ไข data จะต้องมี signature ของเจ้าของ account นั้นส่งมาด้วย. account ไหนที่สามารถเขียนได้ จะถูกระบุไว้ว่า `writable`. account สามารถรับเงิน (credited) โดยไม่ต้องได้รับอณุญาติจากเจ้าของ ทั้งนี้คนจ่าย (payer)ได้จ่ายครอบคลุมค่า rent และ transaction fees ไปแล้ว.
+transaction ที่เป็นการถอนเงิน (debit) จาก account หรือจะแก้ไข data จะต้องมี signature ของเจ้าของ account นั้นส่งมาด้วย. account ไหนที่สามารถเขียนได้ จะถูกระบุไว้ว่า `writable`. account สามารถรับเงิน (credited) โดยไม่ต้องได้รับอนุญาตจากเจ้าของ ทั้งนี้คนจ่าย (payer)ได้จ่ายครอบคลุมค่า rent และ transaction fees ไปแล้ว.
 
 ก่อนการ submission, ทุก transactions จะต้องอ้างไปที่ [recent blockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash). โดยที่ blockhash จะใช้ในการป้องกันการส่ง transactions ซ้ำ และ transactions ที่เก่าเกินไป. จำนวนสูงสุดของ  transaction's blockhash คือ 150 blocks, หรือประมาณ ~1 นาที 19 วินาที ในเวลาตอนที่เขียนนี้.
 

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | PDAs
   - - meta
     - name: description
-      content: PDAs are home to accounts that are designed to be controlled by a specific program. Learn about PDAs and more Core Concepts ได้ที่คู่มือ Solana.
+      content: PDAs คือสิ่งที่เชื่อมโยงกับ accounts ที่ออกแบบมาให้ถูกควบคุมโดย program ที่ระบุไว้. เรียนรู้เกี่ยวกับ PDAs และแนวคิดหลักๆ ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: PDAs are home to accounts that are designed to be controlled by a specific program. Learn about PDAs and more Core Concepts ได้ที่คู่มือ Solana.
+      content: PDAs คือสิ่งที่เชื่อมโยงกับ accounts ที่ออกแบบมาให้ถูกควบคุมโดย program ที่ระบุไว้. เรียนรู้เกี่ยวกับ PDAs และแนวคิดหลักๆ ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,40 +39,40 @@ footer: MIT Licensed
 
 # Program Derived Addresses (PDAs)
 
-Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs สามารถ programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
+Program Derived Addresses (PDAs) คือสิ่งที่เชื่อมโยงกับ accounts ที่ออกแบบมาให้ถูกควบคุมโดย program ที่ระบุไว้. ถ้ามี PDAs ตัว programs ก็จะสามารถ  sign ได้ด้วย program (programmatically sign) สำหรับ addresses ที่เจาะจงไว้โดยไม่ต้องใช้ private key. PDAs มีไว้เพื่อทำ CPI [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), โดยจะอนุญาต Solana apps ให้สามารถ ใช้งานร่วมกัน (composable) ​กับ program อื่นๆ ได้.
 
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
-- `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
-- A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve
-- Programs สามารถ sign for their PDAs by providing the seeds and bump to [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
-- A PDA สามารถ only be signed by the program from which it was derived
-- In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
+- PDAs คือ 32 byte strings ที่ดูเหมือน public keys, แต่จะไม่มี private keys
+- `findProgramAddress` จะสามารถสืบทอด(derive) แบบ deterministic เป็น PDA จาก programId และ seeds (ชุดของ bytes)
+- bump (1 byte) จะเอาไว้เพิ่มโอกาสที่ PDA จะหลุดจาก ed25519 elliptic curve
+- Programs สามารถ sign ให้ PDAs ได้ด้วยการเตรียม seeds และ bump ไว้เพื่อใช้ในการ [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
+- PDA สามารถ sign ด้วย program ที่มัน derived มาเท่านั้น
+- ในการที่จะทำให้ programs สามารถ sign ใน instructions ที่ต่างกัน, PDAs จะต้องเตรียม interface คล้ายๆ hashmap สำหรับ [indexing accounts](../guides/account-maps.md)
 :::
 
 # ลงลึก
 
-PDAs are an essential building block for developing programs on Solana. With PDAs, programs สามารถ sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs สามารถ also modify accounts held at their PDAs.
+PDAs คือส่วนสำคัญในการพัฒนา programs บน Solana. ถ้ามี PDAs, programs ก็จะสามารถ sign แทน accounts ในขณะที่รับประกันได้ว่าจะไม่มี user อื่นมาสร้าง signature ที่เหมือนกันได้. นอกจากที่จะ sign แทน account ได้แล้ว บาง programs ยังสามารถเปลี่ยนแปลง accounts ที่มันถือ PDAs ไว้ได้ด้วย
 
 ![Accounts matrix](./account-matrix.png)
 
 <small style="text-align:center;display:block;">Image courtesy of <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
 
-### Generating PDAs
+### การสร้าง PDAs
 
-To understand the concept behind PDAs, it may be helpful to consider that PDAs are not technically created, but rather found. PDAs are generated from a combination of seeds (such as the string `“vote_account”`) and a program id. This combination of seeds and program id is then run through a sha256 hash function to see whether or not they generate a public key that lies on the ed25519 elliptic curve.
+เพื่อที่จะเข้าใจหลักการเบื้องหลัง PDAs, เราอาจจะต้องเข้าใจก่อนว่า PDAs จริงๆ แล้วไม่ได้ถูกสร้างขึ้นมาแต่เป็นการค้นหาจนเจอ. PDAs เกิดจากการผสม seeds (เช่น `“vote_account”`) และ program id. การผสมกันของ seeds และ program id จะ run ผ่าน sha256 hash function เพื่อดูว่า public key นั้นตกอยู่บน ed25519 elliptic curve หรือไม่.
 
-In running our program id and seeds through a hash function, there is a ~50% chance that we actually end up with a valid public key that does lie on the elliptic curve. In this case, we simply add something to fudge our input a little bit and try again. The technical term for this fudge factor is a bump. In Solana, we start with bump = 255 and simply iterate down through bump = 254, bump = 253, etc. until we get an address that is not on the elliptic curve. This may seem rudimentary, but once found it gives us a deterministic way of deriving the same PDA over and over again. 
+ในการ run program id และ seeds ผ่าน hash function จะมีความเป็นไปได้ประมาณ ~50% ที่จะได้ valid public key ที่ตกอยู่บน elliptic curve. ในกรณีนี้ จะเพิ่มอะไรบางอย่างเพื่อแกล้ง (fudge) ให้ input ขยับไปนิดหน่อยแล้วก็ลองใหม่อีกครั้ง. ศัพท์ทางเทคนิคของการ fudge นี้ก็คือ bump. ใน Solana, เราจะเริ่มด้วย bump = 255 และค่อยๆ ลดลงเป็น bump = 254, bump = 253, เรื่อยๆ จนเราได้ address ที่ไม่อยู่บน elliptic curve. นี่อาจจะฟังดูง่ายๆ แต่เมื่อมันเจอ address มันก็จะเป็นวิธีในแบบ deterministic ที่จะสามารถ derive PDA เดิมออกมาได้. 
 
 ![PDA on the ellipitic curve](./pda-curve.png)
 
-### Interacting with PDAs
+### ใช้งาน PDAs
 
-When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program สามารถ then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
+เมื่อ PDA ถูกสร้างมาแล้ว, `findProgramAddress` จะคืน address และ bump ที่ใช้เตะ address ออกจาก elliptic curve. ถ้ามี bump นี้, program ก็จะสามารถ [sign](../references/accounts.md#sign-with-a-pda) instruction ใดๆที่ต้องการ PDA. ในการที่จะ sign, ตัว programs ต้องส่ง instruction, list ของ accounts, และ seeds กับ bump ที่ใช้ derive ตัว PDA ไป `invoke_signed`. นอกจากนี้ในการ sign สำหรับ instructions, PDAs จะต้อง sign ผ่าน `invoke_signed` ด้วย.
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows นักพัฒนา to easily validate a PDA without having to pass in the bump as an instruction argument.
+เมื่อจะใช้ PDAs, มันเป็นเรื่องปกติที่จะต้อง [เก็บ bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) ไว้ใน account data นั้นๆ ด้วย. มันจะทำให้นักพัฒนาสามารถตรวจสอบ PDA ได้ง่ายขึ้นโดยไม่ต้องส่ง bump มาใน instruction argument.
 
 ## แหล่งข้อมูลอื่น
 - [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
