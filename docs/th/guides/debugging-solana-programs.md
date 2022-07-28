@@ -44,10 +44,10 @@ There are a number of options and supporting tools for testing and debugging a S
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
+- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you สามารถ test and debug
 your program interactively (e.g. in vscode).
 - The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
-testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
+testing that occurs on a **_local validator node_**. You สามารถ run from the editor **_but breakpoints in the
 program are ignored_**.
 - The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
 command line Rust applications or Javascript/Typescript applications using web3.
@@ -84,12 +84,12 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 2. Set a breakpoint on the programs `msg!` line (11)
 3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
-now you can examine data, step through functions, etc., etc..
+now you สามารถ examine data, step through functions, etc., etc..
 
 These tests are also run from the command line with:
 `cargo test` or `cargo test-bpf`. Of course any breakpoints will be ignored.
 
-How groovy can you get!
+How groovy สามารถ you get!
 
 :::tip Note
 Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
@@ -136,7 +136,7 @@ not breakpoint in your program.
 The bee's knees eh?
 
 ## Local Validator Node Testing from Client Apps
-Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
+Lastly, you สามารถ start a local validating node and load your program and any accounts using the `solana-test-validator`
 from the command line.
 
 In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
@@ -147,7 +147,7 @@ See `solana-test-validator --help` for more details and options. For the example
 2. Run `solana config set -ul` to set the configuration to point to local
 3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
 4. Open another terminal and run `solana logs` to start the log streamer
-5. You can then run your client program and observe program output in the terminal where you started the log streamer
+5. You สามารถ then run your client program and observe program output in the terminal where you started the log streamer
 
 Now that is the cat's pajamas YO!
 

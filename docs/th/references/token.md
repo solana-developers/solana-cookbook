@@ -44,7 +44,7 @@ footer: MIT Licensed
 Every time you interact with tokens on Solana, you are actually
 interacting with the Solana Program Library Token, or SPL-Token
 standard. The SPL-Token standard requires a specific library to
-be used, which you can find below based on your language.
+be used, which you สามารถ find below based on your language.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -155,7 +155,7 @@ mint, amount(balance), and decimals.
 
 ## How to get a token account's balance
 
-The token account has the token balance, which can be retrieved with a
+The token account has the token balance, which สามารถ be retrieved with a
 single call.
 
 <SolanaCodeGroup>
@@ -194,7 +194,7 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token
+A token account สามารถ only hold one kind of mint. When you specify a token
 account, you also specific a mint too.
 :::
 
@@ -223,7 +223,7 @@ to a specific token account.
 
 ## How to transfer tokens
 
-You can transfer tokens from one token account to another token account.
+You สามารถ transfer tokens from one token account to another token account.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -245,7 +245,7 @@ You can transfer tokens from one token account to another token account.
 
 ## How to burn tokens
 
-You can burn token if you are the token owner.
+You สามารถ burn token if you are the token owner.
 
 
 <SolanaCodeGroup>
@@ -268,11 +268,11 @@ You can burn token if you are the token owner.
 
 ## How to close token accounts
 
-You can close a token account if you don't want to use it anymore.
+You สามารถ close a token account if you don't want to use it anymore.
 There are two situations:
 
 1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You can close it only if token account's balance is 0.
+2. Other Tokens - You สามารถ close it only if token account's balance is 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -294,7 +294,7 @@ There are two situations:
 
 ## How to set authority on token accounts or mints
 
-You can set/update authority. There are 4 types:
+You สามารถ set/update authority. There are 4 types:
 
 1. MintTokens (mint account)
 2. FreezeAccount (mint account)
@@ -321,7 +321,7 @@ You can set/update authority. There are 4 types:
 
 ## How to approve a token delegate
 
-You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+You สามารถ set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account สามารถ only delegate to one account at the same time`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -422,7 +422,7 @@ There are two ways to add balance for Wrapped SOL
 
 ## How to get all token accounts by owner
 
-You can fetch token accounts by owner. There are two ways to do it.
+You สามารถ fetch token accounts by owner. There are two ways to do it.
 
 1. Get All Token Account
 

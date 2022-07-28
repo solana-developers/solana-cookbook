@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Local Development
   - - meta
     - name: description
-      content: Setup Local Validator for local นักพัฒนา environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: Setup Local Validator for local นักพัฒนา environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,10 +41,10 @@ footer: MIT Licensed
 
 ## Starting a Local Validator
 
-Testing your program code locally can be a lot more reliable than
-testing on devnet, and can help you test before trying it out on devnet.
+Testing your program code locally สามารถ be a lot more reliable than
+testing on devnet, and สามารถ help you test before trying it out on devnet.
 
-You can setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
+You สามารถ setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
 and running
 
 ```console
@@ -134,7 +134,7 @@ environments:
 
 </SolanaCodeGroup>
 
-Finally, you can also connect to a private cluster, either one local or
+Finally, you สามารถ also connect to a private cluster, either one local or
 running remotely with the following:
 
 <SolanaCodeGroup>
@@ -204,7 +204,7 @@ running remotely with the following:
 
 ## Subscribing to Events
 
-Websockets provide a pub/sub interface where you can listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can instead receive those updates only when they happen.
+Websockets provide a pub/sub interface where you สามารถ listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you สามารถ instead receive those updates only when they happen.
 
 Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint and registers a websocket client when you create a new `Connection` instance (see source code [ที่นี่](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
@@ -263,7 +263,7 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
 ## Getting Test SOL
 
 When you're working locally, you need some SOL in order to send
-transactions. In non-mainnet environments you can receive SOL by
+transactions. In non-mainnet environments you สามารถ receive SOL by
 airdropping it to your address
 
 <SolanaCodeGroup>

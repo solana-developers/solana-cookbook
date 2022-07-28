@@ -38,12 +38,12 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
+Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา สามารถ invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
 
 ## Data Feeds
 
 Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
-. This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [ที่นี่](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
+. This library สามารถ be used to reach On-chain data from existing data feeds or publish your own custom feeds. เรียนรู้เกี่ยวกับ this [ที่นี่](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
 )
 
 ### Read data from an aggregator feed
@@ -94,7 +94,7 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 ### Read data from an aggregator feed in program
 Switchboard provides a crate called **switchboard_v2**
-Learn more about this [ที่นี่](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
+เรียนรู้เกี่ยวกับ this [ที่นี่](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
 
 <SolanaCodeGroup>
@@ -144,7 +144,7 @@ Switchboard's unique feature is that it allows you to create your own oracle and
 </SolanaCodeGroup>
 
 ### Run an oracle locally
-You can run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
+You สามารถ run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
 
 #### Requirements
  - Docker-compose

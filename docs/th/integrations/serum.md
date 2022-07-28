@@ -69,7 +69,7 @@ are working with.
 ## How to get Serum order books
 
 Serum markets consist of orderbooks which have bids and asks. You can
-query this information so you can see what is going on on the market and
+query this information so you สามารถ see what is going on on the market and
 act accordingly.
 
 <SolanaCodeGroup>
@@ -94,7 +94,7 @@ act accordingly.
 ## How to get current open orders
 
 As a trader, you will want to know what current open orders you have
-on a market. You can query your or anyone else's open orders on a market
+on a market. You สามารถ query your or anyone else's open orders on a market
 with Serum.
 
 <SolanaCodeGroup>

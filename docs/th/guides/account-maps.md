@@ -6,7 +6,7 @@ title: Account Maps
 
 Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [ที่นี่][AccountCookbook].
+Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! เรียนรู้เกี่ยวกับ Solana's Account mode [ที่นี่][AccountCookbook].
 
 So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
 
@@ -20,7 +20,7 @@ This presents a problem many Solana นักพัฒนา face, which is impl
 
 PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, can sign an instruction with the key, provided the seeds as well. Learn more about this [ที่นี่][CPI].
+The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, สามารถ sign an instruction with the key, provided the seeds as well. เรียนรู้เกี่ยวกับ this [ที่นี่][CPI].
 
 Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
 
@@ -69,7 +69,7 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+On the client-side, you สามารถ use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you สามารถ pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -96,11 +96,11 @@ Another way to implement mapping would be to have a `BTreeMap` data structure ex
 
 This method of mapping accounts is not ideal because of the following reasons,
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* You will have to first initialize the account storing the `BTreeMap`, before you สามารถ insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
 
-* There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
+* There are memory limitations to an account, where an account สามารถ have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
 
-Hence, after considering your use-case, you can implement this method as shown below,
+Hence, after considering your use-case, you สามารถ implement this method as shown below,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>

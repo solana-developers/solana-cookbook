@@ -39,10 +39,10 @@ head:
 # Strata
 
 Strata is a protocol for launching tokens built on Solana. 
-You can use Strata to launch any kind of fungible token, ranging from social tokens to dao and gamefi tokens.
-You can also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
+You สามารถ use Strata to launch any kind of fungible token, ranging from social tokens to dao and gamefi tokens.
+You สามารถ also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
 
-More in-depth docs are available [ที่นี่](docs.strataprotocol.com). You can also use the gui at [Strata Launchpad](app.strataprotocol.com)
+More in-depth docs are available [ที่นี่](docs.strataprotocol.com). You สามารถ also use the gui at [Strata Launchpad](app.strataprotocol.com)
 
 ## How to create a fully managed token
 
@@ -112,8 +112,8 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 ## How to bootstrap liquidity
 
-Strata can also sell tokens where you would like to manually manage the supply. This can be useful for liquidity bootstrapping before listing your token
-on a dex. You can read more about these [ที่นี่](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
+Strata สามารถ also sell tokens where you would like to manually manage the supply. This สามารถ be useful for liquidity bootstrapping before listing your token
+on a dex. You สามารถ read more about these [ที่นี่](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
 
 
 <SolanaCodeGroup>

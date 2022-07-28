@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions and references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions and references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -42,7 +42,7 @@ footer: MIT Licensed
 ## Sign Transaction
 
 To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+anyone สามารถ broadcast it on the network.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -64,13 +64,13 @@ anyone can broadcast it on the network.
 
 ## Partial Sign Transaction
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+When a transaction requires multiple signatures, you สามารถ partially sign it.
+The other signers สามารถ then sign and broadcast it on the network.
 
 Some examples of when this is useful:
 
 - Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
+- Sign a transaction so that you สามารถ later verify its authenticity
 - Call custom programs in a transaction that require your signature
 
 In this example Bob sends Alice an SPL token in return for her payment:
@@ -95,7 +95,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
 
 ## Durable Nonce
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You สามารถ use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
 
 1. use a `nonce` stored in `nonce account` as a recent blockhash
 2. put `nonce advance` operation in the first instruciton

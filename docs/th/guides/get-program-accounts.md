@@ -73,41 +73,41 @@ By default `getProgramAccounts` will return an array of JSON objects with the fo
 
 ## ลงลึก
 
-`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
+`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We สามารถ use `getProgramAccounts` for a number of useful queries, such as finding:
 
 - All token accounts for a particular wallet
 - All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
 - All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
 
-Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope can result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
+Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope สามารถ result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
 
-To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
+To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we สามารถ reduce the scope of our queries down to manageable and predictable sizes.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we สามารถ efficiently request just the data we intend to use.
 
 ### `filters`
 The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
 
 #### `dataSize`
-In the case of the Token Program, we can see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We can visualize how this data is laid out using the below illustration.
+In the case of the Token Program, we สามารถ see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We สามารถ visualize how this data is laid out using the below illustration.
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We can achieve this with the `memcmp` filter.
+If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We สามารถ achieve this with the `memcmp` filter.
 
 #### `memcmp`
-The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we can query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
+The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we สามารถ query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
 
 - `offset`: The position at which to begin comparing data. This position is measured in bytes and is expressed as an integer.
 - `bytes`: The data that should match the account's data. This is represented as a base-58 encoded string should be limited to less than 129 bytes.
 
 It's important to note that `memcmp` will only return results that are an exact match on `bytes`. Currently, it does not support comparisons for values that are less than or greater than the `bytes` we provide.
 
-In keeping with our Token Program example, we can amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we can see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
+In keeping with our Token Program example, we สามารถ amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we สามารถ see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-We can invoke this query via the following example:
+We สามารถ invoke this query via the following example:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,7 +160,7 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   </CodeGroupItem>
 </CodeGroup>
 
-By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
+By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we สามารถ limit the scope of our query and efficiently return only the data we’re interested in.
 
 ## แหล่งข้อมูลอื่น
 

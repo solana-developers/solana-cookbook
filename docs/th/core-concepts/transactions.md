@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Transactions
   - - meta
     - name: description
-      content: Transaction are bundles of Multiple operational units on Solana. Learn more about Transaction and Core Concepts at The Solana cookbook.
+      content: Transaction คือส่วนประกอบของหลายๆ operational บน Solana, เรียนรู้เกี่ยวกับ Transaction และแนวคิดหลักๆ ได้ที่คู่มือ Solana
   - - meta
     - name: og:description
-      content: Multiple operational units on Solana can be bundled into a single unit called Transaction. Learn more about Core Concepts at The Solana cookbook.
+      content: หลายๆ operational บน Solana จะประกอบอยู่ในที่เดียวกันที่เรียกว่า Transaction. เรียนรู้เกี่ยวกับแนวคิดหลักๆ ได้ที่คู่มือ Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,48 +39,48 @@ footer: MIT Licensed
 
 # Transactions
 
-Clients can invoke [programs](./programs.md) by submitting a transaction to a cluster. A single transaction can include multiple instructions, each targeting its own program. When a transaction is submitted, the Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) will process its instructions in order and atomically. If any part of an instruction fails, the entire transaction will fail.
+Clients สามารถ invoke [programs](./programs.md) ด้วยการส่ง (submitting) transaction ไปที่ cluster. transaction จะประกอบไปด้วย instructions, โดยแต่ละอันจะมีเป้าหมายไปที่ program ของตัวเอง. เมื่อ transaction submit ไปแล้ว, Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) จะ process instructions ตามลำดับ และทำในระดับ atomic. ถ้ามีส่วนไหนของ instruction ล้มเหลว (fail), ทั้ง transaction จะ fail ทั้งหมด.
 
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- Instructions are the most basic operational unit on Solana
-- Each instruction contains:
-    - The `program_id` of the intended program
-    - An array of all `accounts` it intends to read from or write to
-    - An `instruction_data` byte array that is specific to the intended program
-- Multiple instructions can be bundled into a single transaction
-- Each transaction contains:
-    - An array of all `accounts` it intends to read from or write to
-    - One or more `instructions`
-    - A recent `blockhash`
-    - One or more `signatures`
-- Instructions are processed in order and atomically
-- If any part of an instruction fails, the entire transaction fails.
-- Transactions are limited to 1232 bytes
+- Instructions คือหน่วยการทำงานพื้นฐานที่สุดของ Solana
+- แต่ละ instruction จะมี:
+    - `program_id` ของ program
+    - ชุดของ `accounts` ทั้งหมดที่ต้องอ่าน (read) หรือเขียน (write)
+    - `instruction_data` byte array ที่จำเพาะเจาะจงสำหรับแต่บะ program
+- สามารถใส่เ instructions ได้มากกว่าหนึ่งตัว เข้าไปในหนึ่ง transaction
+- แต่ละ transaction จะมี:
+    - ชุดของ `accounts` ทั้งหมดที่ต้องอ่าน (read) หรือเขียน (write)
+    - `instructions` หนึ่งตัว หรือมากกว่า
+    - `blockhash` ล่าสุด (recent)
+    - `signatures` หนึ่งตัว หรือมากกว่า
+- Instructions จะ process instructions ตามลำดับ และทำในระดับ atomic
+- ถ้ามีส่วนไหนของ instruction ล้มเหลว (fail), ทั้ง transaction จะ fail ทั้งหมด
+- ขนาดของ Transactions จำกัดอยู่ที่ 1232 bytes
 :::
 
 ## ลงลึก
 
-The Solana Runtime requires both instructions and transactions to specify a list of all accounts they intended to read from or write to. By requiring these accounts in advance, the runtime is able to parallelize execution across all transactions.
+Solana Runtime ต้องการให้ทั้ง instructions และ transactions ระบุ accounts ทั้งหมดที่จะอ่าน หรือเขียน การที่เราเตรียม accounts ไว้ก่อนแบบนี้จะทำให้ runtime สามารถทำงานขนานกัน (parallelize execution) ได้ทั้ง transactions.
 
-When a transaction is submitted to a cluster, the runtime will process its instructions in order and atomically. For each instruction, the receiving program will interpret its data array and operate on its specified accounts. The program will either return successfully or with an error code. If an error is returned, the entire transaction will fail immediately.
+เมื่อ transaction ถูก submit ไปที่ cluster แล้ว, ตัว runtime จะ process instructions ตามลำดับ และทำในระดับ atomic. สำหรับแต่ละ instruction,  program ที่รับไปจะแปล (interpret) data array และทำงานบน accounts ที่กำหนดไว้. program จะส่งผลสำเร็จ หรือความผิดพลาด (error code) กลับมา. ถ้าส่ง error กลับมา ทั้ง transaction จะ fail ทันที.
 
-Any transaction that aims to debit an account or modify its data requires the signature of its account holder. Any account that will be modified is marked as `writable`. An account can be credited without the holder’s permission so long as the transaction fee payer covers the necessary rent and transaction fees.
+transaction ที่เป็นการถอนเงิน (debit) จาก account หรือจะแก้ไข data จะต้องมี signature ของเจ้าของ account นั้นส่งมาด้วย. account ไหนที่สามารถเขียนได้ จะถูกระบุไว้ว่า `writable`. account สามารถรับเงิน (credited) โดยไม่ต้องได้รับอณุญาติจากเจ้าของ ทั้งนี้คนจ่าย (payer)ได้จ่ายครอบคลุมค่า rent และ transaction fees ไปแล้ว.
 
-Before submission, all transactions must reference a [recent blockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash). The blockhash is used to prevent duplications and eliminate stale transactions. The max age of a transaction's blockhash is 150 blocks, or about ~1 minute 19 seconds as of the time of this writing.
+ก่อนการ submission, ทุก transactions จะต้องอ้างไปที่ [recent blockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash). โดยที่ blockhash จะใช้ในการป้องกันการส่ง transactions ซ้ำ และ transactions ที่เก่าเกินไป. จำนวนสูงสุดของ  transaction's blockhash คือ 150 blocks, หรือประมาณ ~1 นาที 19 วินาที ในเวลาตอนที่เขียนนี้.
 
-### Fees
+### ค่าธรรมเนียม (Fees)
 
-The Solana network collects two types of fees:
-- [Transaction fees](https://docs.solana.com/transaction_fees) for propagating transactions (aka “gas fees”)
-- [Rent fees](https://docs.solana.com/developing/programming-model/accounts#rent) for storing data on-chain 
+Solana จะเก็บ fee 2 แบบ:
+- [Transaction fees](https://docs.solana.com/transaction_fees) สำหรับทำ transactions (หรือที่เรียกว่า “gas fees”)
+- [Rent fees](https://docs.solana.com/developing/programming-model/accounts#rent) สำหรับเก็บ data on-chain 
 
-In Solana, transaction fees are deterministic: there is no concept of a fee market in which users can pay higher fees to increase their chances of being included in the next block. At the time of this writing, transaction fees are determined only by the number of signatures required (i.e. `lamports_per_signature`), not by the amount of resources used. This is because there is currently a hard cap of 1232 bytes on all transactions.
+สำหรับ Solana, transaction fees จะเป็น deterministic (ทุกเหตุการณ์ที่เกิดขึ้น มีปัจจัยที่สามารถกำหนดได้โดยสมบูรณ์): จะยังไม่มี fee market ที่ผู้ใช้ สามารถ จ่าย fees สูงกว่าเพื่อเพิ่มโอกาสในการถูกประมวลผลใน block ถัดไปในเวลาตอนที่เขียนนี้, transaction fees จะเก็บตามจำนวนของ signatures ที่ต้องการใช้ (`lamports_per_signature`), ไม่ใช่ตามจำนวน resources ที่ใช้ไป ทั้งนี้เป็นเพราะมี hard cap 1232 bytes ในทุกๆ transactions อยู่.
 
-All transactions require at least one `writable` account to sign the transaction. Once submitted, the writable signer account that is serialized first will be the fee payer. This account will pay for the cost of the transaction regardless of whether the transaction succeeds or fails. If the fee payer does not have a sufficient balance to pay the transaction fee, the transaction will be dropped.
+ทุกๆ transactions จะต้องมี `writable` account อย่างน้อยหนึงตัวสำหรับ sign transaction. เมื่อ submitted แล้ว writable signer account ที่ถูก serialized เป็นตัวแรกจะเป็น fee payer และ account นี้จะจ่ายค่า transaction โดยไม่สนใจว่า transaction จะสำเร็จหรือไม่. ถ้า fee payer ไม่มี balance พอที่จะจ่าย transaction fee ได้ transaction ก็จะถูกทิ้งไป (dropped).
 
-At the time of this writing, 50% of all transaction fees are collected by the validator that produces the block, while the remaining 50% are burned. This structure works to incentivize validators to process as many transactions as possible during their slots in the leader schedule.
+ในเวลาตอนที่เขียนนี้, 50% ของทุก transaction fees จะถูกเก็บไปโดย validator ที่เป็นคนสร้าง block, ในขณะที่ 50% ที่เหลือจะถูกเผาทิ้ง (burn). โครงสร้างแบบนี้มีขึ้นเพื่อเป็นแรงจูงใจให้ validators ประมวณผล transactions ให้มากที่สุดเท่าที่จะเป็นไปได้ในช่วง slots ในขณะที่เป็นผู้นำ (leader)
 
 ## แหล่งข้อมูลอื่น
 

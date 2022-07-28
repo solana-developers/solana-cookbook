@@ -94,7 +94,7 @@ which would display, partial screen shown here, and does not require `solana-tes
 
 ## Parity Testing
 As noted above, the `solana-test-validator` activates **all** features automagically.
-So to answer the question "How can I test locally in an environment that has parity with devnet,
+So to answer the question "How สามารถ I test locally in an environment that has parity with devnet,
 testnet or even mainnet-beta?".
 
 Solution: PRs were added to Solana 1.9.6 to allow deactivation of features:
@@ -156,7 +156,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 ```
 
 ## Full Parity Testing
-You can be in full parity with a specific cluster by identifying each feature that is not
+You สามารถ be in full parity with a specific cluster by identifying each feature that is not
 yet activated and add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
 ```console
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
@@ -198,7 +198,7 @@ file. Here is the boiler place functions (boiler-plate if you will) used by each
 
 </SolanaCodeGroup>
 
-We can now add test functions in the body of `mod test {...}` to demonstrate default
+We สามารถ now add test functions in the body of `mod test {...}` to demonstrate default
 validator setup (all features enabled) and then disabling the `transaction wide compute cap` as
 per previous examples running `solana-test-validator` from the command line.
 
@@ -217,7 +217,7 @@ per previous examples running `solana-test-validator` from the command line.
 
 </CodeGroup>
 
-Alternatively, the [scfs engine gadget](#resources) can produce a full vector of deactivated
+Alternatively, the [scfs engine gadget](#resources) สามารถ produce a full vector of deactivated
 features for a cluster. The following demonstrates using that engine to get a list
 of all deactivated features for devnet.
 

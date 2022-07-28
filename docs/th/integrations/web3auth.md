@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Wallet
   - - meta
     - name: description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana at The Solana cookbook.
+      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana at The Solana cookbook.
+      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -53,7 +53,7 @@ This tutorial will guide you over a basic example to integrate social logins in 
 
 ### Installing Dependencies
 
-To start using the wallet with a dapp, you can install `@toruslabs/solana-embed`. You can use popular package managers like yarn and npm to download them.
+To start using the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. You สามารถ use popular package managers like yarn and npm to download them.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -75,7 +75,7 @@ npm install --save @toruslabs/solana-embed
 
 ### Import the SDK and initialize
 
-In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You can pass other configuration options while initializing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You สามารถ pass other configuration options while initializing the wallet interface. You สามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -123,7 +123,7 @@ After successful login, the method will return an array of public keys. The firs
 
 ### Using torus instance to fetch user account detail​
 
-The torus instance provides an interface for interactions like signing transactions and messages in a logged-in state. It can also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
+The torus instance provides an interface for interactions like signing transactions and messages in a logged-in state. It สามารถ also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,7 +167,7 @@ Every time a user wants to sign a message, the wallet will open a confirmation w
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Similarly, you can also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) and `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
+Similarly, you สามารถ also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) and `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
 
 ### Using torus Solana API to send a transaction.​
 

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Keypairs and Wallets
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 ## How to generate a new Keypair
 
-Many of the different actions you can take with the various Solana
+Many of the different actions you สามารถ take with the various Solana
 libraries require a Keypair or Wallet. If you are connecting to a
 wallet, you do not have to worry. However, if you are in need of a
 keypair, you will need to generate one.
@@ -115,7 +115,7 @@ keypair, you will need to generate one.
 
 ## How to restore a Keypair from a secret
 
-If you already have your secret, you can get your Keypair from the secret
+If you already have your secret, you สามารถ get your Keypair from the secret
 to test out your dApp.
 
 1. From Bytes
@@ -242,7 +242,7 @@ to test out your dApp.
 
 ## How to verify a Keypair
 
-If you are given a keypair, you can verify whether or not the secret
+If you are given a keypair, you สามารถ verify whether or not the secret
 matches the given public key
 
 <SolanaCodeGroup>
@@ -298,7 +298,7 @@ matches the given public key
 
 ## How to check if a public key has an associated private key
 
-In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You can check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve can be controlled by users with wallets.
+In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You สามารถ check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve สามารถ be controlled by users with wallets.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -354,7 +354,7 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 
 ## How to generate a mnemonic phrase
 
-If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
+If you're creating a wallet, you will need to generate a mnemonic phrase so that the user สามารถ save it as a backup.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -410,7 +410,7 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 ## How to restore a Keypair from a mnemonic phrase
 
 Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mnemonic to Keypairs for local testing.
+You สามารถ convert the mnemonic to Keypairs for local testing.
 
 1. BIP39 - creating a single wallet
 
@@ -467,7 +467,7 @@ You can convert the mnemonic to Keypairs for local testing.
 
 2. BIP44 (multiple wallets, also known HD wallets)
 
-You can make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
+You สามารถ make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -508,7 +508,7 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
 Vanity publickeys, or custom addresses are keys that have start with
 specific characters. For example, a person may want a publickey to
-start with "elv1s", or maybe even "cook". These can help other people
+start with "elv1s", or maybe even "cook". These สามารถ help other people
 remember who the key belongs to, making the key more easily identifiable.
 
 Note: The more characters in your vanity address, the longer it will
@@ -629,7 +629,7 @@ yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wa
 
 The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
 
-Additionally, we can prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we can just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+Additionally, we สามารถ prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we สามารถ just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -658,7 +658,7 @@ Run the following command to install the required dependencies:
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that สามารถ be accessed inside any component. All the properties and methods you สามารถ get from `useWallet()` are displayed [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -687,7 +687,7 @@ Run the following command to install the required dependencies:
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you สามารถ be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Program Accounts Data Migration
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,14 +39,14 @@ footer: MIT Licensed
 
 # Migrating a Programs Data Accounts
 
-## How can you migrate a program's data accounts?
+## How สามารถ you migrate a program's data accounts?
 
 When you create a program, each data account associated with that
 program will have a specific data structure. If you ever need
 to upgrade a program derived account, you end up having a bunch
 of leftover program derived accounts with the old structure.
 
-With account versioning, you can upgrade your old accounts to
+With account versioning, you สามารถ upgrade your old accounts to
 the new structure.
 
 :::tip Note
@@ -118,7 +118,7 @@ In our first version of an account, we are doing the following:
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
+|1| Include a 'data version' field in your data. It สามารถ be a simple incrementing ordinal (e.g. u8) or something more sophisticated
 |2| Allocating enough space for data growth
 |3| Initializing a number of constants to be used across program versions
 |4| Add an update account function under `fn conversion_logic` for future upgrades

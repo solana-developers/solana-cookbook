@@ -38,11 +38,11 @@ head:
 
 # Pyth
 
-Pyth is an Oracle used to get real-world financial and crypto market data. Pyth Oracle can be used by on-chain programs in consuming data for a variety of use cases.
+Pyth is an Oracle used to get real-world financial and crypto market data. Pyth Oracle สามารถ be used by on-chain programs in consuming data for a variety of use cases.
 
 ## How to use Pyth in Client
 
-Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [ที่นี่](https://www.npmjs.com/package/@pythnetwork/client)
+Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library สามารถ be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. เรียนรู้เกี่ยวกับ this [ที่นี่](https://www.npmjs.com/package/@pythnetwork/client)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -65,7 +65,7 @@ Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. Th
 
 ## How to use Pyth in Anchor
 
-Pyth provides a Rust Crate which can be used by on-chain programs or off-chain application's to consume pyth's data.
+Pyth provides a Rust Crate which สามารถ be used by on-chain programs or off-chain application's to consume pyth's data.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>

@@ -12,7 +12,7 @@ head:
       content: stake SOL and earn rewards for helping secure the network.
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Solana cookbook.
+      content: Stake SOL and earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 ## Get Current Validators
 
-We can stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+We สามารถ stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -82,7 +82,7 @@ All staking instructions are handled by the [Stake Program](https://docs.solana.
 
 ## Delegate Stake
 
-Once a stake account is funded, the `Stake Authority` can delegate it to a validator. Each stake account can only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
+Once a stake account is funded, the `Stake Authority` สามารถ delegate it to a validator. Each stake account สามารถ only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -126,7 +126,7 @@ Multiple accounts might have staked to a particular validator account. To fetch 
 
 ## Deactivate Stake
 
-At anytime after a stake account is delegated, the `Stake Authority` can choose to deactivate the account. Deactivation can take several epochs to complete, and is required before any SOL is withdrawn.
+At anytime after a stake account is delegated, the `Stake Authority` สามารถ choose to deactivate the account. Deactivation สามารถ take several epochs to complete, and is required before any SOL is withdrawn.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,7 +148,7 @@ At anytime after a stake account is delegated, the `Stake Authority` can choose 
 
 ## Withdraw Stake
 
-Once deactivated, the `Withdrawal Authority` can withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
+Once deactivated, the `Withdrawal Authority` สามารถ withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->

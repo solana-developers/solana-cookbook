@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Account References
   - - meta
     - name: description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts on Solana and how to use them in your programs.
   - - meta
     - name: og:description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts on Solana and how to use them in your programs.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -80,7 +80,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
 
 ## How to calculate account cost
 
-Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account can be made entirely exempt
+Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
 from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
 the amount of data you intend to store in the account.
 
@@ -106,7 +106,7 @@ the amount of data you intend to store in the account.
 
 ## How to create accounts with seeds
 
-You can use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
+You สามารถ use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
 
 ### Generate
 
@@ -200,7 +200,7 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
 </SolanaCodeGroup>
 
 ::: tip
-Only an account owned by system program can transfer via system program.
+Only an account owned by system program สามารถ transfer via system program.
 :::
 
 ## How to create PDAs
@@ -210,10 +210,10 @@ Only an account owned by system program can transfer via system program.
 1. Falling off ed25519 curve
 2. Using program to sign instead of private key
 
-**Note**: PDA accounts can only be created on the program. The address can be created client side.
+**Note**: PDA accounts สามารถ only be created on the program. The address สามารถ be created client side.
 
 ::: tip
-Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
+Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you สามารถ initialize your PDA as a token account which is an account owned by token program)
 :::
 
 ### Generate a PDA
@@ -286,7 +286,7 @@ The below shows a single instruction `system_instruction::create_account` that c
 
 ## How to sign with a PDA
 
-PDAs can only be signed for within the program. Below is a program
+PDAs สามารถ only be signed for within the program. Below is a program
 example of signing with a PDA and calling the program with the client.
 
 ### Program
@@ -358,7 +358,7 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
 
 ## How to close accounts
 
-You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+You สามารถ close an account (erase all stored data) by removing all SOL. (you สามารถ refer to [rent][2] for more information)
 
 #### Program
 

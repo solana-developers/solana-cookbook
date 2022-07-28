@@ -40,7 +40,7 @@ head:
 
 Mango provides a single venue to lend, borrow, swap, and leverage 
 trade cryptoassets through an on-chain risk engine.
-You can connect to Mango's on-chain program using the Client API libraries.
+You สามารถ connect to Mango's on-chain program using the Client API libraries.
 You'll also need the Solana javascript API library.
 
 <CodeGroup>
@@ -71,7 +71,7 @@ tokens. The current v3 group is `mainnet.1`. Here's a table showing the various 
 
 
 :::tip Note
-If you wish to use the v2 groups, you'll have to use the v2 client library. You can find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-ts)
+If you wish to use the v2 groups, you'll have to use the v2 client library. You สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-ts)
 :::
 
 
@@ -97,7 +97,7 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
 ## How to create a Mango Account
 
 A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
-you to trade that Group’s markets. You can find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
+you to trade that Group’s markets. You สามารถ find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -135,7 +135,7 @@ you to trade that Group’s markets. You can find the reference [ที่นี
 
 ## How to deposit USDC into a Mango Account
 After creating a mango account, you'll need to fund it with tokens for trading. 
-You can find the reference for the deposit method [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
+You สามารถ find the reference for the deposit method [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -156,10 +156,10 @@ You can find the reference for the deposit method [ที่นี่](https://b
 </SolanaCodeGroup>
 
 ## How to place a spot order
-Mango interacts with Serum Protocol to place spot orders on markets. You can place a spot 
-order by doing this. You can find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
+Mango interacts with Serum Protocol to place spot orders on markets. You สามารถ place a spot 
+order by doing this. You สามารถ find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango has a config file that contains information on groups, markets, tokens and oracles, 
-you can find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
+you สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -180,8 +180,8 @@ you can find it [ที่นี่](https://github.com/blockworks-foundation/ma
 </SolanaCodeGroup>
 
 ## How to load bids
-Mango uses the market information from Serum Protocol to load bids. You can load 
-them directly from Serum to work with on Mango. You can find out more about Serum's 
+Mango uses the market information from Serum Protocol to load bids. You สามารถ load 
+them directly from Serum to work with on Mango. You สามารถ find out more about Serum's 
 markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>
@@ -204,7 +204,7 @@ markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/mast
 
 ## How to load asks
 Mango uses the market information from Serum Protocol to load asks. 
-You can load them directly from Serum to work with on Mango. You can find out more 
+You สามารถ load them directly from Serum to work with on Mango. You สามารถ find out more 
 about Serum's markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Name Service
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -71,7 +71,7 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 .SOL domains are unique, human-friendly domain names
 that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You can convert
+another option to send tokens or SOL. You สามารถ convert
 .SOL domains to their publicKey with the following:
 
 <SolanaCodeGroup>
@@ -95,7 +95,7 @@ another option to send tokens or SOL. You can convert
 
 ## Reverse look up
 
-This can be used to resolve the domain name from its public key
+This สามารถ be used to resolve the domain name from its public key
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -145,7 +145,7 @@ In order to resolve a subdomain you need to:
 
 ## Find all the domain names owned by a public key
 
-You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+You สามารถ retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -168,7 +168,7 @@ You can retrieve all the domain names of a wallet by doing a `getProgramAccounts
 
 ## Resolve a Twitter handle
 
-Twitter handles can be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Twitter handles สามารถ be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -191,7 +191,7 @@ Twitter handles can be [registered on the Solana name service](https://naming.bo
 
 ## Reverse look up of a Twitter handle
 
-In order to find the SOL address associated to a Twitter handle you can perform a reverse look up
+In order to find the SOL address associated to a Twitter handle you สามารถ perform a reverse look up
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

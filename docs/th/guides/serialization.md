@@ -204,7 +204,7 @@ First when we want to initialize a brand new account:
   </CodeGroupItem>
 </CodeGroup>
 
-Now we can operate on our other instructions as the following demonstrates minting a new
+Now we สามารถ operate on our other instructions as the following demonstrates minting a new
 key value pair that we demonstrated above when sending instructions from a client:
 
 <CodeGroup>
@@ -219,7 +219,7 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 ## How to deserialize account data on the client
 
-Clients can call Solana to fetch program owned account, in which the serialized
+Clients สามารถ call Solana to fetch program owned account, in which the serialized
 data block is a part of the return. Deserializing requires knowing the data block
 layout.
 
@@ -251,7 +251,7 @@ The [Borsh Specification](#resources) contains most mappings for primitive and
 compound data types.
 
 The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize can generate or walk the respective inputs.
+and deserialize สามารถ generate or walk the respective inputs.
 
 Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
 first in Typescript, then in Python and then equivalent deserialization on the Rust side:

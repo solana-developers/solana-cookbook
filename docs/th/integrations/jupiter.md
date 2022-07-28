@@ -64,7 +64,7 @@ npm install @jup-ag/core
 
 ### Fetching Token list from Jupiter
 
-All the possible tokens that can be swapped with jupiter for a given network is being fetched.
+All the possible tokens that สามารถ be swapped with jupiter for a given network is being fetched.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -110,7 +110,7 @@ Jupiter instance is being created with the provided configurations. There are ma
 
 ### Getting the RouteMap
 
-The RouteMap identifies what tokens can be swapped for a given input token. The route map only contains token mint addresses and no metadata.
+The RouteMap identifies what tokens สามารถ be swapped for a given input token. The route map only contains token mint addresses and no metadata.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -222,7 +222,7 @@ We are setting up the JupiterProvider here in order to use the useJupiter Hook T
 
 ### Fetching the List of Tokens
 
-All the possible Tokens that can be swapped in a Given Network is fetched stored in the state.
+All the possible Tokens that สามารถ be swapped in a Given Network is fetched stored in the state.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -245,7 +245,7 @@ All the possible Tokens that can be swapped in a Given Network is fetched stored
 
 ### Setting up the State
 
-InputMint and OutputMint are state that is added in order for it to be  swapped among each other or can be taken from the user as well.
+InputMint and OutputMint are state that is added in order for it to be  swapped among each other or สามารถ be taken from the user as well.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -268,7 +268,7 @@ InputMint and OutputMint are state that is added in order for it to be  swapped 
 
 ### Using the useJupiter react hook
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint สามารถ be swapped. To เรียนรู้เกี่ยวกับ it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -291,7 +291,7 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 ### Performing the Swap
 
-After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the `exchange` method
+After providing all the data to the useJupiter Hook. We สามารถ use the jupiter instance to perform a swap using the `exchange` method
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -344,7 +344,7 @@ npm i bs58
 
 ### Getting the Route Map
 
-This API retrieves all the available tokens that can be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that can be swapped for SOL in this case.
+This API retrieves all the available tokens that สามารถ be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that สามารถ be swapped for SOL in this case.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -366,7 +366,7 @@ This API retrieves all the available tokens that can be swapped using the jupite
 </SolanaCodeGroup>
 
 ### Getting the Serialized Transaction to perform Swap
-POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that can be added to this api like **wrapUnwrapSOL** and **feeAccount** to learn more about it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that สามารถ be added to this api like **wrapUnwrapSOL** and **feeAccount** to เรียนรู้เกี่ยวกับ it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

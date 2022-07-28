@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Sending Transactions
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -117,7 +117,7 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 ## How to send SPL-Tokens
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
+Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You สามารถ both get the address and send tokens
 with the following example.
 
 <SolanaCodeGroup>
@@ -218,7 +218,7 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
 
 ## How to add a memo to a transaction
 
-Any transaction can add a message making use of the [memo program][2].
+Any transaction สามารถ add a message making use of the [memo program][2].
 Currently the `programID` from the **Memo Program** has to be added
 manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
@@ -269,7 +269,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 ## How to change compute budget for a transaction
 
-Compute budget for a single transaction can be changed by adding an instruction
+Compute budget for a single transaction สามารถ be changed by adding an instruction
 call to the Compute Budget Program. By default the compute budget is set the product 
 of 200k compute units * number of instructions, with a max of 1.4M compute units. 
 The less compute you use, the less the transaction costs.

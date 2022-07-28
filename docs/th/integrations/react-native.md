@@ -154,7 +154,7 @@ cd ios && pod install
 
 ### Start application 
 
-Once we finished all the above, we can start our application
+Once we finished all the above, we สามารถ start our application
 
 ```shell
 npx react-native run-ios
@@ -164,7 +164,7 @@ If all went well, you should see a React Native app being started in your iOS si
 
 ## Solana DApp Scaffold for React Native
 
-If you want to hit the ground running, you can download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
+If you want to hit the ground running, you สามารถ download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
 
 
 ## Common issues when using @solana/web3.js in a React Native app
@@ -175,14 +175,14 @@ If you want to hit the ground running, you can download the [Solana DApp Scaffol
 
 This is an issue because `metro`, the React Native bundler, does not support the `cjs` extension by default. There is an [open issue here](https://github.com/facebook/metro/issues/535).
 
-You can fix this by updating `metro.config.js` and add `cjs` to the `resolver.sourceExts` array, as shown above.
+You สามารถ fix this by updating `metro.config.js` and add `cjs` to the `resolver.sourceExts` array, as shown above.
 
 ### Error: URL.protocol is not implemented
 
     ERROR Error: URL.protocol is not implemented 
-    ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This can also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native. 
+    ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This สามารถ also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native. 
 
-This is an issue that can be fixed by using a polyfill for the `URL` object in React Native.
+This is an issue that สามารถ be fixed by using a polyfill for the `URL` object in React Native.
 
 Install the package `react-native-url-polyfill` and import it in the main file of your app (eg: `index.js`), as shown above.
 
@@ -191,6 +191,6 @@ Install the package `react-native-url-polyfill` and import it in the main file o
     Error: crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported
 
 
-This is an issue that can be fixed by using a polyfill for the `crypto` object in React Native.
+This is an issue that สามารถ be fixed by using a polyfill for the `crypto` object in React Native.
 
 Install the package `react-native-get-random-values` and import it in the main file of your app (eg: `index.js`), as shown above.
