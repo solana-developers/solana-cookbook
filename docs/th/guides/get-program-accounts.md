@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Get Program Accounts
   - - meta
     - name: description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: เรียนรู้วิธี query data บน Solana โดยใช้ getProgramAccounts และ accountsDB
   - - meta
     - name: og:description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: เรียนรู้วิธี query data บน Solana โดยใช้ getProgramAccounts และ accountsDB
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,76 +38,76 @@ head:
 
 # Get Program Accounts
 
-An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
+นี่ตือ RPC method ที่จะคืนค่า accounts ที่ program เป็นเจ้าของ. ในตอนนี้ยังไม่สนับสนุน pagination. การ requests ไปที่ `getProgramAccounts` จะต้องส่ง parameters `dataSlice` และ/หรือ `filters` ไปด้วยเพื่อลด response time และจะได้ส่งกลับมาเฉพาะผลลัพท์ที่ต้องการ. 
 
 ## เรื่องน่ารู้
 
 ::: tip Parameters
 
-- `programId`: `string` - Pubkey of the program to query, provided as a base58 encoded string
-- (optional) `configOrCommitment`: `object` - Configuration parameters containing the following optional fields:
+- `programId`: `string` - Pubkey ของ program ที่จะ query, เตรียมในรูปแบบ base58 encoded string
+- (optional) `configOrCommitment`: `object` - Configuration parameters ที่มี optional fields ตามนี้:
     - (optional) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-    - (optional) `encoding`: `string` - Encoding for account data, either: `base58`, `base64`, or `jsonParsed`. Note, web3js users should instead use [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
-    - (optional) `dataSlice`: `object` - Limit the returned account data based on:
-        - `offset`: `number` - Number of bytes into account data to begin returning
-        - `length`: `number` - Number of bytes of account data to return
-    - (optional) `filters`: `array` - Filter results using the following filter objects:
-        - `memcmp`: `object` - Match a series of bytes to account data:
-            - `offset`: `number` - Number of bytes into account data to begin comparing
-            - `bytes`: `string` - Data to match, as base58 encoded string limited to 129 bytes
-        - `dataSize`: `number` - Compares the account data length with the provided data size
-    - (optional) `withContext`: `boolean` - Wrap the result in an [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+    - (optional) `encoding`: `string` - Encoding สำหรับ account data, ทั้ง: `base58`, `base64`, หรือ `jsonParsed`. Note, web3js ต้องใช้ [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts) แทน
+    - (optional) `dataSlice`: `object` - จำกัดผลลัพท์ account data โดยขึ้นอยู่กับ:
+        - `offset`: `number` - จำนวนของ bytes เริ่มต้นของ account data ที่จะเริ่มคืนค่ามา
+        - `length`: `number` - จำนวนของ bytes ของ account data ที่จะส่งกลับมา
+    - (optional) `filters`: `array` - คัดกรอง results โดยใช้ filter objects ข้างล่าง:
+        - `memcmp`: `object` - ตรงกับ series ของ bytes ของ account data:
+            - `offset`: `number` - จำนวนของ bytes เริ่มต้นของ account data ที่จะเทียบ
+            - `bytes`: `string` - Data ที่จะเทียบด้วย, ในรูปแบบ base58 encoded string จำกัดที่ 129 bytes
+        - `dataSize`: `number` - เทียบ account data length ด้วย data size ที่ระบุไว้
+    - (optional) `withContext`: `boolean` - ครอบ (wrap)​ ผลลัพท์ในรูปแบบ [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
 
 ##### Response
 
-By default `getProgramAccounts` will return an array of JSON objects with the following structure:
+ตามปกติแล้ว `getProgramAccounts` จะคืนค่า array ของ JSON objects ที่มีโครงสร้างตามนี้:
 
-- `pubkey`: `string` - The account pubkey as a base58 encoded string
-- `account`: `object` - a JSON object, with the following sub fields:
-    - `lamports`: `number`, number of lamports assigned to the account
-    - `owner`: `string`, The base58 encoded pubkey of the program the account has been assigned to
-    - `data`: `string` | `object` - data associated with the account, either as encoded binary data or JSON format depending on the provided encoding parameter
-    - `executable`: `boolean`, Indication if the account contains a program
-    - `rentEpoch`: `number`, The epoch at which this account will next owe rent
+- `pubkey`: `string` - account pubkey ในรูปแบบของ base58 encoded string
+- `account`: `object` - JSON object ที่มี fields:
+    - `lamports`: `number`, ตัวเลขของ lamports ที่มีใน account
+    - `owner`: `string`, base58 encoded pubkey ของ program ที่ account ได้ assigned ไว้
+    - `data`: `string` | `object` - data ที่เกี่ยวข้องกับ account อาจจะเป็นได้ทั้ง encoded binary data หรือ JSON format ขึ้นอยู่กับ encoding parameter
+    - `executable`: `boolean`, ตัวบ่งชี้ว่า account นี้มี program
+    - `rentEpoch`: `number`, epoch ที่ account นี้จะต้องจ่าย rent
 :::
 
 ## ลงลึก
 
-`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We สามารถ use `getProgramAccounts` for a number of useful queries, such as finding:
+`getProgramAccounts` คือ RPC method ที่จะคืนค่าทุก accounts ที่ program เป็นเจ้าของ. เราสามารถใช้ `getProgramAccounts` สำหรับดึงข้อมูลได้หลายแบบ เช่น:
 
-- All token accounts for a particular wallet
-- All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
-- All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
+- หาทุกๆ token accounts ของ wallet
+- หาทุกๆ token accounts ที่มี mint เดียวกัน(เช่น ทุกๆ คนที่ถือ token [SRM](https://www.projectserum.com/) ไว้)
+- หาทุกๆ custom accounts ที่ใช้ program นี้(เช่น ทุกๆ คนที่ใช้ [Mango](https://mango.markets/))
 
-Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope สามารถ result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
+นอกจากจะมีประโยชน์แล้ว, `getProgramAccounts` ยังถูกเข้าใจผิดอยู่บ้าง เพราะด้วยข้อจำกัดของมัน การดึงข้อมูลที่ใช้ `getProgramAccounts` จะทำให้ RPC nodes ค้นหา data ขนาดใหญ่. การค้นหานั้นกินทั้ง memory และ resource มากๆ. ผลที่เกิดขึ้นคือถ้าเรียกใช้บ่อยเกินไป หรือใหญ่เกินไปจะทำให้เกิด connection timeouts ได้. ในตอนนี้ `getProgramAccounts` endpoint ยังไม่สนับสนุน pagination. ถ้าผลการค้นหาใหญ่เกินไปผลลัพท์จะถูกตัดทิ้ง.
 
-To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we สามารถ reduce the scope of our queries down to manageable and predictable sizes.
+เพื่อหลีกหนีข้อจำกัดนี้, `getProgramAccounts` เลยมี parameters ให้ใช้: ชื่อ, `dataSlice` และ `filters` options `memcmp` และ `dataSize`. ถ้าใช้ parameters เหล่านี้, เราจะสามารถลดขอบเขตของการค้นหาให้แคบลงเพื่อควบคุม และประมาณขนาดของผลลัพท์ได้.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we สามารถ efficiently request just the data we intend to use.
+ตัวอย่างทั่วไปของ `getProgramAccounts` ที่เกี่ยวข้องกับ [SPL-Token Program](https://spl.solana.com/token) เช่น การค้นหาทุกๆ accounts ที่ Token Program เป็นเจ้าของโดยใช้ [การค้นหาแบบปกติ](../references/accounts.md#get-program-accounts) จะทำให้ต้องไปค้นหาข้อมูลมากมาย แต่ถ้าเราใส่ parameters เข้าไปด้วยเราจะสามารถ request ได้อย่างประสิทธิภาพ และได้ data เฉพาะที่เราจะใช้.
 
 ### `filters`
-The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
+parameter ที่ใช้บ่อยๆ สำหรับ `getProgramAccounts` คือ `filters` array. ซึ่ง array นี้จะรับ filters 2 แบบคือ `dataSize` และ `memcmp` ก่อนที่จะใช้ filters นี้เราต้องรู้ก่อนว่า data ที่เราจะร้องขอมีรูปแบบยังไง และจัดเรียงไว้ยังไง.
 
 #### `dataSize`
-In the case of the Token Program, we สามารถ see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We สามารถ visualize how this data is laid out using the below illustration.
+ในกรณีของ Token Program, เราจะเห็นว่า [token accounts มีขนาด 165 bytes](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). และ token account จะมี 8 fields ที่แตกต่างกันโดยแต่ละ field จะมีขนาด bytes ที่แน่นอน เราสามารถแสดง visualize ว่า data มีการวางรูปแบบยังไงโดยใช้รูปด้านล่าง.
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We สามารถ achieve this with the `memcmp` filter.
+ถ้าเราต้องการหาทุกๆ token accounts โดยมี wallet address ของเราเป็นเจ้าของ, เราสามารถใส่ `{ dataSize: 165 }` ใน `filters` เพื่อลดขอบเขตการค้นหาของเราให้เหลือเฉพาะ accounts ที่ขนาด 165 bytes เท่านั้น แต่เท่านี้ก็ยังไม่ดีพอ เราต้องต้องใส่ filter เข้าไปด้วยว่าเราเป็นเจ้าของ (owner) มันด้วย เราสามารถทำได้ด้วยการเพิ่ม `memcmp` filter เข้าไป.
 
 #### `memcmp`
-The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we สามารถ query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
+`memcmp` filter หรือ "memory comparison" filter, จะทำให้เราสามารถเปรียบเทียบ data ใน field ไหนก็ได้ที่เก็บอยู่ใน​ account ของเรา. โดยเฉพาะเราสามารถค้นหาเฉพาะ accounts ที่ตรงกับ bytes ที่ตำแหน่งใดๆ. `memcmp` ต้องการ 2 arguments:
 
-- `offset`: The position at which to begin comparing data. This position is measured in bytes and is expressed as an integer.
-- `bytes`: The data that should match the account's data. This is represented as a base-58 encoded string should be limited to less than 129 bytes.
+- `offset`: ตำแหน่งที่จะเริ่มเทียบ data มีขนาดเป็น bytes และแสดงเป็นจำนวนเต็ม.
+- `bytes`: คือ data ตรงกับ account's data. จะใช้ base-58 encoded string ขนาดไม่เกิน 129 bytes.
 
-It's important to note that `memcmp` will only return results that are an exact match on `bytes`. Currently, it does not support comparisons for values that are less than or greater than the `bytes` we provide.
+แต่ต้องระวังไว้ว่า `memcmp` จะคืนค่ามาก็ต่อเมื่อเจอ `bytes` ตรงกันเท่านั้น ซึ่งในตอนนี้เรายังไม่สามารถเทียบหาค่าที่น้อยกว่า หรือมากกว่า `bytes` ที่เราใส่ไปได้
 
-In keeping with our Token Program example, we สามารถ amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we สามารถ see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
+ในตัวอย่าง Token Program อันต่อไป, เราสามารถกำหนดการค้นหาให้คืนค่ามาเฉพาะ token account ที่ตรงกับ wallet address ของเรา ถ้าเราลองดูที่ token account จะเห็นว่า 2 fields แรกบน token account คือ pubkeys, และแต่ละ pubkey จะมีขนาด 32 bytes โดยที่ `owner` จะอยู่ที่ field ที่ 2 เราจึงสามารถเริ่ม `memcmp` ที่ `offset` ที่ 32 bytes จากตรงนั้นเราก็สามารถมองหา account ที่ ower ตรงกับ wallet address ของเรา
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-We สามารถ invoke this query via the following example:
+เราสามารถลอง query ได้ด้วยตัวอย่างด้านล่าง:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -131,14 +131,14 @@ We สามารถ invoke this query via the following example:
 
 ### `dataSlice`
 
-Outside of the two filter parameters, the third most common parameter for `getProgramAccounts` is `dataSlice`. Unlike the `filters` parameter, `dataSlice` will not reduce the number of accounts returned by a query. Instead, `dataSlice` will limit the amount of data for each account.
+นอกจาก 2 filter parameters นี้แล้ว, parameter ที่ 3 ที่ใช้บ่อยสำหรับ `getProgramAccounts` ก็คือ `dataSlice` แต่จะไม่เหมือน parameter `filters` ตรงที่ `dataSlice` จะไม่ลดผลการค้นหาของ accounts แต่ `dataSlice` จะจำกัดจำนวน data ที่ค้นหาได้แทน
 
-Much like `memcmp`, `dataSlice` accepts two arguments:
+คล้ายๆ `memcmp`, `dataSlice` จะรับ 2 arguments ดังนี้:
 
-- `offset`: The position (in number of bytes) at which to begin returning account data
-- `length`: The number of bytes which should be returned
+- `offset`: ตำแหน่ง (ในขนาดของ bytes) ที่เริ่มคืนค่า account data
+- `length`: จำนวนของ bytes ที่จะได้กลับคืนมา
 
-`dataSlice` is particularly useful when we run queries on a large dataset but don’t actually care about the account data itself. An example of this would be if we wanted to find the number of token accounts (i.e. number of token holders) for a particular token mint.
+`dataSlice` ใช้ได้ดีเวลาค้นหาข้อมูลขนาดใหญ่โดยไม่สนใจ data ตัวอย่างเช่น เวลาที่เราต้องการนับจำนวนของ token accounts (เช่น จำนวนคนที่ถือ  token) สำหรับ token mint ที่เราสนใจ
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,7 +160,7 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   </CodeGroupItem>
 </CodeGroup>
 
-By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we สามารถ limit the scope of our query and efficiently return only the data we’re interested in.
+โดนการที่เราผสม 3 parameters (`dataSlice`, `dataSize`, และ `memcmp`) เราก็จะสามารถจำกัดการค้นหาให้มีประสิทธิภาพ และส่งค่ากลับมาเฉพาะที่เราต้องการได้
 
 ## แหล่งข้อมูลอื่น
 

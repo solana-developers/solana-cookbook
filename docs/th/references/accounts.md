@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Account References
   - - meta
     - name: description
-      content: เรียนรู้เกี่ยวกับ accounts on Solana and how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ how to use them in your programs.
   - - meta
     - name: og:description
-      content: เรียนรู้เกี่ยวกับ accounts on Solana and how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ how to use them in your programs.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
 write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
-(`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
+(`space`) และ enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive บน Solana.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,7 +80,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
 
 ## How to calculate account cost
 
-Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
+Keeping accounts alive บน Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
 from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
 the amount of data you intend to store in the account.
 
@@ -208,7 +208,7 @@ Only an account owned by system program สามารถ transfer via system p
 [Program derived address(PDA)][3] is like a normal address with the following differences:
 
 1. Falling off ed25519 curve
-2. Using program to sign instead of private key
+2. โดยใช้ program to sign instead of private key
 
 **Note**: PDA accounts สามารถ only be created on the program. The address สามารถ be created client side.
 
@@ -219,7 +219,7 @@ Although PDA is derived by a program id, it doesn't means the PDA is owned by th
 ### Generate a PDA
 
 `findProgramAddress` will add a extra byte at the end of your seed.
-It starts from 255 to 0 and returns the first off-curve public key.
+It starts from 255 to 0 และ returns the first off-curve public key.
 You will always get the same result if you pass the same program id
 and seed.
 
@@ -240,11 +240,11 @@ and seed.
 ### Create a PDA
 
 Below is an
-example program for creating a PDA account owned by the program and an example for calling the program with the client.
+example program for creating a PDA account owned by the program และ an example for calling the program with the client.
 
 #### Program
 
-The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA using `invoke_signed` similar to as discussed above.
+The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA โดยใช้ `invoke_signed` similar to as discussed above.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -287,7 +287,7 @@ The below shows a single instruction `system_instruction::create_account` that c
 ## How to sign with a PDA
 
 PDAs สามารถ only be signed for within the program. Below is a program
-example of signing with a PDA and calling the program with the client.
+example of signing with a PDA และ calling the program with the client.
 
 ### Program
 
@@ -335,7 +335,7 @@ used to sign with the PDA.
 
 ## How to get program accounts
 
-Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` และ its configuration.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | NFTs
   - - meta
     - name: description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: เรียนรู้วิธี get NFT metadata, get NFT owners, mint NFTs บน Solana, และ more
   - - meta
     - name: og:description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: เรียนรู้วิธี get NFT metadata, get NFT owners, mint NFTs บน Solana, และ more
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -82,7 +82,7 @@ To create an NFT you have to:
 
 ### Mint the NFT
 
-If you already have the image and metadata uploaded, you สามารถ mint
+If you already have the image และ metadata uploaded, you สามารถ mint
 the NFT with the following code.
 
 <SolanaCodeGroup>
@@ -139,7 +139,7 @@ decode the account data.
 If you have the mint key of an NFT, you สามารถ find its current owner
 by sneak-peeking at the largest token account for that mint key.
 
-Remember that NFTs have a supply of 1, and they are indivisible,
+Remember that NFTs have a supply of 1, และ they are indivisible,
 meaning that only one token account will hold that token at any
 point in time, whilst all other token accounts for that mint key will
 have a balance of 0.
@@ -167,7 +167,7 @@ Once the largest token account is identified, we สามารถ retrieve its
 
 ## How to get NFT Mint Addresses
 
-If you know the public key of the Candy Machine, you สามารถ get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we สามารถ use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+If you know the public key of the Candy Machine, you สามารถ get the list of all NFT mint addresses generated from that Candy Machine โดยใช้ the following code. Note that we สามารถ use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
 
 ### Candy Machine V1
 
@@ -192,7 +192,7 @@ If you know the public key of the Candy Machine, you สามารถ get the 
 
 ### Candy Machine V2
 
-If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you สามารถ use it the same way we were for v1.
+If you're โดยใช้ a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA โดยใช้ `candy_machine` และ the Candy Machine v2 address as seeds. Once you have the creator address, you สามารถ use it the same way we were for v1.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -215,8 +215,8 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 ## How to get all NFTs from a wallet?
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This สามารถ all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+When getting all NFTs from a wallet, you'll need to get all token accounts และ then parse which ones are NFTs.
+This สามารถ all be done โดยใช้ [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

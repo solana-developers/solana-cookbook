@@ -4,33 +4,33 @@ title: Account Maps
 
 # Account Maps
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key และ value could be any arbitary type และ the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve และ update these values efficiently.
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! เรียนรู้เกี่ยวกับ Solana's Account mode [ที่นี่][AccountCookbook].
+Solana's Account model, as we know, requires program data และ its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! เรียนรู้เกี่ยวกับ Solana's Account mode [ที่นี่][AccountCookbook].
 
 So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember and retrieve the required value.
+* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember และ retrieve the required value.
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if และ when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
 
 This presents a problem many Solana นักพัฒนา face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
 
 ## Deriving PDAs
 
-PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
+PDA stands for [Program Derived Address][PDA], และ are in short, addresses **derived** from a set of seeds, และ a program id (or _address_). 
 
 The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, สามารถ sign an instruction with the key, provided the seeds as well. เรียนรู้เกี่ยวกับ this [ที่นี่][CPI].
 
 Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, and each post is **mapped** to a certain blog.
+In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, และ each post is **mapped** to a certain blog.
 
-In short, there is a `1:1` mapping between a user and his/her blog, whereas a `1:N` mapping between a blog and its posts.
+In short, there is a `1:1` mapping between a user และ his/her blog, whereas a `1:N` mapping between a blog และ its posts.
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, and possibly a prefix of **"blog"**, to act as a type identifier.
+For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, และ possibly a prefix of **"blog"**, to act as a type identifier.
 
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, and a prefix of **"post"**, to act as a type identifier. 
+For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, และ a prefix of **"post"**, to act as a type identifier. 
 
 The code is as shown below, 
 
@@ -69,7 +69,7 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you สามารถ use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you สามารถ pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+On the client-side, you สามารถ use `PublicKey.findProgramAddress()` to obtain the required `Blog` และ `Post` account address, which you สามารถ pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

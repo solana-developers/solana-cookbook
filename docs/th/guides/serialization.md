@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Serializing Data
   - - meta
     - name: description
-      content: Learn how to serialize and deserialize data on Solana
+      content: เรียนรู้วิธี serialize และ deserialize data บน Solana
   - - meta
     - name: og:description
-      content: Learn how to serialize and deserialize data on Solana
+      content: เรียนรู้วิธี serialize และ deserialize data บน Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 When we talk about serialization we mean both serializing data as well as deserialization of data.
 
-Serialization comes into play at a few points along Solana program and program accounts lifecycle:
+Serialization comes into play at a few points along Solana program และ program accounts lifecycle:
 
 1. Serializing instruction data on to client
 2. Deserializing instruction data on the program
@@ -49,7 +49,7 @@ Serialization comes into play at a few points along Solana program and program a
 4. Deserializing Account Data on the client
 
 It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources).
+included snippets are demonstrating serialization โดยใช้ [Borsh](#resources).
 
 The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
 
@@ -153,11 +153,11 @@ log in the program processing code, it encapsulates the details behind (3) funct
 
 1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
    is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` and checks if account has been initialized.
+2. `unpack` - Calls your Pack implementation of `unpack_from_slice` และ checks if account has been initialized.
 3. `pack` - Calls your Pack implementation of `pack_into_slice`
 
 Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data using borsh.
+processing of the account data โดยใช้ borsh.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -169,7 +169,7 @@ processing of the account data using borsh.
 
 ### Serialization/Deserialization
 
-To complete the underlying serialization and deserialization:
+To complete the underlying serialization และ deserialization:
 
 1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
 2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
@@ -191,7 +191,7 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
 
 ### Usage
 
-The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
+The following pulls it all together และ demonstrates how the program interacts with the `ProgramAccountState`
 which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
 
 First when we want to initialize a brand new account:
@@ -250,11 +250,11 @@ The layout of the account data was described [ที่นี่](#account-data-
 The [Borsh Specification](#resources) contains most mappings for primitive and
 compound data types.
 
-The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
+The key to TS/JS และ Python is creating a Borsh Schema with a proper definition so the serialize
 and deserialize สามารถ generate or walk the respective inputs.
 
-Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side:
+Here we demonstrate serialization of primitives (numbers, strings) และ compound types (fixed size array, Map)
+first in Typescript, then in Python และ then equivalent deserialization on the Rust side:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -280,7 +280,7 @@ first in Typescript, then in Python and then equivalent deserialization on the R
 
 We've shown how to create simple Payloads in previous examples. Sometimes
 Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS and Rust to handle those
+proper mapping between TS/JS และ Rust to handle those
 
 ### COption
 

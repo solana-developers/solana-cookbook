@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Interacting with Tokens
   - - meta
     - name: description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: เรียนรู้วิธี use, transfer, และ more with tokens บน Solana
   - - meta
     - name: og:description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: เรียนรู้วิธี use, transfer, และ more with tokens บน Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 ## What do I need to get started with SPL-Tokens?
 
-Every time you interact with tokens on Solana, you are actually
+Every time you interact with tokens บน Solana, you are actually
 interacting with the Solana Program Library Token, or SPL-Token
 standard. The SPL-Token standard requires a specific library to
 be used, which you สามารถ find below based on your language.
@@ -133,7 +133,7 @@ of managing token accounts.
 ## How to get a Token Account
 
 Every token account has information on the token such as the owner,
-mint, amount(balance), and decimals.
+mint, amount(balance), และ decimals.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -200,7 +200,7 @@ account, you also specific a mint too.
 
 ## How to mint tokens
 
-When you mint tokens, you increase the supply and transfer the new tokens
+When you mint tokens, you increase the supply และ transfer the new tokens
 to a specific token account.
 
 <SolanaCodeGroup>
@@ -343,7 +343,7 @@ You สามารถ set a delegate with an allowed amount. After you setting,
 
 ## How to revoke a token delegate
 
-Revoke will set delegate to null and set delegated amount to 0.
+Revoke will set delegate to null และ set delegated amount to 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -365,7 +365,7 @@ Revoke will set delegate to null and set delegated amount to 0.
 
 ## How to manage wrapped SOL
 
-Wrapped SOL just like any other token mint. The difference is using `syncNative`
+Wrapped SOL just like any other token mint. The difference is โดยใช้ `syncNative`
 and creating token accounts specifically on the `NATIVE_MINT` address.
 
 ### Create Token Account

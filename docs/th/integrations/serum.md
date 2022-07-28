@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Building on Serum
   - - meta
     - name: description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: Serum is an innovative CLOB บน Solana. เรียนรู้วิธี use และ build on top of Serum.
   - - meta
     - name: og:description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: Serum is an innovative CLOB บน Solana. เรียนรู้วิธี use และ build on top of Serum.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,12 +38,12 @@ head:
 
 # Serum
 
-Serum is a protocol for decentralized exchanges built on Solana. You
-can use Serum to create new markets, get order books, trade, and more.
+Serum is a protocol for decentralized exchanges built บน Solana. You
+can use Serum to create new markets, get order books, trade, และ more.
 
 ## How to get a Serum market
 
-A market on Serum contains all the orders and capabilities to make orders
+A market on Serum contains all the orders และ capabilities to make orders
 on Serum. For everything you do on Serum you need to know the market you
 are working with.
 
@@ -68,7 +68,7 @@ are working with.
 
 ## How to get Serum order books
 
-Serum markets consist of orderbooks which have bids and asks. You can
+Serum markets consist of orderbooks which have bids และ asks. You can
 query this information so you สามารถ see what is going on on the market and
 act accordingly.
 

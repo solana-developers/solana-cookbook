@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Building on Mango Markets
   - - meta
     - name: description
-      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. Learn how to use and build on top of Mango Markets.
+      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. เรียนรู้วิธี use และ build on top of Mango Markets.
   - - meta
     - name: og:description
-      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. Learn how to use and build on top of Mango Markets.
+      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. เรียนรู้วิธี use และ build on top of Mango Markets.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,9 +38,9 @@ head:
 
 # Mango Markets
 
-Mango provides a single venue to lend, borrow, swap, and leverage 
+Mango provides a single venue to lend, borrow, swap, และ leverage 
 trade cryptoassets through an on-chain risk engine.
-You สามารถ connect to Mango's on-chain program using the Client API libraries.
+You สามารถ connect to Mango's on-chain program โดยใช้ the Client API libraries.
 You'll also need the Solana javascript API library.
 
 <CodeGroup>
@@ -55,7 +55,7 @@ You'll also need the Solana javascript API library.
 
 ## How to get a Mango Group
 
-A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund and fees vaults. Each version 
+A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. Each version 
 of Mango Markets uses a different Mango Group containing different 
 tokens. The current v3 group is `mainnet.1`. Here's a table showing the various groups:
 
@@ -96,7 +96,7 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
 
 ## How to create a Mango Account
 
-A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
+A Mango Account is associated with a Mango Group, และ it holds your tokens และ allows 
 you to trade that Group’s markets. You สามารถ find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
 
 <SolanaCodeGroup>
@@ -158,8 +158,8 @@ You สามารถ find the reference for the deposit method [ที่น�
 ## How to place a spot order
 Mango interacts with Serum Protocol to place spot orders on markets. You สามารถ place a spot 
 order by doing this. You สามารถ find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
-Mango has a config file that contains information on groups, markets, tokens and oracles, 
-you สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
+Mango has a config file that contains information on groups, markets, tokens และ oracles, 
+you สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group และ market.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

@@ -3,16 +3,16 @@ title: Jupiter
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Swap tokens using Jupiter
+      content: คู่มือ Solana | Swap tokens โดยใช้ Jupiter
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Swap tokens using Jupiter
+      content: คู่มือ Solana | Swap tokens โดยใช้ Jupiter
   - - meta
     - name: description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
   - - meta
     - name: og:description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,7 +38,7 @@ head:
 
 # Jupiter
 
-Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
 
 ### Installation
 
@@ -110,7 +110,7 @@ Jupiter instance is being created with the provided configurations. There are ma
 
 ### Getting the RouteMap
 
-The RouteMap identifies what tokens สามารถ be swapped for a given input token. The route map only contains token mint addresses and no metadata.
+The RouteMap identifies what tokens สามารถ be swapped for a given input token. The route map only contains token mint addresses และ no metadata.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -131,8 +131,8 @@ The RouteMap identifies what tokens สามารถ be swapped for a given in
 
 </SolanaCodeGroup>
 
-### Getting the routes for given Input and Output token
-The `computeRoutes` methods takes in the input Mint address and the output Mint address and gives all the possibles routes in order of best price first.
+### Getting the routes for given Input และ Output token
+The `computeRoutes` methods takes in the input Mint address และ the output Mint address และ gives all the possibles routes in order of best price first.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -245,7 +245,7 @@ All the possible Tokens that สามารถ be swapped in a Given Network is
 
 ### Setting up the State
 
-InputMint and OutputMint are state that is added in order for it to be  swapped among each other or สามารถ be taken from the user as well.
+InputMint และ OutputMint are state that is added in order for it to be  swapped among each other or สามารถ be taken from the user as well.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,9 +266,9 @@ InputMint and OutputMint are state that is added in order for it to be  swapped 
 
 </SolanaCodeGroup>
 
-### Using the useJupiter react hook
+### โดยใช้ the useJupiter react hook
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint สามารถ be swapped. To เรียนรู้เกี่ยวกับ it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint และ OutputMint สามารถ be swapped. To เรียนรู้เกี่ยวกับ it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -291,7 +291,7 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 ### Performing the Swap
 
-After providing all the data to the useJupiter Hook. We สามารถ use the jupiter instance to perform a swap using the `exchange` method
+After providing all the data to the useJupiter Hook. We สามารถ use the jupiter instance to perform a swap โดยใช้ the `exchange` method
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -344,7 +344,7 @@ npm i bs58
 
 ### Getting the Route Map
 
-This API retrieves all the available tokens that สามารถ be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that สามารถ be swapped for SOL in this case.
+This API retrieves all the available tokens that สามารถ be swapped โดยใช้ the jupiter API. A list of all possible token routes is being fetched here และ `allInputMints` contains the list of all possible Input Tokens by mint address และ `swappableOutputForSol` contains all the possible tokens that สามารถ be swapped for SOL in this case.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -366,7 +366,7 @@ This API retrieves all the available tokens that สามารถ be swapped u
 </SolanaCodeGroup>
 
 ### Getting the Serialized Transaction to perform Swap
-POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that สามารถ be added to this api like **wrapUnwrapSOL** and **feeAccount** to เรียนรู้เกี่ยวกับ it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+POST API request is done with the route that we wish to go with และ the wallet address of the user there are few optional parameters that สามารถ be added to this api like **wrapUnwrapSOL** และ **feeAccount** to เรียนรู้เกี่ยวกับ it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -388,7 +388,7 @@ POST API request is done with the route that we wish to go with and the wallet a
 </SolanaCodeGroup>
 
 ### Executing the Swap Transaction
-A Transaction object is created and then its getting signed by the user.
+A Transaction object is created และ then its getting signed by the user.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

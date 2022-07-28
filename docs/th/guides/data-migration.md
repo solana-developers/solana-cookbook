@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Program Accounts Data Migration
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish ได้ที่คู่มือ Solana.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization และ more Ingredients for your dish ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish ได้ที่คู่มือ Solana.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization และ more Ingredients for your dish ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -55,11 +55,11 @@ This is only one of many ways to migrate data in Program Owned Accounts (POA).
 
 ## Scenario
 
-To version and migrate our account data, we will be providing an **id** for each
+To version และ migrate our account data, we will be providing an **id** for each
 account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+we pass it to the program, และ thus handle the account correctly.
 
-Take the following account state and program:
+Take the following account state และ program:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -127,7 +127,7 @@ Let's say we want to upgrade our program's accounts now to include
 a new required field, the `somestring` field.
 
 If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+not upgrade the account และ be stuck.
 
 ## Upgrading the Account
 
@@ -160,10 +160,10 @@ constructs as they come into use now.
 | 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
 | 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
 | 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
+| 71 | We now have a 'previous' version และ we want to know it's size
 | 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+We then update our instructions, to add a new one for updating `somestring`, และ processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,7 +179,7 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+After building และ submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 

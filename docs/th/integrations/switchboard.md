@@ -3,10 +3,10 @@ title: Switchboard
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Using Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | โดยใช้ Switchboard to create Onchain data feeds
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Using Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | โดยใช้ Switchboard to create Onchain data feeds
   - - meta
     - name: description
       content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.
@@ -38,7 +38,7 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา สามารถ invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
+Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา สามารถ invoke to bridge high integrity data on-chain และ power the next generation of web3 และ DeFi.
 
 ## Data Feeds
 
@@ -121,7 +121,7 @@ The official Switchboard documentation has an in-depth walk-through of how to cr
 Check it out [ที่นี่](https://docs.switchboard.xyz/feed/publisher).
 
 ## Oracles
-Switchboard's unique feature is that it allows you to create your own oracle and run it locally.
+Switchboard's unique feature is that it allows you to create your own oracle และ run it locally.
 
 ### Create an oracle
 <SolanaCodeGroup>
@@ -144,7 +144,7 @@ Switchboard's unique feature is that it allows you to create your own oracle and
 </SolanaCodeGroup>
 
 ### Run an oracle locally
-You สามารถ run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
+You สามารถ run an oracle locally และ assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
 
 #### Requirements
  - Docker-compose
@@ -172,7 +172,7 @@ Create a docker-compose.yml file with the environment variables in [Oracle Confi
 
 </SolanaCodeGroup>
 
-Run the container using `docker-compose up`
+Run the container โดยใช้ `docker-compose up`
 
 ### Oracle Config
 <table>
@@ -341,7 +341,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 
 ## Resources
-### APIs and Libraries
+### APIs และ Libraries
  - [Switchboard Task Types](https://docs.switchboard.xyz/api/tasks)
  - [Rust API Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
  - [Typescript API Docs](https://docs.switchboard.xyz/api/ts)

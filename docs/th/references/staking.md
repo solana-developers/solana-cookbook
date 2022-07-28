@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Staking
   - - meta
     - name: description
-      content: stake SOL and earn rewards for helping secure the network.
+      content: stake SOL และ earn rewards for helping secure the network.
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Stake SOL และ earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 ## Get Current Validators
 
-We สามารถ stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+We สามารถ stake SOL และ earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -60,7 +60,7 @@ We สามารถ stake SOL and earn rewards for helping secure the network.
 
 ## Create Stake Account
 
-All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created and managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` and `Withdrawal Authority`.
+All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created และ managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` และ `Withdrawal Authority`.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -104,7 +104,7 @@ Once a stake account is funded, the `Stake Authority` สามารถ delegat
 
 ## Get Delegator by Validators
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length และ the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -126,7 +126,7 @@ Multiple accounts might have staked to a particular validator account. To fetch 
 
 ## Deactivate Stake
 
-At anytime after a stake account is delegated, the `Stake Authority` สามารถ choose to deactivate the account. Deactivation สามารถ take several epochs to complete, and is required before any SOL is withdrawn.
+At anytime after a stake account is delegated, the `Stake Authority` สามารถ choose to deactivate the account. Deactivation สามารถ take several epochs to complete, และ is required before any SOL is withdrawn.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,7 +148,7 @@ At anytime after a stake account is delegated, the `Stake Authority` สาม�
 
 ## Withdraw Stake
 
-Once deactivated, the `Withdrawal Authority` สามารถ withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
+Once deactivated, the `Withdrawal Authority` สามารถ withdraw SOL back to a system account. Once a stake account is no longer delegated และ has a balance of 0 SOL, it is effectively destroyed.
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Wallet
   - - meta
     - name: description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn about wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn about wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,11 +41,11 @@ footer: MIT Licensed
 
 ## What is a wallet?
 
-A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, and send transactions. There are many crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
+A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, และ send transactions. There are many crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
 
-## Social Logins on Solana
+## Social Logins บน Solana
 
-[**Web3Auth**](https://docs.web3auth.io/) allows users to sign in using their existing Web2 OAuth Providers(Facebook, Google, Twitter etc.) into Web3 dapps. It provides a user-friendly and [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) approach to managing assets and identity. It removes technical barriers and reduces the learning curve for digital ownership for all users by providing a wrapper around private key management. 
+[**Web3Auth**](https://docs.web3auth.io/) allows users to sign in โดยใช้ their existing Web2 OAuth Providers(Facebook, Google, Twitter etc.) into Web3 dapps. It provides a user-friendly และ [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) approach to managing assets และ identity. It removes technical barriers และ reduces the learning curve for digital ownership for all users by providing a wrapper around private key management. 
 
 ## Integration Guide
 
@@ -53,7 +53,7 @@ This tutorial will guide you over a basic example to integrate social logins in 
 
 ### Installing Dependencies
 
-To start using the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. You สามารถ use popular package managers like yarn and npm to download them.
+To start โดยใช้ the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. You สามารถ use popular package managers like yarn และ npm to download them.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -73,9 +73,9 @@ npm install --save @toruslabs/solana-embed
   </CodeGroupItem>
 </CodeGroup>
 
-### Import the SDK and initialize
+### Import the SDK และ initialize
 
-In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You สามารถ pass other configuration options while initializing the wallet interface. You สามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+In the code snippet below, we are creating an instance of solana-embed และ then initializing it with testing enviroment which uses solana testnet. You สามารถ pass other configuration options while initializing the wallet interface. You สามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -121,9 +121,9 @@ After successful login, the method will return an array of public keys. The firs
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using torus instance to fetch user account detail​
+### โดยใช้ torus instance to fetch user account detail​
 
-The torus instance provides an interface for interactions like signing transactions and messages in a logged-in state. It สามารถ also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
+The torus instance provides an interface for interactions like signing transactions และ messages in a logged-in state. It สามารถ also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,7 +143,7 @@ The torus instance provides an interface for interactions like signing transacti
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using Torus Solana API to sign a message.
+### โดยใช้ Torus Solana API to sign a message.
 
 In order to send a message for the user to sign, the web application must provide a UTF-8 encoded string as a Uint8Array.
 
@@ -167,13 +167,13 @@ Every time a user wants to sign a message, the wallet will open a confirmation w
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Similarly, you สามารถ also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) and `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
+Similarly, you สามารถ also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) และ `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
 
-### Using torus Solana API to send a transaction.​
+### โดยใช้ torus Solana API to send a transaction.​
 
-To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance and pass in the `Transaction`.
+To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance และ pass in the `Transaction`.
 
-The wallet opens a confirmation window. After approval, the SDK signs and sends the transaction to the chain.
+The wallet opens a confirmation window. After approval, the SDK signs และ sends the transaction to the chain.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

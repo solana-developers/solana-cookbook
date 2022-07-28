@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions and references ได้ที่คู่มือ Solana.
+      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions and references ได้ที่คู่มือ Solana.
+      content: After signing the Offline Transaction, anyone สามารถ broadcast it on the network. เรียนรู้เกี่ยวกับ Sending Offline Transactions และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 ## Sign Transaction
 
-To create an offline transaction, you have to sign the transaction and then
+To create an offline transaction, you have to sign the transaction และ then
 anyone สามารถ broadcast it on the network.
 
 <SolanaCodeGroup>
@@ -65,7 +65,7 @@ anyone สามารถ broadcast it on the network.
 ## Partial Sign Transaction
 
 When a transaction requires multiple signatures, you สามารถ partially sign it.
-The other signers สามารถ then sign and broadcast it on the network.
+The other signers สามารถ then sign และ broadcast it on the network.
 
 Some examples of when this is useful:
 

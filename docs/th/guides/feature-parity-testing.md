@@ -45,15 +45,15 @@ producing expected outcomes.
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- Features are capabilities that are introduced to Solana validators and require activation to be used.
+- Features are capabilities that are introduced to Solana validators และ require activation to be used.
 - Features may be activated in one cluster (e.g. testnet) but not so in another (e.g. mainnet-beta).
 - However; when running default `solana-test-validator` locally, all available features in your
-Solana version are automagically activated. The result is that when testing locally, the capabilities and results of
-your testing may not be the same when deploying and running in a different cluster!
+Solana version are automagically activated. The result is that when testing locally, the capabilities และ results of
+your testing may not be the same when deploying และ running in a different cluster!
 :::
 
 ## Scenario
-Assume you have a Transaction that contained three (3) instructions and each instruction consumes approximately
+Assume you have a Transaction that contained three (3) instructions และ each instruction consumes approximately
 100_000 Compute Units (CU). When running in a Solana 1.8.x version, you would observe your instruction CU consumption similar to:
 
 | Instruction | Starting CU | Execution | Remaining CU|
@@ -63,7 +63,7 @@ Assume you have a Transaction that contained three (3) instructions and each ins
 | 3 | 200_000 | -100_000| 100_000
 
 In Solana 1.9.2 a feature called 'transaction wide compute cap' was introduced where a Transaction, by default,
-has a 200_000 CU budget and the encapsulated instructions **_draw down_** from that Transaction budget. Running the same
+has a 200_000 CU budget และ the encapsulated instructions **_draw down_** from that Transaction budget. Running the same
 transaction as noted above would have very different behavior:
 
 | Instruction | Starting CU | Execution | Remaining CU|
@@ -75,7 +75,7 @@ transaction as noted above would have very different behavior:
 Yikes! If you were unaware of this you'd likely be frustrated as there was no change to your instruction behavior that
 would cause this. In devnet it worked fine, but locally it was failing?!?
 
-There is the ability to increase the overall Transaction budget, to lets say 300_000 CU, and salvage your sanity
+There is the ability to increase the overall Transaction budget, to lets say 300_000 CU, และ salvage your sanity
 but this demonstrates why testing with **_Feature Parity_** provides a proactive way to avoid any confusion.
 
 ## Feature Status
@@ -88,7 +88,7 @@ solana feature status -ul   // Displays for local, requires running solana-test-
 ```
 
 Alternatively, you could use a tool like [scfsd](#resources) to observe all feature state across clusters
-which would display, partial screen shown here, and does not require `solana-test-validator` to be running:
+which would display, partial screen shown here, และ does not require `solana-test-validator` to be running:
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
@@ -104,7 +104,7 @@ solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 ```
 
 ## Simple Demonstration
-Suppose you have a simple program that logs the data it receives in it's entry-point. And you are
+Suppose you have a simple program that logs the data it receives in it's entry-point. และ you are
 testing a transaction that adds two (2) instructions for your program.
 
 ### All features activated
@@ -157,7 +157,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 
 ## Full Parity Testing
 You สามารถ be in full parity with a specific cluster by identifying each feature that is not
-yet activated and add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
+yet activated และ add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
 ```console
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
@@ -168,15 +168,15 @@ set for a cluster to feed directly into the `solana-test-validator` startup:
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
 
-If you open another terminal, while the validator is running, and `solana feature status` you will see
+If you open another terminal, while the validator is running, และ `solana feature status` you will see
 features deactivated that were found deactivated in devnet
 
 ## Full Parity Testing Programmatically
 For those who control running the test validator within their test code, modifying
-the test validator activated/deactivated features is possible using TestValidatorGenesis. With
+the test validator activated/deactivated features is possible โดยใช้ TestValidatorGenesis. With
 Solana 1.9.6 a function has been added to the validator builder to support this.
 
-At the root of your program folder, create a new folder called `tests` and add a `parity_test.rs`
+At the root of your program folder, create a new folder called `tests` และ add a `parity_test.rs`
 file. Here is the boiler place functions (boiler-plate if you will) used by each test
 
 <SolanaCodeGroup>
@@ -199,7 +199,7 @@ file. Here is the boiler place functions (boiler-plate if you will) used by each
 </SolanaCodeGroup>
 
 We สามารถ now add test functions in the body of `mod test {...}` to demonstrate default
-validator setup (all features enabled) and then disabling the `transaction wide compute cap` as
+validator setup (all features enabled) และ then disabling the `transaction wide compute cap` as
 per previous examples running `solana-test-validator` from the command line.
 
 <CodeGroup>
@@ -218,7 +218,7 @@ per previous examples running `solana-test-validator` from the command line.
 </CodeGroup>
 
 Alternatively, the [scfs engine gadget](#resources) สามารถ produce a full vector of deactivated
-features for a cluster. The following demonstrates using that engine to get a list
+features for a cluster. The following demonstrates โดยใช้ that engine to get a list
 of all deactivated features for devnet.
 
 <CodeGroup>

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Sending Transactions
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -117,7 +117,7 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 ## How to send SPL-Tokens
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You สามารถ both get the address and send tokens
+Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You สามารถ both get the address และ send tokens
 with the following example.
 
 <SolanaCodeGroup>

@@ -1,18 +1,18 @@
 ---
-title: Keypairs and Wallets
+title: Keypairs และ Wallets
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Keypairs and Wallets
+      content: คู่มือ Solana | Keypairs และ Wallets
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Keypairs and Wallets
+      content: คู่มือ Solana | Keypairs และ Wallets
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn about Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Learn about Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Keypairs and Wallets
+# Keypairs และ Wallets
 
 ## How to generate a new Keypair
 
@@ -515,7 +515,7 @@ Note: The more characters in your vanity address, the longer it will
 take.
 
 ::: warning
-You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+You should just use the CLI for this task. The Python และ TypeScript examples are for illustrative purposes และ are much slower than the CLI.
 :::
 
 <SolanaCodeGroup>
@@ -569,9 +569,9 @@ You should just use the CLI for this task. The Python and TypeScript examples ar
 
 </SolanaCodeGroup>
 
-## How to sign and verify messages with wallets
+## How to sign และ verify messages with wallets
 
-The primary function of a keypair is to sign messages and enable
+The primary function of a keypair is to sign messages และ enable
 verification of the signature. Verification of a signature allows
 the recipient to be sure that the data was signed by the owner of a
 specific private key.
@@ -627,9 +627,9 @@ Run the following command to install the required dependencies:
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
+The React wallet-adapter libraries allow us to persist และ access wallet connection states through hooks และ Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, และ `ConnectionProvider`. The React App must be wrapped with `WalletProvider` และ `ConnectionProvider`.
 
-Additionally, we สามารถ prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we สามารถ just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+Additionally, we สามารถ prompt users to connect by โดยใช้ `useWalletModal` to toggle visibility of the connection modal และ wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we สามารถ just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -658,7 +658,7 @@ Run the following command to install the required dependencies:
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that สามารถ be accessed inside any component. All the properties and methods you สามารถ get from `useWallet()` are displayed [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store และ create a new `$wallet` global property that สามารถ be accessed inside any component. All the properties และ methods you สามารถ get from `useWallet()` are displayed [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import และ render the WalletMultiButton component to allow users to select a wallet et connect to it.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -687,7 +687,7 @@ Run the following command to install the required dependencies:
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you สามารถ be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. โดยใช้ the repo reference [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you สามารถ be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Solana Program References
   - - meta
     - name: description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: เรียนรู้วิธี write programs บน Solana, with references on cross program invocation, reading accounts, และ more
   - - meta
     - name: og:description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: เรียนรู้วิธี write programs บน Solana, with references on cross program invocation, reading accounts, และ more
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -66,7 +66,7 @@ It is nice to know both the methods, because some legacy programs still expect t
 
 ### Passing Clock as an account inside an instruction
 
-Let's create an instruction which receives an account for initializing and the sysvar pubkey
+Let's create an instruction which receives an account for initializing และ the sysvar pubkey
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -128,7 +128,7 @@ Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKE
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client side instruction, now only needs to pass the state and payer accounts.
+The client side instruction, now only needs to pass the state และ payer accounts.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -180,7 +180,7 @@ A cross program invocation, is simply put calling another
 program's instruction inside our program. One best example 
 to put forth is Uniswap's `swap` functionality. The 
 `UniswapV2Router` contract, calls the necessary logic to 
-swap, and calls the `ERC20` contract's transfer function 
+swap, และ calls the `ERC20` contract's transfer function 
 to swap from one person to another. The same way, we สามารถ 
 call a program's instruction to have multitude of purposes.
 
@@ -210,7 +210,7 @@ accounts we would need for a transfer to happen are
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-The corresponding client instruction would be as follows. For knowing the mint and token creation instructions, please refer to the full code nearby.
+The corresponding client instruction would be as follows. For knowing the mint และ token creation instructions, please refer to the full code nearby.
 <br />
 <br />
 <SolanaCodeGroup>
@@ -231,7 +231,7 @@ The corresponding client instruction would be as follows. For knowing the mint a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction and this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction และ this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
 
 1. The payer account who funds the rent
 2. The account which is going to be created
@@ -277,7 +277,7 @@ The respective client side code will look as follows
 
 ## How to create a PDA
 
-A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds and a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One สามารถ generate a PDA using `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space and set the state to it. A normal Keypair account สามารถ be created outside of our program and then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
+A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds และ a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One สามารถ generate a PDA โดยใช้ `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space และ set the state to it. A normal Keypair account สามารถ be created outside of our program และ then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -319,7 +319,7 @@ One สามารถ send the required accounts via client as follows
 
 ## How to read accounts
 
-Almost all instructions in Solana would require atleast 2 - 3 accounts, and they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable and returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts and requiring to parse each of them.
+Almost all instructions in Solana would require atleast 2 - 3 accounts, และ they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable และ returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts และ requiring to parse each of them.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -371,7 +371,7 @@ A basic instruction which initializes a hero state account, but with the above m
 
 ## How to read multiple instructions from a transaction
 
-Solana allows us to take a peek at all of the instructions in the current transaction. We สามารถ store them in a variable and 
+Solana allows us to take a peek at all of the instructions in the current transaction. We สามารถ store them in a variable และ 
 iterate over them. We สามารถ do many things with this, like checking for suspicious transactions. 
 
 <SolanaCodeGroup>

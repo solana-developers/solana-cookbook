@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Local Development
   - - meta
     - name: description
-      content: Setup Local Validator for local นักพัฒนา environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Setup Local Validator for local นักพัฒนา environment และ Airdrop SOL. Learn about Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana ได้ที่คู่มือ Solana.
+      content: Setup Local Validator และ Airdrop SOL for building บน Solana Locally. Learn about Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -42,7 +42,7 @@ footer: MIT Licensed
 ## Starting a Local Validator
 
 Testing your program code locally สามารถ be a lot more reliable than
-testing on devnet, and สามารถ help you test before trying it out on devnet.
+testing on devnet, และ สามารถ help you test before trying it out on devnet.
 
 You สามารถ setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
 and running
@@ -51,7 +51,7 @@ and running
 solana-test-validator
 ```
 
-Benefits of using local-test-validator include:
+Benefits of โดยใช้ local-test-validator include:
 
 - No RPC rate-limits
 - No airdrop limits
@@ -63,7 +63,7 @@ Benefits of using local-test-validator include:
 
 ## Connecting to Environments
 
-When you are working on Solana development, you will need to connect
+When you are working บน Solana development, you will need to connect
 to a specific RPC API endpoint. Solana has 3 public development
 environments:
 - mainnet-beta https://api.mainnet-beta.solana.com
@@ -206,7 +206,7 @@ running remotely with the following:
 
 Websockets provide a pub/sub interface where you สามารถ listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you สามารถ instead receive those updates only when they happen.
 
-Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint and registers a websocket client when you create a new `Connection` instance (see source code [ที่นี่](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
+Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint และ registers a websocket client when you create a new `Connection` instance (see source code [ที่นี่](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
 The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the websocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
 
@@ -328,11 +328,11 @@ airdropping it to your address
 
 </SolanaCodeGroup>
 
-## Using Mainnet Accounts and Programs
+## โดยใช้ Mainnet Accounts และ Programs
 
-Oftentimes, local tests rely on programs and accounts available only on mainnet. The Solana CLI allows to both:
-* Download Programs and Accounts
-* Load Programs and Accounts to a local validator
+Oftentimes, local tests rely on programs และ accounts available only on mainnet. The Solana CLI allows to both:
+* Download Programs และ Accounts
+* Load Programs และ Accounts to a local validator
 
 ### How to load accounts from mainnet
 
@@ -355,7 +355,7 @@ It is possible to download the SRM token mint account to file:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the account's file and destination address (on the local cluster) when starting the validator:
+Loading it to your localnet is then done by passing the account's file และ destination address (on the local cluster) when starting the validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -396,7 +396,7 @@ Similarly, it is possible to download the Serum Dex v3 program:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the program's file and destination address (on the local cluster) when starting the validator:
+Loading it to your localnet is then done by passing the program's file และ destination address (on the local cluster) when starting the validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

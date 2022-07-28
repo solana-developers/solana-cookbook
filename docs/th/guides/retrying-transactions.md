@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Retrying Transactions
   - - meta
     - name: description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more ได้ที่คู่มือ Solana.
+      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions และ more ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more ได้ที่คู่มือ Solana.
+      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions และ more ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -44,7 +44,7 @@ On some occasions, a seemingly valid transaction may be dropped before it is inc
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- RPC nodes will attempt to rebroadcast transactions using a generic algorithm
+- RPC nodes will attempt to rebroadcast transactions โดยใช้ a generic algorithm
 -  นักพัฒนา application สามารถ implement their own custom rebroadcasting logic
 - นักพัฒนา should take advantage of the `maxRetries` parameter on the `sendTransaction` JSON-RPC method
 - นักพัฒนา should enable preflight checks to raise errors before transactions are submitted
@@ -56,10 +56,10 @@ On some occasions, a seemingly valid transaction may be dropped before it is inc
 ### How Clients Submit Transactions
 
 In Solana, there is no concept of a mempool. All transactions, whether they are initiated programmatically or by an end-user, are efficiently routed to leaders so that they สามารถ be processed into a block. There are two main ways in which a transaction สามารถ be sent to leaders:
-1. By proxy via an RPC server and the [sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC method
+1. By proxy via an RPC server และ the [sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC method
 2. Directly to leaders via a [TPU Client](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html)
 
-The vast majority of end-users will submit transactions via an RPC server. When a client submits a transaction, the receiving RPC node will in turn attempt to broadcast the transaction to both the current and next leaders. Until the transaction is processed by a leader, there is no record of the transaction outside of what the client and the relaying RPC nodes are aware of. In the case of a TPU client, rebroadcast and leader forwarding is handled entirely by the client software.
+The vast majority of end-users will submit transactions via an RPC server. When a client submits a transaction, the receiving RPC node will in turn attempt to broadcast the transaction to both the current และ next leaders. Until the transaction is processed by a leader, there is no record of the transaction outside of what the client และ the relaying RPC nodes are aware of. In the case of a TPU client, rebroadcast และ leader forwarding is handled entirely by the client software.
 
 ![Transaction Journey](./retrying-transactions/tx-journey.png)
 
@@ -67,7 +67,7 @@ The vast majority of end-users will submit transactions via an RPC server. When 
 
 After an RPC node receives a transaction via `sendTransaction`, it will convert the transaction into a [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) packet before forwarding it to the relevant leaders. UDP allows validators to quickly communicate with one another, but does not provide any guarantees regarding transaction delivery.
 
-Because Solana’s leader schedule is known in advance of every [epoch](https://docs.solana.com/terminology#epoch) (~2 days), an RPC node will broadcast its transaction directly to the current and next leaders. This is in contrast to other gossip protocols such as Ethereum that propagate transactions randomly and broadly across the entire network.  By default, RPC nodes will try to forward transactions to leaders every two seconds until either the transaction is finalized or the transaction’s blockhash expires (150 blocks or ~1 minute 19 seconds as of the time of this writing). If the outstanding rebroadcast queue size is greater than [10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), newly submitted transactions are dropped.  There are command-line [arguments](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) that RPC operators สามารถ adjust to change the default behavior of this retry logic.
+Because Solana’s leader schedule is known in advance of every [epoch](https://docs.solana.com/terminology#epoch) (~2 days), an RPC node will broadcast its transaction directly to the current และ next leaders. This is in contrast to other gossip protocols such as Ethereum that propagate transactions randomly และ broadly across the entire network.  By default, RPC nodes will try to forward transactions to leaders every two seconds until either the transaction is finalized or the transaction’s blockhash expires (150 blocks or ~1 minute 19 seconds as of the time of this writing). If the outstanding rebroadcast queue size is greater than [10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), newly submitted transactions are dropped.  There are command-line [arguments](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) that RPC operators สามารถ adjust to change the default behavior of this retry logic.
 
 When an RPC node broadcasts a transaction, it will attempt to forward the transaction to a leader’s [Transaction Processing Unit (TPU)](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/validator.rs#L867). The TPU processes transactions in five distinct phases: 
 - [Fetch Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
@@ -80,7 +80,7 @@ When an RPC node broadcasts a transaction, it will attempt to forward the transa
 <small style="display:block;text-align:center;">Image Courtesy of Jito Labs</small>
 
 Of these five phases, the Fetch Stage is responsible for receiving transactions. Within the Fetch Stage, validators will categorize incoming transactions according to three ports:
-- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) handles regular transactions such as token transfers, NFT mints, and program instructions
+- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) handles regular transactions such as token transfers, NFT mints, และ program instructions
 - [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) focuses exclusively on voting transactions
 - [tpu_forwards](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L29) forwards unprocessed packets to the next leader if the current leader is unable to process all transactions 
 
@@ -94,7 +94,7 @@ Throughout a transaction’s journey, there are a few scenarios in which the tra
 
 If the network drops a transaction, it will most likely do so before the transaction is processed by a leader. UDP [packet loss](https://en.wikipedia.org/wiki/Packet_loss) is the simplest reason why this might occur. During times of intense network load, it’s also possible for validators to become overwhelmed by the sheer number of transactions required for processing. While validators are equipped to forward surplus transactions via `tpu_forwards`, there is a limit to the amount of data that สามารถ be [forwarded](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). Furthermore, each forward is limited to a single hop between validators. That is, transactions received on the `tpu_forwards` port are not forwarded on to other validators.
 
-There are also two lesser known reasons why a transaction may be dropped before it is processed. The first scenario involves transactions that are submitted via an RPC pool. Occasionally, part of the RPC pool สามารถ be sufficiently ahead of the rest of the pool. This สามารถ cause issues when nodes within the pool are required to work together. In this example, the transaction’s [recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) is queried from the advanced part of the pool (Backend A). When the transaction is submitted to the lagging part of the pool (Backend B), the nodes will not recognize the advanced blockhash and will drop the transaction. This สามารถ be detected upon transaction submission if นักพัฒนา enable [preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) on `sendTransaction`.
+There are also two lesser known reasons why a transaction may be dropped before it is processed. The first scenario involves transactions that are submitted via an RPC pool. Occasionally, part of the RPC pool สามารถ be sufficiently ahead of the rest of the pool. This สามารถ cause issues when nodes within the pool are required to work together. In this example, the transaction’s [recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) is queried from the advanced part of the pool (Backend A). When the transaction is submitted to the lagging part of the pool (Backend B), the nodes will not recognize the advanced blockhash และ will drop the transaction. This สามารถ be detected upon transaction submission if นักพัฒนา enable [preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) on `sendTransaction`.
 
 ![Dropped via RPC Pool](./retrying-transactions/dropped-via-rpc-pool.png)
 
@@ -102,7 +102,7 @@ Temporarily network forks สามารถ also result in dropped transactions
 
 ![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
-### After a transaction is processed and before it is finalized
+### After a transaction is processed และ before it is finalized
 
 In the event a transaction references a `recentBlockhash` from a minority fork, it’s still possible for the transaction to be processed. In this case, however, it would be processed by the leader on the minority fork. When this leader attempts to share its processed transactions with the rest of the network, it would fail to reach consensus with the majority of validators that do not recognize the minority fork. At this time, the transaction would be dropped before it could be finalized.
 
@@ -110,7 +110,7 @@ In the event a transaction references a `recentBlockhash` from a minority fork, 
 
 ## Handling Dropped Transactions
 
-While RPC nodes will attempt to rebroadcast transactions, the algorithm they employ is generic and often ill-suited for the needs of specific applications. To prepare for times of network congestion,  นักพัฒนา application should customize their own rebroadcasting logic.
+While RPC nodes will attempt to rebroadcast transactions, the algorithm they employ is generic และ often ill-suited for the needs of specific applications. To prepare for times of network congestion,  นักพัฒนา application should customize their own rebroadcasting logic.
 
 ### An In-Depth Look at sendTransaction
 
@@ -133,7 +133,7 @@ When it comes to submitting transactions, the `sendTransaction` RPC method is th
 
 In order to develop their own rebroadcasting logic, นักพัฒนา should take advantage of `sendTransaction`’s `maxRetries` parameter. If provided, `maxRetries` will override an RPC node’s default retry logic, allowing นักพัฒนา to manually control the retry process [within reasonable bounds](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274).
 
-A common pattern for manually retrying transactions involves temporarily storing the `lastValidBlockHeight` that comes from [getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash). Once stashed, an application สามารถ then [poll the cluster’s blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight) and manually retry the transaction at an appropriate interval. In times of network congestion, it’s advantageous to set `maxRetries` to 0 and manually rebroadcast via a custom algorithm. While some applications may employ an [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) algorithm, others such as [Mango](https://www.mango.markets/) opt to [continuously resubmit](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) transactions at a constant interval until some timeout has occurred. 
+A common pattern for manually retrying transactions involves temporarily storing the `lastValidBlockHeight` that comes from [getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash). Once stashed, an application สามารถ then [poll the cluster’s blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight) และ manually retry the transaction at an appropriate interval. In times of network congestion, it’s advantageous to set `maxRetries` to 0 และ manually rebroadcast via a custom algorithm. While some applications may employ an [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) algorithm, others such as [Mango](https://www.mango.markets/) opt to [continuously resubmit](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) transactions at a constant interval until some timeout has occurred. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -156,7 +156,7 @@ A common pattern for manually retrying transactions involves temporarily storing
 
 When polling via `getLatestBlockhash`, applications should specify their intended [commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) level. By setting its commitment to `confirmed` (voted on) or `finalized` (~30 blocks after `confirmed`), an application สามารถ avoid polling a blockhash from a minority fork.
 
-If an application has access to RPC nodes behind a load balancer, it สามารถ also choose to divide its workload amongst specific nodes. RPC nodes that serve data-intensive requests such as [getProgramAccounts](./get-program-accounts.md) may be prone to falling behind and สามารถ be ill-suited for also forwarding transactions. For applications that handle time-sensitive transactions, it may be prudent to have dedicated nodes that only handle `sendTransaction`.
+If an application has access to RPC nodes behind a load balancer, it สามารถ also choose to divide its workload amongst specific nodes. RPC nodes that serve data-intensive requests such as [getProgramAccounts](./get-program-accounts.md) may be prone to falling behind และ สามารถ be ill-suited for also forwarding transactions. For applications that handle time-sensitive transactions, it may be prudent to have dedicated nodes that only handle `sendTransaction`.
 
 ### The Cost of Skipping Preflight
 
@@ -165,14 +165,14 @@ By default, `sendTransaction` will perform three preflight checks prior to submi
 - Check that the referenced blockhash is within the last 150 blocks
 - Simulate the transaction against the bank slot specified by the `preflightCommitment`
 
-In the event that any of these three preflight checks fail, `sendTransaction` will raise an error prior to submitting the transaction. Preflight checks สามารถ often be the difference between losing a transaction and allowing a client to gracefully handle an error. To ensure that these common errors are accounted for, it is recommended that นักพัฒนา keep `skipPreflight` set to `false`.
+In the event that any of these three preflight checks fail, `sendTransaction` will raise an error prior to submitting the transaction. Preflight checks สามารถ often be the difference between losing a transaction และ allowing a client to gracefully handle an error. To ensure that these common errors are accounted for, it is recommended that นักพัฒนา keep `skipPreflight` set to `false`.
 
 ### When to Re-Sign Transactions
 
 Despite all attempts to rebroadcast, there may be times in which a client is required to re-sign a transaction. Before re-signing any transaction, it is **very important** to ensure that the initial transaction’s blockhash has expired. If the initial blockhash is still valid, it is possible for both transactions to be accepted by the network. To an end-user, this would appear as if they unintentionally sent the same transaction twice.
 
-In Solana, a dropped transaction สามารถ be safely discarded once the blockhash it references is older than the `lastValidBlockHeight` received from `getLatestBlockhash`. นักพัฒนา should keep track of this `lastValidBlockHeight` by querying [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) and comparing with `blockHeight` in the response. Once a blockhash is invalidated, clients may re-sign with a newly-queried blockhash.
+In Solana, a dropped transaction สามารถ be safely discarded once the blockhash it references is older than the `lastValidBlockHeight` received from `getLatestBlockhash`. นักพัฒนา should keep track of this `lastValidBlockHeight` by querying [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) และ comparing with `blockHeight` in the response. Once a blockhash is invalidated, clients may re-sign with a newly-queried blockhash.
 
 ## Acknowledgements
 
-Many thanks to Trent Nelson, [Jacob Creech](https://twitter.com/jacobvcreech), White Tiger, Le Yafo, [Buffalu](https://twitter.com/buffalu__), and [Jito Labs](https://twitter.com/jito_labs) for their review and feedback.
+Many thanks to Trent Nelson, [Jacob Creech](https://twitter.com/jacobvcreech), White Tiger, Le Yafo, [Buffalu](https://twitter.com/buffalu__), และ [Jito Labs](https://twitter.com/jito_labs) for their review และ feedback.

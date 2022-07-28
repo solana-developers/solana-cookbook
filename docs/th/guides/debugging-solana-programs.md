@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Debugging Solana Programs
   - - meta
     - name: description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: There are a number of options และ supporting tools for testing และ debugging a Solana BPF program.
   - - meta
     - name: og:description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: There are a number of options และ supporting tools for testing และ debugging a Solana BPF program.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,20 +39,20 @@ footer: MIT Licensed
 
 # Debugging Solana Programs
 
-There are a number of options and supporting tools for testing and debugging a Solana program.
+There are a number of options และ supporting tools for testing และ debugging a Solana program.
 
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you สามารถ test and debug
+- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you สามารถ test และ debug
 your program interactively (e.g. in vscode).
 - The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
 testing that occurs on a **_local validator node_**. You สามารถ run from the editor **_but breakpoints in the
 program are ignored_**.
-- The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
-command line Rust applications or Javascript/Typescript applications using web3.
-- For all the above, liberal use of `msg!` macro in your program is recommended at the start and then
-removing them as you test and ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
+- The CLI tool `solana-test-validator` runs และ loads your program และ processes transaction execution from
+command line Rust applications or Javascript/Typescript applications โดยใช้ web3.
+- For all the above, liberal use of `msg!` macro in your program is recommended at the start และ then
+removing them as you test และ ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
 can eventually fail your program by hitting the Compute Unit budget caps.
 :::
 
@@ -63,14 +63,14 @@ git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
 code .
 ```
-## Runtime Testing and Debugging in editor
+## Runtime Testing และ Debugging in editor
 
 Open the file `src/lib.rs`
 
-You'll see that the program is a pretty simple and basically just logs the content received by
+You'll see that the program is a pretty simple และ basically just logs the content received by
 the program entrypoint function: `process_instruction`
 
-1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
+1. Go to the `#[cfg(test)]` section และ click `Run Tests`. This will build the program และ then
 execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
 the source.
 ```bash
@@ -83,7 +83,7 @@ test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
 2. Set a breakpoint on the programs `msg!` line (11)
-3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
+3. Back in the test module, click `Debug` และ within seconds the debugger will stop on the breakpoint and
 now you สามารถ examine data, step through functions, etc., etc..
 
 These tests are also run from the command line with:
@@ -92,7 +92,7 @@ These tests are also run from the command line with:
 How groovy สามารถ you get!
 
 :::tip Note
-Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
+Keep in mind you are ไม่ได้ใช้ a validator node so default programs, blockhashes, etc. are not represented or
 will not behave as they would when running in validator node. This is why the gang at Solana gave us
 Local Validator Node testing!
 :::
@@ -100,12 +100,12 @@ Local Validator Node testing!
 
 ## Local Validator Node Testing in editor
 
-Integration testing using programmatic loading of a local validator node is defined in the
+Integration testing โดยใช้ programmatic loading of a local validator node is defined in the
 `tests/integration.rs` file.
 
 By default, the template repo integration tests will only be runnable from the command line
 using `cargo test-bpf`. The following steps will enable you to run within the editor as well
-as displaying program validator logs and `msg!` outputs from your program:
+as displaying program validator logs และ `msg!` outputs from your program:
 
 1. In the repo directory run `cargo build-bpf` to build the sample program
 2. In the editor, open `tests/integration.rs`
@@ -115,7 +115,7 @@ as displaying program validator logs and `msg!` outputs from your program:
 6. Click `Run Test` above the `test_validator_transaction()` function
 
 This will load the validator node then allowing you to construct a transaction (the Rust way) and
-submit to the node using the `RcpClient`.
+submit to the node โดยใช้ the `RcpClient`.
 
 The program's output will also print out in the editor terminal. For example (simplified):
 ```bash
@@ -130,24 +130,24 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-Debugging here will allow you to debug the functions and methods used in the **_test body_** but will
+Debugging here will allow you to debug the functions และ methods used in the **_test body_** but will
 not breakpoint in your program.
 
 The bee's knees eh?
 
 ## Local Validator Node Testing from Client Apps
-Lastly, you สามารถ start a local validating node and load your program and any accounts using the `solana-test-validator`
+Lastly, you สามารถ start a local validating node และ load your program และ any accounts โดยใช้ the `solana-test-validator`
 from the command line.
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
+In this approach, you will need a client application either โดยใช้ Rust [RcpClient](#resources) or in
 [JavaScript or Typescript clients](#resources)
 
-See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
+See `solana-test-validator --help` for more details และ options. For the example program here is vanilla setup:
 1. Open a terminal in the repo folder
 2. Run `solana config set -ul` to set the configuration to point to local
 3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. Open another terminal and run `solana logs` to start the log streamer
-5. You สามารถ then run your client program and observe program output in the terminal where you started the log streamer
+4. Open another terminal และ run `solana logs` to start the log streamer
+5. You สามารถ then run your client program และ observe program output in the terminal where you started the log streamer
 
 Now that is the cat's pajamas YO!
 

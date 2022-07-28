@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Name Service
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references ได้ที่คู่มือ Solana.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references ได้ที่คู่มือ Solana.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -168,7 +168,7 @@ You สามารถ retrieve all the domain names of a wallet by doing a `get
 
 ## Resolve a Twitter handle
 
-Twitter handles สามารถ be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Twitter handles สามารถ be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) และ be used like .SOL domain names
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

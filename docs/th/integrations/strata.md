@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Building on Strata Protocol
   - - meta
     - name: description
-      content: Strata is a protocol for launching tokens on Solana. Learn how to use and build on top of Strata.
+      content: Strata is a protocol for launching tokens บน Solana. เรียนรู้วิธี use และ build on top of Strata.
   - - meta
     - name: og:description
-      content: Strata is a protocol for launching tokens on Solana. Learn how to use and build on top of Strata.
+      content: Strata is a protocol for launching tokens บน Solana. เรียนรู้วิธี use และ build on top of Strata.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,8 +38,8 @@ head:
 
 # Strata
 
-Strata is a protocol for launching tokens built on Solana. 
-You สามารถ use Strata to launch any kind of fungible token, ranging from social tokens to dao and gamefi tokens.
+Strata is a protocol for launching tokens built บน Solana. 
+You สามารถ use Strata to launch any kind of fungible token, ranging from social tokens to dao และ gamefi tokens.
 You สามารถ also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
 
 More in-depth docs are available [ที่นี่](docs.strataprotocol.com). You สามารถ also use the gui at [Strata Launchpad](app.strataprotocol.com)
@@ -47,8 +47,8 @@ More in-depth docs are available [ที่นี่](docs.strataprotocol.com). 
 ## How to create a fully managed token
 
 A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
-token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata and an associated bonding curve.
-The bonding curve manages the liquidity, pricing, and supply of that token.
+token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata และ an associated bonding curve.
+The bonding curve manages the liquidity, pricing, และ supply of that token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -69,7 +69,7 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 </SolanaCodeGroup>
 
-## How to buy and sell a token
+## How to buy และ sell a token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -137,5 +137,5 @@ on a dex. You สามารถ read more about these [ที่นี่](http
 
 ## แหล่งข้อมูลอื่น
 
-- [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create and manage Strata tokens
-- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token using the GUI
+- [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create และ manage Strata tokens
+- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token โดยใช้ the GUI
