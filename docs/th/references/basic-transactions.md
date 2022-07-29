@@ -38,7 +38,7 @@ head:
 
 # Sending Transactions
 
-## How to send SOL
+## วิธี send SOL
 
 To send SOL, you will need to interact with the [SystemProgram][1].
 
@@ -115,7 +115,7 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## How to send SPL-Tokens
+## วิธี send SPL-Tokens
 
 Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You สามารถ both get the address และ send tokens
 with the following example.
@@ -167,7 +167,7 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## How to calculate transaction cost
+## วิธี calculate transaction cost
 
 The number of signatures a transaction requires are used to calculate
 the transaction cost. As long as you are not creating an account, this
@@ -216,7 +216,7 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to add a memo to a transaction
+## วิธี add a memo to a transaction
 
 Any transaction สามารถ add a message making use of the [memo program][2].
 Currently the `programID` from the **Memo Program** has to be added
@@ -267,7 +267,7 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget for a transaction
+## วิธี change compute budget for a transaction
 
 Compute budget for a single transaction สามารถ be changed by adding an instruction
 call to the Compute Budget Program. By default the compute budget is set the product 

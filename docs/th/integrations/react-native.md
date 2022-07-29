@@ -42,7 +42,7 @@ React Native is an open-source UI software framework used to develop mobile, web
 
 The fastest way to start with React Native และ Solana is by โดยใช้ the [Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native). 
 
-## How to use @solana/web3.js in a React Native app
+## วิธี use @solana/web3.js in a React Native app
 
 In this tutorial you will เรียนรู้วิธี create a new React Native app และ install และ configure the `@solana/web3.js` SDK, และ its dependencies. 
 
@@ -112,7 +112,7 @@ Open the file `App.tsx` และ add the following code inside the `App` functi
 
 In this example, we set up a connection to Solana Devnet และ when the components load, we get the version of the cluster we connected to และ store the version in the component state.
 
-Additionally, this example shows how to generate และ store a keypair.
+Additionally, this example shows วิธี generate และ store a keypair.
 
 ```typescript
 const conn = new Connection(clusterApiUrl('devnet'));

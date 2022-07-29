@@ -175,7 +175,7 @@ The `exchange` method is called here which constructs the transaction for a give
 
 </SolanaCodeGroup>
 
-## How to use Jupiter in a React Application
+## วิธี use Jupiter in a React Application
 
 ### Installation
 
@@ -312,7 +312,7 @@ After providing all the data to the useJupiter Hook. We สามารถ use t
 
 </SolanaCodeGroup>
 
-## How to use Jupiter API
+## วิธี use Jupiter API
 
 This is the easiest way to interact with jupiter programs to swap any 2 provided tokens.
 

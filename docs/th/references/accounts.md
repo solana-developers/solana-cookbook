@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Account References
   - - meta
     - name: description
-      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธี use them in your programs.
   - - meta
     - name: og:description
-      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ how to use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธี use them in your programs.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Accounts
 
-## How to create a system account
+## วิธี create a system account
 
 Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
 write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
@@ -78,7 +78,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to calculate account cost
+## วิธี calculate account cost
 
 Keeping accounts alive บน Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
 from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
@@ -104,7 +104,7 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create accounts with seeds
+## วิธี create accounts with seeds
 
 You สามารถ use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
 
@@ -203,7 +203,7 @@ You สามารถ use `createAccountWithSeed` to manage your accounts inste
 Only an account owned by system program สามารถ transfer via system program.
 :::
 
-## How to create PDAs
+## วิธี create PDAs
 
 [Program derived address(PDA)][3] is like a normal address with the following differences:
 
@@ -284,7 +284,7 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to sign with a PDA
+## วิธี sign with a PDA
 
 PDAs สามารถ only be signed for within the program. Below is a program
 example of signing with a PDA และ calling the program with the client.
@@ -333,7 +333,7 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get program accounts
+## วิธี get program accounts
 
 Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` และ its configuration.
 
@@ -356,7 +356,7 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## How to close accounts
+## วิธี close accounts
 
 You สามารถ close an account (erase all stored data) by removing all SOL. (you สามารถ refer to [rent][2] for more information)
 
@@ -401,7 +401,7 @@ You สามารถ close an account (erase all stored data) by removing all 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get account balance
+## วิธี get account balance
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

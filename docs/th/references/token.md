@@ -56,7 +56,7 @@ be used, which you สามารถ find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new Token
+## วิธี create a new Token
 
 Creating tokens is done by creating what is called a "mint account".
 This mint account is later used to mint tokens to a token account and
@@ -80,7 +80,7 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## วิธี get a token mint
 
 In order to get the current supply, authority, or decimals a token has,
 you will need to get the account info for the token mint.
@@ -103,7 +103,7 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a token account
+## วิธี create a token account
 
 A token account is required in order to hold tokens. Every token mint
 has a different token account associated with it.
@@ -130,7 +130,7 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## วิธี get a Token Account
 
 Every token account has information on the token such as the owner,
 mint, amount(balance), และ decimals.
@@ -153,7 +153,7 @@ mint, amount(balance), และ decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token account's balance
+## วิธี get a token account's balance
 
 The token account has the token balance, which สามารถ be retrieved with a
 single call.
@@ -198,7 +198,7 @@ A token account สามารถ only hold one kind of mint. When you specify 
 account, you also specific a mint too.
 :::
 
-## How to mint tokens
+## วิธี mint tokens
 
 When you mint tokens, you increase the supply และ transfer the new tokens
 to a specific token account.
@@ -221,7 +221,7 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to transfer tokens
+## วิธี transfer tokens
 
 You สามารถ transfer tokens from one token account to another token account.
 
@@ -243,7 +243,7 @@ You สามารถ transfer tokens from one token account to another token a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to burn tokens
+## วิธี burn tokens
 
 You สามารถ burn token if you are the token owner.
 
@@ -266,7 +266,7 @@ You สามารถ burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to close token accounts
+## วิธี close token accounts
 
 You สามารถ close a token account if you don't want to use it anymore.
 There are two situations:
@@ -292,7 +292,7 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to set authority on token accounts or mints
+## วิธี set authority on token accounts or mints
 
 You สามารถ set/update authority. There are 4 types:
 
@@ -319,7 +319,7 @@ You สามารถ set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to approve a token delegate
+## วิธี approve a token delegate
 
 You สามารถ set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account สามารถ only delegate to one account at the same time`
 
@@ -341,7 +341,7 @@ You สามารถ set a delegate with an allowed amount. After you setting,
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to revoke a token delegate
+## วิธี revoke a token delegate
 
 Revoke will set delegate to null และ set delegated amount to 0.
 
@@ -363,7 +363,7 @@ Revoke will set delegate to null และ set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to manage wrapped SOL
+## วิธี manage wrapped SOL
 
 Wrapped SOL just like any other token mint. The difference is โดยใช้ `syncNative`
 and creating token accounts specifically on the `NATIVE_MINT` address.
@@ -420,7 +420,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get all token accounts by owner
+## วิธี get all token accounts by owner
 
 You สามารถ fetch token accounts by owner. There are two ways to do it.
 

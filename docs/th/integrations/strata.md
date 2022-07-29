@@ -44,7 +44,7 @@ You สามารถ also compose strata with anything that uses fixed price m
 
 More in-depth docs are available [ที่นี่](docs.strataprotocol.com). You สามารถ also use the gui at [Strata Launchpad](app.strataprotocol.com)
 
-## How to create a fully managed token
+## วิธี create a fully managed token
 
 A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
 token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata และ an associated bonding curve.
@@ -69,7 +69,7 @@ The bonding curve manages the liquidity, pricing, และ supply of that token
 
 </SolanaCodeGroup>
 
-## How to buy และ sell a token
+## วิธี buy และ sell a token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -110,7 +110,7 @@ The bonding curve manages the liquidity, pricing, และ supply of that token
 
 </SolanaCodeGroup>
 
-## How to bootstrap liquidity
+## วิธี bootstrap liquidity
 
 Strata สามารถ also sell tokens where you would like to manually manage the supply. This สามารถ be useful for liquidity bootstrapping before listing your token
 on a dex. You สามารถ read more about these [ที่นี่](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)

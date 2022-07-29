@@ -39,23 +39,22 @@ footer: MIT Licensed
 
 # Serializing Data
 
-When we talk about serialization we mean both serializing data as well as deserialization of data.
+เวลาที่เราจะทำ serialization เราจะหมายถึงทั้งการ serialize data และการ deserialize data.
 
-Serialization comes into play at a few points along Solana program และ program accounts lifecycle:
+Serialization เข้ามามีส่วนทั้งใน Solana program และใน program accounts:
 
-1. Serializing instruction data on to client
-2. Deserializing instruction data on the program
-3. Serializing Account data on the program
-4. Deserializing Account Data on the client
+1. Serializing instruction data ที่ client
+2. Deserializing instruction data ใน program
+3. Serializing Account data ใน program
+4. Deserializing Account Data ที่ client
 
-It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization โดยใช้ [Borsh](#resources).
+การ serialization ในแต่ละที่สามารถทำได้เหมือนๆ กัน โดย code สั้นๆ (snippets) จะแสดงให้เห็นตัวอย่างของการ serialization โดยใช้ [Borsh](#resources).
 
-The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
+ตัวอย่างใน document นำมาจาก [Solana CLI Program Template](#resources)
 
-## Setting up for Borsh Serialization
+## การติดตั้งสำหรับ Borsh Serialization
 
-Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or Python client.
+Libraries สำหรับ Borsh ที่ต้องติดตั้งสำหรับ Rust program, Rust client, Node and/or Python client.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -84,23 +83,22 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## How to serialize instruction data on the client
+## วิธี serialize instruction data ที่ client
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
-If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
-inbound instruction data.
+ถ้าเราจะ serializing instruction data เพื่อส่งให้ program เราจะต้องทำเหมือนที่ program จะ deserializes instruction data เข้าไป.
 
-In this template, an instruction data block is a serialized array containing, with examples:
+ใน template นี้ตัว instruction data block ก็คือ serialized array ตามตัวอย่าง:
 
 | Instruction (Variant index) | Serialized Key                 | Serialized Value               |
 | --------------------------- | ------------------------------ | ------------------------------ |
-| Initialize (0)              | not applicable for instruction | not applicable for instruction |
+| Initialize (0)              | instruction ใช้ไม่ได้             | instruction ใช้ไม่ได้             |
 | Mint (1)                    | "foo"                          | "bar"                          |
-| Transfer (2)                | "foo"                          | not applicable for instruction |
-| Burn (2)                    | "foo"                          | not applicable for instruction |
+| Transfer (2)                | "foo"                          | instruction ใช้ไม่ได้             |
+| Burn (2)                    | "foo"                          | instruction ใช้ไม่ได้             |
 
-In the following example we assume the program owned account has been initialized
+ตามตัวอย่างต่อไปนี้ เราจะถือว่าaccount ของ program นี้ได้ถูก initialized แล้ว
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -122,7 +120,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to deserialize instruction data on the program
+## วิธี deserialize instruction data ใน program
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -133,31 +131,27 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to serialize account data on the program
+## วิธี serialize account data ใน program
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-The program account data block (from the sample repo) is layed out as
+program account data block (จาก repo เดียวกัน) มีรูปแบบดังนี้
 
-| Byte 0           | Bytes 1-4                     | Remaining Byte up to 1019                   |
-| ---------------- | ----------------------------- | ------------------------------------------- |
-| Initialized flag | length of serialized BTreeMap | BTreeMap (where key value pairs are stored) |
+| Byte 0           | Bytes 1-4                      | เหลือ 1019 Bytes                            |
+| ---------------- | ------------------------------ | ------------------------------------------ |
+| Initialized flag | ความยาวของ serialized BTreeMap | BTreeMap (ที่เก็บ key value pairs)            |
 
 ### Pack
 
-A word about the [Pack][1] trait
+เกี่ยวกับ [Pack][1] trait
 
-The Pack trait makes it easier to hide the details of account data serialization/deserialization
-from your core Program instruction processing. So instead of putting all the serialize/deserialize
-log in the program processing code, it encapsulates the details behind (3) functions:
+Pack trait จะซ่อนรายละเอียดในการ serialization/deserialization account data จากการ process Program instruction ดังนั้นแทนที่จะใส่ serialize/deserialize log ใน program processing code มันจะซ่อนรายละเอียดอยุ่ใน (3) functions:
 
-1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
-   is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` และ checks if account has been initialized.
-3. `pack` - Calls your Pack implementation of `pack_into_slice`
+1. `unpack_unchecked` - ทำให้เรา deserialize account โดยไม่ตรวจว่ามันถูก initialized ไปรึยัง มันจะมีประโยชน์ตอนที่เรา process Initialization function (variant index 0)
+2. `unpack` - เรียกใช้ `unpack_from_slice` ใน Pack และตรวจสอบว่า account ถูก initialized แล้ว.
+3. `pack` - เรียกใช้ `pack_into_slice` ใน Pack
 
-Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data โดยใช้ borsh.
+นี่คือตัวอย่าง program ของเราที่มีการ implementation ของ Pack trait และต่อด้วยการ process account data โดยใช้ borsh.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -169,17 +163,15 @@ processing of the account data โดยใช้ borsh.
 
 ### Serialization/Deserialization
 
-To complete the underlying serialization และ deserialization:
+เพื่อที่จะเข้าใจการทำงานเบื้องหลังทั้งหมด serialization และ deserialization:
 
-1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
+1. `sol_template_shared::pack_into_slice` - คือที่ๆ การ serialization เกิดขึ้น
+2. `sol_template_shared::unpack_from_slice` - คือที่ๆ การ deserialization เกิดขึ้น
 
-**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
-checks that the length of the slice you are deserializing agrees with the amount of
-data it reads prior to actually recombobulation of the receiving object. The approach
-demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STROAGE` pointer.
+**Note** เราจะมี `u32` (4 bytes) ใน data layout เอาไว้แบ่ง​(partition) ซึ่งในนั้นจะมี
+`BTREE_LENGTH` ตามด้วย `BTREE_STORAGE` ทั้งนี้เราต้องมีไว้เพื่อ borsh ตอน deserialization,
+ตรวจสอบขนาดของ slice ที่เราจะ deserializing เลือกจำนวนของ data ที่จะอ่านก่อนที่จะไปรวม object ที่ได้มา. วิธีในตัวอย่างต่อไปนี้เราจะอ่าน `BTREE_LENGTH` ขนาดก่อนแล้วค่อย `slice` มันออกจาก
+`BTREE_STORAGE` pointer.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -189,12 +181,11 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
   </CodeGroupItem>
 </CodeGroup>
 
-### Usage
+### การใช้งาน
 
-The following pulls it all together และ demonstrates how the program interacts with the `ProgramAccountState`
-which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
+ตัวอย่างต่อไปเราจะประกอบทุกอย่างเข้าด้วยกัน และจะแสดงวิธีที่ program ทำงานร่วมกับ `ProgramAccountState` ซึ่งมี initialization flag และ `BTreeMap` สำหรับ key/value pairs เก็บไว้อยู่ในนั้น
 
-First when we want to initialize a brand new account:
+อันดับแรก เมื่อเราต้องการเริ่มต้นบัญชีใหม่:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -217,13 +208,13 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## How to deserialize account data on the client
+## วิธี deserialize account data ที่ client
 
-Clients สามารถ call Solana to fetch program owned account, in which the serialized
-data block is a part of the return. Deserializing requires knowing the data block
-layout.
+เวลาที่ Clients ดึง program account จาก Solana จะมี serialized
+data block ติดมาด้วยส่วนนึง การที่จะ deserializing ในส่วนนี้เราจะต้องรู้จักรูปแบบ data block
+layout ก่อน
 
-The layout of the account data was described [ที่นี่](#account-data-serialization)
+layout ของ account data มีอธิบายไว้ [ที่นี่](#account-data-serialization)
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -245,16 +236,16 @@ The layout of the account data was described [ที่นี่](#account-data-
   </CodeGroupItem>
 </CodeGroup>
 
-## Common Solana TS/JS Mappings
+## Solana TS/JS Mappings ทั่วไป
 
-The [Borsh Specification](#resources) contains most mappings for primitive and
-compound data types.
+[Borsh Specification](#resources) มีการ mappings สำหรับ primitive และ
+compound data types ทั้งหมด.
 
-The key to TS/JS และ Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize สามารถ generate or walk the respective inputs.
+กุญแจของ TS/JS และ Python คือการกำหนด Borsh Schema ด้วยคำนิยาม (definition) ที่ถูกต้อง เวลา serialize
+และ deserialize จะได้สามารถสร้างหรือทำงานกับ inputs ได้อย่างไม่มีปัญหา.
 
-Here we demonstrate serialization of primitives (numbers, strings) และ compound types (fixed size array, Map)
-first in Typescript, then in Python และ then equivalent deserialization on the Rust side:
+นี่คือตัวอย่างของการทำ serialization ของ primitives (numbers, strings) และ compound types (fixed size array, Map)
+เริ่มจาก Typescript แล้วไปต่อที่ Python และสุดท้ายทำการ deserialization แบบเดียวกันด้วย Rust:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -278,9 +269,7 @@ first in Typescript, then in Python และ then equivalent deserialization on
 
 ## Advanced Constructs
 
-We've shown how to create simple Payloads in previous examples. Sometimes
-Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS และ Rust to handle those
+เราได้แสดงวิธีสร้าง Payloads ง่ายๆ ในตัวอย่างที่แล้ว ซึ่งในบางครั้ง Solana จะคืน data types นั้นๆ มาให้เลย ในส่วนนี้เราจะแสดงตัวอย่างการ mapping ระหว่าง TS/JS และ Rust เพื่อที่จะจัดการมันได้
 
 ### COption
 

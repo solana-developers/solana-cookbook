@@ -53,7 +53,7 @@ You'll also need the Solana javascript API library.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get a Mango Group
+## วิธี get a Mango Group
 
 A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. Each version 
 of Mango Markets uses a different Mango Group containing different 
@@ -94,7 +94,7 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
   
 </SolanaCodeGroup>
 
-## How to create a Mango Account
+## วิธี create a Mango Account
 
 A Mango Account is associated with a Mango Group, และ it holds your tokens และ allows 
 you to trade that Group’s markets. You สามารถ find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
@@ -133,7 +133,7 @@ you to trade that Group’s markets. You สามารถ find the reference [
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to deposit USDC into a Mango Account
+## วิธี deposit USDC into a Mango Account
 After creating a mango account, you'll need to fund it with tokens for trading. 
 You สามารถ find the reference for the deposit method [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
 
@@ -155,7 +155,7 @@ You สามารถ find the reference for the deposit method [ที่น�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to place a spot order
+## วิธี place a spot order
 Mango interacts with Serum Protocol to place spot orders on markets. You สามารถ place a spot 
 order by doing this. You สามารถ find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango has a config file that contains information on groups, markets, tokens และ oracles, 
@@ -179,7 +179,7 @@ you สามารถ find it [ที่นี่](https://github.com/blockwork
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to load bids
+## วิธี load bids
 Mango uses the market information from Serum Protocol to load bids. You สามารถ load 
 them directly from Serum to work with on Mango. You สามารถ find out more about Serum's 
 markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
@@ -202,7 +202,7 @@ markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/mast
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to load asks
+## วิธี load asks
 Mango uses the market information from Serum Protocol to load asks. 
 You สามารถ load them directly from Serum to work with on Mango. You สามารถ find out more 
 about Serum's markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)

@@ -116,8 +116,8 @@ Switchboard provides a crate called **switchboard_v2**
 
 </SolanaCodeGroup>
 
-### How to Create a Feed from the Publisher
-The official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
+### วิธี Create a Feed from the Publisher
+The official Switchboard documentation has an in-depth walk-through of วิธี create a feed from the publisher.
 Check it out [ที่นี่](https://docs.switchboard.xyz/feed/publisher).
 
 ## Oracles

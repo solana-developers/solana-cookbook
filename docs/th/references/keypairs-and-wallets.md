@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Keypairs และ Wallets
 
-## How to generate a new Keypair
+## วิธี generate a new Keypair
 
 Many of the different actions you สามารถ take with the various Solana
 libraries require a Keypair or Wallet. If you are connecting to a
@@ -113,7 +113,7 @@ keypair, you will need to generate one.
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a secret
+## วิธี restore a Keypair from a secret
 
 If you already have your secret, you สามารถ get your Keypair from the secret
 to test out your dApp.
@@ -240,7 +240,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-## How to verify a Keypair
+## วิธี verify a Keypair
 
 If you are given a keypair, you สามารถ verify whether or not the secret
 matches the given public key
@@ -296,7 +296,7 @@ matches the given public key
 
 </SolanaCodeGroup>
 
-## How to check if a public key has an associated private key
+## วิธี check if a public key has an associated private key
 
 In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You สามารถ check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve สามารถ be controlled by users with wallets.
 
@@ -352,7 +352,7 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 </SolanaCodeGroup>
 
 
-## How to generate a mnemonic phrase
+## วิธี generate a mnemonic phrase
 
 If you're creating a wallet, you will need to generate a mnemonic phrase so that the user สามารถ save it as a backup.
 
@@ -407,7 +407,7 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a mnemonic phrase
+## วิธี restore a Keypair from a mnemonic phrase
 
 Many wallet extensions use mnemonics to represent their secret keys.
 You สามารถ convert the mnemonic to Keypairs for local testing.
@@ -504,7 +504,7 @@ You สามารถ make multiple wallets from a single seed - also known as 
 
 </SolanaCodeGroup>
 
-## How to generate a vanity address
+## วิธี generate a vanity address
 
 Vanity publickeys, or custom addresses are keys that have start with
 specific characters. For example, a person may want a publickey to
@@ -569,7 +569,7 @@ You should just use the CLI for this task. The Python และ TypeScript examp
 
 </SolanaCodeGroup>
 
-## How to sign และ verify messages with wallets
+## วิธี sign และ verify messages with wallets
 
 The primary function of a keypair is to sign messages และ enable
 verification of the signature. Verification of a signature allows
@@ -615,7 +615,7 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## How to connect to a wallet
+## วิธี connect to a wallet
 
 Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
 

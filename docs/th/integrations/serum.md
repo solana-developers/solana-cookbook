@@ -41,7 +41,7 @@ head:
 Serum is a protocol for decentralized exchanges built บน Solana. You
 can use Serum to create new markets, get order books, trade, และ more.
 
-## How to get a Serum market
+## วิธี get a Serum market
 
 A market on Serum contains all the orders และ capabilities to make orders
 on Serum. For everything you do on Serum you need to know the market you
@@ -66,7 +66,7 @@ are working with.
 
 </SolanaCodeGroup>
 
-## How to get Serum order books
+## วิธี get Serum order books
 
 Serum markets consist of orderbooks which have bids และ asks. You can
 query this information so you สามารถ see what is going on on the market and
@@ -91,7 +91,7 @@ act accordingly.
 
 </SolanaCodeGroup>
 
-## How to get current open orders
+## วิธี get current open orders
 
 As a trader, you will want to know what current open orders you have
 on a market. You สามารถ query your or anyone else's open orders on a market

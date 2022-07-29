@@ -38,7 +38,7 @@ head:
 
 # Writing Programs
 
-## How to transfer SOL in a program
+## วิธี transfer SOL in a program
 
 Your Solana Program สามารถ transfer lamports from one account to another
 without 'invoking' the System program. The fundamental rule is that
@@ -55,7 +55,7 @@ The recipient account *does not have to be* an account owned by your program.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get clock in a program
+## วิธี get clock in a program
 
 Getting a clock สามารถ be done in two ways
 
@@ -148,7 +148,7 @@ The client side instruction, now only needs to pass the state และ payer ac
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to change account size
+## วิธี change account size
 
 You สามารถ change a program owned account's size with the use 
 of `realloc`. `realloc` สามารถ resize an account up to 10KB.
@@ -174,7 +174,7 @@ rent-exempt.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to do Cross Program Invocation
+## วิธี do Cross Program Invocation
 
 A cross program invocation, is simply put calling another 
 program's instruction inside our program. One best example 
@@ -275,7 +275,7 @@ The respective client side code will look as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a PDA
+## วิธี create a PDA
 
 A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds และ a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One สามารถ generate a PDA โดยใช้ `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space และ set the state to it. A normal Keypair account สามารถ be created outside of our program และ then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
 
@@ -317,7 +317,7 @@ One สามารถ send the required accounts via client as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read accounts
+## วิธี read accounts
 
 Almost all instructions in Solana would require atleast 2 - 3 accounts, และ they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable และ returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts และ requiring to parse each of them.
 
@@ -339,7 +339,7 @@ Almost all instructions in Solana would require atleast 2 - 3 accounts, แล�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to verify accounts
+## วิธี verify accounts
 
 Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one สามารถ do are
 
@@ -369,7 +369,7 @@ A basic instruction which initializes a hero state account, but with the above m
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read multiple instructions from a transaction
+## วิธี read multiple instructions from a transaction
 
 Solana allows us to take a peek at all of the instructions in the current transaction. We สามารถ store them in a variable และ 
 iterate over them. We สามารถ do many things with this, like checking for suspicious transactions. 

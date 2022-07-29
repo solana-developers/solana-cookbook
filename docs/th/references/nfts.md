@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Non Fungible Tokens (NFTs)
 
-## How to create an NFT
+## วิธี create an NFT
 
 To create an NFT you have to:
 
@@ -109,7 +109,7 @@ If you run into creator issues, make sure your metadata lists you
 as the creator.
 :::
 
-## How to get NFT Metadata
+## วิธี get NFT Metadata
 
 Metaplex NFTs have metadata that is stored on Arweave. In order
 to get the Arweave metadata, you must get the Metaplex PDA and
@@ -134,7 +134,7 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to get the owner of an NFT
+## วิธี get the owner of an NFT
 
 If you have the mint key of an NFT, you สามารถ find its current owner
 by sneak-peeking at the largest token account for that mint key.
@@ -165,7 +165,7 @@ Once the largest token account is identified, we สามารถ retrieve its
 
 </SolanaCodeGroup>
 
-## How to get NFT Mint Addresses
+## วิธี get NFT Mint Addresses
 
 If you know the public key of the Candy Machine, you สามารถ get the list of all NFT mint addresses generated from that Candy Machine โดยใช้ the following code. Note that we สามารถ use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
 
@@ -213,7 +213,7 @@ If you're โดยใช้ a Candy Machine v2, you'll first need to access its
 
 </SolanaCodeGroup>
 
-## How to get all NFTs from a wallet?
+## วิธี get all NFTs from a wallet?
 
 When getting all NFTs from a wallet, you'll need to get all token accounts และ then parse which ones are NFTs.
 This สามารถ all be done โดยใช้ [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
