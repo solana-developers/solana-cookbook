@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Wallet
   - - meta
     - name: description
-      content: Learn about wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ wallets, integrating social logins, signing และ verifying messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

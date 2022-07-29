@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Retrying Transactions
   - - meta
     - name: description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions และ more ได้ที่คู่มือ Solana.
+      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. เรียนรู้เกี่ยวกับ retrying transactions และ more ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. Learn about retrying transactions และ more ได้ที่คู่มือ Solana.
+      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this,  นักพัฒนา application are able to develop their own custom rebroadcasting logic. เรียนรู้เกี่ยวกับ retrying transactions และ more ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

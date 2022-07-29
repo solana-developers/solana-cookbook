@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Program Accounts Data Migration
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization และ more Ingredients for your dish ได้ที่คู่มือ Solana.
+      content: โดยพื้นฐานแล้วการทำ version ให้ data เพื่อที่จะสนับสนุนการ migration จะหมายถึงการสร้าง reference ที่ไม่ซ้ำ (unique) สำหรับชุดของ data โดยที่ reference นี้จะสามารถใช้ตามรูปแบบของการ query,แบบ ID, หรือใช้ datetime identifier. เรียนรู้เกี่ยวกับการ Serialization แลเทคนิคอื่นๆ ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference สามารถ take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization และ more Ingredients for your dish ได้ที่คู่มือ Solana.
+      content: โดยพื้นฐานแล้วการทำ version ให้ data เพื่อที่จะสนับสนุนการ migration จะหมายถึงการสร้าง reference ที่ไม่ซ้ำ (unique) สำหรับชุดของ data โดยที่ reference นี้จะสามารถใช้ตามรูปแบบของการ query,แบบ ID, หรือใช้ datetime identifier. เรียนรู้เกี่ยวกับการ Serialization แลเทคนิคอื่นๆ ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,27 +39,22 @@ footer: MIT Licensed
 
 # Migrating a Programs Data Accounts
 
-## How สามารถ you migrate a program's data accounts?
+## เราสามารถ migrate program's data accounts ได้ยังไง?
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+เวลาที่เราสร้าง program ขึ้นมา แต่ละ data account ที่เกี่ยวข้อง (associated) กับ
+program จะมี data structure ที่ตายตัว. แล้วถ้าเราต้องการที่จะ upgrade program derived account สุดท้ายเราจะมี program derived accounts ที่เป็น structure เก่าเหลือทิ้งไว้อยู่จำนวนหนึ่ง
 
-With account versioning, you สามารถ upgrade your old accounts to
-the new structure.
+แต่ถ้าเราใช้วิธี account versioning, เราจะสามารถ upgrade accounts เก่าไปเป็น structure ใหม่ได้
 
 :::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+นี่เป็นเพียงหนึ่งในหลายวิธีในการทำ migration สำหรับ Program Owned Accounts (POA).
 :::
 
-## Scenario
+## สถานการณ์ (Scenario)
 
-To version และ migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, และ thus handle the account correctly.
+การจะทำ version และ migrate account data เราจะต้องเตรียม **id** สำหรับแต่ละ account. ซึ่ง id เหล่านี้จะช่วยให้เราสามารถบ่งบอก account version ได้เวลาที่เราส่งมันเข้าไปใน  program, และทำให้เราสามารถจัดการ account ได้อย่างถูกต้อง
 
-Take the following account state และ program:
+ลองดู account state และ program ด้านล่างนี้:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,26 +109,21 @@ Take the following account state และ program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+ใน account version แรกของเรา เราได้ทำสิ่งต่อไปนี้:
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It สามารถ be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| ใส่ 'data version' field เพิ่มเข้าไปใน data มันสามารถใช้ incrementing ordinal ง่ายๆ (เช่น u8) หรืออะไรที่ซับซ้อนกว่านั้นก็ได้
+|2| จัดสรรพื้นที่ให้เพียงพอต่อขนาดของ data ที่จะเพิ่มขึ้น
+|3| Initializing ค่าคงที่เป็นตัวเลขที่จะใช้เป็น program versions
+|4| เพิ่ม update account function ภายใต้ `fn conversion_logic` เพื่อ upgrades ในอนาคต
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
-
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account และ be stuck.
+สมมุตฺิว่าเราต้องการ upgrade program's accounts ของเราตอนนี้ เพื่อที่ใส่ field ที่ต้องการเข้าไปชื่อว่า `somestring` ถ้าเราไม่ได้จัดสรรพื้นที่เผื่อไว้ใน account ก่อนหน้า, เราจะไม่สามารถ upgrade account ได้และติดอยู่แบบนั้น
 
 ## Upgrading the Account
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+ใน program ใหม่ของเรา เราจะเพิ่ม property สำหรับ content state เข้าไป
+สิ่งที่ต้องทำเพิ่มคือ วิธีการสร้างตอน initial program เพราะเรากำลังจะใช้งานมันแล้วในตอนนี้
 
 ### 1. Add account conversion logic
 
@@ -157,13 +147,13 @@ constructs as they come into use now.
 
 | Line(s) | Note |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version และ we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | เราได้เพิ่ม Solana `solana_program::borsh::try_from_slice_unchecked` เพื่อทำให้ง่ายต่อการอ่าน subsets ของ data จาก data block ขนาดใหญ่
+| 13-26| จุดนี้เรายังคงใช้ structure เดิมคือ `AccountContentOld` บรรทัดที่ 24, ก่อนจะเพิ่ม `AccountContentCurrent` ไปในบรรทัดที่ 17.
+| 60 | เรา bump ค่าคงที่ `DATA_VERSION`
+| 71 | ตอนนี้เรามี version 'ก่อนหน้า' และ เราอยากรู้ขนาดของมัน
+| 86 | ในขั้นตอนนี้เราจะเพิ่ม `conversion_logic` เพื่อ upgrade content state ก่อนหน้าไป content state ใหม่ (ปัจจุบัน)
 
-We then update our instructions, to add a new one for updating `somestring`, และ processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+จากนั้นเราก็จะไป update instructions ของเรา เพื่อที่จะเพิ่ม `somestring`, และ processor สำหรับจัดการ instruction ใหม่. Note ไว้ว่าการ 'upgrading' data structure จะถูกซ่อนอยู่ภายใต้การ `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,7 +169,7 @@ We then update our instructions, to add a new one for updating `somestring`, แ
   </CodeGroupItem>
 </CodeGroup>
 
-After building และ submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+หลัวจาก build และ submit instruction แล้ว: `VersionProgramInstruction::SetString(String)` ตอนนี้เราจะมี 'upgraded' account data layout ตามภาพ
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 

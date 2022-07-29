@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Local Development
   - - meta
     - name: description
-      content: Setup Local Validator for local นักพัฒนา environment และ Airdrop SOL. Learn about Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: Setup Local Validator for local นักพัฒนา environment และ Airdrop SOL. เรียนรู้เกี่ยวกับ Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator และ Airdrop SOL for building บน Solana Locally. Learn about Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: Setup Local Validator และ Airdrop SOL for building บน Solana Locally. เรียนรู้เกี่ยวกับ Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

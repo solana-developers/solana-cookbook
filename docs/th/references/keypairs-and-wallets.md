@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Keypairs และ Wallets
   - - meta
     - name: description
-      content: Learn about Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn about Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Name Service
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
+      content: The name registry stores information about the domain name. เรียนรู้เกี่ยวกับ Resolving SOL domains, Reverse/Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
+      content: The name registry stores information about the domain name. เรียนรู้เกี่ยวกับ Resolving SOL domains, Reverse, Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
