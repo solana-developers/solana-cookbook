@@ -4,35 +4,35 @@ title: Account Maps
 
 # Account Maps
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key และ value could be any arbitary type และ the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve และ update these values efficiently.
+Maps คือ data structures ที่เราใช้บ่อยๆ ตอนเขียน program ที่เกี่ยวกับ **key** และ **value** ของอะไรบางอย่าง.ซึ่ง value อาจจะเป็น type อะไรก็ได้ ส่วน key จะเป็นเหมือน identifier สำหรับ value นั้นๆ การมี key ก็จะทำให้เราสามารถแทรก (insert), อ่านค่ามา (retrieve) และ เปลี่ยนแปลง (update) values เหล่านี้ได้สะดวก
 
-Solana's Account model, as we know, requires program data และ its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! เรียนรู้เกี่ยวกับ Solana's Account mode [ที่นี่][AccountCookbook].
+อย่างที่เรารู้ รูปแบบของ Solana's Account ต้องการ program data และ state data ที่เกี่ยวข้องเก็บอยู่ใน accounts แยกกัน ซึ่งการที่ accounts เหล่านี้มี address associated อยู่ทำให้มันมีลักษณะเหมือน map นั่นเอง! เรียนรู้เกี่ยวกับ Solana's Account mode [ที่นี่][AccountCookbook].
 
-So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
+ดังนั้นมันก็เหมาะสมแล้วที่เราจะเก็บ **values** ไว้ใน accounts แยก โดยต้องมี address เป็น **key** ในการดึง value ออกมา. แต่มันก็มีปัญหาตามมาอยู่บ้างเหมือนกัน เช่น, 
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember และ retrieve the required value.
+* พอใช้ addresses เป็น **keys** แล้วทำให้จำยาก
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if และ when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* พอใช้ addresses ก็อย่างที่เรารู้ว่า public keys ของ **Keypairs** จะมี public key (หรือ *address*) และ **private key** เข้ามาเกี่ยวข้องด้วย ซึ่ง private key จะต้องมีเอาไว้ sign instructions ต่างๆ เวลาที่ต้องการ, ทำให้เราต้องเก็บ private key ไว้ด้วย ซึ่ง **ไม่ใช่ทางที่ดี** แน่ๆ!
 
-This presents a problem many Solana นักพัฒนา face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+ปัญหาเหล่าน้ีเป็นปัญหาที่นักพัฒนา Solana จะต้องเจอเวลาที่ต้องใช้ `Map` ใน programs เราลองมาดูทางแก้กันดีกว่า
 
 ## Deriving PDAs
 
-PDA stands for [Program Derived Address][PDA], และ are in short, addresses **derived** from a set of seeds, และ a program id (or _address_). 
+PDA ย่อมาจาก [Program Derived Address][PDA], และสั้นๆ คือ addresses **จะได้รับสืบทอด (derived)** จาก seeds และ a program id (หรือ _address_). 
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, สามารถ sign an instruction with the key, provided the seeds as well. เรียนรู้เกี่ยวกับ this [ที่นี่][CPI].
+ที่พิเศษสำหรับ PDAs คือ addresses เหล่านี้จะ**ไม่**เกี่ยวข้องกับ private key ใดๆ ทั้งนี้เพราะ addresses เหล่านี้ไม่ได้อยู่บน ED25519 curve ดังนั้นจะมี **เฉพาะ** program ที่ _address_ นี้ได้รับสืบทอดมาเท่านั้นถึงจะสามารถ sign instruction นี้ด้วย key ได้ ร่วมกับ seeds ที่เตรียมไว้ เรียนรู้เกี่ยวกับเรื่องนี้ได้ [ที่นี่][CPI].
 
-Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
+ตอนนี้เราก็ได้รู้จักกับ PDAs แล้วว่ามันคืออะไร, มาลองใช้พวกมันในการ map accounts กันเถอะ! เราจะใช้ตัวอย่างจาก **Blog** program เพื่อแสดงให้เห็นว่าเราจะใช้งานมันได้ยังไง
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, และ each post is **mapped** to a certain blog.
+ใน Blog program เราต้องการให้แต่ละ `User` มี `Blog` คนละตัว และ blog นี้จะมีได้หลาย `Posts` นั่นหมายความว่าเราต้องทำการ **mapping** แต่ละ user ไปที่ blog และแต่ละ post จะมีตัวชี้คอย **mapped** ไปที่ blog
 
-In short, there is a `1:1` mapping between a user และ his/her blog, whereas a `1:N` mapping between a blog และ its posts.
+พูดสั้นๆ ก็คือ, มี `1:1` mapping ระหว่าง user กับ blog และ `1:N` mapping ระหว่าง blog กับ posts.
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, และ possibly a prefix of **"blog"**, to act as a type identifier.
+สำหรับ `1:1` mapping, เราต้องการให้ blog address สืบทอดมาจาก user **เท่านั้น**, จะได้ทำให้เราดึง blog ได้ตาม authority (หรือตาม _user_ นั่นเอง). ดังนั้น seed จึงต้องมี **authority's key** และควรจะขึ้นต้นด้วย **"blog"** เพื่อใช้เป็นตัวแยกประเภท (type identifier)
 
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, และ a prefix of **"post"**, to act as a type identifier. 
+สำหรับ `1:N` mapping, เราต้องการให้แต่ละ post address สืบทอดได้จาก **หลายๆ**  blog ที่เกี่ยวข้อง แต่ใช้คนละ **identifier**, เพื่อจะได้มีความแตกต่างระหว่าง posts สำหรับทุกๆ `N` posts ใน blog ลองดูตัวอย่างด้านล่างจะเห็นว่าในแต่ละ post address จะถูกสืบทอด (derived from) ​มาจาก **blog's key**,  **slug** เพื่อจำแนกแต่่ละ post, และขึ้นต้นด้วย **"post"** เพื่อใช้เป็นตัวแยกประเภท (type identifier) อีกทีนึง. 
 
-The code is as shown below, 
+ตัวอย่าง code อยู่ด้านล่าง, 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -69,7 +69,7 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you สามารถ use `PublicKey.findProgramAddress()` to obtain the required `Blog` และ `Post` account address, which you สามารถ pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+ในฝั่ง client เราสามารถใช้ `PublicKey.findProgramAddress()` เพื่อหา `Blog` และ `Post` account address เอาไปเรียก `connection.getAccountInfo()` เพื่อดึงข้อมูล account data ตามตัวอย่างด้านล่าง 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -92,15 +92,15 @@ On the client-side, you สามารถ use `PublicKey.findProgramAddress()` 
 
 ## Single Map Account
 
-Another way to implement mapping would be to have a `BTreeMap` data structure explicitly stored in a single account. This account's address itself could be a PDA, or the public key of a generated Keypair.
+วิธีอื่นที่จะทำ mapping ก็จะคือการใช้ data structure แบบ `BTreeMap` เก็บไว้ใน  account เดียว ซึ่ง account address นี้จะเป็น PDA หรือ public key ของ Keypair ที่สร้างขึ้นมาแล้วก็ได้
 
-This method of mapping accounts is not ideal because of the following reasons,
+การทำ mapping accounts อาจจะไม่ใช่ทางที่ดีที่สุดเพราะเหตุผลต่อไปนี้
 
-* You will have to first initialize the account storing the `BTreeMap`, before you สามารถ insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* คุณต้อง initialize account ที่เก็บ `BTreeMap` อยู่ก่อนที่คุณจะ สามารถเพิ่ม key-value pairs ลงไปและคุณต้องเก็บ address ของ account นี้ไว้สักที่เพื่อเอาไว้ update
 
-* There are memory limitations to an account, where an account สามารถ have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
+* memory ของ account มีข้อจำกัดอยู่ที่ **10 megabytes** ทำให้ `BTreeMap` เก็บ key-value pairs ขนาดใหญ่ได้ไม่พอ.
 
-Hence, after considering your use-case, you สามารถ implement this method as shown below,
+ดังนั้นหลังจากเลือกได้แล้วว่าต้องการการใช้งานแบบไหนก็สามารถเริ่มทำได้ตามตัวอย่างด้านล่างนี้ได้เลย
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -120,7 +120,7 @@ Hence, after considering your use-case, you สามารถ implement this me
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client-side code to test the above program would look like something as shown below,
+code ฝั่ง client-side เพื่อทดสอบ  program ด้านบนว่าจะออกมาเหมือนด้านล่างนี้หรือไม่
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
