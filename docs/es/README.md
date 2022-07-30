@@ -1,5 +1,5 @@
 ---
-title: Cocinando en Solana
+title: Libro de recetas de Solana
 head:
   - - meta
     - name: title
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Cocinando en Solana
+# Libro de recetas de Solana
 
 Solana Cookbook es un recurso para desarrolladores. Brinda conceptos esenciales y referencias para desarrollar aplicaciones en Solana.
 Cada concepto y referencia se enfocará en aspectos específicos del desarrollo en Solana brindando detalles adicionales y ejemplos de uso.
@@ -46,7 +46,7 @@ Cada concepto y referencia se enfocará en aspectos específicos del desarrollo 
 
 Solana Cookbook esta diseñado de tal forma que hace fácil que nuevos desarrolladores de Solana puedan contribuir. Incluso si no sabes cómo hacer algo ¡contribuir al Cookbook es una gran manera de aprender!
 
-Chequea todos los issues abiertos [acá](https://github.com/solana-developers/solana-cookbook/issues). Las guías de contribución [acá](https://github.com/solana-developers/solana-cookbook#contributing). Si encontras que el Cookbook le falta una sugerencia, por favor agrega un issue.
+Revisa todos los issues abiertos [acá](https://github.com/solana-developers/solana-cookbook/issues). Las guías de contribución [acá](https://github.com/solana-developers/solana-cookbook#contributing). Si encuentras que el Cookbook le falta una sugerencia, por favor agrega un issue.
 
 ## Como Leer el Cookbook
 

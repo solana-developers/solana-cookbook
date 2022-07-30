@@ -3,10 +3,10 @@ title: Instalación
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Instalación
+      content: Libro de recetas de Solana | Instalación
   - - meta
     - name: og:title
-      content: Solana Cookbook | Instalación
+      content: Libro de recetas de Solana | Instalación
   - - meta
     - name: description
       content: Aprendé como empezar en Solana con tutoriales, guías, y ejemplos.
@@ -176,7 +176,7 @@ Reemplaza `LATEST_RELEASE` con la versión deseada e instala la [última release
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-Puedes reemplazar `LATEST_RELEASE` con algún tag de release que se identifique con la versión de release que desees, o uses uno de los 3 canales simbólicos: `stable`, `beta`, o `edge`. Para encontrar la última release, chequea las versiones disponibles [aquí](https://github.com/solana-labs/solana/releases).
+Puedes reemplazar `LATEST_RELEASE` con algún tag de release que se identifique con la versión de release que desees, o uses uno de los 3 canales simbólicos: `stable`, `beta`, o `edge`. Para encontrar la última release, revisa las versiones disponibles [aquí](https://github.com/solana-labs/solana/releases).
 
 La siguiente salida indica una actualización exitosa:
 
@@ -235,7 +235,7 @@ export PATH=$PWD/bin:$PATH
 
 Abre el Símbolo del sistema o Command Prompt (`cmd.exe`) como un Administrador.
 
-Buscar el Símbolo del Sistema o Command prompt en la barra de búsqueda de Windows. Cuando el Símbolo del Sistema aparezca, hacer click derecho y seleccionar "Abrir como administrador". Si te aparece una ventana preguntandote "Queres permitir a esta app que realice cambios en tu dispositivo?", clickea en "Si".
+Busca el Símbolo del Sistema o Command prompt en la barra de búsqueda de Windows. Cuando el Símbolo del Sistema aparezca, hacer click derecho y seleccionar "Abrir como administrador". Si te aparece una ventana preguntandote "Queres permitir a esta app que realice cambios en tu dispositivo?", clickea en "Si".
 
 Copiar y pegar el siguiente comando, después apretar Entre para descargar el instalador de solana en una carpeta temporal.
 
@@ -243,7 +243,7 @@ Copiar y pegar el siguiente comando, después apretar Entre para descargar el in
 curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-Si `v1.9.16` no es tu versión deseada, encontra la última release [acá](https://github.com/solana-labs/solana/releases).
+Si `v1.9.16` no es tu versión deseada, encuentra la última release [acá](https://github.com/solana-labs/solana/releases).
 
 Copiar y pegar el siguiente comando, después presionar Enter para instalar la última versión de Solana. Si ves un pop-up de seguridad de tu sistema, por favor selecciona permitir que el programa pueda correr.
 
@@ -251,7 +251,7 @@ Copiar y pegar el siguiente comando, después presionar Enter para instalar la �
 C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
-Para encontrar la última release, chequea las versiones disponibles [acá](https://github.com/solana-labs/solana/releases).
+Para encontrar la última release, revisa las versiones disponibles [acá](https://github.com/solana-labs/solana/releases).
 
 Cuando el instalador esta terminado, presiona Enter.
 

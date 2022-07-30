@@ -155,6 +155,133 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
       },
+      "/es/": {
+        selectLanguageName: "Spanish",
+        navbar: [
+          {
+            text: "Contribuir",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Primeros pasos",
+              children: ["/es/", "/es/getting-started/installation.md"],
+            },
+            {
+              text: "Conceptos clave",
+              children: [
+                "/es/core-concepts/accounts.md",
+                "/es/core-concepts/programs.md",
+                "/es/core-concepts/transactions.md",
+                "/es/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guías",
+              children: [
+                '/es/guides/get-program-accounts.md',
+                '/es/guides/serialization.md',
+                '/es/guides/data-migration.md',
+                '/es/guides/account-maps.md',
+                '/es/guides/retrying-transactions.md',
+                '/es/guides/debugging-solana-programs.md',
+                '/es/guides/feature-parity-testing.md',
+              ],
+            },
+            {
+              text: "Referencias",
+              children: [
+                // '/es/references/local-development.md',
+                // '/es/references/keypairs-and-wallets.md',
+                // '/es/references/basic-transactions.md',
+                // '/es/references/accounts.md',
+                // '/es/references/programs.md',
+                // '/es/references/token.md',
+                // '/es/references/anchor.md',
+                // '/es/references/staking.md',
+                // '/es/references/nfts.md',
+                // '/es/references/offline-transactions.md',
+                // '/es/references/name-service.md',
+              ],
+            },
+          ],
+        }
+      },
+      "/vi/": {
+        selectLanguageName: "Tiếng Việt",
+        navbar: [
+          {
+            text: "Đóng góp",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Tích hợp",
+            link: "/vi/integrations",
+          },
+        ],
+        sidebar: {
+          "/vi/": [
+            {
+              text: "Mở đầu",
+              children: ["/vi/", "/vi/getting-started/installation.md"],
+            },
+            {
+              text: "Khái niệm căn bản",
+              children: [
+                "/vi/core-concepts/accounts.md",
+                "/vi/core-concepts/programs.md",
+                "/vi/core-concepts/transactions.md",
+                "/vi/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Hướng dẫn",
+              children: [
+                "/vi/guides/get-program-accounts.md",
+                "/vi/guides/serialization.md",
+                "/vi/guides/data-migration.md",
+                "/vi/guides/account-maps.md",
+                "/vi/guides/retrying-transactions.md",
+                "/vi/guides/debugging-solana-programs.md",
+                "/vi/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Tham khảo",
+              children: [
+                "/vi/references/local-development.md",
+                "/vi/references/keypairs-and-wallets.md",
+                "/vi/references/basic-transactions.md",
+                "/vi/references/accounts.md",
+                "/vi/references/programs.md",
+                "/vi/references/token.md",
+                "/vi/references/staking.md",
+                "/vi/references/nfts.md",
+                "/vi/references/offline-transactions.md",
+                "/vi/references/name-service.md",
+              ],
+            },
+          ],
+          "/vi/integrations": [
+            {
+              text: "Tích hợp",
+              children: [
+                "/vi/integrations",
+                "/vi/integrations/serum.md",
+                "/vi/integrations/pyth.md",
+                "/vi/integrations/switchboard.md",
+                "/vi/integrations/mango.md",
+                "/vi/integrations/strata.md",
+                "/vi/integrations/web3auth.md",
+                "/vi/integrations/react-native.md",
+                "/vi/integrations/jupiter.md",
+              ],
+            },
+          ],
+        },
+      },
     },
   },
   locales: {
@@ -167,6 +294,14 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/zh/": {
       lang: "zh-CN",
       title: "Solana秘籍",
+    },
+    "/es/": {
+      lang: "es",
+      title: "Solana Cookbook",
+    },
+    "/vi/": {
+      lang: "vi-VN",
+      title: "Toàn tập Solana",
     },
   },
   markdown: {
@@ -191,6 +326,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/zh/": {
             placeholder: "搜索",
+          },
+          "/vi/": {
+            placeholder: "Tìm kiếm",
           },
         },
         maxSuggestions: 10,
@@ -225,6 +363,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "搜索文档",
+              },
+            },
+          },
+          "/vi/": {
+            placeholder: "Tìm kiếm",
+            translations: {
+              button: {
+                buttonText: "Tìm kiếm",
               },
             },
           },
