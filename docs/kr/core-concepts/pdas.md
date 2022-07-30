@@ -37,24 +37,25 @@ head:
 footer: MIT Licensed
 ---
 
-# Program Derived Addresses (PDAs)
+# 프로그램 파생 주소 (PDAs)
 
-Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs can programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
+프로그램 파생 주소 (PDAs)는 특정 프로그램에 의하여 작동해야하는 계정을 지칭합니다. PDA를 이용하면 프로그램이 특정 주소의 transaction을 보안 키 (Private Key) 없이 사인할 수 있습니다. PDA는 솔라나 앱들이 서로 composable 할 수 있도록 하는 [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations)의 근간이 됩니다.
 
-## Facts
+## 팩트체크
 
-::: tip Fact Sheet
-- PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
-- `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
-- A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve
-- Programs can sign for their PDAs by providing the seeds and bump to [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
-- A PDA can only be signed by the program from which it was derived
-- In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
+::: tip 팩트 시트
+- PDA는 공공키 (public key) 처럼 보이는 32byte string이지만, 할당된 보안키 (private key)는 없습니다
+- `findProgramAddress`는 programID와 시드 (collection of bytes)로 부터 PDA를 생성합니다
+- 범프 (one byte)는 잠재적 PDA를 ed25519 elliptic curve로 부터 시프트하는데 사용됩니다
+- 프로그램은 시드와 범프를 [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)에게 제공하여 PDA를 사인할 수 있습니다
+- PDA는 derive된 프로그램 만으로 부터 사인될 수 있습니다
+- PDA는 프로그램이 instruction을 사인하도록하는 기능외에 해쉬맵 (hashmap)과 같은 인터페이스를 제공합니다. [계정 인덱싱](../guides/account-maps.md)
 :::
 
-# Deep Dive
+# 자세한 설명
 
 PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
+PDA는 솔라나 프로그램 개발에 꼭 필요한 요소입니다. PDA를 이용하면 프로그램은 
 
 ![Accounts matrix](./account-matrix.png)
 
