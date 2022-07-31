@@ -118,7 +118,7 @@ program จะมี data structure ที่ตายตัว. แล้วถ
 |3| Initializing ค่าคงที่เป็นตัวเลขที่จะใช้เป็น program versions
 |4| เพิ่ม update account function ภายใต้ `fn conversion_logic` เพื่อ upgrades ในอนาคต
 
-สมมุตฺิว่าเราต้องการ upgrade program's accounts ของเราตอนนี้ เพื่อที่ใส่ field ที่ต้องการเข้าไปชื่อว่า `somestring` ถ้าเราไม่ได้จัดสรรพื้นที่เผื่อไว้ใน account ก่อนหน้า, เราจะไม่สามารถ upgrade account ได้และติดอยู่แบบนั้น
+สมมติว่าเราต้องการ upgrade program's accounts ของเราตอนนี้ เพื่อที่ใส่ field ที่ต้องการเข้าไปชื่อว่า `somestring` ถ้าเราไม่ได้จัดสรรพื้นที่เผื่อไว้ใน account ก่อนหน้า, เราจะไม่สามารถ upgrade account ได้และติดอยู่แบบนั้น
 
 ## Upgrading the Account
 

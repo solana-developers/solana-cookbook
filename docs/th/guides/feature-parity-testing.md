@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Feature Parity Testing
   - - meta
     - name: description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: คุณสมบัติหลากหลายของ Solana cluster. ลักษณะเฉพาะของการ testing เพื่อผลลัทธ์ที่แน่นอน
   - - meta
     - name: og:description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: คุณสมบัติหลากหลายของ Solana cluster. ลักษณะเฉพาะของการ testing เพื่อผลลัทธ์ที่แน่นอน
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,24 +37,21 @@ head:
 footer: MIT Licensed
 ---
 
-# Feature Parity Testing
+# การทดสอบที่เหียบเคียงกันได้ (Parity Testing)
 
-When testing your program, assurances that it will run the same in various clusters is essential to both quality and
-producing expected outcomes.
+การทดสอบ program จะทำให้เรามั่นใจได้ในทั้งคุณภาพ และผลลัพทธ์ที่ได้ 
 
 ## เรื่องน่ารู้
 
 ::: tip Fact Sheet
-- Features are capabilities that are introduced to Solana validators และ require activation to be used.
-- Features may be activated in one cluster (e.g. testnet) but not so in another (e.g. mainnet-beta).
-- However; when running default `solana-test-validator` locally, all available features in your
-Solana version are automagically activated. The result is that when testing locally, the capabilities และ results of
-your testing may not be the same when deploying และ running in a different cluster!
+- คุณสมบัติเฉพาะ (Features) คือความสามารถ (capabilities) ที่มีมากับ Solana validators และต้องเปิดถึงจะสามารถใช้งานได้
+- Features อาจจะถูกเปิดเพียง cluster เดียว (เช่นบน testnet) แต่ไม่ได้เปิดให้ใช้ที่อื่น (เช่น mainnet-beta).
+- อย่างไรก็ตามเมื่อใช้งาน `solana-test-validator` ด้วยค่าตั้งต้นปกติที่ local, ทุกๆ features จะถูกเปิดให้ใช้งานได้ทั้งหมดตาม
+Solana version ทำให้ผลที่ได้เวลา testing ที่ local กับ capabilities และผลของการทดสอบอาจจะไม่ตรงกันเวลาที่ deploying และ running ใน cluster อื่นๆ!
 :::
 
 ## Scenario
-Assume you have a Transaction that contained three (3) instructions และ each instruction consumes approximately
-100_000 Compute Units (CU). When running in a Solana 1.8.x version, you would observe your instruction CU consumption similar to:
+สมมติว่าเรามี transaction ที่มี (3) instructions และแต่ละ instruction ใช้ประมาณ 100_000 Compute Units (CU) บน Solana 1.8.x, เราจะเห็น instruction CU consumption คล้ายๆ แบบนี้:
 
 | Instruction | Starting CU | Execution | Remaining CU|
 | - | - | - | - |
@@ -62,9 +59,7 @@ Assume you have a Transaction that contained three (3) instructions และ ea
 | 2 | 200_000 | -100_000| 100_000
 | 3 | 200_000 | -100_000| 100_000
 
-In Solana 1.9.2 a feature called 'transaction wide compute cap' was introduced where a Transaction, by default,
-has a 200_000 CU budget และ the encapsulated instructions **_draw down_** from that Transaction budget. Running the same
-transaction as noted above would have very different behavior:
+บน Solana 1.9.2 จะมี feature 'transaction wide compute cap' ที่เพิ่มเข้ามาในเรื่อง transaction ค่าปกติจะมี budget ให้ 200_000 CU และ encapsulated instructions **_ที่ใช้_** จาก transaction budget นั้นด้วย. การใช้ transaction ที่เคยใช้ไปก่อนหน้าจะได้ผลที่แตกต่างเป็นอย่างมาก:
 
 | Instruction | Starting CU | Execution | Remaining CU|
 | - | - | - | - |
@@ -72,14 +67,12 @@ transaction as noted above would have very different behavior:
 | 2 | 100_000 | -100_000| 0
 | 3 | 0 | FAIL!!! | FAIL!!!
 
-Yikes! If you were unaware of this you'd likely be frustrated as there was no change to your instruction behavior that
-would cause this. In devnet it worked fine, but locally it was failing?!?
+มุแง! ถ้าเราไม่รู้มาก่อนคงตกใจแย่ เพราะเราไม่ได้เปลี่ยน instruction อะไรเลยแล้วใน devnet ก็ใช้ได้แต่ที่ local ทำไมพัง?!?
 
-There is the ability to increase the overall Transaction budget, to lets say 300_000 CU, และ salvage your sanity
-but this demonstrates why testing with **_Feature Parity_** provides a proactive way to avoid any confusion.
+เราสามารถเพิ่ม Transaction budget โดยรวมได้ประมาณ 300_000 CU เพื่อเราจะได้รู้สึกดีขึ้น ตัวอย่างด้นบนแสดงให้เห็นว่าเหตุใดการทดสอบด้วย **_Feature Parity_** ถึงเป็นการดีที่จะเตรียมตัวไว้ก่อน เพื่อหลีกเลี่ยงความสับสนในภายหลัง
 
-## Feature Status
-It is fairly easy to check what features are enabled for a particular cluster with the `solana feature status` command.
+## สถานะ Feature
+มันง่ายมากที่จะตรวจสอบว่า features ไหนเปิดให้ใช้สำหรับแต่ละ cluster ด้วยคำสั่ง `solana feature status`
 ```console
 solana feature status -ud   // Displays by feature status for devnet
 solana feature status -ut   // Displays for testnet
@@ -87,40 +80,37 @@ solana feature status -um   // Displays for mainnet-beta
 solana feature status -ul   // Displays for local, requires running solana-test-validator
 ```
 
-Alternatively, you could use a tool like [scfsd](#resources) to observe all feature state across clusters
-which would display, partial screen shown here, และ does not require `solana-test-validator` to be running:
+นอกจากนี้เรายังสามารถใช้ [scfsd](#resources) เพื่อติดตามดูทุกๆ feature ในทุกๆ clusters ตามภามบางส่วนข้างล่าง และมันยังไม่ต้องใช้ `solana-test-validator` ในการทำงานด้วย:
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
 ## Parity Testing
-As noted above, the `solana-test-validator` activates **all** features automagically.
-So to answer the question "How สามารถ I test locally in an environment that has parity with devnet,
-testnet or even mainnet-beta?".
+ตามที่บอกไปแล้วว่า `solana-test-validator` จะเปิด **ทุกๆ** features อัตโนมัติ
+ดังนั้นเพื่อที่จะตอบคำถามที่ว่า "เราจะสามารถทดสอบที่ local ด้วย environment ที่เหมือน devnet, testnet หรือแม้แต่ mainnet-beta ได้ยังไง?".
 
-Solution: PRs were added to Solana 1.9.6 to allow deactivation of features:
+ทางแก้ไข: PRs ที่เพิ่มเข้ามาใน Solana 1.9.6 สามารถทำให้เราปิด features ต่างๆ ได้:
 
 ```console
 solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 ```
 
-## Simple Demonstration
-Suppose you have a simple program that logs the data it receives in it's entry-point. และ you are
-testing a transaction that adds two (2) instructions for your program.
+## ตัวอย่างง่ายๆ
+สมมติว่าคุณมี program ง่ายๆ ที่ log ข้อมูลที่ได้รับใน entry-point และเราจะทดสอบ transaction ที่เพิ่ม (2) instructions สำหรับ program ของเรา.
 
-### All features activated
-1. You start the test validator in one terminal:
+### เปิดทุก features
+1. เราจะเปิด test validator ใน terminal:
 
 ```console
 solana config set -ul
 solana-test-validator -l ./ledger --bpf-program target/deploy/PROGNAME.so --reset`
 ```
 
-2. In another terminal you start the log streamer:
+2. ใน terminal อีกอันให้เปิด log streamer:
 ```console
 solana logs
 ```
 
-3. You then run your transaction. You would see something similar in the log terminal (edited for clarity):
+3. แล้วก็ run transaction เราจะเห็น log ที่คุ้นเคยใน terminal (มีปรับให้ดูง่าย):
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
 Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0 accounts, data=[0]
@@ -131,13 +121,10 @@ Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 187157 compute units
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 ```
-Because our feature 'transaction wide compute cap' is automatically activated by default, we observe each
-instruction drawing down CU from the starting Transaction budget of 200_000 CU.
+เพราะ feature 'transaction wide compute cap' ถูกเปิดตามค่าตั้งต้นอยู่แล้ว ทำให้เราเห็นว่าแต่ละ instruction จะดึง CU จาก budget Transaction เริ่มต้นที่ 200_000 CU.
 
-### Selective features deactivated
-1. For this run, we want to run so that the CU budget behavior is in parity with what is running in devnet. Using
-the tool(s) described in [Feature Status](#feature-status) we isolate the `transaction wide compute cap` public key
-and use the `--deactivate-feature` on the test validator startup
+### เลือกปิด features
+1. ในการ run ครั้งนี้ เราจะ run ให้ CU budget เท่ากับ devnetโดยใช้เครื่องมือที่อธิบายไว้ใน [สถานะ Feature](#สถานะ Feature) เราจะแยก `transaction wide compute cap` public key และใช้ `--deactivate-feature` ในตอนเริ่ม test validator
 
 ```console
 solana-test-validator -l ./ledger --deactivate-feature 5ekBxc8itEnPv4NzGJtr8BVVQLNMQuLMNQQj7pHoLNZ9 --bpf-program target/deploy/PROGNAME.so --reset`
@@ -155,29 +142,22 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 200000 com
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 ```
 
-## Full Parity Testing
-You สามารถ be in full parity with a specific cluster by identifying each feature that is not
-yet activated และ add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
+## การทดสอบให้เหมือนกันทั้งหมด
+เราสามารถทดสอบให้เหมือนกันทั้งหมดได้ใน cluster ที่ต้องการโดยดูว่า feature ยังไม่ได้เปิด (activated) และเพิ่ม`--deactivate-feature <FEATURE_PUBKEY>` สำหรับแต่ละ feature เมื่อเราเรียก `solana-test-validator`:
 ```console
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
 
-Alternatively, [scfsd](#resources) provides a command switch to output the complete deactivated feature
-set for a cluster to feed directly into the `solana-test-validator` startup:
+ทางเลือกอื่นเช่น [scfsd](#resources) จะมีคำสั่งสร้าง output เพื่อปิด features โดยมันจะป้อน output นั้นเข้าไปตอนเริ่มใช้ `solana-test-validator`:
 ```console
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
+ถ้าเราเปิดอีก terminal ขึ้นมาระหว่างที่ validator ยังทำงานอยู่ และเรียกใช้คำสั่ง `solana feature status` คุณจะเห็น features ที่ถูก deactivatedเหมือนใน devnet เลย
 
-If you open another terminal, while the validator is running, และ `solana feature status` you will see
-features deactivated that were found deactivated in devnet
+## การทดสอบให้เหมือนกันทั้งหมดด้วยคำสั่ง (Programmatically)
+สำหรับคนที่ต้องการควบคุมการทดสอบใน test code ก็สามารถเปิดปิด features ได้โดยใช้ function TestValidatorGenesis ใน Solana 1.9.6
 
-## Full Parity Testing Programmatically
-For those who control running the test validator within their test code, modifying
-the test validator activated/deactivated features is possible โดยใช้ TestValidatorGenesis. With
-Solana 1.9.6 a function has been added to the validator builder to support this.
-
-At the root of your program folder, create a new folder called `tests` และ add a `parity_test.rs`
-file. Here is the boiler place functions (boiler-plate if you will) used by each test
+ใน folder root ของ program ให้เราสร้าง folder ชื่อ `tests` และเพิ่ม file `parity_test.rs` เข้าไป ส่วนด้านล่างนี้คือ boiler-plate สำหรับใช้ในแต่ละ test
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Test Boiler Plate" active>
@@ -198,9 +178,7 @@ file. Here is the boiler place functions (boiler-plate if you will) used by each
 
 </SolanaCodeGroup>
 
-We สามารถ now add test functions in the body of `mod test {...}` to demonstrate default
-validator setup (all features enabled) และ then disabling the `transaction wide compute cap` as
-per previous examples running `solana-test-validator` from the command line.
+เราสามารถ now เพิ่ม test functions ใน `mod test {...}` เพื่อทดสอบค่าตั้งต้นของ validator setup (เปิดใช้ทุก features) และค่อยปิก `transaction wide compute cap` เหมือนตัวอย่างที่แล้วที่ใช้ `solana-test-validator` จาก command line.
 
 <CodeGroup>
   <CodeGroupItem title="All Features Test">
@@ -217,9 +195,7 @@ per previous examples running `solana-test-validator` from the command line.
 
 </CodeGroup>
 
-Alternatively, the [scfs engine gadget](#resources) สามารถ produce a full vector of deactivated
-features for a cluster. The following demonstrates โดยใช้ that engine to get a list
-of all deactivated features for devnet.
+นอกจากนี้ [scfs engine gadget](#resources) ก็สามารถกำหนดให้ปิดทุก features ของ cluster โดยทำตามตัวอย่างด้านล่างนี้ โดยใช้ engine เพื่อหา features ี่ที่ถูกปิดทั้งหมดของ devnet.
 
 <CodeGroup>
   <CodeGroupItem title="Devnet Parity">
@@ -231,7 +207,7 @@ of all deactivated features for devnet.
 </CodeGroup>
 
 
-Happy Testing!
+ทดสอบให้สนุกนะ!
 
 
 ## Resources
