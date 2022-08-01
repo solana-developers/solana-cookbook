@@ -54,27 +54,26 @@ footer: MIT Licensed
 
 # 자세한 설명
 
-PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
-PDA는 솔라나 프로그램 개발에 꼭 필요한 요소입니다. PDA를 이용하면 프로그램은 
+PDA는 솔라나 프로그램 개발에 꼭 필요한 요소입니다. PDA를 이용하면 다른 유저가 계정의 시그니쳐를 생성할 걱정 없이 계정을 이용하여 사인을 할 수 있습니다. 계정을 대신하여 사인하는 것 외에도 프로그램은 PDA에 할당된 계정을 수정할 수 있습니다.
 
 ![Accounts matrix](./account-matrix.png)
 
 <small style="text-align:center;display:block;">Image courtesy of <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
 
-### Generating PDAs
+### PDA 생성하기
 
-To understand the concept behind PDAs, it may be helpful to consider that PDAs are not technically created, but rather found. PDAs are generated from a combination of seeds (such as the string `“vote_account”`) and a program id. This combination of seeds and program id is then run through a sha256 hash function to see whether or not they generate a public key that lies on the ed25519 elliptic curve.
+PDA의 컨셉을 이해하기 위해서는 PDA가 기술적으로 "생성"된것이 아닌 "발견"되었다는 사실을 이해해야합니다. PDA는 시드(`"vote_account"`과 같은 string)와 프로그램 id의 조합으로 생성됩니다. 이 조합은 sha256 해시 함수를 거쳐 ed25519 elliptic curve에 해당하는 공공키를 생성하는지 여부를 확인하는데 사용됩니다.
 
-In running our program id and seeds through a hash function, there is a ~50% chance that we actually end up with a valid public key that does lie on the elliptic curve. In this case, we simply add something to fudge our input a little bit and try again. The technical term for this fudge factor is a bump. In Solana, we start with bump = 255 and simply iterate down through bump = 254, bump = 253, etc. until we get an address that is not on the elliptic curve. This may seem rudimentary, but once found it gives us a deterministic way of deriving the same PDA over and over again. 
+프로그램 id와 시드를 해시 함수에 대입하게되면 eliptic curve에 해당하지 않지만 유효한 공공키를 생성할 확률이 대략 50% 입니다. 이 경우, 인풋값을 조금 수정하여 위 과정을 다시 수행합니다. 퍼지 팩터의 기술적인 명칭은 범프입니다. 솔라나에서는 bump = 255에서 시작하여 bump = 254, bump = 253으로 eliptic curve위에 존재하지 않는 주소를 생성할때까지 반복합니다. 이런 방법이 극히 단순해 보일 수 있지만, 같은 PDA를 여러번 파생시키는데에 큰 역할을 합니다.
 
 ![PDA on the ellipitic curve](./pda-curve.png)
 
-### Interacting with PDAs
+### PDA와 통신하기
 
-When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program can then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
+PDA가 생성될때 `findProgramAddress`는 주소를 eliptic curve에서 제외시키는데 사용한 범프 (bump)와 주소를 리턴합니다. 이 범프를 이용하여 PDA가 요구되는 instruction을 프로그램이 [사인](../references/accounts.md#sign-with-a-pda)할 수 있습니다. 사인을 하기 위해서 프로그램은 instruction, 계정 리스트, PDA를 생성하기 위해 사용된 시드와 범프를 `invoke_signed`에 패스해야 합니다. Instruction을 사인하는것과 더불어 PDA는 본 주소가 생성한 `invoke_signed`역시 사인해야합니다.
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
+PDA를 이용하여 개발을 할때에 [범프 시드를 본 계정 데이터에 저장](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) 하는 일이 흔하게 보입니다. 이것은 개발자가 PDA를 instruction argument에 범프를 패스하지 않고도 쉽게 검증할 수 있게 도와줍니다.
 
-## Other Resources
-- [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
-- [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
+## 유용한 정보
+- [공식 문서](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
+- [PDA 이해하기](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
