@@ -1,7 +1,7 @@
-import { defineUserConfig } from "vuepress";
-import type { DefaultThemeOptions } from "vuepress";
-import * as path from "path";
+import * as path from 'path';
+import { defineUserConfig } from 'vuepress';
 
+import type { DefaultThemeOptions } from "vuepress";
 export default defineUserConfig<DefaultThemeOptions>({
   base: "/",
   lang: "en-US",
@@ -97,7 +97,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/integrations/web3auth.md",
                 "/integrations/react-native.md",
                 "/integrations/jupiter.md",
-
               ],
             },
           ],
@@ -181,13 +180,13 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "Guías",
               children: [
-                '/es/guides/get-program-accounts.md',
-                '/es/guides/serialization.md',
-                '/es/guides/data-migration.md',
-                '/es/guides/account-maps.md',
-                '/es/guides/retrying-transactions.md',
-                '/es/guides/debugging-solana-programs.md',
-                '/es/guides/feature-parity-testing.md',
+                "/es/guides/get-program-accounts.md",
+                "/es/guides/serialization.md",
+                "/es/guides/data-migration.md",
+                "/es/guides/account-maps.md",
+                "/es/guides/retrying-transactions.md",
+                "/es/guides/debugging-solana-programs.md",
+                "/es/guides/feature-parity-testing.md",
               ],
             },
             {
@@ -207,7 +206,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-        }
+        },
       },
       "/vi/": {
         selectLanguageName: "Tiếng Việt",
@@ -282,6 +281,80 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/id/": {
+        selectLanguageName: "Bahasa Indonesia",
+        navbar: [
+          {
+            text: "Kontribusi",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Integrasi",
+            link: "/id/integrations",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Memulai",
+              children: ["/id/", "/id/getting-started/installation.md"],
+            },
+            {
+              text: "Konsep Utama",
+              children: [
+                "/id/core-concepts/accounts.md",
+                "/id/core-concepts/programs.md",
+                "/id/core-concepts/transactions.md",
+                "/id/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Panduan",
+              children: [
+                "/id/guides/get-program-accounts.md",
+                "/id/guides/serialization.md",
+                "/id/guides/data-migration.md",
+                "/id/guides/account-maps.md",
+                "/id/guides/retrying-transactions.md",
+                "/id/guides/debugging-solana-programs.md",
+                "/id/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Referensi",
+              children: [
+                "/id/references/local-development.md",
+                "/id/references/keypairs-and-wallets.md",
+                "/id/references/basic-transactions.md",
+                "/id/references/accounts.md",
+                "/id/references/programs.md",
+                "/id/references/token.md",
+                // "/id/references/anchor.md",
+                "/id/references/staking.md",
+                "/id/references/nfts.md",
+                "/id/references/offline-transactions.md",
+                "/id/references/name-service.md",
+              ],
+            },
+          ],
+          "/id/integrations": [
+            {
+              text: "Integrasi",
+              children: [
+                "/id/integrations",
+                "/id/integrations/serum.md",
+                "/id/integrations/pyth.md",
+                "/id/integrations/switchboard.md",
+                "/id/integrations/mango.md",
+                "/id/integrations/strata.md",
+                "/id/integrations/web3auth.md",
+                "/id/integrations/react-native.md",
+                "/id/integrations/jupiter.md",
+              ],
+            },
+          ],
+        },
+      },
     },
   },
   locales: {
@@ -302,6 +375,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/vi/": {
       lang: "vi-VN",
       title: "Toàn tập Solana",
+    },
+    "/id/": {
+      lang: "id-ID",
+      title: "Buku Memasak Solana",
     },
   },
   markdown: {
@@ -329,6 +406,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/vi/": {
             placeholder: "Tìm kiếm",
+          },
+          "/id/": {
+            placeholder: "Pencarian",
           },
         },
         maxSuggestions: 10,
@@ -371,6 +451,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "Tìm kiếm",
+              },
+            },
+          },
+          "/id/": {
+            placeholder: "Pencarian",
+            translations: {
+              button: {
+                buttonText: "Pencarian",
               },
             },
           },
