@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Local Development
   - - meta
     - name: description
-      content: Setup Local Validator for local นักพัฒนา environment และ Airdrop SOL. เรียนรู้เกี่ยวกับ Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: ติดตั้ง Local Validator สำหรับพัฒนาบน local environment และทำการ Airdrop SOL. เรียนรู้เกี่ยวกับ Local Development และ references อื่นๆ เพื่อไปทำงานบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator และ Airdrop SOL for building บน Solana Locally. เรียนรู้เกี่ยวกับ Local Development และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content:  ติดตั้ง Local Validator สำหรับพัฒนาบน local environment และทำการ Airdrop SOL. เรียนรู้เกี่ยวกับ Local Development และ references อื่นๆ เพื่อไปทำงานบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,32 +39,29 @@ footer: MIT Licensed
 
 # Local Development
 
-## Starting a Local Validator
+## เริ่มใช้ Local Validator
 
-Testing your program code locally สามารถ be a lot more reliable than
-testing on devnet, และ สามารถ help you test before trying it out on devnet.
+การทดสอบ program ที่ local จะเสถียรกว่าการทดสอบบน devnet และมันยังช่วยเราทดสอบก่อนที่จะไปลองบน devnet อีกด้วย
 
-You สามารถ setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
-and running
+เราสามารถติดตั้ง local-test-validator  โดยการลง [solana tool suite](/getting-started/installation.md#install-cli) และ run คำสั่งนี้
 
 ```console
 solana-test-validator
 ```
 
-Benefits of โดยใช้ local-test-validator include:
+ประโยชน์ของการใช้ local-test-validator คือ:
 
-- No RPC rate-limits
-- No airdrop limits
-- Direct on-chain program deployment (`--bpf-program ...`)
-- Clone accounts from a public cluster, including programs (`--clone ...`)
-- Configurable transaction history retention (`--limit-ledger-size ...`)
-- Configurable epoch length (`--slots-per-epoch ...`)
-- Jump to an arbitrary slot (`--warp-slot ...`)
+- ไม่มีข้อจำกัด (rate-limits) ​ในการเรียก RPC 
+- ไม่มีข้อจำกัดในการขอ airdrop
+- deploy program on-chain ได้โดยตรง (`--bpf-program ...`)
+- สามารถ clone accounts และ programs จาก public cluster ได้ (`--clone ...`)
+- ตั้งค่า transaction history retention ได้ (`--limit-ledger-size ...`)
+- ตั้งค่าความยาว epoch ได้ (`--slots-per-epoch ...`)
+- ข้ามไป slot ไหนก็ได้ตามใจ (`--warp-slot ...`)
 
 ## Connecting to Environments
 
-When you are working บน Solana development, you will need to connect
-to a specific RPC API endpoint. Solana has 3 public development
+เวลา dev บน Solana development เราต้อง connect ไปที่ RPC API endpoint ซึ่ง Solana จะมีอยู่ 3 public development
 environments:
 - mainnet-beta https://api.mainnet-beta.solana.com
 - devnet https://api.devnet.solana.com
@@ -204,11 +201,11 @@ running remotely with the following:
 
 ## Subscribing to Events
 
-Websockets provide a pub/sub interface where you สามารถ listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you สามารถ instead receive those updates only when they happen.
+Websockets จะมี pub/sub interface ที่เราสามารถฟัง events ที่เราสนใจแทนที่จะคอยวนๆ เรียก HTTP endpoint บ่อยๆ เราสามารถรับข้อมูลเฉพาะตอนมันเกิดขึ้นได้
 
-Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint และ registers a websocket client when you create a new `Connection` instance (see source code [ที่นี่](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
+Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) จะมี websocket endpoint และจะ registers ตัว websocket client เมื่อเรา new `Connection` ขึ้นมาใหม่ (ดู source code [ที่นี่](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
-The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the websocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
+`Connection` class จะมี pub/sub methods - ที่จะมีชื่อเริ่มด้วย `on` เหมือน event emitters ทั่วไป เวลาเราเรียก listener methods พวกนี้ มันจะ registers subscription ใหม่ไปที่ websocket client ของ `Connection` นั้นๆ ตัวอย่างของ pub/sub method ที่เราใช้ด้านล่างคือ [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). ส่วน callback จะให้ updated state data ผ่าน arguments (ดูตัวอย่างได้ที่ [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback)).
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -262,9 +259,7 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
 
 ## Getting Test SOL
 
-When you're working locally, you need some SOL in order to send
-transactions. In non-mainnet environments you สามารถ receive SOL by
-airdropping it to your address
+เมื่อเราทำงานที่ local เราจะต้องการ SOL ในการส่ง transactions บน non-mainnet environments เราสามารถขอ SOL ได้ด้วยการ airdrop ไปที่ address ของเรา
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -328,15 +323,15 @@ airdropping it to your address
 
 </SolanaCodeGroup>
 
-## โดยใช้ Mainnet Accounts และ Programs
+## วิธีใช้ Mainnet Accounts และ Programs
 
-Oftentimes, local tests rely on programs และ accounts available only on mainnet. The Solana CLI allows to both:
+local tests มักจะต้องใช้ programs และ accounts ที่มีอยู่แล้วบน mainnet Solana CLI สามารถที่จะ:
 * Download Programs และ Accounts
-* Load Programs และ Accounts to a local validator
+* Load Programs และ Accounts มาที่ local validator
 
-### วิธี load accounts from mainnet
+### วิธี load accounts จาก mainnet
 
-It is possible to download the SRM token mint account to file:
+เราสามารถ download SRM token mint account มาเป็น file ได้ตามนี้:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -355,7 +350,7 @@ It is possible to download the SRM token mint account to file:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the account's file และ destination address (on the local cluster) when starting the validator:
+การ load มาที่ localnet ของเราสามารถทำได้โดยการส่ง account's file และ address เป้าหมาย(ไปยัง local cluster) ตอนเริ่มเปิดใช้ validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -377,7 +372,7 @@ Loading it to your localnet is then done by passing the account's file และ
 
 ### วิธี load programs from mainnet
 
-Similarly, it is possible to download the Serum Dex v3 program:
+และเช่นกันเราสามารถ download Serum Dex v3 program ได้:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -396,7 +391,7 @@ Similarly, it is possible to download the Serum Dex v3 program:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the program's file และ destination address (on the local cluster) when starting the validator:
+การ load มาที่ localnet ของเราสามารถทำได้โดยการส่ง account's file และ address เป้าหมาย(ไปยัง local cluster) ตอนเริ่มเปิดใช้ validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
