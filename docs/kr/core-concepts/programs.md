@@ -37,27 +37,27 @@ head:
 footer: MIT Licensed
 ---
 
-# Programs
+# 프로그램
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+개발자는 제약없이 솔라나 블록체인에 프로그램을 개발하고 deploy할 수 있습니다. 흔히 스마트 컨트랙트로 불리는 프로그램은 on-chain activity의 코어 역할을 하며 DeFi, NFT, Social Media, Gaming과 같은 서비스들의 기반이 됩니다.
 
-## Facts
+## 팩트체크
 
-::: tip Fact Sheet
-- Programs process [instructions](./transactions) from both end users and other programs
-- All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
-- Programs themselves are stored in accounts marked as `executable`
-- All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Developers most commonly write programs in Rust or C++, but can choose any language that targets the [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) backend
-- All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`); parameters always include:
+::: tip 팩트시트
+- 프로그램은 [instructions](./transactions)를 유저와 다른 프로그램으로부터 처리합니다.
+- 모든 프로그램은 **stateless** 합니다: 프로그램이 interact하는 모든 데이터는 instructions를 통하여 패스된 [계정](./accounts.md)에 저장됩니다.
+- 프로그램은 `executable`로 명칭된 계정에 저장됩니다.
+- 모든 프로그램은 [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader)에게 소유권이 있으며 [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)에 의하여 실행됩니다.
+- 솔라나 프로그램은 주로 Rust나 C++로 개발되지만 [LLVM]https://llvm.org/)의 [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) 백엔드를 타겟하는 다른 프로그래밍 언어로도 개발이 가능합니다.
+- 모든 프로그램은 instruction 프로세싱을 하는 단일 엔트리 포인트가 존재합니다 (i.e. `process_instruction`); 파라미터는 다음을 포함합니다:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
-    - `instruction_data`: `byte array`
-:::
+    - `instruction_data`: `byte array`:::
 
-## Deep Dive
 
-Unlike most other blockchains, Solana completely separates code from data. All data that programs interact with are stored in separate accounts and passed in as references via instructions. This model allows for a single generic program to operate across various accounts without requiring additional deployments. Common examples of this pattern are seen across the Native and SPL Programs.
+## 자세한 설명
+
+다른 블록체인과는 다르게 솔라나는 코드를 데이터에서 완전히 배제합니다. 프로그램이 통신하는 모든 데이터는 다른 계정에 저장되어 있으며 instruction을 이용하여 reference로 패스됩니다. 이 모델은 추가적인 deployment 없이 여러 account에서 프로그램이 작동할 수 있도록 합니다. 다음과 같은 패턴은 Native 프로그램과 SPL 프로그램에서 발견할 수 있습니다.
 
 ### Native Programs & The Solana Program Library (SPL)
 
