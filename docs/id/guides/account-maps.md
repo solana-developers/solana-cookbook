@@ -1,38 +1,39 @@
 ---
-title: Account Maps
+title: Peta Akun
 ---
 
-# Account Maps
+# Peta Akun
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+Peta adalah sebuah struktur data yang sering kita gunakan dalam pemrograman untuk mengaitkan sebuah **kunci** dengan suatu **nilai**. Kunci dan nilai ini dapat bertipe data apa saja. Kunci ini berperan sebagai pengenal dari nilai yang diberikan yang sedang disimpan. Kunci dari peta ini memungkinkan kita untuk memasukkan, mengambil dan memperbarui nilai tersebut secara efisien.
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [here][AccountCookbook].
+Model dari akun Solana seperti yang kita ketahui memerlukan data program dan data posisi saat itu untuk dapat disimpan di akun yang berbeda. Akun tersebut memiliki alamat yang berkaitan dengan diri mereka. Hal ini sendiri sebenarnya merupakan sebuah peta! Pelajari lebih lanjut mengenai model akun solana [disini][AccountCookbook].
 
-So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
+Jadi, tentunya masuk akal untuk menyimpan **nilai** di akun yang berbeda, dengan alamat berperan sebagai **kunci** yang dibutuhkan untuk mengambil nilainya. Tetapi terdapat beberapa masalah yang muncul akibat metode ini, antara lain
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember and retrieve the required value.
+* Alamat - alamat yang disebutkan di atas kemungkinan besar bukanlah sebuah **kunci** yang ideal, yang dapat Anda ingat dan gunakan untuk mengambil nilai yang diperlukan.
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* Alamat - alamat yang disebutkan di atas merujuk ke kunci publik dari **Pasangan Kunci** yang berbeda, dimana setiap kunci publik (atau *alamat*) memiliki **kunci pribadi** yang berkaitan dengannya. Kunci pribadi ini akan diperlukan untuk menandatangani instruksi yang berbeda jika dan bila diperlukan, mengharuskan kita untuk menyimpan kunci pribadi di suatu tempat, yang tentunya **tidak** direkomendasikan!
 
-This presents a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+Ini menghadirkan masalah yang dihadapi banyak pengembang Solana, yang menerapkan logika seperti `Peta` ke dalam program mereka. Mari kita lihat beberapa cara bagaimana kita akan mengatasi masalah ini,
 
-## Deriving PDAs
+## Menghasilkan PDA
 
-PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
+PDA adalah singkatan dari [Program Derived Address][PDA], dan secara singkat merupakan alamat - alamat yang **diperoleh** dari sekumpulan benih, dan id program (atau _alamat_).
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, can sign an instruction with the key, provided the seeds as well. Learn more about this [here][CPI].
+Hal unik tentang PDA adalah, alamat ini **tidak** terkait dengan kunci pribadi apa pun. Ini karena alamat ini tidak terletak pada kurva ED25519. Oleh karena itu, **hanya** program dari mana _alamat_ ini diturunkan yang dapat menandatangani instruksi dengan kunci tersebut, dengan menyediakan benih juga. Pelajari lebih lanjut tentang ini [di sini][CPI].
 
-Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
+Sekarang setelah mengetahui apa itu PDA, mari kita gunakan mereka untuk memetakan beberapa akun! Kita akan mengambil sebuah contoh dari sebuah program **Blog** untuk mendemonstrasikan bagaimana hal ini dapat diimplementasikan.
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, and each post is **mapped** to a certain blog.
+Di dalam program Blog ini, kita ingin agar setiap `Pengguna` untuk memiliki sebuah `Blog`. Blog ini dapat memiliki sejumlah `Artikel`. Itu berarti kita **memetakan** setiap pengguna ke sebuah blog, dan setiap artikel **dipetakan** ke blog tertentu.
 
-In short, there is a `1:1` mapping between a user and his/her blog, whereas a `1:N` mapping between a blog and its posts.
+Singkatnya, ada pemetaan `1:1` antara pengguna dan blognya, sedangkan pemetaan `1:N` antara blog dan artikelnya.
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, and possibly a prefix of **"blog"**, to act as a type identifier.
+Untuk pemetaan `1:1`, kita ingin alamat blog diturunkan **hanya** dari penggunanya, yang memungkinkan kita mengambil blog berdasarkan otoritasnya (atau _pengguna_). Oleh karena itu, benih untuk blog akan terdiri dari **kunci otoritas**, dan mungkin awalan **"blog"**, untuk bertindak sebagai pengenal tipe.
 
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, and a prefix of **"post"**, to act as a type identifier. 
+Untuk pemetaan `1:N`, kita ingin setiap alamat artikel diturunkan **tidak hanya** dari blog yang terkait dengannya, tetapi juga **pengidentifikasi** lain, yang memungkinkan kita untuk membedakan antara `N ` jumlah artikel di blog. Dalam contoh di bawah ini, setiap alamat artikel diturunkan dari **kunci blog**, sebuah **slug** untuk mengidentifikasi setiap postingan, dan awalan **"post"**, untuk bertindak sebagai pengenal tipe.
 
-The code is as shown below, 
+
+Untuk kodenya dapat dilihat pada gambar di bawah ini,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -69,7 +70,8 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+Di sisi klien, Anda dapat menggunakan `PublicKey.findProgramAddress()` untuk memperoleh alamat akun `Blog` dan `Artikel` yang diperlukan, yang dapat Anda teruskan ke `connection.getAccountInfo()` untuk mengambil data akun. Contoh ditunjukkan di bawah ini,
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -90,17 +92,17 @@ On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the r
 
 </SolanaCodeGroup>
 
-## Single Map Account
+## Akun Peta Tunggal
 
-Another way to implement mapping would be to have a `BTreeMap` data structure explicitly stored in a single account. This account's address itself could be a PDA, or the public key of a generated Keypair.
+Cara lain untuk mengimplementasikan pemetaan adalah dengan memiliki struktur data `BTreeMap` yang disimpan secara eksplisit dalam satu akun. Alamat akun ini sendiri bisa berupa PDA, atau kunci publik dari pasangan kunci yang dihasilkan.
 
-This method of mapping accounts is not ideal because of the following reasons,
+Metode pemetaan akun ini tidak ideal karena alasan berikut,
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* Anda harus menginisialisasi akun yang menyimpan `BTreeMap` terlebih dahulu, sebelum Anda dapat memasukkan pasangan nilai kunci yang diperlukan ke dalamnya. Kemudian, Anda juga harus menyimpan alamat akun ini di suatu tempat, untuk memperbaruinya setiap saat.
 
-* There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
+* Ada batasan memori untuk sebuah akun, di mana sebuah akun dapat memiliki ukuran maksimum **10 megabita**, yang membatasi `BTreeMap` untuk menyimpan sejumlah besar pasangan nilai kunci.
 
-Hence, after considering your use-case, you can implement this method as shown below,
+Oleh karena itu, setelah mempertimbangkan kasus penggunaan Anda, Anda dapat menerapkan metode ini seperti yang ditunjukkan di bawah ini,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -120,7 +122,7 @@ Hence, after considering your use-case, you can implement this method as shown b
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client-side code to test the above program would look like something as shown below,
+Kode pada sisi klien untuk menguji program di atas akan terlihat seperti yang ditunjukkan di bawah ini,
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -139,8 +141,6 @@ The client-side code to test the above program would look like something as show
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
-
-
 
 [AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
 [PDA]: https://solanacookbook.com/references/accounts.html#program-derived-address
