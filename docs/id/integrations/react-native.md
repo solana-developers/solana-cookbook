@@ -3,10 +3,10 @@ title: React Native
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Using React Native with Solana
+      content: Buku Memasak Solana | Using React Native with Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Using React Native with Solana
+      content: Buku Memasak Solana | Using React Native with Solana
   - - meta
     - name: description
       content: In this tutorial, you learn how to use Solana in your React Native apps.
