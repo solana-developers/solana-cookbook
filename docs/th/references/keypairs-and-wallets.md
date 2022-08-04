@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Keypairs และ Wallets
   - - meta
     - name: description
-      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้เกี่ยวกับ Keypairs และ Wallets, Signing และ Verifying Messages และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,12 +39,9 @@ footer: MIT Licensed
 
 # Keypairs และ Wallets
 
-## วิธี generate a new Keypair
+## วิธีสร้าง Keypair ใหม่
 
-Many of the different actions you สามารถ take with the various Solana
-libraries require a Keypair or Wallet. If you are connecting to a
-wallet, you do not have to worry. However, if you are in need of a
-keypair, you will need to generate one.
+actions ต่างๆ บน Solana libraries ต้องการ Keypair หรือ Wallet ถ้าเราเชื่อมกับ wallet อยู่แล้ว เราก็ไม่ต้องห่วงอะไร หรือถ้าเราต้องการ keypair เราก็แค่ต้องสร้างมันขึ้นมา
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -115,10 +112,9 @@ keypair, you will need to generate one.
 
 ## วิธี restore a Keypair from a secret
 
-If you already have your secret, you สามารถ get your Keypair from the secret
-to test out your dApp.
+ถ้าเรามี secret อยู่แล้วเราก็จะสามารถสร้าง Keypair จาก secret นั้นเพื่อทดสอบ dApp ของเราได้เลย
 
-1. From Bytes
+1. สร้างจาก Bytes
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -187,7 +183,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-2. From Base58 String
+2. สร้างจาก Base58 String
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -242,8 +238,7 @@ to test out your dApp.
 
 ## วิธี verify a Keypair
 
-If you are given a keypair, you สามารถ verify whether or not the secret
-matches the given public key
+ถ้าเราได้ keypair มา เราสามารถตรวจสอบมันได้ว่า secret นั้นตรงกับ public key หรือเปล่า
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -298,7 +293,7 @@ matches the given public key
 
 ## วิธี check if a public key has an associated private key
 
-In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You สามารถ check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve สามารถ be controlled by users with wallets.
+ในบางกรณีเฉพาะ (เช่น a Program Derived Address), public keys อาจจะไม่มี private key เราสามารถตรวจสอบโดยดูว่า public key อยู่บน ed25519 curve หรือไม่ เพราะ public keys ที่อยู่บน curve สามารถควบคุมได้จากผู้ใช้งานที่ถือ wallet นั้นอยู่
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -354,7 +349,7 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 
 ## วิธี generate a mnemonic phrase
 
-If you're creating a wallet, you will need to generate a mnemonic phrase so that the user สามารถ save it as a backup.
+ถ้าเราสร้าง wallet เราต้องสร้าง mnemonic phrase เพื่อให้ user สามารถเก็บสำรองไว้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -407,12 +402,11 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 </SolanaCodeGroup>
 
-## วิธี restore a Keypair from a mnemonic phrase
+## วิธีกู้ Keypair จาก mnemonic phrase
 
-Many wallet extensions use mnemonics to represent their secret keys.
-You สามารถ convert the mnemonic to Keypairs for local testing.
+หลายๆ wallet extensions ใช้ mnemonics เพื่อใช้แทน secret keys เราสามารถเปลี่ยน mnemonic ไปเป็น Keypairs เพื่อทดสอบที่ local ได้
 
-1. BIP39 - creating a single wallet
+1. BIP39 - สร้าง wallet 1 ตัว
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -465,9 +459,9 @@ You สามารถ convert the mnemonic to Keypairs for local testing.
 
 </SolanaCodeGroup>
 
-2. BIP44 (multiple wallets, also known HD wallets)
+2. BIP44 (สร้างหลาย wallets หรือที่เรียกว่า HD wallets)
 
-You สามารถ make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
+เราสามารถสร้างหลาย wallets จาก seed เดียวหรือที่เราเรียกว่า 'Hierarchical Deterministic wallets' หรือ HD wallets:
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -506,16 +500,12 @@ You สามารถ make multiple wallets from a single seed - also known as 
 
 ## วิธี generate a vanity address
 
-Vanity publickeys, or custom addresses are keys that have start with
-specific characters. For example, a person may want a publickey to
-start with "elv1s", or maybe even "cook". These สามารถ help other people
-remember who the key belongs to, making the key more easily identifiable.
+Vanity public keys หรือ custom addresses คือ keys ที่เริ่มด้วยตัวอักษรที่เฉพาะเจาะจง เช่น เราอาจจะต้องการ publickey ที่ขึ้นต้้นด้วย "elv1s" หรือ "cook" ซึ่งมันจะทำให้จำไดง่ายขึ้นว่าเป็นของใคร ทำให้ key สามารถแยกแยะกันได้ง่ายขึ้น
 
-Note: The more characters in your vanity address, the longer it will
-take.
+Note: ยิ่งระบุ characters ใน vanity address มากเท่าไหร่ ก็จะยิ่งใช้เวลาในการค้นหา address นานขึ้น
 
 ::: warning
-You should just use the CLI for this task. The Python และ TypeScript examples are for illustrative purposes และ are much slower than the CLI.
+คุณควรใช้ CLI ในการสร้าง ทั้งตัวอย่าง Python และ TypeScript เป็นเพียงแค่การทำให้เห็นภาพมากขึ้นเท่านั้น และมันจะทำงานช้ากว่าบน CLI อีกด้วย
 :::
 
 <SolanaCodeGroup>
@@ -571,12 +561,9 @@ You should just use the CLI for this task. The Python และ TypeScript examp
 
 ## วิธี sign และ verify messages with wallets
 
-The primary function of a keypair is to sign messages และ enable
-verification of the signature. Verification of a signature allows
-the recipient to be sure that the data was signed by the owner of a
-specific private key.
+function หลักของ keypair คือ sign message และยังเอาไว้ตรวจสอบ signature ได้ด้วย ซึ่งการตรวจสอบ signature จะทำให้ผู้รับมั่นใจได้ว่าข้อมูลถูก sign ด้วยเจ้าของ private key นั้นจริงๆ
 
-To do so we will import the [TweetNaCl][1] crypto library.
+เพื่อที่จะทำตัวอย่างกันเราจะ import [TweetNaCl][1] crypto library มาใช้
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -615,21 +602,21 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## วิธี connect to a wallet
+## วิธีเชื่อมต่อกับ wallet
 
-Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
+Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries จะช่วยทำให้เราจัดการเชื่อมต่อ wallet ที่ฝั่ง client ได้อย่างง่ายดาย
 
 ### React
 
-Run the following command to install the required dependencies:
+Run คำสั่งข้างล่างเพื่อติดตั้ง dependencies ที่ต้องใช้:
 
 ```/bin/bash
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-The React wallet-adapter libraries allow us to persist และ access wallet connection states through hooks และ Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, และ `ConnectionProvider`. The React App must be wrapped with `WalletProvider` และ `ConnectionProvider`.
+React wallet-adapter libraries จะทำให้เราคงสถานะการเชื่อมต่อ wallet ผ่าน hooks และ Context providers ที่ชื่อว่า `useWallet`, `WalletProvider`, `useConnection`, และ `ConnectionProvider` React App ต้องครอบไว้ด้วย `WalletProvider` และ `ConnectionProvider`
 
-Additionally, we สามารถ prompt users to connect by โดยใช้ `useWalletModal` to toggle visibility of the connection modal และ wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we สามารถ just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+นอกจากนี้เรายังสามารถบอกให้ users เชื่อมต่อโดยใช้ `useWalletModal` เพื่อสลับการมองเห็น connection modal และครอบ app ไว้ด้วย `WalletModalProvider` จาก `@solana/wallet-adapter-react-ui` ได้ด้วย. ตัว connection modal จะควบคุมการทำงาน connection ให้เรา ทำให้เราสามารถ listen ไว้ได้ว่า wallet เชื่อมต่อแล้ว. เราจะรู้ว่า wallet เชื่อมต่อแล้วเมื่อการตอบกลับของ `useWallet` มีค่า `wallet` อยู่ (ไม่ null). และตรงข้ามกันถ้า wallet ค่าเป็น null แสดงว่าเรายังไม่ได้เชื่อมต่อ (disconnected).
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -652,13 +639,13 @@ Additionally, we สามารถ prompt users to connect by โดยใช�
 
 ### Vue
 
-Run the following command to install the required dependencies:
+Run คำสั่งข้างล่างเพื่อติดตั้ง dependencies ที่ต้องใช้:
 
 ```/bin/bash
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store และ create a new `$wallet` global property that สามารถ be accessed inside any component. All the properties และ methods you สามารถ get from `useWallet()` are displayed [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import และ render the WalletMultiButton component to allow users to select a wallet et connect to it.
+[Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin จะทำให้เราสามาร initialise wallet store และ สร้าง global `$wallet` ที่สามารถเข้าถึงได้จากทุกๆ component. ทุก properties และ methods ที่เราสามารถ อ่านค่าได้จาก `useWallet()` จะมีแสดงไว้ [ที่นี่](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). เราจะ import และ render WalletMultiButton component เพื่อให้ผู้ใช้สามารถเลือกและเชื่อมต่อ wallet ได้
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -681,13 +668,13 @@ The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugi
 
 ### Svelte
 
-Run the following command to install the required dependencies:
+Run คำสั่งข้างล่างเพื่อติดตั้ง dependencies ที่ต้องใช้:
 
 ```/bin/bash
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. โดยใช้ the repo reference [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you สามารถ be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+[Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package จะทำให้เราสามารถเพิ่ม Svelte Store (`$walletStore`) ที่เข้าถึงได้ทั้ง JS, TS และ/หรือ Svelte files ใน project ที่สร้างด้วย Svelte Template หรือ SvelteKit. โดยใช้ repo [ที่นี่](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) เราสามารถที่จะใช้ adapter สำหรับ SSR หรือ SPA. ส่วน UI package จะมี `<WalletMultiButton />` component เพื่อให้ผู้ใช้สามารถเลือกและเชื่อมต่อ wallet ได้
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>
