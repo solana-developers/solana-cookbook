@@ -12,7 +12,7 @@ head:
       content: stake SOL และ earn rewards for helping secure the network.
   - - meta
     - name: og:description
-      content: Stake SOL และ earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: Stake SOL และ earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

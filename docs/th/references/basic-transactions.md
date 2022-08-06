@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Sending Transactions
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้ Transactions เบื้องต้น เช่นการส่ง SOL, SPL-Tokens, คำนวณ Transaction Cost, และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, และ more references for Building บน Solana ได้ที่คู่มือ Solana.
+      content: เรียนรู้ Transactions เบื้องต้น เช่นการส่ง SOL, SPL-Tokens, คำนวณ Transaction Cost, และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -40,7 +40,7 @@ head:
 
 ## วิธี send SOL
 
-To send SOL, you will need to interact with the [SystemProgram][1].
+การที่เราจะส่ง SOL ได้นั้นเราต้องใช้ [SystemProgram][1].
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -117,8 +117,7 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 ## วิธี send SPL-Tokens
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You สามารถ both get the address และ send tokens
-with the following example.
+ใช้ [Token Program][1] เพื่อส่ง SPL Tokens ในการที่จะส่ง SPL token, เราต้องรู้ SPL token account address เราสามารถหา address และส่ง tokens ได้ด้วยตัวอย่างต่อไปนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,16 +166,13 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## วิธี calculate transaction cost
+## วิธีคำนวณหา transaction cost
 
-The number of signatures a transaction requires are used to calculate
-the transaction cost. As long as you are not creating an account, this
-will be the final transaction cost. To find out more about costs to create
-an account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
+จำนวนของ signatures จะเอาไว้ใช้คำนวณค่าใช้จ่าย transaction cost ถ้าไม่ได้มีการสร้าง account ก็จะมี transaction cost ตามนั้นเลย แต่ถ้าจะหาค่าใช้จ่ายสำหรับการสร้าง account ด้วยให้ลองไปดูที่ [การคำนวณ rent exemption](accounts.md#วิธีคํานวณ-account-cost)
 
-The two examples below show the two ways currently available to calculate estimated transaction cost.
+ตัวอย่าง 2 ตัวข้างล่างจะแสดงให้เห็นวิธีที่ใช้คำนวณ transaction cost ที่เป็นไปได้ทั้ง 2 แบบ
 
-The first example uses `getEstimatedFee`, which is a new method on the `Transaction` class, while the second example uses `getFeeForMessage` which replaces `getFeeCalculatorForBlockhash` on the `Connection` class.
+ตัวอย่างแรกจะใช้ `getEstimatedFee` ที่เป็น method ใหม่ของ class `Transaction` และตัวอย่างที่สองจะใช้ `getFeeForMessage` ที่มาแทนที่ `getFeeCalculatorForBlockhash` ใน class `Connection`
 
 ### getEstimatedFee
 <SolanaCodeGroup>
@@ -216,11 +212,10 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี add a memo to a transaction
+## วิธีเพิ่ม memo ใน transaction
 
-Any transaction สามารถ add a message making use of the [memo program][2].
-Currently the `programID` from the **Memo Program** has to be added
-manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+transaction ใดๆ สามารถเพิ่ม message โดยใช้ [memo program][2].
+ในตอนนี้ `programID` จาก **Memo Program** ต้องเพิ่มเองด้วย address นี้  `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -267,16 +262,14 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## วิธี change compute budget for a transaction
+## วิธีเปลี่ยน compute budget สำหรับ transaction
 
-Compute budget for a single transaction สามารถ be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set the product 
-of 200k compute units * number of instructions, with a max of 1.4M compute units. 
-The less compute you use, the less the transaction costs.
+Compute budget สำหรับหนึ่ง transaction สามารถเปลี่ยนได้โดยการเพิ่ม instruction
+ด้วยการเรียกไปที่ Compute Budget Program โดยปกติแล้ว compute budget คือค่าของ 200k compute units * จำนวน instructions, ด้วยค่าสูงสุดที่ 1.4M compute units
+ถ้าเราใช้ compute น้อยเราก็จะจ่าย transaction costs น้อยลงไปด้วย
 
-**Note**: To change the compute budget for a transaction, you must make the 
-one of the first three instructions of the transaction the instruction that 
-sets the budget.
+**Note**: การที่จะเปลี่ยน compute budget สำหรับ transaction คุณต้องไปทำที่
+หนึ่งในสามคำสั่งแรกของ instruction ใน transaction ตรง instruction ที่เอาไว้เปลี่ยนค่า budget
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -310,7 +303,7 @@ sets the budget.
 
 </SolanaCodeGroup>
 
-Program Logs Example:
+ตัวอย่าง Program Logs:
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">

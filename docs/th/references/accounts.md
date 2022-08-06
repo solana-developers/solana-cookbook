@@ -78,7 +78,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี calculate account cost
+## วิธีคำนวณ account cost
 
 Keeping accounts alive บน Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
 from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
