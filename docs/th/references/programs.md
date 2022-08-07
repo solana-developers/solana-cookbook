@@ -1,5 +1,5 @@
 ---
-title: Writing Programs
+title: เขียน Programs
 head:
   - - meta
     - name: title
@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Solana Program References
   - - meta
     - name: description
-      content: เรียนรู้วิธี write programs บน Solana, with references on cross program invocation, reading accounts, และ more
+      content: เรียนรู้วิธีเขียน programs บน Solana, วิธีทำ cross program invocation, อ่าน accounts, และอื่นๆ
   - - meta
     - name: og:description
-      content: เรียนรู้วิธี write programs บน Solana, with references on cross program invocation, reading accounts, และ more
+      content: เรียนรู้วิธีเขียน programs บน Solana, วิธีทำ cross program invocation, อ่าน accounts, และอื่นๆ
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -40,12 +40,9 @@ head:
 
 ## วิธี transfer SOL in a program
 
-Your Solana Program สามารถ transfer lamports from one account to another
-without 'invoking' the System program. The fundamental rule is that
-your program สามารถ transfer lamports from any account **owned** by your program
-to any account at all.
+Solana Program ของเราสามารถส่ง lamports จาก account นึงไปอีก account นึงโดยไม่ต้อง 'ร้องขอ' (invoking) ไปที่ System program. โดยหลักเบื้องต้นก็คือ program ของเราสามารถส่ง lamports จาก account ที่ program ของเรา **เป็นเจ้าของ** ไปที่ account ไหนก็ได้
 
-The recipient account *does not have to be* an account owned by your program.
+account ของคนรับ *ไม่จำเป็นต้อง* เป็น account ที่ program ของเราเป็นเจ้าของ
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -55,18 +52,18 @@ The recipient account *does not have to be* an account owned by your program.
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธี get clock in a program
+## วิธีใช้นาฬิกา (clock) ใน program
 
-Getting a clock สามารถ be done in two ways
+การใช้งาน clock สามารถทำได้ 2 แบบ
 
-1. Passing `SYSVAR_CLOCK_PUBKEY` into an instruction
-2. Accessing Clock directly inside an instruction.
+1. ส่ง `SYSVAR_CLOCK_PUBKEY` ไปใน instruction
+2. เรียกใช้ Clock โดยตรงข้างใน instruction
 
-It is nice to know both the methods, because some legacy programs still expect the `SYSVAR_CLOCK_PUBKEY` as an account.
+เราควรจะรู้จักทั้ง 2 methods เพราะใน program เก่าๆ (legacy programs) ยังคงคาดหมายว่า `SYSVAR_CLOCK_PUBKEY` จะเป็น account
 
-### Passing Clock as an account inside an instruction
+### ส่ง Clock ในแบบ account ภายใน instruction
 
-Let's create an instruction which receives an account for initializing และ the sysvar pubkey
+มาลองสร้าง instruction ด้วย account ที่ได้รับมาสำหรับ initializing และ sysvar pubkey
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -86,7 +83,7 @@ Let's create an instruction which receives an account for initializing และ
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now we pass the clock's sysvar public address via the client
+แล้วก็ลองส่ง clock's sysvar public address ด้วย client
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -106,9 +103,9 @@ Now we pass the clock's sysvar public address via the client
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Accessing Clock directly inside an instruction
+### ใช้ Clock โดยตรงใน instruction
 
-Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKEY` from the client side.
+สร้าง instruction ที่เหมือนกันโดยไม่คาดหวัง `SYSVAR_CLOCK_PUBKEY` จากฝั่ง client
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -128,7 +125,7 @@ Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKE
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client side instruction, now only needs to pass the state และ payer accounts.
+instruction ฝั่ง client จะเหลือส่งมาเฉพาะ state และ payer accounts.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,13 +145,9 @@ The client side instruction, now only needs to pass the state และ payer ac
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี change account size
+## วิธีเปลี่ยน account size
 
-You สามารถ change a program owned account's size with the use 
-of `realloc`. `realloc` สามารถ resize an account up to 10KB.
-When you use `realloc` to increase the size of an account,
-you must transfer lamports in order to keep that account
-rent-exempt.
+เราสามารถเปลี่ยนขนาดของ account ที่ program เป็นเจ้าของ ได้ด้วย `realloc`. `realloc` สามารถเปลี่ยนขนาดของ accountได้ถึง 10KB เมื่อเราใช้ `realloc` มาขยายขนาดของ account อย่าลืมว่าเราต้องส่ง lamports ไปด้วยเพื่อ account นั้นไม่ถูกเก็บค่าเช่า (rent-exempt)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -174,23 +167,16 @@ rent-exempt.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี do Cross Program Invocation
+## วิธีทำ Cross Program Invocation
 
-A cross program invocation, is simply put calling another 
-program's instruction inside our program. One best example 
-to put forth is Uniswap's `swap` functionality. The 
-`UniswapV2Router` contract, calls the necessary logic to 
-swap, และ calls the `ERC20` contract's transfer function 
-to swap from one person to another. The same way, we สามารถ 
-call a program's instruction to have multitude of purposes.
+การใช้ cross program invocation คือการเรียก program's instruction ใน program ของเรา ตัวอย่างที่ดีคือ คำสั่ง `swap` ของ Uniswap ใน `UniswapV2Router` contract จะเรียกใช้ logic ที่จำเป็นในการ swap และเรียก `ERC20` contract's transfer function 
+เพื่อ swap จากคนนึงไปอีกคนนึง ในทางเดียวกันเราสามารถเรียก program's instruction เพื่อทำอะไรได้หลายอย่างตามที่ต้องการ
 
-Lets have a look at our first example which is the 
-`SPL Token Program's transfer` instruction. The required 
-accounts we would need for a transfer to happen are
+เรามาลองดูตัวอย่างแรกซึ่งก็คือ `SPL Token Program's transfer` instruction. สิ่งที่ต้องเตรียมสำหรับ accounts ที่เราต้องการจะให้มีก่ีส่งก็คือ
 
-1. The Source Token Account (The account which we are holding our tokens)
-2. The Destination Token Account (The account which we would be transferring our tokens to)
-3. The Source Token Account's Holder (Our wallet address which we would be signing for)
+1. Token Account ต้นทาง (account ที่ถือ tokens เราอยู่)
+2. Token Account ปลายทาง (account จะส่ง tokens ให้)
+3. Token Account เจ้าของ account ต้นทาง (wallet address ของเราที่เอาไว้ sign)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -210,7 +196,7 @@ accounts we would need for a transfer to happen are
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-The corresponding client instruction would be as follows. For knowing the mint และ token creation instructions, please refer to the full code nearby.
+client instruction อื่นๆ ที่เกี่ยวข้องจะอยู่ด้านล่าง ถ้าอยากทำความเข้าใจเรื่อง mint และการสร้าง token instructions ให้ลองดู code แบบเต็มใกล้ๆ กัน
 <br />
 <br />
 <SolanaCodeGroup>
@@ -231,10 +217,10 @@ The corresponding client instruction would be as follows. For knowing the mint �
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction และ this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+ตอนนี้เรามาลองดูตัวอย่างอื่นกันบ้าง นั่นก็คือ instruction ของ `System Program's create_account` ซึ่งจะมีข้อแตกต่างกันอยู่บ้างเล๊กน้อย เราจะไม่ได้ส่ง `token_program` ไปเป็นหนึ่งใน accounts ใน function `invoke` อย่างไรก็ตามมันจะมีข้อยกเว้นอยู่ บ้างที่เราจะต้องส่ง invoking instruction's `program_id` ในกรณีของเราก็คือ program_id ของ `System Program's` ("11111111111111111111111111111111") ทำให้ accounts ที่ต้องการตอนนี้คือ
 
-1. The payer account who funds the rent
-2. The account which is going to be created
+1. payer account ซึ่งก็คือคนจ่ายค่า rent
+2. account ที่จะสร้างขึ้นมาใหม่
 3. System Program account
 
 <SolanaCodeGroup>
@@ -255,7 +241,7 @@ Now let's take a look at another example, which is `System Program's create_acco
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The respective client side code will look as follows
+ฝั่ง client จะมี code ดังนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -275,9 +261,11 @@ The respective client side code will look as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี create a PDA
+## วิธีสร้าง PDA
 
-A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds และ a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One สามารถ generate a PDA โดยใช้ `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space และ set the state to it. A normal Keypair account สามารถ be created outside of our program และ then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
+Program Derived Address คือ account ที่มี program เป็นเจ้าของแต่จะไม่มี private key แต่จะใช้ signature ที่ได้จาก seeds และ bump (a nonce ที่ทำให้ตก curve). การ "**Generating**" Program Address จะแตกต่างจากการ "**creating**" เราสามารถสร้าง (generate) PDA โดยใช้ `Pubkey::find_program_address` การทำ PDA ปกติจะ initialize  address ด้วย space และชุดของ state เข้าไป
+
+Keypair account ทั่วไปจะสามารถสร้างภายนอก program และส่งเข้ามาเพื่อ initialize state ของมัน. แต่สำหรับ PDAs, จะสร้างบน chain, เนื่องจากมันไม่สามารถ sign เพื่อเป็นตัวแทนของตัวเองได้. ดังนั้นเราจะใช้ `invoke_signed` เพื่อส่ง seeds ของ PDA และตามไปด้วย signature ของ funding account เพื่อให้เกิดการสร้าง PDA ขึ้น
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -297,7 +285,7 @@ A Program Derived Address is simply an account owned by the program, but has no 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-One สามารถ send the required accounts via client as follows
+เราสามารถส่ง accounts ที่ต้องใช้ผ่าน client ได้ตามนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -317,9 +305,9 @@ One สามารถ send the required accounts via client as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี read accounts
+## วิธีอ่าน accounts
 
-Almost all instructions in Solana would require atleast 2 - 3 accounts, และ they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable และ returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts และ requiring to parse each of them.
+ทุกๆ instructions ใน Solana จะต้องการอย่างน้อย 2 - 3 accounts, และ และมันต้องถูกเรียกใช้บน instruction handlersตามลำดับของ accounts. ซึ่งจะง่ายกว่าถ้าเราใช้ `iter()` method ใน Rust, แทนที่จะเรียงลำดับ accounts เอง สำหรับ method `next_account_info` จะ slices index แรกของลำดับ และคืนค่า account ใน array ออกมา. ลองดูตัวอย่าง instruction ง่ายๆ ที่จะแสดง accounts และ parse มันออกมา
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -339,17 +327,17 @@ Almost all instructions in Solana would require atleast 2 - 3 accounts, แล�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี verify accounts
+## วิธีตรวจสอบ accounts
 
-Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one สามารถ do are
+เนื่องจาก programs ใน Solana เป็นแบบ stateless เราต้องแน่ใจว่า accounts ที่ส่งไป ได้รับการตรวจสอบมากที่สุดเท่าที่จะเป็นไปได้เพื่อลดการโจมตี การตรวจสอบเบื้องต้นที่ทำได้คือ
 
-1. Check if the expected signer account has actually signed
-2. Check if the expected state account's have been checked as writable
-3. Check if the expected state account's owner is the called program id
-4. If initializing the state for the first time, check if the account's already been initialized or not.
-5. Check if any cross program ids passed (whenever needed) are as expected.
+1. ตรวจว่า expected signer account ที่คาดไว้ได้ signed แล้วจริงๆ
+2. ตรวจว่า expected state account's อยู่ในสถานะ writable
+3. ตรวจว่า expected state account's owner คือ program id ที่เรียกมา
+4. ถ้า initializing state เป็นครั้งแรกก็ให้ตรวจสอบว่า account ได้ initialized ไปรึยัง
+5. ตรวจว่า cross program ids ถูกส่งมาด้วย (เมื่อต้องการ) เป็นไปตาม expected.
 
-A basic instruction which initializes a hero state account, but with the above mentioned checks is defined below
+ต่อไปคือ instruction เบื้องต้นที่ทำการ initializes hero state account,แต่เนื่องจากเราต้องทำการตรวจสอบด้วยจึงต้องเขียนตามนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -369,10 +357,9 @@ A basic instruction which initializes a hero state account, but with the above m
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี read multiple instructions from a transaction
+## วิธีอ่าน instructions หลายๆ ตัวจาก transaction
 
-Solana allows us to take a peek at all of the instructions in the current transaction. We สามารถ store them in a variable และ 
-iterate over them. We สามารถ do many things with this, like checking for suspicious transactions. 
+Solana ดูทุก instructions ใน transaction ปัจจุบัน เราสามารถเก็บมันไว้ใน variable และทำงานตามลำดับ (iterate) ได้ เราสามารถอะไรได้หลายอย่างจากจุดนี้ เช่นหา transactions ที่น่าสงสัย
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
