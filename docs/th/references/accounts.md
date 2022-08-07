@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Account References
   - - meta
     - name: description
-      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธี use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธีใช้ใน programs ของเรา.
   - - meta
     - name: og:description
-      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธี use them in your programs.
+      content: เรียนรู้เกี่ยวกับ accounts บน Solana และ วิธีใช้ใน programs ของเรา.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,11 +39,9 @@ footer: MIT Licensed
 
 # Accounts
 
-## วิธี create a system account
+## วิธีสร้าง system account
 
-Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
-write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
-(`space`) และ enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive บน Solana.
+ในการสร้าง account ที่ [System Program][1] เป็นเจ้าของ Solana runtime จะให้สิทธิ์เจ้าของ account สามารถเข้าถึงได้เพื่อเขียน data หรือ transfer lamports เมื่อสร้าง account เราจะต้องจองพื้นที่ storage space เป็น bytes ไว้ก่อนจำนวนหนึ่ง (`พื้นที่`) และ lamports ที่เพียงพอสำหรับค่า rent ซึ่ง[Rent][2] นี้คือค่า cost ที่มีไว้เพื่อทำให้เรา accounts คงอยู่บน Solana
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,9 +78,7 @@ write to its data or transfer lamports. When creating an account, we have to pre
 
 ## วิธีคำนวณ account cost
 
-Keeping accounts alive บน Solana incurs a storage cost called [rent][2]. An account สามารถ be made entirely exempt
-from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
-the amount of data you intend to store in the account.
+การทำให้ accounts ให้คงอยู่บน Solana จะต้องมีค่า storage cost ที่เรียกว่า [rent][2] ซึ่ง account จะไม่ถูกเก็บค่า rent ถ้าจ่ายค่า rent ทิ้งไว้แล้วอย่างน้อย 2 ปี ส่วนการคำนวณราาคาที่ต้องจ่ายนั้นเราจะคิดตามจำนวน data ที่เราจะเก็บไว้ใน account
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -104,9 +100,9 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธี create accounts with seeds
+## วิธีสร้าง accounts ด้วย seeds
 
-You สามารถ use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
+เราสามารถใช้ `createAccountWithSeed` เพื่อจัดการ accounts แทนที่จะใช้ keypair ที่แตกต่างกัน
 
 ### Generate
 
@@ -200,28 +196,25 @@ You สามารถ use `createAccountWithSeed` to manage your accounts inste
 </SolanaCodeGroup>
 
 ::: tip
-Only an account owned by system program สามารถ transfer via system program.
+เฉพาะ account ที่ system program เป็นเจ้าของถึงจะสามารถส่งด้วย system program ได้
 :::
 
-## วิธี create PDAs
+## วิธีสร้าง PDAs
 
-[Program derived address(PDA)][3] is like a normal address with the following differences:
+[Program derived address(PDA)][3] จะเหมือน address ทั่วไปที่มีข้อแตกต่างดังนี้
 
-1. Falling off ed25519 curve
-2. โดยใช้ program to sign instead of private key
+1. อยู่นอก ed25519 curve
+2. ต้องใช้ program เพื่อ sign แทนที่จะเป็น private key
 
-**Note**: PDA accounts สามารถ only be created on the program. The address สามารถ be created client side.
+**Note**: PDA accounts สามารถสร้างได้ใน program เท่านั้น ส่วน address นั้นสามารถสร้างได้จากฝั่ง client
 
 ::: tip
-Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you สามารถ initialize your PDA as a token account which is an account owned by token program)
+ถึงแม้ว่า PDA จะ derived ด้วย program id แต่มันก็ไม่ได้หมายความว่า PDA จะเป็นของ program เดียวกันนั้น (ตัวอย่างเช่นเราสามารถ initialize PDA เป็น token account โดยที่ account นี้มี token program เป็นเจ้าของ)
 :::
 
-### Generate a PDA
+### การสร้าง PDA
 
-`findProgramAddress` will add a extra byte at the end of your seed.
-It starts from 255 to 0 และ returns the first off-curve public key.
-You will always get the same result if you pass the same program id
-and seed.
+`findProgramAddress` จะเพิ่ม byte พิเศษเข้าไปในตอนท้ายของ seed โดยจะเริ่มจาก 255 ไปถึง 0 และจะส่งค่าแรกของ off-curve public key กลับมาให้  ซึ่งเราจะได้รับค่าเดิมเสมอถ้าเราใส่ program id และ seed เดิมเข้าไป
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -237,14 +230,13 @@ and seed.
   </CodeGroupItem>
 </CodeGroup>
 
-### Create a PDA
+### ศร้าง PDA
 
-Below is an
-example program for creating a PDA account owned by the program และ an example for calling the program with the client.
+ข้างล่างคือตัวอย่าง program สำหรับสร้าง PDA account ที่ program เป็นเจ้าของและ ตัวอย่างสำหรับเรียก program ด้วย client.
 
 #### Program
 
-The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA โดยใช้ `invoke_signed` similar to as discussed above.
+ข้างล่างนี้คือ `system_instruction::create_account` instruction ที่เอาไว้สร้าง account ที่จะมีการจองพื้นที่ที่มีขนาดข้อมูลเท่ากับขนาดของ `space`, `rent_lamports` คือ จำนวนของ lamports สำหรับ derived PDA. ทั้งหมดนี้จะถูก signed ด้วย PDA โดยใช้ `invoke_signed` ที่เคยบอกไปแล้วด้านบน
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -284,16 +276,14 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี sign with a PDA
+## วิธี sign ด้วย PDA
 
-PDAs สามารถ only be signed for within the program. Below is a program
-example of signing with a PDA และ calling the program with the client.
+PDAs จะถูก sign ได้ใน program เท่านั้น ด้านล่างนี้คือตัวอย่าง program
+ของการ sign ด้วย PDA และเรียก program นั้นด้วย client.
 
 ### Program
 
-The below shows a single instruction that transfers SOL from a PDA that
-was derived by the seed `escrow` to an account passed. `invoke_signed` is
-used to sign with the PDA.
+ข้างล่างนี้คือ instruction ที่เอาไว้ส่ง SOL จาก PDA ที่ถูก derived ด้วย seed `escrow` ผ่านไปที่ account และในส่วน `invoke_signed` จะถูก sign ด้วย PDA.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -335,7 +325,7 @@ used to sign with the PDA.
 
 ## วิธี get program accounts
 
-Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` และ its configuration.
+คืนค่าทุกๆ accounts ที่ program เป็นเจ้าของ โดยจะอ้างถึง [guides section](../guides/get-program-accounts.md) สำหรับรายละเอียดของ `getProgramAccounts` และตัวเลือกการตั้งค่า
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -356,9 +346,9 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธี close accounts
+## วิธีปิด accounts
 
-You สามารถ close an account (erase all stored data) by removing all SOL. (you สามารถ refer to [rent][2] for more information)
+เราสามารถปิด account (ลบ data ทิ้งทั้งหมด) ได้ด้วยการเอา SOL ออกทั้งหมด (อ้างถึง [rent][2] สำหรับรายละเอียดเพิ่มเติม)
 
 #### Program
 
@@ -453,7 +443,7 @@ You สามารถ close an account (erase all stored data) by removing all 
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. For more information, see [Token References](token.md)
+ถ้าเราต้องการเรียกดู token balance เราต้องรู้ address ของ token account นั้นๆ สำหรับรายเอียดเพิ่มเติมไปดูได้ที่ [Token References](token.md)
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
