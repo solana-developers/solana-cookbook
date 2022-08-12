@@ -39,11 +39,10 @@ footer: MIT Licensed
 
 # Accounts
 
-## How to create a system account
+## Bagaimana cara membuat sebuah system account
 
-Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
-write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
-(`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
+Membuat system account yang dimiliki oleh [System Program][1].  Solana runtime akan memberikan akses ke pemilik akun, akses untuk menulis ke dalam datanya sendiri dana mentransfer lamports. Ketika membuat sebuah account, kita harus mempersiapkan kapasitas penyimpanan tetap dalam bytes
+(`space`) dan lamports yang cukup untuk mencover rent. [Rent][2] adalah biaya yang ditimbulkan untuk menjaga agar account tetap hidup di Solana.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -78,11 +77,9 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to calculate account cost
+## Bagaimana cara mengkalkulasi biaya account
 
-Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account can be made entirely exempt
-from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
-the amount of data you intend to store in the account.
+Menjaga agar account tetap hidup di Solana membutuhkan biaya penyimpanan yang disebut dengan [rent][2]. Sebuah account dapat dikecualikan sepenuhnya dari pungutan biaya rent apabila mendepositokan sekurang-kurangnya dua tahun biaya rent. Untuk kalkulasi, anda perlu mempertimbangkan jumlah data yang ingin disimpan di dalam account.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -104,9 +101,9 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create accounts with seeds
+## Bagaimana cara membuat account dengan seeds
 
-You can use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
+Anda dapat menggunakan `createAccountWithSeed` untuk mengatur account anda dibandingkan dengan membuat sejumlah keypair yang berbeda.
 
 ### Generate
 
@@ -200,28 +197,25 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
 </SolanaCodeGroup>
 
 ::: tip
-Only an account owned by system program can transfer via system program.
+Hanya account yang dimiliki oleh system program dapat mentransfer melalui system program.
 :::
 
-## How to create PDAs
+## Bagaimana cara membuat PDAs
 
-[Program derived address(PDA)][3] is like a normal address with the following differences:
+[Program derived address(PDA)][3] mirip dengan alamat normal dengan beberapa perbedaan:
 
-1. Falling off ed25519 curve
-2. Using program to sign instead of private key
+1. Tanpa kurva ed25519 
+2. Menggunakan program untuk masuk dibandingkan dengan private key
 
-**Note**: PDA accounts can only be created on the program. The address can be created client side.
+**Note**: PDA accounts hanya dapat dibuat oleh program. Alamat dapat dibuat di client side.
 
 ::: tip
-Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
+Walaupun PDA diturunkan dari program id, itu tidak serta merta membuat PDA dimiliki oleh program yang sama. (Sebagai contoh, anda dapat menginisiasi PDA sebagai sebuah token account yang merupakan sebuah account yang dimiliki oleh token program)
 :::
 
-### Generate a PDA
+### Menghasilkan sebuah PDA
 
-`findProgramAddress` will add a extra byte at the end of your seed.
-It starts from 255 to 0 and returns the first off-curve public key.
-You will always get the same result if you pass the same program id
-and seed.
+`findProgramAddress` akan menambah byte extra di akhir dari seed anda. `findProgramAddress` akan memulai dari 255 ke 0 dan mengembalikan public key yang pertama kali di luar kurva. Anda akan selalu mendapatkan hasil yang sama jika anda memberikan program id dan seed yang sama.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -237,10 +231,9 @@ and seed.
   </CodeGroupItem>
 </CodeGroup>
 
-### Create a PDA
+### Membuat sebuah PDA
 
-Below is an
-example program for creating a PDA account owned by the program and an example for calling the program with the client.
+Berikut adalah contoh program untuk membuat sebuah PDA account yang dimiliki oleh program dan contoh untuk memanggil program dengan client.
 
 #### Program
 
@@ -284,10 +277,10 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to sign with a PDA
+## Bagaimana cara untuk sign sebuah PDA
 
-PDAs can only be signed for within the program. Below is a program
-example of signing with a PDA and calling the program with the client.
+PDA hanya dapat di "sign" dalam lingkup program.
+Berikut adalah sebuah contoh program untuk "sign" denga sebuah PDA dan memanggil program dari client.
 
 ### Program
 
