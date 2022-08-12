@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 ## วิธีสร้าง system account
 
-ในการสร้าง account ที่ [System Program][1] เป็นเจ้าของ Solana runtime จะให้สิทธิ์เจ้าของ account สามารถเข้าถึงได้เพื่อเขียน data หรือ transfer lamports เมื่อสร้าง account เราจะต้องจองพื้นที่ storage space เป็น bytes ไว้ก่อนจำนวนหนึ่ง (`พื้นที่`) และ lamports ที่เพียงพอสำหรับค่า rent ซึ่ง[Rent][2] นี้คือค่า cost ที่มีไว้เพื่อทำให้เรา accounts คงอยู่บน Solana
+ในการสร้าง account ที่ [System Program][1] เป็นเจ้าของ Solana runtime จะให้สิทธิ์เจ้าของ account สามารถเข้าถึงได้เพื่อเขียน data หรือ transfer lamports เมื่อสร้าง account เราจะต้องจองพื้นที่ storage space เป็น bytes ไว้ก่อนจำนวนหนึ่ง (`พื้นที่`) และ lamports ที่เพียงพอสำหรับค่า rent ซึ่ง [Rent][2] นี้คือค่า cost ที่มีไว้เพื่อทำให้เรา accounts คงอยู่บน Solana
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

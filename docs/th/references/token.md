@@ -1,5 +1,5 @@
 ---
-title: Interacting with Tokens
+title: การใช้งาน Tokens
 head:
   - - meta
     - name: title
@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Interacting with Tokens
   - - meta
     - name: description
-      content: เรียนรู้วิธี use, transfer, และ more with tokens บน Solana
+      content: เรียนรู้วิธีใช้ tokens, ส่ง tokens, และอื่นๆ บน Solana
   - - meta
     - name: og:description
-      content: เรียนรู้วิธี use, transfer, และ more with tokens บน Solana
+      content: เรียนรู้วิธีใช้ tokens, ส่ง tokens, และอื่นๆ บน Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,12 +39,9 @@ footer: MIT Licensed
 
 # Token
 
-## What do I need to get started with SPL-Tokens?
+## เราต้องรู้อะไรบ้างก่อนจะไปใช้งาน SPL-Tokens?
 
-Every time you interact with tokens บน Solana, you are actually
-interacting with the Solana Program Library Token, or SPL-Token
-standard. The SPL-Token standard requires a specific library to
-be used, which you สามารถ find below based on your language.
+ทุกครั้งที่เราจะทำงานกับ tokens บน Solana จริงๆ แล้วเราจะทำงานกับ Solana Program Library Token หรือมาตรฐาน SPL-Token standard ซึ่งจะต้องการ library เฉพาะ ที่เราสามารถหาได้ข้างล่างนี้ตามภาษาที่เราสนใจ
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -56,11 +53,9 @@ be used, which you สามารถ find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธี create a new Token
+## วิธีสร้าง Token ใหม่
 
-Creating tokens is done by creating what is called a "mint account".
-This mint account is later used to mint tokens to a token account and
-create the initial supply.
+การสร้าง token ทำได้ด้วยการสร้าง "mint account" ซึ่ง mint account นี้จะถูกนำไปใช้ในการ mint token ไปที่ token account ในภายหลัง และเพื่อใช้สร้าง initial supply เริ่มต้น
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +75,9 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get a token mint
+## วิธีดึงข้อมูล token mint
 
-In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+ในการหา supply, authority หรือ decimals ของ token เราจะต้องดึง account info ของ token mint มาให้ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,14 +97,12 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี create a token account
+## วิธีสร้าง token account
 
-A token account is required in order to hold tokens. Every token mint
-has a different token account associated with it.
+เราต้องการ token account เพื่อใช้ในการเก็บ tokens ไว้ โดยทุกๆ token mint
+จะมี token account ที่เกี่ยวข้อง (associated) กับมันคนละตัวกัน
 
-Associated Token Accounts are deterministicly created
-accounts for every keypair. ATAs are the recommended method
-of managing token accounts.
+Associated Token Accounts นี้จะสามารถสร้างขึ้นมาจากทุก keypair ได้เหมือนเดิมตลอด (deterministic) เราควรจะใช้ ATAs ในการจัดการ token accounts.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -130,9 +122,9 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get a Token Account
+## วิธีดึงข้อมูล Token Account
 
-Every token account has information on the token such as the owner,
+ทุกๆ token account จะมีข้อมูลของ token เช่นใครเป็น owner,
 mint, amount(balance), และ decimals.
 
 <SolanaCodeGroup>
@@ -153,10 +145,9 @@ mint, amount(balance), และ decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get a token account's balance
+## วิธีดึงข้อมูล balance ของ token account
 
-The token account has the token balance, which สามารถ be retrieved with a
-single call.
+token account จะมีข้อมูล token balance ที่สามารถดึงได้ภายในการเรียกครั้งเดียว
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -194,14 +185,12 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account สามารถ only hold one kind of mint. When you specify a token
-account, you also specific a mint too.
+token account สามารถมี mint ได้ตัวเดียว ถ้าเราระบุถึง token account เราก็สามารถระบุ mint ได้ด้วยเช่นกัน
 :::
 
 ## วิธี mint tokens
 
-When you mint tokens, you increase the supply และ transfer the new tokens
-to a specific token account.
+เมื่อเรา mint tokens เราจะเพิ่ม supply และส่ง tokens ใหม่ไปที่ token account ที่ต้องการได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,9 +210,9 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี transfer tokens
+## วิธีส่ง tokens
 
-You สามารถ transfer tokens from one token account to another token account.
+เราสามารถส่ง tokens จาก token account ไปที่ token account อื่นๆ ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +232,9 @@ You สามารถ transfer tokens from one token account to another token a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี burn tokens
+## วิธีทำลาย (burn) tokens
 
-You สามารถ burn token if you are the token owner.
+เราสามารถ burn token ถ้าเราเป็น token owner
 
 
 <SolanaCodeGroup>
@@ -266,13 +255,13 @@ You สามารถ burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี close token accounts
+## วิธีปิด token accounts
 
-You สามารถ close a token account if you don't want to use it anymore.
-There are two situations:
+เราสามารถปิด token account ถ้าเราไม่ต้องการใช้มันแล้ว
+จะมีอยู่ 2 แบบ:
 
-1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You สามารถ close it only if token account's balance is 0.
+1. Wrapped SOL - การปิดจะเปลี่ยน Wrapped SOL ไปเป็น SOL
+2. Tokens อื่นๆ - เราสามารถปิดมันได้ถ้า balance ของ token account เป็น 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -292,9 +281,9 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี set authority on token accounts or mints
+## วิธีตั้ง authority สำหรับ token accounts หรือ mints
 
-You สามารถ set/update authority. There are 4 types:
+เราสามารถ set/update authority ได้ 4 ประเภท:
 
 1. MintTokens (mint account)
 2. FreezeAccount (mint account)
@@ -319,9 +308,9 @@ You สามารถ set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี approve a token delegate
+## วิธีอนุมัติ (approve) token ให้ delegate ได้
 
-You สามารถ set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account สามารถ only delegate to one account at the same time`
+เราสามารถตั้งค่า delegate ให้ใช้ตามจำนวนที่อนุมัติไว้เท่านั้น หลังจากที่ตั้งแล้ว, โดย delegate จะเป็นเหมือน owner ของ token account ของเราอีกคน `token account สามารถ delegate ไปได้เพียง account เดียวในเวลาเดียวกัน`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -341,7 +330,7 @@ You สามารถ set a delegate with an allowed amount. After you setting,
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี revoke a token delegate
+## วิธียกเลิก (revoke) token ที่ delegate ไว้
 
 Revoke will set delegate to null และ set delegated amount to 0.
 
@@ -363,24 +352,24 @@ Revoke will set delegate to null และ set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี manage wrapped SOL
+## วิธีจัดการ wrapped SOL
 
-Wrapped SOL just like any other token mint. The difference is โดยใช้ `syncNative`
-and creating token accounts specifically on the `NATIVE_MINT` address.
+Wrapped SOL ก็เหมือน token mint ทั่วไป ความแตกต่างคือเราจะใช้ `syncNative`
+และ จะต้องสร้าง token accounts ด้วย `NATIVE_MINT` address เท่านั้น
 
-### Create Token Account
+### การสร้าง Token Account
 
-Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+เหมือนกับ [การสร้าง Token Account](#การสร้าง-token-account) แต่จะแทนที่ mint ด้วย `NATIVE_MINT`
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### Add Balance
+### เพิ่ม Balance
 
-There are two ways to add balance for Wrapped SOL
+การเพิ่ม balance จะมีอยู่ 2 วิธีสำหรับ Wrapped SOL
 
-#### 1. By SOL Transfer
+#### 1. โดยการส่ง SOL
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -400,7 +389,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. By Token Transfer
+#### 2. โดยการส่ง Token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -420,11 +409,11 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get all token accounts by owner
+## วิธีดึงข้อมูลทุกๆ token accounts ตาม owner
 
-You สามารถ fetch token accounts by owner. There are two ways to do it.
+เราสามารถดึงข้อมูล token accounts ตาม owner ได้ 2 วิธี
 
-1. Get All Token Account
+1. ดึงมาทุกๆ Token Account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -444,7 +433,7 @@ You สามารถ fetch token accounts by owner. There are two ways to do i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. Filter By Mint
+2. กรองข้อมูล (filter) ด้วย mint
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
