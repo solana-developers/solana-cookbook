@@ -43,7 +43,7 @@ Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah
 
 ## Fakta
 
-:::tip Beberapa Faktanya
+::: tip Beberapa Faktanya
 
 - Akun-akun digunakan untuk menyimpan data  
 - Setiap akun memiliki alamat unik 
@@ -53,7 +53,7 @@ Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah
 - Ukuran akun-akun sudah ditetapkan pada waktu pembuatan, tapi bisa dilakukan penyesuaian menggunakan [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
 - Penyimpanan data akun dibayarkan dengan sewa
 - Pemilik akun bawaan adalah program sistem 
-:::
+ :::
 
 ## Mempelajari lebih dalam 
 
