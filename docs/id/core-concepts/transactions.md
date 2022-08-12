@@ -1,12 +1,13 @@
+
 ---
 title: Transactions
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Transactions
+      content: Solana Cookbook | Transactions
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Transactions
+      content: Solana Cookbook | Transactions
   - - meta
     - name: description
       content: Transaction are bundles of Multiple operational units on Solana. Learn more about Transaction and Core Concepts at The Buku Memasak Solana.
@@ -39,50 +40,50 @@ footer: MIT Licensed
 
 # Transactions
 
-Clients can invoke [programs](./programs.md) by submitting a transaction to a cluster. A single transaction can include multiple instructions, each targeting its own program. When a transaction is submitted, the Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) will process its instructions in order and atomically. If any part of an instruction fails, the entire transaction will fail.
+Clients dapat menjalankan [programs](./programs.md)dengan mengirimkan sebuah transaksi ke cluster. Sebuah transaksi dapat berisikan berbagai macam instruksi terhadap masing-masing program. Ketika sebuah transaksi dikirimkan, Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) akan menjalankan setiap instruksi sesuai dengan urutan dan mendetail. Jika ada instruksi yang gagal, maka keseluruhan transaksi akan gagal.
 
 ## Facts
 
 ::: tip Fact Sheet
-- Instructions are the most basic operational unit on Solana
-- Each instruction contains:
-    - The `program_id` of the intended program
-    - An array of all `accounts` it intends to read from or write to
-    - An `instruction_data` byte array that is specific to the intended program
-- Multiple instructions can be bundled into a single transaction
-- Each transaction contains:
-    - An array of all `accounts` it intends to read from or write to
-    - One or more `instructions`
-    - A recent `blockhash`
-    - One or more `signatures`
-- Instructions are processed in order and atomically
-- If any part of an instruction fails, the entire transaction fails.
-- Transactions are limited to 1232 bytes
+- Dalam Solana, instruksi adalah unit operasional yang paling dasar
+- Setiap instruksi mengandung:
+    - `program_id` program yang ingin dijalankan
+    - Kumpulan semua `accounts` yang ingin di *read* atau *write*
+    - Sebuah `instruction_data` byte array yang spesifik terhadap suatu program tertentu
+- Beberapa instruksi dapat disatukan dalam sebuah transaksi
+- Setiap transaksi mengandung:
+    - Kumpulan semua `accounts` yang ingin di *read* atau *write*
+    - Satu atau lebih `instructions`
+    - `blockhash` terkini
+    - Satu atau lebih `signatures`
+- Instructions secara berurutan dan *atomically*
+- Jika ada instruksi yang gagal, maka seluruh transaksi akan gagal.
+- Transaksi dibatasi sampai dengan 1232 bytes
 :::
 
 ## Deep Dive
 
-The Solana Runtime requires both instructions and transactions to specify a list of all accounts they intended to read from or write to. By requiring these accounts in advance, the runtime is able to parallelize execution across all transactions.
+Solana Runtime membutuhkan instruksi dan transaksi untuk menentukan kumpulan akun yang akan dibaca dan ditulis. Dengan mempersiapkan akun terlebih dahulu, *runtime* dapat menjalankan eksekusinya terhadap semua transaksi bersamaan.
 
-When a transaction is submitted to a cluster, the runtime will process its instructions in order and atomically. For each instruction, the receiving program will interpret its data array and operate on its specified accounts. The program will either return successfully or with an error code. If an error is returned, the entire transaction will fail immediately.
+Ketika sebutah transaksi dikirimkan ke *cluster*, *runtime* akan memproses setiap instruksi sesuai urutan dan mendetail. Program yang menerima instruksi akan menginterpretasi kumpulan data dan menjalankannya di akun yang ditentukan. Program akan berhasil menjalankan instruksi atau gagal karena adanya *error*. Jika ada ditemukannya *error*, maka keseluruhan transaksi akan gagal.
 
-Any transaction that aims to debit an account or modify its data requires the signature of its account holder. Any account that will be modified is marked as `writable`. An account can be credited without the holder’s permission so long as the transaction fee payer covers the necessary rent and transaction fees.
+Setiap transaksi yang akan mencatat sebuah akun dengan debet atau mengubah data, memerlukan verifikasi pemiliknya. Setiap akun yang akan dimodifikasi akan ditandai dengan `writable`. Sebuah akun dapat dikreditkan tanpa persetujuan pemiliknya asalkan biaya transaksi dibayarkan menutupi biaya yang dibutuhkan untuk *rent* dan biaya transaksi itu sendiri.
 
-Before submission, all transactions must reference a [recent blockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash). The blockhash is used to prevent duplications and eliminate stale transactions. The max age of a transaction's blockhash is 150 blocks, or about ~1 minute 19 seconds as of the time of this writing.
+Sebelum pengiriman, semua transaksi harus mengacu kepada sebuah [recent blockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash). *Blockhash* digunakan untuk mencegah duplikasi dan menghapus transaksi gagal. Batas waktu sebuah *blockhash* transaksi adalah sekitar 1 menit 19 detik atau 150 blocks saat ini ditulis.
 
-### Fees
+### Biaya
 
-The Solana network collects two types of fees:
-- [Transaction fees](https://docs.solana.com/transaction_fees) for propagating transactions (aka “gas fees”)
-- [Rent fees](https://docs.solana.com/developing/programming-model/accounts#rent) for storing data on-chain 
+Jaringan Solana mengambil dua jenis biaya:
+- [*Transaction fees*](https://docs.solana.com/transaction_fees) untuk menjalankan transaksi (aka “gas fees”)
+- [*Rent fees*](https://docs.solana.com/developing/programming-model/accounts#rent) untuk menyimpan data on-chain 
 
-In Solana, transaction fees are deterministic: there is no concept of a fee market in which users can pay higher fees to increase their chances of being included in the next block. At the time of this writing, transaction fees are determined only by the number of signatures required (i.e. `lamports_per_signature`), not by the amount of resources used. This is because there is currently a hard cap of 1232 bytes on all transactions.
+Di Solana, *transaction fees* itu determistik: tidak ada konsep dimana pengguna dapat membayar lebih demi meningkatkan kesempatan untuk dimasukkan ke _block_ berikutnya. Pada waktu penulisan, transaction fees hanya ditentukan oleh jumlah verifikasi yang dibutuhkan (seperti `lamports_per_signature`), bukan dari jumlah sumber daya yang digunakan. Hal ini dikarenakan adanya batas maksimal 1232 bytes untuk semua transaksi.
 
-All transactions require at least one `writable` account to sign the transaction. Once submitted, the writable signer account that is serialized first will be the fee payer. This account will pay for the cost of the transaction regardless of whether the transaction succeeds or fails. If the fee payer does not have a sufficient balance to pay the transaction fee, the transaction will be dropped.
+Semua transaksi membutuhkan setidaknya sebuah akun `writable` untuk memverifikasi transaksi. Ketika transaksi sudah dikirim, akun *writable* pemverifikasi yang di-serialized pertama harus membayar biaya transaksi. Akun ini akan membayar biaya dari transaksi tanpa memedulikan transaksinya berhasil atau gagal. Jika pihak pembayar tidak memiliki saldo yang cukup, maka transaksi akan dihentikan.
 
-At the time of this writing, 50% of all transaction fees are collected by the validator that produces the block, while the remaining 50% are burned. This structure works to incentivize validators to process as many transactions as possible during their slots in the leader schedule.
+Pada waktu penulisan, 50% dari semua transaction fee dibayarkan kepada validator yang membuat block dan sisa setengahnya hangus. Struktur ini berguna untuk mendorong validator memproses transaksi sebanyak mungkin.
 
-## Other Resources
+## Sumber lainnya
 
 - [Official Documentation](https://docs.solana.com/developing/programming-model/transactions)
 - [Transaction Structure](https://solana.wiki/docs/solidity-guide/transactions/#solana-transaction-structure)
