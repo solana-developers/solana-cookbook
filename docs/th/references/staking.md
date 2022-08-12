@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Staking
   - - meta
     - name: description
-      content: stake SOL และ earn rewards for helping secure the network.
+      content: stake SOL และรับ rewards สำหรับการช่วยให้ network มีความปลอดภัยมากขึ้น
   - - meta
     - name: og:description
-      content: Stake SOL และ earn rewards for helping secure the network. เรียนรู้เกี่ยวกับ Creating Stake Accounts, Delegate Stake, Withdraw Stake และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
+      content: Stake SOL และรับ rewards สำหรับการช่วยให้ network มีความปลอดภัยมากขึ้น เรียนรู้เกี่ยวกับการสร้าง Stake Accounts, Delegate Stake, Withdraw Stake และข้อมูลอ้างอิงอื่นๆ สำหรับพัฒนาบน Solana ได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,9 +41,9 @@ footer: MIT Licensed
 
 
 
-## Get Current Validators
+## หาข้อมูล Validators ในปัจจุบัน
 
-We สามารถ stake SOL และ earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+เราสามารถ stake SOL และรับ rewards สำหรับการช่วยให้ network มีความปลอดภัยมากขึ้น ในการ stake เราจะ delegate SOL ไปที่ validators ที่มีหน้าที่ประมวลผล transactions
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -58,9 +58,9 @@ We สามารถ stake SOL และ earn rewards for helping secure the ne
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Stake Account
+## สร้าง Stake Account
 
-All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created และ managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` และ `Withdrawal Authority`.
+ทุกๆ staking instructions จะถูกควบคุมโดย [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). เราจะเริ่มจากการสร้าง [Stake Account](https://docs.solana.com/staking/stake-accounts) ซึ่งจะถูกสร้างและ จัดการแตกต่างไปจาก [system account](accounts.md#create-a-system-account). โดยเฉพาะอย่างยิ่งเราต้องตั้งค่า `Stake Authority`และ `Withdrawal Authority` ของ account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -82,7 +82,7 @@ All staking instructions are handled by the [Stake Program](https://docs.solana.
 
 ## Delegate Stake
 
-Once a stake account is funded, the `Stake Authority` สามารถ delegate it to a validator. Each stake account สามารถ only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
+เมื่อ stake account ได้รับการลงทุนแล้ว `Stake Authority` ก็จะสามารถ delegate ทุนนั้นไปที่ validator ได้โดยแต่ละ stake account จะสามารถ delegat ไปที่ validator เดียว โดยทุกๆ tokens ใน account จะต้อง delegated หรือ un-delegated. เมื่อ delegated แล้วจะใช้ผ่าน epochs ไปช่วงหนึ่งเพื่อที่ stake account จะอยู่ในสถานะ active
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,9 +102,9 @@ Once a stake account is funded, the `Stake Authority` สามารถ delegat
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Delegator by Validators
+## ดึงข้อมูล Delegator ด้วย Validators
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length และ the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+Multiple accounts อาจจะ staked ไปที่ validator account ที่ใดที่หนึ่ง ในการที่จะดึงข้อมูลคน stake เราจะต้องใช้ `getProgramAccounts` หรือ `getParsedProgramAccounts` API. อ้างถึง [guides section](/guides/get-program-accounts.html) สำหรับข่อมูลเพิ่มเติม ส่วนของ stake accounts จะมีขนาด 200 bytes และ Voter Public Key จะเริ่มที่ 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -124,9 +124,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Deactivate Stake
+## ยกเลิก Stake
 
-At anytime after a stake account is delegated, the `Stake Authority` สามารถ choose to deactivate the account. Deactivation สามารถ take several epochs to complete, และ is required before any SOL is withdrawn.
+หลังจาก stake account ได้ delegated ไปแล้ว `Stake Authority` จะสามารถเลือกที่จะยกเลิก (deactivate) account ได้ โดยการ deactivation จะต้องเว้น epochs อยู่ระยะหนึ่งก่อนจะยกเบิกสำเร็จ และจำเป็นต้อวรอช่วงนี้ก่อนที่จะถอน SOL ออกมาได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -146,9 +146,9 @@ At anytime after a stake account is delegated, the `Stake Authority` สาม�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Withdraw Stake
+## ถอน Stake
 
-Once deactivated, the `Withdrawal Authority` สามารถ withdraw SOL back to a system account. Once a stake account is no longer delegated และ has a balance of 0 SOL, it is effectively destroyed.
+หลังจาก deactivated `Withdrawal Authority` จะสามารถถอน (withdraw) SOL กลับไปที่ system account เมื่อ stake accountไม่ได้ delegated แล้ว และมี 0 SOL มันก็จะสามารถถูกทำลายได้
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->
