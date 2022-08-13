@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Swap tokens โดยใช้ Jupiter
   - - meta
     - name: description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
+      content: Jupiter คือ liquidity aggregator หลักของ Solana, สนับสนุน tokens มากมาย และมี route discovery ระหว่าง token pair ที่ดีที่สุดให้ด้วย
   - - meta
     - name: og:description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
+      content: Jupiter คือ liquidity aggregator หลักของ Solana, สนับสนุน tokens มากมาย และมี route discovery ระหว่าง token pair ที่ดีที่สุดให้ด้วย
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,11 +38,11 @@ head:
 
 # Jupiter
 
-Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens และ best route discovery between any token pair.
+Jupiter คือ liquidity aggregator หลักของ Solana, สนับสนุน tokens มากมาย และมี route discovery ระหว่าง token pair ที่ดีที่สุดให้ด้วย
 
-### Installation
+### การติดตั้ง
 
-@jup-ag/core is the Core package used to interact with jupiter on-chain programs to perform swaps between two possible token pairs.
+@jup-ag/core คือ Core package เอาไว้ใช้ติดต่อกับ jupiter on-chain programs เพื่อทำการ swaps ระหว่าง token pairs ที่เป็นไปได้
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -62,9 +62,9 @@ npm install @jup-ag/core
   </CodeGroupItem>
 </CodeGroup>
 
-### Fetching Token list from Jupiter
+### ดึงข้อมูลรายการ Token จาก Jupiter
 
-All the possible tokens that สามารถ be swapped with jupiter for a given network is being fetched.
+ดึงข้อมูลทุก tokens ที่สามารถ swap ด้วย jupiter สำหรับ network ใดๆ
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -87,7 +87,7 @@ All the possible tokens that สามารถ be swapped with jupiter for a gi
 
 ### Loading the Jupiter instance
 
-Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [ที่นี่](https://docs.jup.ag/jupiter-core/full-guide)
+Jupiter instance กำลังสร้างด้วย configurations ที่ให้มา เรามีตัวเลือก parameters มากมายที่จะส่งไปให้ instanceได้ ลองอ่านเพิ่มเติมได้ [ที่นี่](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -108,9 +108,9 @@ Jupiter instance is being created with the provided configurations. There are ma
 
 </SolanaCodeGroup>
 
-### Getting the RouteMap
+### หาเส้นทาง RouteMap
 
-The RouteMap identifies what tokens สามารถ be swapped for a given input token. The route map only contains token mint addresses และ no metadata.
+RouteMap จะบอกเราว่า tokens สามารถ swap ด้วย input token ที่ให้มาได้หรือเปล่า ซึ่งจะมีแต่ token mint addresses และไม่มี metadata.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -131,8 +131,8 @@ The RouteMap identifies what tokens สามารถ be swapped for a given in
 
 </SolanaCodeGroup>
 
-### Getting the routes for given Input และ Output token
-The `computeRoutes` methods takes in the input Mint address และ the output Mint address และ gives all the possibles routes in order of best price first.
+### หาเส้นทางสำหรับ Input และ Output token ที่ให้มา
+methods `computeRoutes` รับ input/output Mint address และคืนค่า routes ที่เป็นไปได้ทั้งหมดโดยเรียงจากราคาที่ดีที่สุดมาก่อน
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -154,7 +154,7 @@ The `computeRoutes` methods takes in the input Mint address และ the output
 </SolanaCodeGroup>
 
 ### Execute the Token Swap
-The `exchange` method is called here which constructs the transaction for a given route.
+method `exchange` จะถูกเรียกตรงนี้เพื่อสร้าง transaction สำหรับ route ที่ได้มา
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -175,9 +175,9 @@ The `exchange` method is called here which constructs the transaction for a give
 
 </SolanaCodeGroup>
 
-## วิธี use Jupiter in a React Application
+## วิธีใช้ Jupiter กับ React Application
 
-### Installation
+### ติดตั้ง
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -197,9 +197,9 @@ npm install @jup-ag/react-hook
   </CodeGroupItem>
 </CodeGroup>
 
-### Adding the Provider
+### เพิ่ม Provider
 
-We are setting up the JupiterProvider here in order to use the useJupiter Hook Through out the React App. The cluster parameter is set  as **mainnet-beta** in order to get a wide variety of tokens but if you wish you could change it to **devnet** as well
+เราจะติดตั้ง JupiterProvider ตรงนี้เพื่อจะใช้ useJupiter Hook ใน React App. โดยที่จะตั้ง parameter ให้ cluster เป็น **mainnet-beta** เพื่อจะได้ tokens ที่หลากหลาย แต่เราจะเปลี่ยนเป็น **devnet** ก็ได้เหมือนกันถ้าต้องการ
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -220,9 +220,9 @@ We are setting up the JupiterProvider here in order to use the useJupiter Hook T
 
 </SolanaCodeGroup>
 
-### Fetching the List of Tokens
+### ดึงข้อมูลรายการ Tokens
 
-All the possible Tokens that สามารถ be swapped in a Given Network is fetched stored in the state.
+ดึงข้อมูลทุก tokens ที่สามารถ swap ด้วย jupiter สำหรับ network ใดๆ แล้วเก็บไว้ใน state
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +243,9 @@ All the possible Tokens that สามารถ be swapped in a Given Network is
 
 </SolanaCodeGroup>
 
-### Setting up the State
+### ตั้งค่า State
 
-InputMint และ OutputMint are state that is added in order for it to be  swapped among each other or สามารถ be taken from the user as well.
+InputMint และ OutputMint คือ state ที่เพิ่มเข้าไปเพื่อจะสามารถ swapกันเอง หรือดึงมาจาก user อื่นด้วยก็ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,9 +266,9 @@ InputMint และ OutputMint are state that is added in order for it to be  sw
 
 </SolanaCodeGroup>
 
-### โดยใช้ the useJupiter react hook
+### การใช้ react hook useJupiter
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint และ OutputMint สามารถ be swapped. To เรียนรู้เกี่ยวกับ it go [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+useJupiter Hook จะรับ parameters เพื่อหา routes ที่ทั้ง InputMint และ OutputMint สามารถ swap ได้. เรียนรู้เกี่ยวเพิ่มเติมได้ [ที่นี่](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -289,9 +289,9 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 </SolanaCodeGroup>
 
-### Performing the Swap
+### ทำการ Swap
 
-After providing all the data to the useJupiter Hook. We สามารถใช้ the jupiter instance to perform a swap โดยใช้ the `exchange` method
+หลังจากให้ข้อมูลกับ useJupiter Hook หมดแล้ว เราจะสามารถใช้ jupiter instance เพื่อทำการ swap ได้โดยใช้ method `exchange`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -314,9 +314,9 @@ After providing all the data to the useJupiter Hook. We สามารถใช
 
 ## วิธี use Jupiter API
 
-This is the easiest way to interact with jupiter programs to swap any 2 provided tokens.
+นี่คือวิธีที่ง่ายที่สุดที่จะใช้งาน jupiter programs เพื่อ swap คู่ tokens ใดๆ
 
-### Installation
+### การติดตั้ง
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -342,9 +342,9 @@ npm i bs58
   </CodeGroupItem>
 </CodeGroup>
 
-### Getting the Route Map
+### หา Route Map
 
-This API retrieves all the available tokens that สามารถ be swapped โดยใช้ the jupiter API. A list of all possible token routes is being fetched here และ `allInputMints` contains the list of all possible Input Tokens by mint address และ `swappableOutputForSol` contains all the possible tokens that สามารถ be swapped for SOL in this case.
+API จะหา tokens ที่สามารถ swap ได้โดยใช้ the jupiter API. รานการของ token routes ที่เป็นไปได้จะเริ่ม fetch ตรงจุดนี้ และ `allInputMints` จะมีรายการของ Input Tokens mint address ที่เป็นไปได้ และ `swappableOutputForSol` จะมีรายการของทุก tokens ที่สามารถ swapp เป็น SOL ได้ในกรณีนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -365,8 +365,8 @@ This API retrieves all the available tokens that สามารถ be swapped �
 
 </SolanaCodeGroup>
 
-### Getting the Serialized Transaction to perform Swap
-POST API request is done with the route that we wish to go with และ the wallet address of the user there are few optional parameters that สามารถ be added to this api like **wrapUnwrapSOL** และ **feeAccount** to เรียนรู้เกี่ยวกับ it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+### วิธีทำ Serialized Transaction เพื่อเอาไป Swap
+POST API request จะไปตาม route ที่เราต้องการจะไป รวมถึง wallet address ของ user ที่กำหนดไว้ นอกจากนี้จะมี params ตัวเลือกอื่นๆ อีกเช่น **wrapUnwrapSOL** และ **feeAccount** เราสามารถเรียนรู้เพิ่มเติมได้ที่ offical docs ตรงนี้ [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -387,8 +387,8 @@ POST API request is done with the route that we wish to go with และ the wa
 
 </SolanaCodeGroup>
 
-### Executing the Swap Transaction
-A Transaction object is created และ then its getting signed by the user.
+### ทำการ Swap Transaction
+Transaction จะถูกสร้างและ sign ด้วย user.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
