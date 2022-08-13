@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: เริ่มต้น
 head:
   - - meta
     - name: title
@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Composability และ Integrations
   - - meta
     - name: description
-      content: Composability is innovation. Building on top of protocols บน Solana unlocks new capabilities และ possibilities.
+      content: Composability เป็นนวัตกรรมอย่างนึง ในการพัฒนา protocols บน Solana จะเปิดโอกาสความเป็นไปได้ใหม่ขึ้นมาได้อีกหลายอย่าง
   - - meta
     - name: og:description
-      content: Composability is innovation. Building on top of protocols บน Solana unlocks new capabilities และ possibilities.
+      content: Composability เป็นนวัตกรรมอย่างนึง ในการพัฒนา protocols บน Solana จะเปิดโอกาสความเป็นไปได้ใหม่ขึ้นมาได้อีกหลายอย่าง
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,23 +36,20 @@ head:
       content: index,follow
 ---
 
-# Getting Started with Integrations
+# เริ่มต้นการใช้งาน (Integrations)
 
-The คู่มือ Solana integrations provides a set of examples และ references for anyone
-to build on top of other protocols บน Solana. 
+คู่มือ Solana integrations จะมีตัวอย่าง และข้อมูลอ้างอิงที่จะใช้ในการพัฒนา protocols บน Solana
 
-The power of Solana comes from the ability to integrate with other protocols,
-building on top of existing infrastructure to make something better.
+ข้อดีของ Solana มาจากการที่มันสามารถ integrate กับ protocols อื่นๆ ได้บน infrastructure ที่มีอยู่แล้วเพื่อสิ่งที่ดีกว่า
 
-## Composability is Key
+## Composability คือหัวใจ
 
-Making your program easy to use และ extend will grow both your program และ the
-entire Solana ecosystem. Don't reinvent the wheel, build on top of existing protocols
-and bootstrap your userbase.
+การสร้าง program ให้ใช้งานง่าย และขยายตามความต้องการได้จะทำให้ทั้ง program และ Solana ecosystem โตขึ้น อย่าหาทำอะไรที่มันใช้ได้ดีอยู่แล้ว มาพัฒนาบน protocols
+ที่มีอยู่แล้วเพื่อขยายฐานผู้ใช้ของเรากันดีกว่า
 
-Adapt และ build on top of other programs or libraries และ unlock new capabilities for Solana.
+ดัดแปลง และสร้างบน programs อื่นๆ หรือบน libraries ร่วมกันปลดล๊อคความสามารถใหม่ๆ เพื่อ Solana กันดีกว่า
 
 ## Contributing
 
-If you are interested in contributing to integrations, please checkout the [contribution
+ถ้าสนใจที่จะช่วยกันทำ integrations ให้ลองไปดูที่ [contribution
 guidelines](https://github.com/solana-developers/solana-cookbook/blob/master/CONTRIBUTING.md).

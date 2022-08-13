@@ -290,7 +290,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: "https://github.com/solana-developers/solana-cookbook",
           },
           {
-            text: "ใช้งานร่วมกับ",
+            text: "การใช้งาน",
             link: "/th/integrations",
           },
         ],
@@ -339,7 +339,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
           "/th/integrations": [
             {
-              text: "ใช้งานร่วมกับ",
+              text: "การใช้งาน",
               children: [
                 "/th/integrations",
                 "/th/integrations/serum.md",
