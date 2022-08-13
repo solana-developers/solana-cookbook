@@ -197,7 +197,7 @@ Please update your PATH environment variable to include the solana programs:
 
 Nếu nhận được thông báo trên, bạn cần sao chép câu lệnh ngay dưới thông báo và cập nhật vào `PATH`.
 
-Để xác nhập cài đặt thông công và phiên bản đã cài, bạn có thể chạy câu lệnh sau:
+Để xác nhận cài đặt thành công và phiên bản đã cài, bạn có thể chạy câu lệnh sau:
 
 ```bash
 solana --version
