@@ -1,12 +1,14 @@
+
+
 ---
 title: NFTs
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | NFTs
+      content: Solana Cookbook | NFTs
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | NFTs
+      content: Solana Cookbook | NFTs
   - - meta
     - name: description
       content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
@@ -39,13 +41,13 @@ footer: MIT Licensed
 
 # Non Fungible Tokens (NFTs)
 
-## How to create an NFT
+## Cara membuat NFT
 
-To create an NFT you have to:
+Untuk Membuat Sebuah NFT Kamu Harus:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
-3. Call metaplex to create an account for the NFT
+1. Upload gambar ke IPFS seperti Arweave
+2. Upload metadata json ke IPFS seperti Arweave
+3. Call metaplex untuk membuat sebuah account untuk NFT
 
 ### Upload to Arweave
 
@@ -80,10 +82,9 @@ To create an NFT you have to:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Mint the NFT
+### Mint NFT-nya
 
-If you already have the image and metadata uploaded, you can mint
-the NFT with the following code.
+Jika kamu sudah meng-upload gambar dan metadata, kamu bisa mint NFT dengan kode berikut.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,17 +104,13 @@ the NFT with the following code.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-::: tip Note
-You cannot mint an NFT with a different creator than your wallet.
-If you run into creator issues, make sure your metadata lists you
-as the creator.
+::: tip Catatan
+Kamu tidak bisa mint sebuah NFT dari creator yang berbeda dari wallet-mu. Jika kamu mengalami creator issues, maka pastikan metadata-mu mendaftarkanmu sebagai creator. 
 :::
 
-## How to get NFT Metadata
+## Cara Mendapatkan Metadata NFT
 
-Metaplex NFTs have metadata that is stored on Arweave. In order
-to get the Arweave metadata, you must get the Metaplex PDA and
-decode the account data.
+Metaplex NFTs memiliki metadata yang disimpan di Arweave. Untuk mendapatkan metadata Arweave, kamu harus mendapatkan Metaplex PDA dan decode account data.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,17 +131,15 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to get the owner of an NFT
+## Cara Mengetahui Pemilik Sebuah NFT
 
-If you have the mint key of an NFT, you can find its current owner
-by sneak-peeking at the largest token account for that mint key.
 
-Remember that NFTs have a supply of 1, and they are indivisible,
-meaning that only one token account will hold that token at any
-point in time, whilst all other token accounts for that mint key will
-have a balance of 0.
+Jika kamu memiliki mint key dari sebuah NFT, kamu bisa mencari pemilik terkini dengan mengintip di token account terbesar untuk mint key tersebut.
 
-Once the largest token account is identified, we can retrieve its owner.
+Mengingat bahwa NFTs memiliki 1 supply, dan mereka tidak dapat dibagi, yang artinya suatu token hanya dapat dimiliki oleh satu token account setiap kalinya, sementara itu semua token account lainnya untuk mint key tersebut memiliki saldo 0.
+
+Ketika token account terbesar sudah diidentifikasi, kita bisa mengambil pemiliknya.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -165,9 +160,9 @@ Once the largest token account is identified, we can retrieve its owner.
 
 </SolanaCodeGroup>
 
-## How to get NFT Mint Addresses
+## Cara untuk mengambil NFT Mint Addresses
 
-If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+Jika kamu tau public key dari Candy Machine, kamu bisa mendapatkan daftar semua NFT mint addresses yang dihasilkan dari Candy Machine tersebut dengan menggunakan code berikut. Ingat bahwa kita bisa menggunakan filter `memcmp` karena, di v1, address dari Candy Machine selalu creator pertama.
 
 ### Candy Machine V1
 
@@ -192,7 +187,7 @@ If you know the public key of the Candy Machine, you can get the list of all NFT
 
 ### Candy Machine V2
 
-If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you can use it the same way we were for v1.
+Jika kamu menggunakan Candy Machine v2, maka pertama-tama kamu harus memiliki akses ke “Candy Machine Creator” address yang merupakan suatu PDA simpel yang menggunakan `candy_machine` dan Candy Machine v2 address sebagai seeds. Ketika kamu sudah dapat creator address, kamu bisa memakainya dengan cara yang sama dengan v1.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -213,10 +208,9 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 </SolanaCodeGroup>
 
-## How to get all NFTs from a wallet?
+## Cara Mendapatkan Semua NFT dari Suatu Wallet
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+Ketika mendapatkan semua NFT dari sebuah wallet, kamu harus mendapatkan semua token account dan kemudian parse mana yang merupakan NFT. Ini bisa dilakukan dengan[`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) dari Metaplex js library.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
