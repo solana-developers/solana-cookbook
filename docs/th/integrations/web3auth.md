@@ -39,21 +39,21 @@ footer: MIT Licensed
 
 # Wallet
 
-## What is a wallet?
+## wallet คืออะไร?
 
-A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, และ send transactions. There are many crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
+crypto wallet คือ digital wallet ที่ใช้ติดต่อกับ blockchain เพื่อ sign, verify, และส่ง transactions ในปัจจุบันมี crypto wallet solutions มากมายในตลาด, ตั้งแต่ simple-to-use web apps จนไปถึง hardware security solutions ที่ซับซ้อน.
 
 ## Social Logins บน Solana
 
-[**Web3Auth**](https://docs.web3auth.io/) allows users to sign in โดยใช้ their existing Web2 OAuth Providers(Facebook, Google, Twitter etc.) into Web3 dapps. It provides a user-friendly และ [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) approach to managing assets และ identity. It removes technical barriers และ reduces the learning curve for digital ownership for all users by providing a wrapper around private key management. 
+[**Web3Auth**](https://docs.web3auth.io/) ทำให้ users สามารถ sign in โดยใช้ Web2 OAuth Providers(Facebook, Google, Twitter etc.) ที่มีอยู่แล้วไปยัง Web3 dapps. มันจะใช้งายง่าย และใช้วิธี [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) เพื่อจัดการ assets และ identity. มันทำให้ technical barriers ลดลง และลดการเรียนรู้เรื่อง digital ownership สำหรับ users ทุกคนโดยซ่อนการจัดการ private key ไว้
 
-## Integration Guide
+## แนวทางการ Integration
 
-This tutorial will guide you over a basic example to integrate social logins in your dapp.
+ในตัวอย่างนี้จะเป็นแนวทางง่ายๆ ในการ integrate social logins เข้าไปใน dapp ของเรา
 
-### Installing Dependencies
+### การติดตั้ง Dependencies
 
-To start โดยใช้ the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. เราสามารถใช้ popular package managers like yarn และ npm to download them.
+เริ่มโดยใช้ wallet ที่มี dapp, เราสามารถลง `@toruslabs/solana-embed`. โดยใช้ package managers ต่างๆ เช่น yarn และ npm เพื่อติดตั้ง.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -73,9 +73,9 @@ npm install --save @toruslabs/solana-embed
   </CodeGroupItem>
 </CodeGroup>
 
-### Import the SDK และ initialize
+### การใช้ SDK และ initialize
 
-In the code snippet below, we are creating an instance of solana-embed และ then initializing it with testing enviroment which uses solana testnet. เราสามารถ pass other configuration options while initializing the wallet interface. เราสามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+ในตัวอย่าง code สั้นๆ ด้านล่าง เราจะสร้าง instance ของ solana-embed แล้ว init มันด้วย testing environment ที่ใช้ solana testnet. เราสามารถส่งค่าตัวเลือกเพื่อ config ในระหว่าง init wallet interface. เราสามารถอ่าน solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) เพื่อเรียนรู้เพิ่มเติม
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -97,11 +97,11 @@ In the code snippet below, we are creating an instance of solana-embed และ
 
 ### Trigger user login​
 
-Simply call `torus.login()` to trigger a login wherever it makes sense in your application lifecycle. Calling login method without any parameter will open a modal for user to select all supported logins.
+เราสามารถเรียก `torus.login()` เพื่อ trigger การ login ที่ไหนก็ได้ที่ต้องการใน app  การเรีนก login method โดยไม่ส่ง parameter มาด้วยจะเป็นการเปิด modal ให้ user เลือกตัวเลือก logins ที่มีอยู่
 
 ![](./assets/Web3Auth/login-modal.png)
 
-After successful login, the method will return an array of public keys. The first element of the array is the current wallet public key
+หลังจาก login สำเร็จ method จะคืนค่า array ของ public keys มา โดย element แรกของ array คือ wallet public key ปัจจุบัน
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -121,9 +121,9 @@ After successful login, the method will return an array of public keys. The firs
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### โดยใช้ torus instance to fetch user account detail​
+### การช้ torus instance เพื่อดึงข้อมูลรายละเอียด user account
 
-The torus instance provides an interface for interactions like signing transactions และ messages in a logged-in state. It สามารถ also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
+torus instance จะมี interface สำหรับ sign transactions และ messages ใน logged-in state. และมันยังมี interface สำหรับเข้าถึงข้อมูล user login เช่น email, profile image ฯลฯ. (ขึ้นอยู่กับ login method)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,11 +143,11 @@ The torus instance provides an interface for interactions like signing transacti
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### โดยใช้ Torus Solana API to sign a message.
+### การใช้ Torus Solana API เพื่อ sign message.
 
-In order to send a message for the user to sign, the web application must provide a UTF-8 encoded string as a Uint8Array.
+ในการส่ง message ให้ user sign, web app ต้องให้ UTF-8 encoded string เป็น Uint8Array.
 
-Every time a user wants to sign a message, the wallet will open a confirmation window.
+ทุกๆ ครั้งที่ user ต้องการ sign message, wallet จะเปิดหน้าต่างยืนยันขึ้นมา
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,13 +167,13 @@ Every time a user wants to sign a message, the wallet will open a confirmation w
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Similarly, you สามารถ also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) และ `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
+เช่นกัน, เราสามารถใช้ methods [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) และ `signAllTransactions` บน torus instance เพื่อ sign single, multiple transactions ตามลำดับ.
 
-### โดยใช้ torus Solana API to send a transaction.​
+### การใช้ torus Solana API เพื่อส่ง transaction.​
 
-To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance และ pass in the `Transaction`.
+การส่ง transaction ทำได้ง่ายไ ด้วยการเรียก method `sendTransaction` บน torus instance และส่ง `Transaction` เข้าไปด้วย
 
-The wallet opens a confirmation window. After approval, the SDK signs และ sends the transaction to the chain.
+wallet จะเปิดหน้าต่างยืนยัน หลังจากยืนยันแล้ว SDK ก็จะ signs และส่ง transaction ไปที่ chain.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -195,7 +195,7 @@ The wallet opens a confirmation window. After approval, the SDK signs และ 
 
 ### Top-ups​
 
-Currently, the API supports topups from Moonpay.
+ในตอนนี้ API สนับสนุนการเติมเงินจาก Moonpay
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -217,7 +217,7 @@ Currently, the API supports topups from Moonpay.
 
 ### Logout
 
-To logout user, it simply requires you to call the `logout` function on torus wallet instance.
+การ logout user ทำได้โดยการเรียก function `logout` บน torus wallet instance.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
