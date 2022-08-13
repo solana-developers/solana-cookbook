@@ -3,10 +3,10 @@ title: Serum
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | การสร้างบน Serum
+      content: คู่มือ Solana | การทำงานกับ Serum
   - - meta
     - name: og:title
-      content: คู่มือ Solana | การสร้างบน Serum
+      content: คู่มือ Solana | การทำงานกับ Serum
   - - meta
     - name: description
       content: Serum เป็นนวัตกรรม CLOB บน Solana. เรียนรู้วิธีใช้ และสร้างบน Serum

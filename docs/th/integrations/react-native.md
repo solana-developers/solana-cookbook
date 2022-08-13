@@ -175,7 +175,7 @@ If you want to hit the ground running, you สามารถ download the [Sola
 
 This is an issue because `metro`, the React Native bundler, does not support the `cjs` extension by default. There is an [open issue here](https://github.com/facebook/metro/issues/535).
 
-You สามารถ fix this by updating `metro.config.js` และ add `cjs` to the `resolver.sourceExts` array, as shown above.
+เราสามารถ fix this by updating `metro.config.js` และ add `cjs` to the `resolver.sourceExts` array, as shown above.
 
 ### Error: URL.protocol is not implemented
 

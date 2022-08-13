@@ -291,7 +291,7 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 ### Performing the Swap
 
-After providing all the data to the useJupiter Hook. We สามารถ use the jupiter instance to perform a swap โดยใช้ the `exchange` method
+After providing all the data to the useJupiter Hook. We สามารถใช้ the jupiter instance to perform a swap โดยใช้ the `exchange` method
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

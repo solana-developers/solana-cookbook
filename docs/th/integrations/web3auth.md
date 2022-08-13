@@ -53,7 +53,7 @@ This tutorial will guide you over a basic example to integrate social logins in 
 
 ### Installing Dependencies
 
-To start โดยใช้ the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. You สามารถ use popular package managers like yarn และ npm to download them.
+To start โดยใช้ the wallet with a dapp, you สามารถ install `@toruslabs/solana-embed`. เราสามารถใช้ popular package managers like yarn และ npm to download them.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -75,7 +75,7 @@ npm install --save @toruslabs/solana-embed
 
 ### Import the SDK และ initialize
 
-In the code snippet below, we are creating an instance of solana-embed และ then initializing it with testing enviroment which uses solana testnet. You สามารถ pass other configuration options while initializing the wallet interface. You สามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+In the code snippet below, we are creating an instance of solana-embed และ then initializing it with testing enviroment which uses solana testnet. เราสามารถ pass other configuration options while initializing the wallet interface. เราสามารถ refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

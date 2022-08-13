@@ -3,16 +3,16 @@ title: Strata
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Building on Strata Protocol
+      content: คู่มือ Solana | การทำงานกับ Strata Protocol
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Building on Strata Protocol
+      content: คู่มือ Solana | การทำงานกับ Strata Protocol
   - - meta
     - name: description
-      content: Strata is a protocol for launching tokens บน Solana. เรียนรู้วิธี use และ build on top of Strata.
+      content: Strata คือ protocol สำหรับปล่อยขาย tokens บน Solana. เรียนรู้วิธีใช้ และทำงานบน Strata.
   - - meta
     - name: og:description
-      content: Strata is a protocol for launching tokens บน Solana. เรียนรู้วิธี use และ build on top of Strata.
+      content: Strata คือ protocol สำหรับปล่อยขาย tokens บน Solana. เรียนรู้วิธีใช้ และทำงานบน Strata.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,17 +38,16 @@ head:
 
 # Strata
 
-Strata is a protocol for launching tokens built บน Solana. 
-You สามารถ use Strata to launch any kind of fungible token, ranging from social tokens to dao และ gamefi tokens.
-You สามารถ also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
+Strata คือ protocol สำหรับปล่อยขาย tokens บน Solana. 
+เราสามารถใช้ Strata เพื่อปล่อยขาย fungible token ใดๆ ไม่ว่าจะเป็น social tokens หรือ dao และ gamefi tokens.
+เราสามารถใช้ strata ร่วมกับอะไรก็ตามที่มีการคิดราคาแบบ fixed price mechanics เพื่อให้ได้ dynamic pricing mechanics ตัวอย่างเช่น Metaplex CandyMachine.
 
-More in-depth docs are available [ที่นี่](docs.strataprotocol.com). You สามารถ also use the gui at [Strata Launchpad](app.strataprotocol.com)
+สำหรับข้อมูลเชิงลึกไปดูได้ [ที่นี่](docs.strataprotocol.com). และเราสามารถ ใช้ gui ได้ที่ [Strata Launchpad](app.strataprotocol.com)
 
-## วิธี create a fully managed token
+## วิธีสร้าง fully managed token
 
-A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
-token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata และ an associated bonding curve.
-The bonding curve manages the liquidity, pricing, และ supply of that token.
+fully-managed Strata token คือ token ที่มีการจัดการ liquidity โดย protocol ข้อได้เปรียบคือเราสามารถเปิดการ trade token ได้ในทันทีโดยไม่ต้องมี pools หรือ liquidity providers. โดยที่ fully-managed token นั้นก็คือ spl token ทั่วไปกับ metaplex token metadata และ associated bonding curve.
+ซึ่ง bonding curve จะจัดการเรื่อง liquidity, pricing, และ supply ของ token นั้น
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -112,8 +111,7 @@ The bonding curve manages the liquidity, pricing, และ supply of that token
 
 ## วิธี bootstrap liquidity
 
-Strata สามารถ also sell tokens where you would like to manually manage the supply. This สามารถ be useful for liquidity bootstrapping before listing your token
-on a dex. You สามารถ read more about these [ที่นี่](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
+Strata สามารถขาย tokens โดยที่เราสามารถควบคุม supply เองได้ ซึ่งมันจะมีประโยชน์สำหรับการทำ liquidity bootstrapping ก่อนจะ list token ของเราบน dex เราสามารถอ่านเพิ่มเติมได้ [ที่นี่](https://docs.strataprotocol.com/marketplace/lbc) หรือปล่อย token ของเราเองได้ที่ [Strata Launchpad](app.strataprotocol.com)
 
 
 <SolanaCodeGroup>
@@ -137,5 +135,5 @@ on a dex. You สามารถ read more about these [ที่นี่](http
 
 ## แหล่งข้อมูลอื่น
 
-- [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create และ manage Strata tokens
-- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token โดยใช้ the GUI
+- [Typescript Client Documentation](https://docs.strataprotocol.com) - ตัวอย่าง code สำหรับสร้าง และจัดการ Strata tokens
+- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - ปล่อย token โดยใช้ GUI

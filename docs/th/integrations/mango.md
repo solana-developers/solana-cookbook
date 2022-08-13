@@ -3,10 +3,10 @@ title: Mango Markets
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | การทำงานบน Mango Markets
+      content: คู่มือ Solana | การทำงานกับ Mango Markets
   - - meta
     - name: og:title
-      content: คู่มือ Solana | การทำงานบน Mango Markets
+      content: คู่มือ Solana | การทำงานกับ Mango Markets
   - - meta
     - name: description
       content: Mango Markets มอบมาตรฐานระดับ industry สำหรับ decentralized, cross-margin trading. เรียนรู้วิธีใช้ และทำงานบน Mango Markets.
@@ -177,8 +177,8 @@ Mango มี config file ที่มี่ข้อมูลเกี่ญซ�
 </SolanaCodeGroup>
 
 ## วิธี load bids
-Mango uses the market information from Serum Protocol to load bids. You สามารถ load 
-them directly from Serum to work with on Mango. You สามารถ find out more about Serum's 
+Mango uses the market information from Serum Protocol to load bids. เราสามารถ load 
+them directly from Serum to work with on Mango. เราสามารถ find out more about Serum's 
 markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>
