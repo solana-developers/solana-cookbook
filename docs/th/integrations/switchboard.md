@@ -3,16 +3,16 @@ title: Switchboard
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | โดยใช้ Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | การใช้ Switchboard เพื่อสร้าง Onchain data feeds
   - - meta
     - name: og:title
-      content: คู่มือ Solana | โดยใช้ Switchboard to create Onchain data feeds
+      content: คู่มือ Solana | การใช้ Switchboard เพื่อสร้าง Onchain data feeds
   - - meta
     - name: description
-      content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.
+      content: Switchboard ทำให้ผู้พัฒนาสามารถปลดปล่อยพลังของ Solana โดยการสร้างข้อมูล data feeds จาก API ใดๆ ก็ได้
   - - meta
     - name: og:description
-      content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.
+      content: Switchboard ทำให้ผู้พัฒนาสามารถปลดปล่อยพลังของ Solana โดยการสร้างข้อมูล data feeds จาก API ใดๆ ก็ได้
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,15 +38,15 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables นักพัฒนา to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource นักพัฒนา สามารถ invoke to bridge high integrity data on-chain และ power the next generation of web3 และ DeFi.
+Switchboard เป็น Oracle protocol ที่ทำให้นักพัฒนาสามารถเพิ่มแหล่งข้อมูล on-chain สำหรับการใช้งานที่หลากหลาย เช่น price feeds, NFT floor prices, sport statistics, หรือแม้แต่การสุ่มที่ตรวจสอบได้ (verifiable randomness) ในกรณีทั่วไป Switchboard ก็คือแหล่งข้อมูล off-chain ที่นักพัฒนาสามารถเรียกใช้เพื่อเชื่อมโยงข้อมูลที่เชื่อถือได้บน on-chain และเพื่อเป็นกำลังสำคัญของ web3 และ DeFi ในยุคถัดไป
 
 ## Data Feeds
 
-Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
-. This library สามารถ be used to reach On-chain data from existing data feeds or publish your own custom feeds. เรียนรู้เกี่ยวกับ this [ที่นี่](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
+Switchboard มี JavaScript/TypeScript library เรียกว่า **@switchboard-xyz/switchboard-v2**
+. โดย library นี้สามารถใช้ในการเข้าถึง On-chain data จาก data feeds ที่มีอยู่แล้ว หรือ publish feeds ที่เราเลือกมาเองได้ เรียนรู้เพิ่มเติมได้ [ที่นี่](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
 )
 
-### Read data from an aggregator feed
+### การอ่านข้อมูลจาก aggregator feed
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,8 +93,8 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 
 ### Read data from an aggregator feed in program
-Switchboard provides a crate called **switchboard_v2**
-เรียนรู้เกี่ยวกับ this [ที่นี่](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
+Switchboard มี crate เรียกว่า **switchboard_v2**
+เรียนรู้เพิ่มเติมได้ [ที่นี่](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
 
 <SolanaCodeGroup>
@@ -116,14 +116,13 @@ Switchboard provides a crate called **switchboard_v2**
 
 </SolanaCodeGroup>
 
-### วิธี Create a Feed from the Publisher
-The official Switchboard documentation has an in-depth walk-through of วิธี create a feed from the publisher.
-Check it out [ที่นี่](https://docs.switchboard.xyz/feed/publisher).
+### วิธีสร้าง Feed จาก Publisher
+ใน Switchboard documentation จะมีวิธีสร้าง feed จาก publisher อย่างละเอียด ลองไปดูได้ [ที่นี่](https://docs.switchboard.xyz/feed/publisher).
 
 ## Oracles
-Switchboard's unique feature is that it allows you to create your own oracle และ run it locally.
+คุณสมบัติพิเศษของ Switchboard คือเราสามารถสร้าง oracle ของเราเองได้ที่ local
 
-### Create an oracle
+### สร้าง oracle
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -144,12 +143,12 @@ Switchboard's unique feature is that it allows you to create your own oracle แ
 </SolanaCodeGroup>
 
 ### Run an oracle locally
-You สามารถ run an oracle locally และ assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
+เราสามารถ run oracle ที่ local และสั่งให้มันเข้า oracle queue ของเราเองเพื่อทดสอบว่า program ของเราจะทำงานอย่างไรบน production. สำหรับ Mainnet oracles จะต้อง run บน high availability environments พร้อมกับระบบที่มีการ monitoring อยู่ด้วย
 
-#### Requirements
+#### สิ่งที่ต้องใช้
  - Docker-compose
 
-Create a docker-compose.yml file with the environment variables in [Oracle Config](/integrations/switchboard.html#oracle-config)
+สร้าง docker-compose.yml file ด้วย environment variables ใน [Oracle Config](/integrations/switchboard.html#oracle-config)
 
 
 
@@ -244,8 +243,9 @@ Run the container โดยใช้ `docker-compose up`
 </table>
 
 ## Verifiable Random Function(VRF)
-A Verifiable Random Function (VRF) is a public-key pseudorandom function that provides proofs that its outputs were calculated correctly
-### Reading a VRF account
+Verifiable Random Function (VRF) คือ pseudorandom function ในการสุ่ม public-key ที่สามารถพิสูจน์ได้ว่า outputs นั้นผ่านการคำนวณมาอบ่างถูกต้อง 
+
+### การอ่าน VRF account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -303,7 +303,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 </SolanaCodeGroup>
 
-### Request Randomness from vrf account
+### ขอ Randomness จาก vrf account
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -340,18 +340,18 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 </SolanaCodeGroup>
 
 
-## Resources
+## แหล่งความรู้
 ### APIs และ Libraries
  - [Switchboard Task Types](https://docs.switchboard.xyz/api/tasks)
  - [Rust API Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
  - [Typescript API Docs](https://docs.switchboard.xyz/api/ts)
  - [Python API Docs](https://docs.switchboard.xyz/api/py)
  - [CLI Docs](https://docs.switchboard.xyz/api/cli)
-### Examples
+### ตัวอย่าง
  - [[Client] Custom Data Feed Walkthrough](https://github.com/switchboard-xyz/switchboard-v2/tree/main/packages/feed-walkthrough)
  - [[Program] Anchor Feed Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-feed-parser)
  - [[Program] Anchor VRF Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-vrf-parser)
-### More Information
+### ข้อมูลอื่นๆ
  - [Protocol Documentation](https://docs.switchboard.xyz/introduction)
  - [SuperteamDAO Deep Dive](https://crawling-cent-d6b.notion.site/The-Switchboard-Deep-Dive-717df6ba0b92465e8118351466257a0f)
 
