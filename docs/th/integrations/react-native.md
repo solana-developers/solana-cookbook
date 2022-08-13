@@ -1,65 +1,65 @@
 ---
 title: React Native
 head:
-- - meta
-- name: title
-  content: คู่มือ Solana | โดยใช้ React Native with Solana
-- - meta
-- name: og:title
-  content: คู่มือ Solana | โดยใช้ React Native with Solana
-- - meta
-- name: description
-  content: In this tutorial, you เรียนรู้วิธี use Solana in your React Native apps.
-- - meta
-- name: og:description
-  content: In this tutorial, you เรียนรู้วิธี use Solana in your React Native apps.
-- - meta
-- name: og:image
-  content: https://solanacookbook.com/cookbook-sharing-card.png
-- - meta
-- name: og:image:alt
-  content: Solana splash card
-- - meta
-- name: twitter:card
-  content: summary
-- - meta
-- name: twitter:site
-  content: "@solanacookbook"
-- - meta
-- name: twitter:image
-  content: "https://solanacookbook.com/cookbook-sharing-card.png"
-- - meta
-- name: robots
-  content: index,follow,noodp
-- - meta
-- name: googlebot
-  content: index,follow
+  - - meta
+    - name: title
+      content: คู่มือ Solana | การใช้ React Native กับ Solana
+  - - meta
+    - name: og:title
+      content: คู่มือ Solana | การใช้ React Native กับ Solana
+  - - meta
+    - name: description
+      content: ใน tutorial นี้เราจะได้เรียนรู้วิธีใช้ Solana บน React Native apps.
+  - - meta
+    - name: og:description
+      content: ใน tutorial นี้เราจะได้เรียนรู้วิธีใช้ Solana บน React Native apps.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
 ---
 
 # React Native และ Solana
 
-React Native is an open-source UI software framework used to develop mobile, web และ desktop applications by enabling นักพัฒนา to use the React framework along with native platform capabilities. Powered with the Solana SDK, this is a great platform to quickly build performant native Crypto apps.
+React Native เป็น open-source UI software framework ใช้สำหรับ dev mobile, web และ desktop applications โดยนักพัฒนาจะสามารถใช้ React framework กับ native platform capabilities ได้ และการใช้กับ Solana SDK จะเป็น platform ที่ดีในการสร้าง native Crypto apps.
 
-The fastest way to start with React Native และ Solana is by โดยใช้ the [Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native). 
+ทางที่เร็วที่สุดในการที่จะเริ่มต้นกับ React Native และ Solana คือการใช้ [Solana DApp Scaffold สำหรับ React Native](#solana-dapp-scaffold-for-react-native). 
 
-## วิธี use @solana/web3.js in a React Native app
+## วิธีใช้ @solana/web3.js ใน React Native app
 
-In this tutorial you will เรียนรู้วิธี create a new React Native app และ install และ configure the `@solana/web3.js` SDK, และ its dependencies. 
+ในตัวอย่างนี้เราจะได้เรียนรู้วิธีการสร้าง React Native app, การติดตั้ง และ configure  `@solana/web3.js` SDK, และ dependencies ต่างๆ
 
-If you already have an existing app, skip to [installing the dependencies](#install-dependencies).
+ถ้าเรามี app แล้วให้ข้ามไปที่ [การติดตั้ง dependencies](#install-dependencies).
 
-### Create a new app
+### สร้าง app ใหม่
 
-We start a new React Native application that uses TypeScript, then `cd` into the project directory, where we will execute the rest of the commands.
+เราจะเริ่มจากการสร้าง React Native app โดยใช้ TypeScript, แล้ว `cd` เข้าไปใน project directory, ที่ที่เราจะ execute commands ต่างๆ.
 
 ```shell
 npx react-native init SolanaReactNative --template react-native-template-typescript
 cd SolanaReactNative
 ```
 
-### Install dependencies
+### ติดตั้ง dependencies
 
-Next, we install the dependencies. We install the Solana SDK, และ in addition we install a package to patch the `metro` configuration, และ two polyfills that patch the React Native environment. 
+ต่อไปเราจะติดตั้ง dependencies. เมื่อเราติดตั้ง Solana SDK, และนอกจากน้ีเรายังจะติดตั้ง package เพื่อ patch `metro` configuration, และ polyfills 2 ตัวที่เอาไว้ patch ในส่วนของ React Native environment. 
 
 ```shell
 yarn add @solana/web3.js metro-config react-native-get-random-values react-native-url-polyfill
@@ -67,7 +67,7 @@ yarn add @solana/web3.js metro-config react-native-get-random-values react-nativ
 
 ### Update `index.js`
 
-To load the polyfills, we open the file `index.js` in the root of the project และ add the following two lines to the top of the file:
+เพื่อ load polyfills, เราจะเปิด file `index.js` ที่ root ของ project และเพิ่ม 2 บรรทัดนี้เข้าไปที่ 2 บรรทัดแรกของ file:
 
 ```javascript
 import 'react-native-get-random-values';
@@ -76,9 +76,9 @@ import 'react-native-url-polyfill/auto';
 
 ### Update `metro.config.js`
 
-In this step, we will configure the `metro` configuration, so it will load files with the `cjs` extension.
+ในขั้นตอนนี้, เราจะเปลี่ยน `metro` configuration, มันจะได้ load files ที่มีนามสกุล `cjs`.
 
-Open the file `metro.config.js` in the root of your project และ replace the content with the snippet below:
+เปิด file `metro.config.js` ที่ root ของ project ของเราและแทนที่ด้วย snippet ด้านล่างนี้:
 
 ```javascript
 const {getDefaultConfig} = require('metro-config');
@@ -106,13 +106,13 @@ module.exports = async () => {
 
 ### Update `App.tsx`
 
-Let's add a web3.js example into our app!
+มาเพิ่มตัวอย่าง web3.js ใส่ใน app ของเรากันดีกว่า!
 
-Open the file `App.tsx` และ add the following code inside the `App` function:
+เปิด file `App.tsx` และเพิ่ม code นี้เข้าไปใน function`App`:
 
-In this example, we set up a connection to Solana Devnet และ when the components load, we get the version of the cluster we connected to และ store the version in the component state.
+ในตัวอย่างนี้, เราจะติดตั้ง connection ไปที่ Solana Devnet และเมื่อ components load แล้วเราจะลองหา version ของ cluster ที่เราต่อด้วยและ เก็บ version นั้นไว้ใน component state.
 
-Additionally, this example shows วิธี generate และ store a keypair.
+นอกจากนี้, ในตัวอย่างนี้เราจะแสดงวิธี generate และเก็บ keypair.
 
 ```typescript
 const conn = new Connection(clusterApiUrl('devnet'));
@@ -144,9 +144,9 @@ Lastly, in the template (or `render function`) add the following markup:
 <Button title="New Keypair" onPress={randomKeypair} />
 ```
 
-### Install cocoapods
+### ติดตั้ง cocoapods
 
-In order for our polyfills to work, we need to install the `cocoapods`.
+ในการทำให้ polyfills ทำงานเราต้องติดตั้ง `cocoapods` ด้วย
 
 ```shell
 cd ios && pod install
@@ -154,43 +154,43 @@ cd ios && pod install
 
 ### Start application 
 
-Once we finished all the above, we สามารถ start our application
+เมื่อเราติดตั้งแล้วเราจะสามารถ start app เราได้แล้ว
 
 ```shell
 npx react-native run-ios
 ```
 
-If all went well, you should see a React Native app being started in your iOS simulator that retrieves the version of the Solana Devnet.
+ถ้าไม่ติดอะไรเราจะเห็น React Native app เริ่มทำงานบน iOS simulator และได้รับเลข version ของ Solana Devnet.
 
-## Solana DApp Scaffold for React Native
+## Solana DApp Scaffold สำหรับ React Native
 
-If you want to hit the ground running, you สามารถ download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
+ถ้าเราต้องการเริ่มจาก Scaffold เราสามารถ download ได้ที่ [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
 
 
-## Common issues when โดยใช้ @solana/web3.js in a React Native app
+## ปัญหาที่เจอบ่อยเมื่อใช้ @solana/web3.js กับ React Native app
 
 ### Error: While trying to resolve module superstruct from file
 
 > error: Error: While trying to resolve module superstruct from file .../SolanaReactNative/node_modules/@solana/web3.js/lib/index.browser.cjs.js, the package .../SolanaReactNative/node_modules/superstruct/package.json was successfully found. However, this package itself specifies a main module field that could not be resolved (.../SolanaReactNative/node_modules/superstruct/lib/index.cjs.
 
-This is an issue because `metro`, the React Native bundler, does not support the `cjs` extension by default. There is an [open issue here](https://github.com/facebook/metro/issues/535).
+ปัญหานี้เกิดจาก `metro`, React Native bundler ไม่รู้จักนามสกุล `cjs` อ้างถึง [open issue นี้](https://github.com/facebook/metro/issues/535).
 
-เราสามารถ fix this by updating `metro.config.js` และ add `cjs` to the `resolver.sourceExts` array, as shown above.
+เราสามารถแก้ปัญหานี้ได้โดบการแก้ `metro.config.js` โดยเพิ่ม `cjs` ใน`resolver.sourceExts` array ตามนี่บอกไปแล้ว
 
 ### Error: URL.protocol is not implemented
 
     ERROR Error: URL.protocol is not implemented 
     ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This สามารถ also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native. 
 
-This is an issue that สามารถ be fixed by โดยใช้ a polyfill for the `URL` object in React Native.
+ปัญหานี้สามารถแก้ได้โดยใช้ polyfill สำหรับ `URL` object ใน React Native.
 
-Install the package `react-native-url-polyfill` และ import it in the main file of your app (eg: `index.js`), as shown above.
+ติดตั้ง package `react-native-url-polyfill` และ import มันใน file ของ app (เช่น: `index.js`), เหมือนที่เคยแสดงไว้ก่อนหน้านี้
 
 ### Error: crypto.getRandomValues() not supported
 
     Error: crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported
 
 
-This is an issue that สามารถ be fixed by โดยใช้ a polyfill for the `crypto` object in React Native.
+ปัญหานี้สามารถแก้ได้โดยใช้ polyfill สำหรับ `crypto` object ใน React Native.
 
-Install the package `react-native-get-random-values` และ import it in the main file of your app (eg: `index.js`), as shown above.
+ติดตั้ง package `react-native-get-random-values` และ import มันใน file ของ app (เช่น: `index.js`), เหมือนที่เคยแสดงไว้ก่อนหน้านี้
