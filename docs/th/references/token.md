@@ -55,7 +55,7 @@ footer: MIT Licensed
 
 ## วิธีสร้าง Token ใหม่
 
-การสร้าง token ทำได้ด้วยการสร้าง "mint account" ซึ่ง mint account นี้จะถูกนำไปใช้ในการ mint token ไปที่ token account ในภายหลัง และเพื่อใช้สร้าง initial supply เริ่มต้น
+การสร้าง token ทำได้ด้วยการสร้าง "mint account" ซึ่ง mint account นี้จะถูกนำไปใช้ในการ mint token ไปที่ token account ของเราในภายหลัง
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -99,10 +99,9 @@ footer: MIT Licensed
 
 ## วิธีสร้าง token account
 
-เราต้องการ token account เพื่อใช้ในการเก็บ tokens ไว้ โดยทุกๆ token mint
-จะมี token account ที่เกี่ยวข้อง (associated) กับมันคนละตัวกัน
+เราต้องการ token account เพื่อใช้ในการเก็บ tokens ของเราไว้ โดยเราจะมีอย่างน้อยหนึ่ง token account สำหรับการเก็บ tokens ของเรา
 
-Associated Token Accounts นี้จะสามารถสร้างขึ้นมาจากทุก keypair ได้เหมือนเดิมตลอด (deterministic) เราควรจะใช้ ATAs ในการจัดการ token accounts.
+Associated Token Accounts (ATAs) จะสามารถสร้างขึ้นมาจาก keypair ได้เหมือนเดิมตลอด (deterministic) เราควรจะใช้ ATAs ในการจัดการ token accounts.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
