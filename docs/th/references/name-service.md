@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | Name Service
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. เรียนรู้เกี่ยวกับ Resolving SOL domains, Reverse/Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
+      content: name registry จะมีไว้เก็บข้อมูลเกี่ยวกับ domain name เรียนรู้เกี่ยวกับ Resolving SOL domains, การ look up Reverse/Subdomain และอื่นๆ เกี่ยวกับ Name Service และข้อมูลอ้างอิงได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. เรียนรู้เกี่ยวกับ Resolving SOL domains, Reverse, Subdomain look up, more about Name Service และ references ได้ที่คู่มือ Solana.
+      content: name registry จะมีไว้เก็บข้อมูลเกี่ยวกับ domain name เรียนรู้เกี่ยวกับ Resolving SOL domains, การ look up Reverse/Subdomain และอื่นๆ เกี่ยวกับ Name Service และข้อมูลอ้างอิงได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,12 +41,12 @@ footer: MIT Licensed
 
 ## Name registry
 
-The name registry stores information about the domain name. It is made of two things:
+name registry จะมีไว้เก็บข้อมูลเกี่ยวกับ domain name ซึ่งจะแบ่งเป็น 2 ส่วนคือ:
 
 - The header
 - The data
 
-The data for a domain name is always prefixed by the header, below is the structure of the header in JS:
+ข้อมูลของ domain name จะขึ้นต้นด้วย header ส่วนด้านล่างนี้คือ structure ของ header ใน JS:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -69,10 +69,8 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 ## Resolving SOL domains
 
-.SOL domains are unique, human-friendly domain names
-that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You สามารถ convert
-.SOL domains to their publicKey with the following:
+.SOL domains จะไม่ซ้ำ (unique), จดจำได้ง่าย (human-friendly) เป็น domain names
+ที่ถูกเปลี่ยนเป็น public keys. หลายๆ wallets ใช้มันเป็นทางเลือกในการส่ง tokens หรือ SOL เราสามารถเปลี่ยน .SOL domains เป็น public keys ได้ตามนี้:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -95,7 +93,7 @@ another option to send tokens or SOL. You สามารถ convert
 
 ## Reverse look up
 
-This สามารถ be used to resolve the domain name from its public key
+การทำ Reverse look up จะช่วยทำให้เราหา (resolve) domain name จาก public key ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -118,11 +116,11 @@ This สามารถ be used to resolve the domain name from its public key
 
 ## Subdomain look up
 
-In order to resolve a subdomain you need to:
+ในการ resolve ส่วน subdomain เราจะต้อง:
 
-1. Get the parent domain key
-2. Get the subdomain key
-3. Retrieve the account info
+1. หา parent domain key
+2. หา subdomain key
+3. ดึงข้อมูล account info
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,9 +141,9 @@ In order to resolve a subdomain you need to:
 
 </SolanaCodeGroup>
 
-## Find all the domain names owned by a public key
+## หาทุก domain names ที่ public key นี้เป็นเจ้าของ
 
-You สามารถ retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+เราสามารถดึงข้อมูลทุก domain names ของ wallet ใดๆ โดยใช้ `getProgramAccounts` และ `memcmp` filter
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -168,7 +166,7 @@ You สามารถ retrieve all the domain names of a wallet by doing a `get
 
 ## Resolve a Twitter handle
 
-Twitter handles สามารถ be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) และ be used like .SOL domain names
+Twitter handles สามารถจะ [ลงทะเบียนบน Solana name service](https://naming.bonfida.org/#/twitter-registration) ได้ และสามารถใช้เหมือน .SOL domain names ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -191,7 +189,7 @@ Twitter handles สามารถ be [registered on the Solana name service](ht
 
 ## Reverse look up of a Twitter handle
 
-In order to find the SOL address associated to a Twitter handle you สามารถ perform a reverse look up
+ในการหา SOL address ที่ associated กับ Twitter handle เราสามารถทำการ reverse look up ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
