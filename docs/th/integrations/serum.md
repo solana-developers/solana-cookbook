@@ -3,16 +3,16 @@ title: Serum
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Building on Serum
+      content: คู่มือ Solana | การสร้างบน Serum
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Building on Serum
+      content: คู่มือ Solana | การสร้างบน Serum
   - - meta
     - name: description
-      content: Serum is an innovative CLOB บน Solana. เรียนรู้วิธี use และ build on top of Serum.
+      content: Serum เป็นนวัตกรรม CLOB บน Solana. เรียนรู้วิธีใช้ และสร้างบน Serum
   - - meta
     - name: og:description
-      content: Serum is an innovative CLOB บน Solana. เรียนรู้วิธี use และ build on top of Serum.
+      content: Serum เป็นนวัตกรรม CLOB บน Solana. เรียนรู้วิธีใช้ และสร้างบน Serum
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,14 +38,11 @@ head:
 
 # Serum
 
-Serum is a protocol for decentralized exchanges built บน Solana. You
-can use Serum to create new markets, get order books, trade, และ more.
+Serum คือ protocol สำหรับ decentralized exchanges สร้างอยู่บน Solana. เราสามารถใช้ Serum เพื่อสร้าง markets, get order books, trade, และอื่นๆ อีกมากมาย
 
-## วิธี get a Serum market
+## วิธีดึงข้อมูล Serum market
 
-A market on Serum contains all the orders และ capabilities to make orders
-on Serum. For everything you do on Serum you need to know the market you
-are working with.
+market บน Serum จะมี orders และความสามารถในการสร้าง orders บน Serum สำหรับการจะทำอะไรบน Serum เราต้องรู้ว่า market ไหนที่เราใช้งานอยู่ด้วย
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -66,11 +63,9 @@ are working with.
 
 </SolanaCodeGroup>
 
-## วิธี get Serum order books
+## วิธีดึงข้อมูล Serum order books
 
-Serum markets consist of orderbooks which have bids และ asks. You can
-query this information so you สามารถ see what is going on on the market and
-act accordingly.
+Serum markets ประกอบด้วย order books ที่มี bids และ asks. เราสามารค้นหาข้อมูลพวกนี้ได้ทำให้เรารู้ว่า market ตอนนี้เป็นยังไง และตัดสินใจว่าจะทำอะไรต่อไปได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -91,11 +86,9 @@ act accordingly.
 
 </SolanaCodeGroup>
 
-## วิธี get current open orders
+## วิธีดึงข้อมูล open orders ในปัจจุบัน
 
-As a trader, you will want to know what current open orders you have
-on a market. You สามารถ query your or anyone else's open orders on a market
-with Serum.
+ในมุมมองของ trader เราต้องการรู้ open orders ปัจจุบันของเราบน market. เราสามารถค้นหา open orders ของเราเอง หรือของคนอื่นๆ ได้ด้วย Serum.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

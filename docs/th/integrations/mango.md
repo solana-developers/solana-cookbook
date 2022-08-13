@@ -53,7 +53,7 @@ You'll also need the Solana javascript API library.
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธี get a Mango Group
+## วิธีดึงข้อมูล a Mango Group
 
 A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. Each version 
 of Mango Markets uses a different Mango Group containing different 

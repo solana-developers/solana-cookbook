@@ -323,7 +323,7 @@ PDAs จะถูก sign ได้ใน program เท่านั้น ด�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get program accounts
+## วิธีดึงข้อมูล program accounts
 
 คืนค่าทุกๆ accounts ที่ program เป็นเจ้าของ โดยจะอ้างถึง [guides section](../guides/get-program-accounts.md) สำหรับรายละเอียดของ `getProgramAccounts` และตัวเลือกการตั้งค่า
 
@@ -391,7 +391,7 @@ PDAs จะถูก sign ได้ใน program เท่านั้น ด�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี get account balance
+## วิธีดึงข้อมูล account balance
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
