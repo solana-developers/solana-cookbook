@@ -3,16 +3,16 @@ title: Mango Markets
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | Building on Mango Markets
+      content: คู่มือ Solana | การทำงานบน Mango Markets
   - - meta
     - name: og:title
-      content: คู่มือ Solana | Building on Mango Markets
+      content: คู่มือ Solana | การทำงานบน Mango Markets
   - - meta
     - name: description
-      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. เรียนรู้วิธี use และ build on top of Mango Markets.
+      content: Mango Markets มอบมาตรฐานระดับ industry สำหรับ decentralized, cross-margin trading. เรียนรู้วิธีใช้ และทำงานบน Mango Markets.
   - - meta
     - name: og:description
-      content: Mango Markets offers the industry standard for decentralized, cross-margin trading. เรียนรู้วิธี use และ build on top of Mango Markets.
+      content: Mango Markets มอบมาตรฐานระดับ industry สำหรับ decentralized, cross-margin trading. เรียนรู้วิธีใช้ และทำงานบน Mango Markets.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,10 +38,9 @@ head:
 
 # Mango Markets
 
-Mango provides a single venue to lend, borrow, swap, และ leverage 
-trade cryptoassets through an on-chain risk engine.
-You สามารถ connect to Mango's on-chain program โดยใช้ the Client API libraries.
-You'll also need the Solana javascript API library.
+Mango รวม lend, borrow, swap, และ leverage trade crypto assets ไว้ที่เดียวบน on-chain risk engine.
+เราสามารถต่อกับ Mango's on-chain program โดยใช้ Client API libraries.
+เรายังต้องการ Solana javascript API library ด้วย
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -53,11 +52,9 @@ You'll also need the Solana javascript API library.
   </CodeGroupItem>
 </CodeGroup>
 
-## วิธีดึงข้อมูล a Mango Group
+## วิธีดึงข้อมูล Mango Group
 
-A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. Each version 
-of Mango Markets uses a different Mango Group containing different 
-tokens. The current v3 group is `mainnet.1`. Here's a table showing the various groups:
+mango group คือตะกร้า (basket) ของ cross-margined tokens. มันจะมีข้อมูลกว้างๆ ของ market เกี่ยวกับ tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. แต่ละ version ของ Mango Markets ใช้ Mango Group ที่แตกต่างกัน และมี tokens ที่แตกต่างกัน ใน v3 ปัจจุบันนั้นมีชื่อ group คือ `mainnet.1` นี่คือตาราง table ที่แสดงข้อมูลกลุ่มต่างๆ:
 
 
 | Group                | Version     | Cluster   |
@@ -71,7 +68,7 @@ tokens. The current v3 group is `mainnet.1`. Here's a table showing the various 
 
 
 :::tip Note
-If you wish to use the v2 groups, you'll have to use the v2 client library. You สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-ts)
+ถ้าเราต้องการใช้ v2 groups เราต้องใช้ v2 client library ซึ่งเราสามารถหามันได้ [ที่นี่](https://github.com/blockworks-foundation/mango-client-ts)
 :::
 
 
@@ -94,10 +91,10 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
   
 </SolanaCodeGroup>
 
-## วิธี create a Mango Account
+## วิธีสร้าง Mango Account
 
-A Mango Account is associated with a Mango Group, และ it holds your tokens และ allows 
-you to trade that Group’s markets. You สามารถ find the reference [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
+Mango Account จะเกี่ยวข้องกับ a Mango Group, และมันจะเก็บ tokens ของเรา และทำให้เรา 
+ trade ได้ใน Group’s markets นั้น Yเราสามารถหาข้อมูลอ้างอิงเพิ่มเติมได้ [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -133,9 +130,9 @@ you to trade that Group’s markets. You สามารถ find the reference [
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี deposit USDC into a Mango Account
-After creating a mango account, you'll need to fund it with tokens for trading. 
-You สามารถ find the reference for the deposit method [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
+## วิธีฝาก (deposit) USDC เข้าไปใน Mango Account
+หลังจากสร้าง mango account แล้วเราต้องลงทุน tokens เข้าไปด้วยเพื่อเอาไว้ trade. 
+เราสามารถหาข้อมูลของ deposit method ได้ [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -155,11 +152,11 @@ You สามารถ find the reference for the deposit method [ที่น�
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี place a spot order
-Mango interacts with Serum Protocol to place spot orders on markets. You สามารถ place a spot 
-order by doing this. You สามารถ find the reference for the placeSpotOrder function [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
-Mango has a config file that contains information on groups, markets, tokens และ oracles, 
-you สามารถ find it [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group และ market.
+## วิธีตั้ง spot order
+Mango ติดต่อกับ Serum Protocol เพื่อวาง spot orders บน markets เราจะวาง spot 
+order ได้ถ้าทำตามนี้ เราสามารถหาข้ออมูลอ้างอิงของ placeSpotOrder function ได้ [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
+Mango มี config file ที่มี่ข้อมูลเกี่ญซกับ groups, markets, tokens และ oracles, 
+เราสามารถหาจ้อมูลได้ [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). เราได้ข้อมูลจาก file นั้นเพื่อหา group และ market ที่ถต้องการได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -202,10 +199,9 @@ markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/mast
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## วิธี load asks
-Mango uses the market information from Serum Protocol to load asks. 
-You สามารถ load them directly from Serum to work with on Mango. You สามารถ find out more 
-about Serum's markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+## วิธีดึงข้อมูลราคาขาย (asks)
+Mango ใช้ข้อมูล market จาก Serum Protocol เพื่อดึงข้อมูลราคาขาย asks. 
+เราสามารถดึงข้อมูลได้โดยตรงจาก Serum เพื่อทำงานบน Mango เราสามารถอ่านรายละเอียดเพิ่มเกี่ยวกับ Serum's markets ได้ [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
