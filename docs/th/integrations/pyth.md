@@ -3,16 +3,16 @@ title: Pyth
 head:
   - - meta
     - name: title
-      content: คู่มือ Solana | โดยใช้ Pyth to get OnChain data
+      content: คู่มือ Solana | การใช้ Pyth เพื่อดึงข้อมูลบน chain
   - - meta
     - name: og:title
-      content: คู่มือ Solana | โดยใช้ Pyth to get OnChain data
+      content: คู่มือ Solana | การใช้ Pyth เพื่อดึงข้อมูลบน chain
   - - meta
     - name: description
-      content: Pyth is an Oracle used to get real-word financial data onChain.
+      content: Pyth เป็น Oracle ที่เอาไว้ดึงข้อมูล financial บน chain
   - - meta
     - name: og:description
-      content: Pyth is an Oracle used to get real-word financial data onChain.
+      content: Pyth เป็น Oracle ที่เอาไว้ดึงข้อมูล financial บน chain
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,11 +38,11 @@ head:
 
 # Pyth
 
-Pyth is an Oracle used to get real-world financial และ crypto market data. Pyth Oracle สามารถ be used by on-chain programs in consuming data for a variety of use cases.
+Pyth เป็น Oracle ที่เอาไว้ดึงข้อมูล financial และ crypto market โดย Pyth Oracle สามารถ ใช้ดึงข้อมูลได้ on-chain programs เพื่อการใช้งานที่หลากหลาย
 
-## วิธี use Pyth in Client
+## วิธีใช้ Pyth จาก Client
 
-Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library สามารถ be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. เรียนรู้เกี่ยวกับ this [ที่นี่](https://www.npmjs.com/package/@pythnetwork/client)
+Pyth มี JavaScript/TypeScript library เรียกว่า **@pythnetwork/client** ซึ่ง library นี้สามารถใช้อ่าน on-chain Pyth Data สำหรับ off-chain app, เช่นการแสดง Pyth price บน website. เรียนรู้เพิ่มเติมได้ [ที่นี่](https://www.npmjs.com/package/@pythnetwork/client)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -63,9 +63,9 @@ Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. Th
 
 </SolanaCodeGroup>
 
-## วิธี use Pyth in Anchor
+## วิธีใช้ Pyth ด้วย Anchor
 
-Pyth provides a Rust Crate which สามารถ be used by on-chain programs or off-chain application's to consume pyth's data.
+Pyth มี Rust Crate ที่สามารถใช้บน on-chain programs หรือ off-chain app เพื่อดึงข้อมูล pyth's data ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
