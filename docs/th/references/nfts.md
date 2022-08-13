@@ -9,10 +9,10 @@ head:
       content: คู่มือ Solana | NFTs
   - - meta
     - name: description
-      content: เรียนรู้วิธี get NFT metadata, get NFT owners, mint NFTs บน Solana, และ more
+      content: เรียนรู้วิธีดึงข้อมูล NFT metadata, NFT owners, mint NFTs บน Solana, และอื่นๆ
   - - meta
     - name: og:description
-      content: เรียนรู้วิธี get NFT metadata, get NFT owners, mint NFTs บน Solana, และ more
+      content: เรียนรู้วิธีดึงข้อมูล NFT metadata, NFT owners, mint NFTs บน Solana, และอื่นๆ
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,13 +39,13 @@ footer: MIT Licensed
 
 # Non Fungible Tokens (NFTs)
 
-## วิธี create an NFT
+## วิธีสร้าง an NFT
 
-To create an NFT you have to:
+ในการสร้าง NFT เราจะต้อง:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
-3. Call metaplex to create an account for the NFT
+1. Upload รูป (image) ​ไปที่ IPFS เช่น Arweave
+2. Upload json metadata ไปที่ IPFS เช่น Arweave
+3. เรียกใช้ metaplex เพื่อสร้าง account สำหรับ NFT
 
 ### Upload to Arweave
 
@@ -82,8 +82,7 @@ To create an NFT you have to:
 
 ### Mint the NFT
 
-If you already have the image และ metadata uploaded, you สามารถ mint
-the NFT with the following code.
+ถ้าเรามีรูป และ metadata ที่ upload ไปแล้วเราก็สามารถ mint NFT ได้เลยด้วย code ต่อไปนี้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -104,16 +103,13 @@ the NFT with the following code.
 </SolanaCodeGroup>
 
 ::: tip Note
-You cannot mint an NFT with a different creator than your wallet.
-If you run into creator issues, make sure your metadata lists you
-as the creator.
+เราไม่สามารถ mint NFT ด้วย creator อื่นนอกจาก wallet ของเราได้
+ถ้าเจอปัญหาเกี่ยวกับ creator ให้ลองดูว่ามีเราเป็น creator อยู่ในรายชื่อของ metadata นั้นๆ ด้วย
 :::
 
-## วิธี get NFT Metadata
+## วิธีดึงข้อมูล NFT Metadata
 
-Metaplex NFTs have metadata that is stored on Arweave. In order
-to get the Arweave metadata, you must get the Metaplex PDA and
-decode the account data.
+Metaplex NFTs มี metadata เก็บอยู่บน Arweave ในการที่จะดึงข้อมูล Arweave metadata เราต้องหา Metaplex PDA และแกะ account data
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,17 +130,13 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## วิธี get the owner of an NFT
+## วิธีดึงข้อมูลเจ้าของ (owner) ของ NFT
 
-If you have the mint key of an NFT, you สามารถ find its current owner
-by sneak-peeking at the largest token account for that mint key.
+ถ้าเรามี mint key ของ NFT เราจะสามารถหา owner ปัจจุบันได้ด้วยการดู largest token account สำหรับ mint key นั้นๆ
 
-Remember that NFTs have a supply of 1, และ they are indivisible,
-meaning that only one token account will hold that token at any
-point in time, whilst all other token accounts for that mint key will
-have a balance of 0.
+เพราะ NFTs มี supply อยู่เพียง 1 ชิ้น และมันถูกแบ่งแยกไม่ได้ หมายความว่ามีเพียงหนึ่ง token account ที่จะถือ token ในเวลานั้น โดย token accounts อื่นสำหรับ mint key นั้นจะมี balance เป็น 0
 
-Once the largest token account is identified, we สามารถ retrieve its owner.
+ก็แปลว่าเมื่อเราหาlargest token account  ได้เราก็จะสามารถรู้ว่า owner เป็นใคร
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -165,9 +157,9 @@ Once the largest token account is identified, we สามารถ retrieve its
 
 </SolanaCodeGroup>
 
-## วิธี get NFT Mint Addresses
+## วิธีดึงข้อมูล NFT Mint Addresses
 
-If you know the public key of the Candy Machine, you สามารถ get the list of all NFT mint addresses generated from that Candy Machine โดยใช้ the following code. Note that we สามารถ use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+ถ้าเรารู้ public key ของ Candy Machine เราก็จะสามารหารายชื่อของ NFT mint addresses ที่สร้างจาก Candy Machine นั้นๆ โดยใช้ code ต่อไปนี้ ซึ่งเราสามารถ ใช้ `memcmp` filter เพราะใน v1 นั้น creator คนแรกจะเป็น address ของ andy Machine เสมอ
 
 ### Candy Machine V1
 
@@ -192,7 +184,7 @@ If you know the public key of the Candy Machine, you สามารถ get the 
 
 ### Candy Machine V2
 
-If you're โดยใช้ a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA โดยใช้ `candy_machine` และ the Candy Machine v2 address as seeds. Once you have the creator address, you สามารถ use it the same way we were for v1.
+ถ้าเราใช้ Candy Machine v2 เราต้องหา "Candy Machine Creator" address ซึ่งมันคือ PDA โดยใช้ `candy_machine` และ Candy Machine v2 address เป็น seeds. เวลาที่เราได้ creator address มาแล้วเราก็ สามารถ ใช้มันได้เหมือน v1 เลย
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -213,10 +205,9 @@ If you're โดยใช้ a Candy Machine v2, you'll first need to access its
 
 </SolanaCodeGroup>
 
-## วิธี get all NFTs from a wallet?
+## วิธีดึงข้อมูลทุก NFTs จาก wallet?
 
-When getting all NFTs from a wallet, you'll need to get all token accounts และ then parse which ones are NFTs.
-This สามารถ all be done โดยใช้ [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+เวลาจะหา NFTs จาก wallet เราจะต้องการ token accounts และแปลง (parse) หาว่าอันไหนเป็น NFTs เราสามารถทำได้โดยใช้ [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) จาก Metaplex js library.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
