@@ -170,4 +170,4 @@ Di Solana, transaksi yang dibatalkan dapat dibuang dengan aman setelah blockhash
 
 ## Ucapan Terima Kasih
 
-Terima kasih banyak kepada Trent Nelson, [Jacob Creech](https://twitter.com/jacobvcreech), White Tiger, Le Yafo, [Buffalu](https://twitter.com/buffalu__), dan [Jito Labs](https ://twitter.com/jito_labs) atas ulasan dan umpan balik mereka.
+Terima kasih banyak kepada Trent Nelson, [Jacob Creech](https://twitter.com/jacobvcreech), White Tiger, Le Yafo, [Buffalu](https://twitter.com/buffalu__), dan [Jito Labs](https://twitter.com/jito_labs) atas ulasan dan umpan balik mereka.
