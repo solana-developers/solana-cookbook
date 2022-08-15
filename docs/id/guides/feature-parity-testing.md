@@ -1,12 +1,12 @@
 ---
-title: Feature Parity Testing
+title: Pengujian Paritas Fitur
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Feature Parity Testing
+      content: Solana Cookbook | Pengujian Paritas Fitur
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Feature Parity Testing
+      content: Solana Cookbook | Pengujian Paritas Fitur
   - - meta
     - name: description
       content: Features vary by Solana cluster. Feature testing ensures predictable results.
@@ -37,49 +37,46 @@ head:
 footer: MIT Licensed
 ---
 
-# Feature Parity Testing
+# Pengujian Paritas Fitur
 
-When testing your program, assurances that it will run the same in various clusters is essential to both quality and
-producing expected outcomes.
+Saat menguji program Anda, jaminan bahwa program akan berjalan sama di berbagai cluster sangatlah penting untuk kualitas dan
+menghasilkan hasil yang diharapkan.
 
-## Facts
 
-::: tip Fact Sheet
-- Features are capabilities that are introduced to Solana validators and require activation to be used.
-- Features may be activated in one cluster (e.g. testnet) but not so in another (e.g. mainnet-beta).
-- However; when running default `solana-test-validator` locally, all available features in your
-Solana version are automagically activated. The result is that when testing locally, the capabilities and results of
-your testing may not be the same when deploying and running in a different cluster!
+## Fakta
+
+::: tip Lembar Fakta
+- Fitur adalah kemampuan yang diperkenalkan ke validator Solana dan memerlukan aktivasi untuk digunakan.
+- Fitur dapat diaktifkan di satu cluster (misalnya testnet) tetapi tidak di cluster lain (misalnya mainnet-beta).
+- Namun; saat menjalankan `solana-test-validator` default secara lokal, semua fitur yang tersedia di Solana versi Anda diaktifkan secara otomatis. Hasilnya adalah ketika menguji secara lokal, kemampuan dan hasil dari pengujian Anda mungkin tidak sama saat menerapkan dan menjalankan di cluster yang berbeda!
 :::
 
-## Scenario
-Assume you have a Transaction that contained three (3) instructions and each instruction consumes approximately
-100_000 Compute Units (CU). When running in a Solana 1.8.x version, you would observe your instruction CU consumption similar to:
+## Skenario
+Asumsikan Anda memiliki Transaksi yang berisi tiga (3) instruksi dan setiap instruksi mengkonsumsi kira-kira
+100_000 Compute Unit (CU). Saat menjalankan dalam versi Solana 1.8.x, Anda akan mengamati konsumsi CU instruksi Anda mirip dengan:
 
-| Instruction | Starting CU | Execution | Remaining CU|
+| Instruksi | Mulai CU | Eksekusi | Sisa CU|
 | - | - | - | - |
 | 1 | 200_000 | -100_000| 100_000
 | 2 | 200_000 | -100_000| 100_000
 | 3 | 200_000 | -100_000| 100_000
 
-In Solana 1.9.2 a feature called 'transaction wide compute cap' was introduced where a Transaction, by default,
-has a 200_000 CU budget and the encapsulated instructions **_draw down_** from that Transaction budget. Running the same
-transaction as noted above would have very different behavior:
+Di Solana 1.9.2 fitur yang disebut 'transaction wide compute cap' diperkenalkan di mana Transaksi, secara default,
+memiliki anggaran 200_000 CU dan instruksi yang dienkapsulasi **_draw down_** dari anggaran Transaksi tersebut. Menjalankan transaksi yang sama seperti yang sebelumnya akan menunjukkan hasil yang sangat berbeda:
 
-| Instruction | Starting CU | Execution | Remaining CU|
+| Instruksi | Mulai CU | Eksekusi | Sisa CU|
 | - | - | - | - |
 | 1 | 200_000 | -100_000| 100_000
 | 2 | 100_000 | -100_000| 0
-| 3 | 0 | FAIL!!! | FAIL!!!
+| 3 | 0 | GAGAL!!! | GAGAL!!!
 
-Yikes! If you were unaware of this you'd likely be frustrated as there was no change to your instruction behavior that
-would cause this. In devnet it worked fine, but locally it was failing?!?
+Astaga! Jika Anda tidak menyadari hal ini, Anda mungkin akan frustrasi karena tidak ada perubahan pada behavior instruksi Anda yang
+akan menyebabkan ini. Di devnet itu berfungsi dengan baik, tetapi secara lokal gagal?!?
 
-There is the ability to increase the overall Transaction budget, to lets say 300_000 CU, and salvage your sanity
-but this demonstrates why testing with **_Feature Parity_** provides a proactive way to avoid any confusion.
+Ada kemampuan untuk meningkatkan keseluruhan anggaran Transaksi, katakanlah 300_000 CU, dan selamatkan kewarasan Anda, namun ini menunjukkan mengapa pengujian dengan **_Feature Parity_** memberikan cara proaktif untuk menghindari kebingungan.
 
-## Feature Status
-It is fairly easy to check what features are enabled for a particular cluster with the `solana feature status` command.
+## Status Fitur
+Cukup mudah untuk memeriksa fitur apa yang diaktifkan untuk cluster tertentu dengan perintah `solana feature status`.
 ```console
 solana feature status -ud   // Displays by feature status for devnet
 solana feature status -ut   // Displays for testnet
@@ -87,40 +84,39 @@ solana feature status -um   // Displays for mainnet-beta
 solana feature status -ul   // Displays for local, requires running solana-test-validator
 ```
 
-Alternatively, you could use a tool like [scfsd](#resources) to observe all feature state across clusters
-which would display, partial screen shown here, and does not require `solana-test-validator` to be running:
+Atau, Anda dapat menggunakan alat seperti [scfsd](#resources) untuk mengamati status semua fitur di seluruh cluster
+yang akan ditampilkan, sebagian layar ditampilkan di sini, dan tidak memerlukan `solana-test-validator` untuk dijalankan:
 
+<img src="./feature-parity-testing/scfsd.png" alt="Heatmap dari Status Fitur">
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
-## Parity Testing
-As noted above, the `solana-test-validator` activates **all** features automagically.
-So to answer the question "How can I test locally in an environment that has parity with devnet,
-testnet or even mainnet-beta?".
+## Uji Paritas
+Seperti disebutkan di atas, `solana-test-validator` mengaktifkan **semua** fitur secara otomatis.
+Jadi untuk menjawab pertanyaan "Bagaimana saya bisa menguji secara lokal di lingkungan yang memiliki paritas dengan devnet, testnet atau bahkan mainnet-beta?".
 
-Solution: PRs were added to Solana 1.9.6 to allow deactivation of features:
+Solusi: PR ditambahkan ke Solana 1.9.6 untuk memungkinkan penonaktifan fitur:
 
 ```console
 solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 ```
 
-## Simple Demonstration
-Suppose you have a simple program that logs the data it receives in it's entry-point. And you are
-testing a transaction that adds two (2) instructions for your program.
+## Demonstrasi Sederhana
+Misalkan Anda memiliki program sederhana yang mencatat data yang diterimanya di entry-point. Dan Anda menguji transaksi yang menambahkan dua (2) instruksi untuk program Anda.
 
-### All features activated
-1. You start the test validator in one terminal:
+### Semua fitur diaktifkan
+1. Anda memulai validator uji di satu terminal:
 
 ```console
 solana config set -ul
 solana-test-validator -l ./ledger --bpf-program target/deploy/PROGNAME.so --reset`
 ```
 
-2. In another terminal you start the log streamer:
+2. Di terminal lain Anda memulai log streamer:
 ```console
 solana logs
 ```
 
-3. You then run your transaction. You would see something similar in the log terminal (edited for clarity):
+3. Anda kemudian menjalankan transaksi Anda. Anda akan melihat sesuatu yang serupa di terminal log (diedit untuk kejelasan):
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
 Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0 accounts, data=[0]
@@ -131,19 +127,17 @@ Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 187157 compute units
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 ```
-Because our feature 'transaction wide compute cap' is automatically activated by default, we observe each
-instruction drawing down CU from the starting Transaction budget of 200_000 CU.
 
-### Selective features deactivated
-1. For this run, we want to run so that the CU budget behavior is in parity with what is running in devnet. Using
-the tool(s) described in [Feature Status](#feature-status) we isolate the `transaction wide compute cap` public key
-and use the `--deactivate-feature` on the test validator startup
+Karena fitur 'batas komputasi luas transaksi' kami secara otomatis diaktifkan secara default, kami mengamati masing-masing instruksi penarikan CU dari anggaran awal Transaksi sebesar 200_000 CU.
+### Fitur selektif dinonaktifkan
+1. Untuk menjalankan ini, kami ingin menjalankan agar behavior anggaran CU setara dengan apa yang berjalan di devnet. Menggunakan alat yang dijelaskan dalam [Status Fitur](#status-fitur) pun kami mengisolasi kunci publik `batasan komputasi luas transaksi`
+dan gunakan `--deactivate-feature` pada uji startup validator
 
 ```console
 solana-test-validator -l ./ledger --deactivate-feature 5ekBxc8itEnPv4NzGJtr8BVVQLNMQuLMNQQj7pHoLNZ9 --bpf-program target/deploy/PROGNAME.so --reset`
 ```
-2. We now see in our logs that our instructions now have their own 200_000 CU budget (edited for clarity) which is
-currently the state in all upstream clusters:
+2. Kami sekarang melihat di log kami bahwa instruksi kami sekarang memiliki anggaran 200_000 CU sendiri (diedit untuk kejelasan) yang
+saat ini merupakan status di semua cluster hulu:
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
 Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0 accounts, data=[0]
@@ -155,29 +149,26 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 200000 com
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 ```
 
-## Full Parity Testing
-You can be in full parity with a specific cluster by identifying each feature that is not
-yet activated and add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
+## Uji Paritas Penuh
+Anda dapat berada dalam paritas penuh dengan cluster tertentu dengan mengidentifikasi setiap fitur yang belum diaktifkan dan tambahkan `--deactivate-feature <FEATURE_PUBKEY>` untuk masing-masing saat menjalankan `solana-test-validator`:
 ```console
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
 
-Alternatively, [scfsd](#resources) provides a command switch to output the complete deactivated feature
-set for a cluster to feed directly into the `solana-test-validator` startup:
+Atau, [scfsd](#resources) menyediakan sakelar perintah untuk menampilkan fitur yang dinonaktifkan sepenuhnya
+setel agar kluster diumpankan langsung ke startup `solana-test-validator`:
 ```console
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
+Jika Anda membuka terminal lain, saat validator sedang berjalan, dan `status fitur solana` Anda akan melihat
+fitur dinonaktifkan yang ditemukan dinonaktifkan di devnet
 
-If you open another terminal, while the validator is running, and `solana feature status` you will see
-features deactivated that were found deactivated in devnet
+## Uji Paritas Penuh Secara Terprogram
+Bagi mereka yang mengontrol jalannya validator pengujian dalam kode pengujian mereka, memodifikasi fitur validator uji yang diaktifkan/dinonaktifkan dimungkinkan menggunakan TestValidatorGenesis. Dengan
+Solana 1.9.6 sebuah fungsi yang telah ditambahkan ke pembuat validator untuk mendukung ini.
 
-## Full Parity Testing Programmatically
-For those who control running the test validator within their test code, modifying
-the test validator activated/deactivated features is possible using TestValidatorGenesis. With
-Solana 1.9.6 a function has been added to the validator builder to support this.
-
-At the root of your program folder, create a new folder called `tests` and add a `parity_test.rs`
-file. Here is the boiler place functions (boiler-plate if you will) used by each test
+Di root folder program Anda, buat folder baru bernama `tests` dan tambahkan `parity_test.rs`
+mengajukan. Berikut adalah fungsi tempat boiler (boiler-plate jika Anda mau) yang digunakan oleh setiap pengujian
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Test Boiler Plate" active>
@@ -198,6 +189,10 @@ file. Here is the boiler place functions (boiler-plate if you will) used by each
 
 </SolanaCodeGroup>
 
+Kita sekarang dapat menambahkan fungsi pengujian di badan `mod test {...}` untuk mendemonstrasikan default
+penyiapan validator (semua fitur diaktifkan) lalu nonaktifkan `batas komputasi luas transaksi` sebagai
+per contoh sebelumnya menjalankan `solana-test-validator` dari CLI.
+
 We can now add test functions in the body of `mod test {...}` to demonstrate default
 validator setup (all features enabled) and then disabling the `transaction wide compute cap` as
 per previous examples running `solana-test-validator` from the command line.
@@ -217,9 +212,9 @@ per previous examples running `solana-test-validator` from the command line.
 
 </CodeGroup>
 
-Alternatively, the [scfs engine gadget](#resources) can produce a full vector of deactivated
-features for a cluster. The following demonstrates using that engine to get a list
-of all deactivated features for devnet.
+Atau, [gadget mesin scfs](#resources) dapat menghasilkan vektor penuh yang dinonaktifkan
+fitur untuk sebuah cluster. Berikut ini menunjukkan menggunakan mesin itu untuk mendapatkan daftar
+dari semua fitur yang dinonaktifkan untuk devnet.
 
 <CodeGroup>
   <CodeGroupItem title="Devnet Parity">
@@ -230,9 +225,7 @@ of all deactivated features for devnet.
 
 </CodeGroup>
 
-
-Happy Testing!
-
+Selamat menguji!
 
 ## Resources
 [scfsd](https://github.com/FrankC01/solana-gadgets/tree/main/rust/scfsd)

@@ -1,12 +1,12 @@
 ---
-title: Debugging Solana Programs
+title: Men-debug Program Solana
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Debugging Solana Programs
+      content: Solana Cookbook | Men-debug Program Solana
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Debugging Solana Programs
+      content: Solana Cookbook | Men-debug Program Solana
   - - meta
     - name: description
       content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
@@ -36,43 +36,42 @@ head:
       content: index,follow
 footer: MIT Licensed
 ---
+# Men-debug Program Solana
 
-# Debugging Solana Programs
+Ada sejumlah opsi dan alat pendukung untuk menguji dan men-debug program Solana.
 
-There are a number of options and supporting tools for testing and debugging a Solana program.
+## Fakta
 
-## Facts
-
-::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
-your program interactively (e.g. in vscode).
-- The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
-testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
-program are ignored_**.
-- The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
-command line Rust applications or Javascript/Typescript applications using web3.
-- For all the above, liberal use of `msg!` macro in your program is recommended at the start and then
-removing them as you test and ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
-can eventually fail your program by hitting the Compute Unit budget caps.
+::: tip Lembar Fakta
+- Crate `solana-program-test` memungkinkan penggunaan secara langsung terhadap **_runtime lokal_** tempat Anda dapat menguji dan men-debug
+program Anda secara interaktif (misalnya dalam vscode).
+- Crate `solana-validator` memungkinkan implementasi `solana-test-validator` untuk robust testing yang lebih baik yang terjadi pada **_local validator node_**. Anda dapat menjalankan dari editor **_tetapi breakpoints di
+program diabaikan_**.
+- CLI `solana-test-validator` menjalankan dan memuat program Anda dan memproses eksekusi transaksi dari
+aplikasi Rust berbasis command line atau aplikasi Javascript/TypeScript menggunakan web3.
+- Untuk semua hal di atas, penggunaan makro `msg!` secara bebas dalam program Anda disarankan dilakukan dari awal dan kemudian
+menghapusnya seiring Anda menguji dan memastikan behaviour yang kokoh. Ingat bahwa `msg!` menggunakan Compute Unit yang
+akhirnya dapat menggagalkan program Anda dengan menyentuh budget cap dari Compute Unit.
 :::
 
-The steps in the following sections use the [solana-program-bpf-template](#resources). Clone that to your
-machine:
+
+Langkah-langkah di bagian berikut menggunakan [solana-program-bpf-template](#resources). Clone itu ke
+mesin:
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
 code .
 ```
-## Runtime Testing and Debugging in editor
 
-Open the file `src/lib.rs`
+## Uji Runtime dan Debugging di editor
 
-You'll see that the program is a pretty simple and basically just logs the content received by
-the program entrypoint function: `process_instruction`
+Buka file `src/lib.rs`
 
-1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
-execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
-the source.
+Anda akan melihat bahwa programnya cukup sederhana dan pada dasarnya hanya mencatat konten yang diterima oleh function dari entrypoint program: `process_instruction`
+
+1. Buka bagian `#[cfg(test)]` dan klik `Run Tests`. Ini akan melakukan build program dan kemudian
+jalankan tes `async fn test_transaction()`. Anda akan melihat pesan log (disederhanakan) di terminal vscode di bawah code.
+
 ```bash
 running 1 test
 "bpf_program_template" program loaded as native code
@@ -82,42 +81,36 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
-2. Set a breakpoint on the programs `msg!` line (11)
-3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
-now you can examine data, step through functions, etc., etc..
 
-These tests are also run from the command line with:
-`cargo test` or `cargo test-bpf`. Of course any breakpoints will be ignored.
+2. Atur breakpoint di program pada baris `msg!` (11)
+3. Kembali ke modul tes, klik `Debug` dan dalam beberapa detik debugger akan berhenti pada breakpoint dan sekarang Anda dapat memeriksa data, melangkah melalui fungsi, dll., dll.
 
-How groovy can you get!
+Tes ini juga dijalankan dari CLI dengan:
+`cargo test` atau `cargo tes-bpf`. Tentu saja setiap breakpoint akan diabaikan.
 
-:::tip Note
-Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
-will not behave as they would when running in validator node. This is why the gang at Solana gave us
-Local Validator Node testing!
+Tentunya asyik bukan!
+
+:::tip Catatan
+Ingatlah bahwa Anda tidak menggunakan node validator sehingga program default, blockhash, dll. tidak diwakili atau
+tidak akan berperilaku seperti saat berjalan di node validator. Inilah mengapa geng di Solana memberi kita metode Uji Node Validator Lokal!
 :::
 
+## Uji Node Validator Lokal di editor
+Uji integrasi menggunakan programmatic loading dari node validator lokal didefinisikan dalam file `tests/integration.rs`.
 
-## Local Validator Node Testing in editor
+Secara default, uji integrasi repo template hanya akan dapat dijalankan dari baris perintah
+menggunakan `cargo test-bpf`. Langkah-langkah berikut akan memungkinkan Anda untuk berjalan di dalam editor juga seperti menampilkan log validator program dan keluaran `msg!` dari program Anda:
 
-Integration testing using programmatic loading of a local validator node is defined in the
-`tests/integration.rs` file.
+1. Di direktori repo jalankan `cargo build-bpf` untuk membangun program sampel
+2. Di editor, buka `tests/integration.rs`
+3. Komentari baris 1 -> `// #![cfg(feature = "test-bpf")]`
+4. Pada baris 19 ubah menjadi: `.add_program("target/deploy/bpf_program_template", program_id)`
+5. Masukkan yang berikut ini pada baris 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
+6. Klik `Run Test` di atas fungsi `test_validator_transaction()`
 
-By default, the template repo integration tests will only be runnable from the command line
-using `cargo test-bpf`. The following steps will enable you to run within the editor as well
-as displaying program validator logs and `msg!` outputs from your program:
+Ini akan memuat node validator yang kemudian memungkinkan Anda untuk membuat transaksi (dengan cara Rust) dan mengirim ke node menggunakan `RcpClient`.
 
-1. In the repo directory run `cargo build-bpf` to build the sample program
-2. In the editor, open `tests/integration.rs`
-3. Comment out line 1 -> `// #![cfg(feature = "test-bpf")]`
-4. On line 19 change it to read: `.add_program("target/deploy/bpf_program_template", program_id)`
-5. Insert the following at line 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
-6. Click `Run Test` above the `test_validator_transaction()` function
-
-This will load the validator node then allowing you to construct a transaction (the Rust way) and
-submit to the node using the `RcpClient`.
-
-The program's output will also print out in the editor terminal. For example (simplified):
+Keluaran program juga akan dicetak di terminal editor. Misalnya (disederhanakan):
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -130,26 +123,25 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-Debugging here will allow you to debug the functions and methods used in the **_test body_** but will
-not breakpoint in your program.
 
-The bee's knees eh?
+Debug di sini akan memungkinkan Anda untuk men-debug fungsi dan metode yang digunakan di **_test body_** tetapi tidak akan menyebabkan breakpoint dalam program Anda.
 
-## Local Validator Node Testing from Client Apps
-Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
-from the command line.
+Seperti Lutut lebah, ya?
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
-[JavaScript or Typescript clients](#resources)
+## Uji Node Validator Lokal dari Aplikasi Klien
+Terakhir, Anda dapat memulai node validasi lokal dan memuat program Anda dan akun apa pun menggunakan `solana-test-validator` dari CLI.
 
-See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
-1. Open a terminal in the repo folder
-2. Run `solana config set -ul` to set the configuration to point to local
-3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. Open another terminal and run `solana logs` to start the log streamer
-5. You can then run your client program and observe program output in the terminal where you started the log streamer
+Dalam pendekatan ini, Anda akan memerlukan aplikasi klien baik menggunakan Rust [RcpClient](#resources) atau di
+[Klien JavaScript atau TypeScript](#resources)
 
-Now that is the cat's pajamas YO!
+Lihat `solana-test-validator --help` untuk detail dan opsi lebih lanjut. Untuk contoh program di sini adalah pengaturan dasar:
+1. Buka terminal di folder repo
+2. Jalankan `solana config set -ul` untuk mengatur konfigurasi agar mengarah ke lokal
+3. Jalankan `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
+4. Buka terminal lain dan jalankan `solana logs` untuk memulai streamer log
+5. Anda kemudian dapat menjalankan program klien Anda dan mengamati keluaran program di terminal tempat Anda memulai log streamer
+
+Nah itu seperti piyama kucing YO!
 
 ## Resources
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
