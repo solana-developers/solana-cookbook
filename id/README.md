@@ -36,6 +36,7 @@ head:
       content: index,follow
 footer: MIT Licensed
 ---
+
 # Menggunakan buku pegangan Solana 
 
 Buku pegangan Solana adalah sumber daya pengembang yang memberikan konsep penting dan referensi 

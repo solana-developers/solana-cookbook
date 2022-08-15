@@ -37,76 +37,87 @@ head:
 footer: MIT Licensed
 ---
 
-# Akun
+# Accounts
 
-Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah blok yang sangat penting dalam membangun dalam pengembangan di Solana.
+Accounts within Solana are used to store state. They are an essential
+building block for developing on Solana.
 
-## Fakta
+## Facts
 
-::: tip Beberapa Faktanya
+::: tip Fact Sheet
 
-- Akun-akun digunakan untuk menyimpan data  
-- Setiap akun memiliki alamat unik 
-- Akun-akun memiliki ukuran maksimal yaitu 10MB (10 Mega Bytes)
-- Akun-akun PDA memiliki ukuran maksimal yaitu 10KB (10 Kilo Bytes)
-- Akun-akun PDA bisa digunakan untuk menandatangani atas nama program 
-- Ukuran akun-akun sudah ditetapkan pada waktu pembuatan, tapi bisa dilakukan penyesuaian menggunakan [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
-- Penyimpanan data akun dibayarkan dengan sewa
-- Pemilik akun bawaan adalah program sistem 
- :::
+- Accounts are used to store data
+- Each account has a unique address
+- Accounts have a max size of 10MB (10 Mega Bytes)
+- PDA accounts have a max size of 10KB (10 Kilo Bytes)
+- PDA accounts can be used to sign on behalf of a program
+- Accounts size are fixed at creation time, but can be adjusted using [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
+- Account data storage is paid with rent
+- Default account owner is the System Program
+  :::
 
-## Mempelajari lebih dalam 
+## Deep Dive
 
-### Model Akun 
+### Account Model
 
-Ada 3 macam akun di Solana : 
+There are 3 kinds of accounts on Solana:
 
-- Data akun penyimpan data 
-- Akun program menyimpan program yang dapat dieksekusi 
-- Akun asli yang menunjukkan program asli di solana seperti Sistem, Stake, dan Vote
+- Data accounts store data
+- Program accounts store executable programs
+- Native accounts that indicate native programs on Solana such as System, Stake, and Vote
 
-Dalam data akun-akun, ada 2 jenis yaitu:
-- Akun-akun yang dimiliki sistem
-- Akun PDA (Program Derived Address)
+Within data accounts, there are 2 types:
 
-Setiap akun memiliki sebuah alamat (biasanya disebut public key) dan seorang pemilik (alamat dari akun program). Daftar lengkap bidang apa saja yang disimpan oleh akun dapat ditemukan di bawah ini. 
+- System owned accounts
+- PDA (Program Derived Address) accounts
 
-| Bidang     | Deskripsi                                            |
-| ---------- | -----------------------------------------------------|
-| lamports   | Jumlah lamports yang dimiliki oleh akun ini          |
-| owner      | Pemilik program akun ini                             |
-| executable | Apakah akun ini bisa memproses intruksi-intruksi     |
-| data       | Array byte data mentah yang disimpan oleh akun ini   |
-| rent_epoch | Di masa berikutnya bahwa akun ini akan berutang sewa |
+Each account has an address (usually a public key) and an owner
+(address of a program account). The full field list an account stores
+is found below.
 
+| Field      | Description                                    |
+| ---------- | ---------------------------------------------- |
+| lamports   | The number of lamports owned by this account   |
+| owner      | The program owner of this account              |
+| executable | Whether this account can process instructions  |
+| data       | The raw data byte array stored by this account |
+| rent_epoch | The next epoch that this account will owe rent |
 
-Berikut ini beberapa aturan penting kepemilikan :
+There are a few important ownership rules:
 
-- Hanya pemilik data akun yang bisa mengubah datanya dan data lamports
-- Siapapun diizinkan untuk mengkreditkan lamports ke data akun  
-- Pemilik akun dapat menetapkan pemilik baru jika data akun tidak ada
+- Only a data account's owner can modify its data and debit lamports
+- Anyone is allowed to credit lamports to a data account
+- The owner of an account may assign a new owner if the account's data is zeroed out
 
-Akun program tidak menyimpan status.
+Program accounts do not store state.
 
-Sebagai contoh, jika anda memiliki program penghitung yang memungkinkan anda menambah penghitung, anda harus membuat dua akun, satu akun untuk menyimpan kode program, dan satu untuk menyimpan konter.
+For example, if you have a counter program that lets you increment a counter, you
+must create two accounts, one account to store the program's code, and one to store
+the counter.
 
 ![](./account_example.jpeg)
 
-Untuk mencegah sebuah akun dihapus, anda harus membayar sewa.
+To prevent an account from being deleted, you must pay rent.
 
-### Menyewa 
+### Rent
 
-Menyimpan data pada akun membutuhkan biaya berupa SOL untuk pemeliharaan, dan itu didanai oleh apa yang disebut menyewa. Jika anda menyediakan biaya pemeliharaan minimum yang setar untuk 2 tahun pembayaran sewa di akun, akun anda akan dibebaskan dari pembayaran sewa. Anda bisa mengambil sewa dengan menutup akun dan mengirimkan lamports kembali ke wallet anda.
+Storing data on accounts costs SOL to maintain, and it is funded by what is called
+rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an
+account, your account will be exempt from paying rent. You can retrieve rent by closing
+the account and sending the lamports back to your wallet.
 
-Sewa dibayarkan selama dua waktu yang berbeda:
-1. Ketika dirujuk oleh suatu transaksi
-2. Sekali dalam satu masa 
+Rent is paid during two different timings:
 
-Persentase sewa yang dikumpulkan oleh akun-akun dihancurkan, sementara sisanya didistribusikan untuk memilih akun di akhir setiap slot.
+1. When referenced by a transaction
+2. Once an epoch
 
-Jika akun tidak punya saldo yang cukup untuk membayar seewa, akun akan dibatalkan alokasinya dan datanya akan dihapus.
+A percentage of rent collected by accounts is destroyed, while the rest is distributed
+to vote accounts at the end of every slot.
 
-## Sumber Lainnya 
+If the account does not have enough to pay rent, the account will be deallocated and the data
+removed.
+
+## Other Resources
 
 - [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
 - [Official Documentation](https://docs.solana.com/developing/programming-model/accounts)
@@ -114,4 +125,4 @@ Jika akun tidak punya saldo yang cukup untuk membayar seewa, akun akan dibatalka
 
 ### Credit
 
-Konsep inti ini dikreditkan ke Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
+This core concept is credited to Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
