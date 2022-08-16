@@ -37,30 +37,27 @@ head:
 footer: MIT Licensed
 ---
 
-# Memasak dengan Solana
+# Menggunakan buku pegangan Solana 
 
-The *Buku Memasak Solana* is a developer resource that 
-provides the essential concepts and references for 
-building applications on Solana. Each concept and 
-reference will focus on specific aspects of Solana 
-development while providing additional details and usage 
-examples.
+Buku pegangan Solana adalah sumber daya pengembang yang memberikan konsep penting dan referensi 
+untuk membangun aplikasi di Solana. Setiap konsep dan referensi akan fokus kepada aspek 
+spesifik pada bidang pengembangan Solana sekaligus memberikan detail-detail dan contoh cara penggunaannya.
 
-## Contributing
+## Cara untuk berkontribusi
 
-The Cookbook is designed in a way that makes it easy for 
-new Solana developers to contribute. Even if you 
-don't know how to do something, contributing to the 
-cookbook is a great way to learn!
+Buku pegangan Solana dirancang dengan cara yang bertujuan utnuk memudahkan pengembang 
+solana baru untuk berkontribusi. Bahkan jika anda ingin tahu cara untuk melakukan 
+sesuatu, berkontribusi pada Buku pegangan Solana adalah cara yang baik untuk belajar. 
 
-Check out all open issues [here](https://github.com/solana-developers/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-developers/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
 
-## How to Read the Cookbook
+Cek link berikut untuk lihat semua masalah terbuka[here](https://github.com/solana-developers/solana-cookbook/issues). Pedoman untuk berkontribusi [here](https://github.com/solana-developers/solana-cookbook#contributing). Jika kamu menemukan saran yang tidak ada di buku pegangan, tolong untuk menambahkan laporan isu terkait.
 
-The Buku Memasak Solana is split into different sections, each aimed at a different goal.
+## Cara untuk membaca Buku Pegangan
+
+Solana Cookbook dibagi menjadi beberapa bagian yang berbeda, masing-masing ditujukan untuk tujuan yang berbeda. 
 
 | Section       | Description |
-|---------------|-----------------------------------------------------------------|
-| Core Concepts | Building blocks of Solana that are good to know for development |
-| Guides        | Snack-sized guides about different tools for development        |
-| References    | References to commonly needed code snippets                     |
+|---------------|-----------------------------------------------------------------------|
+| Konsep Utama  | Membangun blocks Solana itu bagus untuk diketahui untuk pengembangan  | 
+| Panduan       | Panduan detail tentang beragam tools yang berbeda untuk pengembangan  |
+| Referensi     | Referensi untuk cuplikan kode yang umum dibutuhkan untuk pengembangan | 
