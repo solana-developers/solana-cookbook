@@ -32,7 +32,6 @@ Untuk pemetaan `1:1`, kita ingin alamat blog diturunkan **hanya** dari penggunan
 
 Untuk pemetaan `1:N`, kita ingin setiap alamat artikel diturunkan **tidak hanya** dari blog yang terkait dengannya, tetapi juga **pengidentifikasi** lain, yang memungkinkan kita untuk membedakan antara `N ` jumlah artikel di blog. Dalam contoh di bawah ini, setiap alamat artikel diturunkan dari **kunci blog**, sebuah **slug** untuk mengidentifikasi setiap postingan, dan awalan **"post"**, untuk bertindak sebagai pengenal tipe.
 
-
 Untuk kodenya dapat dilihat pada gambar di bawah ini,
 
 <SolanaCodeGroup>
@@ -71,7 +70,6 @@ Untuk kodenya dapat dilihat pada gambar di bawah ini,
 </SolanaCodeGroup>
 
 Di sisi klien, Anda dapat menggunakan `PublicKey.findProgramAddress()` untuk memperoleh alamat akun `Blog` dan `Artikel` yang diperlukan, yang dapat Anda teruskan ke `connection.getAccountInfo()` untuk mengambil data akun. Contoh ditunjukkan di bawah ini,
-
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

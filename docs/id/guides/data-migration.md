@@ -1,18 +1,18 @@
 ---
-title: Migrating Program Data Accounts
+title: Migrasi Akun Data Program
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Program Accounts Data Migration
+      content: Solana Cookbook | Migrasi Data Akun Program
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Program Accounts Data Migration
+      content: Solana Cookbook | Migrasi Data Akun Program
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Buku Memasak Solana.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana Cookbook.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Buku Memasak Solana.
+      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana Cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,29 +37,24 @@ head:
 footer: MIT Licensed
 ---
 
-# Migrating a Programs Data Accounts
+# Melakukan migrasi Akun Data dari sebuah Program
 
-## How can you migrate a program's data accounts?
+## Bagaimana cara melakukan migrasi akun data sebuah program?
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+Saat Anda membuat program, setiap akun data yang berkaitan dengan program tersebut akan memiliki sebuah struktur data tertentu. Jika Anda perlu melakukan upgrade terhadap akun yang dihasilkan oleh program, Anda kemudian akan memiliki banyak sisa akun hasil program dengan struktur yang lama.
 
-With account versioning, you can upgrade your old accounts to
-the new structure.
+Dengan account versioning, Anda dapat memperbarui akun lama Anda ke struktur baru.
 
-:::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+:::tip Catatan
+Ini hanyalah salah satu dari banyak cara untuk melakukan migrasi data di Program Owned Accounts (POA).
 :::
 
-## Scenario
+## Skenario
 
-To version and migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+Untuk mencatat versi dan melakukan migrasi data akun kita, kita akan memberikan **id** untuk masing-masing akun. Id ini akan memungkinkan kita untuk mengidentifikasi versi akun ketika
+kita meneruskannya ke program, dan dengan demikian menangani akun tersebut dengan benar.
 
-Take the following account state and program:
+Mari kita ambil contoh status akun dan program berikut:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,28 +109,26 @@ Take the following account state and program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+Di versi pertama akun kita, kita melakukan hal berikut:
 
-| ID | Action |
+| ID | Aksi |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| Sertakan field 'data version' di data Anda. Ini bisa berupa ordinal sederhana yang bertambah (misalnya u8) atau sesuatu yang lebih canggih
+|2| Mengalokasikan space yang cukup untuk pertumbuhan data
+|3| Inisialisasi sejumlah konstanta untuk digunakan di seluruh versi program
+|4| Tambahkan function pembaruan akun di dalam `fn conversion_logic` untuk pengembangan di masa mendatang
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
+Katakanlah kita ingin meningkatkan akun dari program kita sekarang untuk menyertakan
+field wajib yang baru, yakni field `somestring`.
 
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+Jika kita tidak mengalokasikan space ekstra di akun sebelumnya, kita tidak dapat melakukan upgrade akun dan terjebak.
 
-## Upgrading the Account
+## Melakukan upgrade Akun
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+Dalam program baru kita, kita ingin menambahkan sebuah properti baru untuk state dari konten.
+Perubahan dalam upgrade ini adalah bagaimana kita mengembangkan konstruksi awal program dikarenakan mereka sudah digunakan sekarang.
 
-### 1. Add account conversion logic
+### 1. Tambahkan logika konversi akun
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -155,15 +148,15 @@ constructs as they come into use now.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-| Line(s) | Note |
+| Baris | Catatan |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | kita telah menambahkan syntax Solana berupa `solana_program::borsh::try_from_slice_unchecked` untuk menyederhanakan proses membaca berbagai subset data dari blok data yang lebih besar
+| 13-26| Di sini kita telah mempertahankan struktur konten lama, yaitu `AccountContentOld` pada baris 24, sebelum kemudian diubah menjadi `AccountContentCurrent` mulai dari baris 17.
+| 60 | kita menginisialisasi konstanta `DATA_VERSION`
+| 71 | kita sekarang memiliki versi 'sebelumnya' dan kita ingin tahu ukurannya
+| 86 | Coup de grâce menyediakan jalur untuk meningkatkan state konten sebelumnya ke state konten baru (saat ini)
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+Kita kemudian memperbarui instruksi kita, untuk menambahkan yang baru untuk memperbarui `somestring`, dan prosesor untuk menangani instruksi baru. Perhatikan bahwa proses 'upgrade' struktur data dienkapsulasi di belakang `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,12 +172,13 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+Setelah membuat dan mengirimkan instruksi: `VersionProgramInstruction::SetString(String)` sekarang kita memiliki layout dari data akun yang telah di 'upgrade' berikut
+
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
-## Resources
+## Resource
 
-* [Borsh Specification](https://borsh.io/)
+* [Spesifikasi Borsh](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)
 * [Reference Implementation](https://github.com/FrankC01/versioning-solana)

@@ -1,12 +1,12 @@
 ---
-title: Get Program Accounts
+title: Mendapatkan Akun Program
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Get Program Accounts
+      content: Solana Cookbook | Mendapatkan Akun Program
   - - meta
     - name: og:title
-      content: Solana Cookbook | Get Program Accounts
+      content: Solana Cookbook | Mendapatkan Akun Program
   - - meta
     - name: description
       content: Learn how to query data on Solana using getProgramAccounts and accountsDB
@@ -36,78 +36,79 @@ head:
       content: index,follow
 ---
 
-# Get Program Accounts
+# Mendapatkan Akun Program
 
-An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
+Metode RPC mengembalikan semua akun yang dimiliki oleh suatu program. Saat ini pagination tidak didukung. Request ke `getProgramAccounts` harus menyertakan parameter `dataSlice` dan/atau `filters` untuk meningkatkan waktu respons dan hanya mengembalikan hasil yang diinginkan.
 
-## Facts
+## Fakta
 
-::: tip Parameters
+::: tip Parameter
 
-- `programId`: `string` - Pubkey of the program to query, provided as a base58 encoded string
-- (optional) `configOrCommitment`: `object` - Configuration parameters containing the following optional fields:
-    - (optional) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-    - (optional) `encoding`: `string` - Encoding for account data, either: `base58`, `base64`, or `jsonParsed`. Note, web3js users should instead use [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
-    - (optional) `dataSlice`: `object` - Limit the returned account data based on:
-        - `offset`: `number` - Number of bytes into account data to begin returning
-        - `length`: `number` - Number of bytes of account data to return
-    - (optional) `filters`: `array` - Filter results using the following filter objects:
-        - `memcmp`: `object` - Match a series of bytes to account data:
-            - `offset`: `number` - Number of bytes into account data to begin comparing
-            - `bytes`: `string` - Data to match, as base58 encoded string limited to 129 bytes
-        - `dataSize`: `number` - Compares the account data length with the provided data size
-    - (optional) `withContext`: `boolean` - Wrap the result in an [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+- `programId`: `string` - Pubkey dari program yang akan diambil, disediakan sebagai string yang di encode menggunakan base58
+- (opsional) `configOrCommitment`: `object` - Parameter konfigurasi yang berisi field opsional berikut:
+    - (opsional) `komitmen`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
+    - (opsional) `encoding`: `string` - Encoding yang digunakan untuk data akun, baik: `base58`, `base64`, atau `jsonParsed`. Catatan, pengguna web3js sebaiknya menggunakan [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+    - (opsional) `dataSlice`: `object` - Membatasi jumlah data akun yang dikembalikan berdasarkan:
+        - `offset`: `number` - Jumlah byte ke dalam data akun untuk mulai kembali
+        - `length`: `number` - Jumlah byte data akun yang akan dikembalikan
+    - (opsional) `filters`: `array` - Filter hasil menggunakan objek filter berikut:
+        - `memcmp`: `object` - Untuk mencocokkan serangkaian byte dengan data akun:
+            - `offset`: `number` - Posisi byte dalam data akun tempat dimulai perbandingannya
+            - `bytes`: `string` - Data yang sedang dicocokkan berupa string yang di encode base58, dibatasi hingga 129 byte
+        - `dataSize`: `number` - Membandingkan panjang data akun dengan ukuran data yang disediakan
+    - (opsional) `withContext`: `boolean` - Untuk membungkus hasilnya dalam [object RpcResponse JSON](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+:::
 
 ##### Response
 
-By default `getProgramAccounts` will return an array of JSON objects with the following structure:
+Secara default `getProgramAccounts` akan mengembalikan array dari objek JSON dengan struktur berikut:
 
-- `pubkey`: `string` - The account pubkey as a base58 encoded string
-- `account`: `object` - a JSON object, with the following sub fields:
-    - `lamports`: `number`, number of lamports assigned to the account
-    - `owner`: `string`, The base58 encoded pubkey of the program the account has been assigned to
-    - `data`: `string` | `object` - data associated with the account, either as encoded binary data or JSON format depending on the provided encoding parameter
-    - `executable`: `boolean`, Indication if the account contains a program
-    - `rentEpoch`: `number`, The epoch at which this account will next owe rent
+- `pubkey`: `string` - Pubkey akun berupa string yang diencode base58
+- `account`: `object` - sebuah objek JSON, dengan sub-field berikut:
+     - `lamports`: `number`, jumlah lamport yang dimiliki sebuah akun
+     - `owner`: `string`, Pubkey dengan encode base58 dari program tempat akun tersebut dipasangkan
+     - `data`: `string` | `object` - data yang terkait dengan akun, baik berupa data biner yang telah diencode atau format JSON tergantung pada parameter jenis encoding yang diberikan
+     - `executable`: `boolean`, untuk mengindikasi jika akun tersebut berisi sebuah program
+     - `rentEpoch`: `number`, Epoch di mana akun ini selanjutnya akan berutang sewa
 :::
 
-## Deep Dive
+## Memahami lebih dalam
 
-`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
+`getProgramAccounts` adalah metode RPC serbaguna yang mengembalikan semua akun yang dimiliki oleh suatu program. Kita dapat menggunakan `getProgramAccounts` untuk sejumlah query yang berguna, seperti menemukan:
 
-- All token accounts for a particular wallet
-- All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
-- All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
+- Semua akun token untuk wallet tertentu
+- Semua akun token untuk mint tertentu (yaitu Semua pemegang [SRM](https://www.projectserum.com/))
+- Semua akun khusus untuk program tertentu (yaitu Semua pengguna [Mango](https://mango.markets/))
 
-Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope can result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
+Terlepas dari kegunaannya, `getProgramAccounts` sering disalahpahami karena batasannya saat ini. Banyak query yang didukung oleh `getProgramAccounts` memerlukan node RPC untuk melakukan scan dari kumpulan data yang besar. Proses scan ini membutuhkan memori dan sumber daya yang intensif. Akibatnya, pemanggilan yang terlalu sering atau terlalu besar cakupannya dapat mengakibatkan connection timeout. Selanjutnya, pada saat penulisan ini, endpoint dari `getProgramAccounts` tidak mendukung pagination. Jika hasil query terlalu besar, respons akan ditruncate.
 
-To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
+Untuk mengatasi kendala saat ini, `getProgramAccounts` menawarkan sejumlah parameter yang berguna: yaitu, `dataSlice` dan opsi dari `filters` yaitu `memcmp` dan `dataSize`. Dengan memberikan kombinasi parameter ini, kita dapat mengurangi cakupan query kita menjadi ukuran yang dapat dikelola dan diprediksi.
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+Contoh umum dari `getProgramAccounts` melibatkan interaksi dengan [Program Token SPL](https://spl.solana.com/token). Meminta semua akun yang dimiliki oleh Program Token dengan sebuah [basic call](../references/accounts.md#get-program-accounts) akan melibatkan sejumlah data yang besar. Namun, dengan memberikan parameter, kita dapat meminta hanya data yang ingin kita gunakan secara efisien.
 
 ### `filters`
-The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
+Parameter yang paling umum digunakan dengan `getProgramAccounts` adalah array dari `filters`. Array ini menerima dua jenis filter, yaitu `dataSize` dan `memcmp`. Sebelum menggunakan salah satu dari filter ini, kita harus terbiasa dengan bagaimana data yang kita minta ditata dan diserialisasi.
 
 #### `dataSize`
-In the case of the Token Program, we can see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We can visualize how this data is laid out using the below illustration.
+Dalam kasus Program Token, kita dapat melihat bahwa [akun token memiliki panjang 165 byte](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Secara khusus, akun token memiliki delapan field yang berbeda, dengan masing-masing field membutuhkan jumlah byte yang dapat diprediksi. Kita dapat memvisualisasikan bagaimana data ini ditata menggunakan ilustrasi di bawah ini.
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We can achieve this with the `memcmp` filter.
+Jika kita ingin menemukan semua akun token yang dimiliki oleh address wallet kita, kita dapat menambahkan `{ dataSize: 165 }` ke dalam array `filters` kita untuk memperkecil cakupan query kita menjadi hanya akun yang panjangnya tepat 165 byte. Namun, ini saja tidak akan cukup. kita juga perlu menambahkan filter untuk yang mencari akun yang dimiliki oleh address kita. Kita bisa mendapatkan ini dengan filter `memcmp`.
 
 #### `memcmp`
-The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we can query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
+Filter `memcmp`, atau filter "memory comparison", memungkinkan kita untuk membandingkan data di field mana pun yang tersimpan di akun kita. Secara khusus, kita hanya dapat melakukan query untuk akun yang cocok dengan sekumpulan byte tertentu pada posisi tertentu. `memcmp` membutuhkan dua argumen:
 
-- `offset`: The position at which to begin comparing data. This position is measured in bytes and is expressed as an integer.
-- `bytes`: The data that should match the account's data. This is represented as a base-58 encoded string should be limited to less than 129 bytes.
+- `offset`: Posisi untuk mulai membandingkan data. Posisi ini diukur dalam byte dan dinyatakan sebagai bilangan bulat.
+- `bytes`: Data yang harus cocok dengan data akun. Ini direpresentasikan dengan string yang diencode menggunakan base-58 dan harus berukuran kurang dari 129 byte.
 
-It's important to note that `memcmp` will only return results that are an exact match on `bytes`. Currently, it does not support comparisons for values that are less than or greater than the `bytes` we provide.
+Penting untuk diperhatikan bahwa `memcmp` hanya akan mengembalikan hasil yang bagian dari datanya sama persis dengan `bytes`. Saat ini, `memcmp` tidak mendukung perbandingan untuk data yang kurang dari atau lebih besar dari `bytes` yang kita berikan.
 
-In keeping with our Token Program example, we can amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we can see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
+Sesuai dengan contoh Program Token kita, kita dapat mengubah query kita untuk hanya mengembalikan akun token yang dimiliki oleh address wallet kita. Saat melihat akun token, kita dapat melihat dua field pertama yang disimpan di akun token adalah pubkey, dan masing-masing pubkey memiliki panjang 32 byte. Mengingat bahwa `owner` adalah field kedua, kita harus memulai `memcmp` kita pada `offset` 32 byte. Dari sini, kita akan mencari akun yang field ownernya cocok dengan address wallet kita.
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-We can invoke this query via the following example:
+kita dapat memanggil query ini melalui contoh berikut:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -131,14 +132,14 @@ We can invoke this query via the following example:
 
 ### `dataSlice`
 
-Outside of the two filter parameters, the third most common parameter for `getProgramAccounts` is `dataSlice`. Unlike the `filters` parameter, `dataSlice` will not reduce the number of accounts returned by a query. Instead, `dataSlice` will limit the amount of data for each account.
+Di luar dua parameter filter, parameter ketiga yang paling umum untuk `getProgramAccounts` adalah `dataSlice`. Tidak seperti parameter `filters`, `dataSlice` tidak akan mengurangi jumlah akun yang dikembalikan oleh query. Sebagai gantinya, `dataSlice` akan membatasi jumlah data untuk setiap akun.
 
-Much like `memcmp`, `dataSlice` accepts two arguments:
+Sama seperti `memcmp`, `dataSlice` menerima dua argumen:
 
-- `offset`: The position (in number of bytes) at which to begin returning account data
-- `length`: The number of bytes which should be returned
+- `offset`: Posisi (dalam jumlah byte) untuk mulai mengambil data akun
+- `length`: Jumlah byte yang harus dikembalikan
 
-`dataSlice` is particularly useful when we run queries on a large dataset but don’t actually care about the account data itself. An example of this would be if we wanted to find the number of token accounts (i.e. number of token holders) for a particular token mint.
+`dataSlice` sangat berguna saat kita menjalankan query pada kumpulan data yang besar tetapi sebenarnya tidak peduli dengan data akun itu sendiri. Contohnya adalah jika kita ingin menemukan jumlah akun token (yaitu jumlah pemegang token) untuk token mint tertentu.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,10 +161,10 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   </CodeGroupItem>
 </CodeGroup>
 
-By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
+Dengan menggabungkan ketiga parameter (`dataSlice`, `dataSize`, dan `memcmp`), kita dapat membatasi batasan query kita dan hanya mengambil data yang kita perlukan secara efisien.
 
-## Other Resources
+## Resource lainnya
 
-- [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
-- [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
-- [JSON-parsed Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+- [Dokumentasi RPC API](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
+- [Dokumentasi Web3js](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
+- [Dokumentasi JSON-parsed Web3js](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)

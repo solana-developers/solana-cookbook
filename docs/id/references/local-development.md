@@ -37,35 +37,31 @@ head:
 footer: MIT Licensed
 ---
 
-# Local Development
+# Pembangunan Lokal
 
-## Starting a Local Validator
+## Memulai Validator Lokal
 
-Testing your program code locally can be a lot more reliable than
-testing on devnet, and can help you test before trying it out on devnet.
+Menguji kode program anda secara lokal bisa jauh lebih andal daripada pengujian di devnet, dan bisa membantu anda menguji sebelum mencobanya di devnet.
 
-You can setup your local-test-validator by installing the [solana tool suite](/getting-started/installation.md#install-cli)
-and running
+Anda bisa mengatur validator pengujian lokal anda dengan menginstal [solana tool suite](/getting-started/installation.md#install-cli) dan menjalankannya.
 
 ```console
 solana-test-validator
 ```
 
-Benefits of using local-test-validator include:
+Keuntungan menggunakan validator uji lokal meliputi:
 
-- No RPC rate-limits
-- No airdrop limits
-- Direct on-chain program deployment (`--bpf-program ...`)
-- Clone accounts from a public cluster, including programs (`--clone ...`)
-- Configurable transaction history retention (`--limit-ledger-size ...`)
-- Configurable epoch length (`--slots-per-epoch ...`)
-- Jump to an arbitrary slot (`--warp-slot ...`)
+- Tidak ada batas kecepatan RPC
+- Tidak ada batasan airdrop
+- Penyebaran program on-chain langsung (`--bpf-program ...`)
+- Mengkloning akun dari cluster publik, termasuk program (`--clone ...`)
+- Retensi riwayat transaksi yang dapat dikonfigurasi (`--limit-ledger-size ...`)
+- Panjang zaman yang dapat dikonfigurasi (`--slots-per-epoch ...`)
+- Lompat ke slot arbitrer  (`--warp-slot ...`)
 
 ## Connecting to Environments
 
-When you are working on Solana development, you will need to connect
-to a specific RPC API endpoint. Solana has 3 public development
-environments:
+Saat anda mengerjakan pengembangan Solana, anda harus terhubung ke titik akhir API RPC tertentu. Solana memiliki 3 pengembangan publik lingkungan:
 - mainnet-beta https://api.mainnet-beta.solana.com
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
@@ -134,8 +130,7 @@ environments:
 
 </SolanaCodeGroup>
 
-Finally, you can also connect to a private cluster, either one local or
-running remotely with the following:
+Terakhir, anda juga dapat terhubung ke cluster pribadi, baik satu lokal atau berjalan dari jarak jauh sebagai berikut:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -202,13 +197,13 @@ running remotely with the following:
 
 </SolanaCodeGroup>
 
-## Subscribing to Events
+## Berlangganan Acara
 
-Websockets provide a pub/sub interface where you can listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can instead receive those updates only when they happen.
+Soket web menyediakan antarmuka pub/sub dimana anda bisa mendengarkan acara tertentu. Alih-alih melakukan ping ke titik akhir HTTP biasa pada suatu interval untuk mendapatkan pembaruan yang sering, Anda dapat menerima pembaruan tersebut hanya ketika itu terjadi.
 
-Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint and registers a websocket client when you create a new `Connection` instance (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
+Web3 Solana [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) di bawah tenda menghasilkan titik akhir websocket dan mendaftarkan klien websocket saat anda membuat instansi `Connection` baru. (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
-The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the websocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
+Kelas `Connection` mengekspos metode pub/sub - semuanya dimulai dengan `on`, seperti pemancar peristiwa. Saat anda memanggil metode pendengar ini, itu mendaftarkan langganan baru ke klien websocket dari instansi `Connection` itu. Contoh metode pub/sub yang kami gunakan di bawah ini adalah [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). Panggilan balik akan memberikan data status yang diperbarui melalui argumen (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -260,11 +255,9 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Getting Test SOL
+## Mendapatkan Tes SOL 
 
-When you're working locally, you need some SOL in order to send
-transactions. In non-mainnet environments you can receive SOL by
-airdropping it to your address
+Saat anda bekerja secara lokal, anda memerlukan beberapa SOL untuk mengirim transaksi. Di lingkungan non-mainnet anda dapat menerima SOL dengan mengirimkannya ke alamat anda.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -328,15 +321,15 @@ airdropping it to your address
 
 </SolanaCodeGroup>
 
-## Using Mainnet Accounts and Programs
+## Menggunakan Akun dan Program Mainnet
 
-Oftentimes, local tests rely on programs and accounts available only on mainnet. The Solana CLI allows to both:
-* Download Programs and Accounts
-* Load Programs and Accounts to a local validator
+Seringkali, pengujian lokal bergantung pada program dan akun yang hanya tersedia di mainnet. Solana CLI mengizinkan keduanya:
+* Mengunduh Program dan Akun
+* Memuat Program dan Akun ke validator lokal
 
-### How to load accounts from mainnet
+### Cara memuat akun dari mainnet
 
-It is possible to download the SRM token mint account to file:
+Dimungkinkan untuk mengunduh akun mint token SRM ke file:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -355,7 +348,7 @@ It is possible to download the SRM token mint account to file:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the account's file and destination address (on the local cluster) when starting the validator:
+Memuatnya ke localnet anda kemudian dilakukan dengan meneruskan file akun dan alamat ujuan (pada cluster lokal) saat memulai validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -375,9 +368,9 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 </SolanaCodeGroup>
 
-### How to load programs from mainnet
+### Cara memuat program dari mainnet 
 
-Similarly, it is possible to download the Serum Dex v3 program:
+Demikian pula, dimungkinkan untuk mengunduh program Serum Dex v3:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
@@ -396,7 +389,7 @@ Similarly, it is possible to download the Serum Dex v3 program:
 
 </SolanaCodeGroup>
 
-Loading it to your localnet is then done by passing the program's file and destination address (on the local cluster) when starting the validator:
+Memuatnya ke localnet anda kemudian dilakukan dengan meneruskan file program dan alamat tujuan (pada cluster lokal) saat memulai validator:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
