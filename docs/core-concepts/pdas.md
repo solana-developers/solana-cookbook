@@ -52,7 +52,7 @@ Program Derived Addresses (PDAs) are home to accounts that are designed to be co
 - In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
 :::
 
-# Deep Dive
+## Deep Dive
 
 PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
 
