@@ -96,7 +96,7 @@ Another way to implement mapping would be to have a `BTreeMap` data structure ex
 
 This method of mapping accounts is not ideal because of the following reasons,
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somewhere, so as to update it every time.
 
 * There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
 
