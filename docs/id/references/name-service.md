@@ -1,12 +1,14 @@
+
+
 ---
 title: Name Service
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Name Service
+      content: Solana Cookbook | Name Service
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Name Service
+      content: Solana Cookbook | Name Service
   - - meta
     - name: description
       content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Buku Memasak Solana.
@@ -41,12 +43,12 @@ footer: MIT Licensed
 
 ## Name registry
 
-The name registry stores information about the domain name. It is made of two things:
+Name registry menyimpan informasi tentang domain name. Itu terbuat dari dua hal:
 
-- The header
-- The data
+- Header
+- Data
 
-The data for a domain name is always prefixed by the header, below is the structure of the header in JS:
+Data untuk suatu domain name selalu diawali oleh header, di bawah ini adalah struktur header dalam JS:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -69,10 +71,7 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 ## Resolving SOL domains
 
-.SOL domains are unique, human-friendly domain names
-that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You can convert
-.SOL domains to their publicKey with the following:
+.SOL domain itu unik, domain name mudah dibaca berubah menjadi publicKeys. Banyak wallet yang menggunakan hal ini sebagai pilihan lain untuk mengirim token atau SOL. Kamu bisa mengubah .SOL domain ke publicKey-nya dengan cara berikut ini:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -95,7 +94,7 @@ another option to send tokens or SOL. You can convert
 
 ## Reverse look up
 
-This can be used to resolve the domain name from its public key
+Hal ini dapat digunakan untuk resolve domain name dari public key-nya
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -118,11 +117,12 @@ This can be used to resolve the domain name from its public key
 
 ## Subdomain look up
 
-In order to resolve a subdomain you need to:
+Untuk resolve suatu subdomain kamu perlu:
 
-1. Get the parent domain key
-2. Get the subdomain key
-3. Retrieve the account info
+1.	Mendapatkan parent domain key
+2.	Mendapatkan subdomain key
+3.	Mengambil account info
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,9 +143,9 @@ In order to resolve a subdomain you need to:
 
 </SolanaCodeGroup>
 
-## Find all the domain names owned by a public key
+## Menemukan semua domain name yang dimiliki oleh suatu public key
 
-You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+Kamu bisa mengambil semua domain name suatu wallet dengan cara melakukan request `getProgramAccounts`dengan filter`memcmp`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,9 +166,9 @@ You can retrieve all the domain names of a wallet by doing a `getProgramAccounts
 
 </SolanaCodeGroup>
 
-## Resolve a Twitter handle
+## Resolve Twitter handle
 
-Twitter handles can be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Twitter handle bisa [teregistrasi di Solana name service](https://naming.bonfida.org/#/twitter-registration) dan digunakan seperti .SOL domain names
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -189,9 +189,9 @@ Twitter handles can be [registered on the Solana name service](https://naming.bo
 
 </SolanaCodeGroup>
 
-## Reverse look up of a Twitter handle
+## Reverse look up suatu Twitter handle
 
-In order to find the SOL address associated to a Twitter handle you can perform a reverse look up
+Untuk menemukan SOL address yang berkaitan dengan suatu Twitter handle kamu bisa melakukan reverse look up
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

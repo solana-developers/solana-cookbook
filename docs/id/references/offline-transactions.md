@@ -1,12 +1,14 @@
+
+
 ---
 title: Sending Offline Transactions
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Sending Offline Transactions
+      content: Solana Cookbook | Sending Offline Transactions
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Sending Offline Transactions
+      content: Solana Cookbook | Sending Offline Transactions
   - - meta
     - name: description
       content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Buku Memasak Solana.
@@ -37,12 +39,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Offline Transaction
+# Transaksi Offline
 
-## Sign Transaction
+## Sign Transaksi
 
-To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+Untuk membuat suatu transaksi offline, kamu harus sign transaksi tersebut, kemudian siapapun dapat mem-broadcast-nya di network. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -62,18 +63,17 @@ anyone can broadcast it on the network.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Partial Sign Transaction
+## Sign Transaksi Sebagian
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+Ketika suatu transaksi membutuhkan banyak signature, kamu bisa sign sebagian. Kemudian signer yang lain dapat sign dan mem-broadcast-nya ke network.
 
-Some examples of when this is useful:
+Beberapa contoh situasi dimana hal ini berguna:
 
-- Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
-- Call custom programs in a transaction that require your signature
+- Mengirim sebuah SPL token untuk menerima pembayaran
+- Sign suatu transaksi sehingga kamu bisa memverifikasi keasliannya
+- Call custom program dalam suatu transaksi yang membutuhkan signature-mu
 
-In this example Bob sends Alice an SPL token in return for her payment:
+Dalam contoh ini Bob mengirimkan Alice sebuah SPL token untuk menerima pembayaran:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -95,10 +95,10 @@ In this example Bob sends Alice an SPL token in return for her payment:
 
 ## Durable Nonce
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash` adalah sebuah nilai penting dalam suatu transaksi. Transaksi-mu akan gagal jika menggunakan recent blockhash yang sudah expired (melebihi 150 blocks). Kamu bisa menggunakan `durable nonce` untuk mendapatkan recent blockhash yang tidak akan expired. Untuk memicu mekanisme ini, transaksi-mu harus
 
-1. use a `nonce` stored in `nonce account` as a recent blockhash
-2. put `nonce advance` operation in the first instruciton
+1. Menggunakan suatu  `nonce` yang tersimpan dalam  `nonce account` sebagai sebuah recent blockhash
+2. Memasukkan `nonce advance` operation di instruksi pertama
 
 ### Create Nonce Account
 
