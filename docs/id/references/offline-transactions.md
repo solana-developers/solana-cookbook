@@ -1,5 +1,3 @@
-
-
 ---
 title: Sending Offline Transactions
 head:

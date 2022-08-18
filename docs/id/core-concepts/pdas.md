@@ -1,4 +1,3 @@
-
 ---
 title: Program Derived Addresses (PDAs)
 head:
