@@ -37,15 +37,15 @@ head:
 footer: MIT Licensed
 ---
 
-## Install Web3.js
+## Unduh Web3.js
 
-There are a few libraries that you can use to get started with javascript or typescript on Solana.<br/>
+Ada beberapa libraries yang bisa anda gunakan, dimulai dengan javascript atau typescript di Solana. <br/>
 
 ### Web3.js
 
-[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) is a library that has a lot of the basic Solana tools to interact, send transactions, and read from the blockchain.
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) adalah library yang mempunyai banyak tools dasar Solana untuk interaksi, mengirim transaksi, dan baca dari blockchain. 
 
-You can install with the following:
+Anda bisa mengunduh library ini dengan mengikuti cara berikut : 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +81,10 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-`@solana/spl-token` is a library that contains many of the javascript/typescript bindings needed to interact with SPL tokens.
-You can use this library to mint new SPL tokens, transfer tokens, and more.
+`@solana/spl-token` adalah sebuah library yang didalamnya terdapat banyak ikatan javascript/typescript yang diperlukan untuk berinteraksi dengan token SPL.  
+Anda bisa menggunakan library ini untuk mint token SPL baru, mentransfer token, dan banyak hal lainnya.
 
-You can install this library with the following:
+Anda bisa menginstal library ini dengan mengikuti cara berikut: 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -120,11 +120,10 @@ npm install --save @solana/spl-token
 
 ### Wallet-Adapter
 
-There is a collection of libraries that can help bootstrap wallet connections within Solana called wallet-adapter.
-Currently the package supports use within Svelte, Angular, Vue.js, and React. Wallet-adapter can quickstart your dApp
-integration with wallets like [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), and more.
+Berikut ini adalah koleksi dari berbagai library yang bisa membantu untuk bootstrap koneksi wallet di dalam Solana yang disebut dengan wallet-adapter.  
+Saat ini paket library ini bisa digunakan di dalam Svelte, Angular, Vue.js, dan React.  Wallet-adapter bisa mempercepat integerasi dApp dengan wallet-wallet anda dengan lebih cepat seperti [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), dan banyak lagi.
 
-You can install this library with the following:
+Anda bisa mengunduh library ini dengan cara berikut : 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -165,26 +164,24 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   </CodeGroupItem>
 </CodeGroup>
 
-For Windows, please visit the [Rust installation site](https://www.rust-lang.org/tools/install).
+Untuk versi Windows, silahkan kunjungi link berikut [Rust installation site](https://www.rust-lang.org/tools/install).
 
 ## Install CLI
 
 ### macOS & Linux
 
-Open your favorite Terminal application.
+Buka aplikasi terminal favorit anda. 
 
-Replace `LATEST_RELEASE` with your desired version and install the [latest Solana release](https://github.com/solana-labs/solana/releases) on your machine by running:
+Ganti  `LATEST_RELEASE` dengan versi yang anda inginkan dan unduh [latest Solana release](https://github.com/solana-labs/solana/releases) di aplikasi terminal dengan menjalankan cara berikut: 
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
-You can replace `LATEST_RELEASE` with the release tag matching
-the software version of your desired release, or use one of the three symbolic
-channel names: `stable`, `beta`, or `edge`. To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+Anda bisa mengganti `LATEST_RELEASE` dengan pencocokan tag rilis versi perangkat lunak dari rilis yang anda inginkan, atau gunakan satu dari tiga simbolis 
+nama saluran : `stable`, `beta`, or `edge`. Untuk menemukan rilis terbaru, periksa versi yang tersedia [here](https://github.com/solana-labs/solana/releases). 
 
-The following output indicates a successful update:
+Berikut adalah hasil yang keluar menunjukan jika pembaharuan berhasil:
 
 ```text
 downloading LATEST_RELEASE installer
@@ -195,33 +192,29 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-Depending on your system, the end of the installer messaging may prompt you
-to
+Berdasarkan sistem anda, pesan akhir proses pengunduhan akan meminta anda untuk 
 
 ```bash
 Please update your PATH environment variable to include the solana programs:
 ```
 
-If you get the above message, copy and paste the recommended command below
-it to update `PATH`.
+Jika kamu mendapat pesan diatas, kamu bisa salin dan tempel perintah yang diarankan di bawah ini untuk memperbarui 'PATH'.
 
-Confirm you have the desired version of `solana` installed by running:
+Konfirmasikan bahwa anda telah menginstal versi 'Solana' yang diinginkan dengan menjalankan :
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+Setelah pengunduhan berhasil, `solana-install update` bisa digunakan untuk memperbarui perangkat lunak Solana ke versi yang lebih baru kapan saja.
 
-#### Downloading Binaries (Linux)
+#### Mengunduh Binaries (Linux)
 
-Alternatively, you can install from binaries instead of using solana-install.
+Cara alternatif lainnya, anda bisa mengunduh dari binari alih-alih menggunakan Solana-Install.
 
-Download the binaries by navigating to
+Unduh binaries melalui arahan di link berikut
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, then extract the
-archive:
+unduh **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, lalu ekstrak yang diarsipkan:
 
 ```bash
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
@@ -229,14 +222,13 @@ cd solana-release/
 export PATH=$PWD/bin:$PATH
 ```
 
-#### Downloading Binaries (macOS)
+#### Mengunduh Binaries (macOS)
 
-Alternatively, you can install from binaries instead of using solana-install.
+Alternatif lain, anda bisa mengunduh dari binari alih-alih menggunakan Solana-Install.
 
-Download the binaries by navigating to
+Unduh binaries melalui arahan di link berikut
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-apple-darwin.tar.bz2**, then extract the
-archive:
+unduh **solana-release-x86_64-apple-darwin.tar.bz2**, lalu ekstrak yang diarsipkan:
 
 ```bash
 tar jxf solana-release-x86_64-apple-darwin.tar.bz2
@@ -248,82 +240,65 @@ export PATH=$PWD/bin:$PATH
 
 ### Windows
 
-Open a Command Prompt (`cmd.exe`) as an Administrator.
+Buka Command Prompt (`cmd.exe`) sebagai Administrator.
 
-Search for Command Prompt in the Windows search bar. When the Command
-Prompt app appears, right-click and select “Open as Administrator”.
-If you are prompted by a pop-up window asking “Do you want to allow this app to
-make changes to your device?”, click 'Yes'.
+Cari command prompt di bar pencarian windows. Ketika aplikasi command prompt muncul, klik kanan pada mouse dan pilih "Buka sebagai Administrator" Jika anda diminta oleh muncul jendela pertanyaan "Apakah kamu ingin mengizinkan aplikasi ini untuk membuat perubahan pada perangkat anda?", click "Yes".
 
-Copy and paste the following command, then press Enter to download the Solana
-installer into a temporary directory:
+Salin dan tempel perintah berikut, lalu tekan enter untuk mengunduh Solana installer ke direktori sementara:
 
 ```bash
 curl https://release.solana.com/v1.9.16/solana-install-init-x86_64-pc-windows-msvc.exe --output C:\solana-install-tmp\solana-install-init.exe --create-dirs
 ```
 
-If `v1.9.16` is not your desired version, find the latest release [here](https://github.com/solana-labs/solana/releases).
+Jika `v1.9.16` bukan versi yang anda inginkan, cari versi terbaru [here](https://github.com/solana-labs/solana/releases).
 
-Copy and paste the following command, then press Enter to install the latest
-version of Solana. If you see a security pop-up by your system, please select
-to allow the program to run.
+Salin dan tempel perintah berikut, lalu tekan enter untuk mengunduh versi terbaru dari Solana. Jika kamu melihat jendela security dari sistem anda, tolong pilih untuk mengizinkan agar program bisa berjalan.
 
 ```bash
 C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
-To find the latest release, check
-versions available [here](https://github.com/solana-labs/solana/releases).
+Untuk menemukan versi terbaru, Anda bisa cek versi yang ada [here](https://github.com/solana-labs/solana/releases).
 
-When the installer is finished, press Enter.
+Ketika pengunduhan telah berhasil, tekan enter.
 
-Close the command prompt window and re-open a new command prompt window as a
-normal user.
+Keluar dari command prompt window dan buka lagi command prompt window yang baru sebagai pengguna normal.
 
-Search for "Command Prompt" in the search bar, then left-click on the
-Command Prompt app icon (no need to run as Administrator).
+Cari command prompt di search bar window, lalu klik kiri pada aplikasi command prompt ikon (tidak memerlukan untuk menjalankan sebagai administrator).
 
-Confirm you have the desired version of `solana` installed by entering:
+Konfirmasi bahwa anda telah memiliki versi `solana` yang diunduh telah sesuai dengan yang diinginkan dengan memasukan :
 
 ```bash
 solana --version
 ```
 
-After a successful install, `solana-install update` may be used to easily
-update the Solana software to a newer version at any time.
+Setelah instalasi berhasil, `solana-install update` bisa digunakan dengan mudah untuk memperbarui perangkat lunak Solana ke versi yang lebih baru kapan saja.
 
-#### Downloading Binaries
+#### Mengunduh Binaries
 
-Alternatively, you can install from binaries instead of using solana-install.
+Alternatif lain, kamu bisa menginstal dari binari alih-alih menggunakan solana-install.
 
-Download the binaries by navigating to
+Unduh binari dengan mengikuti navigasi berikut 
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-pc-windows-msvc.tar.bz2**, then extract the
-archive using WinZip or similar.
+unduh **solana-release-x86_64-pc-windows-msvc.tar.bz2**, lalu ekstrak arsip menggunakan WinZip atau yang serupa.
 
-Open a Command Prompt and navigate to the directory into which you extracted
-the binaries and run:
+Buka command prompt dan arahkan ke direktori dimana anda mengekstrak binari dan jalankan:
 
 ```bash
 cd solana-release/
 set PATH=%cd%/bin;%PATH%
 ```
 
-### Build From Source
+### Membangun dari Source 
 
-If you are unable to use the prebuilt binaries or prefer to build it yourself
-from source, navigate to
-[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-and download the **Source Code** archive. Extract the code and build the
-binaries with:
+Jika anda tidak bisa menggunakan binari yang dibangun sebelumnya atau lebih memilih untuk membangun sendiri dari source code, bisa anda lihat di link berikut [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest), dan unduh arsip **Source Code**. Extrak kode dan bangun binari dengan :
 
 ```bash
 ./scripts/cargo-install-all.sh .
 export PATH=$PWD/bin:$PATH
 ```
 
-You can then run the following command to obtain the same result as with
-prebuilt binaries:
+Kemudian Anda bisa menjalankan perintah berikut untuk mendapatkan hasil yang sama seperti dengan binari bawaan:
 
 ```bash
 solana-install init
