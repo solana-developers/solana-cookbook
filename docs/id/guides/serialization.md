@@ -1,12 +1,12 @@
 ---
-title: Serializing Data
+title: Serialisasi Data
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Serializing Data
+      content: Solana Cookbook | Serialisasi Data
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Serializing Data
+      content: Solana Cookbook | Serialisasi Data
   - - meta
     - name: description
       content: Learn how to serialize and deserialize data on Solana
@@ -37,25 +37,24 @@ head:
 footer: MIT Licensed
 ---
 
-# Serializing Data
+# Serialisasi Data
 
-When we talk about serialization we mean both serializing data as well as deserialization of data.
+Ketika kita berbicara tentang serialisasi, yang kita maksud adalah serialisasi data dan juga deserialisasi data.
 
-Serialization comes into play at a few points along Solana program and program accounts lifecycle:
+Serialisasi berperan di beberapa titik sepanjang lifecycle akun program dan program Solana:
 
-1. Serializing instruction data on to client
-2. Deserializing instruction data on the program
-3. Serializing Account data on the program
-4. Deserializing Account Data on the client
+1. Serialisasi data instruksi ke klien
+2. Deserialisasi data instruksi pada program
+3. Serialisasi data Akun pada program
+4. Deserialisasi Data Akun pada klien
 
-It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources).
+Penting bahwa semua tindakan di atas didukung oleh pendekatan serialisasi yang sama. Snippet yang dimasukkan disini mendemonstrasikan serialisasi menggunakan [Borsh](#resources).
 
-The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
+Contoh dalam sisa dokumen ini adalah kutipan yang diambil dari [Template Program CLI Solana](#resources)
 
-## Setting up for Borsh Serialization
+## Persiapan untuk Borsh Serialization
 
-Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or Python client.
+Library untuk Borsh harus disiapkan dalam program Rust, klien Rust, Node dan/atau klien Python.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -84,23 +83,22 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## How to serialize instruction data on the client
+## Cara serialize data instruksi pada klien
 
-<img src="./serialization/ser1.png" alt="Serialize Instruction Data">
+<img src="./serialisasi/ser1.png" alt="Serialize Data Instruksi">
 
-If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
-inbound instruction data.
+Jika Anda membuat serialisasi data instruksi yang keluar untuk dikirim ke suatu program, itu harus mencerminkan bagaimana program melakukan deserialisasi data instruksi yang masuk.
 
-In this template, an instruction data block is a serialized array containing, with examples:
+Dalam template ini, blok data instruksi adalah array serial yang berisi, dengan contoh:
 
-| Instruction (Variant index) | Serialized Key                 | Serialized Value               |
+| Instruksi (Variant index) | Serialized Key | Serialized Value |
 | --------------------------- | ------------------------------ | ------------------------------ |
-| Initialize (0)              | not applicable for instruction | not applicable for instruction |
-| Mint (1)                    | "foo"                          | "bar"                          |
-| Transfer (2)                | "foo"                          | not applicable for instruction |
-| Burn (2)                    | "foo"                          | not applicable for instruction |
+| Initialize (0) | tidak berlaku untuk instruksi | tidak berlaku untuk instruksi |
+| Mint (1) | "foo" | "bar" |
+| Transfer (2) | "foo" | tidak berlaku untuk instruksi |
+| Burn (2) | "foo" | tidak berlaku untuk instruksi |
 
-In the following example we assume the program owned account has been initialized
+Dalam contoh berikut, kita menganggap akun milik program telah diinisialisasi
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -122,7 +120,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to deserialize instruction data on the program
+## Cara deserialize data instruksi pada program
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -133,31 +131,27 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to serialize account data on the program
+## Cara serialize data akun pada program
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-The program account data block (from the sample repo) is layed out as
+Block data akun program (dari contoh repo) ditata sebagai
 
-| Byte 0           | Bytes 1-4                     | Remaining Byte up to 1019                   |
-| ---------------- | ----------------------------- | ------------------------------------------- |
-| Initialized flag | length of serialized BTreeMap | BTreeMap (where key value pairs are stored) |
+| Byte 0 | Byte 1-4 | Sisa Byte hingga 1019 |
+| ---------------- | ----------------------------- | ------------------------------------------------------- |
+| Initlialized flag | panjang dari BTreeMap yang telah di serialize | BTreeMap (tempat key value pair disimpan) |
 
 ### Pack
 
-A word about the [Pack][1] trait
+Sepatah kata tentang sifat [Pack][1]
 
-The Pack trait makes it easier to hide the details of account data serialization/deserialization
-from your core Program instruction processing. So instead of putting all the serialize/deserialize
-log in the program processing code, it encapsulates the details behind (3) functions:
+Sifat dari Pack memudahkan untuk menyembunyikan detail akan serialisasi/deserialisasi data akun dari pemrosesan instruksi Program inti Anda. Jadi daripada meletakkan semua serialisasi/deserialisasi masuk ke kode pemrosesan program, Pack melakukan encapsulate detilnya di dalam (3) fungsi:
 
-1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
-   is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` and checks if account has been initialized.
-3. `pack` - Calls your Pack implementation of `pack_into_slice`
+1. `unpack_unchecked` - Memungkinkan Anda untuk deserialize akun tanpa memeriksa apakah akun telah diinisialisasi. Ini berguna ketika Anda sedang memproses Initialization Function (indeks varian 0)
+2. `unpack` - Memanggil implementasi Pack Anda yaitu `unpack_from_slice` dan memeriksa apakah akun telah diinisialisasi.
+3. `pack` - Memanggil implementasi Pack Anda yaitu `pack_into_slice`
 
-Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data using borsh.
+Berikut adalah implementasi sifat Pack untuk program sampel kita. Ini diikuti dengan yang pengolahan data akun yang sebenarnya menggunakan borsh.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -169,17 +163,16 @@ processing of the account data using borsh.
 
 ### Serialization/Deserialization
 
-To complete the underlying serialization and deserialization:
+Untuk menyelesaikan Serialization dan deserialization yang mendasarinya:
 
-1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
+1. `sol_template_shared::pack_into_slice` - Di mana serialisasi sebenarnya terjadi
+2. `sol_template_shared::unpack_from_slice` - Di mana deserialisasi sebenarnya terjadi
 
-**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
-checks that the length of the slice you are deserializing agrees with the amount of
-data it reads prior to actually recombobulation of the receiving object. The approach
-demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STROAGE` pointer.
+**Perhatikan** bahwa berikut ini kita memiliki partisi `u32` (4 byte) dalam layout data untuk
+`BTREE_LENGTH` sebelum `BTREE_STORAGE`. Ini karena borsh, selama deserialisasi,
+memeriksa apakah panjang slice yang Anda deserialize sesuai dengan jumlah
+data yang dibacanya sebelum melakukan rekombinasi objek penerima. Pendekatan yang ditunjukkan di bawah ini pertama-tama membaca `BTREE_LENGTH` untuk mendapatkan ukuran `slice` dari
+pointer `BTREE_STORAGE`.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -189,12 +182,11 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
   </CodeGroupItem>
 </CodeGroup>
 
-### Usage
+### Penggunaan
 
-The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
-which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
+Contoh berikut menggabungkan semuanya dan menunjukkan bagaimana program berinteraksi dengan `ProgramAccountState` yang merangkum initialization flag serta `BTreeMap` yang menjadi dasar untuk key/value pair kita.
 
-First when we want to initialize a brand new account:
+Pertama ketika kita ingin menginisialisasi akun baru:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -204,8 +196,7 @@ First when we want to initialize a brand new account:
   </CodeGroupItem>
 </CodeGroup>
 
-Now we can operate on our other instructions as the following demonstrates minting a new
-key value pair that we demonstrated above when sending instructions from a client:
+Sekarang kita dapat mengoperasikan instruksi kita yang lain seperti yang ditunjukkan berikut merupakan proses minting key/value pair yang kita demonstrasikan di atas saat mengirim instruksi dari klien:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -217,13 +208,11 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## How to deserialize account data on the client
+## Cara deserialize data akun pada klien
 
-Clients can call Solana to fetch program owned account, in which the serialized
-data block is a part of the return. Deserializing requires knowing the data block
-layout.
+Klien dapat memanggil Solana untuk mengambil akun milik program, di mana serialized data block adalah bagian dari data yang diambil. Deserialisasi membutuhkan pengetahuan akan layout dari block data.
 
-The layout of the account data was described [Here](#account-data-serialization)
+Layout dari akun data akun dijelaskan [Di Sini](#akun-data-serialisasi)
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -245,16 +234,13 @@ The layout of the account data was described [Here](#account-data-serialization)
   </CodeGroupItem>
 </CodeGroup>
 
-## Common Solana TS/JS Mappings
+## Pemetaan Solana TS/JS Umum
 
-The [Borsh Specification](#resources) contains most mappings for primitive and
-compound data types.
+[Spesifikasi Borsh](#resources) berisi sebagian besar pemetaan untuk tipe data yang primitive dan compound.
 
-The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize can generate or walk the respective inputs.
+Kunci untuk TS/JS dan Python adalah membuat Skema Borsh dengan definisi yang tepat sehingga serialisasi dan deserialize dapat menghasilkan atau menjalankan input masing-masing yang bersesuaian.
 
-Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side:
+Di sini kita mendemonstrasikan serialization dari tipe data primitive (angka, string) dan compound (array berukuran tetap, Map) pertama di TypeScript, lalu di Python dan kemudian deserialisasi yang ekuivalen di sisi Rust:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -276,11 +262,10 @@ first in Typescript, then in Python and then equivalent deserialization on the R
   </CodeGroupItem>
 </CodeGroup>
 
-## Advanced Constructs
+## Metode Lanjutan
 
-We've shown how to create simple Payloads in previous examples. Sometimes
-Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS and Rust to handle those
+Kita telah menunjukkan cara membuat Payload sederhana dalam contoh sebelumnya. Kadang-kadang
+Solana melempar fastball pada tipe tertentu. Bagian ini akan menunjukkan pemetaan yang tepat antara TS/JS dan Rust untuk menanganinya
 
 ### COption
 
@@ -298,11 +283,11 @@ proper mapping between TS/JS and Rust to handle those
   </CodeGroupItem>
 </CodeGroup>
 
-## Resources
+## Resource
 
-- [Borsh Specification](https://borsh.io/)
+- [Spesifikasi Borsh](https://borsh.io/)
 - [Rust Borsh](https://github.com/near/borsh-rs)
 - [TS/JS Borsh](https://github.com/near/borsh-js)
 - [Python Borsh](https://github.com/near/borsh-construct-py)
-- [Python Borsh Documentation](https://near.github.io/borsh-construct-py/)
-- [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)
+- [Dokumentasi Python Borsh](https://near.github.io/borsh-construct-py/)
+- [Template Program CLI Solana](https://github.com/hashblock/solana-cli-program-template)
