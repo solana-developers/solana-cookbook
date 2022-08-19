@@ -85,7 +85,7 @@ Library untuk Borsh harus disiapkan dalam program Rust, klien Rust, Node dan/ata
 
 ## Cara serialize data instruksi pada klien
 
-<img src="./serialisasi/ser1.png" alt="Serialize Data Instruksi">
+<img src="./serialization/ser1.png" alt="Serialize Data Instruksi">
 
 Jika Anda membuat serialisasi data instruksi yang keluar untuk dikirim ke suatu program, itu harus mencerminkan bagaimana program melakukan deserialisasi data instruksi yang masuk.
 
