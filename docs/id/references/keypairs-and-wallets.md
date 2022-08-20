@@ -39,12 +39,9 @@ footer: MIT Licensed
 
 # Keypairs and Wallets
 
-## How to generate a new Keypair
+## Bagaimana cara membuat sebuah Keypair baru
 
-Many of the different actions you can take with the various Solana
-libraries require a Keypair or Wallet. If you are connecting to a
-wallet, you do not have to worry. However, if you are in need of a
-keypair, you will need to generate one.
+Banyak action-action yang dapat anda ambil dari beragam Solana libaries memerlukan sebuah Keypair atau Wallet. Jika anda terhubung dengan sebuah wallet, anda tidak perlu khawatir. Namun, jika anda memerlukan sebuah keypair, and perlu mengeneratenya.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -113,12 +110,11 @@ keypair, you will need to generate one.
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a secret
+## Bagaimana cara me-restore sebuah Keypair dari sebuah secret
 
-If you already have your secret, you can get your Keypair from the secret
-to test out your dApp.
+Jika anda sudah mempunyai sebuah secret, anda dapat mendapatkan Keypair dari sebuah secret untuk mentest dApp anda.
 
-1. From Bytes
+1. Dari Bytes
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -187,7 +183,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-2. From Base58 String
+2. Dari Base58 String
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -240,10 +236,9 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-## How to verify a Keypair
+## Bagaimana cara menverifikasi sebuah Keypair
 
-If you are given a keypair, you can verify whether or not the secret
-matches the given public key
+Jika anda diberikan sebuah keypair, anda dapat menverifikasi apakah secret sesuai dengan public key yang diberikan.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -296,9 +291,9 @@ matches the given public key
 
 </SolanaCodeGroup>
 
-## How to check if a public key has an associated private key
+## Bagaimana cara untuk check jika sebuah public key telah terhubung dengan sebuah private key
 
-In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You can check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve can be controlled by users with wallets.
+Dalam beberapa kasus khusus (contohnya sebuah Program Derived Address), public key mungkin tidak mempunyai sebuah private key yang terhubung. Anda dapat check hal ini dengan melihat apakah public key terdapat dalam kurva ed25519. Hanya public key yang terdapat dalam kurva yang bisa dikontrol oleh user dengan menggunakan wallet. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -352,9 +347,10 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 </SolanaCodeGroup>
 
 
-## How to generate a mnemonic phrase
+## Bagaimana cara membuat mnemonic phrase
 
-If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
+Jika anda akan membuat sebuah wallet, anda perlu untuk membuat sebuah mnemonic phrase sehingga user dapat menyimpannya sebagai sebuah backup.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -407,12 +403,11 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a mnemonic phrase
+## Bagaimana cara restore sebuah Keypair dari sebuah mnemonic phrase
 
-Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mnemonic to Keypairs for local testing.
+Banyak ektension-extension wallet menggunakan mnemonics untuk memrepresentasikan secret key-secret key mereka. Anda dapat menkonversikan mnemonic ke Keypairs untuk local testing.
 
-1. BIP39 - creating a single wallet
+1. BIP39 - membuat sebuah single wallet
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -504,18 +499,15 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
 </SolanaCodeGroup>
 
-## How to generate a vanity address
+## Bagaimana cara membuat sebuah vanity address
 
-Vanity publickeys, or custom addresses are keys that have start with
-specific characters. For example, a person may want a publickey to
-start with "elv1s", or maybe even "cook". These can help other people
-remember who the key belongs to, making the key more easily identifiable.
+Vanity publickeys, atau custom addressess adalah keys yang dimulai dengan character spesifik. Sebagai contoh, jika seseorang ingin publickey dimulai dengan "elv1s", atau mungkin juga "cook". Ini dapat membantu orang lain untuk mengingat siapa yang mempunyai key itu, membuat key lebih mudah untuk diidentifikasi.
 
-Note: The more characters in your vanity address, the longer it will
-take.
+Catatan: Semakin banyak character di dalam vanity address anda, semakin lama prosesnya.
 
-::: warning
-You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+::: peringatan
+Anda harus menggunakan CLI untuk task ini. Python dan TypeScript hanyalah contoh untuk ilustrasi saja dan lebih lambat dibandingkan dengan CLI.
+
 :::
 
 <SolanaCodeGroup>
@@ -569,14 +561,11 @@ You should just use the CLI for this task. The Python and TypeScript examples ar
 
 </SolanaCodeGroup>
 
-## How to sign and verify messages with wallets
+## Bagaimana cara untuk sign dan menverifikasi messages dalam wallet
 
-The primary function of a keypair is to sign messages and enable
-verification of the signature. Verification of a signature allows
-the recipient to be sure that the data was signed by the owner of a
-specific private key.
+Fungsi utama dari sebuah keypair adalah untuk sign messages dan mengaktifkan verifikasi dari signature. Verifikasi signature menyakinkan recipient bahwa data telah disign oleh pemilik dengan spesifik private key. 
 
-To do so we will import the [TweetNaCl][1] crypto library.
+Untuk melakukan itu, kita perlu import [TweetNaCl][1] crypto library.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -615,21 +604,21 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## How to connect to a wallet
+## Bagaimana cara mengkoneksi ke sebuah wallet
 
-Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
+Solana [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries mempermudah untuk mengatur koneksi wallet di client-side.
 
 ### React
 
-Run the following command to install the required dependencies:
+Run command berikut untuk menginstall dependencies yang diperlukan:
 
 ```/bin/bash
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
+React wallet-adapter libraries mengijinkan kita untuk mempertahankan dan mengakses states koneksi wallet melalui hooks dan Context providers bernama,  `useWallet`, `WalletProvider`, `useConnection`, dan `ConnectionProvider`. React App harus di-wrap dengan `WalletProvider` dan `ConnectionProvider`.
 
-Additionally, we can prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we can just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+Sebagai tambahan, kita dapat memperingatkan user untuk terhubung dengan menggunakan `useWalletModal` untuk mengganti visibility dari connection modal dan men-wrap App dengan `WalletModalProvider` dari `@solana/wallet-adapter-react-ui`. Connection modal akan menghandle arus koneksi untuk kita, jadi kita cukup untuk listen kapan sebuah wallet terkoneksi. Kita dapat mengetahui sebuah wallet terkoneksi ketika `useWallet` response menjadi non-null di property `wallet`. Sebaliknya, jika property tersebut null, kita tahu bahwa wallet itu tidak terkoneksi.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -652,13 +641,14 @@ Additionally, we can prompt users to connect by using `useWalletModal` to toggle
 
 ### Vue
 
-Run the following command to install the required dependencies:
+Run command dibawah ini untuk menginstall dependencies yang diperlukan:
 
 ```/bin/bash
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [here](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+
+[Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin mengijinkan kita untuk menginisiasi sebuah wallet store dan membuat sebuah global property `$wallet` baru yang dapat diakses di dalam beragam compenent. Semua property dan method yang didapat dari `useWallet()` dapat dilihat di [sini](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). Kita juga mengimport dan menrender WalletMultiButton component agar user dapat memilih wallet yang terkoneksi dengannya.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -681,13 +671,13 @@ The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugi
 
 ### Svelte
 
-Run the following command to install the required dependencies:
+Run command berikut ini untuk menginstall dependencies yang dibutuhkan:
 
 ```/bin/bash
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [here](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+ [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package dapat menambahkan sebuah Svelte Store(`$walletStore`) yang dapat diakses oleh semua JS, TS dan/atau Svelte files di dalam sebuah project yang telah dikerjakan dengan Svelte Template atau SvelteKit. Menggunakan repo reference [ini](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) anda dapat mengunakan adapter untuk SSR atau SPA. UI package mempunyai sebuah `<WalletMultiButton />` component untuk membantu user untuk memilih wallet yang terkoneksi dengannya.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>
@@ -707,3 +697,4 @@ The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
