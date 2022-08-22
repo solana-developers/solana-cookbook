@@ -36,11 +36,11 @@ head:
       content: index,follow
 ---
 
-# Sending Transactions
+# Mengirim Transaksi
 
-## How to send SOL
+## Bagaimana cara mengirim SOL
 
-To send SOL, you will need to interact with the [SystemProgram][1].
+Untuk mengirim SOL, anda perlu berinteraksi dengan [SystemProgram][1].
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -115,10 +115,9 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## How to send SPL-Tokens
+## Bagimana cara mengirim SPL-Tokens
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
-with the following example.
+Gunakan [Token Program][1] untuk mentransfer SPL Tokens. Untuk dapat mengirimkan sebuah SPL token, anda perlu mengetahui alamat dari  SPL token account itu. Anda dapat mendapatkan alamat dan mengirimkan token-token seperti contoh berikut.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,16 +166,13 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## How to calculate transaction cost
+## Bagaimana cara mengkalkulasi biaya transaksi
 
-The number of signatures a transaction requires are used to calculate
-the transaction cost. As long as you are not creating an account, this
-will be the final transaction cost. To find out more about costs to create
-an account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
+Kalkulasi biaya transaksi didapat dari jumlah signatures sebuah transaksi yang diperlukan. Selama anda tidak membuat account, ini akan menjadi biaya final transaksi. Info lebih lanjut tentang biaya untuk membuat sebuah account, dapat dilihat di [calculating rent exemption](accounts.md#calculating-rent-exemption)
 
-The two examples below show the two ways currently available to calculate estimated transaction cost.
+Dua contoh dibawah ini memperlihatkan dua cara yang tersedia saat ini untuk mengkalkulasi estimasi biaya transaksi.
 
-The first example uses `getEstimatedFee`, which is a new method on the `Transaction` class, while the second example uses `getFeeForMessage` which replaces `getFeeCalculatorForBlockhash` on the `Connection` class.
+Contoh pertama menggunakan `getEstimatedFee`, yang adalah method baru di dalam class `Transaction`, sedangkan contoh kedua menggunakan `getFeeForMessage` yang mengganti `getFeeCalculatorForBlockhash` di dalam `Connection` class.
 
 ### getEstimatedFee
 <SolanaCodeGroup>
@@ -216,11 +212,10 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to add a memo to a transaction
+## Bagaimana menambah catatan ke dalam sebuah transaksi
 
-Any transaction can add a message making use of the [memo program][2].
-Currently the `programID` from the **Memo Program** has to be added
-manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+Setiap transaksi dapat menambahkan catatan dengan memanfaatkan [memo program][2].
+Untuk saat ini `programID` dari **Memo Program** harus ditambahkan mannually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -267,16 +262,12 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget for a transaction
+## Bagaimana cara merubah perhitungan budget untuk sebuah transaksi
 
-Compute budget for a single transaction can be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set the product 
-of 200k compute units * number of instructions, with a max of 1.4M compute units. 
-The less compute you use, the less the transaction costs.
+Perhitungan budget untuk sebuah single transaksi dapat dirubah dengan menambahkan sebuah panggilan instruksi ke Compute Budget Program. Secara default, perhitungan budget diset dari 200k compute units * jumlah instruksi-instruksi, dengan maksimal1.4M compute units. 
+Semakin sedikit perhitungan yang digunakan, semakin kecil biaya transaksi.
 
-**Note**: To change the compute budget for a transaction, you must make the 
-one of the first three instructions of the transaction the instruction that 
-sets the budget.
+**Note**: Untuk merubah perhitungan budget sebuah transaksi, anda harus membuat instruksi pertama dari tiga instruksi pertama sebuah transaksi yang membuat budget.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -322,3 +313,4 @@ Program Logs Example:
 
 
 [2]: https://spl.solana.com/memo
+

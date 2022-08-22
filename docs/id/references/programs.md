@@ -3,10 +3,10 @@ title: Writing Programs
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Solana Program References
+      content: Solana Cookbook | Solana Program References
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Solana Program References
+      content: Solana Cookbook | Solana Program References
   - - meta
     - name: description
       content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
@@ -36,16 +36,13 @@ head:
       content: index,follow
 ---
 
-# Writing Programs
+# Menulis Programs
 
-## How to transfer SOL in a program
+## Bagaimana cara mentransfer SOL di dalam sebuah program
 
-Your Solana Program can transfer lamports from one account to another
-without 'invoking' the System program. The fundamental rule is that
-your program can transfer lamports from any account **owned** by your program
-to any account at all.
+Program Solana anda dapat mentransfer lamports dari sebuah akun ke akun lainnya tanpa 'invoke' program system. Aturan dasar adalah program anda dapat mentransfer lamports dari akun mana saja yang **dimiliki** oleh program anda ke semua akun.
 
-The recipient account *does not have to be* an account owned by your program.
+Penerima akun **tidak harus menjadi** sebuah akun yang dimilik oleh program anda. 
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -55,18 +52,18 @@ The recipient account *does not have to be* an account owned by your program.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get clock in a program
+## Bagaimana cara mendapatkan waktu dalam sebuah program
 
-Getting a clock can be done in two ways
+Mendapatkan waktu dapat dilakukan melalui 2 cara
 
-1. Passing `SYSVAR_CLOCK_PUBKEY` into an instruction
-2. Accessing Clock directly inside an instruction.
+1. Passing `SYSVAR_CLOCK_PUBKEY` ke sebuah instruksi
+2. Mengakses waktu secara langsung di dalam sebuah instruksi.
 
-It is nice to know both the methods, because some legacy programs still expect the `SYSVAR_CLOCK_PUBKEY` as an account.
+Adalah baik untuk mengetahui dua cara tersebut, karena beberapa legacy program masih memerlukan `SYSVAR_CLOCK_PUBKEY` sebagai sebuah akun.
 
-### Passing Clock as an account inside an instruction
+### Passing Waktu sebagai sebuah account di dalam sebuah instruksi
 
-Let's create an instruction which receives an account for initializing and the sysvar pubkey
+Mari membuat sebuah instruksi yang menerima sebuah akun untuk menginisiasi dan sysvar pubkey 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -106,9 +103,9 @@ Now we pass the clock's sysvar public address via the client
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Accessing Clock directly inside an instruction
+### Mengakses Waktu secara langsung di dalam sebuah instruksi 
 
-Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKEY` from the client side.
+Mari membuat sebuah instruksi yang sama, tetapi tanpa mengharapkan `SYSVAR_CLOCK_PUBKEY` dari client side.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -128,7 +125,7 @@ Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKE
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client side instruction, now only needs to pass the state and payer accounts.
+Instruksi di client side sekarang hanya perlu diberikan state dan akun pembayar.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,13 +145,10 @@ The client side instruction, now only needs to pass the state and payer accounts
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to change account size
+## Bagaimana cara merubah size akun
 
-You can change a program owned account's size with the use 
-of `realloc`. `realloc` can resize an account up to 10KB.
-When you use `realloc` to increase the size of an account,
-you must transfer lamports in order to keep that account
-rent-exempt.
+Anda dapat merubah size program yang dimliiki dengan mengunakan `realloc`. `realloc` dapat meresize sebuah akun sampai 10KB.
+Ketika anda mengunakan `realloc` untuk menambah size dari sebuah akun, anda haru mentransfer lamport secara berurutan untuk menjaga agar akun rent-exempt.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -174,23 +168,16 @@ rent-exempt.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to do Cross Program Invocation
+## Bagaimana cara untuk membuat program Cross Invocation
 
-A cross program invocation, is simply put calling another 
-program's instruction inside our program. One best example 
-to put forth is Uniswap's `swap` functionality. The 
-`UniswapV2Router` contract, calls the necessary logic to 
-swap, and calls the `ERC20` contract's transfer function 
-to swap from one person to another. The same way, we can 
-call a program's instruction to have multitude of purposes.
+Program cross invocaction hanya dengan memanggil instruksi program lainnya di dalam program kita. Salah satu contoh yang baik untuk menghasilkan adalah dengan fungsi `swap` di Uniswap. `UniswapV2Router` contract, memanggil logic yang diperlukan untuk swap, dana memanggil fungsi `ERC20` contract transfer untuk swap dari seseorang ke lainnya. Hal yang sama, kieta dapat memanggil sebuah instruksi program untuk dapat menghasilkan banyak tujuan.
 
-Lets have a look at our first example which is the 
-`SPL Token Program's transfer` instruction. The required 
-accounts we would need for a transfer to happen are
 
-1. The Source Token Account (The account which we are holding our tokens)
-2. The Destination Token Account (The account which we would be transferring our tokens to)
-3. The Source Token Account's Holder (Our wallet address which we would be signing for)
+Mari kita lihat contoh instruksi pertama kita `SPL Token Program's transfer`. Akun-akun yang kita perlukan untuk menjadikan sebuah transfer adalah
+
+1. The Source Token Account (Akun yang memegang tokens kita)
+2. The Destination Token Account (Akun yang ingin kita transferkan token kita)
+3. The Source Token Account's Holder (alamat wallet kita yang akan kita gunakan untuk sign-in)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -210,7 +197,8 @@ accounts we would need for a transfer to happen are
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-The corresponding client instruction would be as follows. For knowing the mint and token creation instructions, please refer to the full code nearby.
+
+Korespondensi instruksi client adalah sebagai berikut. Untuk mengetahui mint dan instruksi pembuatan token, tolong lihat ke full code sekitar.
 <br />
 <br />
 <SolanaCodeGroup>
@@ -231,11 +219,11 @@ The corresponding client instruction would be as follows. For knowing the mint a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction and this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+Mari sekarang lihat contoh lainnya yang adalah instruksi `System Program's create_account`. Ada beberapa perbedaan sedikit antara instruksi yang disebutkan diatas dan ini. Di atas, kita tidak pernah memerlukan `token_program` untuk dipass sebagai sebuah akun di dalam fungsi `invoke`. Namun, ada beberapa pengecualian dimana anda perlu untuk pass instruksi untuk meng-invoke `program_id`. Dalam kasus ini, itu adalah `System Program's` program_id. ("11111111111111111111111111111111"). Jadi akun-akun yang diperlukan sekarang akan menjadi
 
-1. The payer account who funds the rent
-2. The account which is going to be created
-3. System Program account
+1. Akun pembayar akun yang akan mendanai rent
+2. Akun yang akan dibuat
+3. Akun System Program 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -255,7 +243,7 @@ Now let's take a look at another example, which is `System Program's create_acco
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The respective client side code will look as follows
+Code di client side akan terlihat seperti ini
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -275,9 +263,10 @@ The respective client side code will look as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a PDA
+## Bagaimana cara membuat sebuah PDA
 
-A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds and a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One can generate a PDA using `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space and set the state to it. A normal Keypair account can be created outside of our program and then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
+Program Derived Address hanyalah sebuah program yang dimiliki oleh program, tetapi tidak memiliki private key. Sebaliknya signature-nya didapat dari set of seeds dan sebuah bump (sebuah nonce yang memastikannya untuk keluar kurva). "**Men-generate**" sebuah Program Address berbeda dari "**membuat**"nya. Seseorang dapat mengenerate sebuah PDA dengan mengunakan `Pubkey::find_program_address`. Membuat sebuah PDA pada essensinya berarti mengininisasi alamat dengan kapasitas dan men-set state ke dalamnya. Sebuah akun Keypair normal dapat dibuat dari luar program kita dan kemudian diperintahkan untuk menginisasikan statenya. Sayangnya, untuk PDA-PDA harus dibuat dalam chain, oleh sebab naturenya yang tidak dapat disign on atas namanya sendiri.Jadi kita memerlukan `invoke_signed` untuk men-pass PDA seeds, bersama dengan signature akun yang mendanai yang menghasilkan pembuatan akun PDA.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -297,7 +286,7 @@ A Program Derived Address is simply an account owned by the program, but has no 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-One can send the required accounts via client as follows
+Seseorang dapat mengirim akun yang diperlukan melalui client dalam contoh berikut
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -317,9 +306,9 @@ One can send the required accounts via client as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read accounts
+## Bagaimana cara membaca akun-akun.
 
-Almost all instructions in Solana would require atleast 2 - 3 accounts, and they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable and returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts and requiring to parse each of them.
+Hampir semua instruksi di dalam Solana memerlukan sekurang-kurangnya 2 - 3 akun, dan mereka perlu di-mentioned melalui instruction handlers mengenai apa yang diharapkan dari set akun tersebut. Adalah sangat mudah jika kita mengambil keuntungan dari `iter()` method dalam Rust, dibandingkan dengan men-index akun-akun secara manual. `next_account_info` method pada dasarnya men-slices index pertama yang dapat diiterasi dan mengembalikan kehadiran akun di dalam array akun-akun. Mari kita lihat instruksi sederhana yang mengharapkan beberapa akun dan perlu untuk mengurai masing-masing akun. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -339,15 +328,17 @@ Almost all instructions in Solana would require atleast 2 - 3 accounts, and they
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to verify accounts
+## Bagaimana cara men-verifikasi akun-akun
 
-Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one can do are
+Semenjak program-program di Solana adalah stateless, kita sebagai pembuat program haru memastikan validasi akun-akun yang yang dipass sebanyak mungkin untuk menghindari masuknya akun jahat. Hal dasar yang dapat kita lakukan adalah
 
-1. Check if the expected signer account has actually signed
-2. Check if the expected state account's have been checked as writable
-3. Check if the expected state account's owner is the called program id
-4. If initializing the state for the first time, check if the account's already been initialized or not.
-5. Check if any cross program ids passed (whenever needed) are as expected.
+1. Periksa apakah akun signer yang diharapkan bener-benar sudah sign
+2. Periksa apakah state akun yang diharapkan sudah dicheck sebagai writeable
+3. Periksa apakah state pemilik akun yang diharapkan adalah id program yang dipanggil
+4. Jika menginisasi state untuk pertama kali, periksa apakah akun sudah ter-inisiasi atau belum.
+5. Periksa apakah ada id-id cross program yang dipass (kapanpun diperlukan) sudah seperti yang diharapkan.
+
+Dibawah ini, instruksi dasar yang menginisiasi sebuah hero state acccount, tetapi dengan pemeriksaan yang disebutkan diatas
 
 A basic instruction which initializes a hero state account, but with the above mentioned checks is defined below
 
@@ -369,10 +360,9 @@ A basic instruction which initializes a hero state account, but with the above m
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read multiple instructions from a transaction
+## Bagaimana cara membaca beberapa instruksi dalam sebuah transaksi
 
-Solana allows us to take a peek at all of the instructions in the current transaction. We can store them in a variable and 
-iterate over them. We can do many things with this, like checking for suspicious transactions. 
+Solana memberikan kita kemampuan untuk mengintip semua instruksi-instruksi dalam transaksi berjalan. Kita dapat menyimpannya di dalam sebuah variable dan mengulanginya lagi. Kita dapat melakukan banyak hal dengan ini, seperti memeriksa transaksi yang mencurigakan. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -391,3 +381,4 @@ iterate over them. We can do many things with this, like checking for suspicious
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+

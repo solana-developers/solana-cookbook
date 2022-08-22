@@ -3,10 +3,10 @@ title: Interacting with Tokens
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Interacting with Tokens
+      content: Solana Cookbook | Interacting with Tokens
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Interacting with Tokens
+      content: Solana Cookbook | Interacting with Tokens
   - - meta
     - name: description
       content: Learn how to use, transfer, and more with tokens on Solana
@@ -39,12 +39,9 @@ footer: MIT Licensed
 
 # Token
 
-## What do I need to get started with SPL-Tokens?
+## Apa yang saya perlukan untuk memulai dengan SPL-Tokens?
 
-Every time you interact with tokens on Solana, you are actually
-interacting with the Solana Program Library Token, or SPL-Token
-standard. The SPL-Token standard requires a specific library to
-be used, which you can find below based on your language.
+Setiap kali anda berinteraksi dengan tokens di Solana, anda sebenarnya berinteraksi dengan Solana Program Library Token, atau SPL-Token standard. SPL-Token standard mensyaratkan sebuah library spesifik untuk digunakan, yang anda dapat temukan dibawah ini berdasarkan bahasa anda.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -56,11 +53,10 @@ be used, which you can find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new Token
+## Bagaimana cara untuk membuat sebuah Token baru
 
-Creating tokens is done by creating what is called a "mint account".
-This mint account is later used to mint tokens to a token account and
-create the initial supply.
+Membuat token-token didapat dengan menciptakan apa yang disebut dengan sebuah "akun mint".
+Akun mint ini nantinya akan digunakan untuk me-mint token-token ke sebuah akun token dan membuat supply awal.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +76,9 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## Bagaimana cara mendapatkan sebuah token mint
 
-In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+Untuk mendapatkan supply yang berjalan, authority, atau decimals yang dimliki sebuah token, anda perlu mendapatkan account info untuk me-mint token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,14 +98,11 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a token account
+## Bagaimana cara membuat sebuah akun token
 
-A token account is required in order to hold tokens. Every token mint
-has a different token account associated with it.
+Sebuah akun token diperlukan untuk menampung token-token. Setiap token mint mempunyai sebuah akun token berbeda yang diasosiasikan dengannya.
 
-Associated Token Accounts are deterministicly created
-accounts for every keypair. ATAs are the recommended method
-of managing token accounts.
+Associated Token Accounts secara deterministik membuat akun-akun untuk setiap keypair. ATA adalah method yang direkomendasi untuk mengature akun-akun token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -130,10 +122,9 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## Bagaimana cara mendapatkan sebuah Akun Token
 
-Every token account has information on the token such as the owner,
-mint, amount(balance), and decimals.
+Setiap akun token mempunyai informasi di dalam token seperti pemilik, mint, jumlah (saldo), dan decimlas.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,10 +144,9 @@ mint, amount(balance), and decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token account's balance
+## Bagaimana cara mendapatkan saldo dari akun token
 
-The token account has the token balance, which can be retrieved with a
-single call.
+Akun token memiliki saldo token yang dapat diambil dengan sebuah single call.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -194,14 +184,12 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token
-account, you also specific a mint too.
+Sebuah akun token hanya dapat menampung satu jenis mint. Ketika anda menspesifikasikan sebuat akun token, anda juga menspesifikasikan mintnya juga.
 :::
 
-## How to mint tokens
+## Bagaimana cara untuk me-mint token-token
 
-When you mint tokens, you increase the supply and transfer the new tokens
-to a specific token account.
+Ketika anda me-mint token-token, anda menambah supply dan mentransfer token-token baru ke sebuah akun token spesifik.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,9 +209,10 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to transfer tokens
+## Bagaimana cara mentransfer token-token
 
-You can transfer tokens from one token account to another token account.
+Anda dapat mentransfer token-token dari satu akun token ke akun token lainnya.
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +232,9 @@ You can transfer tokens from one token account to another token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to burn tokens
+## Bagaimana cara membakar token-token
 
-You can burn token if you are the token owner.
+Anda dapat membakar token jika anda adalah pemilik dari token tersebut.
 
 
 <SolanaCodeGroup>
@@ -266,13 +255,12 @@ You can burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to close token accounts
+## Bagaimana cara menutup akun-akun token.
 
-You can close a token account if you don't want to use it anymore.
-There are two situations:
+Anda dapat menutup akun token jika anda tidak ingin menggunakannya lagi. Ada dua situasi:
 
-1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You can close it only if token account's balance is 0.
+1. Wrapped SOL - penutupan mengkonversi Wrapped SOL ke SOL
+2. Token-token lainnya - Anda dapat menutupnya hanya jika saldo akun adalah 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -292,9 +280,9 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to set authority on token accounts or mints
+## Bagaimana cara untuk men-set authority pada akun-akun token atau mints
 
-You can set/update authority. There are 4 types:
+Anda dapat men-set/men-update authority. Ada 4 jenis:
 
 1. MintTokens (mint account)
 2. FreezeAccount (mint account)
@@ -319,9 +307,9 @@ You can set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to approve a token delegate
+## Bagaimana cara untuk men-approve delegasi sebuah token
 
-You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+Anda dapat mengatur sebuah delegasi dengan jumlah yang diijinkan. Setelah anda atur, delegasi akan seperti pemilik lainnya dari akun token anda. `Sebuah akun token hanya dapat didelegasikan ke satu akun di saat yang bersamaan`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -341,9 +329,9 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to revoke a token delegate
+## Bagaimana cara menarik kembali delegasi token
 
-Revoke will set delegate to null and set delegated amount to 0.
+Menarik kembali akan men-set delegate ke null dan men-set jumlah delegasi ke 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -363,24 +351,23 @@ Revoke will set delegate to null and set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to manage wrapped SOL
+## Bagaimana cara mengature wrapped SOL
 
-Wrapped SOL just like any other token mint. The difference is using `syncNative`
-and creating token accounts specifically on the `NATIVE_MINT` address.
+Wrapped SOL seperti hanya token mint lainnya. Perbedaannya adalah menggunakan `syncNative` dan membuat akun-akun token khusus di alamat `NATIVE_MINT`.
 
-### Create Token Account
+### Membuat Akun Token
 
-Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+Sperti [Create Token Account](#create-token-account) tetapi menganti mint dengan `NATIVE_MINT`
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### Add Balance
+### Menambah Saldo
 
-There are two ways to add balance for Wrapped SOL
+Ada dua cara untuk menambah saldo untuk Wrapped SOL
 
-#### 1. By SOL Transfer
+#### 1. Dengan SOL Transfer
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -400,7 +387,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. By Token Transfer
+#### 2. Dengan Token Transfer
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -420,11 +407,11 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get all token accounts by owner
+## Bagaimana cara mendapatkan semua akun-akun token sebagai pemilik
 
-You can fetch token accounts by owner. There are two ways to do it.
+Anda dapat mengambil akun-akun token sebagai pemilik. Ada 2 cara untuk mendapatkannya.
 
-1. Get All Token Account
+1. Mendapatkan semua akun token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -444,7 +431,7 @@ You can fetch token accounts by owner. There are two ways to do it.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. Filter By Mint
+2. Filter Dengan Mint
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
