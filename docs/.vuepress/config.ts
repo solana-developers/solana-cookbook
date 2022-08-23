@@ -281,6 +281,80 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/th/": {
+        selectLanguageName: "ไทย",
+        navbar: [
+          {
+            text: "ร่วมกันเขียน",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "การใช้งาน",
+            link: "/th/integrations",
+          },
+        ],
+        sidebar: {
+          "/th/": [
+            {
+              text: "เริ่มต้น",
+              children: ["/th/", "/th/getting-started/installation.md"],
+            },
+            {
+              text: "แนวความคิดหลัก",
+              children: [
+                "/th/core-concepts/accounts.md",
+                "/th/core-concepts/programs.md",
+                "/th/core-concepts/transactions.md",
+                "/th/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "แนวทาง",
+              children: [
+                "/th/guides/get-program-accounts.md",
+                "/th/guides/serialization.md",
+                "/th/guides/data-migration.md",
+                "/th/guides/account-maps.md",
+                "/th/guides/retrying-transactions.md",
+                "/th/guides/debugging-solana-programs.md",
+                "/th/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "อ้างอิง",
+              children: [
+                "/th/references/local-development.md",
+                "/th/references/keypairs-and-wallets.md",
+                "/th/references/basic-transactions.md",
+                "/th/references/accounts.md",
+                "/th/references/programs.md",
+                "/th/references/token.md",
+                "/th/references/staking.md",
+                "/th/references/nfts.md",
+                "/th/references/offline-transactions.md",
+                "/th/references/name-service.md",
+              ],
+            },
+          ],
+          "/th/integrations": [
+            {
+              text: "การใช้งาน",
+              children: [
+                "/th/integrations",
+                "/th/integrations/serum.md",
+                "/th/integrations/pyth.md",
+                "/th/integrations/switchboard.md",
+                "/th/integrations/mango.md",
+                "/th/integrations/strata.md",
+                "/th/integrations/web3auth.md",
+                "/th/integrations/react-native.md",
+                "/th/integrations/jupiter.md",
+
+              ],
+            },
+          ],
+        },
+      },
       "/id/": {
         selectLanguageName: "Bahasa Indonesia",
         navbar: [
@@ -376,9 +450,13 @@ export default defineUserConfig<DefaultThemeOptions>({
       lang: "vi-VN",
       title: "Toàn tập Solana",
     },
+    "/th/": {
+      lang: "th-TH",
+      title: "คู่มือ Solana",
+    },
     "/id/": {
       lang: "id-ID",
-      title: "Buku Memasak Solana",
+      title: "Buku Panduan Belajar Solana",
     },
   },
   markdown: {
@@ -407,8 +485,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           "/vi/": {
             placeholder: "Tìm kiếm",
           },
-          "/id/": {
-            placeholder: "Pencarian",
+          "/th/": {
+            placeholder: "ค้นหา",
           },
         },
         maxSuggestions: 10,
@@ -454,11 +532,11 @@ export default defineUserConfig<DefaultThemeOptions>({
               },
             },
           },
-          "/id/": {
-            placeholder: "Pencarian",
+          "/th/": {
+            placeholder: "ค้นหา",
             translations: {
               button: {
-                buttonText: "Pencarian",
+                buttonText: "ค้นหา",
               },
             },
           },

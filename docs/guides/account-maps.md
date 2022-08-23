@@ -4,7 +4,7 @@ title: Account Maps
 
 # Account Maps
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitrary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
 
 Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [here][AccountCookbook].
 
@@ -96,7 +96,7 @@ Another way to implement mapping would be to have a `BTreeMap` data structure ex
 
 This method of mapping accounts is not ideal because of the following reasons,
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somwhere, so as to update it every time.
+* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somewhere, so as to update it every time.
 
 * There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
 

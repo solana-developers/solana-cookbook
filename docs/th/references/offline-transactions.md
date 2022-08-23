@@ -3,16 +3,16 @@ title: Sending Offline Transactions
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: คู่มือ Solana | Sending Offline Transactions
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: หลังจาก sign Offline Transaction ไปแล้วไม่ว่าใครก็จะสามารถ broadcast มันไปที่ network ได้ เรียนรู้เกี่ยวกับ Sending Offline Transactions และข้อมูลอ้างอิงได้ที่คู่มือ Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: หลังจาก sign Offline Transaction ไปแล้วไม่ว่าใครก็จะสามารถ broadcast มันไปที่ network ได้ เรียนรู้เกี่ยวกับ Sending Offline Transactions และข้อมูลอ้างอิงได้ที่คู่มือ Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,8 +41,7 @@ footer: MIT Licensed
 
 ## Sign Transaction
 
-To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+การสร้าง offline transaction เราสามารถ sign transaction และให้คนอื่น broadcast ไปที่ network ได้
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -64,16 +63,16 @@ anyone can broadcast it on the network.
 
 ## Partial Sign Transaction
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+เมื่อ transaction ต้องการ signatures หลายอันเราสามารถแยกกัน partially sign ได้
+โดย signers อื่นสามารถ sign และ broadcast ไปที่ network ได้
 
-Some examples of when this is useful:
+ตัวอย่างการใช้งาน:
 
-- Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
-- Call custom programs in a transaction that require your signature
+- ส่ง SPL token เพื่อกำระเงิน
+- Sign transaction เพื่อให้เราสามารถตรวจสอบความถูกต้องได้ทีหลัง
+- เรียก custom programs ใน transaction ที่ต้องการ signature ของเรา
 
-In this example Bob sends Alice an SPL token in return for her payment:
+ในตัวอย่างนี้ Bob จะส่ง SPL token ให้ Alice เพื่อเป็นการชำระเงิน:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -95,10 +94,10 @@ In this example Bob sends Alice an SPL token in return for her payment:
 
 ## Durable Nonce
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash` เป็นค่าที่สำคัญในการทำ transaction ซึ่ง transaction จะโดนปฏิเสธ(rejected) ถ้าเราใช้ blockhash ที่หมดอายุไปแล้ว (เลย 150 blocks) เราสามารถใช้ `durable nonce` เพื่อหา blockhash ที่ไม่มีวันหมดอายุๆด้ โดยเราจะต้อง
 
-1. use a `nonce` stored in `nonce account` as a recent blockhash
-2. put `nonce advance` operation in the first instruction
+1. ใช้ `nonce` ที่เก็บไว้ใน `nonce account` แทน recent blockhash
+2. ใส่ `nonce advance` ใน instruction
 
 ### Create Nonce Account
 

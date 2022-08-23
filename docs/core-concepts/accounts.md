@@ -117,6 +117,8 @@ to vote accounts at the end of every slot.
 If the account does not have enough to pay rent, the account will be deallocated and the data
 removed.
 
+It is also important to note that new accounts must be rent exempt.
+
 ## Other Resources
 
 - [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
