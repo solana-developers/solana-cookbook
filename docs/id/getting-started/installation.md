@@ -3,16 +3,16 @@ title: Instalasi
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Installation
+      content: Buku Panduan Solana | Instalasi
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Installation
+      content: Buku Panduan Solana | Instalasi
   - - meta
     - name: description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: Belajar bagaimana memulai mengembangkan aplikasi di Solana dengan beragam tutorial, panduan dan contoh-contoh.
   - - meta
     - name: og:description
-      content: Learn how to get started on Solana with tutorials, guides, and examples.
+      content: Belajar bagaimana memulai mengembangkan aplikasi di Solana dengan beragam tutorial, panduan dan contoh-contoh.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,9 +43,9 @@ Ada beberapa libraries yang bisa anda gunakan, dimulai dengan javascript atau ty
 
 ### Web3.js
 
-[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) adalah library yang mempunyai banyak tools dasar Solana untuk interaksi, mengirim transaksi, dan baca dari blockchain. 
+[`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) adalah library yang mempunyai banyak fungsi dasar di Solana untuk interaksi, mengirim transaksi, dan membaca dari blockchain. 
 
-Anda bisa mengunduh library ini dengan mengikuti cara berikut : 
+Anda bisa melakukan instalasi library ini dengan cara berikut : 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -81,10 +81,10 @@ npm install --save @solana/web3.js
 
 ### SPL-Token
 
-`@solana/spl-token` adalah sebuah library yang didalamnya terdapat banyak ikatan javascript/typescript yang diperlukan untuk berinteraksi dengan token SPL.  
+`@solana/spl-token` adalah sebuah library yang didalamnya terdapat banyak javascript/typescript yang diperlukan untuk berinteraksi dengan token SPL.  
 Anda bisa menggunakan library ini untuk mint token SPL baru, mentransfer token, dan banyak hal lainnya.
 
-Anda bisa menginstal library ini dengan mengikuti cara berikut: 
+Anda bisa menginstal library ini dengan cara berikut: 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -123,7 +123,7 @@ npm install --save @solana/spl-token
 Berikut ini adalah koleksi dari berbagai library yang bisa membantu untuk bootstrap koneksi wallet di dalam Solana yang disebut dengan wallet-adapter.  
 Saat ini paket library ini bisa digunakan di dalam Svelte, Angular, Vue.js, dan React.  Wallet-adapter bisa mempercepat integerasi dApp dengan wallet-wallet anda dengan lebih cepat seperti [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), dan banyak lagi.
 
-Anda bisa mengunduh library ini dengan cara berikut : 
+Anda bisa menginstall library ini dengan cara berikut : 
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -172,14 +172,14 @@ Untuk versi Windows, silahkan kunjungi link berikut [Rust installation site](htt
 
 Buka aplikasi terminal favorit anda. 
 
-Ganti  `LATEST_RELEASE` dengan versi yang anda inginkan dan unduh [latest Solana release](https://github.com/solana-labs/solana/releases) di aplikasi terminal dengan menjalankan cara berikut: 
+Ganti  `LATEST_RELEASE` dengan versi yang anda inginkan dan unduh [rilis Solana terbaru](https://github.com/solana-labs/solana/releases) di aplikasi terminal dengan menjalankan cara berikut: 
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 ```
 
 Anda bisa mengganti `LATEST_RELEASE` dengan pencocokan tag rilis versi perangkat lunak dari rilis yang anda inginkan, atau gunakan satu dari tiga simbolis 
-nama saluran : `stable`, `beta`, or `edge`. Untuk menemukan rilis terbaru, periksa versi yang tersedia [here](https://github.com/solana-labs/solana/releases). 
+nama saluran : `stable`, `beta`, or `edge`. Untuk menemukan rilis terbaru, periksa versi yang tersedia [di sini](https://github.com/solana-labs/solana/releases). 
 
 Berikut adalah hasil yang keluar menunjukan jika pembaharuan berhasil:
 
@@ -192,7 +192,7 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-Berdasarkan sistem anda, pesan akhir proses pengunduhan akan meminta anda untuk 
+Tergantung dari sistem operasi anda, pesan akhir dari sebuah proses instalasi akan meminta anda untuk 
 
 ```bash
 Please update your PATH environment variable to include the solana programs:
@@ -206,7 +206,7 @@ Konfirmasikan bahwa anda telah menginstal versi 'Solana' yang diinginkan dengan 
 solana --version
 ```
 
-Setelah pengunduhan berhasil, `solana-install update` bisa digunakan untuk memperbarui perangkat lunak Solana ke versi yang lebih baru kapan saja.
+Setelah instalasi berhasil, `solana-install update` bisa digunakan untuk memperbarui perangkat lunak Solana ke versi yang lebih baru kapan saja.
 
 #### Mengunduh Binaries (Linux)
 
@@ -260,11 +260,11 @@ C:\solana-install-tmp\solana-install-init.exe v1.9.16
 
 Untuk menemukan versi terbaru, Anda bisa cek versi yang ada [here](https://github.com/solana-labs/solana/releases).
 
-Ketika pengunduhan telah berhasil, tekan enter.
+Ketika instalasi telah berhasil, tekan enter.
 
 Keluar dari command prompt window dan buka lagi command prompt window yang baru sebagai pengguna normal.
 
-Cari command prompt di search bar window, lalu klik kiri pada aplikasi command prompt ikon (tidak memerlukan untuk menjalankan sebagai administrator).
+Cari command prompt di search bar window, lalu klik kiri pada aplikasi command prompt ikon (tidak diperlukan untuk menjalankan ini sebagai administrator).
 
 Konfirmasi bahwa anda telah memiliki versi `solana` yang diunduh telah sesuai dengan yang diinginkan dengan memasukan :
 
@@ -280,7 +280,7 @@ Alternatif lain, kamu bisa menginstal dari binari alih-alih menggunakan solana-i
 
 Unduh binari dengan mengikuti navigasi berikut 
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-unduh **solana-release-x86_64-pc-windows-msvc.tar.bz2**, lalu ekstrak arsip menggunakan WinZip atau yang serupa.
+unduh **solana-release-x86_64-pc-windows-msvc.tar.bz2**, lalu ekstrak arsip menggunakan WinZip atau aplikasi serupa.
 
 Buka command prompt dan arahkan ke direktori dimana anda mengekstrak binari dan jalankan:
 

@@ -3,16 +3,16 @@ title: Memasak dengan Solana
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Home to Solana References
+      content: Buku Panduan Solana | Pusat Referensi Pengembangan Dengan Solana
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Home to Solana References
+      content: Buku Panduan Solana | Pusat Referensi Pengembangan Dengan Solana
   - - meta
     - name: description
-      content: The Buku Memasak Solana is a collection of useful examples and references for building on Solana
+      content: Buku Panduan Solana adalah koleksi dari berbagai contoh dan referensi dalam mengembangkan aplikasi di Solana
   - - meta
     - name: og:description
-      content: The Buku Memasak Solana is a collection of useful examples and references for building on Solana
+      content: Buku Panduan Solana adalah koleksi dari berbagai contoh dan referensi dalam mengembangkan aplikasi di Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,27 +37,27 @@ head:
 footer: MIT Licensed
 ---
 
-# Menggunakan buku pegangan Solana 
+# Menggunakan buku panduan Solana 
 
-Buku pegangan Solana adalah sumber daya pengembang yang memberikan konsep penting dan referensi 
+Buku panduan Solana adalah sumber daya pengembang yang memberikan konsep penting dan referensi 
 untuk membangun aplikasi di Solana. Setiap konsep dan referensi akan fokus kepada aspek 
 spesifik pada bidang pengembangan Solana sekaligus memberikan detail-detail dan contoh cara penggunaannya.
 
 ## Cara untuk berkontribusi
 
-Buku pegangan Solana dirancang dengan cara yang bertujuan utnuk memudahkan pengembang 
-solana baru untuk berkontribusi. Bahkan jika anda ingin tahu cara untuk melakukan 
-sesuatu, berkontribusi pada Buku pegangan Solana adalah cara yang baik untuk belajar. 
+Buku panduan Solana dirancang dengan cara yang bertujuan untuk memudahkan pengembang 
+solana yang baru untuk berkontribusi. Bahkan jika anda ingin tahu cara untuk melakukan 
+sesuatu, berkontribusi pada buku panduan Solana adalah cara yang baik untuk belajar. 
 
 
-Cek link berikut untuk lihat semua masalah terbuka[here](https://github.com/solana-developers/solana-cookbook/issues). Pedoman untuk berkontribusi [here](https://github.com/solana-developers/solana-cookbook#contributing). Jika kamu menemukan saran yang tidak ada di buku pegangan, tolong untuk menambahkan laporan isu terkait.
+Cek link berikut untuk lihat semua issue yang masih aktif[here](https://github.com/solana-developers/solana-cookbook/issues). Pedoman untuk berkontribusi [here](https://github.com/solana-developers/solana-cookbook#contributing). Jika kamu menemukan saran yang tidak ada di buku panduan, tolong untuk menambahkan laporan isu terkait.
 
-## Cara untuk membaca Buku Pegangan
+## Cara untuk membaca Buku Panduan
 
-Solana Cookbook dibagi menjadi beberapa bagian yang berbeda, masing-masing ditujukan untuk tujuan yang berbeda. 
+Buku Panduan Solana dibagi menjadi beberapa bagian yang berbeda, masing-masing ditujukan untuk tujuan yang berbeda. 
 
 | Section       | Description |
 |---------------|-----------------------------------------------------------------------|
-| Konsep Utama  | Membangun blocks Solana itu bagus untuk diketahui untuk pengembangan  | 
+| Konsep Utama  | Membangun blocks Solana yang bagus untuk diketahui untuk pengembangan  | 
 | Panduan       | Panduan detail tentang beragam tools yang berbeda untuk pengembangan  |
 | Referensi     | Referensi untuk cuplikan kode yang umum dibutuhkan untuk pengembangan | 

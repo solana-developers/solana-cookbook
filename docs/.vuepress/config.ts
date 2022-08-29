@@ -456,7 +456,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     "/id/": {
       lang: "id-ID",
-      title: "Buku Panduan Belajar Solana",
+      title: "Buku Panduan Solana",
     },
   },
   markdown: {
