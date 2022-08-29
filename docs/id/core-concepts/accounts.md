@@ -3,16 +3,16 @@ title: Accounts
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Accounts
+      content: Buku Panduan Solana | Akun
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Accounts
+      content: Buku Panduan Solana | Akun
   - - meta
     - name: description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Buku Memasak Solana.
+      content: Akun sangat penting untuk membangun blok dalam pengembangan Solana. Belajar tentang Akun dan konsep-konsep dasar lainnya di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Accounts are an essential building block for developing on Solana. Learn about Accounts and more Core Concepts at The Buku Memasak Solana.
+      content: Akun sangat penting untuk membangun blok dalam pengembangan Solana. Belajar tentang Akun dan konsep-konsep dasar lainnya di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,11 +39,11 @@ footer: MIT Licensed
 
 # Akun
 
-Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah blok yang sangat penting dalam membangun dalam pengembangan di Solana.
+Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah blok yang sangat penting dalam pengembangan di Solana.
 
-## Fakta
+## Fakta-Fakta
 
-::: tip Beberapa Faktanya
+::: tip Fakta
 
 - Akun-akun digunakan untuk menyimpan data  
 - Setiap akun memiliki alamat unik 
@@ -52,10 +52,10 @@ Akun-akun di dalam solana digunakan untuk menyimpan status. Akun-akun itu adalah
 - Akun-akun PDA bisa digunakan untuk menandatangani atas nama program 
 - Ukuran akun-akun sudah ditetapkan pada waktu pembuatan, tapi bisa dilakukan penyesuaian menggunakan [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
 - Penyimpanan data akun dibayarkan dengan sewa
-- Pemilik akun bawaan adalah program sistem 
+- Pemilik akun bawaan adalah Program Sistem 
  :::
 
-## Mempelajari lebih dalam 
+## Lebih Dalam
 
 ### Model Akun 
 
@@ -63,21 +63,21 @@ Ada 3 macam akun di Solana :
 
 - Data akun penyimpan data 
 - Akun program menyimpan program yang dapat dieksekusi 
-- Akun asli yang menunjukkan program asli di solana seperti Sistem, Stake, dan Vote
+- Akun Bawaan (native) yang menunjukkan program bawaan di solana seperti Sistem, Stake, dan Vote
 
-Dalam data akun-akun, ada 2 jenis yaitu:
+Dalam data akun, ada 2 jenis yaitu:
 - Akun-akun yang dimiliki sistem
 - Akun PDA (Program Derived Address)
 
-Setiap akun memiliki sebuah alamat (biasanya disebut public key) dan seorang pemilik (alamat dari akun program). Daftar lengkap bidang apa saja yang disimpan oleh akun dapat ditemukan di bawah ini. 
+Setiap akun memiliki sebuah alamat (biasanya disebut public key) dan seorang pemilik (alamat dari akun program). Daftar lengkap tipe apa saja yang disimpan oleh akun dapat ditemukan di bawah ini. 
 
-| Bidang     | Deskripsi                                            |
+| Tipe       | Deskripsi                                            |
 | ---------- | -----------------------------------------------------|
 | lamports   | Jumlah lamports yang dimiliki oleh akun ini          |
 | owner      | Pemilik program akun ini                             |
-| executable | Apakah akun ini bisa memproses intruksi-intruksi     |
+| executable | Apakah akun ini bisa untuk memproses intruksi        |
 | data       | Array byte data mentah yang disimpan oleh akun ini   |
-| rent_epoch | Di masa berikutnya bahwa akun ini akan berutang sewa |
+| rent_epoch | Di `epoch` berikutnya, akun ini akan berutang sewa   |
 
 
 Berikut ini beberapa aturan penting kepemilikan :
@@ -96,13 +96,13 @@ Untuk mencegah sebuah akun dihapus, anda harus membayar sewa.
 
 ### Menyewa 
 
-Menyimpan data pada akun membutuhkan biaya berupa SOL untuk pemeliharaan, dan itu didanai oleh apa yang disebut menyewa. Jika anda menyediakan biaya pemeliharaan minimum yang setar untuk 2 tahun pembayaran sewa di akun, akun anda akan dibebaskan dari pembayaran sewa. Anda bisa mengambil sewa dengan menutup akun dan mengirimkan lamports kembali ke wallet anda.
+Menyimpan data pada akun membutuhkan biaya berupa SOL untuk pemeliharaan, dan itu didanai oleh apa yang disebut dengan sewa. Jika anda menyediakan biaya pemeliharaan minimum yang setara untuk 2 tahun pembayaran sewa di akun, akun anda akan dibebaskan dari pembayaran sewa. Anda bisa mengambil sewa dengan menutup akun dan mengirimkan lamports kembali ke wallet anda.
 
 Sewa dibayarkan selama dua waktu yang berbeda:
 1. Ketika dirujuk oleh suatu transaksi
-2. Sekali dalam satu masa 
+2. Sekali dalam satu masa `epoch`
 
-Persentase sewa yang dikumpulkan oleh akun-akun dihancurkan, sementara sisanya didistribusikan untuk memilih akun di akhir setiap slot.
+Persentase sewa yang dikumpulkan oleh akun-akun akan dihancurkan, sementara sisanya didistribusikan untuk memilih akun di akhir setiap slot.
 
 Jika akun tidak punya saldo yang cukup untuk membayar seewa, akun akan dibatalkan alokasinya dan datanya akan dihapus.
 
@@ -114,4 +114,4 @@ Jika akun tidak punya saldo yang cukup untuk membayar seewa, akun akan dibatalka
 
 ### Credit
 
-Konsep inti ini dikreditkan ke Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
+Konsep dasar ini dikreditkan ke Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
