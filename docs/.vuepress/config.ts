@@ -193,11 +193,11 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "Referencias",
               children: [
-                // '/es/references/local-development.md',
-                // '/es/references/keypairs-and-wallets.md',
-                // '/es/references/basic-transactions.md',
-                // '/es/references/accounts.md',
-                // '/es/references/programs.md',
+                '/es/references/local-development.md',
+                '/es/references/keypairs-and-wallets.md',
+                '/es/references/basic-transactions.md',
+                '/es/references/accounts.md',
+                '/es/references/programs.md',
                 // '/es/references/token.md',
                 // '/es/references/anchor.md',
                 // '/es/references/staking.md',
