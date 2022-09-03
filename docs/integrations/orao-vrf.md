@@ -9,10 +9,10 @@ head:
   content: Solana Cookbook | Using ORAO VRF with Solana
 - - meta
 - name: description
-  content: In this tutorial, you learn how to use ORAO VRF in Solana.
+  content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
 - - meta
 - name: og:description
-  content: In this tutorial, you learn how to use ORAO VRF in Solana.
+  content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
 - - meta
 - name: og:image
   content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -44,14 +44,14 @@ ORAO VRF is a multi-party verifiable random function oracle based on EDDSA. It i
 ## Basic usage scenario
 
 1.  Create a new randomness request.
-    *   This operation requires a unique _seed_ to be given by a client.
+    *   This operation requires a unique _seed_ to be given by the client.
         This seed is used for randomness verification.
 2.  Use generated randomness as soon as request is fulfilled.
     *   Oracle will fulfill new requests as soon as possible, this procedure
         includes the verification step, so no unverified randomness should
         appear on-chain.
 3.  (Optional) Verify generated randomness off-chain.
-    *   You are able to verify generated randomness against the effective list
+    *   You are able to [`verify generated randomness`](https://github.com/orao-network/solana-vrf/blob/6cc9a80ec280b96a97321b8bfe2904a6e432c38e/rust/examples/off-chain/src/main.rs#L48) against the effective list
         of fulfillment authorities (it's a part of publicly available VRF
         configuration). There are helpers for this in SDKs.
 
@@ -59,12 +59,12 @@ ORAO VRF is a multi-party verifiable random function oracle based on EDDSA. It i
 
 There are two SDKs available:
 
-1.  [`orao-solana-vrf`](https://docs.rs/orao-solana-vrf) crate – the code bellow is based on this Rust SDK.
-2.  JS SDK – JavaScript SDK, as well as the source code of the Rust SDK, is available in the public
+1.  The [`orao-solana-vrf`](https://docs.rs/orao-solana-vrf) crate – the code bellow is based on this Rust SDK.
+2.  The JS SDK – JavaScript SDK, as well as the source code of the Rust SDK, is available in the public
     repository on GitHub [`solana-vrf`](https://github.com/orao-network/solana-vrf). All tests within
     this repo are based on the JavaScript SDK.
 
-## Anatomy of a randomness request.
+## Anatomy of a randomness request
 
 The [`RandomnessRequest`][1] structure is used to store the requested randomness:
 
@@ -149,13 +149,13 @@ is fulfilled).
 This examples is based on the [Anchor Framework](https://github.com/coral-xyz/anchor).
 Please consult the [Anchor Book](https://book.anchor-lang.com/) on how to create a contract.
 
-To perform a CPI call you'll need to add the rust SDK with the `cpi` feature
+To perform a CPI call you'll need to add the orao VRF rust SDK with the `cpi` feature
 into the list of your dependencies:
 
 ```toml
 [dependencies]
 # ...
-orao-solana-vrf = { version = "0.2", default-features = false, features = ["cpi"] }
+orao-solana-vrf = { version = "0.2.3", default-features = false, features = ["cpi"] }
 ```
 
 ### 2. Collect the necessary accounts
@@ -165,11 +165,11 @@ instruction so here is the list of required accounts:
 
 * payer – VRF client
 * network_state – VRF on-chain state address
-* treasury - address of a VRF treasury (taken from the VRF on-chain state)
+* treasury - address of the VRF treasury (taken from the VRF on-chain state)
 * request - PDA to store the randomness (derived from the seed)
 * system_program – required to create the request account
 
-Above means that our instruction needs all this accounts besides it's own accounts.
+Above means that our instruction needs all of these accounts besides it's own accounts.
 Particularly our Russian-Roulette instruction will require the following list of accounts:
 
 ```rust
@@ -194,7 +194,7 @@ pub struct SpinAndPullTheTrigger<'info> {
     )]
     player_state: Account<'info, PlayerState>,
 
-    /// This account point to the last VRF request, it is necessary to validate that the player
+    /// This account points to the last VRF request, it is necessary to validate that the player
     /// is alive and is able to play another round.
     /// CHECK:
     #[account(
