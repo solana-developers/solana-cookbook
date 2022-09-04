@@ -169,6 +169,14 @@ If you want to hit the ground running, you can download the [Solana DApp Scaffol
 
 ## Common issues when using @solana/web3.js in a React Native app
 
+### Error: `Watchman crawl failed`
+
+The part of the build system that watches your file system for changes is called Watchman. Certain versions of Mac OS [refuse](https://github.com/facebook/watchman/issues/751) to grant Watchman  permission to watch certain directories, such as `~/Documents/` and `~/Desktop/`.
+
+You'll know you have this problem if the Metro bundler produces [an error](https://gist.github.com/steveluscher/d0ae13225b57bc59dc0eac871509dcd7) containing the words &ldquo;Watchman crawl failed.&rdquo;
+
+To solve this, move your React Native project to the root of your user directory.
+
 ### Error: While trying to resolve module superstruct from file
 
 > error: Error: While trying to resolve module superstruct from file .../SolanaReactNative/node_modules/@solana/web3.js/lib/index.browser.cjs.js, the package .../SolanaReactNative/node_modules/superstruct/package.json was successfully found. However, this package itself specifies a main module field that could not be resolved (.../SolanaReactNative/node_modules/superstruct/lib/index.cjs.
