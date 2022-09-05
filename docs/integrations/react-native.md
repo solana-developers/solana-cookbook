@@ -168,9 +168,9 @@ Lastly, in the template (or `render function`) add the following markup:
 <Button title="New Keypair" onPress={randomKeypair} />
 ```
 
-### Install cocoapods
+### [iOS only] Install cocoapods
 
-In order for our polyfills to work, we need to install the `cocoapods`.
+In order for our polyfills to be autolinked on iOS, we need to install the `cocoapods`.
 
 ```shell
 cd ios && pod install
@@ -178,13 +178,14 @@ cd ios && pod install
 
 ### Start application 
 
-Once we finished all the above, we can start our application
+Once we finished all the above, we can start our application in the Android or iOS simulator.
 
 ```shell
-npx react-native run-ios
+yarn android
+yarn ios
 ```
 
-If all went well, you should see a React Native app being started in your iOS simulator that retrieves the version of the Solana Devnet.
+If all went well, you should see a React Native app being started in your simulator that retrieves the version of the Solana Devnet.
 
 ## Solana DApp Scaffold for React Native
 
