@@ -192,7 +192,7 @@ If all went well, you should see a React Native app being started in your simula
 If you want to hit the ground running, you can download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
 
 
-## Common issues when using @solana/web3.js in a React Native app
+## Common issues when using crypto libraries in a React Native app
 
 ### Error: While trying to resolve module superstruct from file
 
