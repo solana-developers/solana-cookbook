@@ -53,7 +53,7 @@ If you already have an existing app, skip to [installing the dependencies](#inst
 We start a new React Native application that uses TypeScript, then `cd` into the project directory, where we will execute the rest of the commands.
 
 ```shell
-npx react-native init SolanaReactNative --template react-native-template-typescript
+npx react-native@"0.70.0-rc.4" init SolanaReactNative --version 0.70.0-rc.4
 cd SolanaReactNative
 ```
 
