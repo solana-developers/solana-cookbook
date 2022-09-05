@@ -57,6 +57,12 @@ npx react-native@"0.70.0-rc.4" init SolanaReactNative --version 0.70.0-rc.4
 cd SolanaReactNative
 ```
 
+::: warning
+We _highly_ recommend using TypeScript in your React Native projects. Usually we would recommend calling `npx react-native init` with the `--template react-native-template-typescript` command, but as of August 2022 the TypeScript template has not been updated to React Native 0.70.
+
+In the meantime, follow the [&ldquo;Adding TypeScript to an Existing Project&rdquo; docs](https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project) to add TypeScript to the new project you just created above.
+:::
+
 ### Install dependencies
 
 Next, we install the dependencies. We install the Solana SDK, and in addition we install a package to patch the `metro` configuration, and two polyfills that patch the React Native environment. 
