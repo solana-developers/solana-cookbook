@@ -3,16 +3,16 @@ title: NFTs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | NFTs
+      content: Libro de recetas de Solana | NFTs
   - - meta
     - name: og:title
-      content: Solana Cookbook | NFTs
+      content: Libro de recetas de Solana | NFTs
   - - meta
     - name: description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Aprende como obtener los metadatos de los NFT, los dueños de NFT, crear NFTs en Solana y más
   - - meta
     - name: og:description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Aprende como obtener los metadatos de los NFT, los dueños de NFT, crear NFTs en Solana y más
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,17 +37,17 @@ head:
 footer: MIT Licensed
 ---
 
-# Non Fungible Tokens (NFTs)
+# Tokens no fungibles (NFTs)
 
-## How to create an NFT
+## ¿Cómo crear un NFT?
 
-To create an NFT you have to:
+Para crear un NFT tu tienes que:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
-3. Call metaplex to create an account for the NFT
+1. Subir la imagen a IPFS como Arweave
+2. Subir los metadatos en json a IPFS como Arweave
+3. Llamar a metaplex para crear la cuenta para el NFT
 
-### Upload to Arweave
+### Subir a Arweave
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +80,10 @@ To create an NFT you have to:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Mint the NFT
+### Crear (mint) el NFT
 
-If you already have the image and metadata uploaded, you can mint
-the NFT with the following code.
+Si ya tiene la imagen y los metadatos cargados, puede hacer mint del NFT con 
+el siguiente código.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,17 +103,17 @@ the NFT with the following code.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-::: tip Note
-You cannot mint an NFT with a different creator than your wallet.
-If you run into creator issues, make sure your metadata lists you
-as the creator.
+::: tip
+No puedes hacer mint de un NFT con un creador diferente al de tu billetera.
+Si tienes problemas al crear, asegúrese de que sus metadatos lo incluyan
+como el creador.
 :::
 
-## How to get NFT Metadata
+## ¿Cómo obtener metadatos de un NFT?
 
-Metaplex NFTs have metadata that is stored on Arweave. In order
-to get the Arweave metadata, you must get the Metaplex PDA and
-decode the account data.
+Los NFTs de Metaplex tienen metadatos que se almacenan en Arweave. Para obtener 
+los metadatos de Arweave, debes obtener el PDA de Metaplex PDA y decodificar 
+los datos de la cuenta.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,17 +134,18 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to get the owner of an NFT
+## ¿Cómo obtener el dueño de un NFT?
 
-If you have the mint key of an NFT, you can find its current owner
-by sneak-peeking at the largest token account for that mint key.
+Si tiene la clave de mint de un NFT, puede encontrar su propietario actual
+echando un vistazo a la cuenta de token más grande para ese mint.
 
-Remember that NFTs have a supply of 1, and they are indivisible,
-meaning that only one token account will hold that token at any
-point in time, whilst all other token accounts for that mint key will
-have a balance of 0.
+Recuerde que los NFT tienen un suministro de 1 y son indivisibles,
+lo que significa que solo una cuenta de token mantendrá ese token en cualquier
+punto en el tiempo, mientras que todas las demás cuentas de token para esa 
+clave de mint tienen un saldo de 0.
 
-Once the largest token account is identified, we can retrieve its owner.
+Una vez que se identifica la cuenta de token más grande, podemos recuperar a su 
+propietario.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -165,9 +166,12 @@ Once the largest token account is identified, we can retrieve its owner.
 
 </SolanaCodeGroup>
 
-## How to get NFT Mint Addresses
+## ¿Cómo obtener direcciones de mint de NFT?
 
-If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+Si conoces la clave pública de Candy Machine, puede obtener la lista de todas 
+las direcciones de mint NFT generadas desde esa Candy Machine usando el 
+siguiente código. Ten en cuenta que podemos usar el siguiente filtro `memcmp` 
+porque, en v1, el primer creador siempre es la dirección de Candy Machine.
 
 ### Candy Machine V1
 
@@ -192,7 +196,10 @@ If you know the public key of the Candy Machine, you can get the list of all NFT
 
 ### Candy Machine V2
 
-If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you can use it the same way we were for v1.
+Si estás utilizando Candy Machine v2, primero deberás acceder a su dirección 
+"Candy Machine Creator", que es un PDA simple que utiliza `candy_machine` y la 
+dirección de Candy Machine v2 como semillas. Una vez que tengas la dirección 
+del creador, puede usarla de la misma manera que lo hicimos para v1.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -213,10 +220,11 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 </SolanaCodeGroup>
 
-## How to get all NFTs from a wallet?
+## ¿Cómo obtener todos los NFT de una billetera?
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+Al obtener todos los NFT de una billetera, deberá obtener todas las cuentas de 
+token y luego analizar cuáles son NFT. Todo esto se puede hacer usando 
+[`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) de la librería js de Metaplex.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

@@ -1,12 +1,12 @@
 ---
-title: Interacting with Tokens
+title: Interactuando con tokens
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Libro de recetas de Solana | Interactuando con tokens
   - - meta
     - name: og:title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Libro de recetas de Solana | Interactuando con tokens
   - - meta
     - name: description
       content: Learn how to use, transfer, and more with tokens on Solana
@@ -39,12 +39,13 @@ footer: MIT Licensed
 
 # Token
 
-## What do I need to get started with SPL-Tokens?
+## ¿Qué necesito para comenzar a trabajar con SPL-Tokens?
 
-Every time you interact with tokens on Solana, you are actually
-interacting with the Solana Program Library Token, or SPL-Token
-standard. The SPL-Token standard requires a specific library to
-be used, which you can find below based on your language.
+Cada vez que interactúas con tokens en Solana, en realidad estás
+interactuando con el token el programa (SPL) Token de Solana, o el estándar 
+SPL-Token. El estándar SPL-Token requiere una librería específica para
+ser utilizado, la cual puedes encontrar a continuación en función de tu 
+lenguaje.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -56,11 +57,11 @@ be used, which you can find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new Token
+## ¿Cómo crear un nuevo token?
 
-Creating tokens is done by creating what is called a "mint account".
-This mint account is later used to mint tokens to a token account and
-create the initial supply.
+La creación de tokens se realiza creando lo que se llama una cuenta "mint".
+Esta cuenta "mint" se usa luego para acuñar (o crear y enviar) tokens a una 
+cuenta de token y también para crear el suministro inicial.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +81,10 @@ create the initial supply.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## ¿Cómo obtener un token "mint"?
 
-In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+El suministro actual, autoridad o decimales que tiene un token, los puedes 
+obtener desde la información de cuenta del token "mint".
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,14 +104,15 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a token account
+## ¿Cómo crear una cuenta de token?
 
-A token account is required in order to hold tokens. Every token mint
-has a different token account associated with it.
+Una cuenta de token es necesaria para almacenar los tokens (una cuenta por 
+cada token). Cada cuenta de token "mint" tiene una cuenta de cuenta de token 
+asociada a ella.
 
-Associated Token Accounts are deterministicly created
-accounts for every keypair. ATAs are the recommended method
-of managing token accounts.
+Las cuentas de token asociadas (ATA) se crean de forma determinista
+para cada par de llaves (keypair). Los ATA son el método recomendado
+de administrar cuentas token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -130,10 +132,10 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## ¿Cómo obtener un cuenta de token?
 
-Every token account has information on the token such as the owner,
-mint, amount(balance), and decimals.
+Cada cuenta de token tiene información sobre el token, como el propietario,
+mint, cantidad (saldo) y decimales.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,10 +155,10 @@ mint, amount(balance), and decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token account's balance
+## ¿Cómo obtener el saldo de una cuenta token?
 
-The token account has the token balance, which can be retrieved with a
-single call.
+La cuenta de token tiene el saldo del token, el cual se puede obtener con un
+sola llamada.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -194,14 +196,14 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token
-account, you also specific a mint too.
+Una cuenta token solo puede tener un tipo de mint. Cuando especificas una 
+cuenta de token, también especificas un mint.
 :::
 
-## How to mint tokens
+## ¿Cómo crear (mint) nuevos tokens?
 
-When you mint tokens, you increase the supply and transfer the new tokens
-to a specific token account.
+Cuando creas tokens, aumenta el suministro y los nuevos tokens se transfieren 
+a una cuenta de token específica.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,9 +223,9 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to transfer tokens
+## ¿Cómo transferir tokens?
 
-You can transfer tokens from one token account to another token account.
+Puedes transferir tokens de una cuenta de token a otra cuenta de token.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,10 +245,9 @@ You can transfer tokens from one token account to another token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to burn tokens
+## ¿Cómo quemar tokens?
 
-You can burn token if you are the token owner.
-
+Puedes quemar tokens de los tokens que tú seas el dueño.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,13 +267,13 @@ You can burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to close token accounts
+## ¿Cómo cerrar cuentas de token?
 
-You can close a token account if you don't want to use it anymore.
-There are two situations:
+Puedes cerrar una cuenta de token si ya no desea usarla.
+Hay dos situaciones:
 
-1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You can close it only if token account's balance is 0.
+1. Wrapped SOL - Cerrar la cuenta convierte Wrapped SOL to SOL
+2. Other Tokens - La puedes cerrar solo si el saldo de la cuenta está en 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -292,9 +293,9 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to set authority on token accounts or mints
+## ¿Cómo establecer la autoridad en cuentas de tokens o mints?
 
-You can set/update authority. There are 4 types:
+Puede configurar/actualizar la autoridad. Hay 4 tipos:
 
 1. MintTokens (mint account)
 2. FreezeAccount (mint account)
@@ -319,9 +320,9 @@ You can set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to approve a token delegate
+## ¿Cómo aprobar una delegación de token?
 
-You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+Puedes establecer una delegación con una cantidad permitida. Después de su configuración, la delegación es como otro propietario de tu cuenta token. `Una cuenta token solo puede delegar en una cuenta al mismo tiempo`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -341,9 +342,9 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to revoke a token delegate
+## ¿Cómo revocar una delegación de token?
 
-Revoke will set delegate to null and set delegated amount to 0.
+Revocar establecerá el delegado a nulo y establecerá la cantidad delegada en 0.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -363,24 +364,24 @@ Revoke will set delegate to null and set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to manage wrapped SOL
+## ¿Cómo manejar Wrapped SOL?
 
-Wrapped SOL just like any other token mint. The difference is using `syncNative`
-and creating token accounts specifically on the `NATIVE_MINT` address.
+Wrapped SOL es como cualquier otro token mint. La diferencia es usar `syncNative`
+y crear cuentas token específicamente en la dirección `NATIVE_MINT`.
 
-### Create Token Account
+### Crear una cuenta de token
 
-Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+Como [Crear una cuenta de token](#create-token-account) pero reemplazar mint con `NATIVE_MINT`
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### Add Balance
+### Agregar saldo
 
-There are two ways to add balance for Wrapped SOL
+Hay dos formas de agregar saldo para Wrapped SOL
 
-#### 1. By SOL Transfer
+#### 1. Por transferencia de SOL
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -400,7 +401,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. By Token Transfer
+#### 2. Por transferencia de token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -420,11 +421,11 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get all token accounts by owner
+## ¿Cómo obtener todas las cuentas de token por propietario?
 
-You can fetch token accounts by owner. There are two ways to do it.
+Puedes obtener las cuentas de token por propietario. Hay dos maneras de hacerlo.
 
-1. Get All Token Account
+1. Obtener todas las cuenta de token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -444,7 +445,7 @@ You can fetch token accounts by owner. There are two ways to do it.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. Filter By Mint
+2. Filtrar por mint
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

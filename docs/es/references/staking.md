@@ -3,16 +3,16 @@ title: Staking
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Staking
+      content: Libro de recetas de Solana | Staking
   - - meta
     - name: og:title
-      content: Solana Cookbook | Staking
+      content: Libro de recetas de Solana | Staking
   - - meta
     - name: description
-      content: stake SOL and earn rewards for helping secure the network.
+      content: Stake SOL y gana recompensas por ayudar a proteger la red.
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Solana cookbook.
+      content: Stake SOL y gana recompensas por ayudar a proteger la red. Aprende más sobre Crear Cuentas Stake, Delegar Stake, Retirar Stake y más referencias para construir sobre Solana en El Libro de recetas de Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,11 +39,9 @@ footer: MIT Licensed
 
 # Staking
 
+## Obtener los validadores actuales
 
-
-## Get Current Validators
-
-We can stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+Podemos hacer stake de SOL y ganar recompensas por ayudar a asegurar la red. Para hacer stake, delegamos SOL a validadores que a su vez procesan transacciones.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -58,9 +56,9 @@ We can stake SOL and earn rewards for helping secure the network. To stake, we d
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Stake Account
+## ¿Crear una cuenta de stake?
 
-All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created and managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` and `Withdrawal Authority`.
+Todas las instrucciones de staking son manejadas por el [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Para empezar, creamos una [Cuenta de Stake](https://docs.solana.com/staking/stake-accounts) que es creada y administrada de manera diferente que una [Cuenta del sistema](accounts.md#create-a-system-account). En particular, debemos establecer la `Autoridad de Stake` y la `Autoridad de retiro` de la cuenta.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,9 +78,9 @@ All staking instructions are handled by the [Stake Program](https://docs.solana.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Delegate Stake
+## Delegar Stake
 
-Once a stake account is funded, the `Stake Authority` can delegate it to a validator. Each stake account can only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
+Una vez que una cuenta de stake tiene fondos, la `Autoridad de stake` puede delegarla a un validador. Cada cuenta de participación solo se puede delegar a un validador a la vez. Además, todos los tokens de la cuenta deben ser delegados o no delegados. Una vez delegada, se necesitan varias épocas (epoch) para que una cuenta de participación se active.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,9 +100,9 @@ Once a stake account is funded, the `Stake Authority` can delegate it to a valid
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Delegator by Validators
+## Obtener el delegador por los validadores
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+Es posible que varias cuentas hayan hecho stake a una cuenta de validador en particular. Para obtener todos los participantes, utilizaremos la API `getProgramAccounts` o `getParsedProgramAccounts`. Consulte la [sección de guías](/guides/get-program-accounts.html) para obtener más información. Las cuentas de participación tienen una longitud de 200 bytes y la clave pública del votante comienza en 124 bytes. [Referencia](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -124,9 +122,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Deactivate Stake
+## Desactivar Stake
 
-At anytime after a stake account is delegated, the `Stake Authority` can choose to deactivate the account. Deactivation can take several epochs to complete, and is required before any SOL is withdrawn.
+En cualquier momento después de delegar una cuenta de Stake, la `Autoridad de Stake` puede optar por desactivar la cuenta. La desactivación puede tardar varias épocas en completarse y es necesaria antes de retirar cualquier SOL.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -146,9 +144,9 @@ At anytime after a stake account is delegated, the `Stake Authority` can choose 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Withdraw Stake
+## Retirar Stake
 
-Once deactivated, the `Withdrawal Authority` can withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
+Una vez desactivada, la `Autoridad de retiro` puede retirar SOL nuevamente a una cuenta del sistema. Una vez que una cuenta de participación ya no se delega y tiene un saldo de 0 SOL, se destruye de manera efectiva.
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->

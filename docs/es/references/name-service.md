@@ -1,18 +1,18 @@
 ---
-title: Name Service
+title: Servicio de nombres
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Name Service
+      content: Libro de recetas de Solana | Servicio de nombres
   - - meta
     - name: og:title
-      content: Solana Cookbook | Name Service
+      content: Libro de recetas de Solana | Servicio de nombres
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: El registro de nombres almacena información sobre el nombre de un dominio. Aprende cómo resolver dominios SOL, cómo hacer una búsqueda inversar, subdominios y más en Servicio de nombres y referencias en el Libro de recetas de Solana.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: El registro de nombres almacena información sobre el nombre de un dominio. Aprende cómo resolver dominios SOL, cómo hacer una búsqueda inversar, subdominios y más en Servicio de nombres y referencias en el Libro de recetas de Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,16 +37,16 @@ head:
 footer: MIT Licensed
 ---
 
-# Name Service
+# Servicio de nombres
 
-## Name registry
+## Registro de nombres
 
-The name registry stores information about the domain name. It is made of two things:
+El registro de nombres almacena información sobre el nombre de dominio. esta compuesto de dos cosas:
 
-- The header
-- The data
+- La cabecera
+- Los datos
 
-The data for a domain name is always prefixed by the header, below is the structure of the header in JS:
+Los datos para un nombre de dominio siempre tienen el prefijo del encabezado, a continuación se muestra la estructura del encabezado en JS:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -67,12 +67,12 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 </SolanaCodeGroup>
 
-## Resolving SOL domains
+## Resolviendo dominios SOL
 
-.SOL domains are unique, human-friendly domain names
-that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You can convert
-.SOL domains to their publicKey with the following:
+Los dominios .SOL son nombres de dominio únicos y fáciles de usar
+que se convierten en claves públicas. Muchas billeteras las usan como
+otra opción para enviar tokens o SOL. Puedes convertir
+.SOL dominios a su clave pública con lo siguiente:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,9 +93,9 @@ another option to send tokens or SOL. You can convert
 
 </SolanaCodeGroup>
 
-## Reverse look up
+## Búsqueda inversa
 
-This can be used to resolve the domain name from its public key
+Esto se puede usar para resolver el nombre de dominio a partir de una clave pública.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -116,13 +116,13 @@ This can be used to resolve the domain name from its public key
 
 </SolanaCodeGroup>
 
-## Subdomain look up
+## Búsqueda de subdominios
 
-In order to resolve a subdomain you need to:
+Para resolver un subdominio necesitas:
 
-1. Get the parent domain key
-2. Get the subdomain key
-3. Retrieve the account info
+1. Obtener la llave padre del dominio
+2. Obtener la llave del subdominio
+3. Obtener la información de la cuenta
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,9 +143,9 @@ In order to resolve a subdomain you need to:
 
 </SolanaCodeGroup>
 
-## Find all the domain names owned by a public key
+## Encuentre todos los nombres de dominio que pertenecen a una clave pública
 
-You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+Puede recuperar todos los nombres de dominio de una billetera haciendo una solicitud `getProgramAccounts` con un filtro `memcmp`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,9 +166,9 @@ You can retrieve all the domain names of a wallet by doing a `getProgramAccounts
 
 </SolanaCodeGroup>
 
-## Resolve a Twitter handle
+## Resolver un identificador de Twitter
 
-Twitter handles can be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Los identificadores de Twitter se pueden [registrar en el servicio de nombres de Solana](https://naming.bonfida.org/#/twitter-registration) y usarse como nombres de dominio .SOL
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -189,9 +189,9 @@ Twitter handles can be [registered on the Solana name service](https://naming.bo
 
 </SolanaCodeGroup>
 
-## Reverse look up of a Twitter handle
+## Búsqueda inversa de un identificador de Twitter
 
-In order to find the SOL address associated to a Twitter handle you can perform a reverse look up
+Para encontrar la dirección SOL asociada a un identificador de Twitter, puede realizar una búsqueda inversa
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

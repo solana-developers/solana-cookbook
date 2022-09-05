@@ -1,18 +1,18 @@
 ---
-title: Sending Offline Transactions
+title: Enviando transacciones offline
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Libro de recetas de Solana | Enviando transacciones offline
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Libro de recetas de Solana | Enviando transacciones offline
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: Después de firmar una transacción offline, cualquier puede enviarla a la red. Aprenda más sobre enviar transacciones offline y referencias en Libro de recetas de Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: Después de firmar una transacción offline, cualquier puede enviarla a la red. Aprenda más sobre enviar transacciones offline y referencias en Libro de recetas de Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,12 +37,12 @@ head:
 footer: MIT Licensed
 ---
 
-# Offline Transaction
+# Transacción offline
 
-## Sign Transaction
+## Firmar una transacción
 
-To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+Para crear una transacción offline, debes firmar la transacción y luego
+cualquiera puede transmitirla en la red.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -62,18 +62,18 @@ anyone can broadcast it on the network.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Partial Sign Transaction
+## Firma parcial de una transacción
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+Cuando una transacción requiere varias firmas, puede firmarla parcialmente.
+Los otros firmantes pueden firmarla y difundirlo en la red.
 
-Some examples of when this is useful:
+Algunos ejemplos de cuando esto es útil:
 
-- Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
-- Call custom programs in a transaction that require your signature
+- Enviar un token SPL a cambio de un pago
+- Firmar una transacción para que luego puedas verificar su autenticidad
+- Llame a programas personalizados en una transacción que requieran tu firma
 
-In this example Bob sends Alice an SPL token in return for her payment:
+En este ejemplo, Bob le envía a Alice un token SPL a cambio de su pago:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,14 +93,14 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Durable Nonce
+## Nonce de larga duración (Durable Nonce)
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash` es un valor importante para una transacción. Su transacción será rechazada si utiliza un blockhash reciente caducado (después de 150 bloques). Puede usar `durable nonce` para obtener un blockhash reciente que nunca haya caducado. Para activar este mecanismo, tu transacción debe:
 
-1. use a `nonce` stored in `nonce account` as a recent blockhash
-2. put `nonce advance` operation in the first instruciton
+1. usar un `nonce` almacenado en una `nonce account` como un blockhash reciente
+2. poner como primera instrucción `nonce advance` 
 
-### Create Nonce Account
+### Crear una cuenta nonce 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -120,7 +120,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Get Nonce Account
+### Obtener una cuenta nonce
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -140,7 +140,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Use Nonce Account
+### Usar una cuenta nonce
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
