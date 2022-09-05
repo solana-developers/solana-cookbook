@@ -141,20 +141,18 @@ In this example, we set up a connection to Solana Devnet and when the components
 Additionally, this example shows how to generate and store a keypair.
 
 ```typescript
-const conn = new Connection(clusterApiUrl('devnet'));
-const [version, setVersion] = useState<any>('');
 const [keypair, setKeypair] = useState<Keypair>(() => Keypair.generate());
-
 const randomKeypair = () => {
   setKeypair(() => Keypair.generate());
 };
 
+const [version, setVersion] = useState<any>('');
 useEffect(() => {
-  if (version) {
-    return;
-  }
-  conn.getVersion().then(r => setVersion(r));
-}, [version, setVersion]);
+  const conn = new Connection(clusterApiUrl('devnet'));
+  conn.getVersion().then(r => {
+    setVersion(r);
+  });
+}, []);
 ```
 
 Lastly, in the template (or `render function`) add the following markup:
