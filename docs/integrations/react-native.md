@@ -75,6 +75,22 @@ yarn add \
   react-native-url-polyfill
 ```
 
+### Patch Babel to use the Hermes transforms
+
+As of August 2022 the template from which new React Native apps are made enables the Hermes JavaScript engine by default but not the Hermes code transforms. Enable them by making the following change to `babel.config.js`:
+
+```diff
+  module.exports = {
+-   presets: ['module:metro-react-native-babel-preset'],
++   presets: [
++     [
++       'module:metro-react-native-babel-preset',
++       {unstable_transformProfile: 'hermes-stable'},
++     ],
++   ],
+};
+```
+
 ### Update `index.js`
 
 To load the polyfills, we open the file `index.js` in the root of the project and add the following two lines to the top of the file:
