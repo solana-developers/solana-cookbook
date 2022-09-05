@@ -65,10 +65,14 @@ In the meantime, follow the [&ldquo;Adding TypeScript to an Existing Project&rdq
 
 ### Install dependencies
 
-Next, we install the dependencies. We install the Solana SDK, and in addition we install a package to patch the `metro` configuration, and two polyfills that patch the React Native environment. 
+Next, we install the dependencies. The Solana JavaScript SDK, a package to patch the React Native build system (Metro), a secure random number generator, and a fix to patch React Native's missing `URL` class.
 
 ```shell
-yarn add @solana/web3.js metro-config react-native-get-random-values react-native-url-polyfill
+yarn add \
+  @solana/web3.js \
+  metro-config \
+  react-native-get-random-values \
+  react-native-url-polyfill
 ```
 
 ### Update `index.js`
