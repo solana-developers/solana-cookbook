@@ -53,16 +53,42 @@ If you already have an existing app, skip to [installing the dependencies](#inst
 We start a new React Native application that uses TypeScript, then `cd` into the project directory, where we will execute the rest of the commands.
 
 ```shell
-npx react-native init SolanaReactNative --template react-native-template-typescript
+npx react-native@"0.70.0-rc.4" init SolanaReactNative --version 0.70.0-rc.4
 cd SolanaReactNative
 ```
 
+::: warning
+We _highly_ recommend using TypeScript in your React Native projects. Usually we would recommend calling `npx react-native init` with the `--template react-native-template-typescript` command, but as of August 2022 the TypeScript template has not been updated to React Native 0.70.
+
+In the meantime, follow the [&ldquo;Adding TypeScript to an Existing Project&rdquo; docs](https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project) to add TypeScript to the new project you just created above.
+:::
+
 ### Install dependencies
 
-Next, we install the dependencies. We install the Solana SDK, and in addition we install a package to patch the `metro` configuration, and two polyfills that patch the React Native environment. 
+Next, we install the dependencies. The Solana JavaScript SDK, a package to patch the React Native build system (Metro), a secure random number generator, and a fix to patch React Native's missing `URL` class.
 
 ```shell
-yarn add @solana/web3.js metro-config react-native-get-random-values react-native-url-polyfill
+yarn add \
+  @solana/web3.js \
+  metro-config \
+  react-native-get-random-values \
+  react-native-url-polyfill
+```
+
+### Patch Babel to use the Hermes transforms
+
+As of August 2022 the template from which new React Native apps are made enables the Hermes JavaScript engine by default but not the Hermes code transforms. Enable them by making the following change to `babel.config.js`:
+
+```diff
+  module.exports = {
+-   presets: ['module:metro-react-native-babel-preset'],
++   presets: [
++     [
++       'module:metro-react-native-babel-preset',
++       {unstable_transformProfile: 'hermes-stable'},
++     ],
++   ],
+};
 ```
 
 ### Update `index.js`
@@ -115,20 +141,18 @@ In this example, we set up a connection to Solana Devnet and when the components
 Additionally, this example shows how to generate and store a keypair.
 
 ```typescript
-const conn = new Connection(clusterApiUrl('devnet'));
-const [version, setVersion] = useState<any>('');
 const [keypair, setKeypair] = useState<Keypair>(() => Keypair.generate());
-
 const randomKeypair = () => {
   setKeypair(() => Keypair.generate());
 };
 
+const [version, setVersion] = useState<any>('');
 useEffect(() => {
-  if (version) {
-    return;
-  }
-  conn.getVersion().then(r => setVersion(r));
-}, [version, setVersion]);
+  const conn = new Connection(clusterApiUrl('devnet'));
+  conn.getVersion().then(r => {
+    setVersion(r);
+  });
+}, []);
 ```
 
 Lastly, in the template (or `render function`) add the following markup:
@@ -144,9 +168,9 @@ Lastly, in the template (or `render function`) add the following markup:
 <Button title="New Keypair" onPress={randomKeypair} />
 ```
 
-### Install cocoapods
+### [iOS only] Install cocoapods
 
-In order for our polyfills to work, we need to install the `cocoapods`.
+In order for our polyfills to be autolinked on iOS, we need to install the `cocoapods`.
 
 ```shell
 cd ios && pod install
@@ -154,20 +178,29 @@ cd ios && pod install
 
 ### Start application 
 
-Once we finished all the above, we can start our application
+Once we finished all the above, we can start our application in the Android or iOS simulator.
 
 ```shell
-npx react-native run-ios
+yarn android
+yarn ios
 ```
 
-If all went well, you should see a React Native app being started in your iOS simulator that retrieves the version of the Solana Devnet.
+If all went well, you should see a React Native app being started in your simulator that retrieves the version of the Solana Devnet.
 
 ## Solana DApp Scaffold for React Native
 
 If you want to hit the ground running, you can download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
 
 
-## Common issues when using @solana/web3.js in a React Native app
+## Common issues when using crypto libraries in a React Native app
+
+### Error: `Watchman crawl failed`
+
+The part of the build system that watches your file system for changes is called Watchman. Certain versions of Mac OS [refuse](https://github.com/facebook/watchman/issues/751) to grant Watchman  permission to watch certain directories, such as `~/Documents/` and `~/Desktop/`.
+
+You'll know you have this problem if the Metro bundler produces [an error](https://gist.github.com/steveluscher/d0ae13225b57bc59dc0eac871509dcd7) containing the words &ldquo;Watchman crawl failed.&rdquo;
+
+To solve this, move your React Native project to the root of your user directory.
 
 ### Error: While trying to resolve module superstruct from file
 
