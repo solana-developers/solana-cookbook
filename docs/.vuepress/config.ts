@@ -488,6 +488,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           "/th/": {
             placeholder: "ค้นหา",
           },
+          "/id/": {
+            placeholder: "Cari",
+          },
         },
         maxSuggestions: 10,
       },
@@ -537,6 +540,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "ค้นหา",
+              },
+            },
+          },
+          "/id/": {
+            placeholder: "Cari",
+            translations: {
+              button: {
+                buttonText: "Cari",
               },
             },
           },
