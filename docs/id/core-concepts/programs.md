@@ -1,5 +1,5 @@
 ---
-title: Programs
+title: Program
 head:
   - - meta
     - name: title

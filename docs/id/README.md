@@ -1,5 +1,5 @@
 ---
-title: Memasak dengan Solana
+title: Buku Panduan Solana
 head:
   - - meta
     - name: title

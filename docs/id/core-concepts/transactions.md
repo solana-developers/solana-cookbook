@@ -1,5 +1,5 @@
 ---
-title: Transactions
+title: Transaksi
 head:
   - - meta
     - name: title
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Transactions
+# Transaksi
 
 Klien dapat menjalankan [programs](./programs.md) dengan mengirimkan sebuah transaksi ke cluster. Sebuah transaksi tunggal dapat berisikan berbagai macam instruksi terhadap masing-masing program. Ketika sebuah transaksi dikirimkan, Solana [Runtime](https://docs.solana.com/developing/programming-model/runtime) akan menjalankan setiap instruksi sesuai dengan urutan dan secara `atomic`. Jika ada instruksi yang gagal, maka keseluruhan transaksi akan gagal.
 

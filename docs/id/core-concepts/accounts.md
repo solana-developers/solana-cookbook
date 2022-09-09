@@ -1,5 +1,5 @@
 ---
-title: Accounts
+title: Akun
 head:
   - - meta
     - name: title
