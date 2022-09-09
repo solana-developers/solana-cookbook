@@ -4,7 +4,7 @@ title: Peta Akun
 
 # Peta Akun
 
-Peta adalah sebuah struktur data yang sering kita gunakan dalam pemrograman untuk mengaitkan sebuah **kunci** dengan suatu **nilai**. Kunci dan nilai ini dapat bertipe data apa saja. Kunci ini berperan sebagai pengenal dari nilai yang diberikan yang sedang disimpan. Kunci dari peta ini memungkinkan kita untuk memasukkan, mengambil dan memperbarui nilai tersebut secara efisien.
+Peta (_Maps_) adalah sebuah struktur data yang sering kita gunakan dalam pemrograman untuk mengaitkan sebuah **kunci** dengan suatu **nilai**. Kunci dan nilai ini dapat bertipe data apa saja. Kunci ini berperan sebagai pengenal dari nilai yang diberikan yang sedang disimpan. Kunci dari peta ini memungkinkan kita untuk memasukkan, mengambil dan memperbarui nilai tersebut secara efisien.
 
 Model dari akun Solana seperti yang kita ketahui memerlukan data program dan data posisi saat itu untuk dapat disimpan di akun yang berbeda. Akun tersebut memiliki alamat yang berkaitan dengan diri mereka. Hal ini sendiri sebenarnya merupakan sebuah peta! Pelajari lebih lanjut mengenai model akun solana [disini][AccountCookbook].
 

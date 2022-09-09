@@ -1,18 +1,18 @@
 ---
-title: Percobaan ulang transaksi
+title: Mengulang Kembali transaksi
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Percobaan Ulang Transaksi
+      content: Buku Panduan Solana| Mengulang Kembali Transaksi
   - - meta
     - name: og:title
-      content: Solana Cookbook | Percobaan Ulang Transaksi
+      content: Buku Panduan Solana | Mengulang Kembali Transaksi
   - - meta
     - name: description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana Cookbook.
+      content: Pada beberapa kesempatan, transaksi yang tampaknya valid mungkin dibatalkan sebelum dimasukkan ke dalam blok. Untuk mengatasi hal ini, pengembang aplikasi dapat mengembangkan ualng logika broadcasting kustom mereka sendiri. Pelajari tentang mengulang kembali transaksi dan lainnya di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana Cookbook.
+      content: Pada beberapa kesempatan, transaksi yang tampaknya valid mungkin dibatalkan sebelum dimasukkan ke dalam blok. Untuk mengatasi hal ini, pengembang aplikasi dapat mengembangkan ualng logika broadcasting kustom mereka sendiri. Pelajari tentang mencoba kembali transaksi dan lainnya di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,9 +37,9 @@ head:
 footer: MIT Licensed
 ---
 
-# Percobaan Ulang Transaksi
+# Mengulang Kembali Transaksi
 
-Pada beberapa kesempatan, transaksi yang terlihat valid mungkin dibatalkan sebelum dimasukkan ke dalam block. Ini paling sering terjadi saat ada kemacetan jaringan, ketika node RPC gagal melakukan rebroadcast transaksi ke [leader](https://docs.solana.com/terminology#leader). Bagi end-user, mungkin transaksi mereka tampak seolah-olah hilang sama sekali. Disaat node RPC telah dilengkapi dengan algoritma generic rebroadcasting, pengembang aplikasi juga mampu mengembangkan logika rebroadcasting kustom mereka sendiri.
+Pada beberapa kesempatan, transaksi yang terlihat valid mungkin dibatalkan sebelum dimasukkan ke dalam blok. Ini paling sering terjadi saat ada kemacetan jaringan, ketika node RPC gagal melakukan rebroadcast transaksi ke [leader](https://docs.solana.com/terminology#leader). Bagi end-user, mungkin transaksi mereka tampak seolah-olah hilang sama sekali. Disaat node RPC telah dilengkapi dengan algoritma generic rebroadcasting, pengembang aplikasi juga mampu mengembangkan logika rebroadcasting kustom mereka sendiri.
 
 
 ## Fakta
@@ -65,7 +65,7 @@ Sebagian besar end-user akan mengirimkan transaksi melalui server RPC. Ketika kl
 ### Bagaimana Node RPC melakukan broadcast Transaksi
 Setelah node RPC menerima transaksi melalui `sendTransaction`, node tersebut akan mengubah transaksi menjadi paket [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) sebelum meneruskannya ke leader terkait. UDP memungkinkan validator untuk berkomunikasi dengan cepat satu sama lain, tetapi tidak memberikan jaminan apa pun terkait pengiriman transaksi.
 
-Karena jadwal leader Solana diketahui sebelum setiap [zaman](https://docs.solana.com/terminology#epoch) (~2 hari), node RPC akan menyiarkan transaksinya langsung ke pemimpin saat ini dan selanjutnya. Ini berbeda dengan gossip protocol lain seperti Ethereum yang menyebarkan transaksi secara acak dan luas di seluruh jaringan. Secara default, node RPC akan mencoba meneruskan transaksi ke leader setiap dua detik hingga transaksi diselesaikan atau hash block transaksi kedaluwarsa (150 block atau ~ 1 menit 19 detik pada saat penulisan ini). Jika ukuran antrian rebroadcast yang belum diselesaikan lebih besar dari [10.000 transaksi](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), transaksi yang baru dikirimkan tidak akan diproses. Ada [argumen](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) command-line  yang dapat disesuaikan oleh operator RPC untuk mengubah default behaviour dari logika percobaan ulang ini.
+Karena jadwal leader Solana diketahui sebelum setiap [epocj](https://docs.solana.com/terminology#epoch) (~2 hari), node RPC akan menyiarkan transaksinya langsung ke pemimpin saat ini dan selanjutnya. Ini berbeda dengan gossip protocol lain seperti Ethereum yang menyebarkan transaksi secara acak dan luas di seluruh jaringan. Secara default, node RPC akan mencoba meneruskan transaksi ke leader setiap dua detik hingga transaksi diselesaikan atau hash block transaksi kedaluwarsa (150 block atau ~ 1 menit 19 detik pada saat penulisan ini). Jika ukuran antrian rebroadcast yang belum diselesaikan lebih besar dari [10.000 transaksi](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), transaksi yang baru dikirimkan tidak akan diproses. Ada [argumen](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) command-line  yang dapat disesuaikan oleh operator RPC untuk mengubah default behaviour dari logika percobaan ulang ini.
 
 Saat node RPC melakukan broadcast transaksi, node tersebut akan mencoba meneruskan transaksi ke [Transaction Processing Unit (TPU)](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/validator.rs#L867) leader . TPU memproses transaksi dalam lima fase berbeda:
 - [Fetch Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
@@ -162,9 +162,9 @@ Secara default, `sendTransaction` akan melakukan tiga pemeriksaan preflight sebe
 
 Jika salah satu dari tiga pemeriksaan preflight ini gagal, `sendTransaction` akan memunculkan error sebelum mengirimkan transaksi. Pemeriksaan preflight sering kali dapat menjadi perbedaan antara kehilangan transaksi dan memungkinkan klien menangani kesalahan dengan baik. Untuk memastikan bahwa kesalahan umum ini telah diperhitungkan, sebaiknya pengembang tetap mengatur `skipPreflight` ke `false`.
 
-### Kapan Menandatangani Ulang Transaksi
+### Kapan Menandatangani  Ulang (Re-Sign) Transaksi
 
-Terlepas dari semua upaya untuk rebroadcast, mungkin ada saat-saat di mana klien perlu menandatangani ulang transaksi. Sebelum menandatangani ulang transaksi apa pun, **sangat penting** untuk memastikan bahwa blockhash transaksi awal telah kedaluwarsa. Jika blockhash awal masih valid, ada kemungkinan kedua transaksi tersebut diterima oleh jaringan. Bagi end-user, ini akan tampak seolah-olah mereka secara tidak sengaja mengirim transaksi yang sama dua kali.
+Terlepas dari semua upaya untuk rebroadcast, mungkin ada saat-saat di mana klien perlu menandatangani ulang (_re-sign_) transaksi. Sebelum menandatangani ulang transaksi apa pun, **sangat penting** untuk memastikan bahwa blockhash transaksi awal telah kedaluwarsa. Jika blockhash awal masih valid, ada kemungkinan kedua transaksi tersebut diterima oleh jaringan. Bagi end-user, ini akan tampak seolah-olah mereka secara tidak sengaja mengirim transaksi yang sama dua kali.
 
 Di Solana, transaksi yang dibatalkan dapat dibuang dengan aman setelah blockhash yang dirujuknya lebih lama dari `lastValidBlockHeight` yang diterima dari `getLatestBlockhash`. Pengembang harus melacak `lastValidBlockHeight` ini dengan menjalankan [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) dan membandingkan dengan `blockHeight` dari respons yang diterima. Setelah blockhash tidak valid, klien dapat masuk kembali dengan blockhash yang baru dibuat.
 

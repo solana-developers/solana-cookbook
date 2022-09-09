@@ -3,16 +3,16 @@ title: Serialisasi Data
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Serialisasi Data
+      content: Buku Panduan Solana | Serialisasi Data
   - - meta
     - name: og:title
-      content: Solana Cookbook | Serialisasi Data
+      content: Buku Panduan Solana | Serialisasi Data
   - - meta
     - name: description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Belajar cara serialisasi and deserialisasi data di Solana
   - - meta
     - name: og:description
-      content: Learn how to serialize and deserialize data on Solana
+      content: Belajar cara serialisasi and deserialisasi data di Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -120,7 +120,7 @@ Dalam contoh berikut, kita menganggap akun milik program telah diinisialisasi
   </CodeGroupItem>
 </CodeGroup>
 
-## Cara deserialize data instruksi pada program
+## Cara deserialisasi data instruksi pada program
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -131,11 +131,11 @@ Dalam contoh berikut, kita menganggap akun milik program telah diinisialisasi
   </CodeGroupItem>
 </CodeGroup>
 
-## Cara serialize data akun pada program
+## Cara serialisasi data akun pada program
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-Block data akun program (dari contoh repo) ditata sebagai
+Blok data akun program (dari contoh repo) ditata sebagai
 
 | Byte 0 | Byte 1-4 | Sisa Byte hingga 1019 |
 | ---------------- | ----------------------------- | ------------------------------------------------------- |
@@ -161,9 +161,9 @@ Berikut adalah implementasi sifat Pack untuk program sampel kita. Ini diikuti de
   </CodeGroupItem>
 </CodeGroup>
 
-### Serialization/Deserialization
+### Serialisasi/Deserialisasi
 
-Untuk menyelesaikan Serialization dan deserialization yang mendasarinya:
+Untuk menyelesaikan serialisasi dan deserialisasi:
 
 1. `sol_template_shared::pack_into_slice` - Di mana serialisasi sebenarnya terjadi
 2. `sol_template_shared::unpack_from_slice` - Di mana deserialisasi sebenarnya terjadi
@@ -208,9 +208,9 @@ Sekarang kita dapat mengoperasikan instruksi kita yang lain seperti yang ditunju
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## Cara deserialize data akun pada klien
+## Cara deserialisasi data akun pada klien
 
-Klien dapat memanggil Solana untuk mengambil akun milik program, di mana serialized data block adalah bagian dari data yang diambil. Deserialisasi membutuhkan pengetahuan akan layout dari block data.
+Klien dapat memanggil Solana untuk mengambil akun milik program, di mana serialisasi data blok adalah bagian dari data yang diambil. Deserialisasi membutuhkan pengetahuan akan layout dari blok data.
 
 Layout dari akun data akun dijelaskan [Di Sini](#akun-data-serialisasi)
 
@@ -240,7 +240,7 @@ Layout dari akun data akun dijelaskan [Di Sini](#akun-data-serialisasi)
 
 Kunci untuk TS/JS dan Python adalah membuat Skema Borsh dengan definisi yang tepat sehingga serialisasi dan deserialize dapat menghasilkan atau menjalankan input masing-masing yang bersesuaian.
 
-Di sini kita mendemonstrasikan serialization dari tipe data primitive (angka, string) dan compound (array berukuran tetap, Map) pertama di TypeScript, lalu di Python dan kemudian deserialisasi yang ekuivalen di sisi Rust:
+Di sini kita mendemonstrasikan serialisasi dari tipe data primitive (angka, string) dan compound (array berukuran tetap, Map) pertama di TypeScript, lalu di Python dan kemudian deserialisasi yang ekuivalen di sisi Rust:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -265,7 +265,7 @@ Di sini kita mendemonstrasikan serialization dari tipe data primitive (angka, st
 ## Metode Lanjutan
 
 Kita telah menunjukkan cara membuat Payload sederhana dalam contoh sebelumnya. Kadang-kadang
-Solana melempar fastball pada tipe tertentu. Bagian ini akan menunjukkan pemetaan yang tepat antara TS/JS dan Rust untuk menanganinya
+Solana melempar _fastball_ pada tipe tertentu. Bagian ini akan menunjukkan pemetaan yang tepat antara TS/JS dan Rust untuk menanganinya
 
 ### COption
 

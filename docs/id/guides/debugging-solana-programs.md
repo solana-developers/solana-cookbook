@@ -3,16 +3,16 @@ title: Debug Program Solana
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Debug Program Solana
+      content: Buku Panduan Solana | Debug Program Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Debug Program Solana
+      content: Buku Panduan Solana | Debug Program Solana
   - - meta
     - name: description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: Ada sejumlah opsi dan alat pendukung untuk menguji dan men-debug program BPF Solana.
   - - meta
     - name: og:description
-      content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
+      content: Ada sejumlah opsi dan alat pendukung untuk menguji dan men-debug program BPF Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

@@ -3,16 +3,16 @@ title: Migrasi Akun Data Program
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Migrasi Data Akun Program
+      content: Buku Panduan Solana | Migrasi Data Akun Program
   - - meta
     - name: og:title
-      content: Solana Cookbook | Migrasi Data Akun Program
+      content: Buku Panduan Solana | Migrasi Data Akun Program
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana Cookbook.
+      content:  Pada dasarnya data versi untuk mendukung migrasi berarti membuat referensi unik untuk kumpulan data. Referensi ini dapat berupa query, ID, atau juga biasanya pengenal datetime. Pelajari tentang Serialisasi dan Bahan lainnya untuk hidangan Anda di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana Cookbook.
+      content: Pada dasarnya data versi untuk mendukung migrasi berarti membuat referensi unik untuk kumpulan data. Referensi ini dapat berupa query, ID, atau juga biasanya pengenal datetime. Pelajari tentang Serialisasi dan Bahan lainnya untuk hidangan Anda di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -51,8 +51,7 @@ Ini hanyalah salah satu dari banyak cara untuk melakukan migrasi data di Program
 
 ## Skenario
 
-Untuk mencatat versi dan melakukan migrasi data akun kita, kita akan memberikan **id** untuk masing-masing akun. Id ini akan memungkinkan kita untuk mengidentifikasi versi akun ketika
-kita meneruskannya ke program, dan dengan demikian menangani akun tersebut dengan benar.
+Untuk mencatat versi dan melakukan migrasi data akun kita, kita akan memberikan **id** untuk masing-masing akun. Id ini akan memungkinkan kita untuk mengidentifikasi versi akun ketika kita meneruskannya ke program, dan dengan demikian menangani akun tersebut dengan benar.
 
 Mari kita ambil contoh status akun dan program berikut:
 
@@ -113,7 +112,7 @@ Di versi pertama akun kita, kita melakukan hal berikut:
 
 | ID | Aksi |
 | - | - |
-|1| Sertakan field 'data version' di data Anda. Ini bisa berupa ordinal sederhana yang bertambah (misalnya u8) atau sesuatu yang lebih canggih
+|1| Sertakan field 'data_version' di data Anda. Ini bisa berupa _ordinal_ sederhana yang bertambah (misalnya u8) atau sesuatu yang lebih canggih
 |2| Mengalokasikan space yang cukup untuk pertumbuhan data
 |3| Inisialisasi sejumlah konstanta untuk digunakan di seluruh versi program
 |4| Tambahkan function pembaruan akun di dalam `fn conversion_logic` untuk pengembangan di masa mendatang
@@ -154,9 +153,9 @@ Perubahan dalam upgrade ini adalah bagaimana kita mengembangkan konstruksi awal 
 | 13-26| Di sini kita telah mempertahankan struktur konten lama, yaitu `AccountContentOld` pada baris 24, sebelum kemudian diubah menjadi `AccountContentCurrent` mulai dari baris 17.
 | 60 | kita menginisialisasi konstanta `DATA_VERSION`
 | 71 | kita sekarang memiliki versi 'sebelumnya' dan kita ingin tahu ukurannya
-| 86 | Coup de grâce menyediakan jalur untuk meningkatkan state konten sebelumnya ke state konten baru (saat ini)
+| 86 | menyediakan jalur untuk meningkatkan state konten sebelumnya ke state konten baru (saat ini)
 
-Kita kemudian memperbarui instruksi kita, untuk menambahkan yang baru untuk memperbarui `somestring`, dan prosesor untuk menangani instruksi baru. Perhatikan bahwa proses 'upgrade' struktur data dienkapsulasi di belakang `pack/unpack`
+Kita kemudian memperbarui instruksi kita, untuk menambahkan yang baru untuk memperbarui `somestring`, dan prosesor untuk menangani instruksi baru. Perhatikan bahwa proses 'upgrade' struktur data di-enkapsulasi di belakang `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
