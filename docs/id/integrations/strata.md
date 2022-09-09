@@ -3,16 +3,16 @@ title: Strata
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Building on Strata Protocol
+      content: Buku Panduan Solana | Membangun di Protokol Strata
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Building on Strata Protocol
+      content: uku Panduan Solana | Membangun di Protokol Strata
   - - meta
     - name: description
-      content: Strata is a protocol for launching tokens on Solana. Learn how to use and build on top of Strata.
+      content: Strata adalah protokol untuk launching token di Solana. Pelajari cara menggunakan dan membangun diatas Strata.
   - - meta
     - name: og:description
-      content: Strata is a protocol for launching tokens on Solana. Learn how to use and build on top of Strata.
+      content: Strata adalah protokol untuk launching token di Solana. Pelajari cara menggunakan dan membangun diatas Strata.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,17 +38,16 @@ head:
 
 # Strata
 
-Strata is a protocol for launching tokens built on Solana. 
-You can use Strata to launch any kind of fungible token, ranging from social tokens to dao and gamefi tokens.
-You can also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
+Strata adalah protokol untuk launching token di Solana. 
+Kamu bisa pakai Strata untuk membuat semua jenis fungible token, mulai dari social tokens sampai dao dan gamefi token.
+Kamu bisa juga  compose strata dengan apapun yang menggabungkan mekanisme harga tetap (_fixed price) untuk mendapatkan harga yang dinamis, sebagai contohnya adalah Metaplex CandyMachine.
 
-More in-depth docs are available [here](docs.strataprotocol.com). You can also use the gui at [Strata Launchpad](app.strataprotocol.com)
+Dokumen lebih detail ada [disini](docs.strataprotocol.com). Bisa juga gunakan GUI di [Strata Launchpad](app.strataprotocol.com)
 
-## How to create a fully managed token
+## Cara Membuat Token Yang Dikendalikan Penuh
 
-A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
-token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata and an associated bonding curve.
-The bonding curve manages the liquidity, pricing, and supply of that token.
+Token Yang Dikendalikan Penuh (_fully-managed Strata token_) adalah a token dimana  liquidity dikendalikan oleh protokol.  Hasilnya adalah Anda segera mendapatkan tradeable token, tanpa perlu pool atau penyedia likuiditas. Token yang dikelola sepenuhnya adalah token spl normal dengan metadata token metaplex dan kurva ikatan terkait.
+Kurva ikatan mengelola likuiditas, harga, dan pasokan token itu.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -69,7 +68,7 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 </SolanaCodeGroup>
 
-## How to buy and sell a token
+## Cara beli dan jual token
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -110,10 +109,9 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 </SolanaCodeGroup>
 
-## How to bootstrap liquidity
+## Cara bootstrap liquidity
 
-Strata can also sell tokens where you would like to manually manage the supply. This can be useful for liquidity bootstrapping before listing your token
-on a dex. You can read more about these [here](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
+Strata juga dapat menjual token di mana Anda ingin mengelola persediaan secara manual. Ini dapat berguna untuk bootstrap likuiditas sebelum mendaftarkan token Anda pada sebuah dex. Anda dapat membaca lebih lanjut tentang ini [disini](https://docs.strataprotocol.com/marketplace/lbc) atau launch punya anda sendiri di [Strata Launchpad](app.strataprotocol.com)
 
 
 <SolanaCodeGroup>
@@ -135,7 +133,7 @@ on a dex. You can read more about these [here](https://docs.strataprotocol.com/m
 
 </SolanaCodeGroup>
 
-## Other Resources
+## Sumber Lainnya
 
-- [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create and manage Strata tokens
-- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token using the GUI
+- [Typescript Client Documentation](https://docs.strataprotocol.com) - Contoh Live code untuk membuat dan mengelola token Strata
+- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launching token dengan menggunakan interface (GUI)

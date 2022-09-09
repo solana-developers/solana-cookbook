@@ -3,16 +3,16 @@ title: Pyth
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Using Pyth to get OnChain data
+      content: Buku Panduan Solana | Menggunakan Pyth untuk Mendapatkan OnChain data
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Using Pyth to get OnChain data
+      content: Buku Panduan Solana | Menggunakan Pyth untuk Mendapatkan OnChain data
   - - meta
     - name: description
-      content: Pyth is an Oracle used to get real-word financial data onChain.
+      content: Pyth adalah sebuah Oracle yang digunakan untuk mendapatkan real-word financial data secara onChain.
   - - meta
     - name: og:description
-      content: Pyth is an Oracle used to get real-word financial data onChain.
+      content: Pyth adalah sebuah Oracle yang digunakan untuk mendapatkan real-word financial data secara onChain.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,11 +38,11 @@ head:
 
 # Pyth
 
-Pyth is an Oracle used to get real-world financial and crypto market data. Pyth Oracle can be used by on-chain programs in consuming data for a variety of use cases.
+Pyth adalah Oracle yang digunakan untuk mendapatkan data pasar keuangan dan kripto. Pyth Oracle dapat digunakan oleh program on-chain dalam mengkonsumsi data untuk berbagai kasus penggunaan.
 
-## How to use Pyth in Client
+## Cara Menggunakan Pyth di Client
 
-Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [here](https://www.npmjs.com/package/@pythnetwork/client)
+Pyth menyediakan a JavaScript/TypeScript library yang disebut **@pythnetwork/client**. Librari ini bisa digunakan untuk membaca data on-chain untuk aplikasi off-chain, seperti menampilan harga Pyth di website.  Pelajari lebih lanjut [here](https://www.npmjs.com/package/@pythnetwork/client)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -63,9 +63,9 @@ Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. Th
 
 </SolanaCodeGroup>
 
-## How to use Pyth in Anchor
+## Cara Memakai Pyth di Anchor
 
-Pyth provides a Rust Crate which can be used by on-chain programs or off-chain application's to consume pyth's data.
+Pyth menyediakan a Rust Crate yang bisa digunakan program on-chain atau off-chain untuk konsumsi data Pyth..
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -86,7 +86,7 @@ Pyth provides a Rust Crate which can be used by on-chain programs or off-chain a
 
 </SolanaCodeGroup>
 
-## Other Resources
+## Sumber Lainnya
 
 - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
 - [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)

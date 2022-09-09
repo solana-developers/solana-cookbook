@@ -3,16 +3,16 @@ title: Switchboard
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Using Switchboard to create Onchain data feeds
+      content: Buku Panduan Solana | Menggunakan Switchboard untuk membuat Onchain data feeds
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Using Switchboard to create Onchain data feeds
+      content: Buku Panduan Solana | Menggunakan Switchboard untuk membuat Onchain data feeds
   - - meta
     - name: description
-      content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.
+      content: Switchboard memungkinkan pembuat untuk membuka kunci kekuatan Solana dengan membuat feeds data berkinerja tinggi dari API apa pun.
   - - meta
     - name: og:description
-      content: Switchboard allows builders to unlock the power of Solana by creating high performance data feeds from any API.
+      content: Switchboard memungkinkan pembuat untuk membuka kunci kekuatan Solana dengan membuat feeds data berkinerja tinggi dari API apa pun.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,15 +38,15 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables developers to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource developers can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
+Switchboard adalah protokol Oracle yang memungkinkan pengembang untuk menarik data on-chain untuk berbagai kasus penggunaan seperti feed harga, harga dasar NFT, statistik olahraga, atau bahkan keacakan yang dapat diverifikasi. Secara umum, Switchboard adalah sumber daya off-chain yang dapat digunakan untuk menjembatani data dengan integritas tinggi secara on-chain dan memberi daya pada web3 dan DeFi.
 
 ## Data Feeds
 
-Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
-. This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
+Switchboard menyediakan librari JavaScript/TypeScript yang disebut **@switchboard-xyz/switchboard-v2**
+. Librari ini bisa digunakan untuk mendapatkan on-chain data dari feeds yang sudah ada atau bisa juga untuk mempublikasikan feeds kustom.  Pelajari lebih lanjut [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
 )
 
-### Read data from an aggregator feed
+### Cara Baca Data Dari Aggregator Feeds
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -67,7 +67,7 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 </SolanaCodeGroup>
 
-### Create a new aggregator feed
+### Membuat Aggregator Feed Baru
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -92,9 +92,9 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 
 
-### Read data from an aggregator feed in program
-Switchboard provides a crate called **switchboard_v2**
-Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
+### Baca data dari aggregator feeds dalam sebuah program
+Switchboard menyediakan sebuah  crate yang dinamakan **switchboard_v2**
+Pelajari lebih lanjut [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
 
 
 <SolanaCodeGroup>
@@ -116,12 +116,12 @@ Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v
 
 </SolanaCodeGroup>
 
-### How to Create a Feed from the Publisher
-The official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
-Check it out [here](https://docs.switchboard.xyz/feed/publisher).
+### Cara Membuat a Feeds Dari Publisher
+Dokumentasi Switchboard resmi memiliki panduan mendalam tentang cara membuat feeds dari penerbit.
+Cek lebih lanjut [here](https://docs.switchboard.xyz/feed/publisher).
 
 ## Oracles
-Switchboard's unique feature is that it allows you to create your own oracle and run it locally.
+Fitur unik Switchboard adalah memungkinkan Anda membuat oracle Anda sendiri dan menjalankannya secara lokal.
 
 ### Create an oracle
 <SolanaCodeGroup>
@@ -143,13 +143,13 @@ Switchboard's unique feature is that it allows you to create your own oracle and
 
 </SolanaCodeGroup>
 
-### Run an oracle locally
-You can run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
+### Menjalan Oracle di lokal
+Anda dapat menjalankan oracle secara lokal dan menetapkannya ke antrian oracle Anda sendiri untuk menguji bagaimana program Anda dapat beroperasi dalam environment production. Oracle Mainnet harus selalu dijalankan di lingkungan ketersediaan tinggi dengan beberapa kemampuan pemantauan.
 
-#### Requirements
+#### Yang Dibutuhkan
  - Docker-compose
 
-Create a docker-compose.yml file with the environment variables in [Oracle Config](/integrations/switchboard.html#oracle-config)
+Buat sebuah file docker-compose.yml dengan environment variable di [Oracle Config](/integrations/switchboard.html#oracle-config)
 
 
 
@@ -172,14 +172,14 @@ Create a docker-compose.yml file with the environment variables in [Oracle Confi
 
 </SolanaCodeGroup>
 
-Run the container using `docker-compose up`
+Jalankan container dengan `docker-compose up`
 
-### Oracle Config
+### Konfigurasi Oracle
 <table>
   <thead>
     <tr>
       <th>Env Variable</th>
-      <th>Definition</th>
+      <th>Definisi</th>
     </tr>
   </thead>
   <tbody>
@@ -187,65 +187,62 @@ Run the container using `docker-compose up`
       <td>ORACLE_KEY</td>
       <td>
         <b>
-          <u>Required</u>
+          <u>Dibutuhkan</u>
         </b>
         <br />
-        <b>Type</b> - Public Key
+        <b>Tipe</b> - Public Key
         <br />
-        <b>Description</b> - Public key of the oracle account that has been
-        granted permissions to use an oracle queue <br />
+        <b>Deskripsi</b> - Public key dari sebuah  oracle account yang sudah mendapatkan izin untuk menggunakan oracle queue <br />
       </td>
     </tr>
     <tr>
       <td>HEARTBEAT_INTERVAL</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Opsional</u>
         </b>
         <br />
-        <b>Type</b> - Number (seconds)
+        <b>Tipe</b> - Number (detik)
         <br />
         <b>Default</b> - 30
         <br />
-        <b>Description</b> - Seconds between oracle heartbeats. Queues have
-        different oracle heartbeat requirements. Recommended value is 15
+        <b>Deskripsi</b> - detik antara oracle heartbeats. Queues bisa memiliki oracle heartbeat yang berbeda. Nilai yang direkomendasikan adalah 15
       </td>
     </tr>
     <tr>
       <td>GCP_CONFIG_BUCKET</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Opsional</u>
         </b>
         <br />
-        <b>Type</b> - GCP Resource Path
+        <b>Tipe</b> - GCP Resource Path
         <br />
-        <b>Default</b> - Looks for configs.json in the current working
-        directory. If not found, no config is loaded.
+        <b>Default</b> - Cari file configs.json di folder, jika tidak ditemukan maka tidak ada config yang di load.
         <br />
-        <b>Description</b> - Contains API keys for private API endpoints
+        <b>Deskripsi</b> - Mengandung API keys untuk private API endpoints
       </td>
     </tr>
     <tr>
       <td>UNWRAP_STAKE_THRESHOLD</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Optsonal</u>
         </b>
         <br />
-        <b>Type</b> - Number (SOL amount, Ex. 1.55)
+        <b>Tipe</b> - Number (jumlah SOL, Contoh. 1.55)
         <br />
         <b>Default</b> - 0, disabled.
         <br />
-        <b>Description</b> - The Solana balance amount to trigger an unwrap stake action. When an oracle's Solana balance falls below the set threshold, the node will automatically unwrap funds from the oracle's staking wallet, leaving at least 0.1 wSOL or 10% more than the queue's minimum stake requirement. 
+        <b>Deskripsi</b> - Jumlah saldo Solana untuk memicu tindakan pasak yang dibuka (_unwrap stake action_). Ketika balance Solana oracle turun di bawah ambang batas yang ditetapkan, node akan secara otomatis membuka dana dari dompet staking oracle, menyisakan setidaknya 0,1 wSOL atau 10% lebih banyak dari persyaratan stake minimum antrian.
       </td>
     </tr>
   </tbody>
 </table>
 
-## Verifiable Random Function(VRF)
-A Verifiable Random Function (VRF) is a public-key pseudorandom function that provides proofs that its outputs were calculated correctly
-### Reading a VRF account
+## Fungsi Random yang Terverifikasi - Verifiable Random Function(VRF)
+Verifiable Random Function (VRF) adalah fungsi pseudorandom dari  public-key yang menyediakan bukti bahwa output telah di kalkukasi secara benar.
+### Membaca akun VRF
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -281,7 +278,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 </SolanaCodeGroup>
 
-### Creating a VRF account
+### Membuat Sebuah Akun VRF
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -303,7 +300,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 </SolanaCodeGroup>
 
-### Request Randomness from vrf account
+### Request Randomness dari akun  vrf
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -340,18 +337,18 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 </SolanaCodeGroup>
 
 
-## Resources
-### APIs and Libraries
+## Sumber
+### API dan Librari
  - [Switchboard Task Types](https://docs.switchboard.xyz/api/tasks)
  - [Rust API Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)
  - [Typescript API Docs](https://docs.switchboard.xyz/api/ts)
  - [Python API Docs](https://docs.switchboard.xyz/api/py)
  - [CLI Docs](https://docs.switchboard.xyz/api/cli)
-### Examples
+### Contoh
  - [[Client] Custom Data Feed Walkthrough](https://github.com/switchboard-xyz/switchboard-v2/tree/main/packages/feed-walkthrough)
  - [[Program] Anchor Feed Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-feed-parser)
  - [[Program] Anchor VRF Parser](https://github.com/switchboard-xyz/switchboard-v2/tree/main/programs/anchor-vrf-parser)
-### More Information
+### Informasi Lebih Lanjut
  - [Protocol Documentation](https://docs.switchboard.xyz/introduction)
  - [SuperteamDAO Deep Dive](https://crawling-cent-d6b.notion.site/The-Switchboard-Deep-Dive-717df6ba0b92465e8118351466257a0f)
 

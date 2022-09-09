@@ -3,16 +3,16 @@ title: Jupiter
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Swap tokens using Jupiter
+      content: Buku Panduan Solana | Swap tokens menggunakan Jupiter
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Swap tokens using Jupiter
+      content: Buku Panduan Solana | Swap tokens menggunakan Jupiter
   - - meta
     - name: description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+      content: Jupiter adalah agregator likuiditas utama untuk Solana, menawarkan rentang token terluas dan penemuan rute terbaik di antara pasangan token mana pun.
   - - meta
     - name: og:description
-      content: Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+      content: Jupiter adalah agregator likuiditas utama untuk Solana, menawarkan rentang token terluas dan penemuan rute terbaik di antara pasangan token mana pun.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -38,11 +38,11 @@ head:
 
 # Jupiter
 
-Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+Jupiter adalah agregator likuiditas utama untuk Solana, menawarkan rentang token terluas dan penemuan rute terbaik di antara pasangan token mana pun.
 
-### Installation
+### Instalasi
 
-@jup-ag/core is the Core package used to interact with jupiter on-chain programs to perform swaps between two possible token pairs.
+@jup-ag/core adalah paket Core yang digunakan untuk berinteraksi dengan program on-chain jupiter untuk melakukan swap antara dua kemungkinan pasangan token.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -62,9 +62,9 @@ npm install @jup-ag/core
   </CodeGroupItem>
 </CodeGroup>
 
-### Fetching Token list from Jupiter
+### Mengambil List  Token dari Jupiter
 
-All the possible tokens that can be swapped with jupiter for a given network is being fetched.
+Semua kemungkinan token yang dapat ditukar dengan jupiter untuk jaringan tertentu sedang diambil.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -85,9 +85,9 @@ All the possible tokens that can be swapped with jupiter for a given network is 
 
 </SolanaCodeGroup>
 
-### Loading the Jupiter instance
+### Loading instance dari Jupiter
 
-Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [here](https://docs.jup.ag/jupiter-core/full-guide)
+Instance Jupiter sedang dibuat dengan konfigurasi yang disediakan. Ada banyak parameter opsional yang diperlukan instance untuk mengetahui lebih banyak tentangnya, buka [di sini](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -108,9 +108,9 @@ Jupiter instance is being created with the provided configurations. There are ma
 
 </SolanaCodeGroup>
 
-### Getting the RouteMap
+### Mendapatkan RouteMap
 
-The RouteMap identifies what tokens can be swapped for a given input token. The route map only contains token mint addresses and no metadata.
+RouteMap mengidentifikasi token apa yang dapat ditukar dengan token input yang diberikan. RouteMap hanya berisi alamat token mint dan tidak ada metadata.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -131,8 +131,9 @@ The RouteMap identifies what tokens can be swapped for a given input token. The 
 
 </SolanaCodeGroup>
 
-### Getting the routes for given Input and Output token
-The `computeRoutes` methods takes in the input Mint address and the output Mint address and gives all the possibles routes in order of best price first.
+### Mendapatkan route dari Input dengan Output token
+
+Metode `computeRoutes` mengambil alamat Mint input dan alamat Mint output dan memberikan semua kemungkinan rute dalam urutan harga terbaik terlebih dahulu.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,8 +154,8 @@ The `computeRoutes` methods takes in the input Mint address and the output Mint 
 
 </SolanaCodeGroup>
 
-### Execute the Token Swap
-The `exchange` method is called here which constructs the transaction for a given route.
+### Ekskusi  Token Swap
+Metode `exchange` dipanggil di sini yang membuat transaksi untuk rute tertentu.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -197,9 +198,9 @@ npm install @jup-ag/react-hook
   </CodeGroupItem>
 </CodeGroup>
 
-### Adding the Provider
+### Menambahkan  Provider
 
-We are setting up the JupiterProvider here in order to use the useJupiter Hook Through out the React App. The cluster parameter is set  as **mainnet-beta** in order to get a wide variety of tokens but if you wish you could change it to **devnet** as well
+Kita menyiapkan JupiterProvider di sini untuk menggunakan useJupiter Hook Melalui Aplikasi React. Parameter cluster disetel sebagai **mainnet-beta** untuk mendapatkan berbagai macam token, tetapi jika mau, Anda juga dapat mengubahnya menjadi **devnet**
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -220,9 +221,9 @@ We are setting up the JupiterProvider here in order to use the useJupiter Hook T
 
 </SolanaCodeGroup>
 
-### Fetching the List of Tokens
+### Mendapatkan  List dari Token
 
-All the possible Tokens that can be swapped in a Given Network is fetched stored in the state.
+Semua Token yang mungkin dapat ditukar dalam jaringan diambil dan disimpan di dalam state.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +244,9 @@ All the possible Tokens that can be swapped in a Given Network is fetched stored
 
 </SolanaCodeGroup>
 
-### Setting up the State
+### Seting State
 
-InputMint and OutputMint are state that is added in order for it to be  swapped among each other or can be taken from the user as well.
+InputMint dan OutputMint adalah status yang ditambahkan agar dapat ditukar satu sama lain atau dapat diambil dari pengguna juga.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,9 +267,9 @@ InputMint and OutputMint are state that is added in order for it to be  swapped 
 
 </SolanaCodeGroup>
 
-### Using the useJupiter react hook
+### Menggunakan useJupiter react hook
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [here](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+useJupiter Hook mengambil semua parameter yang diperlukan untuk menemukan rute yang melaluinya Token dari InputMint dan OutputMint dapat ditukar. Untuk mempelajari lebih lanjut tentang itu bisa klik [di sini](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -289,9 +290,9 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 </SolanaCodeGroup>
 
-### Performing the Swap
+### Perform Swap
 
-After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the `exchange` method
+Setelah memberikan semua data ke useJupiter Hook. Kita dapat menggunakan instance jupiter untuk melakukan swap menggunakan metode `exchange`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -312,11 +313,11 @@ After providing all the data to the useJupiter Hook. We can use the jupiter inst
 
 </SolanaCodeGroup>
 
-## How to use Jupiter API
+## Cara Menggunakan Jupiter API
 
-This is the easiest way to interact with jupiter programs to swap any 2 provided tokens.
+Ini adalah cara termudah untuk berinteraksi dengan program jupiter untuk menukar 2 token yang disediakan.
 
-### Installation
+### Instalasi
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -342,9 +343,9 @@ npm i bs58
   </CodeGroupItem>
 </CodeGroup>
 
-### Getting the Route Map
+### Mendapatkan Route Map
 
-This API retrieves all the available tokens that can be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that can be swapped for SOL in this case.
+API ini mengambil semua token yang tersedia yang dapat ditukar menggunakan API jupiter. Daftar semua kemungkinan rute token sedang diambil di sini dan `allInputMints` berisi daftar semua Token Input yang mungkin berdasarkan alamat mint dan `swappableOutputForSol` berisi semua kemungkinan token yang dapat ditukar dengan SOL dalam kasus ini.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -365,8 +366,8 @@ This API retrieves all the available tokens that can be swapped using the jupite
 
 </SolanaCodeGroup>
 
-### Getting the Serialized Transaction to perform Swap
-POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that can be added to this api like **wrapUnwrapSOL** and **feeAccount** to learn more about it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+### Mendapatkan Serialisasi Transaksi untuk  perform Swap
+Permintaan POST API dilakukan dengan rute yang ingin kita tuju dan alamat wallet pengguna ada beberapa parameter opsional yang dapat ditambahkan ke api ini seperti **wrapUnwrapSOL** dan **feeAccount** untuk mempelajarinya lebih lanjut buka dokumen resmi di sini [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -387,8 +388,8 @@ POST API request is done with the route that we wish to go with and the wallet a
 
 </SolanaCodeGroup>
 
-### Executing the Swap Transaction
-A Transaction object is created and then its getting signed by the user.
+### Eksekusi Transaksi Swap
+Objek Transaksi dibuat dan kemudian ditandatangani oleh pengguna.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -409,7 +410,7 @@ A Transaction object is created and then its getting signed by the user.
 
 </SolanaCodeGroup>
 
-## Other Resources
+## Sumber Lainnya
 
 - [Main Docs](https://docs.jup.ag/)
 - [Jupiter Core Example Code](https://github.com/jup-ag/jupiter-core-example)
