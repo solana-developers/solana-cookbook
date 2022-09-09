@@ -1,18 +1,18 @@
 ---
-title: Writing Programs
+title: Menulis Program
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Solana Program References
+      content: Buku Panduan Solana | Referensi Program Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Solana Program References
+      content: Buku Panduan Solana | Referensi Program Solana
   - - meta
     - name: description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: Belajar cara membuat sebuah program di Solana dengan referensi invokasi cross program, membaca akun, dan lainnya.
   - - meta
     - name: og:description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: Belajar cara membuat sebuah program di Solana dengan referensi invokasi cross program, membaca akun, dan lainnya.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,7 +36,7 @@ head:
       content: index,follow
 ---
 
-# Menulis Programs
+# Menulis Program
 
 ## Bagaimana cara mentransfer SOL di dalam sebuah program
 
@@ -306,7 +306,7 @@ Seseorang dapat mengirim akun yang diperlukan melalui client dalam contoh beriku
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Bagaimana cara membaca akun-akun.
+## Bagaimana cara membaca akun
 
 Hampir semua instruksi di dalam Solana memerlukan sekurang-kurangnya 2 - 3 akun, dan mereka perlu di-mentioned melalui instruction handlers mengenai apa yang diharapkan dari set akun tersebut. Adalah sangat mudah jika kita mengambil keuntungan dari `iter()` method dalam Rust, dibandingkan dengan men-index akun-akun secara manual. `next_account_info` method pada dasarnya men-slices index pertama yang dapat diiterasi dan mengembalikan kehadiran akun di dalam array akun-akun. Mari kita lihat instruksi sederhana yang mengharapkan beberapa akun dan perlu untuk mengurai masing-masing akun. 
 
@@ -328,9 +328,9 @@ Hampir semua instruksi di dalam Solana memerlukan sekurang-kurangnya 2 - 3 akun,
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Bagaimana cara men-verifikasi akun-akun
+## Bagaimana cara men-verifikasi akun
 
-Semenjak program-program di Solana adalah stateless, kita sebagai pembuat program haru memastikan validasi akun-akun yang yang dipass sebanyak mungkin untuk menghindari masuknya akun jahat. Hal dasar yang dapat kita lakukan adalah
+Karena program-program di Solana adalah stateless, kita sebagai pembuat program harus memastikan validasi akun-akun yang yang dipass sebanyak mungkin untuk menghindari masuknya akun yang disusupi (_malicious_). Hal dasar yang dapat kita lakukan adalah:
 
 1. Periksa apakah akun signer yang diharapkan bener-benar sudah sign
 2. Periksa apakah state akun yang diharapkan sudah dicheck sebagai writeable

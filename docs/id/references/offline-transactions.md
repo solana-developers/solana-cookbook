@@ -1,20 +1,18 @@
-
-
 ---
-title: Sending Offline Transactions
+title: Mengirim Transaksi Offline
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Buku Panduan Solana | Mengirim Transaksi Offline
   - - meta
     - name: og:title
-      content: Solana Cookbook | Sending Offline Transactions
+      content: Buku Panduan Solana | Mengirim Transaksi Offline
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Buku Memasak Solana.
+      content: Setelah signing transaksi offline, setiap orang bisa melakukan broadcast ke jaringan. Belajar tentang cara mengirim transaksi offline di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Buku Memasak Solana.
+      content: Setelah signing transaksi offline, setiap orang bisa melakukan broadcast ke jaringan. Belajar tentang cara mengirim transaksi offline di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -100,7 +98,7 @@ Dalam contoh ini Bob mengirimkan Alice sebuah SPL token untuk menerima pembayara
 1. Menggunakan suatu  `nonce` yang tersimpan dalam  `nonce account` sebagai sebuah recent blockhash
 2. Memasukkan `nonce advance` operation di instruksi pertama
 
-### Create Nonce Account
+### Membuat Akun Nonce
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -120,7 +118,7 @@ Dalam contoh ini Bob mengirimkan Alice sebuah SPL token untuk menerima pembayara
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Get Nonce Account
+### Mendapatkan Akun Nonce
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -140,7 +138,7 @@ Dalam contoh ini Bob mengirimkan Alice sebuah SPL token untuk menerima pembayara
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Use Nonce Account
+### Menggunakan Akun Nonce
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

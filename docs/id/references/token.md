@@ -1,18 +1,18 @@
 ---
-title: Interacting with Tokens
+title: Interaksi dengan Token
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Buku Panduan Solana | Interaksi dengan Token
   - - meta
     - name: og:title
-      content: Solana Cookbook | Interacting with Tokens
+      content: Buku Panduan Solana | Interaksi dengan Token
   - - meta
     - name: description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: Belajar cara menggunakan, transfer dan hal lainnya dengan token di Solana
   - - meta
     - name: og:description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: Belajar cara menggunakan, transfer dan hal lainnya dengan token di Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -255,7 +255,7 @@ Anda dapat membakar token jika anda adalah pemilik dari token tersebut.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Bagaimana cara menutup akun-akun token.
+## Bagaimana cara menutup akun-akun token
 
 Anda dapat menutup akun token jika anda tidak ingin menggunakannya lagi. Ada dua situasi:
 

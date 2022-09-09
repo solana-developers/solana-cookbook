@@ -1,5 +1,3 @@
-
-
 ---
 title: Name Service
 head:
@@ -11,10 +9,10 @@ head:
       content: Solana Cookbook | Name Service
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Buku Memasak Solana.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Solana cookbook.
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Buku Memasak Solana.
+      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

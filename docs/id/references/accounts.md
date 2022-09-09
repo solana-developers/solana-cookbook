@@ -1,18 +1,18 @@
 ---
-title: Accounts
+title: Akun
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Account References
+      content: Buku Panduan Solana | Referensi Akun
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Account References
+      content: Buku Panduan Solana | Referensi Akun
   - - meta
     - name: description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: Belajar tentang akun di Solana dan cara menggunakannya di program.
   - - meta
     - name: og:description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: Belajar tentang akun di Solana dan cara menggunakannya di program.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Accounts
+# Akun
 
-## Bagaimana cara membuat sebuah system account
+## Bagaimana cara membuat sebuah sistem akun
 
-Membuat system account yang dimiliki oleh [System Program][1].  Solana runtime akan memberikan akses ke pemilik akun, akses untuk menulis ke dalam datanya sendiri dana mentransfer lamports. Ketika membuat sebuah account, kita harus mempersiapkan kapasitas penyimpanan tetap dalam bytes
+Membuat sistem akun (_system account_) yang dimiliki oleh [System Program][1].  Solana runtime akan memberikan akses ke pemilik akun, akses untuk menulis ke dalam datanya sendiri dana mentransfer lamports. Ketika membuat sebuah account, kita harus mempersiapkan kapasitas penyimpanan tetap dalam bytes
 (`space`) dan lamports yang cukup untuk mencover rent. [Rent][2] adalah biaya yang ditimbulkan untuk menjaga agar account tetap hidup di Solana.
 
 <SolanaCodeGroup>
@@ -77,9 +77,9 @@ Membuat system account yang dimiliki oleh [System Program][1].  Solana runtime a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Bagaimana cara mengkalkulasi biaya account
+## Bagaimana cara mengkalkulasi biaya akun
 
-Menjaga agar account tetap hidup di Solana membutuhkan biaya penyimpanan yang disebut dengan [rent][2]. Sebuah account dapat dikecualikan sepenuhnya dari pungutan biaya rent apabila mendepositokan sekurang-kurangnya dua tahun biaya rent. Untuk kalkulasi, anda perlu mempertimbangkan jumlah data yang ingin disimpan di dalam account.
+Menjaga agar akun tetap hidup di Solana membutuhkan biaya penyimpanan yang disebut dengan [rent][2]. Sebuah akun dapat dikecualikan sepenuhnya dari pungutan biaya rent apabila mendepositokan sekurang-kurangnya dua tahun biaya rent. Untuk kalkulasi, kita perlu mempertimbangkan jumlah data yang ingin disimpan di dalam akun.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -101,9 +101,9 @@ Menjaga agar account tetap hidup di Solana membutuhkan biaya penyimpanan yang di
   </CodeGroupItem>
 </CodeGroup>
 
-## Bagaimana cara membuat account dengan seeds
+## Bagaimana cara membuat akun dengan seeds
 
-Anda dapat menggunakan `createAccountWithSeed` untuk mengatur account anda dibandingkan dengan membuat sejumlah keypair yang berbeda.
+Anda dapat menggunakan `createAccountWithSeed` untuk mengatur akun anda dibandingkan dengan membuat sejumlah keypair yang berbeda.
 
 ### Generate
 
@@ -237,7 +237,7 @@ Berikut adalah contoh program untuk membuat sebuah PDA account yang dimiliki ole
 
 #### Program
 
-The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA using `invoke_signed` similar to as discussed above.
+Berikut ini adalah sebuah intruksi tunggal `system_instruction::create_account` yang membuat akun dengan data teralokasi sebesar `space`, `rent_lamports` sebesar jumlah  _lamports_ dari _derived PDA_. Ini di _sign_ dengan PDA menggunakan  `invoke_signed` seperti yang telah di diskusikan sebelumnya diatas.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -279,14 +279,12 @@ The below shows a single instruction `system_instruction::create_account` that c
 
 ## Bagaimana cara untuk sign sebuah PDA
 
-PDA hanya dapat di "sign" dalam lingkup program.
-Berikut adalah sebuah contoh program untuk "sign" denga sebuah PDA dan memanggil program dari client.
+PDA hanya dapat di "_sign_" dalam lingkup program.
+Berikut adalah sebuah contoh program untuk "sign" dengan sebuah PDA dan memanggil program dari client.
 
 ### Program
 
-The below shows a single instruction that transfers SOL from a PDA that
-was derived by the seed `escrow` to an account passed. `invoke_signed` is
-used to sign with the PDA.
+Instruksi tunggal berikut melakukan transfer SOL dari PDA yang di derive dari seed  `escrow` ke akun. `invoke_signed` digunakan untuk sign dengan PDA.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -326,9 +324,9 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get program accounts
+## Bagaimana Cara Mendapatkan Program Akun
 
-Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+Mendapatkan semua akun yang dimiliki oleh sebuah program. Refer ke [guides section](../guides/get-program-accounts.md) untuk informasi lebih lanjut seputar `getProgramAccounts` dan konfigurasinya.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -349,9 +347,9 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## How to close accounts
+## Bagaimana Cara Menutup Akun
 
-You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+Anda bisa menutup akun (termasuk menghapus semua data yang di simpan) dengan cara menghilangkan semua SOL. (refer ke [rent][2] untuk info lebih lanjut)
 
 #### Program
 
@@ -394,7 +392,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get account balance
+## Bagaimana Cara Mendapatkan Balance Akun
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -446,7 +444,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. For more information, see [Token References](token.md)
+Jika kita mau mendapatkan token balance, kita harus mengetahui alamat dari sebuah token akun. Untuk info lebih lanjut, lihat  [Token References](token.md)
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram
