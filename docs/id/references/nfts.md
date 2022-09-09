@@ -1,18 +1,18 @@
 ---
-title: NFTs
+title: NFT
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | NFTs
+      content: Buku Panduan Solana | NFT
   - - meta
     - name: og:title
-      content: Solana Cookbook | NFTs
+      content: Buku Panduan Solana | NFT
   - - meta
     - name: description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Belajar cara mendapatkan metadata dari NFT, mendapatkan pemilik NFT dan mint NFT di Solana. 
   - - meta
     - name: og:description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: Belajar cara mendapatkan metadata dari NFT, mendapatkan pemilik NFT dan mint NFT di Solana. 
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Non Fungible Tokens (NFTs)
+# Non Fungible Token (NFT)
 
 ## Cara membuat NFT
 

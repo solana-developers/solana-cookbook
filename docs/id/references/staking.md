@@ -3,16 +3,16 @@ title: Staking
 head:
   - - meta
     - name: title  
-      content: Solana Cookbook | Staking
+      content: Buku Panduan Solana | Staking
   - - meta
     - name: og:title  
-      content: Solana Cookbook | Staking
+      content: Buku Panduan Solana | Staking
   - - meta
     - name: description  
-      content: stake SOL and earn rewards for helping secure the network.
+      content: stake SOL dan raih reward dengan membantu mengamankan jaringan.
   - - meta
     - name: og:description  
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Buku Memasak Solana.
+      content: stake SOL dan raih reward dengan membantu mengamankan jaringan. Belajar tentang cara membuat Akun Stake, Delegate State dan Withdraw Stake di Buku Panduan Solana.
   - - meta
     - name: og:image  
       content: https://solanacookbook.com/cookbook-sharing-card.png

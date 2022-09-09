@@ -3,16 +3,16 @@ title: web3Auth (Torus Wallet)
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Wallet
+      content: Buku Panduan Solana | Wallet
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Wallet
+      content: Buku Panduan Solana | Wallet
   - - meta
     - name: description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana at The Buku Memasak Solana.
+      content: Pelajari tentang wallets, integrasi social logins, signing dan verifikasi pesan dan referensi lainnya untuk membangun diatas Solan dalam Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Learn about wallets, integrating social logins, signing and verifying messages and more references for Building on Solana at The Buku Memasak Solana.
+      content: Pelajari tentang wallets, integrasi social logins, signing dan verifikasi pesan dan referensi lainnya untuk membangun diatas Solan dalam Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,21 +39,21 @@ footer: MIT Licensed
 
 # Wallet
 
-## What is a wallet?
+## Apakah itu wallet?
 
-A crypto wallet is a digital wallet used to interact with the blockchain. It allows you to sign, verify, and send transactions. There are many crypto wallet solutions present on the market, ranging from simple-to-use web apps to more complex hardware security solutions.
+Dompet kripto (_wallet_) adalah dompet digital yang digunakan untuk berinteraksi dengan blockchain. Ini memungkinkan Anda untuk menandatangani, memverifikasi, dan mengirim transaksi. Ada banyak solusi wallet kripto yang ada di pasaran, mulai dari aplikasi web yang mudah digunakan hingga solusi keamanan perangkat keras yang lebih kompleks.
 
-## Social Logins on Solana
+## Social Login di Solana
 
-[**Web3Auth**](https://docs.web3auth.io/) allows users to sign in using their existing Web2 OAuth Providers(Facebook, Google, Twitter etc.) into Web3 dapps. It provides a user-friendly and [non-custodial](https://docs.web3auth.io/key-infrastructure/overview) approach to managing assets and identity. It removes technical barriers and reduces the learning curve for digital ownership for all users by providing a wrapper around private key management. 
+[**Web3Auth**](https://docs.web3auth.io/) mengizinkan pengguna untuk sign in menggunakan akun yang sudah ada dari Web2 OAuth Providers (Facebook, Google, Twitter, dan lainnya.) ke dalam aplikasi Web3. Ini menyediakan interface dan flow yang sangat memudahkan untuk user [overview](https://docs.web3auth.io/key-infrastructure/overview) dengan pendekatkan untuk mengelola asset dan identitas user. Ini menghilangkan hambatan teknis dan mengurangi kurva pembelajaran untuk kepemilikan digital untuk semua pengguna dengan menyediakan pembungkus di sekitar manajemen kunci pribadi.
 
-## Integration Guide
+## Panduan Integrasi
 
-This tutorial will guide you over a basic example to integrate social logins in your dapp.
+Tutorial ini akan memandu Anda tentang contoh dasar untuk mengintegrasikan social login di dapp Anda.
 
-### Installing Dependencies
+### Instal Dependensi
 
-To start using the wallet with a dapp, you can install `@toruslabs/solana-embed`. You can use popular package managers like yarn and npm to download them.
+Untuk mulai menggunakan wallet dengan dapp, Anda dapat menginstal `@toruslabs/solana-embed`.Anda dapat menggunakan pengelola paket populer seperti yarn dan npm untuk mengunduhnya.
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -73,9 +73,11 @@ npm install --save @toruslabs/solana-embed
   </CodeGroupItem>
 </CodeGroup>
 
-### Import the SDK and initialize
+### Import SDK dan initialize
 
-In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You can pass other configuration options while initializing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+Dalam cuplikan kode di bawah ini, kami membuat instance dari solana-embed dan kemudian menginisialisasinya dengan lingkungan pengujian yang menggunakan solana testnet. Anda dapat melewati opsi konfigurasi lain saat menginisialisasi antarmuka wallet. Anda dapat merujuk ke solana-embed. 
+
+Rerensi untuk solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) untuk membaca lebih lanjut.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -97,11 +99,11 @@ In the code snippet below, we are creating an instance of solana-embed and then 
 
 ### Trigger user login​
 
-Simply call `torus.login()` to trigger a login wherever it makes sense in your application lifecycle. Calling login method without any parameter will open a modal for user to select all supported logins.
+Cukup panggil `torus.login()` untuk trigger login di mana pun yang masuk akal dalam siklus flow aplikasi Anda. Memanggil metode login tanpa parameter apa pun akan membuka modal bagi pengguna untuk memilih semua login yang didukung.
 
 ![](./assets/Web3Auth/login-modal.png)
 
-After successful login, the method will return an array of public keys. The first element of the array is the current wallet public key
+Setelah berhasil login, metode ini akan mengembalikan array dari public key. Elemen pertama dari array adalah public key dari wallet saat ini. 
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -121,9 +123,9 @@ After successful login, the method will return an array of public keys. The firs
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using torus instance to fetch user account detail​
+### Menggunakan torus instance untuk mengambil detil akun user
 
-The torus instance provides an interface for interactions like signing transactions and messages in a logged-in state. It can also provide us with an interface to access user login information like the user's email, profile image etc. (depending on the login method)
+Instance torus menyediakan antarmuka untuk interaksi seperti menandatangani transaksi dan pesan dalam status masuk. Itu juga dapat memberi kami antarmuka untuk mengakses informasi login pengguna seperti email pengguna, gambar profil, dll. (tergantung pada metode login)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,11 +145,11 @@ The torus instance provides an interface for interactions like signing transacti
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Using Torus Solana API to sign a message.
+### Menggunakan Torus Solana API untuk sign sebuah pesan.
 
-In order to send a message for the user to sign, the web application must provide a UTF-8 encoded string as a Uint8Array.
+Untuk mengirim pesan untuk ditandatangani pengguna, aplikasi web harus menyediakan string yang disandikan UTF-8 sebagai Uint8Array.
 
-Every time a user wants to sign a message, the wallet will open a confirmation window.
+Setiap kali pengguna ingin menandatangani pesan, wallet akan membuka jendela konfirmasi.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,13 +169,13 @@ Every time a user wants to sign a message, the wallet will open a confirmation w
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Similarly, you can also use [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) and `signAllTransactions` methods on the torus instance for signing single, multiple transactions respectively.
+Mirip, kamu juga bisa menggunakan [signTransaction](https://docs.tor.us/solana-wallet/api-reference/solana/sign-transaction) dan `signAllTransactions` di torus instance untuk signing single atau multiple transaksi.
 
-### Using torus Solana API to send a transaction.​
+### Menggunakan torus Solana API untuk mengirim transaksi.​
 
-To send a transaction, one simply needs to call the `sendTransaction` method on the torus instance and pass in the `Transaction`.
+Untuk mengirim transaksi, seseorang hanya perlu memanggil metode `sendTransaction` pada instance torus dan meneruskan `Transaction`.
 
-The wallet opens a confirmation window. After approval, the SDK signs and sends the transaction to the chain.
+Wallet akan membuka jendela konfirmasi. Setelah disetujui, SDK menandatangani dan mengirimkan transaksi ke blockchain.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -193,9 +195,9 @@ The wallet opens a confirmation window. After approval, the SDK signs and sends 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Top-ups​
+### Topup
 
-Currently, the API supports topups from Moonpay.
+Untuk saat ini, API hanya mendukung topup dari Moonpay.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -217,7 +219,7 @@ Currently, the API supports topups from Moonpay.
 
 ### Logout
 
-To logout user, it simply requires you to call the `logout` function on torus wallet instance.
+Untuk logout user, bisa dilakukan dengan memanggil fungsi `logout` di torus wallet instance.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -237,7 +239,7 @@ To logout user, it simply requires you to call the `logout` function on torus wa
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Resources
+## Sumber
 
 * [solana-embed](https://github.com/torusresearch/solana-embed)
 * [Api Reference](https://docs.web3auth.io/solana-wallet/api-reference/class)

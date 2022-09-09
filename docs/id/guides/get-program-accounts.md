@@ -3,16 +3,16 @@ title: Mendapatkan Akun Program
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Mendapatkan Akun Program
+      content: Buku Panduan Solana | Mendapatkan Akun Program
   - - meta
     - name: og:title
-      content: Solana Cookbook | Mendapatkan Akun Program
+      content: Buku Panduan Solana | Mendapatkan Akun Program
   - - meta
     - name: description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: Pelajari cara query data di Solana menggunakan getProgramAccounts and accountsDB
   - - meta
     - name: og:description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: Pelajari cara query data di Solana menggunakan getProgramAccounts and accountsDB
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,9 +36,9 @@ head:
       content: index,follow
 ---
 
-# Mendapatkan Akun Program
+# Mendapatkan Akun Program (getProgramAccounts)
 
-Metode RPC mengembalikan semua akun yang dimiliki oleh suatu program. Saat ini pagination tidak didukung. Request ke `getProgramAccounts` harus menyertakan parameter `dataSlice` dan/atau `filters` untuk meningkatkan waktu respons dan hanya mengembalikan hasil yang diinginkan.
+adalah sebuah metode RPC untuk mendapatkan semua akun yang dimiliki oleh suatu program. Saat ini _pagination_ tidak didukung. Request ke `getProgramAccounts` harus menyertakan parameter `dataSlice` dan/atau `filters` untuk mempercepat waktu respon dan hanya mengembalikan hasil yang diinginkan.
 
 ## Fakta
 
@@ -46,7 +46,7 @@ Metode RPC mengembalikan semua akun yang dimiliki oleh suatu program. Saat ini p
 
 - `programId`: `string` - Pubkey dari program yang akan diambil, disediakan sebagai string yang di encode menggunakan base58
 - (opsional) `configOrCommitment`: `object` - Parameter konfigurasi yang berisi field opsional berikut:
-    - (opsional) `komitmen`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
+    - (opsional) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
     - (opsional) `encoding`: `string` - Encoding yang digunakan untuk data akun, baik: `base58`, `base64`, atau `jsonParsed`. Catatan, pengguna web3js sebaiknya menggunakan [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
     - (opsional) `dataSlice`: `object` - Membatasi jumlah data akun yang dikembalikan berdasarkan:
         - `offset`: `number` - Jumlah byte ke dalam data akun untuk mulai kembali
@@ -70,17 +70,17 @@ Secara default `getProgramAccounts` akan mengembalikan array dari objek JSON den
      - `data`: `string` | `object` - data yang terkait dengan akun, baik berupa data biner yang telah diencode atau format JSON tergantung pada parameter jenis encoding yang diberikan
      - `executable`: `boolean`, untuk mengindikasi jika akun tersebut berisi sebuah program
      - `rentEpoch`: `number`, Epoch di mana akun ini selanjutnya akan berutang sewa
-:::
+
 
 ## Memahami lebih dalam
 
-`getProgramAccounts` adalah metode RPC serbaguna yang mengembalikan semua akun yang dimiliki oleh suatu program. Kita dapat menggunakan `getProgramAccounts` untuk sejumlah query yang berguna, seperti menemukan:
+`getProgramAccounts` adalah metode RPC serbaguna yang mendapatkan semua akun yang dimiliki oleh suatu program. Kita dapat menggunakan `getProgramAccounts` untuk sejumlah query yang berguna, seperti menemukan:
 
 - Semua akun token untuk wallet tertentu
 - Semua akun token untuk mint tertentu (yaitu Semua pemegang [SRM](https://www.projectserum.com/))
 - Semua akun khusus untuk program tertentu (yaitu Semua pengguna [Mango](https://mango.markets/))
 
-Terlepas dari kegunaannya, `getProgramAccounts` sering disalahpahami karena batasannya saat ini. Banyak query yang didukung oleh `getProgramAccounts` memerlukan node RPC untuk melakukan scan dari kumpulan data yang besar. Proses scan ini membutuhkan memori dan sumber daya yang intensif. Akibatnya, pemanggilan yang terlalu sering atau terlalu besar cakupannya dapat mengakibatkan connection timeout. Selanjutnya, pada saat penulisan ini, endpoint dari `getProgramAccounts` tidak mendukung pagination. Jika hasil query terlalu besar, respons akan ditruncate.
+Terlepas dari kegunaannya, `getProgramAccounts` sering disalahpahami karena batasannya saat ini. Banyak query yang didukung oleh `getProgramAccounts` memerlukan node RPC untuk melakukan scan dari kumpulan data yang besar. Proses scan ini membutuhkan memori dan sumber daya yang intensif. Akibatnya, pemanggilan yang terlalu sering atau terlalu besar cakupannya dapat mengakibatkan connection timeout. Selanjutnya, pada saat penulisan ini, endpoint dari `getProgramAccounts` tidak mendukung pagination. Jika hasil query terlalu besar, respons akan dipecah (_truncate_).
 
 Untuk mengatasi kendala saat ini, `getProgramAccounts` menawarkan sejumlah parameter yang berguna: yaitu, `dataSlice` dan opsi dari `filters` yaitu `memcmp` dan `dataSize`. Dengan memberikan kombinasi parameter ini, kita dapat mengurangi cakupan query kita menjadi ukuran yang dapat dikelola dan diprediksi.
 

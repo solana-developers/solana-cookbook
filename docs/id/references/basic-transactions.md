@@ -1,18 +1,18 @@
 ---
-title: Sending Transactions
+title: Mengirim Transaksi
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Sending Transactions
+      content: Buku Panduan Solana | Mengirim Transaksi
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Sending Transactions
+      content: Buku Panduan Solana | Mengirim Transaksi
   - - meta
     - name: description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Buku Memasak Solana.
+      content: Belajar dasar-dasar transaksi seperti mengirim SOL, SPL-Tokens, menghitung biaya transaksi dan referensi lainnya di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Buku Memasak Solana.
+      content: Belajar dasar-dasar transaksi seperti mengirim SOL, SPL-Tokens, menghitung biaya transaksi dan referensi lainnya di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

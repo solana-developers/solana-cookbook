@@ -1,18 +1,18 @@
 ---
-title: Keypairs and Wallets
+title: Keypairs & Wallets
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Keypairs and Wallets
+      content: Buku Panduan Solana | Keypairs & Wallets
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Keypairs and Wallets
+      content: Buku Panduan Solana | Keypairs & Wallets
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Buku Memasak Solana.
+      content: Belajar tentang Keypairs and Wallets, Signing dan Verifikasi Messages dan referensi lainnya di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Buku Memasak Solana.
+      content: Belajar tentang Keypairs and Wallets, Signing dan Verifikasi Messages dan referensi lainnya di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Keypairs and Wallets
+# Keypairs & Wallets
 
 ## Bagaimana cara membuat sebuah Keypair baru
 
-Banyak action-action yang dapat anda ambil dari beragam Solana libaries memerlukan sebuah Keypair atau Wallet. Jika anda terhubung dengan sebuah wallet, anda tidak perlu khawatir. Namun, jika anda memerlukan sebuah keypair, and perlu mengeneratenya.
+Banyak action-action yang dapat anda ambil dari beragam Solana libaries memerlukan sebuah Keypair atau Wallet. Jika anda terhubung dengan sebuah wallet, anda tidak perlu khawatir. Namun, jika anda memerlukan sebuah keypair, and perlu meng-generatenya.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -501,7 +501,7 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
 ## Bagaimana cara membuat sebuah vanity address
 
-Vanity publickeys, atau custom addressess adalah keys yang dimulai dengan character spesifik. Sebagai contoh, jika seseorang ingin publickey dimulai dengan "elv1s", atau mungkin juga "cook". Ini dapat membantu orang lain untuk mengingat siapa yang mempunyai key itu, membuat key lebih mudah untuk diidentifikasi.
+Vanity publickeys, atau custom address adalah keys yang dimulai dengan character spesifik. Sebagai contoh, jika seseorang ingin publickey dimulai dengan "elv1s", atau mungkin juga "cook". Ini dapat membantu orang lain untuk mengingat siapa yang mempunyai key itu, membuat key lebih mudah untuk diidentifikasi.
 
 Catatan: Semakin banyak character di dalam vanity address anda, semakin lama prosesnya.
 

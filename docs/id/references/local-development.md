@@ -1,18 +1,18 @@
 ---
-title: Local Development
+title: Development Lokal
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Local Development
+      content: Buku Panduan Solana | Development Lokal
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Local Development
+      content: Buku Panduan Solana | Development Lokal
   - - meta
     - name: description
-      content: Setup Local Validator for local developer environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana at The Buku Memasak Solana.
+      content: Menyiapkan Validator Lokal untuk environment pengembangan lokal dan Airdrop SOL. Pelajari tentang development lokal dan referensi lainnya untuk Membangun Solana di Buku Panduan Solana.
   - - meta
     - name: og:description
-      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana at The Buku Memasak Solana.
+      content: Menyiapkan Validator Lokal untuk environment pengembangan lokal dan Airdrop SOL. Pelajari tentang development lokal dan referensi lainnya untuk Membangun Solana di Buku Panduan Solana.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Pembangunan Lokal
+# Development Lokal
 
 ## Memulai Validator Lokal
 
@@ -59,9 +59,9 @@ Keuntungan menggunakan validator uji lokal meliputi:
 - Panjang zaman yang dapat dikonfigurasi (`--slots-per-epoch ...`)
 - Lompat ke slot arbitrer  (`--warp-slot ...`)
 
-## Connecting to Environments
+## Menghubungkan Ke Environment
 
-Saat anda mengerjakan pengembangan Solana, anda harus terhubung ke titik akhir API RPC tertentu. Solana memiliki 3 pengembangan publik lingkungan:
+Saat anda mengerjakan pengembangan Solana, anda harus terhubung ke titik akhir API RPC tertentu. Solana memiliki 3 alamat environment:
 - mainnet-beta https://api.mainnet-beta.solana.com
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
@@ -197,9 +197,9 @@ Terakhir, anda juga dapat terhubung ke cluster pribadi, baik satu lokal atau ber
 
 </SolanaCodeGroup>
 
-## Berlangganan Acara
+## Subskripsi Event
 
-Soket web menyediakan antarmuka pub/sub dimana anda bisa mendengarkan acara tertentu. Alih-alih melakukan ping ke titik akhir HTTP biasa pada suatu interval untuk mendapatkan pembaruan yang sering, Anda dapat menerima pembaruan tersebut hanya ketika itu terjadi.
+Soket web menyediakan antarmuka pub/sub dimana anda bisa mendengarkan _event_ tertentu. Alih-alih melakukan ping ke titik akhir HTTP biasa pada suatu interval untuk mendapatkan pembaruan yang sering, Anda dapat menerima pembaruan tersebut hanya ketika itu terjadi.
 
 Web3 Solana [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) di bawah tenda menghasilkan titik akhir websocket dan mendaftarkan klien websocket saat anda membuat instansi `Connection` baru. (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 

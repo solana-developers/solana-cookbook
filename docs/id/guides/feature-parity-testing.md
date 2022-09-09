@@ -3,16 +3,16 @@ title: Pengujian Paritas Fitur
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Pengujian Paritas Fitur
+      content: Buku Panduan Solana | Pengujian Paritas Fitur
   - - meta
     - name: og:title
-      content: Solana Cookbook | Pengujian Paritas Fitur
+      content: Buku Panduan Solana | Pengujian Paritas Fitur
   - - meta
     - name: description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: Fitur bervariasi berdasarkan cluster Solana. Pengujian fitur untuk memastikan hasil yang dapat diprediksi.
   - - meta
     - name: og:description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: Fitur bervariasi berdasarkan cluster Solana. Pengujian fitur untuk memastikan hasil yang dapat diprediksi.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png

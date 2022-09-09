@@ -1,18 +1,18 @@
 ---
-title: Getting Started
+title: Memulai
 head:
   - - meta
     - name: title
-      content: Buku Memasak Solana | Composability and Integrations
+      content: Buku Panduan Solana | Composability and Integrasi
   - - meta
     - name: og:title
-      content: Buku Memasak Solana | Composability and Integrations
+      content: Buku Panduan Solana | Composability and Integrasi
   - - meta
     - name: description
-      content: Composability is innovation. Building on top of protocols on Solana unlocks new capabilities and possibilities.
+      content: Composability adalah sebuah inovasi. Dibangun diatas protokol terbaik di Solana yang menambahmkan banyak kemampuan dan kemungkinan baru untuk pengembangan.
   - - meta
     - name: og:description
-      content: Composability is innovation. Building on top of protocols on Solana unlocks new capabilities and possibilities.
+      content: Composability adalah sebuah inovasi. Dibangun diatas protokol terbaik di Solana yang menambahmkan banyak kemampuan dan kemungkinan baru untuk pengembangan.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,23 +36,22 @@ head:
       content: index,follow
 ---
 
-# Getting Started with Integrations
+# Memulai dengan Integrasi
 
-The Buku Memasak Solana integrations provides a set of examples and references for anyone
-to build on top of other protocols on Solana. 
+Buku Panduan Solana bagian Integrasi menyediakan contoh dan referensi untuk siapapun membangun aplikasi di atas protokol lain yang berjalan di Solana. 
 
-The power of Solana comes from the ability to integrate with other protocols,
-building on top of existing infrastructure to make something better.
+Kekuatan Solana berasal dari kemampuan untuk berintegrasi dengan protokol lain,
+membangun di atas infrastruktur yang ada untuk membuat sesuatu yang lebih baik.
 
-## Composability is Key
+## Composability Adalah Kunci
 
-Making your program easy to use and extend will grow both your program and the
-entire Solana ecosystem. Don't reinvent the wheel, build on top of existing protocols
-and bootstrap your userbase.
+Membuat program Anda mudah digunakan dan diperluas akan menumbuhkan program Anda dan
+seluruh ekosistem Solana. Jangan mengulang kembali apa yang sudah ada dari awal, bangun di atas protokol yang ada
+dan bootstrap basis pengguna Anda.
 
-Adapt and build on top of other programs or libraries and unlock new capabilities for Solana.
+Beradaptasi dan bangun di atas program atau librari lain dan buka kemampuan baru untuk Solana.
 
-## Contributing
+## Kontribusi
 
-If you are interested in contributing to integrations, please checkout the [contribution
+Jika Anda tertarik untuk berkontribusi pada integrasi, silakan periksa [contribution
 guidelines](https://github.com/solana-developers/solana-cookbook/blob/master/CONTRIBUTING.md).
