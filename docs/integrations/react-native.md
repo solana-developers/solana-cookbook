@@ -53,15 +53,9 @@ If you already have an existing app, skip to [installing the dependencies](#inst
 We start a new React Native application that uses TypeScript, then `cd` into the project directory, where we will execute the rest of the commands.
 
 ```shell
-npx react-native@"0.70.0-rc.4" init SolanaReactNative --version 0.70.0-rc.4
+npx react-native@0.70.0 init SolanaReactNative --template react-native-template-typescript
 cd SolanaReactNative
 ```
-
-::: warning
-We _highly_ recommend using TypeScript in your React Native projects. Usually we would recommend calling `npx react-native init` with the `--template react-native-template-typescript` command, but as of August 2022 the TypeScript template has not been updated to React Native 0.70.
-
-In the meantime, follow the [&ldquo;Adding TypeScript to an Existing Project&rdquo; docs](https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project) to add TypeScript to the new project you just created above.
-:::
 
 ### Install dependencies
 
@@ -70,7 +64,6 @@ Next, we install the dependencies. The Solana JavaScript SDK, a package to patch
 ```shell
 yarn add \
   @solana/web3.js \
-  metro-config \
   react-native-get-random-values \
   react-native-url-polyfill
 ```
@@ -98,36 +91,6 @@ To load the polyfills, we open the file `index.js` in the root of the project an
 ```javascript
 import 'react-native-get-random-values';
 import 'react-native-url-polyfill/auto';
-```
-
-### Update `metro.config.js`
-
-In this step, we will configure the `metro` configuration, so it will load files with the `cjs` extension.
-
-Open the file `metro.config.js` in the root of your project and replace the content with the snippet below:
-
-```javascript
-const {getDefaultConfig} = require('metro-config');
-
-module.exports = async () => {
-  const {
-    resolver: {sourceExts},
-  } = await getDefaultConfig();
-
-  return {
-    transformer: {
-      getTransformOptions: async () => ({
-        transform: {
-          experimentalImportSupport: false,
-          inlineRequires: true,
-        },
-      }),
-    },
-    resolver: {
-      sourceExts: [...sourceExts, 'cjs', 'svg'],
-    },
-  };
-};
 ```
 
 ### Update `App.tsx`
@@ -202,18 +165,12 @@ You'll know you have this problem if the Metro bundler produces [an error](https
 
 To solve this, move your React Native project to the root of your user directory.
 
-### Error: While trying to resolve module superstruct from file
-
-> error: Error: While trying to resolve module superstruct from file .../SolanaReactNative/node_modules/@solana/web3.js/lib/index.browser.cjs.js, the package .../SolanaReactNative/node_modules/superstruct/package.json was successfully found. However, this package itself specifies a main module field that could not be resolved (.../SolanaReactNative/node_modules/superstruct/lib/index.cjs.
-
-This is an issue because `metro`, the React Native bundler, does not support the `cjs` extension by default. There is an [open issue here](https://github.com/facebook/metro/issues/535).
-
-You can fix this by updating `metro.config.js` and add `cjs` to the `resolver.sourceExts` array, as shown above.
-
 ### Error: URL.protocol is not implemented
 
-    ERROR Error: URL.protocol is not implemented 
-    ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This can also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native. 
+```shell
+ERROR Error: URL.protocol is not implemented
+ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This can also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native.
+```
 
 This is an issue that can be fixed by using a polyfill for the `URL` object in React Native.
 
@@ -221,8 +178,9 @@ Install the package `react-native-url-polyfill` and import it in the main file o
 
 ### Error: crypto.getRandomValues() not supported
 
-    Error: crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported
-
+```shell
+Error: crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported
+```
 
 This is an issue that can be fixed by using a polyfill for the `crypto` object in React Native.
 
