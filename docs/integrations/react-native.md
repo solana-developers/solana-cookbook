@@ -64,7 +64,6 @@ Next, we install the dependencies. The Solana JavaScript SDK, a package to patch
 ```shell
 yarn add \
   @solana/web3.js \
-  metro-config \
   react-native-get-random-values \
   react-native-url-polyfill
 ```
