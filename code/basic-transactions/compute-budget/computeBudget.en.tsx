@@ -22,12 +22,18 @@ import {
 
   await connection.confirmTransaction(airdropSignature);
 
-  const additionalComputeBudgetInstruction = ComputeBudgetProgram.requestUnits({
-    units: 400000,
-    additionalFee: 0,
+  const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({ 
+    units: 1000000 
   });
+
+  const addPriorityFee = ComputeBudgetProgram.setComputeUnitPrice({ 
+    microLamports: 1 
+  });
+
+  // Total fee will be 5,001 Lamports for 1M CU
   const transaction = new Transaction()
-    .add(additionalComputeBudgetInstruction)
+    .add(modifyComputeUnits)
+    .add(addPriorityFee)
     .add(
       SystemProgram.transfer({
         fromPubkey: payer.publicKey,
