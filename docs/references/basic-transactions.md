@@ -267,16 +267,31 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget for a transaction
+## How to change compute budget, fee, &amp; priority for a transaction
+Transaction (TX) priority is transaction fee divided by compute units (CU), e.g. 
+fee/CU. By default the compute budget is 1.4M CU and the Base Fee is 5,000 
+Lamports. A microLamport is 0.000001 Lamports.
 
-Compute budget for a single transaction can be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set the product 
-of 200k compute units * number of instructions, with a max of 1.4M compute units. 
-The less compute you use, the less the transaction costs.
+The total compute budget or fee for a single TX can be changed by adding 
+instructions from the ComputeBudgetProgram. 
 
-**Note**: To change the compute budget for a transaction, you must make the 
-one of the first three instructions of the transaction the instruction that 
-sets the budget.
+Use `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` to set
+the new compute budget. The value provided will replace the default value. 
+Transactions should request the minimum amount of CU required for 
+execution to maximize throughput, minimize fees, or increase priority.
+
+Pro Tip: You can increase the priority (fee/CU) of small TXs by reducing the CU 
+budget without adding an extra fee.
+
+`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 
+will increase the transaction fee above the base fee (5,000 Lamports). The value
+provided in microLamports will be multiplied by the CU budget to determine the 
+Prioritization Fee in Lamports. For example, if your CU budget is 1M CU, and you 
+add 1 microLamport/CU, the Prioritization Fee will be 1 Lamport (1M * 0.000001). 
+The total fee will then be 5001 Lamports.
+
+**Note**: You must include the ComputeBudgetProgram instructions in the first 
+three instructions of the transaction.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -310,7 +325,7 @@ sets the budget.
 
 </SolanaCodeGroup>
 
-Program Logs Example:
+Program Logs Example ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">
