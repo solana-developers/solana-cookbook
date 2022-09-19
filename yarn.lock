@@ -1334,15 +1334,10 @@
 "camelcase@^4.0.0", "camelcase@^4.1.0":
   "version" "4.1.0"
 
-"caniuse-lite@^1.0.30001286":
-  "integrity" "sha512-LiMlrs1nSKZ8qkNhpUf5KD0Al1KCBE3zaT7OLOwEkagXMEDij98SiOovn9wxVGQpklk9vVC/pUSqgYmkmKOS8g=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001294.tgz"
-  "version" "1.0.30001294"
-
-"caniuse-lite@^1.0.30001297":
-  "integrity" "sha512-xIZLh8gBm4dqNX0gkzrBeyI86J2eCjWzYAs40q88smG844YIrN4tVQl/RhquHvKEKImWWFIVh1Lxe5n1G/N+GQ=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001317.tgz"
-  "version" "1.0.30001317"
+"caniuse-lite@^1.0.30001286", "caniuse-lite@^1.0.30001297":
+  "integrity" "sha512-bWTlaXUy/rq0BBtYShc/jArYfBPjEV95euvZ8JVtO43oQExEN/WquoqpufFjNu4kSpi5cy5kMbNvzztWDfv1Jg=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001406.tgz"
+  "version" "1.0.30001406"
 
 "capture-stack-trace@^1.0.0":
   "version" "1.0.1"
