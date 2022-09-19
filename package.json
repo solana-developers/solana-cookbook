@@ -26,5 +26,8 @@
   },
   "lint-staged": {
     "*.{js,css,ts}": "prettier --write"
+  },
+  "dependencies": {
+    "npx": "^10.2.2"
   }
 }
