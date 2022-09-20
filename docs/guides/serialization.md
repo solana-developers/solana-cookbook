@@ -179,7 +179,7 @@ To complete the underlying serialization and deserialization:
 checks that the length of the slice you are deserializing agrees with the amount of
 data it reads prior to actually recombobulation of the receiving object. The approach
 demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STROAGE` pointer.
+`BTREE_STORAGE` pointer.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
