@@ -450,7 +450,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Core Concepts",
               children: [
                 "/kr/core-concepts/accounts.md",
-                "/core-concepts/programs.md",
+                "/kr/core-concepts/programs.md",
                 "/core-concepts/transactions.md",
                 "/core-concepts/pdas.md",
               ],
