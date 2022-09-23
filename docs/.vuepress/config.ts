@@ -452,7 +452,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/core-concepts/accounts.md",
                 "/kr/core-concepts/programs.md",
                 "/kr/core-concepts/transactions.md",
-                "/core-concepts/pdas.md",
+                "/kr/core-concepts/pdas.md",
               ],
             },
             {
