@@ -451,7 +451,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 "/kr/core-concepts/accounts.md",
                 "/kr/core-concepts/programs.md",
-                "/core-concepts/transactions.md",
+                "/kr/core-concepts/transactions.md",
                 "/core-concepts/pdas.md",
               ],
             },
