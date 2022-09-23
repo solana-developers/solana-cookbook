@@ -458,7 +458,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "Guides",
               children: [
-                "/guides/get-program-accounts.md",
+                "/kr/guides/get-program-accounts.md",
                 "/guides/serialization.md",
                 "/guides/data-migration.md",
                 "/guides/account-maps.md",
