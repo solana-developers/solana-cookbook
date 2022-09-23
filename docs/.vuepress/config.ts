@@ -81,6 +81,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/references/nfts.md",
                 "/references/offline-transactions.md",
                 "/references/name-service.md",
+                "/references/address-lookup-table.md",
               ],
             },
           ],
