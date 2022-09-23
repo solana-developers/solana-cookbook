@@ -18,6 +18,6 @@ import { Connection, clusterApiUrl, PublicKey } from "@solana/web3.js";
     new Connection(clusterApiUrl("mainnet-beta")),
     nameAccountKey
   );
-  console.log(owner.owner.toBase58());
+  console.log(owner.registry.owner.toBase58());
   // JUskoxS2PTiaBpxfGaAPgf3cUNhdeYFGMKdL6mZKKfR
 })();
