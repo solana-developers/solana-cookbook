@@ -459,7 +459,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Guides",
               children: [
                 "/kr/guides/get-program-accounts.md",
-                "/guides/serialization.md",
+                "/kr/guides/serialization.md",
                 "/guides/data-migration.md",
                 "/guides/account-maps.md",
                 "/guides/retrying-transactions.md",
