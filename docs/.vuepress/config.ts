@@ -461,7 +461,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/guides/get-program-accounts.md",
                 "/kr/guides/serialization.md",
                 "/kr/guides/data-migration.md",
-                "/guides/account-maps.md",
+                "/kr/guides/account-maps.md",
                 "/guides/retrying-transactions.md",
                 "/guides/debugging-solana-programs.md",
                 "/guides/feature-parity-testing.md",
