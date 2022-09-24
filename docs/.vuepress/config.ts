@@ -460,7 +460,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 "/kr/guides/get-program-accounts.md",
                 "/kr/guides/serialization.md",
-                "/guides/data-migration.md",
+                "/kr/guides/data-migration.md",
                 "/guides/account-maps.md",
                 "/guides/retrying-transactions.md",
                 "/guides/debugging-solana-programs.md",
