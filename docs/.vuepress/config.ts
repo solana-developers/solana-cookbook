@@ -473,7 +473,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/references/local-development.md",
                 "/kr/references/keypairs-and-wallets.md",
                 "/kr/references/basic-transactions.md",
-                "/references/accounts.md",
+                "/kr/references/accounts.md",
                 "/references/programs.md",
                 "/references/token.md",
                 "/references/staking.md",
