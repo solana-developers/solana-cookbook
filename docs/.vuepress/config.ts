@@ -472,7 +472,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: [
                 "/kr/references/local-development.md",
                 "/kr/references/keypairs-and-wallets.md",
-                "/references/basic-transactions.md",
+                "/kr/references/basic-transactions.md",
                 "/references/accounts.md",
                 "/references/programs.md",
                 "/references/token.md",
