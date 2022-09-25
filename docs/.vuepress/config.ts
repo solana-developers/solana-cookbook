@@ -470,7 +470,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             {
               text: "References",
               children: [
-                "/references/local-development.md",
+                "/kr/references/local-development.md",
                 "/references/keypairs-and-wallets.md",
                 "/references/basic-transactions.md",
                 "/references/accounts.md",
