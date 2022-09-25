@@ -463,7 +463,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/guides/data-migration.md",
                 "/kr/guides/account-maps.md",
                 "/kr/guides/retrying-transactions.md",
-                "/guides/debugging-solana-programs.md",
+                "/kr/guides/debugging-solana-programs.md",
                 "/guides/feature-parity-testing.md",
               ],
             },
