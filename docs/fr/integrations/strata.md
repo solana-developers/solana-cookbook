@@ -3,10 +3,10 @@ title: Strata
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Développer le Protocole de Strata
+      content: Solana Cookbook | Développer sur le Protocole de Strata
   - - meta
     - name: og:title
-      content: Solana Cookbook | Développer le Protocole de Strata
+      content: Solana Cookbook | Développer sur le Protocole de Strata
   - - meta
     - name: description
       content: Strata est un protocole permettant de lancer des jetons sur Solana. Apprenez à utiliser et à construire par-dessus Strata.
