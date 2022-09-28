@@ -175,8 +175,8 @@ Exécutez le conteneur en utilisant `docker-compose up`
 <table>
   <thead>
     <tr>
-      <th>Env Variable</th>
-      <th>Definition</th>
+      <th>Variable Env</th>
+      <th>Définition</th>
     </tr>
   </thead>
   <tbody>
@@ -184,57 +184,54 @@ Exécutez le conteneur en utilisant `docker-compose up`
       <td>ORACLE_KEY</td>
       <td>
         <b>
-          <u>Required</u>
+          <u>Obligatoire</u>
         </b>
         <br />
-        <b>Type</b> - Public Key
+        <b>Type</b> - Clé Publique
         <br />
-        <b>Description</b> - Public key of the oracle account that has been
-        granted permissions to use an oracle queue <br />
+        <b>Description</b> - Clé publique du compte de l'oracle qui a reçu les permissions d'utiliser une file d'attente oracle <br />
       </td>
     </tr>
     <tr>
       <td>HEARTBEAT_INTERVAL</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Facultatif</u>
         </b>
         <br />
-        <b>Type</b> - Number (seconds)
+        <b>Type</b> - Nombre (secondes)
         <br />
-        <b>Default</b> - 30
+        <b>Par Défaut</b> - 30
         <br />
-        <b>Description</b> - Seconds between oracle heartbeats. Queues have
-        different oracle heartbeat requirements. Recommended value is 15
+        <b>Description</b> - Secondes entre les battements de cœur de l'oracle. Les files d'attente ont différentes exigences en matière de battement de cœur de l'oracle. La valeur recommandée est de 15
       </td>
     </tr>
     <tr>
       <td>GCP_CONFIG_BUCKET</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Facultatif</u>
         </b>
         <br />
         <b>Type</b> - GCP Resource Path
         <br />
-        <b>Default</b> - Looks for configs.json in the current working
-        directory. If not found, no config is loaded.
+        <b>Par Défaut</b> - Recherche le fichier configs.json dans le répertoire de travail actuel. Si elle n'est pas trouvée, aucune configuration n'est chargée.
         <br />
-        <b>Description</b> - Contains API keys for private API endpoints
+        <b>Description</b> - Contient les clés API pour les points de terminaison API privés
       </td>
     </tr>
     <tr>
       <td>UNWRAP_STAKE_THRESHOLD</td>
       <td>
         <b>
-          <u>Optional</u>
+          <u>Facultatif</u>
         </b>
         <br />
-        <b>Type</b> - Number (SOL amount, Ex. 1.55)
+        <b>Type</b> - Nombre (montant de SOL amount, Ex. 1.55)
         <br />
-        <b>Default</b> - 0, disabled.
+        <b>Par Défaut</b> - 0, désactivé.
         <br />
-        <b>Description</b> - The Solana balance amount to trigger an unwrap stake action. When an oracle's Solana balance falls below the set threshold, the node will automatically unwrap funds from the oracle's staking wallet, leaving at least 0.1 wSOL or 10% more than the queue's minimum stake requirement. 
+        <b>Description</b> - Le montant de la balance Solana pour déclencher une action de déblocage de la mise. Lorsque le solde de Solana d'un oracle tombe sous le seuil fixé, le nœud débloque automatiquement les fonds du portefeuille de staking de l'oracle, laissant au moins 0,1 wSOL ou 10 % de plus que l'exigence de mise minimale de la file. 
       </td>
     </tr>
   </tbody>
