@@ -474,7 +474,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/references/keypairs-and-wallets.md",
                 "/kr/references/basic-transactions.md",
                 "/kr/references/accounts.md",
-                "/references/programs.md",
+                "/kr/references/programs.md",
                 "/references/token.md",
                 "/references/staking.md",
                 "/references/nfts.md",
