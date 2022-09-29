@@ -444,7 +444,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           "/": [
             {
               text: "Getting Started",
-              children: ["/kr/", "/getting-started/installation.md"],
+              children: ["/kr/", "/kr/getting-started/installation.md"],
             },
             {
               text: "Core Concepts",
