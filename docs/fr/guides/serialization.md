@@ -49,9 +49,9 @@ programme de Solana :
 3. Sérialisation des données du compte dans le programme
 4. Désérialisation des données du compte côté client
 
-Il est important que les actions ci-dessus soient toutes prises en charge par la même approche de sérialisation. Les snippets inclus montrent la sérialisation en utilisant [Borsh](#resources).
+Il est important que les actions ci-dessus soient toutes prises en charge par la même approche de sérialisation. Les snippets inclus montrent la sérialisation en utilisant [Borsh](#ressources).
 
-Les exemples figurant dans la suite de ce document sont des extraits du [modèle de programme CLI de Solana](#resources)
+Les exemples figurant dans la suite de ce document sont des extraits du [modèle de programme CLI de Solana](#ressources)
 
 ## Configuration pour la sérialisation avec Borsh
 
@@ -234,7 +234,7 @@ Celle-ci a été décrite [Ici](#account-data-serialization)
 
 ## Mappages courants de Solana TS/JS
 
-La [Spécification de Borsh](#resources) contient la plupart des mappages pour les types de données primitifs et composés.
+La [Spécification de Borsh](#ressources) contient la plupart des mappages pour les types de données primitifs et composés.
 
 La clé pour TS/JS et Python est la création d'un schéma Borsh avec une définition appropriée afin que les fonctions de sérialisation et de désérialisation puissent générer ou parcourir les entrées respectives.
 

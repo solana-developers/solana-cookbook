@@ -307,7 +307,7 @@ Les transactions doivent demander la quantité minimale d'UC nécessaire à l'ex
 
 </SolanaCodeGroup>
 
-Exemple de journal de programme ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
+Exemple de journal de programme ([Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">

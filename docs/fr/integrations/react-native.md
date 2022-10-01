@@ -46,7 +46,7 @@ La façon la plus rapide de commencer avec React Native et Solana est d'utiliser
 
 Dans ce tutoriel, vous apprendrez à créer une nouvelle application React Native et à installer et configurer le SDK `@solana/web3.js`, ainsi que ses dépendances. 
 
-Si vous avez déjà une application existante, passez directement à l'[installation des dépendances](#install-dependencies).
+Si vous avez déjà une application existante, passez directement à l'[installation des dépendances](#installer-les-dépendances).
 
 ### Créer une nouvelle application
 

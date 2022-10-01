@@ -50,7 +50,7 @@ Il existe un certain nombre d'options et d'outils de support pour tester et déb
 - Pour tout ce qui précède, il est recommandé d'utiliser la macro `msg!` dans votre programme au début, puis de la supprimer au fur et à mesure que vous testez et vous assurez d'un comportement sûr. Rappelez-vous que `msg!` consomme des Unités de Calcul qui peuvent éventuellement faire échouer votre programme en atteignant les plafonds du budget des Unités de Calcul.
 :::
 
-Les étapes des sections suivantes utilisent [solana-program-bpf-template](#resources). Clonez-le sur votre machine :
+Les étapes des sections suivantes utilisent [solana-program-bpf-template](#ressources). Clonez-le sur votre machine :
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
@@ -117,7 +117,7 @@ Le débogage ici vous permettra de déboguer les fonctions et méthodes utilisé
 ## Test avec un Nœud de Validation Local à partir des Applications Clients
 Enfin, vous pouvez démarrer un nœud de validation local et charger votre programme et tous les comptes en utilisant le `solana-test-validator` depuis la ligne de commande.
 
-Dans cette approche, vous aurez besoin d'une application client, soit en utilisant Rust [RcpClient](#resources) ou en utilisant les [clients JavaScript ou Typescript](#resources)
+Dans cette approche, vous aurez besoin d'une application client, soit en utilisant Rust [RcpClient](#ressources) ou en utilisant les [clients JavaScript ou Typescript](#ressources)
 
 Voir `solana-test-validator --help` pour plus de détails et d'options. Pour le programme d'exemple, voici la configuration :
 1. Ouvrez un terminal dans le dossier repo

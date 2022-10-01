@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 Tester le code de votre programme localement peut être beaucoup plus fiable que de le tester sur le devnet, et peut vous aider à faire des tests avant de l'essayer sur le devnet.
 
-Vous pouvez configurer votre validateur de test local (local-test-validator) en installant la [suite d'outils de solana (solana tool suite)](/getting-started/installation.md#install-cli)
+Vous pouvez configurer votre validateur de test local (local-test-validator) en installant la [suite d'outils de solana (solana tool suite)](/getting-started/installation.md#installer-cli)
 et en exécutant
 
 ```console

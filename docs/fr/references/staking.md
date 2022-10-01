@@ -58,7 +58,7 @@ Il est possible de staker des SOL et d'obtenir des récompenses en aidant à sé
 
 ## Créer un Compte de Stake
 
-Toutes les instructions de staking sont traitées par le [Programme de Stake (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Pour commencer, nous créons un [Compte de Stake (Stake Account)](https://docs.solana.com/staking/stake-accounts) qui est créé et géré différemment d'un [compte système (system account)](accounts.md#create-a-system-account) standard. En particulier, nous devons définir la `Stake Authority` (Autorité de Stake) et la `Withdrawal Authority` (Autorité de Retrait) du compte.
+Toutes les instructions de staking sont traitées par le [Programme de Stake (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Pour commencer, nous créons un [Compte de Stake (Stake Account)](https://docs.solana.com/staking/stake-accounts) qui est créé et géré différemment d'un [compte système (system account)](accounts.md#comment-créer-un-compte-de-système) standard. En particulier, nous devons définir la `Stake Authority` (Autorité de Stake) et la `Withdrawal Authority` (Autorité de Retrait) du compte.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

@@ -146,7 +146,7 @@ Vous pouvez exécuter un oracle localement et l'affecter à votre propre file d'
 #### Conditions Requises
  - Docker-compose
 
-Créez un fichier docker-compose.yml avec les variables d'environnement dans [Oracle Config](/integrations/switchboard.html#oracle-config)
+Créez un fichier docker-compose.yml avec les variables d'environnement dans [Oracle Config](/integrations/switchboard.html#configuration-de-l-oracle)
 
 
 

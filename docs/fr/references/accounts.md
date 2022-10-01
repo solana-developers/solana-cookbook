@@ -234,7 +234,7 @@ Vous obtiendrez toujours le même résultat si vous passez le même identifiant 
   </CodeGroupItem>
 </CodeGroup>
 
-### Create a PDA
+### Créer un PDA
 
 Vous trouverez ci-dessous un exemple de programme pour créer un compte PDA appartenant au programme et un exemple pour appeler le programme avec le client.
 

@@ -83,7 +83,7 @@ Malgré son utilité, `getProgramAccounts` est souvent mal compris en raison de 
 
 Pour contourner ces contraintes actuelles, `getProgramAccounts` offre un certain nombre de paramètres utiles : à savoir, `dataSlice` et les options de `filters` `memcmp` et `dataSize`. En fournissant des combinaisons de ces paramètres, nous pouvons réduire la portée de nos requêtes à des tailles gérables et prévisibles.
 
-Un exemple courant de `getProgramAccounts` consiste à interagir avec le [Programme de Jetons SPL](https://spl.solana.com/token). Demander tous les comptes détenus par le programme de Jetons avec un [appel de base](../references/accounts.md#get-program-accounts) impliquerait une énorme quantité de données. Cependant, en fournissant des paramètres, nous pouvons efficacement demander uniquement les données que nous avons l'intention d'utiliser.
+Un exemple courant de `getProgramAccounts` consiste à interagir avec le [Programme de Jetons SPL](https://spl.solana.com/token). Demander tous les comptes détenus par le programme de Jetons avec un [appel de base](../references/accounts.md#comment-obtenir-les-comptes-du-programme) impliquerait une énorme quantité de données. Cependant, en fournissant des paramètres, nous pouvons efficacement demander uniquement les données que nous avons l'intention d'utiliser.
 
 ### `filters`
 Le paramètre le plus commun à utiliser avec `getProgramAccounts` est le tableau `filters`. Ce tableau accepte deux types de filtres, `dataSize` et `memcmp`. Avant d'utiliser l'un de ces filtres, nous devons nous familiariser avec la manière dont les données que nous demandons sont organisées et sérialisées.

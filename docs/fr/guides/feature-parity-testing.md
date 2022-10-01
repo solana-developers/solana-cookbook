@@ -79,7 +79,7 @@ solana feature status -um   // Displays for mainnet-beta
 solana feature status -ul   // Displays for local, requires running solana-test-validator
 ```
 
-Alternativement, vous pouvez utiliser un outil comme [scfsd](#resources) pour observer le statut de toutes les fonctionnalités des différents clusters qui afficherait l'écran partiel montré ici et qui ne nécessite pas l'exécution de `solana-test-validator` :
+Alternativement, vous pouvez utiliser un outil comme [scfsd](#ressources) pour observer le statut de toutes les fonctionnalités des différents clusters qui afficherait l'écran partiel montré ici et qui ne nécessite pas l'exécution de `solana-test-validator` :
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
@@ -122,7 +122,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 Comme notre fonctionnalité "plafond de calcul pour l'ensemble des transactions" est automatiquement activée par défaut, nous observons que chaque instruction prélève des UC sur le budget de transaction de départ de 200_000 UC.
 
 ### Fonctionnalités sélectives désactivées
-1. Pour cette exécution, nous voulons faire en sorte que le comportement du budget de CU soit en conformité avec ce qui est exécuté sur le devnet. En utilisant le(s) outil(s) décrit(s) dans [Statut de la Fonctionnalité](#feature-status) nous isolons la clé publique `transaction wide compute cap` et utilisons la fonction `--deactivate-feature` au démarrage du validateur de test
+1. Pour cette exécution, nous voulons faire en sorte que le comportement du budget de CU soit en conformité avec ce qui est exécuté sur le devnet. En utilisant le(s) outil(s) décrit(s) dans [Statut de la Fonctionnalité](#statut-de-la-fonctionnalité) nous isolons la clé publique `transaction wide compute cap` et utilisons la fonction `--deactivate-feature` au démarrage du validateur de test
 
 ```console
 solana-test-validator -l ./ledger --deactivate-feature 5ekBxc8itEnPv4NzGJtr8BVVQLNMQuLMNQQj7pHoLNZ9 --bpf-program target/deploy/PROGNAME.so --reset`
@@ -145,7 +145,7 @@ Vous pouvez être en conformité complète avec un cluster donné en identifiant
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
 
-Alternativement, [scfsd](#resources) fournit un switch de commande pour retourner l'ensemble complet des fonctionnalités désactivées pour un cluster afin d'alimenter le démarrage de `solana-test-validator` :
+Alternativement, [scfsd](#ressources) fournit un switch de commande pour retourner l'ensemble complet des fonctionnalités désactivées pour un cluster afin d'alimenter le démarrage de `solana-test-validator` :
 ```console
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
