@@ -354,6 +354,80 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/fr/": {
+        selectLanguageName: "Français",
+        navbar: [
+          {
+            text: "Contribuer",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Intégrations",
+            link: "/fr/integrations",
+          },
+        ],
+        sidebar: {
+          "/fr/": [
+            {
+              text: "Pour Commencer",
+              children: ["/fr/", "/fr/getting-started/installation.md"],
+            },
+            {
+              text: "Concepts Fondamentaux",
+              children: [
+                "/fr/core-concepts/accounts.md",
+                "/fr/core-concepts/programs.md",
+                "/fr/core-concepts/transactions.md",
+                "/fr/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guides",
+              children: [
+                "/fr/guides/get-program-accounts.md",
+                "/fr/guides/serialization.md",
+                "/fr/guides/data-migration.md",
+                "/fr/guides/account-maps.md",
+                "/fr/guides/retrying-transactions.md",
+                "/fr/guides/debugging-solana-programs.md",
+                "/fr/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Références",
+              children: [
+                "/fr/references/local-development.md",
+                "/fr/references/keypairs-and-wallets.md",
+                "/fr/references/basic-transactions.md",
+                "/fr/references/accounts.md",
+                "/fr/references/programs.md",
+                "/fr/references/token.md",
+                "/fr/references/staking.md",
+                "/fr/references/nfts.md",
+                "/fr/references/offline-transactions.md",
+                "/fr/references/name-service.md",
+              ],
+            },
+          ],
+          "/fr/integrations": [
+            {
+              text: "Intégrations",
+              children: [
+                "/fr/integrations",
+                "/fr/integrations/serum.md",
+                "/fr/integrations/pyth.md",
+                "/fr/integrations/switchboard.md",
+                "/fr/integrations/mango.md",
+                "/fr/integrations/strata.md",
+                "/fr/integrations/web3auth.md",
+                "/fr/integrations/react-native.md",
+                "/fr/integrations/jupiter.md",
+
+              ],
+            },
+          ],
+        },
+      },
       "/id/": {
         selectLanguageName: "Bahasa Indonesia",
         navbar: [
@@ -453,6 +527,10 @@ export default defineUserConfig<DefaultThemeOptions>({
       lang: "th-TH",
       title: "คู่มือ Solana",
     },
+    "/fr/": {
+      lang: "fr-FR",
+      title: "Solana Cookbook",
+    },
     "/id/": {
       lang: "id-ID",
       title: "Buku Panduan Solana",
@@ -486,6 +564,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/th/": {
             placeholder: "ค้นหา",
+          },
+          "/fr/": {
+            placeholder: "Rechercher",
           },
           "/id/": {
             placeholder: "Cari",
@@ -539,6 +620,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "ค้นหา",
+              },
+            },
+          },
+          "/fr/": {
+            placeholder: "Rechercher",
+            translations: {
+              button: {
+                buttonText: "Rechercher",
               },
             },
           },
