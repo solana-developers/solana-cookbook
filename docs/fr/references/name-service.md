@@ -1,18 +1,18 @@
 ---
-title: Service des Noms
+title: Service de Noms
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Service des Noms
+      content: Solana Cookbook | Service de Noms
   - - meta
     - name: og:title
-      content: Solana Cookbook | Service des Noms
+      content: Solana Cookbook | Service de Noms
   - - meta
     - name: description
-      content: Le registre des noms stocke les informations relatives au nom de domaine. Découvrez la résolution des domaines SOL, la recherche inversée/de sous-domaine, le Service des Noms et les référence de Solana dans le Solana Cookbook.
+      content: Le registre de noms stocke les informations relatives au nom de domaine. Découvrez la résolution des domaines SOL, la recherche inversée/de sous-domaine, le Service de Noms et les référence de Solana dans le Solana Cookbook.
   - - meta
     - name: og:description
-      content: Le registre des noms stocke les informations relatives au nom de domaine. Découvrez la résolution des domaines SOL, la recherche inversée/de sous-domaine, le Service des Noms et les référence de Solana dans le Solana Cookbook.
+      content: Le registre de noms stocke les informations relatives au nom de domaine. Découvrez la résolution des domaines SOL, la recherche inversée/de sous-domaine, le Service de Noms et les référence de Solana dans le Solana Cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Service des Noms
+# Service de Noms
 
-## Registre des noms
+## Registre de noms
 
-Le registre des noms stocke les informations relatives au nom de domaine. Il est composé de deux choses :
+Le registre de noms stocke les informations relatives au nom de domaine. Il est composé de deux choses :
 
 - L'en-tête
 - Les données

@@ -1,5 +1,5 @@
 ---
-title: Livre de recettes de Solana
+title: Solana Cookbook
 head:
   - - meta
     - name: title
@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Accueil des Références de Solana
   - - meta
     - name: description
-      content: Solana Cookbook est une collection d'exemples utils et de références pour le développement sur Solana
+      content: Solana Cookbook est une collection d'exemples utiles et de références pour le développement sur Solana
   - - meta
     - name: og:description
-      content: Solana Cookbook est une collection d'exemples utils et de références pour le développement sur Solana
+      content: Solana Cookbook est une collection d'exemples utiles et de références pour le développement sur Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Livre de recettes de Solana
+# Solana Cookbook
 
 *Solana Cookbook* une ressource pour les développeurs qui fournit les concepts et références essentiels pour 
 créer des applications sur Solana. Chaque concept et référence vont se concentrer sur des aspects spécifiques du développement de Solana tout en fournissant des détails supplémentaires et des exemples d'utilisation.

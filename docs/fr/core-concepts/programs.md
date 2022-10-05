@@ -57,7 +57,7 @@ N'importe quel développeur peut écrire et déployer des programmes sur la bloc
 
 ## Examen plus approfondi
 
-Contrairement à la plupart des autres blockchains, Solana sépare complètement le code des données. Toutes les données avec lesquelles les programmes interagissent sont stockées dans des comptes séparés et sont transmises ,en tant que références, via des instructions. Ce modèle permet à un seul programme générique de fonctionner sur plusieurs comptes sans nécessiter de déploiements supplémentaires. Des exemples communs de ce modèle sont observés dans les programmes natifs et les programmes SPL.
+Contrairement à la plupart des autres blockchains, Solana sépare complètement le code des données. Toutes les données avec lesquelles les programmes interagissent sont stockées dans des comptes séparés et sont transmises, en tant que références, via des instructions. Ce modèle permet à un seul programme générique de fonctionner sur plusieurs comptes sans nécessiter de déploiements supplémentaires. Des exemples communs de ce modèle sont observés dans les programmes natifs et les programmes SPL.
 
 ### Programmes Natifs & La Bibliothèque des Programmes de Solana (SPL)
 

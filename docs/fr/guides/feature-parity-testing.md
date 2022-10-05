@@ -1,18 +1,18 @@
 ---
-title: Test de Conformité des Caractéristiques
+title: Test de Conformité des Fonctionnalités
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Test de Conformité des Caractéristiques
+      content: Solana Cookbook | Test de Conformité des Fonctionnalités
   - - meta
     - name: og:title
-      content: Solana Cookbook | Test de Conformité des Caractéristiques
+      content: Solana Cookbook | Test de Conformité des Fonctionnalités
   - - meta
     - name: description
-      content: Les caractéristiques varient selon les clusters de Solana. Les tests de caractéristiques garantissent des résultats prévisibles.
+      content: Les fonctionnalités varient selon les clusters de Solana. Les tests de fonctionnalités garantissent des résultats prévisibles.
   - - meta
     - name: og:description
-      content: Les caractéristiques varient selon les clusters de Solana. Les tests de caractéristiques garantissent des résultats prévisibles.
+      content: Les fonctionnalités varient selon les clusters de Solana. Les tests de fonctionnalités garantissent des résultats prévisibles.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,15 +37,15 @@ head:
 footer: MIT Licensed
 ---
 
-# Test de Conformité des Caractéristiques
+# Test de Conformité des Fonctionnalités
 
 Lorsque vous testez votre programme, il est essentiel de s'assurer qu'il fonctionnera de la même manière dans différents clusters, tant pour la qualité que pour l'obtention des résultats attendus.
 
 ## Faits
 
 ::: tip Fiche d'Information
-- Les caractéristiques sont des fonctionnalités qui sont introduites dans les validateurs Solana et qui nécessitent une activation pour être utilisées.
-- Les caractéristiques peuvent être activées dans un cluster (par exemple testnet) mais pas dans un autre (par exemple mainnet-beta).
+- Les fonctionnalités sont des changements qui sont introduits dans le code des validateurs Solana et qui nécessitent une activation pour être utilisés.
+- Les fonctionnalités peuvent être activées dans un cluster (par exemple testnet) mais pas dans un autre (par exemple mainnet-beta).
 - Cependant, lorsque vous exécutez localement la version par défaut de `solana-test-validator`, toutes les fonctionnalités disponibles dans votre version de Solana sont automatiquement activées. Le résultat est que lorsque vous testez localement, les fonctionnalités et les résultats de vos tests peuvent ne pas être les mêmes lorsque vous déployez et exécutez dans un cluster différent !
 :::
 
@@ -68,7 +68,7 @@ Dans Solana 1.9.2, une fonctionnalité appelée "plafond de calcul pour l'ensemb
 
 Aïe ! Si vous n'en étiez pas conscient, vous seriez probablement frustré car aucun changement dans vos instructions n'aurait pu provoquer ce phénomène. Sur le devnet il fonctionne bien, mais localement il échoue ?!?
 
-Il est possible d'augmenter le budget global de la Transaction, par exemple à 300_000 UC, et de sauver votre santé mentale, mais cela montre pourquoi les tests avec **_Conformité des Caractéristiques_** constituent un bon moyen d'éviter toute confusion.
+Il est possible d'augmenter le budget global de la Transaction, par exemple à 300_000 UC, et de sauver votre santé mentale, mais cela montre pourquoi les tests avec **_Conformité des Fonctionnalités** constituent un bon moyen d'éviter toute confusion.
 
 ## Statut de la Fonctionnalité
 Il est assez facile de vérifier quelles fonctionnalités sont disponibles pour un cluster donné avec la commande `solana feature status`.

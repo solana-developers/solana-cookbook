@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Migration des Comptes de Données de Programmes
   - - meta
     - name: description
-      content: Fondamentalement, versionner des données en vue d'une migration signifie créer une référence unique pour un ensemble de données. Cette référence peut prendre la forme d'une requête, d'un ID ou, plus couramment, d'un identifiant de date. Découvrez la Sérialisation et plus d'Ingrédients pour votre plat dans le Solana cookbook.
+      content: Versionner des données en vue d'une migration signifie créer une référence unique pour un ensemble de données. Cette référence peut prendre la forme d'une requête, d'un ID ou, plus couramment une date. Découvrez la Sérialisation et plus d'Ingrédients pour votre plat dans le Solana cookbook.
   - - meta
     - name: og:description
-      content: Fondamentalement, versionner des données en vue d'une migration signifie créer une référence unique pour un ensemble de données. Cette référence peut prendre la forme d'une requête, d'un ID ou, plus couramment, d'un identifiant de date. Découvrez la Sérialisation et plus d'Ingrédients pour votre plat dans le Solana cookbook.
+      content: Versionner des données en vue d'une migration signifie créer une référence unique pour un ensemble de données. Cette référence peut prendre la forme d'une requête, d'un ID ou, plus couramment une date. Découvrez la Sérialisation et plus d'Ingrédients pour votre plat dans le Solana cookbook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -46,7 +46,7 @@ Lorsque vous créez un programme, chaque compte de données associé à celui-ci
 Grâce à la gestion des versions de comptes, vous pouvez mettre vos anciens comptes à jour vers la nouvelle structure.
 
 :::tip Remarque
-Ce n'est qu'une des nombreuses façons de migrer les données dans les Comptes Appartenant au Programme (POA).
+Ce n'est qu'une des nombreuses façons de migrer des données de comptes.
 :::
 
 ## Scénario

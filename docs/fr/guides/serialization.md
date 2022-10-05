@@ -262,7 +262,7 @@ Nous présentons ici la sérialisation de primitives (nombres, chaînes de carac
 
 ## Constructions Avancées
 
-Nous avons montré comment créer des chargements simples dans les exemples précédents. Parfois Solana lance une balle rapide avec certains types. Cette section montrera le mappage approprié entre TS/JS et Rust pour les gérer.
+Nous avons montré comment créer des chargements simples dans les exemples précédents. Cette section montrera le mappage approprié entre TS/JS et Rust pour les gérer.
 
 ### COption
 

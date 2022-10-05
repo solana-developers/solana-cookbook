@@ -57,7 +57,7 @@ PDA signifie [Program Derived Address (Adresse Dérivée du Programme)][PDA] et 
 
 La particularité des PDAs est que ces adresses ne sont **pas** associées à une clé privée. Cela est dû au fait que ces adresses ne se trouvent pas sur la courbe ED25519. Par conséquent, **seul** le programme, dont cette _adresse_ a été dérivée, peut signer une instruction avec la clé, pourvu que les seeds soient également fournies. Plus d'informations à ce sujet [ici][CPI].
 
-Maintenant que nous avons une idée de ce que sont les PDAs, utilisons-les pour mapper quelques comptes !Nous allons prendre l'exemple d'un programme de **Blog** pour montrer comment cela pourrait être mis en œuvre.
+Maintenant que nous avons une idée de ce que sont les PDAs, utilisons-les pour mapper quelques comptes ! Nous allons prendre l'exemple d'un programme de **Blog** pour montrer comment cela pourrait être mis en œuvre.
 
 Dans ce programme de Blog, nous souhaitons que chaque `Utilisateur` ait un seul `Blog`. Ce blog peut avoir un nombre quelconque de "Posts". Cela signifie que nous **mappons** chaque utilisateur à un blog, et que chaque post est **mappé** à un certain blog.
 

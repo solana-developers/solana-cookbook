@@ -329,7 +329,7 @@ Presque toutes les instructions dans Solana nécessitent au moins 2 ou 3 comptes
 
 ## Comment vérifier des comptes
 
-Puisque les programmes dans Solana sont sans état, nous, en tant que créateur de programme, devons nous assurer que les comptes passés sont valides autant que possible pour éviter toute entrée de compte malveillant. Ainsi, es contrôles de base que l'on peut effectuer sont
+Puisque les programmes dans Solana sont sans état, nous, en tant que créateur de programme, devons nous assurer que les comptes passés sont valides autant que possible pour éviter toute entrée de compte malveillant. Ainsi, les contrôles de base que l'on peut effectuer sont
 
 1. Vérifier si le compte du signataire attendu a effectivement signé
 2. Vérifier si les comptes d'état attendus ont été vérifiés comme accessibles en écriture

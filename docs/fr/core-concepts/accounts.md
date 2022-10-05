@@ -50,7 +50,7 @@ Les comptes dans Solana sont utilisés pour stocker des états. Ils constituent 
 - Les comptes ont une taille maximale de 10MB (10 Mega Bytes)
 - Les comptes des adresses dérivées d'un programme (PDA) ont une taille maximale de 10KB (10 Kilo Bytes)
 - Les comptes des adresses dérivées d'un programme (PDA) peuvent être utilisés pour signer au nom d'un programme
-- La taille des comptes est fixée au moment de leur création, mais elle peut être ajustée en utilisant la [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
+- La taille des comptes est fixée au moment de leur création, mais elle peut être ajustée en utilisant la fonctionnalité [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
 - Le stockage des données sur un compte est payé par une rente
 - Le propriétaire par défaut d'un compte est le programme système (System Program)
   :::
@@ -75,7 +75,7 @@ Chaque compte a une adresse (généralement une clé publique) et un propriétai
 | Champs      | Description                                                   |
 | ------------| --------------------------------------------------------------|
 | lamports    | Le nombre de lamports appartenant à ce compte                 |
-| owner       | Le programme qui possède ce compte                            |
+| owner       | Le programme propriétaire de ce compte                        |
 | executable  | Indique si ce compte peut traiter des instructions            |
 | data        | Le tableau d'octets de données brutes stocké par ce compte    |
 | rent_epoch  | La prochaine époque à laquelle ce compte doit payer une rente |
@@ -105,7 +105,7 @@ La rente est payée à deux moments différents :
 
 Un pourcentage des rentes collectées par les comptes est détruit, tandis que le reste est distribué aux comptes de vote à la fin de chaque slot.
 
-Si le compte ne dispose pas d'assez d'argent pour payer la rent, le compte sera supprimé ainsi que ses données.
+Si le compte ne dispose pas d'assez d'argent pour payer la rente, le compte sera supprimé ainsi que ses données.
 
 Il est également important de noter que les nouveaux comptes doivent être exempts de rente.
 
