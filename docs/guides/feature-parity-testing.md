@@ -112,7 +112,7 @@ testing a transaction that adds two (2) instructions for your program.
 
 ```console
 solana config set -ul
-solana-test-validator -l ./ledger --bpf-program target/deploy/PROGNAME.so --reset`
+solana-test-validator -l ./ledger --bpf-program ADDRESS target/deploy/PROGNAME.so --reset`
 ```
 
 2. In another terminal you start the log streamer:
