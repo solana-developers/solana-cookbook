@@ -16,7 +16,8 @@ import {
   const recentBlockhash = await connection.getLatestBlockhash();
 
   const transaction = new Transaction({
-    recentBlockhash: recentBlockhash.blockhash,
+    recentBlockhash: recentBlockhash.blockhash, 
+    feePayer: payer.publicKey
   }).add(
     SystemProgram.transfer({
       fromPubkey: payer.publicKey,

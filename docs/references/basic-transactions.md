@@ -267,16 +267,26 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget for a transaction
+## How to change compute budget, fee, &amp; priority for a transaction
+Transaction (TX) priority is achieved by paying a Prioritization Fee in 
+addition to the Base Fee. By default the compute budget is the product of 
+200,000 Compute Units (CU) * number of  instructions, with a max of 1.4M CU. The
+Base Fee is 5,000 Lamports. A microLamport is 0.000001 Lamports.
 
-Compute budget for a single transaction can be changed by adding an instruction
-call to the Compute Budget Program. By default the compute budget is set the product 
-of 200k compute units * number of instructions, with a max of 1.4M compute units. 
-The less compute you use, the less the transaction costs.
+The total compute budget or Prioritization Fee for a single TX can be changed by
+adding instructions from the ComputeBudgetProgram.
 
-**Note**: To change the compute budget for a transaction, you must make the 
-one of the first three instructions of the transaction the instruction that 
-sets the budget.
+`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 
+will add a Prioritization Fee above the Base Fee (5,000 Lamports). The value
+provided in microLamports will be multiplied by the CU budget to determine the 
+Prioritization Fee in Lamports. For example, if your CU budget is 1M CU, and you 
+add 1 microLamport/CU, the Prioritization Fee will be 1 Lamport (1M * 0.000001). 
+The total fee will then be 5001 Lamports.
+
+Use `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` to set
+the new compute budget. The value provided will replace the default value. 
+Transactions should request the minimum amount of CU required for 
+execution to maximize throughput, or minimize fees.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -310,7 +320,7 @@ sets the budget.
 
 </SolanaCodeGroup>
 
-Program Logs Example:
+Program Logs Example ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">

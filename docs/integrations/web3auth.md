@@ -75,7 +75,7 @@ npm install --save @toruslabs/solana-embed
 
 ### Import the SDK and initialize
 
-In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing enviroment which uses solana testnet. You can pass other configuration options while initializing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
+In the code snippet below, we are creating an instance of solana-embed and then initializing it with testing environment which uses solana testnet. You can pass other configuration options while initializing the wallet interface. You can refer to solana-embed [api-reference](https://docs.tor.us/solana-wallet/api-reference/class) to know more on that.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

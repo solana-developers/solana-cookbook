@@ -10,8 +10,7 @@ use solana_sdk::{
     transaction::Transaction,
 };
 
-/// Submits the program instruction as per the
-/// instruction definition
+/// Submits the program instruction as per the instruction definition
 fn submit_transaction(
     rpc_client: &RpcClient,
     wallet_signer: &dyn Signer,
@@ -43,8 +42,10 @@ fn send_instructions_demo(
     let txn = submit_transaction(
         &connection,
         &wallet_signer,
-        // Array of instructions: 0: Increase Budget, 1: Do something, 2: Do something else
-        [ComputeBudgetInstruction::request_units(400_000u32),
+        // Array of instructions: 0: Set Compute Unit Limt, 1: Set Prioritization Fee, 
+        // 2: Do something, 3: Do something else
+        [ComputeBudgetInstruction::set_compute_unit_limit(1_000_000u32),
+        ComputeBudgetInstruction::set_compute_unit_price(1u32),
         Instruction::new_with_borsh(PROG_KEY, &0u8, accounts.to_vec()),
         Instruction::new_with_borsh(PROG_KEY, &0u8, accounts.to_vec())].to_vec(),
     )?;

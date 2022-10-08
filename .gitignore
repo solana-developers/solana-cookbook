@@ -2,7 +2,6 @@ node_modules
 .temp
 .cache
 .idea
-docs/.vuepress/dist
 .DS_Store
 **/*/target
 .vscode

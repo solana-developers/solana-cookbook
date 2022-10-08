@@ -85,10 +85,4 @@ pull request!
 You can find tasks on the [project board](https://github.com/solana-developers/solana-cookbook/projects/1)
 or create an issue and assign it to yourself.
 
-### Contribution Rewards
-
-The first 25 successful contributors to the Solana Cookbook will get an exclusive Glasseater NFT from the [Superteam DAO](https://superteam.fun). Use this NFT to get direct access to exclusive Solana Ecosystem jobs. If you have already contributed, [claim your Glasseater NFT now](https://alpha.layer3.xyz/task/contribute-to-the-solana-cookbook)!
-
-### [NOTE: Documentation changes/edits will not be considered for Contribution Rewards]
-
 Happy Cooking!
