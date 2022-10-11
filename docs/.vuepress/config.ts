@@ -97,6 +97,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/integrations/web3auth.md",
                 "/integrations/react-native.md",
                 "/integrations/jupiter.md",
+                "/integrations/orao-vrf.md",
               ],
             },
           ],
