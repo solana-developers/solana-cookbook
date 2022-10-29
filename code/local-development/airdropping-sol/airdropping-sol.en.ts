@@ -9,6 +9,12 @@ import { Connection, Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
     keypair.publicKey,
     LAMPORTS_PER_SOL
   );
+    
+  const latestBlockHash = await connection.getLatestBlockhash();
 
-  await connection.confirmTransaction(airdropSignature);
+  await connection.confirmTransaction({
+      blockhash: latestBlockHash.blockhash,
+      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+      signature: airdropSignature,
+    });
 })();
