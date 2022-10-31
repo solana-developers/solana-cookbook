@@ -330,7 +330,7 @@ To fetch the Candy Machine object via its wallet address, we have use the [`find
 
 ### How to find Candy Machine using its address
 
-To find a Candy Machine using its address, we have to use the [findByAddress](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findByAddress) function.
+To find a Candy Machine using its address, we have to use the [`findByAddress`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findByAddress) function.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -351,7 +351,7 @@ To find a Candy Machine using its address, we have to use the [findByAddress](ht
 
 </SolanaCodeGroup>
 
-## How to find minted NFTs
+### How to find minted NFTs
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -372,7 +372,7 @@ To find a Candy Machine using its address, we have to use the [findByAddress](ht
 
 </SolanaCodeGroup>
 
-## How to insert items 
+### How to insert items 
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -393,7 +393,7 @@ To find a Candy Machine using its address, we have to use the [findByAddress](ht
 
 </SolanaCodeGroup>
 
-## How to mint an NFT
+### How to mint an NFT
 
 By default, the owner of the minted NFT would be `metaplex.identity().publicKey`. If you want to mint the NFT to some other wallet, pass that public key along with the `newOwner` parameter
 
