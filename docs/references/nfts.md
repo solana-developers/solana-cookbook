@@ -216,7 +216,7 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 ## How to get all NFTs from a wallet?
 
 When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex js library.
+This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex JS library.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -234,4 +234,184 @@ This can all be done using [`findDataByOwner`](https://github.com/metaplex-found
   </template>
 
   </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+## Candy Machine v2
+
+Metaplex JS SDK now supports creating and updating Candy Machine v2 via code. It enable the developers to interact with the Candy Machine v2 program and create, update, and delete Candy Machines as well as mint NFTs from them.
+
+### How to create a Candy Machine
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/create-candy-machine.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/create-candy-machine.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### How to delete a Candy Machine
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/delete-candy-machine.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/delete-candy-machine.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### How to find Candy Machine via authority
+
+To find all the Candy Machines whose authority is a certain public key, we have use the [`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy) function along with the `type` parameter as `authority`
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/find-via-authority.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/find-via-authority.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### How to find Candy Machine using wallet address
+
+To fetch the Candy Machine object via its wallet address, we have use the [`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy) function along with the `type` parameter as `wallet`. You can get the wallet address of the Candy Machine from the "Anchor data" tab in the explorer.
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/find-via-wallet.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/find-via-wallet.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+### How to find Candy Machine using its address
+
+To find a Candy Machine using its address, we have to use the [findByAddress](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findByAddress) function.
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/find-via-address.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/find-via-address.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## How to find minted NFTs
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/find-minted-nfts.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/find-minted-nfts.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## How to insert items 
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/insert-items.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/insert-items.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+## How to mint an NFT
+
+By default, the owner of the minted NFT would be `metaplex.identity().publicKey`. If you want to mint the NFT to some other wallet, pass that public key along with the `newOwner` parameter
+
+<SolanaCodeGroup>
+<SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/nfts/candy-machine/mint-nft.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/nfts/candy-machine/mint-nft.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
 </SolanaCodeGroup>
