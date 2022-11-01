@@ -351,7 +351,7 @@ To find a Candy Machine using its address, we have to use the [`findByAddress`](
 
 </SolanaCodeGroup>
 
-### How to find minted NFTs
+### How to find minted NFTs from a Candy Machine
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
