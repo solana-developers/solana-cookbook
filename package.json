@@ -17,7 +17,7 @@
     "@vuepress/plugin-docsearch": "^2.0.0-beta.36",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.36",
     "@vuepress/plugin-register-components": "^2.0.0-beta.36",
-    "@vuepress/plugin-search": "^2.0.0-beta.36",
+    "@vuepress/plugin-search": "^2.0.0-beta.53",
     "@vuepress/shared-utils": "^1.8.2",
     "husky": "^8.0.1",
     "lint-staged": ">=10",
