@@ -372,7 +372,7 @@ To find a Candy Machine using its address, we have to use the [`findByAddress`](
 
 </SolanaCodeGroup>
 
-### How to insert items 
+### How to insert items into a Candy Machine
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
