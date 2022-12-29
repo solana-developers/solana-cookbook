@@ -208,6 +208,80 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/de/": {
+        selectLanguageName: "Deutsch",
+        navbar: [
+          {
+            text: "Kontributor",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Integrationen",
+            link: "/de/integrations",
+          },
+        ],
+        sidebar: {
+          "/de/": [
+            {
+              text: "Für Beginner",
+              children: ["/de/", "/de/getting-started/installation.md"],
+            },
+            {
+              text: "Fundamentale Konzepte",
+              children: [
+                "/de/core-concepts/accounts.md",
+                "/de/core-concepts/programs.md",
+                "/de/core-concepts/transactions.md",
+                "/de/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guides",
+              children: [
+                "/de/guides/get-program-accounts.md",
+                "/de/guides/serialization.md",
+                "/de/guides/data-migration.md",
+                "/de/guides/account-maps.md",
+                "/de/guides/retrying-transactions.md",
+                "/de/guides/debugging-solana-programs.md",
+                "/de/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Referenzen",
+              children: [
+                "/de/references/local-development.md",
+                "/de/references/keypairs-and-wallets.md",
+                "/de/references/basic-transactions.md",
+                "/de/references/accounts.md",
+                "/de/references/programs.md",
+                "/de/references/token.md",
+                "/de/references/staking.md",
+                "/de/references/nfts.md",
+                "/de/references/offline-transactions.md",
+                "/de/references/name-service.md",
+              ],
+            },
+          ],
+          "/de/integrations": [
+            {
+              text: "Integrationen",
+              children: [
+                "/de/integrations",
+                "/de/integrations/serum.md",
+                "/de/integrations/pyth.md",
+                "/de/integrations/switchboard.md",
+                "/de/integrations/mango.md",
+                "/de/integrations/strata.md",
+                "/de/integrations/web3auth.md",
+                "/de/integrations/react-native.md",
+                "/de/integrations/jupiter.md",
+
+              ],
+            },
+          ],
+        },
+      },
       "/vi/": {
         selectLanguageName: "Tiếng Việt",
         navbar: [
