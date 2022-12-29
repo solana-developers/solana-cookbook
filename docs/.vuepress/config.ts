@@ -221,7 +221,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
         sidebar: {
-          "/de/": [
+          "/": [
             {
               text: "Für Beginner",
               children: ["/de/", "/de/getting-started/installation.md"],
@@ -592,6 +592,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     "/es/": {
       lang: "es",
+      title: "Solana Cookbook",
+    },
+    "/de/": {
+      lang: "de-DE",
       title: "Solana Cookbook",
     },
     "/vi/": {
