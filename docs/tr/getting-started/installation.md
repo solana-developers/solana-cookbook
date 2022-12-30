@@ -252,7 +252,7 @@ set PATH=%cd%/bin;%PATH%
 ### Build From Source (Kaynaktan Derleme)
 
 Önceden oluşturulmuş binary dosyalarını kullanamıyorsanız veya kaynaktan kendiniz oluşturmayı tercih ediyorsanız,
-[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
+[https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest)
 adresine gidin ve kaynak kodu arşivini indirin. Kodu ayıklayın ve binary dosyaları şununla oluşturun:
 
 ```bash
