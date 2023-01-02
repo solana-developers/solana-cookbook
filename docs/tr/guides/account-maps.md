@@ -2,7 +2,7 @@
 
 Maps, bir key’i  bir tür değerle ilişkilendirmek için programlamada sıklıkla kullandığımız veri yapılarıdır. **Key** ve **değer** herhangi bir türde olabilir ve key, kaydedilmekte olan belirli bir değer için tanımlayıcı görevi görür. Daha sonra, key’i verildiğinde, bu değerleri verimli bir şekilde eklememize, almamıza ve güncellememize izin verir.
 
-Solana'nın Hesap modeli, bildiğimiz gibi, program verilerinin ve ilgili durum verilerinin farklı account'larda depolanmasını gerektirir. Bu account'ların kendileriyle ilişkili bir adresi vardır. Bu, kendi içinde bir map görevi görür! Solana'nın Hesap modu hakkında daha fazla bilgiyi buradan edinebilirsiniz.
+Solana'nın Hesap modeli, bildiğimiz gibi, program verilerinin ve ilgili durum verilerinin farklı account'larda depolanmasını gerektirir. Bu account'ların kendileriyle ilişkili bir adresi vardır. Bu, kendi içinde bir map görevi görür! Solana'nın Hesap modu hakkında daha fazla bilgiyi [buradan][AccountCookbook] edinebilirsiniz.
 
 Bu nedenle, değeri almak için gereken key adresiyle değerlerinizi ayrı account'larda saklamak mantıklı olacaktır. Ancak bu, aşağıdaki gibi birkaç sorunu beraberinde getirir:
 
@@ -13,9 +13,9 @@ Bu nedenle, değeri almak için gereken key adresiyle değerlerinizi ayrı accou
 Bu, birçok Solana geliştiricisinin karşılaştığı ve programlarına `Map` benzeri bir logic uygulayan bir sorun sunuyor. Bu sorunla nasıl başa çıkacağımıza birkaç yoldan bakalım:
 
 ## Deriving PDAs
-PDA, Program Derived Address (Programdan Türetilmiş Adres) anlamına gelir ve kısaca, bir dizi seed ve bir program kimliğinden (veya adresinden) türetilen adreslerdir.
+PDA, [Program Derived Address][PDA] (Programdan Türetilmiş Adres) anlamına gelir ve kısaca, bir dizi seed ve bir program kimliğinden (veya adresinden) türetilen adreslerdir.
 
-PDA'larla ilgili benzersiz olan şey, bu adreslerin herhangi bir private key ile ilişkili olmamasıdır. Bunun nedeni, bu adreslerin ED25519 eğrisi üzerinde yer almamasıdır. Bu nedenle, yalnızca bu adresin türetildiği program, seedler de sağlanmışsa, key’le bir talimat imzalayabilir. Bu konuda buradan daha fazla bilgi edinebilirsiniz.
+PDA'larla ilgili benzersiz olan şey, bu adreslerin herhangi bir private key ile ilişkili olmamasıdır. Bunun nedeni, bu adreslerin ED25519 eğrisi üzerinde yer almamasıdır. Bu nedenle, yalnızca bu adresin türetildiği program, seedler de sağlanmışsa, key’le bir talimat imzalayabilir. Bu konuda [buradan][CPI] daha fazla bilgi edinebilirsiniz.
 
 Artık PDA'ların ne olduğu hakkında bir fikrimiz olduğuna göre, onları bazı account'ları eşleştirmek için kullanalım! Bunun nasıl uygulanacağını göstermek için bir **Blog** programı örneği alacağız.
 
@@ -284,3 +284,6 @@ tx.add(insertBCIx);
 tx.add(insertCAIx);
 
 ```
+[AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
+[PDA]: https://solanacookbook.com/references/accounts.html#program-derived-address
+[CPI]: https://solanacookbook.com/references/programs.html#create-a-program-derived-address
