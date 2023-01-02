@@ -1,4 +1,4 @@
-#Feature Parity Testing (Özellik Parite Testi)
+# Feature Parity Testing (Özellik Parite Testi)
 
 Programınızı test ederken, çeşitli kümelerde aynı şekilde çalışacağının güvencesi, hem kalite hem de beklenen sonuçların üretilmesi için esastır.
 
