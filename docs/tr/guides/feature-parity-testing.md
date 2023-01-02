@@ -44,7 +44,7 @@ solana feature status -um   // Displays for mainnet-beta
 solana feature status -ul   // Displays for local, requires running solana-test-validator
 ```
 
-Alternatif olarak, kümeler genelinde tüm özellik durumunu gözlemlemek için `solana-test-validator`'ın çalışmasını gerektirmeyen ve aşağıdaki ekranda gösterilen scfsd gibi bir araç kullanabilirsiniz:
+Alternatif olarak, kümeler genelinde tüm özellik durumunu gözlemlemek için `solana-test-validator`'ın çalışmasını gerektirmeyen ve aşağıdaki ekranda gösterilen [scfsd](#resources) gibi bir araç kullanabilirsiniz:
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
@@ -231,7 +231,7 @@ fn test_deactivate_tx_cu_pass() {
 ```
 
 
-Alternatif olarak, scfs engine gadget'ı, bir küme için tam bir devre dışı bırakılmış özellikler vektörü üretebilir. Aşağıdaki, devnet için tüm devre dışı bırakılmış özelliklerin bir listesini almak için bu motorun kullanıldığını gösterir.
+Alternatif olarak, [scfs engine gadget](#resources)'ı, bir küme için tam bir devre dışı bırakılmış özellikler vektörü üretebilir. Aşağıdaki, devnet için tüm devre dışı bırakılmış özelliklerin bir listesini almak için bu motorun kullanıldığını gösterir.
 
 ```
 #[test]
