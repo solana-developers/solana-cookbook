@@ -48,7 +48,7 @@ Alternatif olarak, kümeler genelinde tüm özellik durumunu gözlemlemek için 
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
-##Parity Testing (Parite Testi)
+## Parity Testing (Parite Testi)
 
 Yukarıda belirtildiği gibi, `solana-test-validator`, **tüm** özellikleri otomatik olarak etkinleştirir. "Devnet, testnet ve hatta mainnet-beta ile paritesi olan bir ortamda yerel olarak nasıl test edebilirim?" sorusuna cevap verecek olursak:
 
@@ -57,7 +57,7 @@ Yukarıda belirtildiği gibi, `solana-test-validator`, **tüm** özellikleri oto
 solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 ```
 
-##Simple Demonstration (Basit Gösterim)
+## Simple Demonstration (Basit Gösterim)
 
 Aldığı verileri giriş noktasında kaydeden basit bir programınız olduğunu varsayalım. Ve programınız için iki (2) talimat ekleyen bir işlemi test ediyorsunuz.
 
@@ -91,7 +91,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 
 'transaction işlem sınırı' özelliğimiz varsayılan olarak otomatik olarak etkinleştirildiğinden, her talimatın CU'yu başlangıç İşlem bütçesi olan 200_000 CU'dan aşağı çektiğini gözlemleriz.
 
-###Selective features deactivated (Seçici özellikler devre dışı bırakıldı)
+### Selective features deactivated (Seçici özellikler devre dışı bırakıldı)
 
 Bu çalıştırma için, CU bütçe davranışının devnet'te yürütülenle aynı olması için çalıştırmak istiyoruz. Feature Status’ta açıklanan araç(lar)ı kullanarak, işlem genelinde işlem üst sınırı public key’i izole eder ve test doğrulayıcı başlangıcında `--deactivate-feature` kullanırız.
 
