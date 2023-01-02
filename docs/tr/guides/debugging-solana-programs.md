@@ -11,7 +11,7 @@ Bir Solana programını test etmek ve hata ayıklamak için bir dizi seçenek ve
 - Yukarıdaki tüm durumlar için, programınızda `msg!` makrosunun liberal bir şekilde kullanımı önerilir ve daha sonra test etme ve solid davranışı sağlama gerektiğinde bunları kaldırın. Unutmayın ki `msg!` Compute Units tüketir, bu nedenle Compute Unit bütçesi sınırlarını zorlayarak programınızı başarısızlığa uğratabilir.
 :::
 
-Aşağıdaki bölümlerdeki adımlar solana-program-bpf-templete kullanır. Bunu makinenize klonlayın:
+Aşağıdaki bölümlerdeki adımlar [solana-program-bpf-template](#resources) kullanır. Bunu makinenize klonlayın:
 
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
@@ -83,9 +83,9 @@ Mükemmel değil mi?
 
 Son olarak, yerel bir validator node’u başlatabilir ve komut satırından solana-test-validator kullanarak programınızı ve tüm account'larınızı yükleyebilirsiniz.
 
-Bu yaklaşımda, ya Rust RcpClient kullanan ya da JavaScript veya TypeScript client'larında bir client uygulamasına ihtiyacınız olacak.
+Bu yaklaşımda, ya Rust [RcpClient](#resources) kullanan ya da JavaScript veya TypeScript client'larında bir client uygulamasına ihtiyacınız olacak.
 
-Daha fazla ayrıntı ve seçenek için `solana-test-validator --help` bölümüneJavaScript veya TypeScript client’larına bakın. Örnek program için kurulum burada:
+Daha fazla ayrıntı ve seçenek için `solana-test-validator --help` bölümüne [JavaScript veya Typescript clients](#resources)’larına bakın. Örnek program için kurulum burada:
 
 1. Repo klasöründe bir terminal açın
 2. Yapılandırmayı yerele işaret edecek şekilde ayarlamak için `solana config set -ul` komutunu çalıştırın
