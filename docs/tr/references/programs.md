@@ -6,7 +6,7 @@ Solana Programınız, Sistem programını 'çağırmadan', lamp’ları bir acco
 
 Alıcı account'ının, programınıza ait bir account olması gerekmez.
 
-```
+```rs
 /// Transfers lamports from one account (must be program owned)
 /// to another account. The recipient can by any account
 fn transfer_service_fee_lamports(
@@ -54,7 +54,7 @@ Her iki yöntemi de bilmek güzel, çünkü bazı eski programlar hala `SYSVAR_C
 
 Başlatma ve sysvar pubkey için bir account alan bir talimat oluşturalım.
 
-```
+```rs
 let clock = Clock::from_account_info(&sysvar_clock_pubkey)?;
 let current_timestamp = clock.unix_timestamp;
 
@@ -63,7 +63,7 @@ let current_timestamp = clock.unix_timestamp;
 
 Şimdi saatin sysvar genel adresini client aracılığıyla iletiyoruz.
 
-```
+```ts
 (async () => {
   const programId = new PublicKey(
     "77ezihTV6mTh2Uf3ggwbYF2NyGJJ5HHah1GrdowWJVD3"
@@ -103,7 +103,7 @@ let current_timestamp = clock.unix_timestamp;
 
 Aynı komutu client tarafında `SYSVAR_CLOCK_PUBKEY` beklemeden oluşturalım.
 
-```
+```rs
 let clock = Clock::get()?;
 let current_timestamp = clock.unix_timestamp;
 
@@ -111,7 +111,7 @@ let current_timestamp = clock.unix_timestamp;
 
 Client tarafı talimatı, şimdi yalnızca devlet ve ödeyen account'ları iletmesi gerekiyor.
 
-```
+```ts
 (async () => {
   const programId = new PublicKey(
     "4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk"
@@ -145,7 +145,7 @@ Client tarafı talimatı, şimdi yalnızca devlet ve ödeyen account'ları iletm
 ## How to change account size (Account boyutu değiştirme)
 `Realloc`'u kullanarak bir programa ait account'ın boyutunu değiştirebilirsiniz. `realloc`, bir account'ı 10 KB'a kadar yeniden boyutlandırabilir. Bir account'ın boyutunu artırmak için `realloc`'u kullandığınızda, o account'ı rent’den muaf tutmak için lamp transferleri yapmanız gerekir.
 
-```
+```rs
 // adding a publickey to the account
 let new_size = pda_account.data.borrow().len() + 32;
 
@@ -176,7 +176,7 @@ Bir Cross Program Invocation(çapraz program çağırma), programımızın için
 2. Hedef Token Hesabı (Tokenlarımızı aktaracağımız account)
 3. Kaynak Token Hesabı Sahibi (İmzalayacağımız cüzdan adresimiz)
 
-```
+```rs
 let token_transfer_amount = instruction_data
     .get(..8)
     .and_then(|slice| slice.try_into().ok())
@@ -208,7 +208,7 @@ invoke(
 
 İlgili müşteri talimatı aşağıdaki gibi olacaktır. Mint ve token oluşturma talimatlarını öğrenmek için lütfen yakındaki kodun tamamına bakın.
 
-```
+```ts
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
@@ -263,7 +263,7 @@ invoke(
 2. Oluşturulacak account
 3. Sistem Programı account'ı
 
-```
+```rs
 let account_span = instruction_data
     .get(..8)
     .and_then(|slice| slice.try_into().ok())
@@ -293,7 +293,7 @@ invoke(&create_account_instruction, &required_accounts_for_create)?;
 
 İlgili client tarafı kodu aşağıdaki gibi görünecektir.
 
-```
+```ts
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
@@ -346,7 +346,7 @@ invoke(&create_account_instruction, &required_accounts_for_create)?;
 
 Program Derived Address (Programdan Türetilmiş Adres), yalnızca programa ait bir account'tır, ancak private key’i yoktur. Bunun yerine imzası bir dizi seed ve bir artış (eğrinin dışında olduğundan emin olan bir nonce) ile elde edilir. Bir Program Adresini "**Üretmek**", onu "oluşturmaktan" farklıdır. Bir PDA'yı `Pubkey::find_program_address` kullanarak üretebilirsiniz. Bir PDA oluşturmak, esasen, adresi boşlukla başlatmak ve durumu ona ayarlamak anlamına gelir. Programımızın dışında normal bir Keypair account'ı oluşturulabilir ve ardından durumunu başlatmak için verilebilir. Ne yazık ki PDA'lar için kendi adına imza alamama özelliğinden dolayı zincir üzerinde oluşturulması gerekir. Bu nedenle, PDA'nın seed’lerini iletmek için `invoke_signed`'ı kullanırız ve PDA'nın account oluşturulmasıyla sonuçlanan fon account'ının imzasını kullanırız.
 
-```
+```rs
 let create_pda_account_ix = system_instruction::create_account(
     &funding_account.key,
     &pda_account.key,
@@ -365,7 +365,7 @@ invoke_signed(
 
 Aşağıdaki gibi client üzerinden gerekli account'lar gönderilebilir.
 
-```
+```ts
 const PAYER_KEYPAIR = Keypair.generate();
 
 (async () => {
@@ -413,7 +413,7 @@ const PAYER_KEYPAIR = Keypair.generate();
 
 Solana'daki hemen hemen tüm instruction’lar, en az 2 - 3 account gerektirecektir ve instruction işleyicileri üzerinde, bu account kümesinin hangi sırayla beklendiği bilgisini içerecektir. Hesapları manuel olarak indekslemek yerine Rust'ta `iter()` yönteminden faydalanarak bu basitçe yapılabilir.`next_account_info` yöntemi, temel olarak ilk indeksini böler ve account’lar array’i içinde bulunan account’ı döndürür. Bir grup account bekleyen ve her birinin parse edilmesini gerektiren basit bir instrucion görelim:
 
-```
+```rs
 pub fn process_instruction(
     _program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -447,7 +447,7 @@ Solana'daki programlar stateless olduğundan, bir program yaratıcısı olarak, 
 
 Yukarıda belirtilen kontrollerle birlikte bir state account’ı başlatan temel bir talimat aşağıda tanımlanmıştır.
 
-```
+```rs
 pub fn process_instruction(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -505,7 +505,7 @@ pub fn process_instruction(
 
 Solana, mevcut işlemdeki tüm talimatlara göz atmamıza izin veriyor. Bunları bir değişkende saklayabilir ve üzerlerinde yineleyebiliriz. Bununla, şüpheli işlemleri kontrol etmek gibi birçok şey yapabiliriz.
 
-```
+```rs
 let mut idx = 0;
 let num_instructions = read_u16(&mut idx, &instruction_sysvar)
 .map_err(|_| MyError::NoInstructionFound)?;
