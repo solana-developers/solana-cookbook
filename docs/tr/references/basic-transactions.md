@@ -4,7 +4,7 @@
 
 SOL göndermek için [SystemProgram][1] ile etkileşime geçmeniz gerekir.
 
-```
+```ts
 const transferTransaction = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: fromKeypair.publicKey,
@@ -22,7 +22,7 @@ await sendAndConfirmTransaction(connection, transferTransaction, [fromKeypair]);
 
 SPL Tokenlarını aktarmak için [Token Program][1]ını kullanın. Bir SPL token göndermek için, onun SPL token account adresini bilmeniz gerekir. Aşağıdaki örnekle hem adresi alabilir hem de token gönderebilirsiniz.
 
-```
+```ts
 // Add token transfer instructions to transaction
 const transaction = new web3.Transaction().add(
   splToken.Token.createTransferInstruction(
@@ -51,7 +51,7 @@ Aşağıdaki iki örnek, tahmini işlem maliyetini hesaplamak için şu anda mev
 
 ### getEstimatedFee
 
-```
+```ts
 const recentBlockhash = await connection.getLatestBlockhash();
 
 const transaction = new Transaction({
@@ -71,7 +71,7 @@ console.log(`Estimated SOL transfer cost: ${fees} lamports`);
 
 ### getFeeForMessage
 
-```
+```ts
 const message = new Message(messageParams);
 
 const fees = await connection.getFeeForMessage(message);
@@ -82,7 +82,7 @@ console.log(`Estimated SOL transfer cost: ${fees.value} lamports`);
 
 Herhangi bir işlem, [memo program][2].ı kullanarak bir mesaj ekleyebilir. Şu anda Memo Programından `programID`'nin manuel olarak eklenmesi gerekiyor. `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`
 
-```
+```ts
 const transferTransaction = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: fromKeypair.publicKey,
@@ -112,7 +112,7 @@ Tek bir TX için toplam işlem bütçesi veya Önceliklendirme Ücreti, ComputeB
 
 Yeni işlem bütçesini ayarlamak için `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` kullanın. Sağlanan değer, varsayılan değerin yerini alacaktır. İşlemler, verimi en üst düzeye çıkarmak veya ücretleri en aza indirmek için yürütme için gereken minimum CU miktarını talep etmelidir.
 
-```
+```ts
 const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({ 
   units: 1000000 
 });
