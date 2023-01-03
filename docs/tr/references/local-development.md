@@ -28,14 +28,14 @@ Solana geliştirme üzerinde çalışırken, belirli bir RPC API uç noktasına 
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
 
-```
+```ts
 const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
 
 ```
 
 Son olarak, aşağıdakilerle yerel veya uzaktan çalışan özel bir kümeye de bağlanabilirsiniz:
 
-```
+```ts
 const connection = new Connection("http://127.0.0.1:8899", "confirmed");
 ```
 
@@ -47,7 +47,7 @@ Solana'nın başlık altındaki web3 [`Connection`](https://solana-labs.github.i
 
 Connection sınıfı, pub/sub yöntemlerini ortaya çıkarır - hepsi olay yayıcılar gibi on ile başlar. Bu dinleyici yöntemlerini çağırdığınızda, o Connection örneğinin websocket client’a yeni bir abonelik kaydeder. Aşağıda kullandığımız örnek pub/sub yöntemi [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange)'dir. Geri arama, güncellenmiş durum verilerini bağımsız değişkenler aracılığıyla sağlayacaktır (örnek olarak [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback)'e bakın).
 
-```
+```ts
 // Establish new connect to devnet - websocket client connected to devnet will also be registered here
 const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
@@ -67,7 +67,7 @@ connection.onAccountChange(
 
 Yerel olarak çalışırken, işlem göndermek için biraz SOL'ye ihtiyacınız vardır. Mainnet olmayan ortamlarda, SOL'u adresinize airdropla göndererek alabilirsiniz.
 
-```
+```ts
 const airdropSignature = await connection.requestAirdrop(
   keypair.publicKey,
   LAMPORTS_PER_SOL
