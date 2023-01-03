@@ -44,9 +44,6 @@ Solana recently released Versioned Transactions. The proposed changes are as fol
 1. Introduce a new program which manages on-chain address lookup tables
     
 2. Add a new transaction format which can make use of on-chain address lookup tables
-    
-
-%[https://twitter.com/jstrry/status/1579477517823799297]
 
 ## Facts
 
@@ -67,73 +64,62 @@ The Solana network uses a maximum transactional unit (MTU) size of 1280 bytes, a
 
 A transaction is comprised of:
 
-1. A compact array of signatures, where each signature is a 64 byte [ed25519](https://ed25519.cr.yp.to/).
-    
+1. A compact array of signatures, where each signature is a 64 byte [ed25519](https://ed25519.cr.yp.to/).  
 2. A (legacy) message
     
 
-![Transaction Format](./versioned_transactions/tx_format.png)
+![Transaction Format](./versioned-transactions/tx_format.png)
 
-> ### Compact-Array format
-> 
-> A compact array is an array serialised to have the following components:
-> 
-> 1. An array length in a multi-byte encoding called [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format)
->     
-> 2. Followed by each array item
->     
+::: tip Compact-Array format
+ 
+A compact array is an array serialised to have the following components:
+ 
+1. An array length in a multi-byte encoding called [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format)
+2. Followed by each array item  
 
-> ![Compact array format](./versioned_transactions/compact_array_format.png)
+![Compact array format](./versioned-transactions/compact_array_format.png)
+:::
 
 ## Legacy Message
 
 A Legacy Message has the following components:
 
 1. A header
-    
 2. A compact-array of account addresses, where each account address takes 32 bytes
-    
 3. A recent blockhash
-    
-    * a 32-byte SHA-256 hash used to indicate when ledger was last observed. If a blockhash is too old, validators reject it.
-        
+  * a 32-byte SHA-256 hash used to indicate when ledger was last observed. If a blockhash is too old, validators reject it.
 4. A compact-array of Instructions
     
-![Legacy Message](./versioned_transactions/legacy_message.png)
+![Legacy Message](./versioned-transactions/legacy_message.png)
 
 ### Header
 
 The message header is 3 bytes in length and contains 3 u8 integers:
 
 1. The number of required signatures: the Solana runtime verifies this number with the length of the compact array of signatures in the transaction.
-    
 2. The number of read-only account addresses that require signatures.
-    
 3. The number of read-only account addresses that do not require signatures.
     
-![Message Header](./versioned_transactions/message_header.png)
+![Message Header](./versioned-transactions/message_header.png)
 
 ### Compact-array of account addresses
 
 This compact array starts with a compact-u16 encoding of the number of account addresses, followed by:
 
 1. **Account addresses that require signatures**: The addresses that request read and write access are listed first, followed by the ones that request for read-only access
-    
 2. **Account addresses that do not require signatures**: Same as above, the addresses that request read and write access are listed first, followed by the ones that request for read-only access
     
-![Compact array of account addresses](./versioned_transactions/compat_array_of_account_addresses.png)
+![Compact array of account addresses](./versioned-transactions/compat_array_of_account_addresses.png)
 
 ### Compact array of instructions
 
 Much like the array of account addresses, this compact array starts with a compact-u16 encoding of the number of instructions, followed by an array of instructions. Each instruction in the array has the following components:
 
-1. **Program ID**: identifies an on-chain program that will process the instruction. This is represented as a u8 index to an address in the compact array of account addresses inside the message.
-    
+1. **Program ID**: identifies an on-chain program that will process the instruction. This is represented as a u8 index to an address in the compact array of account addresses inside the message.   
 2. **Compact array of account address indexes**: u8 indexes to a subset of account addresses in the compact array of account addresses, that require signatures.
-    
 3. **Compact array of opaque u8 data**: a general purpose byte array that is specific to the program ID mentioned before. This array of data specifies any operations that the program should perform and any additional information that the accounts might not contain.
     
-![Compact array of Instructions](./versioned_transactions/compact_array_of_ixs.png)
+![Compact array of Instructions](./versioned-transactions/compact_array_of_ixs.png)
 
 ## Issues with Legacy Transactions
 
@@ -143,29 +129,23 @@ What is the issue with the above Transaction model?
 
 As discussed earlier, the maximum allowed size of a transaction is **1232 bytes**. The size of an account address is 32 bytes. Thus, a transaction can at the very best store **35 accounts**, taking into account some space for headers, signatures and other metadata.
 
-![Issue with legacy transactions](./versioned_transactions/issues_with_legacy_txs.png)
+![Issue with legacy transactions](./versioned-transactions/issues_with_legacy_txs.png)
 
 This is problematic as there are several cases where developers need to include 100s of signature-free accounts in a single transaction. This is currently not possible with the legacy transaction model. The solution currently being used is to temporarily store state on-chain and consume it later in transactions. This workaround does not work when multiple programs need to be composed in a single transaction. Each program requires multiple accounts as input and hence we fall into the same problem as before.
 
 This is where **Address Lookup Tables (LUT)** are introduced.
 
-%[https://twitter.com/terorie_dev/status/1579500323844292610] 
-
 ## Address Lookup Tables (LUT)
 
 The idea behind Address Lookup Tables is to store account addresses in a table-like (array) data structure on-chain. Once accounts are stored in this table, the address of the table can be referenced in a transaction message. To point to an individual account within the table, a 1-byte u8 index is needed.
 
-![LUTs](./versioned_transactions/luts.png)
+![LUTs](./versioned-transactions/luts.png)
 
 This opens up space as addresses need not be stored inside the transaction message anymore. They only need to be referenced in the form of an index within the array like table. This leads to a possibility of referencing 2^8=**256** accounts, as accounts are referenced using a u8 index.
 
-With so much space suddenly freed up, pretty interesting things can be achieved using LUTs. Here's an example:
-
-%[https://twitter.com/PierreArowana/status/1545186073034334208] 
-
 LUTs need to be rent-exempt when initialised or whenever a new address is added to the table. Addresses can be added to this table either by an on-chain buffer, or by directly appending them to the table through the `Extension` instruction. Furthermore, LUTs can store associated metadata followed by a compact-array of accounts. Below you can see the structure of a typical Address Lookup Table.
 
-![LUT Format](./versioned_transactions/lut_format.png)
+![LUT Format](./versioned-transactions/lut_format.png)
 
 One important pitfall of LUTs is that since address lookups require extra overhead during transaction processing, they usually incur higher costs for a transaction.
 
@@ -192,17 +172,13 @@ If the first bit is not set, the transaction will be considered a “Legacy Tran
 
 The structure of the new MessageV0 is more or less the same, except for two small but important changes:
 
-1. **Message Header**: unchanged from legacy
-    
+1. **Message Header**: unchanged from legacy 
 2. **Compact array of account keys**: unchanged from legacy. We will denote the array of indexes pointing to elements in this array as *index array A* (you will see why we are denoting this soon)
-    
 3. **Recent blockhash**: unchanged from legacy
-    
 4. **Compact array of instructions**: change from legacy
-    
 5. **Compact array of address table lookups**: introduced in v0
     
-![Message v0](./versioned_transactions/messagev0.png)
+![Message v0](./versioned-transactions/messagev0.png)
 
 We'll first discuss the structure of the compact array of address table lookups before seeing what changed in the instruction array.
 
@@ -213,12 +189,10 @@ This struct introduces Address Lookup Tables (LUT) to Versioned Transactions, he
 The compact array starts with a compact-u16 encoding of the number of address table lookups, followed by an array of address table lookups. Each lookup has the following structure:
 
 1. **Account key**: account key of the address lookup table
-    
 2. **Writable indexes**: compact array of indexes used to load writable account addresses. We will denote this array as *index array B*.
-    
 3. **Readonly indexes**: compact array of indexes used to load readonly account addresses. We will denote this array as *index array C*.
     
-![Compact array of LUTs](./versioned_transactions/compact_array_of_luts.png)
+![Compact array of LUTs](./versioned-transactions/compact_array_of_luts.png)
 
 Now let's see what changes were made in the instructions compact array
 
@@ -226,22 +200,18 @@ Now let's see what changes were made in the instructions compact array
 
 As discussed before, the compact array of legacy instructions stores individual legacy instructions that in-turn store the following:
 
-1. Program ID index
-    
+1. Program ID index   
 2. Compact array of account address indexes
-    
 3. Compact array of opaque 8-bit data
     
 
 The change in the new instruction is not in the structure of the instruction itself, but the array being used to get indexes from for 1 and 2. In legacy transactions, a subset of the index array A is used, while in versioned transactions, a subset of the combined array of the following are used:
 
-1. **index array A**: Compact array of accounts stored in the message
-    
+1. **index array A**: Compact array of accounts stored in the message    
 2. **index array B**: Writable indexes in address table lookup
-    
 3. **index array C**: Readonly indexes in address table lookup
     
-![New Compact array of Instructions](./versioned_transactions/new_compact_array_of_ixs.png)
+![New Compact array of Instructions](./versioned-transactions/new_compact_array_of_ixs.png)
 
 ## RPC Changes
 
@@ -258,8 +228,6 @@ The following parameter needs to be added to the requests:
 `maxSupportedTransactionVersion: 0`
 
 If `maxSupportedTransactionVersion` is not explicitly added to the request, the transaction version will fallback to `legacy`. Any block that contains a versioned transaction will return with an error by the client in the case of a legacy transaction.
-
-%[https://twitter.com/jacobvcreech/status/1551673302283960324] 
 
 You can set this via JSON formatted requests to the RPC endpoint like below:
 
@@ -295,14 +263,13 @@ const getTx = await connection.getTransaction(
 ```
 
 ## Other Resources
-* How to build a Versioned Transaction here: https://beta.docs.solana.com/developing/versioned-transactions#how-create-a-versioned-transaction
-* How to build a Versioned Transaction with Address Lookup using LUTs: https://beta.docs.solana.com/developing/lookup-tables#how-to-create-an-address-lookup-table
-* Limitations of Versioned Transactions: https://beta.docs.solana.com/proposals/transactions-v2#limitations
-* Security concerns of Versioned Transactions: https://beta.docs.solana.com/proposals/transactions-v2#security-concerns   
-* Alternate proposed solutions to Versioned Transactions: https://beta.docs.solana.com/proposals/transactions-v2#other-proposals
+* [How to build a Versioned Transaction](https://beta.docs.solana.com/developing/versioned-transactions#how-create-a-versioned-transaction)
+* [How to build a Versioned Transaction with Address Lookup using LUTs](https://beta.docs.solana.com/developing/lookup-tables#how-to-create-an-address-lookup-table)
+* [Limitations of Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#limitations)
+* [Security concerns of Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#security-concerns)
+* [Alternate proposed solutions to Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#other-proposals)
     
 
 ## References
-* https://beta.docs.solana.com/proposals/transactions-v2
-* https://beta.docs.solana.com/developing/versioned-transactions
-* https://blog.quicknode.com/update-to-solana-mainnet/
+* [Transactions-V2 Proposal](https://beta.docs.solana.com/proposals/transactions-v2)
+* [Developing with Versioned Transactions](https://beta.docs.solana.com/developing/versioned-transactions)

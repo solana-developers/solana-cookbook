@@ -66,6 +66,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/guides/retrying-transactions.md",
                 "/guides/debugging-solana-programs.md",
                 "/guides/feature-parity-testing.md",
+                "/guides/versioned-transactions.md"
               ],
             },
             {
