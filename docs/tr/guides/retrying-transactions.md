@@ -106,7 +106,7 @@ Geliştiriciler, kendi rebroadcasting logic’ini geliştirmek için `sendTransa
 
 İşlemleri manuel olarak yeniden denemek için yaygın bir kalıp, [getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash)'ten gelen `lastValidBlockHeight`'ın geçici olarak depolanmasını içerir. Bir uygulama saklandıktan sonra [kümenin blok yüksekliğin](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight) sorguayabilir ve işlemi uygun bir aralıkta manuel olarak yeniden deneyebilir. Ağ tıkanıklığı zamanlarında, `maxRetries`'i 0'a ayarlamak ve özel bir algoritma aracılığıyla manuel olarak yeniden yayınlamak avantajlıdır. Bazı uygulamalar [üstel bir geri alma](https://en.wikipedia.org/wiki/Exponential_backoff) algoritması kullanabilirken, [Mango](https://www.mango.markets/) gibi diğerleri, belirli bir zaman aşımı gerçekleşene kadar işlemleri sabit bir aralıkta sürekli olarak [yeniden göndermeyi](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) tercih eder.
 
-```
+```ts
 while (blockheight < lastValidBlockHeight) {
   connection.sendRawTransaction(rawTransaction, {
     skipPreflight: true,
