@@ -1,4 +1,5 @@
 # Name Service (Name Servisi)
+
 ## Name registry (Name kaydı)
 
 Name registry stores (ad kayıt defteri), alan adıyla ilgili bilgileri depolar. İki şeyden oluşur:
@@ -8,7 +9,7 @@ Name registry stores (ad kayıt defteri), alan adıyla ilgili bilgileri depolar.
 
 Bir alan adının verilerinin önüne her zaman başlık eklenir, JS'deki başlığın yapısı aşağıdadır:
 
-```
+```ts
 export class NameRegistryState {
   parentName: PublicKey;
   owner: PublicKey;
@@ -48,7 +49,7 @@ export class NameRegistryState {
 
 .SOL alan adları, publicKey'lere dönüşen benzersiz, kullanıcı dostu alan adlarıdır. Birçok cüzdan, bunları token veya SOL göndermek için başka bir seçenek olarak kullanır. .SOL alan adlarını aşağıdakilerle publicKey'lerine dönüştürebilirsiniz:
 
-```
+```ts
 const domain = "levi.sol";
 const hashedName = await getHashedName(domain.replace(".sol", ""));
 const nameAccountKey = await getNameAccountKey(
@@ -69,7 +70,7 @@ console.log(owner.registry.owner.toBase58());
 
 Reverse lookup, alan adını public key’den çözmek için kullanılabilir.
 
-```
+```ts
 // Public key of bonfida.sol
 const domainKey = new PublicKey("Crf8hzfthWGbGbLTVCiqRqV5MVnbpHB1L9KQMd6gsinb");
 
@@ -85,7 +86,7 @@ Bir subdomain’i çözmek için yapmanız gerekenler:
 2. Alt alan anahtarını(subdomain key) alın
 3. Hesap bilgilerini geri alın
 
-```
+```ts
 const parentDomain = "bonfida";
 const subDomain = "demo";
 
@@ -108,7 +109,7 @@ const registry = await NameRegistryState.retrieve(connection, subDomainKey);
 
 Bir `memcmp` filtresiyle bir `getProgramAccounts` isteği yaparak bir cüzdanın tüm alan adlarını alabilirsiniz.
 
-```
+```ts
 export async function findOwnedNameAccountsForUser(
   connection: Connection,
   userAccount: PublicKey
@@ -132,7 +133,7 @@ export async function findOwnedNameAccountsForUser(
 
 [Twitter handles Solana name service](https://naming.bonfida.org/#/twitter-registration)’e kaydedilebilir ve .SOL alan adları gibi kullanılabilir.
 
-```
+```ts
 // Pubkey of the wallet you want to retrieve the Twitter handle
 const pubkey = new PublicKey("FidaeBkZkvDqi1GXNEwB8uWmj9Ngx2HXSS5nyGRuVFcZ");
 
@@ -144,7 +145,7 @@ const [handle, registryKey] = await getHandleAndRegistryKey(connection, pubkey);
 
 Bir Twitter tanıtıcısıyla ilişkili SOL adresini bulmak için geriye doğru bir arama yapabilirsiniz.
 
-```
+```ts
 const handle = "bonfida";
 
 const registry = await getTwitterRegistry(connection, handle);
