@@ -4,7 +4,7 @@
 
 Çevrimdışı bir işlem oluşturmak için işlemi imzalamanız gerekir ve ardından herkes bunu ağda yayınlayabilir.
 
-```
+```ts
 // there are two ways you can recover the tx
 // 3.a Recover Tranasction (use populate then addSignauture)
 {
@@ -47,7 +47,7 @@ Bunun ne zaman yararlı olduğuna dair bazı örnekler:
 
 Bu örnekte Bob, ödemesi karşılığında Alice'e bir SPL token gönderir:
 
-```
+```ts
 // 1. Add an instruction to send the token from Bob to Alice
 transaction.add(
   createTransferCheckedInstruction(
@@ -83,7 +83,7 @@ const recoveredTransaction = Transaction.from(
 
 ### Create Nonce Account (Nonce Account Oluşturma)
 
-```
+```ts
 let tx = new Transaction().add(
   // create nonce account
   SystemProgram.createAccount({
@@ -110,7 +110,7 @@ console.log(
 
 ### Get Nonce Account (Nonce Account Getirme)
 
-```
+```ts
 let accountInfo = await connection.getAccountInfo(nonceAccountPubkey);
 let nonceAccount = NonceAccount.fromAccountData(accountInfo.data);
 
@@ -118,7 +118,7 @@ let nonceAccount = NonceAccount.fromAccountData(accountInfo.data);
 
 ### Use Nonce Account (Nonce Account Kullanma)
 
-```
+```ts
 let tx = new Transaction().add(
   // nonce advance must be the first insturction
   SystemProgram.nonceAdvance({
