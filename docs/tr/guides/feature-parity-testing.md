@@ -134,7 +134,7 @@ Doğrulayıcı çalışırken başka bir terminal açarsanız ve `solana feature
 Test doğrulayıcının kendi test kodu içinde çalıştırılmasını kontrol edenler için, TestValidatorGenesis kullanılarak test doğrulayıcı etkinleştirilen/devre dışı bırakılan özelliklerin değiştirilmesi mümkündür. Solana 1.9.6 ile bunu desteklemek için doğrulayıcı oluşturucuya bir işlev eklendi.
 
 Program klasörünüzün kökünde, `tests` adlı yeni bir klasör oluşturun ve bir `parity_test.rs` dosyası ekleyin. İşte her test tarafından kullanılan bazı genel fonksiyonlar:
-```
+```rs
 /// Setup the test validator passing features
 /// you want to deactivate before running transactions
 pub fn setup_validator(
@@ -196,7 +196,7 @@ fn submit_transaction(
  
 Şimdi, `mod test {...}` gövdesine test işlevleri ekleyebiliriz. Bu sayede, varsayılan doğrulayıcı kurulumunu (tüm özellikler etkin) gösterebilir ve ardından `transaction wide compute cap`’i devre dışı bırakibiliriz (`solana-test-validator` çalıştıran önceki örneklerde olduğu gibi).
 
-```
+```rs
 #[test]
 fn test_deactivate_tx_cu_pass() {
     // Run with all features activated except 'transaction wide compute cap'
@@ -233,7 +233,7 @@ fn test_deactivate_tx_cu_pass() {
 
 Alternatif olarak, [scfs engine gadget](#resources)'ı, bir küme için tam bir devre dışı bırakılmış özellikler vektörü üretebilir. Aşağıdaki, devnet için tüm devre dışı bırakılmış özelliklerin bir listesini almak için bu motorun kullanıldığını gösterir.
 
-```
+```rs
 #[test]
 fn test_devnet_parity_pass() {
     // Use gadget-scfs to get all deactivated features from devnet
