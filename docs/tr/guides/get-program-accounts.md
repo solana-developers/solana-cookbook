@@ -74,7 +74,7 @@ Token Programı örneğimize uygun olarak, sorgumuzu yalnızca cüzdan adresimiz
 
 Bu sorguyu aşağıdaki örnek üzerinden çağırabiliriz:
 
-```
+```ts
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 
@@ -137,7 +137,7 @@ import { clusterApiUrl, Connection } from "@solana/web3.js";
 
 `dataSlice`, özellikle büyük bir veri kümesinde sorgu çalıştırdığımızda, ancak aslında account verilerinin kendisiyle ilgilenmediğimizde kullanışlıdır. Bunun bir örneği, belirli bir token mint etmek(basmak) için token account'larının sayısını (token sahiplerinin sayısını) bulmak istiyorsak olabilir.
 
-```
+```ts
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 
