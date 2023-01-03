@@ -1,6 +1,6 @@
-#Migrating a Programs Data Accounts (Programların Data Account’larını Taşıma)
+# Migrating a Programs Data Accounts (Programların Data Account’larını Taşıma)
 
-##How can you migrate a program's data accounts? (Programların veri account’ları nasıl taşınır)
+## How can you migrate a program's data accounts? (Programların veri account’ları nasıl taşınır)
 
 Bir program oluşturduğunuzda, o programla ilişkili her bir veri account'ının belirli bir veri yapısı olacaktır. Programdan türetilen bir account'ı yükseltmeniz gerekirse, eski yapıya sahip bir sürü programdan türetilmiş account kalır.
 
@@ -10,7 +10,7 @@ Hesap versiyonlama ile eski account'larınızı yeni yapıya yükseltebilirsiniz
 Bu, Programa Ait Hesaplarda (POA) verileri taşımanın birçok yolundan yalnızca biridir.
 :::
 
-##Scenario (Senaryo)
+## Scenario (Senaryo)
 
 Hesap verilerimizi sürümlendirmek ve taşımak için her account için bir kimlik sağlayacağız. Bu kimlik, programa aktardığımızda account sürümünü tanımlamamızı ve böylece account'ı doğru şekilde işlememizi sağlayacaktır.
 
@@ -18,7 +18,7 @@ Aşağıdaki account durumunu ve programını alalım:
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
-```
+```rs
 #[derive(BorshDeserialize, BorshSerialize, Debug, Default, PartialEq)]
 pub struct AccountContentCurrent {
     pub somevalue: u64,
@@ -54,7 +54,7 @@ Yeni programımızda içerik durumu için yeni bir özellik eklemek istiyoruz. B
 
 ### 1. Add account conversion logic (Hesap dönüştürme mantığı ekleme)
 
-```
+```rs
 /// Current state (DATA_VERSION 1). If version changes occur, this
 /// should be copied to another (see AccountContentOld below)
 /// We've added a new field: 'somestring'
@@ -93,7 +93,7 @@ pub struct ProgramAccountState {
 
 Daha sonra, `somestring` ve işlemciyi güncellemek için yeni bir tane eklemek üzere talimatlarımızı güncelleriz. Veri yapısının 'yükseltilmesinin', `pack/unpack` (paketleme/paket açma) işleminin arkasında kapsüllendiğine dikkat edin.
 
-```
+```rs
 //! instruction Contains the main VersionProgramInstruction enum
 
 use {
