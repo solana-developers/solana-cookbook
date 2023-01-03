@@ -1,4 +1,4 @@
-## Installer Web3.js 
+## Install Web3.js (Web3.js Kurulumu)
 
 Solana'da Javascript veya TypeScript kullanmaya başlamak için birkaç kütüphane bulunur.<br/>
 
@@ -79,7 +79,7 @@ npm install --save @solana/spl-token
 
 ---
 
-### Wallet-Adapter
+### Wallet Adapter (Cüzdan Adaptörü)
 
 Solana içinde ‘wallet-adapter’ adı verilen, cüzdan bağlantılarının kurulmasına yardımcı olabilecek bir kütüphane vardır.
 Paket şu anda Svelte, Angular, Vue.js ve React içinde kullanımı desteklemektedir. *Wallet-adapter*, [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), gibi cüzdanlarla dApp entegrasyonunuzu sağlar.
@@ -106,7 +106,7 @@ npm install --save @solana/wallet-adapter-wallets \
   </CodeGroupItem>
 </CodeGroup>
 
-## Installer Rust
+## Install Rust (Rust Kurulumu)
 
 <CodeGroup>
   <CodeGroupItem title="MACOS" active>
@@ -127,7 +127,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 Windows için lütfen [Rust kurulum sitesini](https://www.rust-lang.org/tools/install) ziyaret edin.
 
-## Installer CLI
+## Install CLI (CLI Kurulumu)
 
 ### macOS & Linux
 
