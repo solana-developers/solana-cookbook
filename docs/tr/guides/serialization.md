@@ -18,7 +18,7 @@ Bu belgenin geri kalanındaki örnekler, [Solana CLI Program Template](#resource
 
 Rust program, Rust client, Node ve/veya Python client için Borsh kütüphaneleri kurulmalıdır.
 
-```
+```toml
 [package]
 name = "cli-program-template"
 version = "0.1.5"
@@ -72,7 +72,7 @@ Bu şablonda, bir instruction data bloğu, örneklerle birlikte aşağıdakileri
 
 Aşağıdaki örnekte, programa ait Account’ın başlatıldığını varsayıyoruz.
 
-```
+```ts
 // Include borsh functionality
 
 import { serialize, deserialize, deserializeUnchecked } from "borsh";
@@ -185,7 +185,7 @@ export async function mintKV(
 
 ## How to deserialize instruction data on the program (Instruction data programlarda nasıl deserialize edilir)
 
-```
+```rs
 //! instruction Contains the main ProgramInstruction enum
 
 use {
@@ -261,7 +261,7 @@ Pack özelliği, account verilerinin seri hale getirilmesi/seri hale getirilmesi
 
 Örnek programımız için Pack özelliğinin uygulanması. Bunu borsh kullanılarak account verilerinin fiili olarak işlenmesi takip eder.
 
-```
+```rs
 //! @brief account_state manages account data
 
 use crate::error::SampleError;
@@ -345,7 +345,7 @@ Serialize duruma getirme ve deserialize duruma getirmeyi tamamlamak için:
 
 **Not** Aşağıda `BTREE_LENGTH` için veri düzeninde `BTREE_STORAGE`'dan önce bir `u32` (4 bayt) bölümümüz olduğunu unutmayın. Bunun nedeni, borsh'un deserialization sırasında, seri durumdan çıkarmakta olduğunuz dilimin uzunluğunun, alıcı nesnenin fiilen yeniden birleştirilmesinden önce okuduğu veri miktarıyla uyuşup uyuşmadığını kontrol etmesidir. Aşağıda gösterilen yaklaşım, önce `BTREE_STORAGE` işaretçisinden `slice` boyutu elde etmek için `BTREE_LENGTH`'yi okur.
 
-```
+```rs
 use {
     arrayref::*,
     borsh::{BorshDeserialize, BorshSerialize},
@@ -423,7 +423,7 @@ Aşağıdaki kod bloğu, hepsini bir araya getirir ve programın, başlatma bayr
 
 İlk olarak, yepyeni bir account başlatmak istediğimizde:
 
-```
+```rs
 /// Initialize a new program account, which is the first in AccountInfo array
 fn initialize_account(accounts: &[AccountInfo]) -> ProgramResult {
     msg!("Initialize account");
@@ -449,7 +449,7 @@ fn initialize_account(accounts: &[AccountInfo]) -> ProgramResult {
 
 Şimdi, bir client’tan talimat gönderirken yukarıda gösterdiğimiz yeni bir key value pairs(anahtar değer çifti) basılmasını gösterdiği için diğer talimatlarımız üzerinde çalışabiliriz:
 
-```
+```rs
 /// Mint a key/pair to the programs account, which is the first in accounts
 fn mint_keypair_to_account(accounts: &[AccountInfo], key: String, value: String) -> ProgramResult {
     msg!("Mint to account");
@@ -474,7 +474,7 @@ Client’lar, serileştirilmiş veri bloğunun dönüşün bir parçası olduğu
 
 Hesap verilerinin düzeni [burada](#account-data-serialization) açıklanmıştır.
 
-```
+```ts
 import { serialize, deserialize, deserializeUnchecked } from "borsh";
 import { Buffer } from "buffer";
 import {
@@ -538,7 +538,7 @@ Borsh Spesifikasyonu (The [Borsh Specification](#resources)), primitive ve bile�
 TS/JS ve Python'un key’i, serileştirme ve serileştirmenin ilgili girdileri oluşturabilmesi veya yürütebilmesi için uygun bir tanımla bir Borsh Şeması oluşturmaktır.
 
 Aşağıdaki kod bloğu, primitive (number, strings) ve bileşik türlerin (fixed size array, Map) önce TypeScript'te, sonra Python'da serileştirilmesini ve ardından Rust tarafında eşdeğer serileştirmeyi gösterir:
-```
+```ts
 #!/usr/bin/env node
 
 import { serialize, deserialize, deserializeUnchecked } from "borsh";
@@ -617,7 +617,7 @@ entry();
 Basit Payload’ların nasıl oluşturulacağını önceki örneklerde gösterdik. Bazen Solana belirli türlerde bir hızlı top atar. Bu bölüm, bunları işlemek için TS/JS ve Rust arasında uygun eşlemeyi gösterecektir.
 
 ### COption
-```
+```ts
 #!/usr/bin/env node
 
 import { serialize, deserialize, deserializeUnchecked } from "borsh";
