@@ -27,7 +27,7 @@ Kısacası, bir kullanıcı ile blogu arasında `1:1` eşleme varken, blog ve g�
 `1:N` eşleme için, her bir gönderinin adresinin yalnızca ilişkili olduğu blogdan değil, aynı zamanda blogdaki N sayıda gönderi arasında ayrım yapmamıza izin veren başka bir tanımlayıcıdan türetilmesini isteriz. Aşağıdaki örnekte, her gönderinin adresi, **blog anahtarından**, her gönderiyi tanımlamak için bir **bilgi işaretinden** ve bir tür tanımlayıcısı olarak işlev görmek için "**Post**" ön ekinden türetilmiştir.
 
 Kod aşağıda gösterildiği gibidir:
-```
+```rs
 #[derive(Accounts)]
 #[instruction(blog_account_bump: u8)]
 pub struct InitializeBlog<'info> {
@@ -76,7 +76,7 @@ pub struct CreatePost<'info> {
 ```
 
 Client tarafında, gerekli `Blog` ve `Post` account'ı adresini almak için `PublicKey.findProgramAddress()`'i kullanabilirsiniz; bu adresi account verilerini almak için `connection.getAccountInfo()`'ya aktarabilirsiniz. Aşağıda bir örnek gösterilmiştir:
-```
+```ts
 async () => {
   const connection = new Connection("http://localhost:8899", "confirmed");
 
@@ -116,7 +116,7 @@ Bu yöntem aşağıdaki nedenlerden dolayı ideal değildir:
 * Bir account'ın, bir account'ın maksimum 10 megabayt boyutuna sahip olabileceği ve BTreeMap'in çok sayıda key/value pairs depolamasını kısıtlayan bellek sınırlamaları vardır.
 
 Bu nedenle, kullanım durumunuzu düşündükten sonra, bu yöntemi aşağıda gösterildiği gibi uygulayabilirsiniz:
-```
+```rs
 fn process_init_map(accounts: &[AccountInfo], program_id: &Pubkey) -> ProgramResult {
     let account_info_iter = &mut accounts.iter();
 
@@ -210,7 +210,7 @@ fn process_insert_entry(accounts: &[AccountInfo], program_id: &Pubkey) -> Progra
 
 
 Yukarıdaki programı test etmek için Client tarafı kodu aşağıda gösterildiği gibi görünecektir:
-```
+```ts
 const insertABIx = new TransactionInstruction({
   programId: MY_PROGRAM_ID,
   keys: [
