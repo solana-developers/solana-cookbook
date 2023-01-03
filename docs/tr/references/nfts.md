@@ -10,7 +10,7 @@ Bir NFT oluşturmak için yapmanız gerekenler:
 
 ### Upload to Arweave (Arwave’e yükleme)
 
-```
+```ts
 // 1. Upload image to Arweave
 const data = fs.readFileSync("./code/nfts/arweave-upload/lowres-dog.png");
 
@@ -48,7 +48,7 @@ await arweave.transactions.post(metadataTransaction);
 ### Mint the NFT (NFT Mint)
 Resim ve meta veri yüklediğinizde, NFT'yi aşağıdaki kodla mint edebilirsiniz(basabilirsiniz).
 
-```
+```ts
 const mintNFTResponse = await metaplex.nfts().create({
   uri: "https://ffaaqinzhkt4ukhbohixfliubnvpjgyedi3f2iccrq4efh3s.arweave.net/KUAIIbk6p8oo4XHRcq0U__C2r0mwQaNl0gQow4Qp9yk",
   maxSupply: 1,
@@ -63,7 +63,7 @@ Cüzdanınızdan farklı bir içerik oluşturucu ile NFT basamazsınız. İçeri
 
 Metaplex NFT'ler, Arweave'de depolanan meta verilere sahiptir. Arweave meta verilerini almak için Metaplex PDA'yı almanız ve account verilerini decode etmeniz gerekir.
 
-```
+```ts
 const connection = new Connection(clusterApiUrl("mainnet-beta"));
 const keypair = Keypair.generate();
 
@@ -86,7 +86,7 @@ NFT'lerin tek arzı olduğunu ve bölünemez olduklarını unutmayın; bu, herha
 
 En büyük token account'ı belirlendiğinde, sahibini alabiliriz.
 
-```
+```ts
 const connection = new Connection("https://api.mainnet-beta.solana.com");
 const tokenMint = "9ARngHhVaCtH5JFieRdSS5Y8cdZk2TMF4tfGSWFB9iSK";
 const largestAccounts = await connection.getTokenLargestAccounts(
@@ -104,7 +104,7 @@ Candy Machine’in public key’ini biliyorsanız, aşağıdaki kodu kullanarak 
 
 ### Candy Machine V1
 
-```
+```ts
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   const metadataAccounts = await connection.getProgramAccounts(
     TOKEN_METADATA_PROGRAM,
@@ -140,7 +140,7 @@ getMintAddresses(candyMachineId);
 
 Bir Candy Machine v2 kullanıyorsanız, öncelikle `candy_machine` kullanan basit bir PDA olan "Candy Machine Creator" adresine ve seed olarak Candy Machine v2 adresine erişmeniz gerekir. İçerik oluşturucu adresini aldıktan sonra, onu v1'de kullandığımız şekilde kullanabilirsiniz.
 
-```
+```ts
 const getCandyMachineCreator = async (
   candyMachine: PublicKey
 ): Promise<[PublicKey, number]> =>
@@ -157,7 +157,7 @@ getMintAddresses(candyMachineCreator[0]);
 ## How to get all NFTs from a wallet? (Bir cüzdandan tüm NFT’leri alma)
 Bir cüzdandan tüm NFT'leri alırken, tüm token account'larını almanız ve ardından hangilerinin NFT olduğunu ayrıştırmanız gerekir. Bunların hepsi Metaplex js kitaplığındaki [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) kullanılarak yapılabilir.
 
-```
+```ts
 const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
 const keypair = Keypair.generate();
 
