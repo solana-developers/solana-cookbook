@@ -26,7 +26,7 @@ PDA'ların arkasındaki kavramı anlamak için, PDA'ların teknik olarak yaratı
 
 Program kimliğimizi ve seed’leri bir hash fonksiyonu aracılığıyla çalıştırırken, eliptik eğri üzerinde yer alan geçerli bir public key ile karşılaşma şansımız ~%50'dir. Bu durumda, girdimizi biraz geçiştirmek için bir şeyler ekleriz ve tekrar deneriz. Bu fudge faktör için teknik terim bump’tır. Solana'da, bump = 255 ile başlıyoruz ve eliptik eğride olmayan bir adres elde edene kadar, bump = 254, bump = 253, vb. ile aşağı doğru yineliyoruz. Bu ilkel görünebilir, ancak bir kez bulunduğunda bize aynı PDA'yı tekrar tekrar türetmenin deterministik bir yolunu sunar.
 
-![Le PDA sur la courbe elliptique](./pda-curve.png)
+![PDA Curve](./pda-curve.png)
 
 ### Interacting with PDAs (PDA’lar ile Etkileşim)
 
