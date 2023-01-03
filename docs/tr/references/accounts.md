@@ -4,7 +4,7 @@
 
 [Sistem Programını][1]n sahip olduğu bir account oluşturun. Solana çalışma zamanı, bir account'ın sahibine, verilerine yazma veya lamp bağlantılarını aktarma erişimi verir. Bir account oluştururken, bayt (`space`) cinsinden sabit bir depolama alanı ve rent’i karşılamak için yeterli lamp payı önceden tahsis etmeliyiz. [Rent][2], Solana'da account'ları canlı tutmak için yapılan bir maliyettir.
 
-```
+```ts
 const createAccountParams = {
   fromPubkey: fromPubkey.publicKey,
   newAccountPubkey: newAccountPubkey.publicKey,
@@ -28,7 +28,7 @@ await sendAndConfirmTransaction(connection, createAccountTransaction, [
 
 Solana'da account'ları canlı tutmak, [rent][2] adı verilen bir depolama maliyeti doğurur. Bir account, en az iki yıllık rent yatırılarak rent tahsilatından tamamen muaf tutulabilir. Hesaplama için, account’ta saklamayı düşündüğünüz veri miktarını göz önünde bulundurmanız gerekir.
 
-```
+```ts
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 
 (async () => {
@@ -50,13 +50,13 @@ Hesaplarınızı yönetmek için bir çok farklı keypair oluşturmak yerine `cr
 
 ### Generate (Üretme)
 
-```
+```ts
 PublicKey.createWithSeed(basePubkey, seed, programId);
 ```
 
 ### Create (Oluşturma)
 
-```
+```ts
 const tx = new Transaction().add(
   SystemProgram.createAccountWithSeed({
     fromPubkey: feePayer.publicKey, // funder
@@ -76,7 +76,7 @@ console.log(
 
 ### Transfer (Transfer)
 
-```
+```ts
 const tx = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: derived,
@@ -114,7 +114,7 @@ PDA bir program kimliği tarafından türetilmiş olsa da, bu PDA'nın aynı pro
 
 `findProgramAddress`, seed’in sonuna fazladan bir bayt ekleyecektir. 255'ten 0'a başlar ve ilk eğri dışı public key’i döndürür. Aynı program kimliğini ve seed’ini iletirseniz her zaman aynı sonucu alırsınız.
 
-```
+```ts
 import { PublicKey } from "@solana/web3.js";
 
 (async () => {
@@ -141,7 +141,7 @@ Aşağıda, programa ait bir PDA account'ı oluşturmak için örnek bir program
 
 Aşağıda, ayrılmış veri boyutu ile bir account oluşturan tek bir `system_instruction::create_account` talimatı gösterilmektedir, türetilmiş PDA için `rent_lamports` miktarı lamports. Bu, yukarıda tartışıldığı gibi `invoke_signed` kullanılarak PDA ile imzalanır.
 
-```
+```rs
 invoke_signed(
     &system_instruction::create_account(
         &payer_account_info.key,
@@ -160,7 +160,7 @@ invoke_signed(
 
 #### Client
 
-```
+```ts
 let tx = new Transaction().add(
   new TransactionInstruction({
     keys: [
@@ -200,7 +200,7 @@ PDA'lar yalnızca program içinde imzalanabilir. Aşağıda, bir PDA ile imzalam
 
 Aşağıda, seed `escrow` tarafından türetilen bir PDA'dan SOL'yi aktarılan bir account'a aktaran tek bir talimat gösterilmektedir. `invoke_signed`, PDA ile imzalamak için kullanılır.
 
-```
+```rs
 invoke_signed(
     &system_instruction::transfer(
         &pda_account_info.key,
@@ -218,7 +218,7 @@ invoke_signed(
 
 ### Client
 
-```
+```ts
 let tx = new Transaction().add(
   new TransactionInstruction({
     keys: [
@@ -252,7 +252,7 @@ console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
 
 Bir programa ait tüm account'ları geri döndürür. `getProgramAccounts` ve yapılandırması hakkında daha fazla bilgi için [kılavuzlar](../guides/get-program-accounts.md) bölümüne bakın.
 
-```
+```ts
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 
 (async () => {
@@ -306,7 +306,7 @@ Tüm SOL'leri kaldırarak bir account'ı kapatabilirsiniz (depolanan tüm verile
 
 #### Program
 
-```
+```rs
 let dest_starting_lamports = dest_account_info.lamports();
 **dest_account_info.lamports.borrow_mut() = dest_starting_lamports
     .checked_add(source_account_info.lamports())
@@ -319,7 +319,7 @@ source_data.fill(0);
 
 #### Client
 
-```
+```ts
 // 1. create an account to your program
 let createNewAccountTx = new Transaction().add(
   SystemProgram.createAccount({
@@ -352,7 +352,7 @@ let closeAccountTx = new Transaction().add(
 ```
 
 ## How to get account balance (Account bakiyesi getirme)
-```
+```ts
 console.log(`${(await connection.getBalance(wallet)) / LAMPORTS_PER_SOL} SOL`);
 
 ```
