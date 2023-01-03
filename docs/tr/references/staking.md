@@ -4,7 +4,7 @@
 
 SOL'u stake edebilir ve ağın güvenliğini sağlamaya yardımcı olduğumuz için ödüller kazanabiliriz. Stake etmek için, SOL'u sırayla işlemleri işleyen validator’lara devrederiz.
 
-```
+```ts
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 
 (async () => {
@@ -21,7 +21,7 @@ import { clusterApiUrl, Connection } from "@solana/web3.js";
 
 Tüm stake etme talimatları, [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program)ı tarafından işlenir. Başlamak için, standart bir [sistem account](accounts.md#create-a-system-account)'ından farklı olarak oluşturulan ve yönetilen bir [Stake Hesabı](https://docs.solana.com/staking/stake-accounts) oluşturuyoruz. Özellikle, account'ın `Stake Authority`’sini ve `Withdrawal Authority`’sini ayarlamalıyız.
 
-```
+```ts
 // Setup a transaction to create our stake account
 // Note: `StakeProgram.createAccount` returns a `Transaction` preconfigured with the necessary `TransactionInstruction`s
 const createStakeAccountTx = StakeProgram.createAccount({
@@ -56,7 +56,7 @@ console.log(`Stake account status: ${stakeStatus.state}`);
 
 Bir stake account finanse edildiğinde, `Stake Authority` bunu bir validator’e devredebilir. Her stake account aynı anda yalnızca bir validator’e devredilebilir. Ayrıca, account'taki tüm tokenlar ya delegated(devredilebilir) ya da un-delegated(devredilemez) olmalıdır. Bir kez devredildikten sonra, bir stake account'ının aktif hale gelmesi birkaç epoch(döngü)sürer.
 
-```
+```ts
 // With a validator selected, we can now setup a transaction that delegates our stake to their vote account.
 const delegateTx = StakeProgram.delegate({
   stakePubkey: stakeAccount.publicKey,
@@ -81,7 +81,7 @@ console.log(`Stake account status: ${stakeStatus.state}`);
 
 Birden fazla account, belirli bir validator account’a stake etmiş olabilir. Tüm stakerları getirmek için `getProgramAccounts` veya `getParsedProgramAccounts` API kullanacağız. Daha fazla bilgi için [kılavuzlar bölümü](/guides/get-program-accounts.html)ne bakın. Bahis account'ları 200 bayt uzunluğundadır ve Voter Public Key 124 bayttan başlar. [Referans](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
-```
+```ts
 const STAKE_PROGRAM_ID = new PublicKey(
   "Stake11111111111111111111111111111111111111"
 );
@@ -168,7 +168,7 @@ if (accounts.length)
 
 Bir stake account devredildikten sonra herhangi bir zamanda, `Stake Authority` account'ı devre dışı bırakmayı seçebilir. Devre dışı bırakmanın tamamlanması birkaç epoch alabilir ve herhangi bir SOL geri çekilmeden önce gereklidir.
 
-```
+```ts
 // At anytime we can choose to deactivate our stake. Our stake account must be inactive before we can withdraw funds.
 const deactivateTx = StakeProgram.deactivate({
   stakePubkey: stakeAccount.publicKey,
@@ -191,7 +191,7 @@ console.log(`Stake account status: ${stakeStatus.state}`);
 
 Devre dışı bırakıldığında,`Withdrawal Authority` SOL'yi bir sistem account'ına geri çekebilir. Bir stake hasabı artık devredilmediğinde ve 0 SOL bakiyesine sahip olduğunda, etkili bir şekilde yok edilir.
 
-```
+```ts
 // Once deactivated, we can withdraw our SOL back to our main wallet
 const withdrawTx = StakeProgram.withdraw({
   stakePubkey: stakeAccount.publicKey,
