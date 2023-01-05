@@ -20,7 +20,7 @@ Yerel test doğrulayıcı kullanmanın faydaları şunları içerir:
 - Epoch uzunluğu yapılandırılabilir (--slots-per-epoch ...)
 - İsteğe bağlı bir slota atlayabilirsiniz (--warp-slot ...)
 
-##Connecting to Environments (Ortamlara Bağlanma)
+## Connecting to Environments (Ortamlara Bağlanma)
 
 Solana geliştirme üzerinde çalışırken, belirli bir RPC API uç noktasına bağlanmanız gerekecektir. Solana'nın 3 genel geliştirme ortamı vardır:
 
