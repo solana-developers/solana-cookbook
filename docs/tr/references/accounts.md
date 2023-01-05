@@ -358,7 +358,7 @@ console.log(`${(await connection.getBalance(wallet)) / LAMPORTS_PER_SOL} SOL`);
 ```
 
 
-İPUCU
+**İPUCU**
 
 Bir token bakiyesi almak istiyorsanız, token account'ının adresini bilmeniz gerekir. Daha fazla bilgi için bkz. [Token Referansları](token.md)
 
