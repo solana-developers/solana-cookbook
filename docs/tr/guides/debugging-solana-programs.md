@@ -19,7 +19,7 @@ cd solana-bpf-program-template
 code .
 ```
 
-##Runtime Testing and Debugging in editor (Editörde Runtime Test ve Hata Ayıklama)
+## Runtime Testing and Debugging in editor (Editörde Runtime Test ve Hata Ayıklama)
 
 `src/lib.rs` dosyasını açın
 
@@ -46,7 +46,7 @@ Harika gidiyorsun!
 Validator node kullanmadığınızı ve bu nedenle varsayılan programlar, blockhash vb.'nin temsil edilmediğini veya validator node çalışırken olduğu gibi davranmayacağınızı unutmayın. Bu yüzden Solana'da ekibi bize Local Validator Node testi verdi!
 :::
 
-##Local Validator Node Testing in editor (Düzenleyicide Yerel Doğrulayıcı Node Testi)
+## Local Validator Node Testing in editor (Düzenleyicide Yerel Doğrulayıcı Node Testi)
 
 Yerel bir validator node’un programlı yüklenmesini kullanan entegrasyon testi, `tests/integration.rs` dosyasında tanımlanır.
 
@@ -79,7 +79,7 @@ Burada hata ayıklama, test gövdesinde kullanılan işlevler ve yöntemlerde ha
 
 Mükemmel değil mi?
 
-##Local Validator Node Testing from Client Apps (Client Uygulamalarında Yerel Validator Node Testi)
+## Local Validator Node Testing from Client Apps (Client Uygulamalarında Yerel Validator Node Testi)
 
 Son olarak, yerel bir validator node’u başlatabilir ve komut satırından solana-test-validator kullanarak programınızı ve tüm account'larınızı yükleyebilirsiniz.
 
