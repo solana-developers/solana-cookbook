@@ -42,16 +42,16 @@ footer: MIT Licensed
 *Solana Cookbook*, Solana'da uygulamalar oluşturmak için temel kavramları ve referansları sağlayan bir geliştirici kaynağıdır. Her kavram ve referans, ek ayrıntılar ve kullanım örnekleri sağlarken Solana kullanarak geliştirme yapmanın belirli yönlerine odaklanacaktır.
 
 
-## Contribution
+## Contributing (Nasıl Katkı Verebilirsiniz?)
 
 *Solana Cookbook*, yeni Solana geliştiricilerinin katkıda bulunmasını kolaylaştıracak şekilde tasarlanmıştır. Bir şeyi nasıl yapacağınızı bilmiyor olsanız bile, Solana Cookbook’a katkıda bulunmak öğrenmenin harika bir yoludur!
 
 
 Tüm açık konulara [buradan](https://github.com/solana-developers/solana-cookbook/issues) göz atabilir, katkı yönergelerine [buradan](https://github.com/solana-developers/solana-cookbook#contributing) ulaşabilirsiniz. Solana Cookbook’da bir önerinin eksik olduğunu fark ederseniz, lütfen yeni bir issue oluşturun.
 
-## Comment lire le Cookbook
+## How to Read the Cookbook (Cookbook Nasıl Okunur?)
 
-Le *Solana Cookbook* est divisé en différentes sections, chacune visant un objectif différent.
+*Solana Cookbook*, her biri farklı bir amaca yönelik farklı bölümlere ayrılmıştır.
 
 | Bölüm                 | Açıklama                                                                        |
 |-----------------------|---------------------------------------------------------------------------------|
