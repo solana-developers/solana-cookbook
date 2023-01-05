@@ -84,7 +84,7 @@ await connection.confirmTransaction(airdropSignature);
 * Programları ve Hesapları İndirin
 * Programları ve Hesapları yerel bir doğrulayıcıya yükleyin
 
-###How to load accounts from mainnet (Account’lar mainnet’ten nasıl yüklenir)
+### How to load accounts from mainnet (Account’lar mainnet’ten nasıl yüklenir)
 
 SRM token mint account’ını dosyaya indirmek mümkündür:
 
