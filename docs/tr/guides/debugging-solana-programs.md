@@ -1,4 +1,4 @@
-#Debugging Solana Programs (Solana Programlarında Hata Ayıklama)
+# Debugging Solana Programs (Solana Programlarında Hata Ayıklama)
 
 Bir Solana programını test etmek ve hata ayıklamak için bir dizi seçenek ve destekleyici araç vardır.
 
