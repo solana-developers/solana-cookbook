@@ -578,6 +578,59 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/tr/": {
+        selectLanguageName: "Türk",
+        navbar: [
+          {
+            text: "Katkı yapmak",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: {
+          "/tr/": [
+            {
+              text: "Başlarken",
+              children: ["/tr/", "/tr/getting-started/installation.md"],
+            },
+            {
+              text: "Temel Kavramlar",
+              children: [
+                "/tr/core-concepts/accounts.md",
+                "/tr/core-concepts/programs.md",
+                "/tr/core-concepts/transactions.md",
+                "/tr/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Kılavuzlar",
+              children: [
+                "/tr/guides/get-program-accounts.md",
+                "/tr/guides/serialization.md",
+                "/tr/guides/data-migration.md",
+                "/tr/guides/account-maps.md",
+                "/tr/guides/retrying-transactions.md",
+                "/tr/guides/debugging-solana-programs.md",
+                "/tr/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Referanslar",
+              children: [
+                '/tr/references/local-development.md',
+                '/tr/references/keypairs-and-wallets.md',
+                '/tr/references/basic-transactions.md',
+                '/tr/references/accounts.md',
+                '/tr/references/programs.md',
+                '/tr/references/token.md',
+                '/tr/references/staking.md',
+                '/tr/references/nfts.md',
+                '/tr/references/offline-transactions.md',
+                '/tr/references/name-service.md',
+              ],
+            },
+          ],
+        },
+      },
       "/kr/": {
         selectLanguageName: "한국어",
         navbar: [
@@ -692,6 +745,10 @@ export default defineUserConfig<DefaultThemeOptions>({
       lang: "kr-KR",
       title: "Solana Cookbook"
     },
+    "/tr/": {
+      lang: "tr-TR",
+      title: "Solana Yemek Kitabı"
+    }
   },
   markdown: {
     importCode: {
