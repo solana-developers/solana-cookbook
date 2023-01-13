@@ -1,5 +1,5 @@
 from solders.keypair import Keypair
-from solana.system_program import SYS_PROGRAM_ID
+from solders.system_program import ID as SYS_PROGRAM_ID
 
 from pytest import fixture, mark
 from pytest_asyncio import fixture as async_fixture
