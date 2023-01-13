@@ -1,7 +1,7 @@
 import base64
 from borsh_construct import CStruct, U8, U32, HashMap, String
 from solana.rpc.commitment import Confirmed
-from solana.publickey import PublicKey
+from solders.pubkey import Pubkey
 from solana.rpc.api import Client
 
 
@@ -13,7 +13,7 @@ account_schema = CStruct(
 )
 
 
-def get_account_info(client: Client, account_pk: PublicKey):
+def get_account_info(client: Client, account_pk: Pubkey):
     """Fetch account information from RPC, parse out the data and deserialize"""
     res = client.get_account_info(account_pk, Confirmed, encoding='base64')
     data = res['result']

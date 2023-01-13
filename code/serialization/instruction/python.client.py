@@ -2,7 +2,7 @@ from borsh_construct import String, CStruct, U8
 from enum import IntEnum
 from solana.rpc.types import RPCResponse
 from solana.transaction import Transaction, TransactionInstruction, AccountMeta
-from solana.publickey import PublicKey
+from solders.pubkey import Pubkey
 from solders.keypair import Keypair
 from solana.rpc.api import Client
 
@@ -26,8 +26,8 @@ def construct_payload(instruction_variant: InstructionVariant, key: str, value: 
 
 def mint_kv(
     client: Client,
-    program_pk: PublicKey,
-    account_pk: PublicKey,
+    program_pk: Pubkey,
+    account_pk: Pubkey,
     wallet_kp: Keypair,
     mint_key: str,
     mint_value: str,
