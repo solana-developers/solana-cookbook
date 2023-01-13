@@ -11,7 +11,7 @@ sender = Keypair()
 receiver = Keypair()
 
 airdrop = client.request_airdrop(sender.pubkey(), 1 * LAMPORT_PER_SOL)
-airdrop_signature = airdrop["result"]
+airdrop_signature = airdrop.value
 client.confirm_transaction(airdrop_signature)
 
 transaction = Transaction().add(transfer(TransferParams(
