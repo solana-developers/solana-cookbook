@@ -3,7 +3,7 @@ from enum import IntEnum
 from solana.rpc.types import RPCResponse
 from solana.transaction import Transaction, TransactionInstruction, AccountMeta
 from solana.publickey import PublicKey
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 from solana.rpc.api import Client
 
 

@@ -1,5 +1,5 @@
 from nacl.signing import VerifyKey
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 
 secret_key =  [
       174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138, 189, 224, 216, 117,
@@ -7,8 +7,8 @@ secret_key =  [
       121, 121, 35, 172, 247, 68, 251, 226, 218, 48, 63, 176, 109, 168, 89, 238, 135,
     ]
      
-keypair = Keypair.from_secret_key(bytes(secret_key))
-pubkey_bytes = bytes(keypair.public_key)
+keypair = Keypair.from_bytes(secret_key)
+pubkey_bytes = bytes(keypair.pubkey())
 message = "The quick brown fox jumps over the lazy dog"
 message_bytes = bytes(message,'utf8')
 signed_message = keypair.sign(message_bytes)

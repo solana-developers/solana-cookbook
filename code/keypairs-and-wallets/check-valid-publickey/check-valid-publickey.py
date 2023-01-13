@@ -1,4 +1,4 @@
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 from solana.publickey import PublicKey
 from solana.utils.ed25519_base import is_on_curve
 
