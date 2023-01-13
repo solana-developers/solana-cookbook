@@ -1,9 +1,10 @@
 from borsh_construct import String, CStruct, U8
 from enum import IntEnum
 from solana.rpc.types import RPCResponse
-from solana.transaction import Transaction, TransactionInstruction, AccountMeta
+from solana.transaction import Transaction, AccountMeta
 from solders.pubkey import Pubkey
 from solders.keypair import Keypair
+from solders.instruction import Instruction
 from solana.rpc.api import Client
 
 
@@ -47,8 +48,8 @@ def mint_kv(
 
     # Construct the transaction with instructionVariant
     txn = Transaction().add(
-        TransactionInstruction(
-            [AccountMeta(account_pk, False, True)], program_pk, payload_ser
+        Instruction(
+            accounts=[AccountMeta(account_pk, False, True)], program_id=program_pk, data=payload_ser
         )
     )
     return client.send_transaction(txn, wallet_kp)
