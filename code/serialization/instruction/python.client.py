@@ -1,10 +1,10 @@
 from borsh_construct import String, CStruct, U8
 from enum import IntEnum
-from solana.rpc.types import RPCResponse
-from solana.transaction import Transaction, AccountMeta
+from solana.transaction import Transaction
 from solders.pubkey import Pubkey
 from solders.keypair import Keypair
-from solders.instruction import Instruction
+from solders.instruction import Instruction, AccountMeta
+from solders.rpc.responses import SendTransactionResp
 from solana.rpc.api import Client
 
 
@@ -32,7 +32,7 @@ def mint_kv(
     wallet_kp: Keypair,
     mint_key: str,
     mint_value: str,
-) -> RPCResponse:
+) -> SendTransactionResp:
     """Mint with a key/value pair to an account"""
     # Construct the program payload for Mint invariant
     payload_ser = construct_payload(InstructionVariant.MINT, mint_key, mint_value)
