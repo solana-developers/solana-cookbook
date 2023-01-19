@@ -579,7 +579,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         },
       },
       "/tr/": {
-        selectLanguageName: "Türk",
+        selectLanguageName: "Türkçe",
         navbar: [
           {
             text: "Katkı yapmak",
@@ -747,7 +747,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     "/tr/": {
       lang: "tr-TR",
-      title: "Solana Yemek Kitabı"
+      title: "Solana Cookbook"
     }
   },
   markdown: {
