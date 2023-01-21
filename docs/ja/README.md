@@ -39,28 +39,24 @@ footer: MIT Licensed
 
 # Cooking with Solana
 
-The *Solana Cookbook* is a developer resource that 
-provides the essential concepts and references for 
-building applications on Solana. Each concept and 
-reference will focus on specific aspects of Solana 
-development while providing additional details and usage 
-examples.
+「Solana Cookbook」はsolanaでアプリケーションを構築するうえで欠かせない基本的なコンセプトを解説する
+開発者向けのリファレンスガイドです。
+各コンセプトとリファレンスは、詳細な解説と例を用いてsolanaの開発における特有の側面に焦点を当てています。
 
-## Contributing
+## コントリビューション
 
-The Cookbook is designed in a way that makes it easy for 
-new Solana developers to contribute. Even if you 
-don't know how to do something, contributing to the 
-cookbook is a great way to learn!
+Cookbookは、Solana開発の初心者でも気軽にコンリビュートできるよう設計されています。<br>
+何かわからないことがあったとしても、Cookbookへのコントリビューションは学習の大きな手助けとなるはずです！
 
-Check out all open issues [here](https://github.com/solana-developers/solana-cookbook/issues). Contribution guidelines [here](https://github.com/solana-developers/solana-cookbook#contributing). If you find the cookbook is missing a suggestion, please add an issue.
+Solana Cookbookにおいて未解決、未報告の問題がある場合は、まずissueの追加をお願いいたします。
+issueは[こちら](https://github.com/solana-developers/solana-cookbook/issues)。 コントリビューションガイドラインは[こちら](https://github.com/solana-developers/solana-cookbook#contributing)。
 
-## How to Read the Cookbook
+## Cookbookの読み方
 
-The Solana Cookbook is split into different sections, each aimed at a different goal.
+Solana Cookbook ではそれぞれの目的に応じ下記の章に分けて解説しています。
 
-| Section       | Description |
+| 章       | 概要 |
 |---------------|-----------------------------------------------------------------|
-| Core Concepts | Building blocks of Solana that are good to know for development |
-| Guides        | Snack-sized guides about different tools for development        |
-| References    | References to commonly needed code snippets                     |
+| コアコンセプト | 開発において役立つSolanaの構成要素 |
+| ガイド        | 各開発ツールの簡単な紹介        |
+| リファレンス   | 普遍的なコードスニペット                     |

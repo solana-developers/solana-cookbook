@@ -708,12 +708,12 @@ export default defineUserConfig<DefaultThemeOptions>({
         selectLanguageName: "日本語",
         navbar: [
           {
-            text: "Contribute",
+            text: "コントリビュート",
             link: "https://github.com/solana-developers/solana-cookbook",
           },
           {
-            text: "Integrations",
-            link: "/integrations",
+            text: "インテグレーション",
+            link: "/ja/integrations",
           },
         ],
         sidebar: {
@@ -723,7 +723,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               children: ["/ja/", "/ja/getting-started/installation.md"],
             },
             {
-              text: "Core Concepts",
+              text: "コアコンセプト",
               children: [
                 "/ja/core-concepts/accounts.md",
                 "/ja/core-concepts/programs.md",
