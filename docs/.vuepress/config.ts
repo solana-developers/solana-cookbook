@@ -704,6 +704,79 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/ja/": {
+        selectLanguageName: "日本語",
+        navbar: [
+          {
+            text: "Contribute",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Integrations",
+            link: "/integrations",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "はじめに",
+              children: ["/ja/", "/ja/getting-started/installation.md"],
+            },
+            {
+              text: "Core Concepts",
+              children: [
+                "/ja/core-concepts/accounts.md",
+                "/ja/core-concepts/programs.md",
+                "/ja/core-concepts/transactions.md",
+                "/ja/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "ガイド",
+              children: [
+                "/ja/guides/get-program-accounts.md",
+                "/ja/guides/serialization.md",
+                "/ja/guides/data-migration.md",
+                "/ja/guides/account-maps.md",
+                "/ja/guides/retrying-transactions.md",
+                "/ja/guides/debugging-solana-programs.md",
+                "/ja/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "リファレンス",
+              children: [
+                "/ja/references/local-development.md",
+                "/ja/references/keypairs-and-wallets.md",
+                "/ja/references/basic-transactions.md",
+                "/ja/references/accounts.md",
+                "/ja/references/programs.md",
+                "/ja/references/token.md",
+                "/ja/references/staking.md",
+                "/ja/references/nfts.md",
+                "/ja/references/offline-transactions.md",
+                "/ja/references/name-service.md",
+              ],
+            },
+          ],
+          "/ja/integrations": [
+            {
+              text: "Integrations",
+              children: [
+                "/ja/integrations",
+                "/ja/integrations/serum.md",
+                "/ja/integrations/pyth.md",
+                "/ja/integrations/switchboard.md",
+                "/ja/integrations/mango.md",
+                "/ja/integrations/strata.md",
+                "/ja/integrations/web3auth.md",
+                "/ja/integrations/react-native.md",
+                "/ja/integrations/jupiter.md",
+              ],
+            },
+          ],
+        },
+      },
     },
   },
   locales: {
@@ -748,6 +821,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/tr/": {
       lang: "tr-TR",
       title: "Solana Yemek Kitabı"
+    },
+    "/ja/": {
+      lang: "ja-JP",
+      title: "Solana Cookbook"
     }
   },
   markdown: {
@@ -787,6 +864,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/kr/": {
             placeholder: "검색",
+          },
+          "/ja/": {
+            placeholder: "検索",
           },
         },
         maxSuggestions: 10,
@@ -861,6 +941,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "검색",
+              },
+            },
+          },
+          "/ja/": {
+            placeholder: "検索",
+            translations: {
+              button: {
+                buttonText: "検索",
               },
             },
           },
