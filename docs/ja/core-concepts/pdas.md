@@ -39,41 +39,54 @@ footer: MIT Licensed
 
 # Program Derived Addresses (PDAs)
 
-Program Derived Addresses (PDAs) are home to accounts that are designed to be controlled by a specific program. With PDAs, programs can programmatically sign for certain addresses without needing a private key. PDAs serve as the foundation for [Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations), which allows Solana apps to be composable with one another.
+Program Derived Addresses (PDAs)は、特定のプログラムによって制御されるように設計されたアカウントのホームです。
+PDA を使用すると、プログラムは秘密鍵を必要とせずに特定のアドレスにプログラムで署名できます。
+PDAは、Solanaアプリを互いに構成可能にする[Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations)の基盤として機能します。
 
 ## Facts
 
 ::: tip Fact Sheet
-- PDAs are 32 byte strings that look like public keys, but don’t have corresponding private keys
-- `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
-- A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve
-- Programs can sign for their PDAs by providing the seeds and bump to [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
-- A PDA can only be signed by the program from which it was derived
-- In addition to allowing for programs to sign for different instructions, PDAs also provide a hashmap-like interface for [indexing accounts](../guides/account-maps.md)
+- PDAは公開鍵のように見える32byteの文字列ですが、対応する秘密鍵はありません。
+- `findProgramAddress` は、programId とシード (byteのコレクション) から決定論的に PDA を導出します。
+- bump (1 byte) 潜在的な PDA を ed25519 楕円曲線から押し出すために使用されます。
+- プログラム[invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts) にシードとバンプを提供することでPDAに署名できます。
+- PDAは派生元のプログラムによってのみ署名できます。
+- プログラムがさまざまな命令に署名できるようにするだけでなく、PDAは[indexing accounts](../guides/account-maps.md)のためのハッシュマップのようなインターフェイスも提供します。
 :::
 
-## Deep Dive
+## 詳細
 
-PDAs are an essential building block for developing programs on Solana. With PDAs, programs can sign for accounts while guaranteeing that no external user could also generate a valid signature for the same account. In addition to signing for accounts, certain programs can also modify accounts held at their PDAs.
+PDAは、Solanaでプログラムを開発するための不可欠な構成要素です。<br>
+PDAを使用すると、外部ユーザーが同じアカウントに対して有効な署名を生成できないことを保証しつつ、プログラムはアカウントに署名できます。<br>
+加えて、特定のプログラムは、PDA に保持されているアカウントを変更することもできます。
 
 ![Accounts matrix](./account-matrix.png)
 
 <small style="text-align:center;display:block;">Image courtesy of <a href="https://twitter.com/pencilflip">Pencilflip</a></small>
 
-### Generating PDAs
+### PDA の生成
 
-To understand the concept behind PDAs, it may be helpful to consider that PDAs are not technically created, but rather found. PDAs are generated from a combination of seeds (such as the string `“vote_account”`) and a program id. This combination of seeds and program id is then run through a sha256 hash function to see whether or not they generate a public key that lies on the ed25519 elliptic curve.
+PDAの背後にある概念を理解するには、PDA は技術的に作成されるのではなく、発見されるものであると考えると役立つ場合があります。<br>
+PDA は、シード (`“vote_account”`文字列など) とプログラムIDの組み合わせから生成されます。 <br>
+次に、シードとプログラム ID のこの組み合わせを sha256 ハッシュ関数に渡し、ed25519楕円曲線上にある公開鍵が生成されるかどうかを確認します。
 
-In running our program id and seeds through a hash function, there is a ~50% chance that we actually end up with a valid public key that does lie on the elliptic curve. In this case, we simply add something to fudge our input a little bit and try again. The technical term for this fudge factor is a bump. In Solana, we start with bump = 255 and simply iterate down through bump = 254, bump = 253, etc. until we get an address that is not on the elliptic curve. This may seem rudimentary, but once found it gives us a deterministic way of deriving the same PDA over and over again. 
+これにより、最大50%の確率で楕円曲線上に存在する有効な公開鍵が実際に取得できます。その場合は、入力値に調整を加え再度実行します。<br>
+この追加の調整を技術用語ではbumpと言います。Solanaでは、bump値は255で始まり、
+楕円曲線に存在しないアドレスが取得できるまで bump = 254, bump = 253...と値を1ずつ下げて繰り返します。 
+これは初歩的なことのように思えるかもしれませんが、一度見つかれば、同じPDAは決定論的な方法により何度も導出が可能です。
 
 ![PDA on the ellipitic curve](./pda-curve.png)
 
-### Interacting with PDAs
+### PDAと対話する
 
-When a PDA is generated, `findProgramAddress` will return both the address and the bump used to kick the address off of the elliptic curve. Armed with this bump, a program can then [sign](../references/accounts.md#sign-with-a-pda) for any instruction that requires its PDA. In order to sign, programs should pass the instruction, the list of accounts, and the seeds and bump used to derive the PDA to `invoke_signed`. In addition to signing for instructions, PDAs must also sign for their own creation via `invoke_signed`.
+PDA が生成されると、`findProgramAddress` 楕円曲線からアドレスをはじき出すために使用されるbumpとアドレスの両方を返却します。
+このbumpを備えたプログラムは、PDA を必要とする命令に[sign](../references/accounts.md#sign-with-a-pda)できます。
+署名するために、プログラムは命令、アカウントのリスト、PDA の派生に使用されるシードとbumpを `invoke_signed` に渡す必要があります。
+命令に対する署名に加えて、PDAは`invoke_signed`を介して自身の生成に対しても署名する必要があります。
 
-When building with PDAs, it is common to [store the bump seed](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) in the account data itself. This allows developers to easily validate a PDA without having to pass in the bump as an instruction argument.
+PDAを備えたビルドの際には、[bump seedをアカウントデータ自体に保存する](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100)のが一般的です。
+これにより、開発者はbumpを命令の引数として渡すことなく、PDAを簡単に検証できます。
 
-## Other Resources
+## その他参考資料
 - [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)

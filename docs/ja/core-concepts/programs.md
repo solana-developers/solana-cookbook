@@ -1,5 +1,5 @@
 ---
-title: Programs
+title: プログラム
 head:
   - - meta
     - name: title
@@ -37,82 +37,98 @@ head:
 footer: MIT Licensed
 ---
 
-# Programs
+# プログラム
 
-Any developer can write and deploy programs to the Solana blockchain. Programs (known as smart contracts on other protocols) serve as the foundation for on-chain activity, powering anything from DeFi and NFTs to Social Media and Gaming.
+開発者は誰でもプログラムを作成してSolanaブロックチェーンにデプロイできます。
+プログラム(他のプロトコルではスマートコントラクトとして知られることが多い)は、
+オンチェーンアクティビティの基盤として機能し、DeFi や NFT、ソーシャルメディアやゲームに至るまで、あらゆるものを強化します。
 
-## Facts
+## 概要
 
 ::: tip Fact Sheet
-- Programs process [instructions](./transactions) from both end users and other programs
-- All programs are *stateless*: any data they interact with is stored in separate [accounts](./accounts.md) that are passed in via instructions
-- Programs themselves are stored in accounts marked as `executable`
-- All programs are owned by the [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-- Developers most commonly write programs in Rust or C++, but can choose any language that targets the [LLVM](https://llvm.org/)'s [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) backend
-- All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`); parameters always include:
-    - `program_id`: `pubkey`
-    - `accounts`: `array`, 
-    - `instruction_data`: `byte array`
+- プログラムは、エンドユーザーからと、他のプログラムからの [instructions](./transactions) の両方を処理します。
+- すべてのプログラムはステートレスです。プログラムがやり取りするすべてのデータは、命令を介して渡される個別の [accounts](./accounts.md) に保存されます。
+- プログラム自体は、`executable`としてマークされたアカウントに保存されます
+- すべてのプログラムは [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) によって所有され、[Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)　によって実行されます。
+- 開発者は、Rust または C++ でプログラムを作成するのが最も一般的ですが、[LLVM](https://llvm.org/) の [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter)  バックエンドを対象とする任意の言語を選択できます。 
+- すべてのプログラムには、命令処理が行われる単一のエントリ ポイント (つまり、`process_instruction`) があります。パラメータには常に以下が含まれます。
+    - `program_id`: `pubkey`(公開鍵)
+    - `accounts`: `array` (配列)
+    - `instruction_data`: `byte array`(バイト配列)
 :::
 
-## Deep Dive
+## 詳細
 
-Unlike most other blockchains, Solana completely separates code from data. All data that programs interact with are stored in separate accounts and passed in as references via instructions. This model allows for a single generic program to operate across various accounts without requiring additional deployments. Common examples of this pattern are seen across the Native and SPL Programs.
+他のほとんどのブロックチェーンとは異なり、Solanaはコードとデータを完全に分離します。
+プログラムがやり取りするすべてのデータは個別のアカウントに保存され、instructionsを介して参照として渡されます。
+このモデルは、追加のデプロイを必要とせずに1つの汎用プログラムをさまざまなアカウントで動作させることを可能にします。
+このパターンの一般的な例は、Native Programsと SPL(The Solana Program Library)で見られます。
 
 ### Native Programs & The Solana Program Library (SPL)
 
-Solana comes equipped with a number of programs that serve as core building blocks for on-chain interactions. These programs are divided into [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and [Solana Program Library (SPL) Programs](https://spl.solana.com/).
+Solana には、オンチェーンインタラクションの中核の構成要素として機能する多数のプログラムが搭載されています。
+これらのプログラムは、 [Native Programs](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) と [Solana Program Library (SPL) Programs](https://spl.solana.com/)に分けられます。
 
-Native Programs provide the base functionality that is required to operate validators. Among these programs, the most well known is the [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) which is responsible for administering new accounts and transferring SOL between two parties.
+ネイティブプログラムは、バリデータの操作に必要な基本機能を提供します。
+これらのプログラムの中で最もよく知られているのは、新しいアカウントの管理と2者間での SOLの転送を担当する [System Program](https://docs.solana.com/developing/runtime-facilities/programs#system-program) です。
 
-SPL Programs support a number of on-chain activities, including creating, swapping, and lending tokens, as well as generating stake pools and maintaining an on-chain name service. The [SPL Token Program](https://spl.solana.com/token) can be invoked directly via the CLI, while others like the [Associated Token Account Program](https://spl.solana.com/associated-token-account) are usually composed with custom programs.
+SPL プログラムは、トークンの作成、交換、貸付、ステークプールの生成、オンチェーンネームサービスの維持など、多くのオンチェーン アクティビティをサポートします。 [SPL Token Program](https://spl.solana.com/token)CLI 経由で直接呼び出すことができますが、 [Associated Token Account Program](https://spl.solana.com/associated-token-account) は通常、カスタム プログラムで構成されています。
 
-### Writing Programs
+### プログラミング
 
-Programs are most commonly developed with Rust or C++, but can be developed with any language that targets the LLVM’s BPF backend. Recent initiatives by [Neon Labs](https://neon-labs.org/) and [Solang](https://solang.readthedocs.io/en/latest/) enable [EVM](https://ethereum.org/en/developers/docs/evm/) compatibility and allow developers to write programs in Solidity.
+プログラムはRustまたはC++で開発されるのが最も一般的ですが、LLVMのBPFバックエンドをターゲットとする任意の言語で開発できます。
+[Neon Labs](https://neon-labs.org/) と [Solang](https://solang.readthedocs.io/en/latest/) 最近の取り組みにより、 [EVM](https://ethereum.org/en/developers/docs/evm/)との互換性が実現し、開発者がSolidityでプログラムを書けるようになりました。
 
-Most Rust-based programs adhere to the following architecture:
+ほとんどの Rust ベースのプログラムは、次のアーキテクチャに準拠しています。:
 
-| File           | Description                                   |
+| ファイル名           | 説明                                   |
 |----------------|-----------------------------------------------|
-| lib.rs         | Registering modules                           |
-| entrypoint.rs  | Entrypoint to the program                     |
-| instruction.rs | Program API, (de)serializing instruction data |
-| processor.rs   | Program logic                                 |
-| state.rs       | Program objects, (de)serializing state        |
-| error.rs       | Program-specific errors                       |
+| lib.rs         | モジュールの登録                           |
+| entrypoint.rs  | プログラムへのエントリポイント                     |
+| instruction.rs | プログラム API、命令データのシリアライズ、デシリアライズ |
+| processor.rs   | プログラムロジック                                 |
+| state.rs       | プログラムオブジェクト、シリアライズ、デシリアライズのステータス       |
+| error.rs       | プログラム固有のエラー                      |
 
-Recently, [Anchor](https://github.com/coral-xyz/anchor) has emerged as a popular framework for developing programs. Anchor is an opinionated framework, akin to Ruby on Rails, that reduces boilerplate and streamlines the (de)serialization process for Rust-based development.
+ 近年は、[Anchor](https://github.com/coral-xyz/anchor) が人気の開発フレームワークとして登場しています。
+Anchor は、Ruby on Rails に似た独自のフレームワークであり、定型文を削減し、Rust ベースの開発の (デ) シリアル化プロセスを合理化します。
 
-Programs are usually developed and tested against Localhost and Devnet environments before being deployed to Testnet or Mainnet. Solana supports the following environments:
+プログラムは通常、Testnet または Mainnet にデプロイされる前に、Localhost および Devnet 環境に対して開発およびテストされます。
+ Solana は以下の環境をサポートしています:
 
-| Cluster Environment  | RPC Connection URL                                                        |
+| クラスタ環境  | RPC Connection URL                                                       |
 |----------------------|---------------------------------------------------------------------------|
 | Mainnet-beta         | https://api.mainnet-beta.solana.com                                       |
 | Testnet              | https://api.testnet.solana.com                                            |
 | Devnet               | https://api.devnet.solana.com                                             |
 | Localhost            | Default port: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
 
-Once deployed to an environment, clients can interact with on-chain programs via [RPC connections](https://docs.solana.com/developing/clients/jsonrpc-api) to the respective cluster.
+各環境にデプロイ後、クライアントはそれぞれのクラスターへの [RPC接続](https://docs.solana.com/developing/clients/jsonrpc-api) 
+を介してオンチェーンプログラムと対話が可能です。
 
-### Deploying Programs
+### デプロイ
 
-Developers can deploy their programs via the [CLI](https://docs.solana.com/cli/deploy-a-program):
+開発者は [CLI](https://docs.solana.com/cli/deploy-a-program)経由でプログラムをデプロイ可能です。:
 
 ```bash
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-When a program is deployed, it is compiled to an [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (containing BPF bytecode) and uploaded to the Solana cluster. Programs live in accounts (much like everything else on Solana), except these accounts are marked as `executable` and assigned to the BPF Loader. The address of this account is referred to as the `program_id` and is used to reference the program in all future transactions.
+プログラムがデプロイされると、[ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (BPF バイトコードを含む) にコンパイルされ、Solana クラスターにアップロードされます。
+プログラムは (Solana の他のすべてと同様に) アカウントに存在しますが、これらのアカウントは `executable` としてマークされ、BPF Loaderに割り当てられます。
+このアカウントのアドレスは `program_id` と呼ばれ、今後のすべてのトランザクションでプログラムを参照するために使用されます。
 
-Solana supports multiple BPF Loaders, with the latest being the [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). The BPF Loader is responsible for administering the program’s account and making it available to clients via the `program_id`. All programs have a single entry point where instruction processing takes place (i.e. `process_instruction`) and parameters always include:
+Solana は複数の BPF ローダーをサポートしており、最新のものは [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111)です。
+BPF Loaderはプログラムアカウントを管理し、program_id を介してクライアントが利用できるようにする責務を負います。
+すべてのプログラムには、命令処理が行われる単一のエントリ ポイント (`process_instruction`) があり、パラメータには常に次のものが含まれます。:
+
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`
 
-Once invoked, programs are executed by the Solana Runtime.
+呼び出されると、プログラムは Solana ランタイムによって実行されます。
 
-## Other Resources
+## その他参考資料
 
 - [Official Documentation](https://docs.solana.com/developing/on-chain-programs/overview)
 - [SPL Documentation](https://spl.solana.com/)

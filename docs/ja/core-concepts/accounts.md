@@ -1,5 +1,5 @@
 ---
-title: Accounts
+title: アカウント
 head:
   - - meta
     - name: title
@@ -37,89 +37,83 @@ head:
 footer: MIT Licensed
 ---
 
-# Accounts
+# アカウント
 
-Accounts within Solana are used to store state. They are an essential
-building block for developing on Solana.
+Solanaにおけるアカウントは状態の保存に利用される、Solana開発における必要不可欠な構成要素です。
 
-## Facts
+## 概要
 
 ::: tip Fact Sheet
 
-- Accounts are used to store data
-- Each account has a unique address
-- Accounts have a max size of 10MB (10 Mega Bytes)
-- PDA accounts have a max size of 10KB (10 Kilo Bytes)
-- PDA accounts can be used to sign on behalf of a program
-- Accounts size are fixed at creation time, but can be adjusted using [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
-- Account data storage is paid with rent
-- Default account owner is the System Program
+- アカウントはデータの保存に使用されます。
+- それぞれのアカウントは一位のアドレスを持ちます。
+- アカウントが保持できるデータの最大容量は10MB (10 Mega Bytes)です。
+- PDAアカウントが保持できるデータの最大容量は10KB (10 Kilo Bytes)です。
+- PDA アカウントはプログラムに代わり、署名の実行に使用できます。
+- アカウントのサイズは作成時に固定されますが、[realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)を使用して変更可能です。
+- アカウントのデータストレージに対し、rent(家賃)が支払われます。
+- デフォルトのアカウント所有者はシステムプログラムです。
   :::
 
-## Deep Dive
+## 詳細
 
-### Account Model
+### アカウントモデル
 
-There are 3 kinds of accounts on Solana:
+Solanaには三種類のアカウントがあります。:
 
-- Data accounts store data
-- Program accounts store executable programs
-- Native accounts that indicate native programs on Solana such as System, Stake, and Vote
+- 「データアカウント」はデータの保存を行います。
+- 「プログラムアカウント」は実行可能プログラムの保存を行います。
+- 「ネイティブアカウント」は、System、Stake、VoteなどのSolanaのネイティブプログラムを意味します。
 
-Within data accounts, there are 2 types:
+データアカウントには、さらに二種類のアカウントがあります。:
 
-- System owned accounts
-- PDA (Program Derived Address) accounts
+- システムが所有するアカウント
+- PDA (プログラム派生アドレス/Program Derived Address) アカウント
 
-Each account has an address (usually a public key) and an owner
-(address of a program account). The full field list an account stores
-is found below.
+各アカウントは、アドレス(通常は公開鍵)と所有者(プログラムアカウントのアドレス)を持ちます。
+アカウントが保存するすべてのフィールドを下記のリストに示します。
 
-| Field      | Description                                    |
+| フィールド名      | 説明                                    |
 | ---------- | ---------------------------------------------- |
-| lamports   | The number of lamports owned by this account   |
-| owner      | The program owner of this account              |
-| executable | Whether this account can process instructions  |
-| data       | The raw data byte array stored by this account |
-| rent_epoch | The next epoch that this account will owe rent |
+| lamports   | このアカウントが所有するlamportsの数   |
+| owner      | このアカウントを所有するプログラムオーナー              |
+| executable | 支持された処理を処理可能かどうか  |
+| data       | このアカウントによって保存された生データのバイト配列 |
+| rent_epoch | このアカウントが家賃を支払う次のepoch |
 
-There are a few important ownership rules:
+所有に関していくつかの重要な規則があります。:
 
-- Only a data account's owner can modify its data and debit lamports
-- Anyone is allowed to credit lamports to a data account
-- The owner of an account may assign a new owner if the account's data is zeroed out
+- データ アカウントの所有者のみがそのデータを変更し、ランポートを引き落とすことができます。
+- データアカウントへのlamportsの入金は誰でも可能です。
+- アカウントのデータがゼロになっている場合、アカウントの所有者は新しい所有者を割り当てることができます。
 
-Program accounts do not store state.
+プログラム アカウントは状態を保存しません。
 
-For example, if you have a counter program that lets you increment a counter, you
-must create two accounts, one account to store the program's code, and one to store
-the counter.
+たとえば、counterという数値をインクリメントするカウンタプログラムの場合、
+カウントアップを実行するプログラムを格納するプログラムアカウントと、counterの数値を保存するデータアカウントの 2 つのアカウントを作成する必要があります。
 
 ![](./account_example.jpeg)
 
-To prevent an account from being deleted, you must pay rent.
+アカウントが削除されないようにするためには、家賃(rent)を払い続ける必要があります。
 
-### Rent
+### rent(家賃)
+データアカウントにデータを保存し続けるためにはSOLの支払いが必要となり、
+これはrent(家賃)と呼ばれるものにより賄われることになります。
+口座に2年分の家賃の支払いに相当する最低残高を維持している場合、あなたのwalletは家賃の支払いが免除されます。
+rentは、アカウントを閉鎖しlamportsをwalletに送り返すことで回収できます。
 
-Storing data on accounts costs SOL to maintain, and it is funded by what is called
-rent. If you maintain a minimum balance equivalent to 2 years of rent payments in an
-account, your account will be exempt from paying rent. You can retrieve rent by closing
-the account and sending the lamports back to your wallet.
+rentは次の二つのタイミングで支払われます。:
 
-Rent is paid during two different timings:
+1. トランザクションに参照されたとき
+2. epochごと
 
-1. When referenced by a transaction
-2. Once an epoch
+アカウントにより収集された割合のrentが破棄され、残りは各slotの最後に投票アカウントに分配がされます。
 
-A percentage of rent collected by accounts is destroyed, while the rest is distributed
-to vote accounts at the end of every slot.
+アカウントが家賃を支払うのに十分な残高を持たない場合、アカウントの割り当ては解除されデータが削除されます。
 
-If the account does not have enough to pay rent, the account will be deallocated and the data
-removed.
+新しいアカウントは家賃の支払いが免除されることにも注意が必要です。
 
-It is also important to note that new accounts must be rent exempt.
-
-## Other Resources
+## その他参考資料
 
 - [Solana Account Model](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
 - [Official Documentation](https://docs.solana.com/developing/programming-model/accounts)
@@ -127,4 +121,4 @@ It is also important to note that new accounts must be rent exempt.
 
 ### Credit
 
-This core concept is credited to Pencilflip. [Follow him on Twitter](https://twitter.com/intent/user?screen_name=pencilflip).
+Pencilflipの功績によりこのページは作成されました。[Twitterをフォロー](https://twitter.com/intent/user?screen_name=pencilflip).
