@@ -1,5 +1,5 @@
 ---
-title: Get Program Accounts
+title: プログラムアカウントの取得
 head:
   - - meta
     - name: title
@@ -38,76 +38,89 @@ head:
 
 # Get Program Accounts
 
-An RPC method that returns all accounts owned by a program. Currently pagination is not supported. Requests to `getProgramAccounts` should include the `dataSlice` and/or `filters` parameters to improve response time and return only intended results. 
+プログラムに所有されるアカウントすべてを返すRPCメソッド。ページネーションはサポートしていません。
+レスポンス向上をしつつ意図した結果のみを返すためには、 `getProgramAccounts` には`dataSlice` か `filters`、あるいはその両方をパラメータに含める必要があります。
 
-## Facts
+## 概要
 
 ::: tip Parameters
 
-- `programId`: `string` - Pubkey of the program to query, provided as a base58 encoded string
-- (optional) `configOrCommitment`: `object` - Configuration parameters containing the following optional fields:
+- `programId`: `string` - base58 でエンコードされた文字列として提供される、クエリするプログラムの公開鍵
+- (optional) `configOrCommitment`: `object` - 次のオプションフィールドを含む設定パラメータ:
     - (optional) `commitment`: `string` - [State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-    - (optional) `encoding`: `string` - Encoding for account data, either: `base58`, `base64`, or `jsonParsed`. Note, web3js users should instead use [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
-    - (optional) `dataSlice`: `object` - Limit the returned account data based on:
-        - `offset`: `number` - Number of bytes into account data to begin returning
-        - `length`: `number` - Number of bytes of account data to return
-    - (optional) `filters`: `array` - Filter results using the following filter objects:
-        - `memcmp`: `object` - Match a series of bytes to account data:
-            - `offset`: `number` - Number of bytes into account data to begin comparing
-            - `bytes`: `string` - Data to match, as base58 encoded string limited to 129 bytes
-        - `dataSize`: `number` - Compares the account data length with the provided data size
-    - (optional) `withContext`: `boolean` - Wrap the result in an [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+    - (optional) `encoding`: `string` - アカウント データのエンコード: `base58`、 `base64`、 `jsonParsed` のいずれか。 ※ web3js ユーザーは代わりに[getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)を使用する必要があります。
+    - (optional) `dataSlice`: `object` - 下記に基づき、返却されるアカウントデータを制限します。:
+        - `offset`: `number` - アカウントデータの返却開始位置バイト数
+        - `length`: `number` - アカウントデータの返却バイト数
+    - (optional) `filters`: `array` - 次のフィルターオブジェクトを使用して結果をフィルタします。:
+        - `memcmp`: `object` - アカウントデータと照合する連続バイト:
+            - `offset`: `number` - アカウントデータの比較開始位置バイト数
+            - `bytes`: `string` - 照合に使用する129バイト制限のbase58エンコード文字列
+        - `dataSize`: `number` - アカウントデータの長さと比較する指定数
+    - (optional) `withContext`: `boolean` - 結果を[RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)にラップするかどうか。
 
 ##### Response
 
-By default `getProgramAccounts` will return an array of JSON objects with the following structure:
+デフォルトでは、 `getProgramAccounts` は次の構造を持つ JSON オブジェクトの配列を返します。:
 
-- `pubkey`: `string` - The account pubkey as a base58 encoded string
-- `account`: `object` - a JSON object, with the following sub fields:
-    - `lamports`: `number`, number of lamports assigned to the account
-    - `owner`: `string`, The base58 encoded pubkey of the program the account has been assigned to
-    - `data`: `string` | `object` - data associated with the account, either as encoded binary data or JSON format depending on the provided encoding parameter
-    - `executable`: `boolean`, Indication if the account contains a program
-    - `rentEpoch`: `number`, The epoch at which this account will next owe rent
+- `pubkey`: `string` -  base58エンコード文字列のアカウント公開鍵
+- `account`: `object` - 次のサブフィールドを持つ JSON オブジェクト:
+    - `lamports`: `number`, アカウントに割り当てられたlamports の数
+    - `owner`: `string`, アカウントが割り当てられているプログラムのbase58エンコード文字列のアカウント公開鍵
+    - `data`: `string` | `object` - 指定されたエンコーディング パラメータに応じてバイナリ データまたは JSON 形式にエンコードされたアカウントに関連付けられたデータ
+    - `executable`: `boolean`, アカウントにプログラムが含まれているかどうか
+    - `rentEpoch`: `number`, このアカウントが次にrentを支払うべきepoch
 :::
 
-## Deep Dive
+## 詳細
 
-`getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
+`getProgramAccounts` はプログラムが所有するすべてのアカウントを返す多用途の RPC メソッドです。下記のような検索など、多くのクエリに使用できます:
 
-- All token accounts for a particular wallet
-- All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
-- All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
+- 特定のウォレットのすべてのトークン アカウントの取得
+- 特定のmintのすべてのトークン アカウント ( つまり、[SRM](https://www.projectserum.com/) の所有者すべて)
+- 特定のプログラムのすべてのカスタム アカウント (つまり、[Mango](https://mango.markets/) ユーザー全員)
 
-Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope can result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
+ `getProgramAccounts`は非常に便利ですが、現在の制約のためによく誤解されます。
+ サポートされているクエリの多くは、大量のデータ セットをスキャンするためにRPC ノードを必要とします。
+これらのスキャンは、メモリとリソースの両方を集中的に使用します。その結果、呼び出しの頻度が高すぎたり取得範囲が大きすぎたりすると、
+接続タイムアウトが発生する可能性があります。 さらに、この記事の執筆時点では、`getProgramAccounts`エンドポイントはページネーションをサポートしていません。
+クエリの結果が大きすぎる場合、レスポンスは破棄されます。
 
-To get around these current constraints, `getProgramAccounts` offers a number of useful parameters: namely, `dataSlice` and the `filters` options `memcmp` and `dataSize`. By providing combinations of these parameters, we can reduce the scope of our queries down to manageable and predictable sizes.
+これらの現在の制約を回避するために、`dataSlice`、`filters` 、`memcmp`、 `dataSize`などの有用なパラメータが提供されています。
+これらのパラメーターの組み合わせにより、クエリの範囲を予測可能なサイズに縮小できます。
 
-A common example of `getProgramAccounts` involves interacting with the [SPL-Token Program](https://spl.solana.com/token). Requesting all accounts owned by the Token Program with a [basic call](../references/accounts.md#get-program-accounts) would involve an enormous amount of data. By providing parameters, however, we can efficiently request just the data we intend to use.
+`getProgramAccounts`の一般的な例として、[SPL-Token Program](https://spl.solana.com/token)との対話があります。 
+ [basic call](../references/accounts.md#get-program-accounts)でトークン プログラムが所有するすべてのアカウントを要求すると、膨大な量のデータが必要になります。
+ただし、パラメーターを指定することで、使用するデータのみを効率的に取得できます。
 
 ### `filters`
-The most common parameter to use with `getProgramAccounts` is the `filters` array. This array accepts two types of filters,`dataSize` and `memcmp`. Before using either of these filters, we should be familiar with how the data we are requesting is laid out and serialized.
+ `getProgramAccounts` 使用する最も一般的なパラメーターは、 `filters` 配列です。
+  `dataSize` と `memcmp`の 2 種類のフィルターを受け入れます。
+これらのフィルターのいずれかを使用する前に、要求しているデータがどのように配置され、シリアル化されるかを理解する必要があります。
 
 #### `dataSize`
-In the case of the Token Program, we can see that [token accounts are 165 bytes in length](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106). Specifically, a token account has eight different fields, with each field requiring a predictable number of bytes. We can visualize how this data is laid out using the below illustration.
+トークン プログラムの場合、[トークン アカウントの長さは 165 バイト](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)です。
+具体的には、トークンアカウントには8つの異なるフィールドがあり、各フィールドには予測可能なバイト数が必要です。
+以下の図を使用して、このデータがどのように配置されているかを視覚化できます。
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-If we wanted to find all token accounts owned by our wallet address, we could add `{ dataSize: 165 }` to our `filters` array to narrow the scope of our query to just accounts that are exactly 165 bytes in length. This alone, however, would be insufficient. We would also need to add a filter that looks for accounts owned by our address. We can achieve this with the `memcmp` filter.
+ウォレットアドレスが所有するすべてのトークンアカウントを検索する場合は、`filters`に `{ dataSize: 165 }` を追加することで、クエリの範囲を正確に165 バイトの長さのアカウントだけに絞り込むことができます。ただし、これだけでは不十分です。 アドレスが所有するアカウントを検索するフィルターも追加する必要があります。これは `memcmp` フィルターで実現できます。
 
 #### `memcmp`
-The `memcmp` filter, or "memory comparison" filter, allows us to compare data at any field stored on our account. Specifically, we can query only for accounts that match a particular set of bytes at a particular position. `memcmp` requires two arguments:
+`memcmp`、または "memory comparison"フィルターを使用すると、アカウントに保存されている任意のフィールドのデータを比較できます。 具体的には、特定の位置にある特定のバイト セットに一致するアカウントのみを照会できます。 `memcmp`には 2 つの引数が必要です:
 
-- `offset`: The position at which to begin comparing data. This position is measured in bytes and is expressed as an integer.
-- `bytes`: The data that should match the account's data. This is represented as a base-58 encoded string should be limited to less than 129 bytes.
+- `offset`: データの比較を開始する位置。この位置はバイト単位で測定され、整数として表されます。
+- `bytes`: アカウントのデータと一致させるデータ。これは、base-58エンコードの文字列で、129 バイト未満に制限する必要があります。
 
-It's important to note that `memcmp` will only return results that are an exact match on `bytes`. Currently, it does not support comparisons for values that are less than or greater than the `bytes` we provide.
+`memcmp` は `bytes`が完全に一致する結果のみを返すことに注意してください。 
+現在は、指定した`bytes`より大きい、または小さい値の比較はサポートされていません。
 
-In keeping with our Token Program example, we can amend our query to only return token accounts that are owned by our wallet address. When looking at a token account, we can see the first two fields stored on a token account are both pubkeys, and that each pubkey is 32 bytes in length. Given that `owner` is the second field, we should begin our `memcmp` at an `offset` of 32 bytes. From here, we’ll be looking for accounts whose owner field matches our wallet address.
+トークン プログラムの例に沿って、クエリを修正して、ウォレット アドレスが所有するトークン アカウントのみを返すことができます。トークン アカウントを見ると、トークン アカウントに保存されている最初の 2 つのフィールドが両方とも公開鍵であり、各公開鍵の長さが 32 バイトであることがわかります。`owner`が 2 番目のフィールドであることを考えると、 `memcmp` は  32バイトの`offset`で開始する必要があります。ここから、所有者フィールドがウォレット アドレスと一致するアカウントを探します。
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-We can invoke this query via the following example:
+次の例を使用して、このクエリを呼び出すことができます:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -131,14 +144,17 @@ We can invoke this query via the following example:
 
 ### `dataSlice`
 
-Outside of the two filter parameters, the third most common parameter for `getProgramAccounts` is `dataSlice`. Unlike the `filters` parameter, `dataSlice` will not reduce the number of accounts returned by a query. Instead, `dataSlice` will limit the amount of data for each account.
+2 つのフィルター パラメーター以外で、 `getProgramAccounts`の 3番目に一般的なパラメーターは `dataSlice`です。
+ `filters` パラメーターとは違い、`dataSlice`はクエリの結果によって返却されるアカウントの数を制限するわけではありません。
+ 代わりに、`dataSlice` それぞれのアカウントのデータ量を制限します。
 
-Much like `memcmp`, `dataSlice` accepts two arguments:
+`memcmp`と同様、`dataSlice`は下記の2つの引数を受け入れます:
 
-- `offset`: The position (in number of bytes) at which to begin returning account data
-- `length`: The number of bytes which should be returned
+- `offset`: アカウントデータの返却開始位置(バイト数)
+- `length`: 返却を期待するバイト数
 
-`dataSlice` is particularly useful when we run queries on a large dataset but don’t actually care about the account data itself. An example of this would be if we wanted to find the number of token accounts (i.e. number of token holders) for a particular token mint.
+`dataSlice`は、アカウントデータ自体は重要ではないが大きいデータセットに対してクエリする場合に便利です。 
+例としては、特定のトークンmintのトークンアカウントの数 (つまり、トークン所有者の数) を見つけたい場合です。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,9 +176,9 @@ Much like `memcmp`, `dataSlice` accepts two arguments:
   </CodeGroupItem>
 </CodeGroup>
 
-By combining all three parameters (`dataSlice`, `dataSize`, and `memcmp`) we can limit the scope of our query and efficiently return only the data we’re interested in.
+`dataSlice`、`dataSize`、`memcmp`の三つのパラメータをすべて組み合わせることで、クエリの範囲を制限し関心のあるデータのみを効率的に返すことができます。
 
-## Other Resources
+## その他参考資料
 
 - [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
 - [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
