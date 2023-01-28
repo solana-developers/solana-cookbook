@@ -1,4 +1,4 @@
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 
 secret_key= [
         174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138,
@@ -7,5 +7,5 @@ secret_key= [
         63, 176, 109, 168, 89, 238, 135,
     ]
     
-keypair = Keypair.from_secret_key(bytes(secret_key))
-print("Created Keypair with Public Key: {}".format(keypair.public_key))
+keypair = Keypair.from_bytes(secret_key)
+print("Created Keypair with Public Key: {}".format(keypair.pubkey()))

@@ -1,7 +1,7 @@
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 
 keypair = Keypair()
-while(str(keypair.public_key)[:5]!="elv1s") :
+while(str(keypair.pubkey())[:5]!="elv1s") :
     keypair = Keypair()
     
-print("Created Keypair with Public Key: {}".format(keypair.public_key))
+print("Created Keypair with Public Key: {}".format(keypair.pubkey()))

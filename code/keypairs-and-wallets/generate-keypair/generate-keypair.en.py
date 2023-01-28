@@ -1,3 +1,3 @@
-from solana.keypair import Keypair
+from solders.keypair import Keypair
 
 keypair = Keypair()
