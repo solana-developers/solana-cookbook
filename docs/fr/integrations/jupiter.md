@@ -87,7 +87,7 @@ Tous les jetons possibles qui peuvent être échangés avec Jupiter pour un rés
 
 ### Chargement de l'instance Jupiter
 
-L'instance de Jupiter est créée avec les configurations fournies. Il existe de nombreux paramètres optionnels que l'instance peut prendre, pour en savoir plus allez [ici].(https://docs.jup.ag/jupiter-core/full-guide)
+L'instance de Jupiter est créée avec les configurations fournies. Il existe de nombreux paramètres optionnels que l'instance peut prendre, pour en savoir plus allez [ici](https://docs.jup.ag/jupiter-core/full-guide)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
