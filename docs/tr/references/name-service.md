@@ -91,7 +91,7 @@ const parentDomain = "bonfida";
 const subDomain = "demo";
 
 // Step 1
-const hashedParentDomain = await getHashedName(mainDomain);
+const hashedParentDomain = await getHashedName(parentDomain);
 const parentDomainKey = await getNameAccountKey(
   hashedParentDomain,
   undefined,
