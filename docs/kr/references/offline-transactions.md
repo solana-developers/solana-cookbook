@@ -69,7 +69,7 @@ Transaction이 다수의 서명을 요구할 때, 당신은 부분적으로 서�
 이것이 유용한 몇 가지 예제들:
 
 - 지불에 대한 응답으로 SPL Token을 보내는 것
-- 당신이 나중에 이것의 진위를 검증하기 위해 Trnascation에 서명하는 것
+- 당신이 나중에 이것의 진위를 검증하기 위해 Transaction에 서명하는 것
 - 당신의 서명을 요구하는 Transaction에 커스텀 Program들을 호출하는 것
 
 이번 예제에서는 Bob이 Alice에게 그녀의 지불에 대한 응답으로 SPL Token을 보냅니다:
