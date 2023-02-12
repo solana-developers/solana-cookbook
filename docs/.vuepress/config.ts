@@ -393,6 +393,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/th/guides/retrying-transactions.md",
                 "/th/guides/debugging-solana-programs.md",
                 "/th/guides/feature-parity-testing.md",
+                "/th/guides/versioned-transactions.md",
               ],
             },
             {

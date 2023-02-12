@@ -102,7 +102,7 @@ solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 
 ```console
 solana config set -ul
-solana-test-validator -l ./ledger --bpf-program target/deploy/PROGNAME.so --reset`
+solana-test-validator -l ./ledger --bpf-program ADDRESS target/deploy/PROGNAME.so --reset`
 ```
 
 2. ใน terminal อีกอันให้เปิด log streamer:
