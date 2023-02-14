@@ -1,0 +1,1 @@
+connection.request_airdrop(key_pair.public_key).unwrap();

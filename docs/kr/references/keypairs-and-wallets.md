@@ -77,6 +77,22 @@ Keypair 또는 Wallet을 요구하는 다양한 Solana 라이브러리들에 대
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -150,7 +166,23 @@ Keypair 또는 Wallet을 요구하는 다양한 Solana 라이브러리들에 대
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -219,7 +251,7 @@ Keypair 또는 Wallet을 요구하는 다양한 Solana 라이브러리들에 대
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -258,7 +290,7 @@ keypair가 주어졌다면 당신은 secret이 주어진 public key와 일치하
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Python">
+  <SolanaCodeGroupItem title="Python">
 
   <template v-slot:default>
 
@@ -269,6 +301,22 @@ keypair가 주어졌다면 당신은 secret이 주어진 public key와 일치하
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.cpp)
 
   </template>
 
@@ -325,6 +373,22 @@ keypair가 주어졌다면 당신은 secret이 주어진 public key와 일치하
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.cpp)
 
   </template>
 
@@ -541,6 +605,22 @@ Note: 당신의 vanity address에 문자들이 많을수록 더 오래 걸립니
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.cpp)
 
   </template>
 
