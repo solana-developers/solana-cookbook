@@ -9,7 +9,7 @@ import { Connection, clusterApiUrl, Keypair, PublicKey } from "@solana/web3.js";
   metaplex.use(keypairIdentity(keypair));
 
   const owner = new PublicKey("2R4bHmSBHkHAskerTHE6GE1Fxbn31kaD5gHqpsPySVd7");
-  const allNFTs = await metaplex.nfts().findAllByOwner(owner);
+  const allNFTs = await metaplex.nfts().findAllByOwner({ owner });
 
   console.log(allNFTs);
 })();
