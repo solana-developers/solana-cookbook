@@ -1,4 +1,4 @@
-let aggregator = &ctx.accounts.aggregator_feed;
-let val: f64 = AggregatorAccountData::new(aggregator)?
-            .get_result()?
-            .try_into()?;
+let aggregator = &ctx.accounts.aggregator_feed.load()?;
+let val:f64 = aggregator
+    .get_result()?
+    .try_into()?;

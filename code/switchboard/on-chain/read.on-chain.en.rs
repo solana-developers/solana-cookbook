@@ -9,8 +9,8 @@ pub mod get_result {
     use super::*;
    
     pub fn get_result(ctx: Context<GetResult>) -> Result<()> {
-        let aggregator = &ctx.accounts.aggregator_feed;
-        let val: f64 = AggregatorAccountData::new(aggregator)?
+        let aggregator = &ctx.accounts.aggregator_feed.load()?;
+        let val:f64 = aggregator
             .get_result()?
             .try_into()?;
 
@@ -24,5 +24,5 @@ pub mod get_result {
 pub struct GetResult<'info> {
     pub authority: Signer<'info>,
     /// CHECK: field is unsafe
-    pub aggregator_feed: AccountInfo<'info>, // pass aggregator key
+    pub aggregator_feed: AccountLoader<'info, AggregatorAccountData>, // pass aggregator key
 }
