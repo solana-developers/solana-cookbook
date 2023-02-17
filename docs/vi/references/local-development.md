@@ -100,6 +100,22 @@ Một khi bắt đầu làm việc với môi trường phát triển ứng dụ
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -161,6 +177,22 @@ Cuối cùng bạn cũng có thể kết nối đến các mạng riêng, hoặc
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.cpp)
 
   </template>
 
@@ -239,6 +271,22 @@ Lớp `Connection` sẽ cung cấp các phương thức pub/sub - tất cả ch�
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -287,6 +335,22 @@ Khi bạn làm việc trên môi trường địa phương, bạn sẽ phải c�
   <template v-slot:preview>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.cpp)
 
   </template>
 

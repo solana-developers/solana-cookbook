@@ -101,6 +101,22 @@ Solana는 3 개의 public 개발 환경을 가지고 있습니다.
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -162,6 +178,22 @@ Solana는 3 개의 public 개발 환경을 가지고 있습니다.
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.cpp)
 
   </template>
 
@@ -242,6 +274,22 @@ Solana의 web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/class
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -291,6 +339,22 @@ non-mainnet 환경에서 당신은 airdrop 해서 당신의 Address에 SOL을 �
   <template v-slot:preview>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.cpp)
 
   </template>
 
