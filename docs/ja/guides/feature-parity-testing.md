@@ -1,5 +1,5 @@
 ---
-title: Feature Parity Testing
+title: 機能パリティテスト
 head:
   - - meta
     - name: title
@@ -37,24 +37,20 @@ head:
 footer: MIT Licensed
 ---
 
-# Feature Parity Testing
+# 機能パリティテスト
 
-When testing your program, assurances that it will run the same in various clusters is essential to both quality and
-producing expected outcomes.
+プログラムをテストするとき、さまざまなクラスターで同じように実行されることを保証することは、品質と期待される結果の生成の両方にとって不可欠です。
 
-## Facts
+## 概要
 
 ::: tip Fact Sheet
-- Features are capabilities that are introduced to Solana validators and require activation to be used.
-- Features may be activated in one cluster (e.g. testnet) but not so in another (e.g. mainnet-beta).
-- However; when running default `solana-test-validator` locally, all available features in your
-Solana version are automagically activated. The result is that when testing locally, the capabilities and results of
-your testing may not be the same when deploying and running in a different cluster!
+- Featuresとは、Solana バリデーターに導入され、使用するにはアクティベーションが必要な機能です。
+- Featuresはあるクラスター (例: testnet) でアクティブ化される場合がありますが、別のクラスター (例: mainnet-beta) ではアクティブ化されません。
+- しかし、 `solana-test-validator`  をローカルで実行すると、Solana バージョンで利用可能なすべての機能が自動的に有効になります。Solanaバージョンは自動的にアクティベートされます。その結果、ローカルでテストする場合、テストの機能と結果は、別のクラスターで展開して実行する場合と同じではない可能性があります。
 :::
 
-## Scenario
-Assume you have a Transaction that contained three (3) instructions and each instruction consumes approximately
-100_000 Compute Units (CU). When running in a Solana 1.8.x version, you would observe your instruction CU consumption similar to:
+## シナリオ
+3 つの命令を含むトランザクションがあり、各命令が約 100_000 計算ユニット (CU) を消費するとします。Solana 1.8.x バージョンで実行すると、次のような命令 CU 消費が観察されます。:
 
 | Instruction | Starting CU | Execution | Remaining CU|
 | - | - | - | - |
@@ -62,9 +58,7 @@ Assume you have a Transaction that contained three (3) instructions and each ins
 | 2 | 200_000 | -100_000| 100_000
 | 3 | 200_000 | -100_000| 100_000
 
-In Solana 1.9.2 a feature called 'transaction wide compute cap' was introduced where a Transaction, by default,
-has a 200_000 CU budget and the encapsulated instructions **_draw down_** from that Transaction budget. Running the same
-transaction as noted above would have very different behavior:
+Solana 1.9.2 では、トランザクションがデフォルトで 200_000 CU 予算を持ち、カプセル化された命令がそのトランザクション予算から **_引き出される_** 'transaction wide compute cap(トランザクション全体の計算上限)' と呼ばれる機能が導入されました。上記と同じトランザクションを実行すると、動作が大きく異なります:
 
 | Instruction | Starting CU | Execution | Remaining CU|
 | - | - | - | - |
@@ -72,14 +66,13 @@ transaction as noted above would have very different behavior:
 | 2 | 100_000 | -100_000| 0
 | 3 | 0 | FAIL!!! | FAIL!!!
 
-Yikes! If you were unaware of this you'd likely be frustrated as there was no change to your instruction behavior that
-would cause this. In devnet it worked fine, but locally it was failing?!?
+Yikes!これを知らなかった場合は、これを引き起こすようなインストラクションの挙動変更がなかったため、イライラする可能性があります。ローカルでは失敗してしまった!?
 
-There is the ability to increase the overall Transaction budget, to lets say 300_000 CU, and salvage your sanity
-but this demonstrates why testing with **_Feature Parity_** provides a proactive way to avoid any confusion.
+トランザクションの予算を300_000CUに増やすことで、正気を保つことができます。and salvage your sanity
+しかし、これは**_機能パリティ_** を使ったテストが、混乱を避けるための積極的な方法であることを示しています。
 
-## Feature Status
-It is fairly easy to check what features are enabled for a particular cluster with the `solana feature status` command.
+## 機能ステータス
+`solana feature status`コマンドを使用して、特定のクラスターで有効になっている機能を簡単に確認できます。
 ```console
 solana feature status -ud   // Displays by feature status for devnet
 solana feature status -ut   // Displays for testnet
@@ -87,40 +80,36 @@ solana feature status -um   // Displays for mainnet-beta
 solana feature status -ul   // Displays for local, requires running solana-test-validator
 ```
 
-Alternatively, you could use a tool like [scfsd](#resources) to observe all feature state across clusters
-which would display, partial screen shown here, and does not require `solana-test-validator` to be running:
+または、[scfsd](#resources) などのツールを使用して、表示されるクラスター全体のすべての機能の状態を観察することもできます。これは、ここに示されている部分的な画面であり、 `solana-test-validator`を実行する必要はありません。:
 
 <img src="./feature-parity-testing/scfsd.png" alt="Feature Status Heatmap">
 
-## Parity Testing
-As noted above, the `solana-test-validator` activates **all** features automagically.
-So to answer the question "How can I test locally in an environment that has parity with devnet,
-testnet or even mainnet-beta?".
+## パリティテスト
+上記のように、`solana-test-validator` は**すべて**の機能を自動的に有効にします。では、「devnet、testnet、または mainnet-beta と同等の環境でローカルにテストするにはどうすればよいですか?」という問いにはどうすべきでしょうか？
 
-Solution: PRs were added to Solana 1.9.6 to allow deactivation of features:
+解決策: Solana 1.9.6 に PR が追加され、機能を非アクティブ化できるようになりました:
 
 ```console
 solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 ```
 
-## Simple Demonstration
-Suppose you have a simple program that logs the data it receives in it's entry-point. And you are
-testing a transaction that adds two (2) instructions for your program.
+## 簡単なデモンストレーション
+エントリポイントで受信したデータをログに記録する単純なプログラムがあるとします。また、プログラムに 2 つのインストラクションを実行するトランザクションをテストしています。 
 
-### All features activated
-1. You start the test validator in one terminal:
+### アクティブなすべての機能
+1. 1 つのターミナルでテスト バリデータを起動します:
 
 ```console
 solana config set -ul
 solana-test-validator -l ./ledger --bpf-program ADDRESS target/deploy/PROGNAME.so --reset`
 ```
 
-2. In another terminal you start the log streamer:
+2. 別のターミナルでログストリーマーを開始します:
 ```console
 solana logs
 ```
 
-3. You then run your transaction. You would see something similar in the log terminal (edited for clarity):
+3. 次に、トランザクションを実行します。ログターミナルにも同様のものが表示されます (わかりやすくするために編集されています)。:
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
 Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0 accounts, data=[0]
@@ -131,19 +120,16 @@ Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 187157 compute units
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 ```
-Because our feature 'transaction wide compute cap' is automatically activated by default, we observe each
-instruction drawing down CU from the starting Transaction budget of 200_000 CU.
+私たちの機能 'transaction wide compute cap'は自動的に有効になっており、200_000CUのトランザクションバジェットから、各命令がCUを引き出していることがわかります。
 
-### Selective features deactivated
-1. For this run, we want to run so that the CU budget behavior is in parity with what is running in devnet. Using
-the tool(s) described in [Feature Status](#feature-status) we isolate the `transaction wide compute cap` public key
-and use the `--deactivate-feature` on the test validator startup
+### 非アクティブな選択機能
+1. この実行では、CU 予算の動作が devnet で実行されているものと同等になるように実行したいと考えています。 [Feature Status](#feature-status)で説明されているツールを使用して、 `transaction wide compute cap` 公開キーを分離し、テスト バリデータの起動時に
+`--deactivate-feature` を使用します。
 
 ```console
 solana-test-validator -l ./ledger --deactivate-feature 5ekBxc8itEnPv4NzGJtr8BVVQLNMQuLMNQQj7pHoLNZ9 --bpf-program target/deploy/PROGNAME.so --reset`
 ```
-2. We now see in our logs that our instructions now have their own 200_000 CU budget (edited for clarity) which is
-currently the state in all upstream clusters:
+2. 現在、すべてのアップストリーム クラスターの状態である独自の 200_000 CU 予算 (わかりやすくするために編集されています) が命令にあることがログに表示されます:
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
 Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0 accounts, data=[0]
@@ -155,29 +141,25 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 200000 com
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 ```
 
-## Full Parity Testing
-You can be in full parity with a specific cluster by identifying each feature that is not
-yet activated and add a `--deactivate-feature <FEATURE_PUBKEY>` for each when invoking `solana-test-validator`:
+## 完全なパリティテスト
+ `solana-test-validator` を呼び出す際、まだアクティブでない各機能を特定してそれぞれに`--deactivate-feature <FEATURE_PUBKEY>`を追加することで、特定のクラスタと同等の振る舞いが可能です:
 ```console
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
 
-Alternatively, [scfsd](#resources) provides a command switch to output the complete deactivated feature
-set for a cluster to feed directly into the `solana-test-validator` startup:
+また、[scfsd](#resources) はコマンド スイッチを提供して、クラスターが `solana-test-validator` スタートアップに直接フィードするための完全な非アクティブ化された機能セットを出力します。:
 ```console
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
 
-If you open another terminal, while the validator is running, and `solana feature status` you will see
-features deactivated that were found deactivated in devnet
+バリデーターの実行中に別のターミナルを開き、`solana feature status`を見ると、devnet で非アクティブ化されている機能が非アクティブ化されていることがわかります。
 
-## Full Parity Testing Programmatically
-For those who control running the test validator within their test code, modifying
-the test validator activated/deactivated features is possible using TestValidatorGenesis. With
-Solana 1.9.6 a function has been added to the validator builder to support this.
+## プログラムでの完全パリティテスト
+テスト コード内でテスト バリデーターの実行を制御する場合は、TestValidatorGenesis を使用して、テスト バリデーターのアクティブ化/非アクティブ化機能を変更できます。 
+Solana 1.9.6 では、これをサポートする関数がバリデータ ビルダーに追加されました。
 
-At the root of your program folder, create a new folder called `tests` and add a `parity_test.rs`
-file. Here is the boiler place functions (boiler-plate if you will) used by each test
+プログラム フォルダーのルートに`tests`フォルダーを作成し、`parity_test.rs`ファイルを追加します。
+以下は、各テストで使用されるボイラープレース関数 (ボイラープレート) です。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Test Boiler Plate" active>
@@ -198,9 +180,8 @@ file. Here is the boiler place functions (boiler-plate if you will) used by each
 
 </SolanaCodeGroup>
 
-We can now add test functions in the body of `mod test {...}` to demonstrate default
-validator setup (all features enabled) and then disabling the `transaction wide compute cap` as
-per previous examples running `solana-test-validator` from the command line.
+これで、`mod test {...}`の本体にテスト関数を追加して、デフォルトのバリデータ設定(すべての機能が有効になっている状態)と、
+コマンドラインから`solana-test-validator`を実行する前の例のような`transaction wide compute cap`のデモが可能になりました。
 
 <CodeGroup>
   <CodeGroupItem title="All Features Test">
@@ -217,9 +198,8 @@ per previous examples running `solana-test-validator` from the command line.
 
 </CodeGroup>
 
-Alternatively, the [scfs engine gadget](#resources) can produce a full vector of deactivated
-features for a cluster. The following demonstrates using that engine to get a list
-of all deactivated features for devnet.
+また、[scfs engine gadget](#resources) は、クラスターの非アクティブ化された機能の完全なベクトルを生成できます。
+以下は、そのエンジンを使用して、devnet の非アクティブ化されたすべての機能のリストを取得する方法を示しています。
 
 <CodeGroup>
   <CodeGroupItem title="Devnet Parity">
@@ -234,7 +214,7 @@ of all deactivated features for devnet.
 Happy Testing!
 
 
-## Resources
+## その他参考資料
 [scfsd](https://github.com/FrankC01/solana-gadgets/tree/main/rust/scfsd)
 
 [gadget-scfs](https://github.com/FrankC01/solana-gadgets/tree/main/rust/gadgets-scfs)

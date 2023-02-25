@@ -1,5 +1,5 @@
 ---
-title: Debugging Solana Programs
+title: Solanaプログラムのデバッグ
 head:
   - - meta
     - name: title
@@ -37,27 +37,20 @@ head:
 footer: MIT Licensed
 ---
 
-# Debugging Solana Programs
+# Solanaプログラムのデバッグ
 
-There are a number of options and supporting tools for testing and debugging a Solana program.
+Solana プログラムをテストおよびデバッグするためのオプションとサポート ツールが多数あります。
 
 ## Facts
 
 ::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
-your program interactively (e.g. in vscode).
-- The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
-testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
-program are ignored_**.
-- The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
-command line Rust applications or Javascript/Typescript applications using web3.
-- For all the above, liberal use of `msg!` macro in your program is recommended at the start and then
-removing them as you test and ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
-can eventually fail your program by hitting the Compute Unit budget caps.
+- クレート `solana-program-test`を使用すると、必要最小限の **_local runtime_** ローカル ランタイムを使用して、プログラムを対話的に(vscodeなどで)テストおよびデバッグできます。
+- クレート`solana-validator` を使用すると、`solana-test-validator` 実装を使用して、**_ローカルバリデータノード_**で行われるより堅牢なテストを実行できます。エディターから実行できますが、**プログラム内のブレークポイントは無視されます**。
+- `solana-test-validator`CLI ツールは、は、プログラムを実行およびロードし、コマンドライン Rust アプリケーションまたは web3 を使用する Javascript/Typescript アプリケーションからのトランザクション実行を処理します。
+- 上記のすべてについて、`msg!` を自由に使用してくださいプログラム内のマクロは、最初は削除することをお勧めします。その後、テストを行って堅実な動作を確認するときに削除します。`msg!`を覚えておいてください。計算ユニットを消費し、最終的に計算ユニットの予算上限に達してプログラムが失敗する可能性があります。
 :::
 
-The steps in the following sections use the [solana-program-bpf-template](#resources). Clone that to your
-machine:
+以下のセクションの手順では[solana-program-bpf-template](#resources)を使用します。それを自分のマシンにクローンします:
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
@@ -65,14 +58,11 @@ code .
 ```
 ## Runtime Testing and Debugging in editor
 
-Open the file `src/lib.rs`
+ `src/lib.rs`ファイルを開く
 
-You'll see that the program is a pretty simple and basically just logs the content received by
-the program entrypoint function: `process_instruction`
+プログラムは非常に単純で、基本的にはプログラムのエントリポイント関数によって受信されたコンテンツをログに記録するだけであることがわかります: `process_instruction`
 
-1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
-execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
-the source.
+1. `#[cfg(test)]` セクションに移動し、`Run Test`をクリックします。 これにより、プログラムがビルドされ、`async fn test_transaction()` テストが実行されます。ソースの下の vscode ターミナルにログ メッセージ (simplified)が表示されます。
 ```bash
 running 1 test
 "bpf_program_template" program loaded as native code
@@ -82,42 +72,35 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
-2. Set a breakpoint on the programs `msg!` line (11)
-3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
-now you can examine data, step through functions, etc., etc..
+2. ブレイクポイントをプログラムの`msg!`がある(11)列目に設定します。
+3. テストモジュールに戻り、`Debug`をクリックすると、数秒以内にデバッガーがブレークポイントで停止し、データを調べたり、関数をステップ実行したりなどができるようになります。
 
-These tests are also run from the command line with:
-`cargo test` or `cargo test-bpf`. Of course any breakpoints will be ignored.
+これらのテストは、コマンド ラインからも実行できます:
+`cargo test` または `cargo test-bpf`。 もちろん、ブレークポイントがあっても無視されます。
 
 How groovy can you get!
 
 :::tip Note
-Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
-will not behave as they would when running in validator node. This is why the gang at Solana gave us
-Local Validator Node testing!
+バリデータノードを使用していないため、デフォルトのプログラム、ブロックハッシュなどは表示されないか、バリデータノードで実行したときのように動作しないことに注意してください。  これが、Solana のギャングが Local Validator Node のテストを提供してくれた理由です!
 :::
 
 
 ## Local Validator Node Testing in editor
 
-Integration testing using programmatic loading of a local validator node is defined in the
-`tests/integration.rs` file.
+ローカル バリデータ ノードのプログラムによる読み込みを使用した統合テストは、`tests/integration.rs`ファイルで定義されています。
 
-By default, the template repo integration tests will only be runnable from the command line
-using `cargo test-bpf`. The following steps will enable you to run within the editor as well
-as displaying program validator logs and `msg!` outputs from your program:
+デフォルトでは、テンプレートリポジトリの統合テストは、`cargo test-bpf`を使用してコマンド ラインからのみ実行できます。 次の手順を実行すると、エディタ内で実行できるだけでなく、プログラムバリデータログと`msg!`を表示することもできます。プログラムからの出力:
 
-1. In the repo directory run `cargo build-bpf` to build the sample program
-2. In the editor, open `tests/integration.rs`
-3. Comment out line 1 -> `// #![cfg(feature = "test-bpf")]`
-4. On line 19 change it to read: `.add_program("target/deploy/bpf_program_template", program_id)`
-5. Insert the following at line 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
-6. Click `Run Test` above the `test_validator_transaction()` function
+1. repoディレクトリで`cargo build-bpf`を実行してサンプル プログラムをビルドします。
+2. エディターで`tests/integration.rs`を開きます。
+3. 1行目の`// #![cfg(feature = "test-bpf")]`をコメントアウトします。
+4. 19行目を次のように変更します`.add_program("target/deploy/bpf_program_template", program_id)`
+5. 22行目に以下を挿入`solana_logger::setup_with_default("solana_runtime::message=debug");`
+6. `test_validator_transaction()`の上にある`Run Test`をクリックします。
 
-This will load the validator node then allowing you to construct a transaction (the Rust way) and
-submit to the node using the `RcpClient`.
+これはバリデータノードをロードし、トランザクションを構築し（Rustの方法）、`RcpClient`を使用してノードに送信できるようにします。
 
-The program's output will also print out in the editor terminal. For example (simplified):
+プログラムの出力は、エディター ターミナルにも出力されます。例、(simplified):
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -130,28 +113,26 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-Debugging here will allow you to debug the functions and methods used in the **_test body_** but will
-not breakpoint in your program.
+ここでデバッグすると、**_テスト本体_**で使用されている関数とメソッドをデバッグできますが、プログラムのブレークポイントはできません。
 
 The bee's knees eh?
 
 ## Local Validator Node Testing from Client Apps
-Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
-from the command line.
+最後に、ローカルの検証ノードを開始し、コマンドラインから`solana-test-validator`を使用してプログラムとアカウントをロードできます。
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
-[JavaScript or Typescript clients](#resources)
+このアプローチでは、Rust [RcpClient](#resources)を使用するか、
+[JavaScript または Typescript clients](#resources)でクライアント アプリケーションが必要になります。
 
-See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
-1. Open a terminal in the repo folder
-2. Run `solana config set -ul` to set the configuration to point to local
-3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. Open another terminal and run `solana logs` to start the log streamer
-5. You can then run your client program and observe program output in the terminal where you started the log streamer
+詳細とオプションについては、`solana-test-validator --help` を参照してください。サンプルプログラムの場合、ここにバニラのセットアップがあります:
+1. repoフォルダーでターミナルを開きます。
+2. `solana config set -ul`を実行して、構成がローカルを指すように設定します。
+3. `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`を実行します。
+4. 別のターミナルを開き、`solana logs` を実行してログ ストリーマーを開始します。
+5. その後、クライアント プログラムを実行し、ログ ストリーマーを開始したターミナルでプログラムの出力を確認できます。
 
 Now that is the cat's pajamas YO!
 
-## Resources
+## その他参考資料
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
 
 [RcpClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)

@@ -95,7 +95,6 @@ A Legacy Message has the following components:
 ### Header
 
 The message header is 3 bytes in length and contains 3 u8 integers:
-
 1. The number of required signatures: the Solana runtime verifies this number with the length of the compact array of signatures in the transaction.
 2. The number of read-only account addresses that require signatures.
 3. The number of read-only account addresses that do not require signatures.

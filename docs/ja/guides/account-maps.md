@@ -1,38 +1,42 @@
 ---
-title: Account Maps
+title: アカウントマップ
 ---
 
 # Account Maps
 
-Maps are data structures we frequently use in programming to associate a **key** with a **value** of some kind. The key and value could be any arbitrary type and the key acts as an identifier for a given value that is being saved. It then, given its key, allows us to efficiently insert, retrieve and update these values efficiently.
+マップは、**key** とを何らかの **value** に関連付けるためにプログラミングでよく使用するデータ構造です。キーと値は任意の型にすることができ、キーは保存される特定の値の識別子として機能します。 次に、そのキーを指定すると、これらの値を効率的に挿入、取得、更新できます。
 
-Solana's Account model, as we know, requires program data and its relevant state data to be stored in different accounts. These accounts have an address associated with them. This, in itself, acts as a map! Learn more about Solana's Account mode [here][AccountCookbook].
+ご存知のように、Solana の Account モデルでは、プログラム データとそれに関連する状態データを異なるアカウントに保存する必要があります。 これらのアカウントにはアドレスが関連付けられています。これ自体がマップとして機能します。 Solana のAccount モードの詳細については、[こちら][AccountCookbook]。
 
-So, it would make sense to store your **values** in separate accounts, with its address being the **key** required to retrieve the value. But this brings up a few issues, such as, 
+そのため、値を取得するために必要なキーをアドレスとして、別のアカウントに値を保存することは理にかなっています。しかし、これは次のようないくつかの問題を引き起こします。
 
-* The addresses mentioned above are most probably not going to be ideal **keys**, which you could remember and retrieve the required value.
+* 上記のアドレスは、記憶して必要な値を取得できる理想的な**key**ではない可能性が高いです。
 
-* The addresses mentioned above, referred to public keys of different **Keypairs**, where each public key (or *address*) would have a **private key** associated with it as well. This private key would be required to sign different instructions if and when needed, requiring us to store the private key somewhere, which is most definitely **not** recommended!
+* 上記のアドレスは、異なる鍵ペアの公開鍵を参照しており、各公開鍵 (またはアドレス) には秘密鍵も関連付けられています。この秘密鍵は、必要に応じて別の指示に署名する必要があり、秘密鍵をどこかに保管する必要がありますが、これは絶対にお勧めできません！
 
-This presents a problem many Solana developers face, which is implementing a `Map`-like logic into their programs. Let's look at a couple of way how we would go about this problem,
+これは、多くの Solana 開発者が直面する問題であり、`Map` のようなロジックをプログラムに実装しています。この問題を解決する方法をいくつか見てみましょう。
 
 ## Deriving PDAs
+PDA は [Program Derived Address][PDA]の略で、要するに一連のシードから派生した(**derived**)アドレスとプログラム ID (またはアドレス) です。
 
-PDA stands for [Program Derived Address][PDA], and are in short, addresses **derived** from a set of seeds, and a program id (or _address_). 
+PDA のユニークな点は、これらのアドレスが秘密鍵に関連付けられていないことです。
+これは、これらのアドレスが ED25519 曲線上にないためです。
+詳細は[こちら][CPI].
 
-The unique thing about PDAs is that, these addresses are **not** associated with any private key. This is because these addresses do not lie on the ED25519 curve. Hence, **only** the program, from which this _address_ was derived, can sign an instruction with the key, provided the seeds as well. Learn more about this [here][CPI].
+PDA とは何かがわかったので、それらを使用していくつかのアカウントをマッピングしてみましょう。
+これがどのように実装されるかを示すために、**ブログ** プログラムの例を取り上げます。
 
-Now that we have an idea about what PDAs are, let's use them to map some accounts! We'll take an example of a **Blog** program to demonstrate how this would be implemented.
+この`ブログ`プログラムでは、各`ユーザー`に 1 つの`ブログ`を作成してもらいます。このブログには、任意の数の`投稿`を含めることができます。
+これは、各`ユーザー`を一つの`ブログ`に**マッピング**し、複数の`投稿`を特定の`ブログ`に**マッピング**することを意味します。
 
-In this Blog program, we would like each `User` to have a single `Blog`. This blog could have any number of `Posts`. That would mean that we are **mapping** each user to a blog, and each post is **mapped** to a certain blog.
+つまり、ユーザーとブログの間には `1:1` のマッピングがあり、ブログとその投稿の間には `1:N` のマッピングがあります。
 
-In short, there is a `1:1` mapping between a user and his/her blog, whereas a `1:N` mapping between a blog and its posts.
+`1:1` マッピングの場合、ブログのアドレスをそのユーザーから**のみ** 取得する必要があります。これにより、権限 (またはユーザー) を指定してブログを取得できます。
+したがって、ブログのシードは、その**権限のキー**と、場合によっては「**ブログ**」のプレフィックスで構成され、型別子として機能します。
+`1:N` マッピングの場合、各投稿のアドレスは、関連付けられているブログ**だけでなく**、ブログ内の N 個の投稿を区別できる別の**識別子**から取得する必要があります。
+以下の例では、各投稿のアドレスは、**ブログのキー**、各投稿を識別するための**スラッグ**、およびタイプ識別子として機能する「**投稿**」のプレフィックスから派生します。
 
-For the `1:1` mapping, we would want a blog's address to be derived **only** from its user, which would allow us to retrieve a blog, given its authority (or _user_). Hence, the seeds for a blog would consist of its **authority's key**, and possibly a prefix of **"blog"**, to act as a type identifier.
-
-For the `1:N` mapping, we would want each post's address to be derived **not only** from the blog which it is associated with, but also another **identifier**, allowing us to differentiate between the `N` number of posts in the blog. In the example below, each post's address is derived from the **blog's key**, a **slug** to identify each post, and a prefix of **"post"**, to act as a type identifier. 
-
-The code is as shown below, 
+コードは以下のとおりです。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -69,7 +73,8 @@ The code is as shown below,
 
 </SolanaCodeGroup>
 
-On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the required `Blog` and `Post` account address, which you can pass into `connection.getAccountInfo()` to fetch the account data. An example is shown below, 
+クライアント側では、 `PublicKey.findProgramAddress()` を使用して必要な`blog`と`post`のアカウント アドレスを取得できます。これを `connection.getAccountInfo()` に渡してアカウント データを取得できます。以下に例を示します。
+
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -90,17 +95,18 @@ On the client-side, you can use `PublicKey.findProgramAddress()` to obtain the r
 
 </SolanaCodeGroup>
 
-## Single Map Account
+## 単一のマップ アカウント
+マッピングを実装する別の方法は、`BTreeMap` データ構造を単一のアカウントに明示的に格納することです。
+このアカウントのアドレス自体は、PDA または生成されたキーペアの公開鍵である可能性があります。
 
-Another way to implement mapping would be to have a `BTreeMap` data structure explicitly stored in a single account. This account's address itself could be a PDA, or the public key of a generated Keypair.
+アカウントをマッピングするこの方法は、次の理由により理想的ではありません。
 
-This method of mapping accounts is not ideal because of the following reasons,
+* 必要なキーと値のペアを挿入する前に、まず  `BTreeMap` を格納するアカウントを初期化する必要があります。
+次に、毎回更新できるように、このアカウントのアドレスをどこかに保存する必要があります。
 
-* You will have to first initialize the account storing the `BTreeMap`, before you can insert the necessary key-value pairs to it. Then, you will also have to store the address of this account somewhere, so as to update it every time.
+* アカウントにはメモリ制限があり、アカウントの最大サイズは **10 メガバイト**であり、`BTreeMap`  が多数のキーと値のペアを格納するには限りがあります。
 
-* There are memory limitations to an account, where an account can have a maximum size of **10 megabytes**, which restricts the `BTreeMap` from storing a large number of key-value pairs.
-
-Hence, after considering your use-case, you can implement this method as shown below,
+したがって、ユースケースを検討した後、以下に示すようにこのメソッドを実装できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -120,7 +126,7 @@ Hence, after considering your use-case, you can implement this method as shown b
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client-side code to test the above program would look like something as shown below,
+上記のプログラムをテストするクライアント側のコードは、次のようになります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

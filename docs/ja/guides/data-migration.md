@@ -1,5 +1,5 @@
 ---
-title: Migrating Program Data Accounts
+title: プログラム データ アカウントの移行
 head:
   - - meta
     - name: title
@@ -37,29 +37,24 @@ head:
 footer: MIT Licensed
 ---
 
-# Migrating a Programs Data Accounts
+# プログラム データ アカウントの移行
 
-## How can you migrate a program's data accounts?
+## プログラムのデータ アカウントを移行するにはどうすればよいですか？
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+プログラムを作成すると、そのプログラムに関連付けられた各データ アカウントは特定のデータ構造を持ちます。
+プログラムから派生したアカウントをアップグレードする必要がある場合は、古い構造のプログラムから派生したアカウントがたくさん残っていることになります。
 
-With account versioning, you can upgrade your old accounts to
-the new structure.
+アカウントのバージョン管理により、古いアカウントを新しい構造にアップグレードできます。
 
 :::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+これは、プログラム所有アカウント (POA) でデータを移行する多くの方法の 1 つにすぎません。
 :::
 
 ## Scenario
 
-To version and migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+アカウント データのバージョン管理と移行を行うために、各アカウントに **ID** を提供します。この ID により、プログラムに渡すときにアカウントのバージョンを識別できるため、アカウントを正しく処理できます。
 
-Take the following account state and program:
+次のような状態のアカウントとプログラムを取得します。
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,28 +109,24 @@ Take the following account state and program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+最初のバージョンのアカウントでは、次のことを行っています。
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| データに「データ バージョン」フィールドを含めます。これは単純な増分序数 (u8 など)や、より洗練されたものにすることがでるはずです。
+|2| データの増加に十分なスペースを割り当てます。
+|3| プログラムのバージョン間で使用される多数の定数の初期化
+|4| 将来のアップグレードのために `fn conversion_logic` の下に更新アカウント関数を追加します
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
+プログラムのアカウントをアップグレードして、新しい必須フィールドである  `somestring`  フィールドを含めるとします。
 
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+以前のアカウントに余分なスペースを割り当てなかった場合、アカウントをアップグレードできず、スタックしてしまうことになります。
 
-## Upgrading the Account
+## アカウントのアップグレード
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+新しいプログラムでは、コンテンツ状態の新しいプロパティを追加したいと考えています。この後の変更は、初期のプログラム構成をどのように利用するかということです。
 
-### 1. Add account conversion logic
+### 1. アカウント変換ロジックを追加する
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -157,13 +148,13 @@ constructs as they come into use now.
 
 | Line(s) | Note |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | Solana の `solana_program::borsh::try_from_slice_unchecked` を追加して、より大きなデータ ブロックからのデータのサブセットの読み取りを簡素化しました。
+| 13-26| ここでは、17 行目から始まる `AccountContentCurrent`  を拡張する前に、古いコンテンツ構造である `AccountContentOld` 行 24 を保持しています。
+| 60 | `DATA_VERSION`定数を増やします
+| 71 | 以前のバージョンのデータサイズがわかるようにします。
+| 86 | とどめの一撃は、以前のコンテンツの状態を新しい (現在の) コンテンツの状態にアップグレードする配管を追加することです。
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+次に、`somestring` 命令を更新して、文字列を更新するための新しい命令と、新しい命令を処理するためのプロセッサを追加します。データ構造の「アップグレード」は、`pack/unpack`の背後にカプセル化されていることに注意してください。
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,11 +170,11 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+ `VersionProgramInstruction::SetString(String)`命令を作成して送信することで、次の「アップグレードされた」アカウント データ レイアウトができました。
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
-## Resources
+## その他参考資料
 
 * [Borsh Specification](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)

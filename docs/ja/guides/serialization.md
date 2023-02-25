@@ -1,5 +1,5 @@
 ---
-title: Serializing Data
+title: データのシリアライゼーション
 head:
   - - meta
     - name: title
@@ -39,23 +39,23 @@ footer: MIT Licensed
 
 # Serializing Data
 
-When we talk about serialization we mean both serializing data as well as deserialization of data.
+ここでは、シリアライゼーションはデータのシリアライズとデシリアライズ両方を意味します。
 
-Serialization comes into play at a few points along Solana program and program accounts lifecycle:
+シリアライゼーションは、Solana プログラムとプログラム アカウントのライフサイクルのいくつかのポイントで機能します。
 
-1. Serializing instruction data on to client
-2. Deserializing instruction data on the program
-3. Serializing Account data on the program
-4. Deserializing Account Data on the client
+1. クライアントへの命令データのシリアライズ
+2. プログラム上の命令データのデシリアライズ 
+3. プログラムでのアカウントデータのシリアル化
+4. クライアントでのアカウントデータのデシリアライズ
 
-It is important that the above actions are all supported by the same serialization approach. The
-included snippets are demonstrating serialization using [Borsh](#resources).
+同じシリアライゼーションアプローチで上記のアクションすべてがサポートされていることが重要です。
+含まれているスニペットは [Borsh](#resources)を使用したシリアルライゼーションのデモです。
 
-The samples in the remainder of this document are excerpts as taken from the [Solana CLI Program Template](#resources)
+残りのサンプルは、[Solana CLI Program Template](#resources)からの抜粋です。
 
 ## Setting up for Borsh Serialization
 
-Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or Python client.
+Borsh のライブラリは、Rust プログラム、Rust クライアント、Node、Python クライアント用にセットアップする必要があります。
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -84,14 +84,13 @@ Libraries for Borsh must be setup for the Rust program, Rust client, Node and/or
 
 </CodeGroup>
 
-## How to serialize instruction data on the client
+## クライアントで命令データをシリアル化する方法
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
-If you are serializing outbound instruction data to send to a program it must mirror how the program deserializes the
-inbound instruction data.
+アウトバウンド命令データをシリアライズしてプログラムに送信する場合、プログラムは対象的にインバウンド命令データのデシリアライズが必要です。
 
-In this template, an instruction data block is a serialized array containing, with examples:
+このテンプレートでは、命令データ ブロックはシリアル化された配列で、次の例が含まれます:
 
 | Instruction (Variant index) | Serialized Key                 | Serialized Value               |
 | --------------------------- | ------------------------------ | ------------------------------ |
@@ -100,7 +99,7 @@ In this template, an instruction data block is a serialized array containing, wi
 | Transfer (2)                | "foo"                          | not applicable for instruction |
 | Burn (2)                    | "foo"                          | not applicable for instruction |
 
-In the following example we assume the program owned account has been initialized
+次の例では、プログラムが所有するアカウントが初期化されていると想定しています
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -122,7 +121,7 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to deserialize instruction data on the program
+## プログラムの命令データをデシリアライズする方法
 
 <img src="./serialization/ser2.png" alt="Deserialize Instruction Data">
 <CodeGroup>
@@ -133,31 +132,28 @@ In the following example we assume the program owned account has been initialize
   </CodeGroupItem>
 </CodeGroup>
 
-## How to serialize account data on the program
+## プログラムの命令データをデシリアライズする方法
 
 <img src="./serialization/ser3.png" alt="Account Data Serialization">
 
-The program account data block (from the sample repo) is layed out as
+サンプルリポジトリのプログラムアカウントデータブロック は次のようなレイアウトです。
 
 | Byte 0           | Bytes 1-4                     | Remaining Byte up to 1019                   |
 | ---------------- | ----------------------------- | ------------------------------------------- |
-| Initialized flag | length of serialized BTreeMap | BTreeMap (where key value pairs are stored) |
+| 初期化フラグ | シリアル化されたBTreeMapの長さ | BTreeMap (Key Valueが格納される場所)) |
 
 ### Pack
 
-A word about the [Pack][1] trait
+ [Pack][1] トレイトについて少し触れておきます。
 
-The Pack trait makes it easier to hide the details of account data serialization/deserialization
-from your core Program instruction processing. So instead of putting all the serialize/deserialize
-log in the program processing code, it encapsulates the details behind (3) functions:
+Pack トレイトを使用すると、アカウント データのシリアライゼーション/デシリアライゼーションの詳細をコア プログラム命令処理から簡単に隠ぺいすることができます。
+したがって、すべてのシリアル化/逆シリアル化ログをプログラム処理コードに入れる代わりに、下記3つの関数の背後にある詳細をカプセル化します。:
 
-1. `unpack_unchecked` - Allows you to deserialize an account without checking if it has been initialized. This
-   is useful when you are actually processing the Initialization function (variant index 0)
-2. `unpack` - Calls your Pack implementation of `unpack_from_slice` and checks if account has been initialized.
-3. `pack` - Calls your Pack implementation of `pack_into_slice`
+1. `unpack_unchecked` - アカウントが初期化されているかどうかを確認せずに、アカウントをデシリアライズできます。これは、実際に初期化関数 (variant index 0) を処理している場合に役立ちます。 
+2. `unpack` - `unpack_from_slice` の Pack 実装を呼び出し、アカウントが初期化されているかどうかを確認します。
+3. `pack` - `pack_into_slice` の Pack 実装を呼び出します。
 
-Here is the implementation of the Pack trait for our sample program. This is followed with the actual
-processing of the account data using borsh.
+サンプル プログラムの Pack トレイトの実装を次に示します。これに続いて、borsh を使用したアカウント データの実際の処理が行われます。
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -167,19 +163,17 @@ processing of the account data using borsh.
   </CodeGroupItem>
 </CodeGroup>
 
-### Serialization/Deserialization
+### シリアライゼーション/デシリアライゼーション 
 
-To complete the underlying serialization and deserialization:
+基礎となるシリアライゼーションとデシリアライゼーションを完了するには:
 
-1. `sol_template_shared::pack_into_slice` - Where the actual serialization occurs
-2. `sol_template_shared::unpack_from_slice` - Where the actual deserialization occurs
+1. `sol_template_shared::pack_into_slice` - 実際にシリアライズが実行される場所
+2. `sol_template_shared::unpack_from_slice` - 実際にデシリアライズが実行される場所
 
-**Note** that in the following we have a `u32` (4 bytes) partition in the data layout for
-`BTREE_LENGTH` preceding the `BTREE_STORAGE`. This is because borsh, during deserialization,
-checks that the length of the slice you are deserializing agrees with the amount of
-data it reads prior to actually recombobulation of the receiving object. The approach
-demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out of the
-`BTREE_STORAGE` pointer.
+**注意**  `BTREE_STORAGE` の前にある `BTREE_LENGTH` のデータ レイアウトに `u32` (4 bytes) の パーティションがあることに注意してください。
+これは、逆シリアル化中に borsh が、逆シリアル化するスライスの長さが、
+受信オブジェクトが実際に再結合される前に読み取ったデータの量と一致することを確認するためです。以下に示すアプローチでは、最初に `BTREE_LENGTH`  を読み取り、
+`BTREE_STORAGE` ポインターから`slice`するサイズを取得します。
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -189,12 +183,11 @@ demonstrated below first reads the `BTREE_LENGTH` to get the size to `slice` out
   </CodeGroupItem>
 </CodeGroup>
 
-### Usage
+### 使用方法
 
-The following pulls it all together and demonstrates how the program interacts with the `ProgramAccountState`
-which encapsulates the initialization flag as well as the underlying `BTreeMap` for our key/value pairs.
+以下はすべてをまとめて、キー/値ペアの基礎となる `BTreeMap` だけでなく、初期化フラグをカプセル化する `ProgramAccountState`とプログラムがどのように対話するかを示しています。
 
-First when we want to initialize a brand new account:
+最初に、完全新規のアカウントを初期化したい場合:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -204,8 +197,7 @@ First when we want to initialize a brand new account:
   </CodeGroupItem>
 </CodeGroup>
 
-Now we can operate on our other instructions as the following demonstrates minting a new
-key value pair that we demonstrated above when sending instructions from a client:
+クライアントから命令を送信するときに上で示した新しいキーと値のペアを作成する方法を以下に示します:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -217,13 +209,11 @@ key value pair that we demonstrated above when sending instructions from a clien
 
 [1]: https://github.com/solana-labs/solana/blob/22a18a68e3ee68ae013d647e62e12128433d7230/sdk/program/src/program_pack.rs
 
-## How to deserialize account data on the client
+## クライアントでアカウント データをデシリアライズする方法
 
-Clients can call Solana to fetch program owned account, in which the serialized
-data block is a part of the return. Deserializing requires knowing the data block
-layout.
-
-The layout of the account data was described [Here](#account-data-serialization)
+クライアントは Solana を呼び出して、シリアル化されたデータ ブロックがリターンの一部である、プログラムが所有するアカウントを取得できます。
+逆シリアル化には、データブロックのレイアウトを知る必要があります。
+データアカウントのレイアウトは[こちら](#account-data-serialization)で解説しています。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -245,16 +235,13 @@ The layout of the account data was described [Here](#account-data-serialization)
   </CodeGroupItem>
 </CodeGroup>
 
-## Common Solana TS/JS Mappings
+## 一般的な Solana TS/JS マッピング
 
-The [Borsh Specification](#resources) contains most mappings for primitive and
-compound data types.
+[Borsh Specification](#resources)には、プリミティブおよび複合データ型のほとんどのマッピングが含まれています。
 
-The key to TS/JS and Python is creating a Borsh Schema with a proper definition so the serialize
-and deserialize can generate or walk the respective inputs.
+TS/JS と Python の鍵は、適切な定義を使用して Borsh スキーマを作成することです。これにより、シリアライズとデシリアライズがそれぞれの入力を生成または処理できるようになります。
 
-Here we demonstrate serialization of primitives (numbers, strings) and compound types (fixed size array, Map)
-first in Typescript, then in Python and then equivalent deserialization on the Rust side:
+ここでは、プリミティブ (数値、文字列) と複合型 (固定サイズの配列、マップ) のシリアライズ、デシリアライズを、Typescript、Python、Rustで示します。:
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -276,11 +263,9 @@ first in Typescript, then in Python and then equivalent deserialization on the R
   </CodeGroupItem>
 </CodeGroup>
 
-## Advanced Constructs
+## より高度な構造
 
-We've shown how to create simple Payloads in previous examples. Sometimes
-Solana throws a fastball with certain types. This section will demonstrate
-proper mapping between TS/JS and Rust to handle those
+前の例で単純なペイロードを作成する方法を示しました。時々、Solanaは特定の種類の速球を投げます。 このセクションでは、TS/JS と Rust の間の適切なマッピングを示して、それらを処理します。
 
 ### COption
 
@@ -298,7 +283,7 @@ proper mapping between TS/JS and Rust to handle those
   </CodeGroupItem>
 </CodeGroup>
 
-## Resources
+## その他参考資料
 
 - [Borsh Specification](https://borsh.io/)
 - [Rust Borsh](https://github.com/near/borsh-rs)
