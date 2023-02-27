@@ -113,7 +113,7 @@ Trong phiên bản đầu tiên của Account, chúng ta thực hiện các bư�
 | # | Mô tả |
 | - | - |
 |1| Thêm trường `data_version` vào dữ liệu. Nó có thể đơn giản là số thứ tự (`u8`) hoặc có thể phức tạp hơn thế.
-|2| Phân phát một vùng nhớ đủ chứa dữ liệu
+|2| Phân phát một vùng nhớ đủ để chứa dữ liệu
 |3| Khởi tạo một hằng số biễu diễn phiên bản cho các Program khác nhau
 |4| Thêm một hàm cập nhật Account với tên `fn conversion_logic` cho các nâng cấp trong tương lai
 
@@ -151,7 +151,7 @@ Trong Program mới, chúng ta muốn thêm một thuộc tính mới cho nội 
 | 13-26| Ở đây, chúng ta phải giữ lại phiên bản cũ, `AccountContentOld` tại dòng 24, trước khi mở rộng nó thành `AccountContentCurrent` tại dòng 17.
 | 60 | Nâng cấp lại hằng số `DATA_VERSION`
 | 71 | Chúng ta giờ đã có một phiên bản cũ, đồng thời lưu lại kích thước của nó
-| 86 | Cuối cùng là thêm luận lý cho quá trình nâng cấp phiên bản dữ liệu cũ thành phiên bản hiện hành
+| 86 | Cuối cùng là thêm logic cho quá trình nâng cấp phiên bản dữ liệu cũ thành phiên bản hiện hành
 
 Sau đó chúng ta cập nhật hàm mới để thêm vào trường `somestring` và khai báo luận lý của chỉ thị mới trong `processor`. Lưu ý việc nâng cấp cấu trúc dữ liệu đã được đóng gói trong `pack/unpack`.
 

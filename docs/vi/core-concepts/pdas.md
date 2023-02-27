@@ -47,9 +47,9 @@ Program Derived Addresses (hay còn gọi vắn tắt là PDA) là những Accou
 - PDA là một chuỗi 32 byte tương tự khoá công khai - public keys, nhưng lại không tồn tại khoá riêng tư tương ứng
 - `findProgramAddress` được dùng để suy ra một PDA từ thông tin `program_id` và `seeds` (một tập hợp các bytes)
 - Một `bump` (có giá trị 1 byte) được dùng để tạo ra một PDA khả dĩ nằm ngoài đường cong ellipitic ed25519.
-- Program có thể tạo ra chữ cho PDA bằng cách cung cấp `seeds` và `bump` cho hàm [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
+- Program có thể tạo ra chữ ký cho PDA bằng cách cung cấp `seeds` và `bump` cho hàm [invoke_signed](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts)
 - Một PDA chỉ có thể được ký bởi Program mà nó được suy ra.
-- Ngoài việc cho phép Program chó thể ký lên các chỉ thị, PDA cũng cung cấp một giao diện giống với hashmap dành cho việc [đánh chỉ số Account](../guides/account-maps.md)
+- Ngoài việc cho phép Program có thể ký lên các instruction, PDA cũng cung cấp một interface giống với hashmap dành cho việc [đánh chỉ số Account](../guides/account-maps.md)
 :::
 
 # Chi tiết
@@ -70,9 +70,9 @@ Quá trình thử này sẽ có xác suất 50/50. Nghĩa là sẽ có 50% cơ h
 
 ### Tương tác với PDAs
 
-Khi một PDA được sinh ra, `findProgramAddress` sé trả về hai giá trị là địa chỉ của PDA và `bump` dùng để đảm bảo PDA này ngoài đường cong ellipitic. Với giá trị `bump` này, Program có thể [ký lên](../references/accounts.md#sign-with-a-pda) bất kỳ chỉ thị nào có chứa PDA của nó về sau. Để ký, Program phải truyền cho chỉ thị một danh sách các Account, các `seeds` và `bump` dùng để suy ra PDA vào hàm `invoke_signed`. Ngoài việc ký lên chỉ thị, PDA còn ký cho việc tạo ra chính bản thân nó thông qua hàm `invoke_signed`.
+Khi một PDA được sinh ra, `findProgramAddress` sẽ trả về hai giá trị là địa chỉ của PDA và `bump` dùng để đảm bảo PDA này ngoài đường cong ellipitic. Với giá trị `bump` này, Program có thể [ký lên](../references/accounts.md#sign-with-a-pda) bất kỳ instruction nào có chứa PDA của nó về sau. Để ký, Program phải truyền cho instruction một danh sách các Account, các `seeds` và `bump` dùng để suy ra PDA vào hàm `invoke_signed`. Ngoài việc ký lên instruction, PDA còn ký cho việc tạo ra chính bản thân nó thông qua hàm `invoke_signed`.
 
-Khi phát triển ứng dụng với PDA, thường thì bạn sẽ phải [lưu bump](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) trong dữ liệu Account. Điều này cho phép lập trình viên có thể kiểm tra PDA mà không cần truyền bump vào dữ liệu đầu vào của chỉ thị.
+Khi phát triển ứng dụng với PDA, thường thì bạn sẽ phải [lưu bump](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100) trong dữ liệu Account. Điều này cho phép lập trình viên có thể kiểm tra PDA mà không cần truyền bump vào dữ liệu đầu vào của instruction.
 
 ## <a name="resources"></a> Các nguồn tài liệu khác
 - [Tài liệu chính thống](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
