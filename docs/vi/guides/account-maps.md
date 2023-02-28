@@ -132,7 +132,7 @@ Một cách khác hơn đển hiện thực map là dùng cấu trúc `BTreeMap`
 
 Phương pháp này thường có một vài hạn chế:
 
-* Bạn đầu tiên phải khởi tạo Account để lưu `BTreeMap` trước khi có thể thêm bất kỳ key-value nào vào bên trong nó. Sau đó, bạn sẽ phải lưu địa chỉ này một nơi nào đó để dùng cho việc cập nhật dữ liệu về sau.
+* Bước đầu tiên phải khởi tạo Account để lưu `BTreeMap` trước khi có thể thêm bất kỳ key-value nào vào bên trong nó. Sau đó, bạn sẽ phải lưu địa chỉ này một nơi nào đó để dùng cho việc cập nhật dữ liệu về sau.
 
 * Có nhiều giới hạn lưu trữ cho một Account như là dung lượng tối đa của một Account là **10 megabytes** và không thể cho phép `BTreeMap` có thể lưu trữ một số lượng lớn các cặp key-value.
 

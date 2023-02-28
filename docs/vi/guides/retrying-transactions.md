@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Thử lại Transaction
 
-Trong một vài tính huống, một Transaction trông có vể hợp lệ có thể bị hết hạn ngay trước khi được chấp nhận (thêm vào block). Điều đó thường diễn ra nhất là khi mạng lưới bị nghẽn và một nốt RPC không thể truyền Transaction đến [leader](https://docs.solana.com/terminology#leader). Dưới góc độ người dùng, bạn có thể nhận ra trường hợp này khi Transaction biến mất hoàn toàn. Trong khi các nốt RPC được trang bị một thuật toán lan truyền chung, ứng dụng của các lập trình viên vẫn có khả năng phát triển các luận lý lan truyền tuý chỉnh.
+Trong một vài tính huống, một Transaction trông có vẻ hợp lệ có thể bị hết hạn ngay trước khi được chấp nhận (thêm vào block). Điều đó thường diễn ra nhất là khi mạng lưới bị nghẽn và một nốt RPC không thể truyền Transaction đến [leader](https://docs.solana.com/terminology#leader). Dưới góc độ người dùng, bạn có thể nhận ra trường hợp này khi Transaction biến mất hoàn toàn. Trong khi các nốt RPC được trang bị một thuật toán lan truyền chung, ứng dụng của các lập trình viên vẫn có khả năng phát triển các luận lý lan truyền tuý chỉnh.
 
 ## Có thể bạn chưa biết
 
@@ -55,20 +55,20 @@ Trong một vài tính huống, một Transaction trông có vể hợp lệ có
 
 ### Làm thế nào để người dùng gửi Transactions
 
-Trong Solana, không tồn tại khái niệm mempool. Tất cả các Transaction, dù là được tạo nên từ các Program hay là từ người dùng, đều được điều hướng hiệu quả đến các leader để họ có thể xử lý và ghi nhận chúng vào block. Có 2 cách mà một Transaction có thể dược gửi đến các leader:
+Trong Solana, không tồn tại khái niệm mempool. Tất cả các Transaction, dù là được tạo nên từ các Program hay là từ người dùng, đều được điều hướng hiệu quả đến các leader để họ có thể xử lý và ghi nhận chúng vào block. Có 2 cách mà một Transaction có thể được gửi đến các leader:
 
 1. Uỷ quyền cho các máy chủ RPC bằng phương thức [sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) trong JSON-RPC.
 2. Gửi trực tiếp đến các leader thông qua [TPU Client](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html)
 
-Phần lớn người dùng sẽ gửi Transaction thông qua máy chủ RPC. KHi một người dùng gửi Transaction đi, nốt RPC sẽ tiếp nhận và cố gắng truyền lần lượt các Transaction đến leader hiện tại cũng như leader tiếp theo. Cho đến khi Transaction được xử lý bởi một leader, sẽ không tồn tại bất kỳ bản sao nào của Transaction được lưu trữ ngoại trừ người dùng và các nốt RPC trung chuyển. Trong trường hợp TPU Client, quá trình lan truyền và điều hướng đến leader sẽ được xử lý toàn bộ bởi người dùng.
+Phần lớn người dùng sẽ gửi Transaction thông qua máy chủ RPC. Khi một người dùng gửi Transaction đi, nốt RPC sẽ tiếp nhận và cố gắng truyền lần lượt các Transaction đến leader hiện tại cũng như leader tiếp theo. Cho đến khi Transaction được xử lý bởi một leader, sẽ không tồn tại bất kỳ bản sao nào của Transaction được lưu trữ ngoại trừ người dùng và các nốt RPC trung chuyển. Trong trường hợp TPU Client, quá trình lan truyền và điều hướng đến leader sẽ được xử lý toàn bộ bởi người dùng.
 
 ![Transaction Journey](./retrying-transactions/tx-journey.png)
 
 ### Làm thế nào để các nốt RPC lan truyền Transaction
 
-Ngay sau khi một nốt RPC tiếp nhận Transaction thông quá `sendTransaction`, nó sẽ chuyển Transaction đó thành một gói tin [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) trước khi truyền đến các leader thích hợp. UDP cho phép validator có thể giao tiếp nhanh chóng với nhau, nhưng không đảm bảo gói tin có thể chắc chắn được chuyển đi đúng hướng.
+Ngay sau khi một nốt RPC tiếp nhận Transaction thông qua `sendTransaction`, nó sẽ chuyển Transaction đó thành một gói tin [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) trước khi truyền đến các leader thích hợp. UDP cho phép validator có thể giao tiếp nhanh chóng với nhau, nhưng không đảm bảo gói tin có thể chắc chắn được chuyển đi đúng hướng.
 
-Bởi vì lịch trình của các leader trong Solana là biết trước cho mỗi [epoch](https://docs.solana.com/terminology#epoch) (~2 ngày), một nốt RPC will lan truyền Transaction của nó trực tiếp đến leader hiện tại cũng như tiếp sau. Điều này trái ngược với các giao thức gossip khác, ví dụ như Ethereum truyền Transaction một cách ngẫu nhiên và phủ khắp trên toàn mạng. Mặc định, các nốt RPC sẽ thử chuyển Transaction đến các leader cứ mỗi 2 giây cho để khi, hoặc Transaction thành công, hoặc blockhash của Transaction bị quá hạn (150 blocks hoặc ~1 phút 19 giây tại thời điểm viết bài). Nếu hàng đợi các Transaction cần được truyền đi lớn hơn [10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), các Transaction đến sau sẽ bị từ chối. Để điều chỉnh cài đặt mặc định, tham khảo các tham số cho câu lệnh [tại đây](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172).
+Bởi vì lịch trình của các leader trong Solana là biết trước cho mỗi [epoch](https://docs.solana.com/terminology#epoch) (~2 ngày), một nốt RPC sẽ lan truyền Transaction của nó trực tiếp đến leader hiện tại cũng như tiếp sau. Điều này trái ngược với các giao thức gossip khác, ví dụ như Ethereum truyền Transaction một cách ngẫu nhiên và phủ khắp trên toàn mạng. Mặc định, các nốt RPC sẽ thử chuyển Transaction đến các leader cứ mỗi 2 giây cho để khi, hoặc Transaction thành công, hoặc blockhash của Transaction bị quá hạn (150 blocks hoặc ~1 phút 19 giây tại thời điểm viết bài). Nếu hàng đợi các Transaction cần được truyền đi lớn hơn [10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), các Transaction đến sau sẽ bị từ chối. Để điều chỉnh cài đặt mặc định, tham khảo các tham số cho câu lệnh [tại đây](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172).
 
 Khi một nốt RPC lan truyền một Transaction, nó sẽ cố gắng chuyển Transaction đó để [Transaction Processing Unit (TPU)](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/validator.rs#L867) của một leader.
 
@@ -82,7 +82,7 @@ TPU xử lý các Transaction trong 5 pha riêng biệt:
 ![TPU Overview](./retrying-transactions/tpu-jito-labs.png)
 <small style="display:block;text-align:center;">Hình ảnh được cho phép bởi Jito Labs</small>
 
-Trong 5 pha này, Fetch Stage chịu trách nhiệm cho việc tiếp nhận Transaction. Trong phạm vi Fetch Stage, validator sẽ phân oại các Transaction mới đến dựa theo 3 cổng:
+Trong 5 pha này, Fetch Stage chịu trách nhiệm cho việc tiếp nhận Transaction. Trong phạm vi Fetch Stage, validator sẽ phân loại các Transaction mới đến dựa theo 3 cổng:
 
 - [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) xử lý các Transaction bình thường như là chuyển token, tạo NFT, và các chỉ thị cho các Program
 - [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) tập trung hoàn toàn vào Transaction bỏ phiếu
@@ -106,7 +106,7 @@ Một mạng bị rẽ nhánh tạm thời cũng có thể dẫn đến Transact
 
 ![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
-### Sau khi Transaction được xử lý nhưnh trước khi được ghi vào block
+### Sau khi Transaction được xử lý và trước khi được ghi vào block
 
 Trong trường hợp một Transaction tham chiếu `recentBlockhash` từ một nhánh thiểu số, nó vẫn có thể được xử lý bính thường. Tuy nhiên trong trường hợp đó, nó chỉ được tiếp nhận bởi leader trên nhánh thiểu số. Khi leader này cố gắng chia sẻ những Transaction mà nó đã xử lý với phần còn lại của mạng, lỗi đồng thuận sẽ xảy ra với phần cồng các validator khác đang duy trì trên nhánh chính và không hề nhận ra nhánh thiểu số. Lúc đó, Transaction sẽ bị xem là không hợp lên trước khi được đóng vào block.
 
@@ -114,15 +114,15 @@ Trong trường hợp một Transaction tham chiếu `recentBlockhash` từ mộ
 
 ## Xử trí với Transaction bị huỷ
 
-Trong khi các nốt RPC sẽ cố gắng lan truyền các Transaction, thuật toán được dùng thường chỉ đáp ứng các nhu cầu phổ biến và không tương thích với các nhu cầu đặt biệt. Để dự phòng trong tình huống mạng nghẽn, các lập trình viên sẽ phải tuỳ chỉnh thuật toán lan truyền trong ứng dụng của họ.
+Trong khi các nốt RPC sẽ cố gắng lan truyền các Transaction, thuật toán được dùng thường chỉ đáp ứng các nhu cầu phổ biến và không tương thích với các nhu cầu đặc biệt. Để dự phòng trong tình huống mạng nghẽn, các lập trình viên sẽ phải tuỳ chỉnh thuật toán lan truyền trong ứng dụng của họ.
 
 ### Nghiên cứu sendTransaction
 
-Khi cần gửi Transaction, phương thức `sendTransaction` trong RPC là công cụ cơ bản nhất sẵn có cho lập trình viên. `sendTransaction` chỉ chịu trách nhiệm cho việc trung chuyển từ người dùng đến một nốt RPC. Nêys nốt đó nhận được Transaction, `sendTransaction` sẽ trả về id của Transaction và có thể dùng nó để theo dõi tiến độ của Transaction. Một phản hồi thành công từ RPC không đồng nghĩa với việc Transaction đó đã được tiếp nhận, xử lý và đóng vào một block trên mạng lưới Solana.
+Khi cần gửi Transaction, phương thức `sendTransaction` trong RPC là công cụ cơ bản nhất sẵn có cho lập trình viên. `sendTransaction` chỉ chịu trách nhiệm cho việc trung chuyển từ người dùng đến một nốt RPC. Nếu nốt đó nhận được Transaction, `sendTransaction` sẽ trả về id của Transaction và có thể dùng nó để theo dõi tiến độ của Transaction. Một phản hồi thành công từ RPC không đồng nghĩa với việc Transaction đó đã được tiếp nhận, xử lý và đóng vào một block trên mạng lưới Solana.
 
 :::tip
 #### Tham số của Request
-- `transaction`: `string` - Transaction đã được ký dầy đủ và được mã hoá lại thành chuỗi ký tự
+- `transaction`: `string` - Transaction đã được ký đầy đủ và được mã hoá lại thành chuỗi ký tự
 - (optional) `configuration object`: `object` 
     - `skipPreflight`: `boolean` - Nếu `true`, bỏ qua quá trình kiểm tra Transaction bằng preflight (Mặc định: `false`)
     - (optional) `preflightCommitment`: `string` - Cấp độ [Commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) được dùng cho mô phỏng preflight trong ngân hàng chỗ trống (Mặc định: "finalized").
@@ -130,12 +130,12 @@ Khi cần gửi Transaction, phương thức `sendTransaction` trong RPC là cô
     - (optional) `maxRetries`: `usize` - Số lượng tối đa lần thử lại cho nốt RPC gửi Transaction đến các leader. Nếu tham số này không được đề cập, nốt RPC sẽ thử lại cho đến khi Transaction thành công hoặc blockhash bị hết hạn.
 
 #### Response
-- `transaction id`: `string` - Chữ ký đầu tiên được nhúng vào trong Transaction. Id của transaction có thể dược dùng với [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) để cập nhật trạng thái mới nhất của Transaction.
+- `transaction id`: `string` - Chữ ký đầu tiên được nhúng vào trong Transaction. Id của transaction có thể được dùng với [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) để cập nhật trạng thái mới nhất của Transaction.
 :::
 
 ## Tuỳ chỉnh thuật toán lan truyền
 
-Để phát triển thuật toán lan truyền của riêng mình, lập trình viên cần hiểu rõ tham số `maxRetries` trong  `sendTransaction`. Nếu được khai báo, `maxRetries` sẽ ghi đè lên giá trị mặc định của nốt RPC và cho phép lập trình viên điều khiển thử công quá trình thử lại trong [phạm vi giới hạn hợp lý](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274).
+Để phát triển thuật toán lan truyền của riêng mình, lập trình viên cần hiểu rõ tham số `maxRetries` trong  `sendTransaction`. Nếu được khai báo, `maxRetries` sẽ ghi đè lên giá trị mặc định của nốt RPC và cho phép lập trình viên điều khiển thủ công quá trình thử lại trong [phạm vi giới hạn hợp lý](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274).
 
 Một cài đặt phổ biến cho việc thử lại thủ công là tạm lưu `lastValidBlockHeight` được truy vấn từ [getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash). Sau khi lưu lại, một ứng dụng có thể [theo dõi blockheight của mạng lưới](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight) và lan truyền Transaction thủ công thông qua thuật toán tuỳ chỉnh. Có một vài ứng dụng sử dụng giải thuật [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff), thì một vài ứng dụng khác ví như [Mango](https://www.mango.markets/) chọn [liên tục tái gửi](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) Transaction với một khoảng thời gian lặp định trước cho đến khi quá hạn.
 

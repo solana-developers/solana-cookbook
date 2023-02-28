@@ -46,7 +46,7 @@ Có một vài lựa chọn và công cụ hỗ trợ cho việc kiểm thử v�
 ::: tip Những điều có thể bạn chưa biết
 - Crate `solana-program-test` cho phép tạo nên một môi trường tiêu chuẩn **_local runtime_** để bạn có thể kiểm thử và soát lỗi chương trình một cách trực quan (ví dụ như trong vscode).
 - Crate `solana-validator` cho phép sử dụng `solana-test-validator` để chạy các bước kiểm thử một cách tin cậy trên **_local validator node_**. Bạn có thể chạy từ trình biên tập **_tuy nhiên các điểm dừng trong chương trình sẽ bị bỏ qua_**.
-- Công cụ CLI `solana-test-validator` giúp khởi chạy và tải Program cũng nhưng thực thi các Transaction từ Rust CLI hoặc từ web3js.
+- Công cụ CLI `solana-test-validator` giúp khởi chạy và tải Program cũng như thực thi các Transaction từ Rust CLI hoặc từ web3js.
 - Trong tất cả các trường hợp trên, việc sử dụng macro `msg!` được khuyến khích tại thời điểm phát triển ban đầu, tuy nhiên cần xoá chúng một khi đã hoàn tất kiểm thử. Nên nhớ rằng `msg!` cũng tiêu tốn tài nguyên tính toán hay còn gọi là Compute Units. Program của bạn có thể bị lỗi một khi đạt đến giới hạn trần của Compute Unit.
 :::
 
