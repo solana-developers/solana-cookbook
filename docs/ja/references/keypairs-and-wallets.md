@@ -1,5 +1,5 @@
 ---
-title: Keypairs and Wallets
+title: キーペアとウォレット
 head:
   - - meta
     - name: title
@@ -39,12 +39,10 @@ footer: MIT Licensed
 
 # Keypairs and Wallets
 
-## How to generate a new Keypair
+## 新しいキーペアの生成方法
 
-Many of the different actions you can take with the various Solana
-libraries require a Keypair or Wallet. If you are connecting to a
-wallet, you do not have to worry. However, if you are in need of a
-keypair, you will need to generate one.
+さまざまな Solana ライブラリで実行できるさまざまなアクションの多くには、キーペアまたはウォレットが必要です。
+ウォレットに接続している場合は、心配する必要はありません。ただし、鍵ペアが必要な場合は生成する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -113,12 +111,11 @@ keypair, you will need to generate one.
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a secret
+## シークレットからキーペアを復元する方法
 
-If you already have your secret, you can get your Keypair from the secret
-to test out your dApp.
+シークレットが既にある場合は、シークレットからキーペアを取得して dApp をテストできます。
 
-1. From Bytes
+1. バイトから
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -187,7 +184,7 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-2. From Base58 String
+2. Base58文字列から
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -240,10 +237,9 @@ to test out your dApp.
 
 </SolanaCodeGroup>
 
-## How to verify a Keypair
+## キーペアを確認する方法
 
-If you are given a keypair, you can verify whether or not the secret
-matches the given public key
+キーペアが与えられた場合、秘密が与えられた公開鍵と一致するかどうかを確認できます。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -296,9 +292,9 @@ matches the given public key
 
 </SolanaCodeGroup>
 
-## How to check if a public key has an associated private key
+## 公開鍵に秘密鍵が関連付けられているかどうかを確認する方法
 
-In certain special cases (e.g. a Program Derived Address), public keys may not have a private key associated with them. You can check this by looking to see if the public key lies on the ed25519 curve. Only public keys that lie on the curve can be controlled by users with wallets.
+プログラム派生アドレス(PDA)などの特定の特殊なケースでは、公開鍵に秘密鍵が関連付けられていない場合があります。これは、公開鍵がed25519曲線上にあるかどうかを調べることで確認できます。ウォレットを持つユーザーが制御できるのは、曲線上にある公開鍵のみです。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -352,9 +348,9 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
 </SolanaCodeGroup>
 
 
-## How to generate a mnemonic phrase
+## ニーモニックフレーズの生成方法
 
-If you're creating a wallet, you will need to generate a mnemonic phrase so that the user can save it as a backup.
+ウォレットを作成する場合は、ユーザーがバックアップとして保存できるようにニーモニック フレーズを生成する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -407,12 +403,11 @@ If you're creating a wallet, you will need to generate a mnemonic phrase so that
 
 </SolanaCodeGroup>
 
-## How to restore a Keypair from a mnemonic phrase
+## ニーモニックフレーズからキーペアを復元する方法
 
-Many wallet extensions use mnemonics to represent their secret keys.
-You can convert the mnemonic to Keypairs for local testing.
+多くのウォレット拡張機能は、ニーモニックを使用して秘密鍵を表します。ローカルテスト用にニーモニックをキーペアに変換できます。
 
-1. BIP39 - creating a single wallet
+1. BIP39 - 単一のウォレットの作成
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -465,9 +460,9 @@ You can convert the mnemonic to Keypairs for local testing.
 
 </SolanaCodeGroup>
 
-2. BIP44 (multiple wallets, also known HD wallets)
+2. BIP44 (複数のウォレット、別名 HDウォレット)
 
-You can make multiple wallets from a single seed - also known as 'Hierarchical Deterministic wallets' or HD wallets:
+単一のシードから複数のウォレットを作成できます。これは、「階層的決定論的ウォレット」または HD ウォレットとも呼ばれます。:
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -504,18 +499,14 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
 </SolanaCodeGroup>
 
-## How to generate a vanity address
+## バニティアドレスの生成方法
 
-Vanity publickeys, or custom addresses are keys that have start with
-specific characters. For example, a person may want a publickey to
-start with "elv1s", or maybe even "cook". These can help other people
-remember who the key belongs to, making the key more easily identifiable.
+バニティ公開鍵またはカスタム アドレスは、特定の文字で始まるキーです。たとえば、公開鍵を「elv1s」または「cook」で開始したい場合があります。これらは、他の人がキーの所有者を思い出すのに役立ち、キーをより簡単に識別できるようにします。
 
-Note: The more characters in your vanity address, the longer it will
-take.
+Note: バニティ アドレスの文字数が多いほど、時間がかかります。
 
 ::: warning
-You should just use the CLI for this task. The Python and TypeScript examples are for illustrative purposes and are much slower than the CLI.
+このタスクには CLI を使用する必要があります。 Python と TypeScript の例は説明を目的としており、CLI よりもはるかに遅くなります。
 :::
 
 <SolanaCodeGroup>
@@ -569,14 +560,12 @@ You should just use the CLI for this task. The Python and TypeScript examples ar
 
 </SolanaCodeGroup>
 
-## How to sign and verify messages with wallets
+## ウォレットでメッセージに署名して検証する方法
 
-The primary function of a keypair is to sign messages and enable
-verification of the signature. Verification of a signature allows
-the recipient to be sure that the data was signed by the owner of a
-specific private key.
+鍵ペアの主な機能は、メッセージに署名し、署名の検証を可能にすることです。
+署名の検証により、受信者は、データが特定の秘密鍵の所有者によって署名されたことを確認できます。
 
-To do so we will import the [TweetNaCl][1] crypto library.
+そのために、[TweetNaCl][1]暗号ライブラリをインポートします。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -615,21 +604,21 @@ To do so we will import the [TweetNaCl][1] crypto library.
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
-## How to connect to a wallet
+## ウォレットへの接続方法
 
-Solana's [wallet-adapter](https://github.com/solana-labs/wallet-adapter) libraries make it easy to manage wallet connections client-side.
+Solanaの[wallet-adapter](https://github.com/solana-labs/wallet-adapter)ライブラリを使用すると、クライアント側でウォレット接続を簡単に管理できます。
 
 ### React
 
-Run the following command to install the required dependencies:
+次のコマンドを実行して、必要な依存関係をインストールします:
 
 ```/bin/bash
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-The React wallet-adapter libraries allow us to persist and access wallet connection states through hooks and Context providers, namely, `useWallet`, `WalletProvider`, `useConnection`, and `ConnectionProvider`. The React App must be wrapped with `WalletProvider` and `ConnectionProvider`.
+React wallet-adapterライブラリでは、フックと Context プロバイダ、すなわち`useWallet`, `WalletProvider`, `useConnection`, `ConnectionProvider`を通じてウォレットの接続状態を持続させたりアクセスしたりすることができます。Reactアプリは、`WalletProvider`と`ConnectionProvider`でラップする必要があります。
 
-Additionally, we can prompt users to connect by using `useWalletModal` to toggle visibility of the connection modal and wrapping the App with `WalletModalProvider` from `@solana/wallet-adapter-react-ui`, as well. The connection modal will handle that connection flow for us, so we can just listen for when a wallet has connected. We know a wallet is connected when the `useWallet` response has a non-null `wallet` property. Vice versa, if that property is null, we know the wallet is disconnected.
+加えて、`@solana/wallet-adapter-react-ui`の`WalletModalProvider`でアプリをラップし、 `useWalletModal`を使用して接続モーダルの可視性を切り替えることで、使用してユーザーに接続を促すことができます。接続モーダルはその接続フローを処理するので、ウォレットがいつ接続されたかをリッスンできます。`useWallet`応答にnull 以外の`wallet`プロパティがある場合、ウォレットが接続されていることがわかります。逆に、そのプロパティが null の場合、ウォレットが切断されていることがわかります。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -652,13 +641,13 @@ Additionally, we can prompt users to connect by using `useWalletModal` to toggle
 
 ### Vue
 
-Run the following command to install the required dependencies:
+次のコマンドを実行して、必要な依存関係をインストールします:
 
 ```/bin/bash
 npm install solana-wallets-vue @solana/wallet-adapter-wallets
 ```
 
-The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugin allows us to initialise a wallet store and create a new `$wallet` global property that can be accessed inside any component. All the properties and methods you can get from `useWallet()` are displayed [here](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references). We also import and render the WalletMultiButton component to allow users to select a wallet et connect to it.
+[Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) プラグインを使用すると、ウォレットストアを初期化し、任意のコンポーネント内でアクセスできる新しい`$wallet`グローバル プロパティを作成できます。`useWallet()` から使用可能なすべてのプロパティとメソッドは[こちら](https://github.com/lorisleiva/solana-wallets-vue#usewallet-references)に表記されています。また、WalletMultiButton コンポーネントをインポートしてレンダリングし、ユーザーがウォレットを選択して接続できるようにします。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Vue" active>
@@ -681,13 +670,13 @@ The [Solana Wallets Vue](https://github.com/lorisleiva/solana-wallets-vue) plugi
 
 ### Svelte
 
-Run the following command to install the required dependencies:
+次のコマンドを実行して、必要な依存関係をインストールします:
 
 ```/bin/bash
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) package allows to add a Svelte Store (`$walletStore`) accessible among all the JS, TS or/and Svelte files inside a project done with Svelte Template or SvelteKit. Using the repo reference [here](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) you can be able to use the adapter for SSR or SPA. The UI package contains a `<WalletMultiButton />` component to allow users to select a wallet to connect to it.
+[Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter)パッケージを使うことにより、Svelte TemplateまたはSvelteKitで作成されたプロジェクト内のすべてのJS、TS、Svelte ファイル間でアクセス可能な Svelteストア(`$walletStore`) を追加できます。[こちら](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/)のリポジトリを参照の上、SSR または SPA 用のアダプターを使用できます。UI パッケージには、ユーザーがウォレットを選択して接続できるようにする  `<WalletMultiButton />` コンポーネントが含まれています。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>

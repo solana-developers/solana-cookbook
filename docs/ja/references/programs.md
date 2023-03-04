@@ -1,5 +1,5 @@
 ---
-title: Writing Programs
+title: プログラムの作成
 head:
   - - meta
     - name: title
@@ -36,16 +36,12 @@ head:
       content: index,follow
 ---
 
-# Writing Programs
+# プログラムの作成
 
-## How to transfer SOL in a program
+## プログラムでSOLを転送する方法
+Solana プログラムは、システム プログラムを「呼び出す」ことなく、ランポートをあるアカウントから別のアカウントに転送できます。基本的なルールは、プログラムが**所有する**任意のアカウントから任意のアカウントにlamportを転送できることです。
 
-Your Solana Program can transfer lamports from one account to another
-without 'invoking' the System program. The fundamental rule is that
-your program can transfer lamports from any account **owned** by your program
-to any account at all.
-
-The recipient account *does not have to be* an account owned by your program.
+受信者アカウントは、プログラムが所有するアカウントである必要はありません。
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -55,18 +51,17 @@ The recipient account *does not have to be* an account owned by your program.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get clock in a program
+## プログラムでclockを取得する方法
 
-Getting a clock can be done in two ways
+clockを取得するには、2 つの方法があります。
 
-1. Passing `SYSVAR_CLOCK_PUBKEY` into an instruction
-2. Accessing Clock directly inside an instruction.
+1. `SYSVAR_CLOCK_PUBKEY`をインストラクションに渡す
+2. インストラクション内でClockに直接アクセスする
 
-It is nice to know both the methods, because some legacy programs still expect the `SYSVAR_CLOCK_PUBKEY` as an account.
+一部のレガシープログラムは依然として`SYSVAR_CLOCK_PUBKEY`を一つのアカウントとして想定しているため、両方の方法を知っておくと便利です。
 
-### Passing Clock as an account inside an instruction
-
-Let's create an instruction which receives an account for initializing and the sysvar pubkey
+### インストラクション内のアカウントとしてClockを渡す
+初期化用のアカウントとsysvar pubkeyを受け取るインストラクションを作成しましょう。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -86,7 +81,7 @@ Let's create an instruction which receives an account for initializing and the s
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now we pass the clock's sysvar public address via the client
+ここで、クライアント経由でClockの sysvarパブリックアドレスを渡します
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -106,9 +101,9 @@ Now we pass the clock's sysvar public address via the client
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Accessing Clock directly inside an instruction
+### インストラクション内でClockに直接アクセスする
 
-Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKEY` from the client side.
+先ほどと同様のインストラクションを作成しましょう。ただし、クライアント側からの`SYSVAR_CLOCK_PUBKEY`を想定しないものです
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -128,7 +123,7 @@ Let's create the same instruction, but without expecting the `SYSVAR_CLOCK_PUBKE
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The client side instruction, now only needs to pass the state and payer accounts.
+クライアント側の命令は、ステータスと支払人のアカウントを渡すだけで済みます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,13 +143,10 @@ The client side instruction, now only needs to pass the state and payer accounts
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to change account size
+## アカウントサイズの変更方法
 
-You can change a program owned account's size with the use 
-of `realloc`. `realloc` can resize an account up to 10KB.
-When you use `realloc` to increase the size of an account,
-you must transfer lamports in order to keep that account
-rent-exempt.
+`realloc`を使用して、プログラムが所有するアカウントのサイズを変更できます。`realloc`は、最大10KBまでアカウントのサイズを変更できます。
+アカウントのサイズを増やすために `realloc` を使用する場合、そのアカウントのrentを免除するためにlamportを転送する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -174,23 +166,16 @@ rent-exempt.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to do Cross Program Invocation
+## プログラム同士の呼び出し方法
 
-A cross program invocation, is simply put calling another 
-program's instruction inside our program. One best example 
-to put forth is Uniswap's `swap` functionality. The 
-`UniswapV2Router` contract, calls the necessary logic to 
-swap, and calls the `ERC20` contract's transfer function 
-to swap from one person to another. The same way, we can 
-call a program's instruction to have multitude of purposes.
+プログラム同士呼び出しは、プログラム内で別のプログラムの命令を呼び出すだけです。最も良い例の 1 つは、Uniswapの`swap`機能です。The 
+`UniswapV2Router`コントラクトは、スワップに必要なロジックを呼び出し、`ERC20`コントラクトの転送関数を呼び出して、ある人から別の人にスワップします。 The same way, we can 
+同じように、プログラムのインストラクションを呼び出しにはさまざまな目的を持たせることができます。
+`SPLトークンの転送`インストラクションの最初の例を見てみましょう。送金に必要なアカウントは次のとおりです。
 
-Lets have a look at our first example which is the 
-`SPL Token Program's transfer` instruction. The required 
-accounts we would need for a transfer to happen are
-
-1. The Source Token Account (The account which we are holding our tokens)
-2. The Destination Token Account (The account which we would be transferring our tokens to)
-3. The Source Token Account's Holder (Our wallet address which we would be signing for)
+1. 送り元のsource_token_account (トークンを保持しているアカウント)
+2. 送り先のdestination_token_account(トークンを転送するアカウント)
+3. 送り元のトークンアカウントの所有者であるsource_token_account_holder (署名するウォレットアドレス)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -210,7 +195,7 @@ accounts we would need for a transfer to happen are
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-The corresponding client instruction would be as follows. For knowing the mint and token creation instructions, please refer to the full code nearby.
+対応するクライアントの指示は次のようになります。ミントとトークンの作成手順については、近くにある完全なコードを参照してください。
 <br />
 <br />
 <SolanaCodeGroup>
@@ -231,11 +216,11 @@ The corresponding client instruction would be as follows. For knowing the mint a
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Now let's take a look at another example, which is `System Program's create_account` instruction. There is a slight difference between the above mentioned instruction and this. There, we never had to pass the `token_program` as one of the accounts inside the `invoke` function. However, there are exceptions where you are required to pass the invoking instruction's `program_id`. In our case it would be the `System Program's` program_id. ("11111111111111111111111111111111"). So now the required accounts would be
+次の例として、`システム プログラムの create_account`インストラクション見てみましょう。前例のインストラクションと次の例には少しの違いがあります。 前例では、`invoke`関数内のアカウントの一つとして`token_program`を渡す必要はありませんでした。ただし、実行しているインストラクションの`program_id`を渡す必要があります。次のケースでは、`システムプログラムの`program_id ("11111111111111111111111111111111")を渡さなければなりません。したがって、必要なアカウントは次のようになります:
 
-1. The payer account who funds the rent
-2. The account which is going to be created
-3. System Program account
+1. rentを支払う支払人のアカウント
+2. これから作成されるアカウント
+3. システムプログラムアカウント
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -255,7 +240,7 @@ Now let's take a look at another example, which is `System Program's create_acco
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-The respective client side code will look as follows
+それぞれのクライアント側のコードは次のようになります
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -275,9 +260,9 @@ The respective client side code will look as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a PDA
+## PDAの作成方法
 
-A Program Derived Address is simply an account owned by the program, but has no private key. Instead it's signature is obtained by a set of seeds and a bump (a nonce which makes sure it's off curve). "**Generating**" a Program Address is different from "**creating**" it. One can generate a PDA using `Pubkey::find_program_address`. Creating a PDA essentially means to initialize the address with space and set the state to it. A normal Keypair account can be created outside of our program and then fed to initialize it's state. Unfortunately, for PDAs, it has be created on chain, due to the nature of not being able to sign on behalf of itself. Hence we use `invoke_signed` to pass the seeds of the PDA, along with the funding account's signature which results in account creation of a PDA.
+プログラム派生アドレスは、プログラムが所有する単なるアカウントですが、秘密鍵がありません。代わりに、一連のシードとバンプ (カーブから外れていることを確認するナンス) によって署名が取得されます。プログラムアドレスを「**生成**」することは、それを「**作成**」することとは異なります。`Pubkey::find_program_address`を使用してPDAを生成できます。PDAを作るということは、基本的にアドレスをスペースで初期化し、ステートを設定することを意味します。通常のキーペアアカウントは、プログラムの外部で作成し、そのステートを初期化するために提供されます。 残念ながらPDAの場合、それ自体に代わって署名できないという性質上のため、オンチェーンで作成されています。したがって、`invoke_signed`を使用して、PDA のシードと、PDA のアカウント作成につながる資金調達アカウントの署名を渡します。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -317,9 +302,9 @@ One can send the required accounts via client as follows
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read accounts
+## アカウントの読み込み方法
 
-Almost all instructions in Solana would require atleast 2 - 3 accounts, and they would be mentioned over the instruction handlers on what order it's expecting those set of accounts. It's fairly simple if we take advantage of the `iter()` method in Rust, instead of manually indicing the accounts. The `next_account_info` method basically slices the first index of the iterable and returning the account present inside the accounts array. Let's see a simple instruction which expects a bunch of accounts and requiring to parse each of them.
+Solanaのほとんどのインストラクションは少なくとも2〜3個のアカウントを必要とし、それらのアカウントセットをどのような順番で期待するかは、インストラクションハンドラで指定されることになります。 Rust の`iter()`メソッドを利用すれば、アカウントを手動で指定するより簡単です。`next_account_info`メソッドは基本的に iterableの最初のインデックスをスライスし、accounts配列内に存在するアカウントを返します。多数のアカウントを想定し、それぞれを解析する必要がある簡単なインストラクションを見てみましょう。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -339,17 +324,17 @@ Almost all instructions in Solana would require atleast 2 - 3 accounts, and they
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to verify accounts
+## アカウントを検証する方法
 
-Since programs in Solana are stateless, we as a program creator have to make sure the accounts passed are validated as much as possible to avoid any malicious account entry. The basic checks one can do are
+Solana のプログラムはステートレスであるため、プログラムの作成者は、渡されたアカウントが可能な限り検証されていることを確認して、悪意のあるアカウントのエントリを回避する必要があります。基本的に可能なチェックは、
 
-1. Check if the expected signer account has actually signed
-2. Check if the expected state account's have been checked as writable
-3. Check if the expected state account's owner is the called program id
-4. If initializing the state for the first time, check if the account's already been initialized or not.
-5. Check if any cross program ids passed (whenever needed) are as expected.
+1. 予想される署名者アカウントが実際に署名されているかどうかを確認
+2. 予期される状態のアカウントが書き込み可能としてチェックされているかどうかを確認
+3. 期待される状態のアカウントの所有者が呼び出されたプログラム ID であるかどうかを確認
+4. 初めて状態を初期化する場合に、アカウントが既に初期化されているかどうかを確認
+5. 渡されたクロスプログラムIDが(必要に応じて)期待どおりかどうかを確認
 
-A basic instruction which initializes a hero state account, but with the above mentioned checks is defined below
+hello_state_accountアカウントを初期化し、上記のチェックを行う基本的なインストラクションを以下に定義します
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -369,10 +354,9 @@ A basic instruction which initializes a hero state account, but with the above m
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to read multiple instructions from a transaction
+## トランザクションから複数のインストラクションを読み取る方法
 
-Solana allows us to take a peek at all of the instructions in the current transaction. We can store them in a variable and 
-iterate over them. We can do many things with this, like checking for suspicious transactions. 
+Solanaは、現在のトランザクションのすべてのインストラクションの確認が可能で、それらを変数に格納して、反復処理が可能です。これにより疑わしいトランザクションのチェックなど、多くのことができます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>

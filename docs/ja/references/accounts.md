@@ -1,5 +1,5 @@
 ---
-title: Accounts
+title: アカウント
 head:
   - - meta
     - name: title
@@ -39,11 +39,10 @@ footer: MIT Licensed
 
 # Accounts
 
-## How to create a system account
+## システムアカウントの作り方
 
-Create an account that the [System Program][1] owns. The Solana runtime will grant the owner of an account, access to
-write to its data or transfer lamports. When creating an account, we have to preallocate a fixed storage space in bytes
-(`space`) and enough lamports to cover the rent. [Rent][2] is a cost incurred to keep accounts alive on Solana.
+[System Program][1]が所有するアカウントを作成します。Solanaランタイムは、アカウントの所有者に、そのデータへの書き込みアクセスまたはランポートの転送アクセスを許可します。 アカウントを作成するとき、固定バイトストレージ (`space`) と、家賃をカバーするのに十分なランポートを事前に割り当てる必要があります
+[Rent][2]は、Solana でアカウントを維持するために発生する費用です
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -78,11 +77,9 @@ write to its data or transfer lamports. When creating an account, we have to pre
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to calculate account cost
+## アカウント費用の計算方法
 
-Keeping accounts alive on Solana incurs a storage cost called [rent][2]. An account can be made entirely exempt
-from rent collection by depositing at least two years worth of rent. For the calculation, you need to consider
-the amount of data you intend to store in the account.
+Solana でアカウントを維持すると、[rent][2]と呼ばれるストレージ コストが発生します。 口座は、少なくとも 2 年分のrentを入金することにより、rentの徴収を完全に免除することができます。 計算には、アカウントに保存する予定のデータの量を考慮が必要です。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -104,11 +101,11 @@ the amount of data you intend to store in the account.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create accounts with seeds
+## シード付きアカウントを作成する方法
 
-You can use `createAccountWithSeed` to manage your accounts instead of creating a bunch of different keypair.
+さまざまなキーペアを作成する代わりに、`createAccountWithSeed`を使用してアカウントを管理できます。
 
-### Generate
+### 生成
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,7 +140,7 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Create
+### 作成
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -179,7 +176,7 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Transfer
+### 送信
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -200,28 +197,26 @@ You can use `createAccountWithSeed` to manage your accounts instead of creating 
 </SolanaCodeGroup>
 
 ::: tip
-Only an account owned by system program can transfer via system program.
+システムプログラムが所有するアカウントのみ、システムプログラム経由で移行できます。
 :::
 
-## How to create PDAs
+## PDA の作成方法
 
-[Program derived address(PDA)][3] is like a normal address with the following differences:
+[Program derived address(PDA)][3] は、通常のアドレスと似ていますが、次の違いがあります:
 
-1. Falling off ed25519 curve
-2. Using program to sign instead of private key
+1. ed25519 曲線上に存在しない(オフカーブである)
+2. 秘密鍵の代わりにプログラムを使用して署名する
 
-**Note**: PDA accounts can only be created on the program. The address can be created client side.
+**Note**: アカウントは、プログラムでのみ作成できます。アドレスはクライアント側で作成できます。
 
 ::: tip
-Although PDA is derived by a program id, it doesn't means the PDA is owned by the same program. (Take an example, you can initialize your PDA as a token account which is an account owned by token program)
+PDA はプログラム ID によって派生しますが、PDA が同じプログラムによって所有されているという意味ではありません。 (例を挙げると、トークン プログラムが所有するアカウントであるトークン アカウントとして PDA を初期化できます)
 :::
 
-### Generate a PDA
+### PDAの生成
 
-`findProgramAddress` will add a extra byte at the end of your seed.
-It starts from 255 to 0 and returns the first off-curve public key.
-You will always get the same result if you pass the same program id
-and seed.
+`findProgramAddress` は、シードの最後に余分なバイトを追加します。 255 から 0 まで開始し、オフカーブの最初の公開鍵を返します。
+同じプログラム ID とシードを渡すと、常に同じ結果が得られます。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -239,12 +234,11 @@ and seed.
 
 ### Create a PDA
 
-Below is an
-example program for creating a PDA account owned by the program and an example for calling the program with the client.
+以下は、プログラムが所有する PDA アカウントを作成するためのサンプル プログラムと、クライアントでプログラムを呼び出すためのサンプルです。
 
 #### Program
 
-The below shows a single instruction `system_instruction::create_account` that creates an account with allocated data size of `space`, `rent_lamports` amount of lamports for the derived PDA. This is signed with the PDA using `invoke_signed` similar to as discussed above.
+以下は、単一の instruction `system_instruction::create_account`を示しています。これは、割り当てられた `space`, `rent_lamports` の量のPDAを作成します。これは上記と同様に、`invoke_signed`を使用してPDAで署名されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>
@@ -284,16 +278,13 @@ The below shows a single instruction `system_instruction::create_account` that c
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to sign with a PDA
+## PDAで署名する方法
 
-PDAs can only be signed for within the program. Below is a program
-example of signing with a PDA and calling the program with the client.
+PDA は、プログラム内でのみ署名できます。以下は、PDA で署名し、クライアントでプログラムを呼び出すプログラムの例です。
 
 ### Program
 
-The below shows a single instruction that transfers SOL from a PDA that
-was derived by the seed `escrow` to an account passed. `invoke_signed` is
-used to sign with the PDA.
+以下は、シード `escrow`によって派生した PDA から渡されたアカウントに SOL を転送する単一の instruction を示しています。 `invoke_signed`は、PDA での署名に使用されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -333,9 +324,9 @@ used to sign with the PDA.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get program accounts
+## program accountの取得方法
 
-Return all accounts owned by a program. Refer to the [guides section](../guides/get-program-accounts.md) for more information on `getProgramAccounts` and its configuration.
+programが所有するすべてのアカウントを返します。`getProgramAccounts`とその構成の詳細については、[guides section](../guides/get-program-accounts.md)を参照してください。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -356,9 +347,9 @@ Return all accounts owned by a program. Refer to the [guides section](../guides/
   </CodeGroupItem>
 </CodeGroup>
 
-## How to close accounts
+## accountの閉鎖
 
-You can close an account (erase all stored data) by removing all SOL. (you can refer to [rent][2] for more information)
+すべての SOL を削除することで、アカウントを閉じる(すべての保存データを消去する)ことができます。(詳細については、[rent][2]を参照してください)
 
 #### Program
 
@@ -401,7 +392,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get account balance
+## accountの残高を取得する方法
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -453,7 +444,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
 </SolanaCodeGroup>
 
 ::: tip
-If you want to get a token balance, you will need to know the address of token account. For more information, see [Token References](token.md)
+トークンの残高を取得したい場合は、トークンアカウントのアドレスを知る必要があります。詳細については、[Token References](token.md)を参照してください。
 :::
 
 [1]: https://docs.solana.com/developing/clients/javascript-reference#systemprogram

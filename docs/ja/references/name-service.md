@@ -1,5 +1,5 @@
 ---
-title: Name Service
+title: ネームサービス
 head:
   - - meta
     - name: title
@@ -37,16 +37,16 @@ head:
 footer: MIT Licensed
 ---
 
-# Name Service
+# ネームサービス
 
-## Name registry
+## ネームレジストリ
 
-The name registry stores information about the domain name. It is made of two things:
+ネーム レジストリには、ドメイン名に関する情報が格納され、下記の二つから成り立ちます:
 
-- The header
-- The data
+- ヘッダー
+- データ
 
-The data for a domain name is always prefixed by the header, below is the structure of the header in JS:
+ドメイン名のデータには、常にヘッダーがプレフィックスとして付けられます。以下は、JS のヘッダーの構造です。:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -67,12 +67,9 @@ The data for a domain name is always prefixed by the header, below is the struct
 
 </SolanaCodeGroup>
 
-## Resolving SOL domains
+## SOLドメインの解決
 
-.SOL domains are unique, human-friendly domain names
-that convert to publicKeys. Many wallets use these as
-another option to send tokens or SOL. You can convert
-.SOL domains to their publicKey with the following:
+.SOLドメインは、publicKeys に変換される一意のわかりやすいドメイン名です。 多くのウォレットは、トークンまたは SOL を送信するための別のオプションとしてこれらを使用します。次の方法で、.SOLドメインをpublicKeyに変換できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,9 +90,9 @@ another option to send tokens or SOL. You can convert
 
 </SolanaCodeGroup>
 
-## Reverse look up
+## 逆引き
 
-This can be used to resolve the domain name from its public key
+これは、公開鍵からドメイン名を解決するために使用できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -116,13 +113,13 @@ This can be used to resolve the domain name from its public key
 
 </SolanaCodeGroup>
 
-## Subdomain look up
+## サブドメインの検索
 
-In order to resolve a subdomain you need to:
+サブドメインを解決するには、次のことが必要です:
 
-1. Get the parent domain key
-2. Get the subdomain key
-3. Retrieve the account info
+1. 親ドメインキーを取得する
+2. サブドメインキーを取得する
+3. アカウント情報を取得する
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -143,9 +140,9 @@ In order to resolve a subdomain you need to:
 
 </SolanaCodeGroup>
 
-## Find all the domain names owned by a public key
+## 公開鍵が所有するすべてのドメイン名を見つける
 
-You can retrieve all the domain names of a wallet by doing a `getProgramAccounts` request with a `memcmp` filter
+`memcmp`フィルタを指定して`getProgramAccounts`リクエストを実行すると、ウォレットのすべてのドメイン名を取得できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,9 +163,9 @@ You can retrieve all the domain names of a wallet by doing a `getProgramAccounts
 
 </SolanaCodeGroup>
 
-## Resolve a Twitter handle
+## Twitter handleを解決する
 
-Twitter handles can be [registered on the Solana name service](https://naming.bonfida.org/#/twitter-registration) and be used like .SOL domain names
+Twitter handleは[Solanaネーム サービスに登録でき](https://naming.bonfida.org/#/twitter-registration)、.SOLドメイン名のように使用できます
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -189,9 +186,9 @@ Twitter handles can be [registered on the Solana name service](https://naming.bo
 
 </SolanaCodeGroup>
 
-## Reverse look up of a Twitter handle
+## Twitter handleの逆引き
 
-In order to find the SOL address associated to a Twitter handle you can perform a reverse look up
+Twitter handleに関連付けられた SOLアドレスを見つけるには、逆引きを実行できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

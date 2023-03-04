@@ -1,5 +1,5 @@
 ---
-title: Sending Transactions
+title: トランザクションの送信
 head:
   - - meta
     - name: title
@@ -36,11 +36,11 @@ head:
       content: index,follow
 ---
 
-# Sending Transactions
+# トランザクションの送信
 
-## How to send SOL
+## SOLの送金方法
 
-To send SOL, you will need to interact with the [SystemProgram][1].
+SOL を送信するには、[SystemProgram][1]と対話する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -115,10 +115,9 @@ To send SOL, you will need to interact with the [SystemProgram][1].
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## How to send SPL-Tokens
+## SPL-Tokenの送信方法
 
-Use the [Token Program][1] to transfer SPL Tokens. In order to send a SPL token, you need to know its SPL token account address. You can both get the address and send tokens
-with the following example.
+[Token Program][1]を利用し、SPL-Tokenを送信します。SPL-tokenを送信するには、そのSPL-Tokenのアカウントアドレスを知る必要があります。次の例では、アドレスの取得とトークンの送信の両方を行うことができます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,16 +166,13 @@ with the following example.
 
 [1]: https://spl.solana.com/token
 
-## How to calculate transaction cost
+## トランザクションコストの計算方法
 
-The number of signatures a transaction requires are used to calculate
-the transaction cost. As long as you are not creating an account, this
-will be the final transaction cost. To find out more about costs to create
-an account, check out [calculating rent exemption](accounts.md#calculating-rent-exemption)
+トランザクションに必要な署名の数は、トランザクションコストの計算に使用されますアカウントを作成していない限り、これが最終的な取引コストになります。アカウントを作成するための費用について詳しくは、 [calculating rent exemption](accounts.md#calculating-rent-exemption)をご覧ください。
 
-The two examples below show the two ways currently available to calculate estimated transaction cost.
+以下の 2 つの例は、推定トランザクション コストを計算するために現在利用できる 2 つの方法を示しています。
 
-The first example uses `getEstimatedFee`, which is a new method on the `Transaction` class, while the second example uses `getFeeForMessage` which replaces `getFeeCalculatorForBlockhash` on the `Connection` class.
+最初の例では、 `Transaction`クラスの新しいメソッドである`getEstimatedFee`を使用しています。2番目の例では、`Connection` クラスの`getFeeCalculatorForBlockhash`を置き換える`getFeeForMessage`を使用しています。
 
 ### getEstimatedFee
 <SolanaCodeGroup>
@@ -216,11 +212,10 @@ The first example uses `getEstimatedFee`, which is a new method on the `Transact
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to add a memo to a transaction
+## トランザクションへのメモの追加方法
 
-Any transaction can add a message making use of the [memo program][2].
-Currently the `programID` from the **Memo Program** has to be added
-manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
+[memo program][2]を利用して、どのトランザクションでもメッセージを追加できます。
+現在、メモ プログラムの **Memo Program** `programID`は`MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`を手動で追加する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -267,26 +262,18 @@ manually `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 
 </SolanaCodeGroup>
 
-## How to change compute budget, fee, &amp; priority for a transaction
-Transaction (TX) priority is achieved by paying a Prioritization Fee in 
-addition to the Base Fee. By default the compute budget is the product of 
-200,000 Compute Units (CU) * number of  instructions, with a max of 1.4M CU. The
-Base Fee is 5,000 Lamports. A microLamport is 0.000001 Lamports.
+## トランザクションの計算予算、料金、および優先度を変更する方法
+トランザクション (TX) の優先順位は、基本手数料に加えて優先手数料を支払うことによって達成されます。デフォルトでは、コンピューティング予算は 200,000 コンピューティング ユニット (CU) * 命令数の積であり、最大 1.4M CU です。基本料金は 5,000 lamportです。 microLamport は 0.000001 lamportです。
 
-The total compute budget or Prioritization Fee for a single TX can be changed by
-adding instructions from the ComputeBudgetProgram.
+1つの TX の合計コンピューティング予算または優先順位付け料金は、ComputeBudgetProgram からの命令を追加することで変更できます。
 
-`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 
-will add a Prioritization Fee above the Base Fee (5,000 Lamports). The value
-provided in microLamports will be multiplied by the CU budget to determine the 
-Prioritization Fee in Lamports. For example, if your CU budget is 1M CU, and you 
-add 1 microLamport/CU, the Prioritization Fee will be 1 Lamport (1M * 0.000001). 
-The total fee will then be 5001 Lamports.
+`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` は、基本料金 (5,000 lamport) の上に優先料金を追加します。
+microLamportsで提供される値にCU予算を掛けて、Lamports の優先料金を決定します。
+たとえば、CU 予算が 100 万 CU で、1 つの microLamport/CU を追加する場合、優先料金は 1　lamport (1M * 0.000001) になります。合計料金は 5001 lamport になります。
 
-Use `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` to set
-the new compute budget. The value provided will replace the default value. 
-Transactions should request the minimum amount of CU required for 
-execution to maximize throughput, or minimize fees.
+`ComputeBudgetProgram.setComputeUnitLimit({ units: number })` 使用して、新しいコンピューティング予算を設定します。
+指定された値は、デフォルト値を置き換えます。
+トランザクションは、スループットを最大化する、または手数料を最小化するために、実行に必要な最小量の CU を要求する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -320,7 +307,7 @@ execution to maximize throughput, or minimize fees.
 
 </SolanaCodeGroup>
 
-Program Logs Example ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
+プログラムログの例 ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">

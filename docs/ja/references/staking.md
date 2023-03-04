@@ -1,5 +1,5 @@
 ---
-title: Staking
+title: ステーキング
 head:
   - - meta
     - name: title
@@ -37,13 +37,10 @@ head:
 footer: MIT Licensed
 ---
 
-# Staking
+# ステーキング
+## 現在のバリデータを取得
 
-
-
-## Get Current Validators
-
-We can stake SOL and earn rewards for helping secure the network. To stake, we delegate SOL to validators who in turn process transactions.
+SOLをステークして、ネットワークの安全を確保するための報酬を得ることができます。ステークするには、トランザクションを処理するバリデーターにSOLを委任します。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -58,9 +55,9 @@ We can stake SOL and earn rewards for helping secure the network. To stake, we d
   </CodeGroupItem>
 </CodeGroup>
 
-## Create Stake Account
+## ステークアカウントの作成
 
-All staking instructions are handled by the [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). To begin, we create a [Stake Account](https://docs.solana.com/staking/stake-accounts) which is created and managed differently than a standard [system account](accounts.md#create-a-system-account). In particular, we must set the account's `Stake Authority` and `Withdrawal Authority`.
+ステーキングに関するすべてのインストラクションは[Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program)によって処理されます。まず、標準の[system account](accounts.md#create-a-system-account)とは異なる方法で作成、管理される[Stake Account](https://docs.solana.com/staking/stake-accounts)を作成します。特に、アカウントの`Stake Authority`と`Withdrawal Authority`を設定する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,9 +77,9 @@ All staking instructions are handled by the [Stake Program](https://docs.solana.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Delegate Stake
+## ステークの委任
 
-Once a stake account is funded, the `Stake Authority` can delegate it to a validator. Each stake account can only be delegated to one validator at a time. In addition, all tokens in the account must be either delegated or un-delegated. Once delegated, it takes several epochs for a stake account to become active.
+ステークアカウントに資金が提供されると、`Stake Authority`はそれをバリデーターに委任できます。各ステークアカウントは、一度に 1 つのバリデーターにのみ委任できます。さらに、アカウント内のすべてのトークンは、委任されているか、委任されていない必要があります。委任されると、ステークアカウントがアクティブになるまでに数エポックがかかります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,9 +99,9 @@ Once a stake account is funded, the `Stake Authority` can delegate it to a valid
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Get Delegator by Validators
+## バリデーターによるデリゲーターの取得
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
+複数のアカウントが特定のバリデータ アカウントにステークしている可能性があります。すべてのステーカーを取得するには、`getProgramAccounts`または `getParsedProgramAccounts` API を使用します。詳細については、[ガイド](/guides/get-program-accounts.html)を参照してください。ステーク アカウントの長さは 200 バイトで、投票者の公開鍵は 124 バイトから始まります。 [参照](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -124,9 +121,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Deactivate Stake
+## ステークを無効にする
 
-At anytime after a stake account is delegated, the `Stake Authority` can choose to deactivate the account. Deactivation can take several epochs to complete, and is required before any SOL is withdrawn.
+ステークアカウントが委任された後はいつでも、`Stake Authority`はアカウントを非アクティブ化することを選択できます。非アクティブ化は、SOLが引き出される前に必要で、完了するまでに数エポックかかる場合があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -146,9 +143,8 @@ At anytime after a stake account is delegated, the `Stake Authority` can choose 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Withdraw Stake
-
-Once deactivated, the `Withdrawal Authority` can withdraw SOL back to a system account. Once a stake account is no longer delegated and has a balance of 0 SOL, it is effectively destroyed.
+## ステークを引き出す
+非アクティブ化されると、`Withdrawal Authority`はSOLをシステムアカウントに戻すことができます。ステークアカウントが委任されなくなり、残高が 0 SOL になると、実質的に破棄されます。
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->

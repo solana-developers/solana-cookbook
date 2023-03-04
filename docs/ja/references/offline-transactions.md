@@ -1,5 +1,5 @@
 ---
-title: Sending Offline Transactions
+title: オフライントランザクションの送信
 head:
   - - meta
     - name: title
@@ -37,12 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# Offline Transaction
+# オフライントランザクション
 
-## Sign Transaction
+## トランザクションの署名
 
-To create an offline transaction, you have to sign the transaction and then
-anyone can broadcast it on the network.
+オフライントランザクションを作成するには、トランザクションに署名する必要があります。その後、誰でもネットワーク上でブロードキャストできます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -62,18 +61,17 @@ anyone can broadcast it on the network.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Partial Sign Transaction
+## 部分署名トランザクション
 
-When a transaction requires multiple signatures, you can partially sign it.
-The other signers can then sign and broadcast it on the network.
+トランザクションに複数の署名が必要な場合は、部分的に署名できます。その後、他の署名者が署名し、ネットワーク上でブロードキャストできます。
 
-Some examples of when this is useful:
+これが役立つ場合のいくつかの例:
 
-- Send an SPL token in return for payment
-- Sign a transaction so that you can later verify its authenticity
-- Call custom programs in a transaction that require your signature
+- 支払いと引き換えにSPLトークンを送信する
+- ランザクションに署名して、後でその信頼性を確認できるようにする
+- 署名が必要なトランザクションでカスタム プログラムを呼び出す
 
-In this example Bob sends Alice an SPL token in return for her payment:
+この例では、BobはAliceに支払いの見返りにSPLトークンを送信します:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,14 +91,14 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Durable Nonce
+## 耐久性のあるナンス
 
-`RecentBlockhash` is an important value for a transaction. Your transaction will be rejected if you use an expired recent blockhash (after 150 blocks). You can use `durable nonce` to get a never expired recent blockhash. To trigger this mechanism, your transaction must
+`RecentBlockhash`はトランザクションにとって重要な値です。期限切れの最近のブロックハッシュ(150 ブロック後)を使用すると、トランザクションは拒否されます`耐久性のあるナンス`を使用して、期限切れのない最近のブロックハッシュを取得できます。この仕組みを鳥がするには、トランザクションは下記を満たす必要があります。
 
-1. use a `nonce` stored in `nonce account` as a recent blockhash
-2. put `nonce advance` operation in the first instruction
+1. 最近のブロックハッシュとして`nonce account`に保存されている`nonce`を使用する
+2. 最初の命令に`nonce advance`操作を入れる
 
-### Create Nonce Account
+### ナンスアカウントを取得
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -120,7 +118,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Get Nonce Account
+### ナンスアカウントを取得
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -140,7 +138,7 @@ In this example Bob sends Alice an SPL token in return for her payment:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Use Nonce Account
+### ナンスアカウントを使用
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

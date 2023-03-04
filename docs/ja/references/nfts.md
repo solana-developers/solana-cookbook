@@ -1,5 +1,5 @@
 ---
-title: NFTs
+title: NFT
 head:
   - - meta
     - name: title
@@ -37,17 +37,17 @@ head:
 footer: MIT Licensed
 ---
 
-# Non Fungible Tokens (NFTs)
+# 非代替性トークン(NFT)
 
-## How to create an NFT
+## NFT の作成方法
 
-To create an NFT you have to:
+NFT を作成するには、次のことを行う必要があります:
 
-1. Upload the image to IPFS like Arweave
-2. Upload the json metadata to IPFS like Arweave
-3. Call metaplex to create an account for the NFT
+1. Arweave のようなIPFSに画像をアップロード
+2. jsonメタデータをArweaveなどのIPFSにアップロード
+3. metaplexを呼び出してNFTのアカウントを作成
 
-### Upload to Arweave
+### Arweaveにアップロード
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,10 +80,9 @@ To create an NFT you have to:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### Mint the NFT
+### NFTをミント
 
-If you already have the image and metadata uploaded, you can mint
-the NFT with the following code.
+画像とメタデータを既にアップロードしている場合は、次のコードを使用してNFTを作成できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -104,16 +103,13 @@ the NFT with the following code.
 </SolanaCodeGroup>
 
 ::: tip Note
-You cannot mint an NFT with a different creator than your wallet.
-If you run into creator issues, make sure your metadata lists you
-as the creator.
+ウォレットとは異なる作成者で NFT を作成することはできません。
+作成者の問題が発生した場合は、メタデータに作成者として記載されていることを確認してください。
 :::
 
-## How to get NFT Metadata
+## NFTメタデータの取得方法
 
-Metaplex NFTs have metadata that is stored on Arweave. In order
-to get the Arweave metadata, you must get the Metaplex PDA and
-decode the account data.
+Metaplex NFTには、Arweaveに保存されているメタデータがあります。Arweave メタデータを取得するには、Metaplex PDAを取得してアカウントデータをデコードする必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -134,17 +130,13 @@ decode the account data.
 
 </SolanaCodeGroup>
 
-## How to get the owner of an NFT
+## NFTの所有者を取得する方法
 
-If you have the mint key of an NFT, you can find its current owner
-by sneak-peeking at the largest token account for that mint key.
+NFTのミントキーを持っている場合、そのミントキーの最大のトークンアカウントを覗き見ることで、現在の所有者を見つけることができます。
 
-Remember that NFTs have a supply of 1, and they are indivisible,
-meaning that only one token account will hold that token at any
-point in time, whilst all other token accounts for that mint key will
-have a balance of 0.
+NFTの供給量は1であり、分割できないことを覚えておいてください。つまり、ある時点で1つのトークンアカウントだけがそのトークンを保持し、そのミントキーの他のすべてのトークンアカウントの残高は0になります。
 
-Once the largest token account is identified, we can retrieve its owner.
+最大のトークン アカウントが特定されると、その所有者を取得できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -165,9 +157,9 @@ Once the largest token account is identified, we can retrieve its owner.
 
 </SolanaCodeGroup>
 
-## How to get NFT Mint Addresses
+## NFTミントアドレスを取得する方法
 
-If you know the public key of the Candy Machine, you can get the list of all NFT mint addresses generated from that Candy Machine using the following code. Note that we can use the following `memcmp` filter because, in v1, the first creator is always the address of the Candy Machine.
+Candy Machineの公開鍵がわかっている場合は、次のコードを使用して、そのCandy Machineから生成されたすべての NFT ミント アドレスのリストを取得できます。次の`memcmp`フィルターを使用できることに注意してください。これは、v1では最初の作成者が常にCandy Machineのアドレスであるためです。
 
 ### Candy Machine V1
 
@@ -192,8 +184,7 @@ If you know the public key of the Candy Machine, you can get the list of all NFT
 
 ### Candy Machine V2
 
-If you're using a Candy Machine v2, you'll first need to access its "Candy Machine Creator" address which is a simple PDA using `candy_machine` and the Candy Machine v2 address as seeds. Once you have the creator address, you can use it the same way we were for v1.
-
+Candy Machine v2 を使用している場合は、最初に`candy_machine`と Candy Machinev2アドレスをシードとして使用する単純なPDAである「Candy Machine Creator」アドレスにアクセスする必要があります。
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
 
@@ -213,10 +204,10 @@ If you're using a Candy Machine v2, you'll first need to access its "Candy Machi
 
 </SolanaCodeGroup>
 
-## How to get all NFTs from a wallet?
+## ウォレットからすべての NFT を取得するには？
 
-When getting all NFTs from a wallet, you'll need to get all token accounts and then parse which ones are NFTs.
-This can all be done using [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) from the Metaplex JS library.
+ウォレットからすべてのNFTを取得する場合、すべてのトークンアカウントを取得してから、どれがNFTであるかを解析する必要があります。
+これはすべて、Metaplex JSライブラリの[`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236)を使用すれば可能です。
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -238,9 +229,9 @@ This can all be done using [`findDataByOwner`](https://github.com/metaplex-found
 
 ## Candy Machine v2
 
-Metaplex JS SDK now supports creating and updating Candy Machine v2 via code. It enable the developers to interact with the Candy Machine v2 program and create, update, and delete Candy Machines as well as mint NFTs from them.
+Metaplex JS SDKは、コードによるCandy Machine v2の作成と更新をサポートするようになりました。これにより、開発者はCandy Machine v2プログラムと対話し、Candy Machineを作成、更新、削除したり、そこからNFTを作成したりできます。
 
-### How to create a Candy Machine
+### Candy Machineの作成方法
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -261,7 +252,7 @@ Metaplex JS SDK now supports creating and updating Candy Machine v2 via code. It
 
 </SolanaCodeGroup>
 
-### How to delete a Candy Machine
+### Candy Machineの削除方法
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -282,9 +273,9 @@ Metaplex JS SDK now supports creating and updating Candy Machine v2 via code. It
 
 </SolanaCodeGroup>
 
-### How to find Candy Machine via authority
+### authorityを介してCandy Machineを探す方法
 
-To find all the Candy Machines whose authority is a certain public key, we have use the [`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy) function along with the `type` parameter as `authority`
+authorityが特定の公開鍵であるすべてのCandy Machineを見つけるには、`type` パラメータを`authority`として[`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy)関数を使用します。
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -305,9 +296,10 @@ To find all the Candy Machines whose authority is a certain public key, we have 
 
 </SolanaCodeGroup>
 
-### How to find Candy Machine using wallet address
+### ウォレットアドレスを使用してCandy Machineを見つける方法
 
-To fetch the Candy Machine object via its wallet address, we have use the [`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy) function along with the `type` parameter as `wallet`. You can get the wallet address of the Candy Machine from the "Anchor data" tab in the explorer.
+ウォレット アドレスを介してCandy Machine オブジェクトを取得するには、  `type` パラメータを`wallet`として[`findAllBy`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findAllBy)関数を使用します。
+Candy Machine のウォレット アドレスは、エクスプローラーの [Anchor data] タブから取得できます。
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -328,9 +320,8 @@ To fetch the Candy Machine object via its wallet address, we have use the [`find
 
 </SolanaCodeGroup>
 
-### How to find Candy Machine using its address
-
-To find a Candy Machine using its address, we have to use the [`findByAddress`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findByAddress) function.
+### アドレスを使用してCandy Machineを探す方法
+アドレスを使用してCandy Machineを見つけるには、[`findByAddress`](https://metaplex-foundation.github.io/js/classes/js.CandyMachinesV2Client.html#findByAddress)関数を使用する必要があります。
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -351,7 +342,7 @@ To find a Candy Machine using its address, we have to use the [`findByAddress`](
 
 </SolanaCodeGroup>
 
-### How to find minted NFTs from a Candy Machine
+### Candy MachineからミントされたNFTを見つける方法
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -372,7 +363,7 @@ To find a Candy Machine using its address, we have to use the [`findByAddress`](
 
 </SolanaCodeGroup>
 
-### How to insert items into a Candy Machine
+### Candy Machineにアイテムを挿入する方法
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -393,9 +384,9 @@ To find a Candy Machine using its address, we have to use the [`findByAddress`](
 
 </SolanaCodeGroup>
 
-### How to mint an NFT from a Candy Machine
+### Candy MachineからNFTをミントする方法
 
-By default, the owner of the minted NFT would be `metaplex.identity().publicKey`. If you want to mint the NFT to some other wallet, pass that public key along with the `newOwner` parameter
+デフォルトでは、作成された NFT の所有者は`metaplex.identity().publicKey`になります。NFT を他のウォレットに発行する場合は、その公開鍵を`newOwner`パラメータとともに渡します。
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

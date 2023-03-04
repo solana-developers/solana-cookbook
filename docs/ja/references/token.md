@@ -1,5 +1,5 @@
 ---
-title: Interacting with Tokens
+title: トークンアカウントとの対話
 head:
   - - meta
     - name: title
@@ -39,13 +39,9 @@ footer: MIT Licensed
 
 # Token
 
-## What do I need to get started with SPL-Tokens?
+## SPL-Tokens を始めるには何が必要ですか？
 
-Every time you interact with tokens on Solana, you are actually
-interacting with the Solana Program Library Token, or SPL-Token
-standard. The SPL-Token standard requires a specific library to
-be used, which you can find below based on your language.
-
+毎回Solanaでトークンを操作するたびに、実際にSolana Program Library Token、または SPL-Token標準と対話しています。SPL-Token 標準では、特定のライブラリを使用する必要があり、言語に基づいて以下で見つけることができます。
 <CodeGroup>
   <CodeGroupItem title="TS" active>
 
@@ -56,10 +52,9 @@ be used, which you can find below based on your language.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to create a new Token
+## 新しいトークンを作成する方法
 
-Creating tokens is done by creating what is called a "mint account".
-This mint account is later used to mint tokens to a user's token account.
+トークンの作成は、いわゆる「mintアカウント」を作成することによって行われます。このmintアカウントは、後でユーザーのトークンアカウントにトークンを作成するために使用されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -79,10 +74,9 @@ This mint account is later used to mint tokens to a user's token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token mint
+## トークンミントの入手方法
 
-In order to get the current supply, authority, or decimals a token has,
-you will need to get the account info for the token mint.
+トークンがもつ現在の流通数、権限、または桁数を取得するには、トークンミントのアカウント情報を取得する必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,15 +96,11 @@ you will need to get the account info for the token mint.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to create a token account
+## トークンアカウントの作成方法
 
-A token account is required for a user to hold tokens. 
+ユーザーがトークンを保持するには、トークン アカウントが必要で、所有するトークンの種類ごとに少なくとも 1 つのトークンアカウントを持ちます。
 
-A user will have at least one token account for every type of token they own.  
-
-Associated Token Accounts are deterministicly created
-accounts for every keypair. ATAs are the recommended method
-of managing token accounts.
+関連付けられたトークン アカウントは、キーペアごとに 決定論的に作成されるアカウントです。 ATAは、トークンアカウントを管理するための推奨される方法です。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -130,10 +120,9 @@ of managing token accounts.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a Token Account
+## トークンアカウントの取得方法
 
-Every token account has information on the token such as the owner,
-mint, amount(balance), and decimals.
+すべてのトークンアカウントには、所有者、mint、金額(残高)、桁数などのトークンに関する情報があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,10 +142,9 @@ mint, amount(balance), and decimals.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get a token account's balance
+## トークンアカウントの残高を取得する方法
 
-The token account has the token balance, which can be retrieved with a
-single call.
+トークン アカウントには、1回の呼び出しで取得できるトークン残高があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -194,14 +182,11 @@ single call.
 </SolanaCodeGroup>
 
 ::: tip
-A token account can only hold one kind of mint. When you specify a token
-account, you also specific a mint too.
+トークン アカウントは 1種類のmintのみを保持できます。トークンアカウントを指定すると、mintも指定されます。
 :::
 
-## How to mint tokens
-
-When you mint tokens, you increase the supply and transfer the new tokens
-to a specific token account.
+## トークンの発行方法
+トークンを作成すると、流通数が増え、新しいトークンが特定のトークンアカウントに転送されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -221,9 +206,9 @@ to a specific token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to transfer tokens
+## トークンの転送方法
 
-You can transfer tokens from one token account to another token account.
+あるトークンアカウントから別のトークンアカウントにトークンを転送できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +228,9 @@ You can transfer tokens from one token account to another token account.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to burn tokens
+## トークンのバーン方法
 
-You can burn token if you are the token owner.
+トークンの所有者であれば、トークンをバーンできます。
 
 
 <SolanaCodeGroup>
@@ -266,13 +251,12 @@ You can burn token if you are the token owner.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to close token accounts
+## トークンアカウントを閉じる方法
 
-You can close a token account if you don't want to use it anymore.
-There are two situations:
+もう使用したくない場合は、トークンアカウントを閉じることができます。 2つの状況があります:
 
-1. Wrapped SOL - Closing converts Wrapped SOL to SOL
-2. Other Tokens - You can close it only if token account's balance is 0.
+1. Wrapped SOL - 閉じると、Wrapped SOLがSOLに変換されます
+2. その他のトークン - トークン アカウントの残高が0の場合にのみ閉鎖できます
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -292,14 +276,14 @@ There are two situations:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to set authority on token accounts or mints
+## トークンアカウントまたはmintに権限を設定する方法
 
-You can set/update authority. There are 4 types:
+権限の設定・更新ができます。次の 4 種類があります:
 
-1. MintTokens (mint account)
-2. FreezeAccount (mint account)
-3. AccountOwner (token account)
-4. CloseAccount (token account)
+1. MintTokens (mintアカウント)
+2. FreezeAccount (mintアカウント)
+3. AccountOwner (tokenアカウント)
+4. CloseAccount (tokenアカウント)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -319,9 +303,9 @@ You can set/update authority. There are 4 types:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to approve a token delegate
+## トークンデリゲートを承認する方法
 
-You can set a delegate with an allowed amount. After you setting, the delegate is like an another owner of your token account. `A token account can only delegate to one account at the same time`
+許可された金額でデリゲートを設定できます。設定後、デリゲートはトークン アカウントの別の所有者のようになります。`トークン アカウントは、同時に 1 つのアカウントにしか委任できません`
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -341,9 +325,9 @@ You can set a delegate with an allowed amount. After you setting, the delegate i
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to revoke a token delegate
+## トークンデリゲートを取り消す方法
 
-Revoke will set delegate to null and set delegated amount to 0.
+取り消しは、デリゲートをnullに設定し、デリゲート量を0に設定します。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -363,24 +347,23 @@ Revoke will set delegate to null and set delegated amount to 0.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to manage wrapped SOL
+## wrapped SOLの管理方法
 
-Wrapped SOL just like any other token mint. The difference is using `syncNative`
-and creating token accounts specifically on the `NATIVE_MINT` address.
+Wrapped SOLは他のトークンミントと同じです。違いは、`syncNative`を使用していることと、特に`NATIVE_MINT`アドレスでトークンアカウントを作成することです。
 
-### Create Token Account
+### トークンアカウントを取得する
 
-Like [Create Token Account](#create-token-account) but replace mint with `NATIVE_MINT`
+[Create Token Account](#create-token-account)と同様ですが、mintを `NATIVE_MINT`に置き換えます。
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### Add Balance
+### 残高の追加
 
-There are two ways to add balance for Wrapped SOL
+Wrapped SOLの残高を追加する方法は2つあります。
 
-#### 1. By SOL Transfer
+#### 1. SOL移行
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -400,7 +383,7 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. By Token Transfer
+#### 2. トークンの移行
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -420,11 +403,11 @@ There are two ways to add balance for Wrapped SOL
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to get all token accounts by owner
+## 所有者ごとのすべてのトークンアカウントを取得する方法
 
-You can fetch token accounts by owner. There are two ways to do it.
+所有者ごとにトークン アカウントを取得できます。それには2つの方法があります。
 
-1. Get All Token Account
+1. すべてのトークン アカウントを取得
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -444,7 +427,7 @@ You can fetch token accounts by owner. There are two ways to do it.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. Filter By Mint
+2. Mintでフィルター
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
