@@ -1,5 +1,5 @@
 ---
-title: Program Derived Addresses (PDAs)
+title: プログラム派生アドレス(PDA)
 head:
   - - meta
     - name: title
