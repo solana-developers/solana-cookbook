@@ -54,6 +54,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/core-concepts/programs.md",
                 "/core-concepts/transactions.md",
                 "/core-concepts/pdas.md",
+                "/core-concepts/cpi.md",
               ],
             },
             {
