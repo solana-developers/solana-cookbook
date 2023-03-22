@@ -23,7 +23,7 @@
 			}
     </script>
     <meta name="title" content="Solana Kochbuch | Transaktionen versenden"><meta name="og:title" content="Solana Kochbuch | Transaktionen versenden"><meta name="description" content="Lernen Sie grundlegende Transaktionen wie das Senden von SOL, SPL-Tokens, das Berechnen von Transaktionskosten und weitere Referenzen zum Aufbauen auf Solana im Solana-Kochbuch."><meta name="og:description" content="Lernen Sie grundlegende Transaktionen wie das Senden von SOL, SPL-Tokens, das Berechnen von Transaktionskosten und weitere Referenzen zum Aufbauen auf Solana im Solana-Kochbuch."><meta name="og:image:alt" content="Solana splash card"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@solanacookbook"><meta name="twitter:image" content="https://solanacookbook.com/cookbook-sharing-card.png"><meta name="robots" content="index,follow,noodp"><meta name="googlebot" content="index,follow"><link rel="icon" href="/solana_cookbook_lightmode.svg"><script data-domain="solanacookbook.com" src="https://plausible.io/js/plausible.js"></script><title>Transaktionen versenden | Solana Cookbook</title>
-    <link rel="modulepreload" href="/assets/app.cfdf84e7.js"><link rel="modulepreload" href="/assets/basic-transactions.html.0fafe6bd.js"><link rel="modulepreload" href="/assets/basic-transactions.html.e3e3e3e0.js">
+    <link rel="modulepreload" href="/assets/app.2fbb9e96.js"><link rel="modulepreload" href="/assets/basic-transactions.html.0fafe6bd.js"><link rel="modulepreload" href="/assets/basic-transactions.html.bd6e749c.js">
     <link rel="stylesheet" href="/assets/style.fecd2c41.css">
   </head>
   <body>
@@ -76,31 +76,31 @@
 
 <span class="token keyword">await</span> <span class="token function">sendAndConfirmTransaction</span><span class="token punctuation">(</span>connection<span class="token punctuation">,</span> transferTransaction<span class="token punctuation">,</span> <span class="token punctuation">[</span>fromKeypair<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><!--]--></div></div><div class="code-group-item" aria-selected="false" data-v-6ae3d40e><div class="" data-v-6ae3d40e><!--[--><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token keyword">from</span> solana<span class="token punctuation">.</span>rpc<span class="token punctuation">.</span>api <span class="token keyword">import</span> Client
-<span class="token keyword">from</span> solana<span class="token punctuation">.</span>keypair <span class="token keyword">import</span> Keypair
+<span class="token keyword">from</span> solders<span class="token punctuation">.</span>keypair <span class="token keyword">import</span> Keypair
 <span class="token keyword">from</span> solana<span class="token punctuation">.</span>transaction <span class="token keyword">import</span> Transaction
-<span class="token keyword">from</span> solana<span class="token punctuation">.</span>system_program <span class="token keyword">import</span> TransferParams<span class="token punctuation">,</span> transfer
+<span class="token keyword">from</span> solders<span class="token punctuation">.</span>system_program <span class="token keyword">import</span> TransferParams<span class="token punctuation">,</span> transfer
 
 LAMPORT_PER_SOL <span class="token operator">=</span> <span class="token number">1000000000</span>
 
 client<span class="token punctuation">:</span> Client <span class="token operator">=</span> Client<span class="token punctuation">(</span><span class="token string">&quot;https://api.devnet.solana.com&quot;</span><span class="token punctuation">)</span>
 
-sender <span class="token operator">=</span> Keypair<span class="token punctuation">.</span>generate<span class="token punctuation">(</span><span class="token punctuation">)</span>
-receiver <span class="token operator">=</span> Keypair<span class="token punctuation">.</span>generate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sender <span class="token operator">=</span> Keypair<span class="token punctuation">(</span><span class="token punctuation">)</span>
+receiver <span class="token operator">=</span> Keypair<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-airdrop <span class="token operator">=</span> client<span class="token punctuation">.</span>request_airdrop<span class="token punctuation">(</span>sender<span class="token punctuation">.</span>public_key<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">*</span> LAMPORT_PER_SOL<span class="token punctuation">)</span>
-airdrop_signature <span class="token operator">=</span> airdrop<span class="token punctuation">[</span><span class="token string">&quot;result&quot;</span><span class="token punctuation">]</span>
+airdrop <span class="token operator">=</span> client<span class="token punctuation">.</span>request_airdrop<span class="token punctuation">(</span>sender<span class="token punctuation">.</span>pubkey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">*</span> LAMPORT_PER_SOL<span class="token punctuation">)</span>
+airdrop_signature <span class="token operator">=</span> airdrop<span class="token punctuation">.</span>value
 client<span class="token punctuation">.</span>confirm_transaction<span class="token punctuation">(</span>airdrop_signature<span class="token punctuation">)</span>
 
 transaction <span class="token operator">=</span> Transaction<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span>transfer<span class="token punctuation">(</span>TransferParams<span class="token punctuation">(</span>
-    from_pubkey<span class="token operator">=</span>sender<span class="token punctuation">.</span>public_key<span class="token punctuation">,</span>
-    to_pubkey<span class="token operator">=</span>receiver<span class="token punctuation">.</span>public_key<span class="token punctuation">,</span>
+    from_pubkey<span class="token operator">=</span>sender<span class="token punctuation">.</span>pubkey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    to_pubkey<span class="token operator">=</span>receiver<span class="token punctuation">.</span>pubkey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     lamports<span class="token operator">=</span><span class="token number">1_000_000</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 client<span class="token punctuation">.</span>send_transaction<span class="token punctuation">(</span>transaction<span class="token punctuation">,</span> sender<span class="token punctuation">)</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><!--]--></div><div class="hidden" data-v-6ae3d40e><!--[--><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code>transaction <span class="token operator">=</span> Transaction<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span>transfer<span class="token punctuation">(</span>TransferParams<span class="token punctuation">(</span>
-    from_pubkey<span class="token operator">=</span>sender<span class="token punctuation">.</span>public_key<span class="token punctuation">,</span>
-    to_pubkey<span class="token operator">=</span>receiver<span class="token punctuation">.</span>public_key<span class="token punctuation">,</span>
+    from_pubkey<span class="token operator">=</span>sender<span class="token punctuation">.</span>pubkey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    to_pubkey<span class="token operator">=</span>receiver<span class="token punctuation">.</span>pubkey<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     lamports<span class="token operator">=</span><span class="token number">1_000_000</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">)</span>
 
@@ -727,6 +727,6 @@ Signature: 5a3qbvoJQnTAxGPHCugibZTbSu7xuTgkxvF4EJupRjRXGgZZrnWFmKzfEzcqKF2ogCaF4
 [ 4] Program ComputeBudget111111111111111111111111111111 invoke [1]
 [ 5] Program ComputeBudget111111111111111111111111111111 success
 </code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><!--]--></div><!--]--></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><!----></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/de/references/keypairs-and-wallets.html" class="" aria-label="Keypairs and Wallets"><!--[--><!--]--> Keypairs and Wallets <!--[--><!--]--></a></span><span class="next"><a href="/de/references/accounts.html" class="" aria-label="Accounts"><!--[--><!--]--> Accounts <!--[--><!--]--></a></span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script type="module" src="/assets/app.cfdf84e7.js" defer></script>
+    <script type="module" src="/assets/app.2fbb9e96.js" defer></script>
   </body>
 </html>
