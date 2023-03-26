@@ -77,6 +77,22 @@ footer: MIT Licensed
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -150,7 +166,23 @@ footer: MIT Licensed
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -274,6 +306,22 @@ footer: MIT Licensed
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="CLI">
 
   <template v-slot:default>
@@ -324,6 +372,22 @@ footer: MIT Licensed
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.cpp)
 
   </template>
 
@@ -537,6 +601,22 @@ Note: バニティ アドレスの文字数が多いほど、時間がかかり�
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.cpp)
 
   </template>
 

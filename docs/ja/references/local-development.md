@@ -99,6 +99,22 @@ Solanaの開発に取り組んでいるときは、特定の RPC APIエンドポ
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -160,6 +176,22 @@ Solanaの開発に取り組んでいるときは、特定の RPC APIエンドポ
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.cpp)
 
   </template>
 
@@ -238,6 +270,22 @@ Solanaのweb3[`Connection`](https://solana-labs.github.io/solana-web3.js/classes
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -286,6 +334,22 @@ Solanaのweb3[`Connection`](https://solana-labs.github.io/solana-web3.js/classes
   <template v-slot:preview>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.cpp)
 
   </template>
 
