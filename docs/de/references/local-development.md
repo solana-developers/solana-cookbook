@@ -104,6 +104,22 @@ Umgebungen:
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-cluster/connecting-cluster.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -166,6 +182,22 @@ läuft remote mit folgendem:
   <template v-slot:preview>
 
 @[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-private-cluster/connecting-private-cluster.preview.en.cpp)
 
   </template>
 
@@ -244,6 +276,22 @@ Die Klasse „Connection“ legt Pub/Sub-Methoden offen – sie beginnen alle mi
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/connecting-websocket/connecting-websocket.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
@@ -294,6 +342,22 @@ Airdrop an Ihre Adresse
   <template v-slot:preview>
 
 @[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/local-development/airdropping-sol/airdropping-sol.preview.en.cpp)
 
   </template>
 

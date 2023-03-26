@@ -149,7 +149,23 @@ Nếu bạn đã có khoá riêng tư, bạn có thể phục hồi lại cặp 
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -218,7 +234,7 @@ Nếu bạn đã có khoá riêng tư, bạn có thể phục hồi lại cặp 
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -257,7 +273,7 @@ Nếu bạn được cho một cặp khoá, bạn có thể xác nhận rằng c
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Python">
+  <SolanaCodeGroupItem title="Python">
 
   <template v-slot:default>
 
@@ -268,6 +284,22 @@ Nếu bạn được cho một cặp khoá, bạn có thể xác nhận rằng c
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.cpp)
 
   </template>
 
@@ -536,6 +568,22 @@ Bạn nên sử dụng CLI cho nhiệm vụ này. Ví dụ trên Python và Type
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.cpp)
 
   </template>
 

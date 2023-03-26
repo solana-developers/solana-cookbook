@@ -4,8 +4,10 @@ const keypair = Keypair.generate();
 const metaplex = new Metaplex(connection);
 metaplex.use(keypairIdentity(keypair));
 
-const mint = new PublicKey("Ay1U9DWphDgc7hq58Yj1yHabt91zTzvV2YJbAWkPNbaK");
+const mintAddress = new PublicKey(
+  "Ay1U9DWphDgc7hq58Yj1yHabt91zTzvV2YJbAWkPNbaK"
+);
 
-const nft = await metaplex.nfts().findByMint(mint);
+const nft = await metaplex.nfts().findByMint({ mintAddress });
 
-console.log(nft.metadata);
+console.log(nft.json);

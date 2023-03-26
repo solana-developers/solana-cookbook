@@ -76,6 +76,22 @@ Banyak action-action yang dapat anda ambil dari beragam Solana libaries memerluk
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -149,7 +165,23 @@ Jika anda sudah mempunyai sebuah secret, anda dapat mendapatkan Keypair dari seb
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -218,7 +250,7 @@ Jika anda sudah mempunyai sebuah secret, anda dapat mendapatkan Keypair dari seb
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -257,7 +289,7 @@ Jika anda diberikan sebuah keypair, anda dapat menverifikasi apakah secret sesua
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Python">
+  <SolanaCodeGroupItem title="Python">
 
   <template v-slot:default>
 
@@ -268,6 +300,22 @@ Jika anda diberikan sebuah keypair, anda dapat menverifikasi apakah secret sesua
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.cpp)
 
   </template>
 
@@ -323,6 +371,22 @@ Dalam beberapa kasus khusus (contohnya sebuah Program Derived Address), public k
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.cpp)
 
   </template>
 
@@ -538,6 +602,22 @@ Anda harus menggunakan CLI untuk task ini. Python dan TypeScript hanyalah contoh
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.cpp)
 
   </template>
 

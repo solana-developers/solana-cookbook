@@ -262,7 +262,7 @@ Actuellement le `programID` du **Programme Mémo** doit être ajouté manuelleme
 
 </SolanaCodeGroup>
 
-## Comment changer le budget de calcul, les frais, &amp ; la priorisation d'une transaction
+## Comment changer le budget de calcul, les frais, &amp; la priorisation d'une transaction
 La priorisation d'une transaction (TX) est obtenue en payant des Frais de Priorisation en plus des Frais de Base. Par défaut, le budget de calcul est le produit de 200 000 unités de calcul (UC) * le nombre d'instructions, avec un maximum de 1,4 million d'UC. Les Frais de Base sont de 5 000 Lamports. Un microLamport est 0.000001 Lamports.
 
 Le budget total de calcul ou les Frais de Priorisation pour une seule TX peuvent être modifiés en ajoutant des instructions du programme ComputeBudgetProgram.

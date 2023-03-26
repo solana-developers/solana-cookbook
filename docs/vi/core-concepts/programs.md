@@ -44,12 +44,12 @@ Bất kỳ lập trình viên nào đều có thể viết và triển khai mộ
 ## Có thể bạn chưa biết
 
 ::: tip Những điều có thể bạn chưa biết
-- Program sẽ xử lý các [chỉ thị](./transactions) từ cả người dùng và các Program khác
-- Tất cả các Program đều là *stateless*: mọi dữ liệu mà Program tương tác đều được lưu trên những [Account](./accounts.md) tách biệt và được truyền thông qua các chỉ thị
-- Bản thân Program được lưu bên trong những Account dược đánh dấu là `executable`
+- Program sẽ xử lý các [instruction](./transactions) từ người dùng và các Program khác
+- Tất cả các Program đều là *stateless*: mọi dữ liệu mà Program tương tác đều được lưu trên những [Account](./accounts.md) tách biệt và được lan truyền thông qua các instruction
+- Bản thân Program được lưu bên trong những Account được đánh dấu là `executable`
 - Tất cả Program được sở hữu bởi [BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) và được thực thi bởi [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
 - Hầu hết các lập trình viên đều phát triển Program bằng Rust hoặc C++, nhưng bạn vẫn có thể lựa chọn bất kỳ ngôn ngữ lập trình mà có hỗ trợ [BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter) của [LLVM](https://llvm.org/)
-- Mọi Program chỉ có duy nhất một điểm truy cập nơi mà các chỉ thị được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
+- Mọi Program chỉ có duy nhất một điểm truy cập, nơi mà các instruction được xử lý (cụ thể là `process_instruction`); các tham số đầu vào luôn bao gồm:
     - `program_id`: `pubkey`
     - `accounts`: `array`, 
     - `instruction_data`: `byte array`
@@ -57,7 +57,7 @@ Bất kỳ lập trình viên nào đều có thể viết và triển khai mộ
 
 ## Chi tiết
 
-Không giống như hấu hết các blockchain khác, Solana tách bạch giữa code và dữ liệu. Tất cả dữ liệu mà chương trình cần tương tác sẽ được lưu ở các Account tách biệt và được truyền thông qua các tham chiếu ở câu chỉ thị. Mô hình này cho phép một chương trình chung có thể hoạt động trên nhiều kiểu Account khác nhau mà không cần tái cơ cấu lại chương trình. Một ví dụ hay gặp của mô hình này là Native Programs và SPL Programs.
+Không giống như hấu hết các blockchain khác, Solana tách bạch giữa code và dữ liệu. Tất cả dữ liệu mà chương trình cần tương tác sẽ được lưu ở các Account tách biệt và được lan truyền thông dưới dạng tham chiếu thông qua các instruction. Mô hình này cho phép một chương trình chung có thể hoạt động trên nhiều kiểu Account khác nhau mà không cần tái cơ cấu lại chương trình. Một ví dụ hay gặp của mô hình này là Native Programs và SPL Programs.
 
 ### Native Programs & Solana Program Library (SPL) Programs
 
@@ -78,7 +78,7 @@ Program hầu như được phát triển dựa trên Rust hoặc C++. Tuy nhiê
 | lib.rs         | Đăng ký các modules                                              |
 | entrypoint.rs  | Điểm truy cập của Program                                        |
 | instruction.rs | Program API, tuần tự và phi tuần tự hoá dữ liệu đầu vào          |
-| processor.rs   | Luận lý của Program                                              |
+| processor.rs   | Logic của Program                                              |
 | state.rs       | Các đối tượng của Program, tuần tự và phi tuần tự hoá trạng thái |
 | error.rs       | Định nghĩa lỗi của Program                                       |
 
@@ -93,7 +93,7 @@ Program thường được phát triển và kiểm thử trên môi trường l
 | Devnet               | https://api.devnet.solana.com                                              |
 | Localhost            | Port mặc định: 8899 (e.g. http://localhost:8899, http://192.168.1.88:8899) |
 
-Sau khi triển khai lên một môi trường cụ thể, người dùng có thể tương tác với chúng on-chain thông qua [kết nối RPC](https://docs.solana.com/developing/clients/jsonrpc-api) tương ứng.
+Sau khi triển khai lên một môi trường cụ thể, người dùng có thể tương tác với các Program trên on-chain thông qua [kết nối RPC](https://docs.solana.com/developing/clients/jsonrpc-api) tương ứng.
 
 ### Triển khai Program
 
@@ -103,9 +103,9 @@ Lập trình viên có thể triển khai Program của họ thông qua [CLI](ht
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
-Khi một Program được triển khai, nó sẽ được biên dịch thành một [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (có chứa BPF bytecode) và được tải lên mạng Solana. Program được lưu trữ trong Account (giống như hấu hết mọi thứ trên Solana), ngoại trừ việc được đánh đấu là `executable` và `owner` được gán cho BPF Loader. Địa chỉ của Account này sẽ được gọi là `program_id` và được sử dụng nhưng là tham chiếu cho Program trong các giao dịch ở tương lai.
+Khi một Program được triển khai, nó sẽ được biên dịch thành một [ELF shared object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) (có chứa BPF bytecode) và được tải lên mạng Solana. Program được lưu trữ trong Account (giống như hấu hết mọi thứ trên Solana), ngoại trừ việc được đánh dấu là `executable` và `owner` được gán cho BPF Loader. Địa chỉ của Account này sẽ được gọi là `program_id` và được sử dụng nhưng là tham chiếu cho Program trong các giao dịch ở tương lai.
 
-Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). BPF Loader chịu trách nhiệm cho việc điều hành các Account của Program và cho phép người dùng tương tác bằng `program_id`. Tất cả Program chỉ có một điểm truy cập duy nhất, nơi mà các chỉ thị sẽ được ghi nhận và xử lý (cụ thể là `process_instruction`) với các tham số bao gồm:
+Solana hỗ trợ đa dạng các BPF Loader với phiên bản mới nhất là [Upgradable BPF Loader](https://explorer.solana.com/address/BPFLoaderUpgradeab1e11111111111111111111111). BPF Loader chịu trách nhiệm cho việc điều hành các Account của Program và cho phép người dùng tương tác bằng `program_id`. Tất cả Program chỉ có một điểm truy cập duy nhất, nơi mà các instruction sẽ được ghi nhận và xử lý (cụ thể là `process_instruction`) với các tham số bao gồm:
 - `program_id`: `pubkey`
 - `accounts`: `array`, 
 - `instruction_data`: `byte array`

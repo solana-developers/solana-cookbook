@@ -259,7 +259,7 @@ C:\solana-install-tmp\solana-install-init.exe v1.9.16
 ```
 
 Pour trouver la dernière version, vérifiez
-les versions disponibles [ici].(https://github.com/solana-labs/solana/releases).
+les versions disponibles [ici](https://github.com/solana-labs/solana/releases).
 
 Lorsque le programme d'installation est terminé, appuyez sur Entrée.
 

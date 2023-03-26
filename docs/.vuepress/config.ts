@@ -54,6 +54,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/core-concepts/programs.md",
                 "/core-concepts/transactions.md",
                 "/core-concepts/pdas.md",
+                "/core-concepts/cpi.md",
               ],
             },
             {
@@ -393,6 +394,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/th/guides/retrying-transactions.md",
                 "/th/guides/debugging-solana-programs.md",
                 "/th/guides/feature-parity-testing.md",
+                "/th/guides/versioned-transactions.md",
               ],
             },
             {
@@ -579,7 +581,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         },
       },
       "/tr/": {
-        selectLanguageName: "Türk",
+        selectLanguageName: "Türkçe",
         navbar: [
           {
             text: "Katkı yapmak",
@@ -820,7 +822,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     "/tr/": {
       lang: "tr-TR",
-      title: "Solana Yemek Kitabı"
+      title: "Solana Cookbook"
     },
     "/ja/": {
       lang: "ja-JP",

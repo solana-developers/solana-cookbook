@@ -79,6 +79,22 @@ keypair, you will need to generate one.
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="C++" >
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-keypair/generate-keypair.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="Rust" >
 
   <template v-slot:default>
@@ -153,7 +169,23 @@ to test out your dApp.
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/keypair-from-secret/keypair-from-secret.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -222,7 +254,7 @@ to test out your dApp.
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Rust">
+  <SolanaCodeGroupItem title="Rust">
 
   <template v-slot:default>
 
@@ -262,7 +294,7 @@ matches the given public key
 
   </SolanaCodeGroupItem>
 
-   <SolanaCodeGroupItem title="Python">
+  <SolanaCodeGroupItem title="Python">
 
   <template v-slot:default>
 
@@ -273,6 +305,22 @@ matches the given public key
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/verify-keypair/verify-keypair.preview.en.cpp)
 
   </template>
 
@@ -328,6 +376,22 @@ In certain special cases (e.g. a Program Derived Address), public keys may not h
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/check-valid-publickey/check-valid-publickey.preview.cpp)
 
   </template>
 
@@ -546,6 +610,22 @@ You should just use the CLI for this task. The Python and TypeScript examples ar
   <template v-slot:preview>
 
 @[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.preview.en.cpp)
 
   </template>
 
