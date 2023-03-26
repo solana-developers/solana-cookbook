@@ -38,17 +38,17 @@ head:
 
 # Strata
 
-Strata is a protocol for launching tokens built on Solana. 
-You can use Strata to launch any kind of fungible token, ranging from social tokens to dao and gamefi tokens.
-You can also compose strata with anything that uses fixed price mechanics to get dynamic pricing mechanics, for example the Metaplex CandyMachine.
+Strataは、Solana 上に構築されたトークンをローンチするためのプロトコルです。
+Strata を使用して、ソーシャルトークンから daoおよびgamefiトークンに至るまで、あらゆる種類の代替可能トークンをローンチできます。
+また、固定価格制の仕組みを採用しているものとStrataの組み合わせにより、Metaplex CandyMachineのような動的な価格設定の仕組みを構築できます。
 
-More in-depth docs are available [here](docs.strataprotocol.com). You can also use the gui at [Strata Launchpad](app.strataprotocol.com)
 
-## How to create a fully managed token
+より詳細なドキュメントは[こちら](docs.strataprotocol.com)から入手できます。[Strata Launchpad](app.strataprotocol.com)でGUIの使用も可能です。
 
-A fully-managed Strata token is a token where the liquidity is managed by the protocol. The upshot is that you immediately get a tradeable
-token, with no need for pools or liquidity providers. A fully-managed token is a normal spl token with metaplex token metadata and an associated bonding curve.
-The bonding curve manages the liquidity, pricing, and supply of that token.
+## フルマネージドトークンの作成方法
+
+フルマネージドStrataトークンは、流動性がプロトコルによって管理されるトークンです。その結果、プールや流動性プロバイダーを必要とせずに、すぐに取引可能なトークンを取得できます。 フルマネージドトークンは、metaplexトークンのメタデータと関連するボンディングカーブを、持つ通常のsplトークンです。
+ボンディングカーブは、そのトークンの流動性、価格設定、および供給を管理します。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -69,7 +69,7 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 </SolanaCodeGroup>
 
-## How to buy and sell a token
+## トークンの売買方法
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -110,10 +110,8 @@ The bonding curve manages the liquidity, pricing, and supply of that token.
 
 </SolanaCodeGroup>
 
-## How to bootstrap liquidity
-
-Strata can also sell tokens where you would like to manually manage the supply. This can be useful for liquidity bootstrapping before listing your token
-on a dex. You can read more about these [here](https://docs.strataprotocol.com/marketplace/lbc) or launch your own at [Strata Launchpad](app.strataprotocol.com)
+## 流動性のブートストラップ方法
+Strata は、供給を手動で管理したい場合にトークンを販売することもできます。これは、トークンをdexにリストする前の流動性のブートストラップに役立ちますこれらの詳細については、[こちら](https://docs.strataprotocol.com/marketplace/lbc)を確認するか、[Strata Launchpad](app.strataprotocol.com)で独自のものをローンチできます。
 
 
 <SolanaCodeGroup>
@@ -135,7 +133,7 @@ on a dex. You can read more about these [here](https://docs.strataprotocol.com/m
 
 </SolanaCodeGroup>
 
-## Other Resources
+## その他参考資料
 
-- [Typescript Client Documentation](https://docs.strataprotocol.com) - Live code examples to create and manage Strata tokens
-- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - Launch a token using the GUI
+- [Typescript Client Documentation](https://docs.strataprotocol.com) - Strataトークンを作成および管理するためのライブ コード例
+- [Strata Launchpad](https://app.strataprotocol.com/launchpad) - GUIを使用してトークンをローンチする

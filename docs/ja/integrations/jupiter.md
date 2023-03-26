@@ -38,11 +38,11 @@ head:
 
 # Jupiter
 
-Jupiter is the key liquidity aggregator for Solana, offering the widest range of tokens and best route discovery between any token pair.
+JupiterはSolanaの主要な流動性アグリゲーターであり、幅広いトークンとあらゆるトークンペア間の最適なルート発見を提供します。
 
 ### Installation
 
-@jup-ag/core is the Core package used to interact with jupiter on-chain programs to perform swaps between two possible token pairs.
+@jup-ag/core は、jupiterオンチェーンプログラムと対話し、2つの可能なトークンペア間のスワップを実行するために使用されるコアパッケージです。
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -62,9 +62,9 @@ npm install @jup-ag/core
   </CodeGroupItem>
 </CodeGroup>
 
-### Fetching Token list from Jupiter
+### Jupiterからのトークンリストの取得
 
-All the possible tokens that can be swapped with jupiter for a given network is being fetched.
+特定のネットワークでJupiterとSwapできるすべての可能なトークンが取得されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -85,9 +85,9 @@ All the possible tokens that can be swapped with jupiter for a given network is 
 
 </SolanaCodeGroup>
 
-### Loading the Jupiter instance
+### Jupiterインスタンスの読込
 
-Jupiter instance is being created with the provided configurations. There are many optional parameters that the instance takes to know more about it go [here](https://docs.jup.ag/jupiter-core/full-guide)
+Jupiter インスタンスは、提供された設定で作成されます。インスタンスが受け取るオプションのパラメータは多数あり、詳しくは[こちら](https://docs.jup.ag/jupiter-core/full-guide)をご覧ください。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -108,9 +108,9 @@ Jupiter instance is being created with the provided configurations. There are ma
 
 </SolanaCodeGroup>
 
-### Getting the RouteMap
+### RouteMapの取得
 
-The RouteMap identifies what tokens can be swapped for a given input token. The route map only contains token mint addresses and no metadata.
+RouteMapは、特定の入力トークンに対してどのトークンを交換できるかを識別します。ルートマップにはトークンミントアドレスのみが含まれ、メタデータは含まれません。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -131,8 +131,8 @@ The RouteMap identifies what tokens can be swapped for a given input token. The 
 
 </SolanaCodeGroup>
 
-### Getting the routes for given Input and Output token
-The `computeRoutes` methods takes in the input Mint address and the output Mint address and gives all the possibles routes in order of best price first.
+### 指定された入力および出力トークンのルートを取得する
+`computeRoutes`メソッドは、入力Mintアドレスと出力Mintアドレスを受け取り、すべての可能なルートを最安値の順に提供します。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -153,8 +153,8 @@ The `computeRoutes` methods takes in the input Mint address and the output Mint 
 
 </SolanaCodeGroup>
 
-### Execute the Token Swap
-The `exchange` method is called here which constructs the transaction for a given route.
+### トークンスワップを実行する
+ここで`exchange`メソッドが呼び出され、特定のルートのトランザクションが構築されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -175,9 +175,9 @@ The `exchange` method is called here which constructs the transaction for a give
 
 </SolanaCodeGroup>
 
-## How to use Jupiter in a React Application
+## React アプリケーションで Jupiter を使用する方法
 
-### Installation
+### インストール
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -197,9 +197,9 @@ npm install @jup-ag/react-hook
   </CodeGroupItem>
 </CodeGroup>
 
-### Adding the Provider
+### プロバイダーの追加
 
-We are setting up the JupiterProvider here in order to use the useJupiter Hook Through out the React App. The cluster parameter is set  as **mainnet-beta** in order to get a wide variety of tokens but if you wish you could change it to **devnet** as well
+React アプリ全体で useJupiter フックを使用するために、ここで JupiterProvider をセットアップしています。クラスター パラメーターは、さまざまなトークンを取得するために**mainnet-beta** として設定されていますが、必要に応じて**devnet**に変更することもできます
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -220,9 +220,9 @@ We are setting up the JupiterProvider here in order to use the useJupiter Hook T
 
 </SolanaCodeGroup>
 
-### Fetching the List of Tokens
+### トークンのリストを取得する
 
-All the possible Tokens that can be swapped in a Given Network is fetched stored in the state.
+特定のネットワークでスワップできるすべての可能なトークンが取得され、状態に格納されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -243,9 +243,9 @@ All the possible Tokens that can be swapped in a Given Network is fetched stored
 
 </SolanaCodeGroup>
 
-### Setting up the State
+### Stateの設定
 
-InputMint and OutputMint are state that is added in order for it to be  swapped among each other or can be taken from the user as well.
+InputMintとOutputMintは、互いに交換したり、ユーザーから取得したりできるようにするために追加されるStateです。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -266,9 +266,9 @@ InputMint and OutputMint are state that is added in order for it to be  swapped 
 
 </SolanaCodeGroup>
 
-### Using the useJupiter react hook
+### useJupiter react hookの仕様
 
-The useJupiter Hook takes all the parameters required for it to find the routes through which Tokens of both InputMint and OutputMint can be swapped. To learn more about it go [here](https://docs.jup.ag/jupiter-react/using-the-react-hook)
+useJupiterフックは、必要なすべてのパラメーターを取得して、InputMint と OutputMintの両方のトークンを交換できるルートを見つけます。詳細については[こちら](https://docs.jup.ag/jupiter-react/using-the-react-hook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -289,9 +289,9 @@ The useJupiter Hook takes all the parameters required for it to find the routes 
 
 </SolanaCodeGroup>
 
-### Performing the Swap
+### スワップの実行
 
-After providing all the data to the useJupiter Hook. We can use the jupiter instance to perform a swap using the `exchange` method
+すべてのデータを useJupiter フックに提供した後`exchange`メソッドを使用して、jupiterインスタンスを使用してスワップを実行できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -312,11 +312,11 @@ After providing all the data to the useJupiter Hook. We can use the jupiter inst
 
 </SolanaCodeGroup>
 
-## How to use Jupiter API
+## Jupiter APIの使用方法
 
-This is the easiest way to interact with jupiter programs to swap any 2 provided tokens.
+これは、 jupiter programとやり取りして、提供された2つのトークンを交換する最も簡単な方法です。
 
-### Installation
+### インストール
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -342,9 +342,9 @@ npm i bs58
   </CodeGroupItem>
 </CodeGroup>
 
-### Getting the Route Map
+### ルートマップの取得
 
-This API retrieves all the available tokens that can be swapped using the jupiter API. A list of all possible token routes is being fetched here and `allInputMints` contains the list of all possible Input Tokens by mint address and `swappableOutputForSol` contains all the possible tokens that can be swapped for SOL in this case.
+この API は、jupiter API を使用してスワップできるすべての利用可能なトークンを取得します。すべての可能なトークン ルートのリストがここで取得されます。`allInputMints` には、ミント アドレスごとのすべての可能な入力トークンのリストが含まれ、`swappableOutputForSol` には、この場合にSOLにスワップできるすべての可能なトークンが含まれます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -365,8 +365,9 @@ This API retrieves all the available tokens that can be swapped using the jupite
 
 </SolanaCodeGroup>
 
-### Getting the Serialized Transaction to perform Swap
-POST API request is done with the route that we wish to go with and the wallet address of the user there are few optional parameters that can be added to this api like **wrapUnwrapSOL** and **feeAccount** to learn more about it go through the offical docs here [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+### シリアル化されたトランザクションを取得してスワップを実行する
+POST APIリクエストには、利用したいルートとユーザーのウォレットアドレスを指定します。このAPIには、**wrapUnwrapSOL**や**feeAccount**などのオプションパラメータを追加することができます。
+ feeAccountについて詳しくは、[こちら](https://docs.jup.ag/jupiter-api/swap-api-for-solana)の公式ドキュメントをご覧ください。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -387,8 +388,8 @@ POST API request is done with the route that we wish to go with and the wallet a
 
 </SolanaCodeGroup>
 
-### Executing the Swap Transaction
-A Transaction object is created and then its getting signed by the user.
+### スワップトランザクションの実行
+Transactionオブジェクトが作成され、ユーザーによって署名されます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -409,7 +410,7 @@ A Transaction object is created and then its getting signed by the user.
 
 </SolanaCodeGroup>
 
-## Other Resources
+## その他参考資料
 
 - [Main Docs](https://docs.jup.ag/)
 - [Jupiter Core Example Code](https://github.com/jup-ag/jupiter-core-example)

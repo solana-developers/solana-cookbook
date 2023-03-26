@@ -38,14 +38,11 @@ head:
 
 # Serum
 
-Serum is a protocol for decentralized exchanges built on Solana. You
-can use Serum to create new markets, get order books, trade, and more.
+Serumは、Solana 上に構築された分散型取引所のプロトコルです。 Serumを使用して、新しい市場の作成、オーダーブックの取得、取引などを行うことができます。
 
-## How to get a Serum market
+## Serumマーケットの取得方法
 
-A market on Serum contains all the orders and capabilities to make orders
-on Serum. For everything you do on Serum you need to know the market you
-are working with.
+Serumのマーケットには、Serumで注文するためのすべての注文と機能が含まれています。 Serumで行うすべてのことについて、作業しているマーケットを知る必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -66,11 +63,9 @@ are working with.
 
 </SolanaCodeGroup>
 
-## How to get Serum order books
+## Serumオーダーブックの入手方法
 
-Serum markets consist of orderbooks which have bids and asks. You can
-query this information so you can see what is going on on the market and
-act accordingly.
+Serumマーケットは、ビッドとアスクを含むオーダーブックで構成されています。この情報を照会して、市場で何が起こっているかを確認し、それに応じて行動することができます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -91,11 +86,9 @@ act accordingly.
 
 </SolanaCodeGroup>
 
-## How to get current open orders
+## 現在のオープンの注文を取得する方法
 
-As a trader, you will want to know what current open orders you have
-on a market. You can query your or anyone else's open orders on a market
-with Serum.
+トレーダーとして、市場で現在開いている注文を知りたいと思うでしょう。Serumを使用して、市場での自分または他の誰かのオープン注文を照会できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

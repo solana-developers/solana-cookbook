@@ -38,11 +38,11 @@ head:
 
 # Pyth
 
-Pyth is an Oracle used to get real-world financial and crypto market data. Pyth Oracle can be used by on-chain programs in consuming data for a variety of use cases.
+Pythは、現実世界の金融および暗号市場データを取得するために使用されるOracleです。Pyth Oracleは、さまざまなユースケースでデータを消費する際にオンチェーンプログラムで使用できます。
 
-## How to use Pyth in Client
+## クライアントでPythを使用する方法
 
-Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. This library can be used to read on-chain Pyth Data for off-chain applications, such as displaying the Pyth price on a website. Learn more about this [here](https://www.npmjs.com/package/@pythnetwork/client)
+Pythは**@pythnetwork/client**として呼び出されるJavaScript/TypeScriptライブラリを提供します。このライブラリを使用して、ウェブサイトでのPyth価格の表示などといった、オフチェーンアプリケーションに使用するオンチェーンPyth データを読み取ることができます。詳細は[こちら](https://www.npmjs.com/package/@pythnetwork/client)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -63,9 +63,9 @@ Pyth provides a JavaScript/TypeScript library called **@pythnetwork/client**. Th
 
 </SolanaCodeGroup>
 
-## How to use Pyth in Anchor
+## AnchorでPythを使用する方法
 
-Pyth provides a Rust Crate which can be used by on-chain programs or off-chain application's to consume pyth's data.
+Pythは、オンチェーンプログラムまたはオフチェーンアプリケーションがpythのデータを消費するために使用できるRust Crateを提供します。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Anchor" active>
@@ -86,7 +86,7 @@ Pyth provides a Rust Crate which can be used by on-chain programs or off-chain a
 
 </SolanaCodeGroup>
 
-## Other Resources
+## その他参考資料
 
 - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
 - [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)

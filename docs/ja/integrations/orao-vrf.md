@@ -1,41 +1,40 @@
 ---
 title: ORAO VRF
 head:
-- - meta
-- name: title
-  content: Solana Cookbook | Using ORAO VRF with Solana
-- - meta
-- name: og:title
-  content: Solana Cookbook | Using ORAO VRF with Solana
-- - meta
-- name: description
-  content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
-- - meta
-- name: og:description
-  content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
-- - meta
-- name: og:image
-  content: https://solanacookbook.com/cookbook-sharing-card.png
-- - meta
-- name: og:image:alt
-  content: Solana splash card
-- - meta
-- name: twitter:card
-  content: summary
-- - meta
-- name: twitter:site
-  content: "@solanacookbook"
-- - meta
-- name: twitter:image
-  content: "https://solanacookbook.com/cookbook-sharing-card.png"
-- - meta
-- name: robots
-  content: index,follow,noodp
-- - meta
-- name: googlebot
-  content: index,follow
+  - - meta
+    - name: title
+      content: Solana Cookbook | Using ORAO VRF with Solana
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Using ORAO VRF with Solana
+  - - meta
+    - name: description
+      content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
+  - - meta
+    - name: og:description
+      content: In this tutorial, you learn how to use ORAO VRF with Solana and Anchor.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
 ---
-
 # ORAO VRF
 
 ORAO VRF is a multi-party verifiable random function oracle based on EDDSA. It is able to provide

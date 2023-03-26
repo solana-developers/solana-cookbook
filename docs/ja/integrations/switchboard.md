@@ -38,15 +38,14 @@ head:
 
 # Switchboard
 
-Switchboard is an Oracle protocol that enables developers to source data on-chain for a variety of use cases such as price feeds, NFT floor prices, sport statistics, or even verifiable randomness. In a general sense, Switchboard is an off-chain resource developers can invoke to bridge high integrity data on-chain and power the next generation of web3 and DeFi.
+Switchboardは、開発者が価格フィード、NFT 最低価格、スポーツ統計、さらには検証可能なランダム性など、さまざまなユースケースのためにチェーン上でデータを調達できるようにする Oracle プロトコルです。 一般的な意味で、Switchboardはオフチェーンのリソースであり、開発者はチェーン上で整合性の高いデータを橋渡しし、次世代の web3とDeFiを強化するために呼び出すことができます。
 
 ## Data Feeds
 
-Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/switchboard-v2**
-. This library can be used to reach On-chain data from existing data feeds or publish your own custom feeds. Learn more about this [here](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
+Switchboardは **@switchboard-xyz/switchboard-v2** として呼び出されるJavaScript/TypeScriptライブラリです。このライブラリを使用して、既存のデータフィードからオンチェーン データにアクセスしたり、独自のカスタムフィードを公開したりできます。詳細は[こちら](https://www.npmjs.com/package/@switchboard-xyz/switchboard-v2
 )
 
-### Read data from an aggregator feed
+### アグリゲーターフィードからデータを読み取る
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -67,7 +66,7 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 </SolanaCodeGroup>
 
-### Create a new aggregator feed
+### アグリゲーターフィードを新規作成する
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -88,13 +87,8 @@ Switchboard provides a JavaScript/TypeScript library called **@switchboard-xyz/s
 
 </SolanaCodeGroup>
 
-
-
-
-
-### Read data from an aggregator feed in program
-Switchboard provides a crate called **switchboard_v2**
-Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)
+### プログラムでアグリゲーターフィードからデータを読み取る
+Switchboardは**switchboard_v2**というクレートを提供します。詳細については、[こちら](https://docs.rs/switchboard-v2/0.1.10/switchboard_v2/)をご覧ください。 
 
 
 <SolanaCodeGroup>
@@ -116,14 +110,13 @@ Learn more about this [here](https://docs.rs/switchboard-v2/0.1.10/switchboard_v
 
 </SolanaCodeGroup>
 
-### How to Create a Feed from the Publisher
-The official Switchboard documentation has an in-depth walk-through of how to create a feed from the publisher.
-Check it out [here](https://docs.switchboard.xyz/feed/publisher).
+### パブリッシャーからフィードを作成する方法
+公式の Switchboard ドキュメントには、パブリッシャーからフィードを作成する方法の詳細なウォークスルーがあります。[こちら](https://docs.switchboard.xyz/feed/publisher)をチェックしてください。
 
-## Oracles
-Switchboard's unique feature is that it allows you to create your own oracle and run it locally.
+## Oracle
+Switchboardのユニークな機能は、独自のOracleを作成してローカルで実行できることです。
 
-### Create an oracle
+### Oracleを作成
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
@@ -143,13 +136,13 @@ Switchboard's unique feature is that it allows you to create your own oracle and
 
 </SolanaCodeGroup>
 
-### Run an oracle locally
-You can run an oracle locally and assign it to your own oracle queue to test how your program may operate in production. Mainnet oracles should always be run in high availability environments with some set of monitoring capabilities.
+### Oracleをローカルで実行
+Oracleをローカルで実行し、独自のOracleキューに割り当てて、プログラムが本番環境でどのように動作するかをテストできます。メインネットのOracleは、監視機能のセットを備えた高可用性環境で常に実行する必要があります。
 
-#### Requirements
+#### 要件
  - Docker-compose
 
-Create a docker-compose.yml file with the environment variables in [Oracle Config](/integrations/switchboard.html#oracle-config)
+[Oracle Config](/integrations/switchboard.html#oracle-config)で環境変数を使用してdocker-compose.ymlを作成します。
 
 
 
@@ -172,7 +165,7 @@ Create a docker-compose.yml file with the environment variables in [Oracle Confi
 
 </SolanaCodeGroup>
 
-Run the container using `docker-compose up`
+`docker-compose up`を使用してコンテナを実行します。
 
 ### Oracle Config
 <table>
@@ -192,8 +185,7 @@ Run the container using `docker-compose up`
         <br />
         <b>Type</b> - Public Key
         <br />
-        <b>Description</b> - Public key of the oracle account that has been
-        granted permissions to use an oracle queue <br />
+        <b>Description</b> - Oracleキューを使用する権限を付与されたOracleアカウントの公開鍵<br />
       </td>
     </tr>
     <tr>
@@ -207,8 +199,7 @@ Run the container using `docker-compose up`
         <br />
         <b>Default</b> - 30
         <br />
-        <b>Description</b> - Seconds between oracle heartbeats. Queues have
-        different oracle heartbeat requirements. Recommended value is 15
+        <b>Description</b> - Oracle ハートビート間の秒数。キューには、異なるOracleハートビート要件があります。推奨値は15です
       </td>
     </tr>
     <tr>
@@ -220,10 +211,9 @@ Run the container using `docker-compose up`
         <br />
         <b>Type</b> - GCP Resource Path
         <br />
-        <b>Default</b> - Looks for configs.json in the current working
-        directory. If not found, no config is loaded.
+        <b>Default</b> - 現在の作業ディレクトリで configs.json を探します。見つからない場合、構成はロードされません。
         <br />
-        <b>Description</b> - Contains API keys for private API endpoints
+        <b>Description</b> - プライベートAPIエンドポイントのAPIキーを含む
       </td>
     </tr>
     <tr>
@@ -237,15 +227,16 @@ Run the container using `docker-compose up`
         <br />
         <b>Default</b> - 0, disabled.
         <br />
-        <b>Description</b> - The Solana balance amount to trigger an unwrap stake action. When an oracle's Solana balance falls below the set threshold, the node will automatically unwrap funds from the oracle's staking wallet, leaving at least 0.1 wSOL or 10% more than the queue's minimum stake requirement. 
+        <b>Description</b> - unwrap stake actionをトリガーする Solana の残高。OracleのSolana 残高が設定されたしきい値を下回ると、ノードは自動的にオラクルのステーキングウォレットから資金をアンラップし、少なくとも0.1 wSOL またはキューの最小ステーク要件より10%多い金額を残します。
       </td>
     </tr>
   </tbody>
 </table>
 
-## Verifiable Random Function(VRF)
-A Verifiable Random Function (VRF) is a public-key pseudorandom function that provides proofs that its outputs were calculated correctly
-### Reading a VRF account
+## 検証可能な確率関数(VRF)
+検証可能な確率関数(Verifiable Random Function/VRF)出力が正しく計算されたことを証明する公開鍵疑似乱数関数です。
+
+### VRFアカウントの読み取り
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -281,7 +272,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 </SolanaCodeGroup>
 
-### Creating a VRF account
+### VRFアカウントの作成
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -303,7 +294,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 
 </SolanaCodeGroup>
 
-### Request Randomness from vrf account
+### VRFアカウントからRandomnessを要求する
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -340,7 +331,7 @@ A Verifiable Random Function (VRF) is a public-key pseudorandom function that pr
 </SolanaCodeGroup>
 
 
-## Resources
+## 参考文献
 ### APIs and Libraries
  - [Switchboard Task Types](https://docs.switchboard.xyz/api/tasks)
  - [Rust API Docs](https://docs.rs/switchboard-v2/latest/switchboard_v2/)

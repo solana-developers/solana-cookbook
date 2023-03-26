@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: 開始
 head:
   - - meta
     - name: title
@@ -36,23 +36,19 @@ head:
       content: index,follow
 ---
 
-# Getting Started with Integrations
+# インテグレーションの開始
 
-The Solana Cookbook integrations provides a set of examples and references for anyone
-to build on top of other protocols on Solana. 
+Solana Cookbookインテグレーションは、誰もが Solana の他のプロトコルの上に構築するための一連の例とリファレンスを提供します。
 
-The power of Solana comes from the ability to integrate with other protocols,
-building on top of existing infrastructure to make something better.
+Solanaの力は、何かをより良くするために他のプロトコルと統合し、既存のインフラストラクチャの上に構築することにより引き出されます。
 
-## Composability is Key
+## 構成可能性が鍵
 
-Making your program easy to use and extend will grow both your program and the
-entire Solana ecosystem. Don't reinvent the wheel, build on top of existing protocols
-and bootstrap your userbase.
+プログラムを使いやすく拡張しやすくすることで、プログラムと Solana エコシステム全体の両方が成長します。一からやり直すのではなく、既存のプロトコルの上に構築し、ユーザーベースをブートストラップしましょう。
 
-Adapt and build on top of other programs or libraries and unlock new capabilities for Solana.
+他のプログラムやライブラリの上に適応して構築し、Solanaの新しい機能を解き放ちましょう。
 
-## Contributing
+## コントリビューション
 
-If you are interested in contributing to integrations, please checkout the [contribution
-guidelines](https://github.com/solana-developers/solana-cookbook/blob/master/CONTRIBUTING.md).
+インテグレーションへのコントリビューションに関心がある場合は、[contribution
+guidelines](https://github.com/solana-developers/solana-cookbook/blob/master/CONTRIBUTING.md)をご確認ください。

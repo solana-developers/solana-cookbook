@@ -36,30 +36,30 @@ head:
       content: index,follow
 ---
 
-# React Native and Solana
+# React NativeとSolana
 
-React Native is an open-source UI software framework used to develop mobile, web and desktop applications by enabling developers to use the React framework along with native platform capabilities. Powered with the Solana SDK, this is a great platform to quickly build performant native Crypto apps.
+React Nativeは、開発者がネイティブプラットフォーム機能と共にReactフレームワークを使用できるようにすることで、モバイル、Web、およびデスクトップアプリケーションの開発に使用されるオープンソースのUIソフトウェア フレームワークです。Solana SDKを搭載したこれは、パフォーマンスの高いネイティブCryptoアプリをすばやく構築するための優れたプラットフォームです。
 
-The fastest way to start with React Native and Solana is by using the [Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native). 
+React NativeとSolanaを開始する最も速い方法は、[Solana DApp Scaffold for React Native](#solana-dapp-scaffold-for-react-native)を使用することです。
 
-## How to use @solana/web3.js in a React Native app
+## React Nativeアプリで@solana/web3.jsを使用する方法
 
-In this tutorial you will learn how to create a new React Native app and install and configure the `@solana/web3.js` SDK, and its dependencies. 
+このチュートリアルでは、新しいReact Nativeアプリを作成し、`@solana/web3.js`SDKとその依存関係をインストールして構成する方法を学習します。
 
-If you already have an existing app, skip to [installing the dependencies](#install-dependencies).
+既存のアプリが既にある場合は、[依存関係のインストール](#install-dependencies)に進みます。
 
-### Create a new app
+### 新しいアプリを作成する
 
-We start a new React Native application that uses TypeScript, then `cd` into the project directory, where we will execute the rest of the commands.
+TypeScriptを使用する新しいReact Nativeアプリケーションを開始し、プロジェクト ディレクトリに`cd`して、残りのコマンドを実行します。
 
 ```shell
 npx react-native@0.70.0 init SolanaReactNative --template react-native-template-typescript
 cd SolanaReactNative
 ```
 
-### Install dependencies
+### 依存関係をインストールする
 
-Next, we install the dependencies. The Solana JavaScript SDK, a package to patch the React Native build system (Metro), a secure random number generator, and a fix to patch React Native's missing `URL` class.
+次に、依存関係をインストールします。Solana JavaScript SDK、React Nativeのビルドシステム（Metro）にパッチを当てるパッケージ、安全な乱数生成器、React Nativeの`URL`クラスの欠落にパッチを当てる修正プログラムです。
 
 ```shell
 yarn add \
@@ -68,9 +68,9 @@ yarn add \
   react-native-url-polyfill
 ```
 
-### Patch Babel to use the Hermes transforms
+### Hermes変換を使用するようにBabelにパッチを適用する
 
-As of August 2022 the template from which new React Native apps are made enables the Hermes JavaScript engine by default but not the Hermes code transforms. Enable them by making the following change to `babel.config.js`:
+2022 年 8 月の時点で、新しい React Native アプリが作成されるテンプレートは、デフォルトで Hermes JavaScript エンジンを有効にしますが、Hermes コード変換は有効にしません。`babel.config.js`に次の変更を加えて有効にします:
 
 ```diff
   module.exports = {
@@ -86,7 +86,7 @@ As of August 2022 the template from which new React Native apps are made enables
 
 ### Update `index.js`
 
-To load the polyfills, we open the file `index.js` in the root of the project and add the following two lines to the top of the file:
+ポリフィルをロードするには、プロジェクトのルートにある`index.js`ファイルを開き、ファイルの先頭に次の2行を追加します:
 
 ```javascript
 import 'react-native-get-random-values';
@@ -95,13 +95,13 @@ import 'react-native-url-polyfill/auto';
 
 ### Update `App.tsx`
 
-Let's add a web3.js example into our app!
+アプリに web3.js の例を追加しましょう！
 
-Open the file `App.tsx` and add the following code inside the `App` function:
+ファイル`App.tsx`を開き、`App`関数内に次のコードを追加します:
 
-In this example, we set up a connection to Solana Devnet and when the components load, we get the version of the cluster we connected to and store the version in the component state.
+この例では、Solana Devnetへの接続をセットアップし、コンポーネントがロードされると、接続先のクラスターのバージョンを取得し、そのバージョンをコンポーネントのStateに保存します。
 
-Additionally, this example shows how to generate and store a keypair.
+さらにこの例は、キーペアを生成して保存する方法を示しています。
 
 ```typescript
 const [keypair, setKeypair] = useState<Keypair>(() => Keypair.generate());
@@ -118,7 +118,7 @@ useEffect(() => {
 }, []);
 ```
 
-Lastly, in the template (or `render function`) add the following markup:
+最後に、テンプレート(または`レンダリング関数`)に次のマークアップを追加します:
 
 
 ```tsx
@@ -131,39 +131,38 @@ Lastly, in the template (or `render function`) add the following markup:
 <Button title="New Keypair" onPress={randomKeypair} />
 ```
 
-### [iOS only] Install cocoapods
+### [iOS のみ]cocoapodsをインストールする
 
-In order for our polyfills to be autolinked on iOS, we need to install the `cocoapods`.
+ポリフィルをiOSで自動リンクするには、`cocoapods`をインストールする必要があります。
 
 ```shell
 cd ios && pod install
 ```
 
-### Start application 
+### アプリケーションを開始
 
-Once we finished all the above, we can start our application in the Android or iOS simulator.
+上記のすべてが完了したら、AndroidまたはiOSシミュレーターでアプリケーションを開始できます。
 
 ```shell
 yarn android
 yarn ios
 ```
 
-If all went well, you should see a React Native app being started in your simulator that retrieves the version of the Solana Devnet.
+上記のすべてが完了したら、AndroidまたはiOSシミュレーターでアプリケーションを開始できます。
 
-## Solana DApp Scaffold for React Native
+## React Native用Solana DAppスキャフォールド
 
-If you want to hit the ground running, you can download the [Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native).
+すぐに実行したい場合は、[Solana DApp Scaffold for React Native](https://github.com/solana-developers/dapp-scaffold-react-native)をダウンロードできます。
 
 
-## Common issues when using crypto libraries in a React Native app
+## React Nativeアプリで暗号化ライブラリを使用する際の一般的な問題
 
 ### Error: `Watchman crawl failed`
 
-The part of the build system that watches your file system for changes is called Watchman. Certain versions of Mac OS [refuse](https://github.com/facebook/watchman/issues/751) to grant Watchman  permission to watch certain directories, such as `~/Documents/` and `~/Desktop/`.
+ファイルシステムの変更を監視するビルドシステムの部分は、Watchmanと呼ばれます。特定のバージョンのMac OSは、`~/Documents/`や`~/Desktop/`などの特定のディレクトリを監視するWatchmanの許可を与えることを[拒否](https://github.com/facebook/watchman/issues/751)しています。
+Metro バンドラーが&ldquo;Watchman crawl failed&rdquo;という単語を含む[エラー](https://gist.github.com/steveluscher/d0ae13225b57bc59dc0eac871509dcd7)を生成した場合、この問題があることがわかります。
 
-You'll know you have this problem if the Metro bundler produces [an error](https://gist.github.com/steveluscher/d0ae13225b57bc59dc0eac871509dcd7) containing the words &ldquo;Watchman crawl failed.&rdquo;
-
-To solve this, move your React Native project to the root of your user directory.
+これを解決するには、React Nativeプロジェクトをユーザーディレクトリのルートに移動します。
 
 ### Error: URL.protocol is not implemented
 
@@ -172,9 +171,9 @@ ERROR Error: URL.protocol is not implemented
 ERROR Invariant Violation: Module AppRegistry is not a registered callable module (calling runApplication). A frequent cause of the error is that the application entry file path is incorrect. This can also happen when the JS bundle is corrupt or there is an early initialization error when loading React Native.
 ```
 
-This is an issue that can be fixed by using a polyfill for the `URL` object in React Native.
+これは、React Nativeの`URL`オブジェクトにポリフィルを使用することで解決できる問題です。
 
-Install the package `react-native-url-polyfill` and import it in the main file of your app (eg: `index.js`), as shown above.
+上記のように、パッケージ`react-native-url-polyfill`をインストールし、アプリのメインファイル(例: `index.js`)にインポートします。
 
 ### Error: crypto.getRandomValues() not supported
 
@@ -182,6 +181,5 @@ Install the package `react-native-url-polyfill` and import it in the main file o
 Error: crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported
 ```
 
-This is an issue that can be fixed by using a polyfill for the `crypto` object in React Native.
-
-Install the package `react-native-get-random-values` and import it in the main file of your app (eg: `index.js`), as shown above.
+これは、React Nativeの`crypto`オブジェクトにポリフィルを使用することで修正できる問題です。
+上記のように、パッケージ`react-native-get-random-values`をインストールし、アプリのメインファイル(例: `index.js`)にインポートします。

@@ -38,10 +38,8 @@ head:
 
 # Mango Markets
 
-Mango provides a single venue to lend, borrow, swap, and leverage 
-trade cryptoassets through an on-chain risk engine.
-You can connect to Mango's on-chain program using the Client API libraries.
-You'll also need the Solana javascript API library.
+Mangoは、オンチェーンリスク エンジンを介して、取引暗号資産を貸与、借入、交換、および活用するための単一の場を提供します。
+クライアントAPIライブラリを使用して、Mangoのオンチェーンプログラムに接続できます。Solana JavaScript APIライブラリも必要です。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -53,11 +51,9 @@ You'll also need the Solana javascript API library.
   </CodeGroupItem>
 </CodeGroup>
 
-## How to get a Mango Group
+## Mango Groupの取得方法
 
-A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund and fees vaults. Each version 
-of Mango Markets uses a different Mango Group containing different 
-tokens. The current v3 group is `mainnet.1`. Here's a table showing the various groups:
+Mango groupはクロスマージントークンのバスケットで、トークン、Serum dex market、perp market、Oracle、Insurance fund、Fees vaultに関する幅広い市場情報を保持しています。 Mango Markets の各バージョンは、異なるトークンを含む異なる Mango Group を使用します。現在の v3 グループは`mainnet.1` です。さまざまなグループを示す表を次に示します:
 
 
 | Group                | Version     | Cluster   |
@@ -71,7 +67,7 @@ tokens. The current v3 group is `mainnet.1`. Here's a table showing the various 
 
 
 :::tip Note
-If you wish to use the v2 groups, you'll have to use the v2 client library. You can find it [here](https://github.com/blockworks-foundation/mango-client-ts)
+v2 グループを使用する場合は、v2 クライアント ライブラリを使用する必要があります。[ここ](https://github.com/blockworks-foundation/mango-client-ts)で見つけることができます
 :::
 
 
@@ -94,10 +90,9 @@ If you wish to use the v2 groups, you'll have to use the v2 client library. You 
   
 </SolanaCodeGroup>
 
-## How to create a Mango Account
+## Mango Accountの作成方法
 
-A Mango Account is associated with a Mango Group, and it holds your tokens and allows 
-you to trade that Group’s markets. You can find the reference [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount). 
+Mango Accountは Mango Groupに関連付けられており、トークンを保持し、そのグループの市場での取引を可能にします。[こちら](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#createMangoAccount)からリファレンスを確認できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -133,9 +128,9 @@ you to trade that Group’s markets. You can find the reference [here](https://b
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to deposit USDC into a Mango Account
-After creating a mango account, you'll need to fund it with tokens for trading. 
-You can find the reference for the deposit method [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit). 
+## USDCをMango Accountに入金する方法
+Mango accountアカウントを作成したら、取引用のトークンで資金を供給する必要があります。
+入金方法のリファレンスは[こちら](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#deposit)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -155,11 +150,10 @@ You can find the reference for the deposit method [here](https://blockworks-foun
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to place a spot order
-Mango interacts with Serum Protocol to place spot orders on markets. You can place a spot 
-order by doing this. You can find the reference for the placeSpotOrder function [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
-Mango has a config file that contains information on groups, markets, tokens and oracles, 
-you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
+## スポット注文の方法
+MangoはSerum Protocolと対話し、市場でスポット注文を出します。これにより、スポット注文を出すことができます。placeSpotOrder関数のリファレンスは[こちら](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder)。
+Mangoには、グループ、マーケット、トークン、およびOracleに関する情報を含む構成ファイルがあります。
+[ここ](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json)で見つけることができます。そのファイルの情報を使用して、適切なグループと市場を見つけます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -179,10 +173,9 @@ you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to load bids
-Mango uses the market information from Serum Protocol to load bids. You can load 
-them directly from Serum to work with on Mango. You can find out more about Serum's 
-markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+## 売値の読込方法
+MangoはSerum Protocolから得た市場情報を使用して売値を読み込みます。Serumから直接読み込み、Mangoで操作できます。Serumの市場に関しての 
+より詳しい情報は[こちら](https://github.com/project-serum/serum-ts/tree/master/packages/serum)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -202,10 +195,9 @@ markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/se
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## How to load asks
-Mango uses the market information from Serum Protocol to load asks. 
-You can load them directly from Serum to work with on Mango. You can find out more 
-about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+## 買値の読込方法
+MangoはSerum Protocolから得た市場情報を使用して買値を読み込みます。
+Serumから直接読み込み、Mangoで操作できます。Serumの市場の詳しい情報は[こちら](https://github.com/project-serum/serum-ts/tree/master/packages/serum)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -225,7 +217,7 @@ about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/mast
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Other Resources
+## その他参考資料
 
 - [Client Libraries](https://docs.mango.markets/development-resources/client-libraries)
 - [Mango Docs](https://docs.mango.markets)

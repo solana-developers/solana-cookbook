@@ -763,7 +763,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
           "/ja/integrations": [
             {
-              text: "Integrations",
+              text: "インテグレーション",
               children: [
                 "/ja/integrations",
                 "/ja/integrations/serum.md",
@@ -774,6 +774,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/ja/integrations/web3auth.md",
                 "/ja/integrations/react-native.md",
                 "/ja/integrations/jupiter.md",
+                "/ja/integrations/orao-vrf.md",
               ],
             },
           ],
