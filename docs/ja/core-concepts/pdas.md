@@ -37,9 +37,9 @@ head:
 footer: MIT Licensed
 ---
 
-# Program Derived Addresses (PDAs)
+# プログラム派生アドレス(PDAs)
 
-Program Derived Addresses (PDAs)は、特定のプログラムによって制御されるように設計されたアカウントのホームです。
+プログラム派生アドレス(Program Derived Addresses/PDAs)は、特定のプログラムによって制御されるように設計されたアカウントのホームです。
 PDA を使用すると、プログラムは秘密鍵を必要とせずに特定のアドレスにプログラムで署名できます。
 PDAは、Solanaアプリを互いに構成可能にする[Cross-Program Invocation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations)の基盤として機能します。
 

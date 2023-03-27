@@ -731,6 +731,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/ja/core-concepts/programs.md",
                 "/ja/core-concepts/transactions.md",
                 "/ja/core-concepts/pdas.md",
+                "/ja/core-concepts/cpi.md",
               ],
             },
             {
