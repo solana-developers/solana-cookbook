@@ -51,7 +51,8 @@ Live Version. (use devnet in the embedded version)
 </iframe>
 
 The hello world for an on chain game will be a little adventure game moving a character from left to right. 
-You can find the full source code that can also be deployed from the browser in Solana play ground:
+You can find the full source code that can also be deployed from the browser in Solana play ground here:
+[Open In Playground](https://beta.solpg.io/tutorials/tiny-adventure)
 
 We create a Solana account that is owned by our program. This GameDataAccount saves the player position. Then the program has some instructions that can be called by the player to move the player left and right. The instruction move_right for example will increase the player position by one.  
 

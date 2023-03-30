@@ -25,4 +25,4 @@ There are multiple ways to integrate Solana into your game:
 2. Use Sol- or an SPL-token for in-app purchases or micro payments in the game. (TODO: See Monetization + link to use case)
 3. Use the player's wallet to authenticate them in the game.
 4. Run tournaments and pay out crypto rewards to our players. 
-5. Develop the game completely on-chain to be able to reward your players in every step they take. [Hello world unity](./gaming/hello-world-unity)
+5. Develop the game completely on-chain to be able to reward your players in every step they take. [Hello world unity](./hello-world-unity)
