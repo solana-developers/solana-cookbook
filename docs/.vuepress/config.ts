@@ -85,6 +85,25 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/references/name-service.md",
               ],
             },
+            {
+              text: "Gaming",
+              children: [
+                "/gaming/intro.md",
+                "/gaming/game-sdks.md",
+                "/gaming/nfts-in-games.md",
+                "/gaming/hello-world.md",
+                "/gaming/store-sol-in-pda.md",
+                "/gaming/interact-with-tokens.md",
+                "/gaming/auto-approve.md",
+                "/gaming/big-accounts.md",
+                "/gaming/partial-sign-in-backend.md",
+                "/gaming/solana-pay-sign-on-phone.md",
+                "/gaming/turn-based-game.md",
+                "/gaming/monetization.md",
+                "/gaming/distribution.md",
+                "/gaming/game-examples.md",
+              ],
+            },
           ],
           "/integrations": [
             {
