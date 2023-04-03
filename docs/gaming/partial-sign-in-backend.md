@@ -1,8 +1,41 @@
 ---
 title: Partial sign in the backend
-description: Sometimes it makes sense to sign a transaction in the backend for security
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Partial sign in the backend
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Partial sign in the backend
+  - - meta
+    - name: description
+      content: Sometimes it makes sense to sign a transaction in the backend for security
+  - - meta
+    - name: og:description
+      content: Sometimes it makes sense to sign a transaction in the backend for security
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
-
 # How to sign your transaction in the backend
 
 Sometimes you do not want to trust the client or you want to add some extra data to a transaction in the backend. 

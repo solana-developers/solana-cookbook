@@ -1,6 +1,40 @@
 ---
 title: How interact with tokens in programs
-description: A tiny game that shows how game can interact with the Solana block chain
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | How interact with tokens in programs
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | How interact with tokens in programs
+  - - meta
+    - name: description
+      content: A small game that shows how game can interact with the Solana block chain
+  - - meta
+    - name: og:description
+      content: A small game that shows how game can interact with the Solana block chain
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # How to interact with tokens

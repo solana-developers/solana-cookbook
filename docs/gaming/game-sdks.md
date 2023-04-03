@@ -1,6 +1,40 @@
 ---
 title: Solana Gaming SDKs 
-description: A list of SDKs that you can use to develope games on Solana 
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Solana Gaming SDKs 
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Solana Gaming SDKs 
+  - - meta
+    - name: description
+      content: A list of SDKs that you can use to develope games on Solana 
+  - - meta
+    - name: og:description
+      content: A list of SDKs that you can use to develope games on Solana 
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 ### Unity SDK

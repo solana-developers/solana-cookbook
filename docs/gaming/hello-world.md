@@ -1,18 +1,18 @@
 ---
-title: Hello World Game
+title: Hello World example
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Account References
+      content: Solana Cookbook | Hello World example
   - - meta
     - name: og:title
-      content: Solana Cookbook | Account References
+      content: Solana Cookbook | Hello World example 
   - - meta
     - name: description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: A tiny adventure on chain game written in anchor with clients in js and c#  
   - - meta
     - name: og:description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: A tiny adventure on chain game written in anchor with clients in js and c#
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -175,7 +175,7 @@ public async void MoveRight()
     
     MoveRightAccounts account = new MoveRightAccounts();
     account.GameDataAccount = gameDataAccount;
-    TransactionInstruction initializeInstruction = TinyAdventureProgram.MoveRight(account, ProgramId);
+    TransactionInstruction moveRightInstruction = TinyAdventureProgram.MoveRight(account, ProgramId);
 
     var walletHolderService = ServiceFactory.Resolve<WalletHolderService>();
     var result = await walletHolderService.BaseWallet.ActiveRpcClient.GetRecentBlockHashAsync(Commitment.Confirmed);

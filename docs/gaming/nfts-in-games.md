@@ -1,8 +1,41 @@
 ---
 title: NFTs in games
-description: A list of options that should give you an idea of how NFTs can be utilized in games
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | NFTs in games
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | NFTs in games
+  - - meta
+    - name: description
+      content: A list of options that should give you an idea of how NFTs can be utilized in games
+  - - meta
+    - name: og:description
+      content: A list of options that should give you an idea of how NFTs can be utilized in games
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
-
 # NFTs In Games
 
 

@@ -1,6 +1,40 @@
 ---
 title: Learn By Example
-description: A list of open source games with tutorials to get you started.
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Learn By Example
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Learn By Example
+  - - meta
+    - name: description
+      content: A list of open source games with tutorials to get you started.
+  - - meta
+    - name: og:description
+      content: A list of open source games with tutorials to get you started.
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 import GameCard from "../../../components/GameCard";

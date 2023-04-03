@@ -1,6 +1,40 @@
 ---
 title: Distribution
-description: Different options on how to distribute your game built on Solana
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Game Distribution
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Game Distribution
+  - - meta
+    - name: description
+      content: Different options on how to distribute your game built on Solana
+  - - meta
+    - name: og:description
+      content: Different options on how to distribute your game built on Solana
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
 
 # Distribution

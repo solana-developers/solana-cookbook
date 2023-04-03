@@ -1,8 +1,41 @@
 ---
 title: Combine a game with Solana Pay
-description: Solana Pay can be used for any kind of transaction signing, also for games
+head:
+  - - meta
+    - name: title
+      content: Solana Cookbook | Combine a game with Solana Pay
+  - - meta
+    - name: og:title
+      content: Solana Cookbook | Combine a game with Solana Pay
+  - - meta
+    - name: description
+      content: Solana Pay can be used for any kind of transaction signing, also for games
+  - - meta
+    - name: og:description
+      content: Solana Pay can be used for any kind of transaction signing, also for games
+  - - meta
+    - name: og:image
+      content: https://solanacookbook.com/cookbook-sharing-card.png
+  - - meta
+    - name: og:image:alt
+      content: Solana splash card
+  - - meta
+    - name: twitter:card
+      content: summary
+  - - meta
+    - name: twitter:site
+      content: "@solanacookbook"
+  - - meta
+    - name: twitter:image
+      content: "https://solanacookbook.com/cookbook-sharing-card.png"
+  - - meta
+    - name: robots
+      content: index,follow,noodp
+  - - meta
+    - name: googlebot
+      content: index,follow
+footer: MIT Licensed
 ---
-
 # Control a game via solana pay qr codes
 
 Solana Pay is a very nice system which lets you create Qr codes that people can scan and sign any transaction on their phones. 
