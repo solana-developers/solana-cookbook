@@ -37,7 +37,11 @@ In [js](https://docs.solana.com/de/developing/clients/javascript-api) using the 
 
 ## Nft Boosters
 
-Players could also gain certain bonuses by owning certain NFTs. For example a coin doubler NFT, which grants the player 2x coin as long as he has the NFT in his wallet.
+Players could also gain certain bonuses by owning certain NFTs. For example a coin doubler NFT, which grants the player 2x coin as long as he has the NFT in his wallet. NFTs can also be burned. So there could be consumable NFTs as well. So a potion or spell in the inventory could be burned or transferred somewhere to give the character the effect.
+
+[How to interact with tokens](../references/token#how-to-burn-tokens) <br/>
+[NFTs](../references/nfts)
+
 
 ## Use meta data as stats
 
@@ -111,7 +115,7 @@ let image: Image = await asset.imageData.get(0) // fetches CesiumLogoFlat.png
 
 With the [Raindrops Boots program](https://docs.raindrops.xyz/services/boots) you can for example have an adventure character which owns a sword and a helmet. When the Character NFT would be sold on a market place the other NFTs it owns would be sold as well. 
 
-The possibilities are pretty much endless.
+The possibilities are pretty much endless. (Tutorial coming soon)
 
 ## How to create an NFT collection
 

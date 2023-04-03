@@ -1,15 +1,25 @@
 ---
-title: How to handle big accounts with zero copy
-description: Stack and heap size is rather limited on Solana so here is some help
+title: Manage Big Accounts
+description: Detailed explanation for memory on Solana, big account and zero copy serialization with anchor.
 ---
 
-# How to handle big accounts
+# Memory on Solana
+
+Video Walkthrough:
+<div class="video-block">
+<iframe width="320" height="200" src="https://www.youtube.com/embed/zs_yU0IuJxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 [Zero Copy Example with tests](https://github.com/Woody4618/anchor-zero-copy-example)
 
-The heap and stack memory in the solana runtime are very limited. We have 4Kb to work with on the stack and 32Kb on the heap.
-The stack increased by 10Kb per loaded account. These limits are quickly reached when building a game. 
-By default in Anchor all accounts being loaded will be on the stack. If you reach the stack limit you will an error similar to this: 
+## Heap and stack size
+
+The heap and stack memory in the Solana runtime are very limited. We have 4kb to work with on the stack and 32Kb on the heap.
+The stack increased by 10Kb per loaded account. These limits are quickly reached when writing a bigger program. 
+
+## Boxing accounts 
+
+By default in Anchor all structs being loaded will be on the stack. If you reach the 4kb stack limit you will an error similar to this: 
 
 ```js
 Stack offset of -30728 exceeded max offset of -4096 by 26632 bytes, please minimize large stack variables
@@ -25,12 +35,13 @@ pub struct Example {
 }
 ```
 
+## Increase pda account size above 10kb
 If your account gets bigger it gets a bit more complicated. Solana does not allow Cross Program Invocations with accounts bigger than 10Kb.
 Anchor does use a CPI to initialize all new accounts. So it calls the System Program internally to create a new account.
 You can allocate more memory to your account like this with an extra transaction: 
 
 ```js
-Program: 
+Anchor Program: 
 
     #[derive(Accounts)]
     #[instruction(len: u16)]
@@ -58,8 +69,9 @@ Js:
     .rpc();
 ```
 
-You can then call this multiple times, adding 10240 bytes in each transaction. When loading an account that is bigger than 10240 bytes, however, you will get an out-of-memory exception.
+You can then call this multiple times, adding 10240 bytes in each transaction. When loading an account that is bigger than 10240 bytes, however, you will get an out-of-memory exception that that you can surpas using zero copy serialization.
 
+## Zero copy
 If you need an even bigger account size, you need to look into Zero Copy serialization. You should only use zero copy for large accounts that cannot be Borsh/Anchor deserialized without hitting the heap or stack limits. With zero copy deserialization, all bytes from the account's backing RefCell<&mut [u8]> are simply reinterpreted as a reference to the data structure. No allocations or copies are necessary. This is how we can get around the stack and heap limitations.
 
 For the account you want to serialize with zero copy, you need to add this zero_copy attribute to the account:
@@ -107,7 +119,7 @@ Like this you can interact with the data of the account using copy_from_slice or
         Ok(())
     }
 
-    // This will initialize the PDA with the maximum possible size of 10 Kb
+    // This will initialize the PDA with the maximum possible size of 10 Kb per transaction
     #[derive(Accounts)]
     pub struct Initialize<'info> {
         #[account(init, seeds = [b"data_holder_zero_copy_v0", 
@@ -146,6 +158,6 @@ Like this you can interact with the data of the account using copy_from_slice or
 ```
 
 Here is a game anchor program that uses Zero Copy for a game grid: <br/> 
-[Anchor Program](https://github.com/Woody4618/SolPlay_Unity_SDK/blob/main/Assets/SolPlay/Examples/SolHunter/AnchorProgram/src/state/game.rs)
+[Anchor Program](https://github.com/Woody4618/SolPlay_Unity_SDK/blob/main/Assets/SolPlay/Examples/SolHunter/AnchorProgram/src/state/game.rs) <br/>
 [Another Example using items](https://github.com/coral-xyz/anchor/issues/651)
 

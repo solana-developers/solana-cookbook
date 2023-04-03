@@ -7,14 +7,68 @@ description: Some ideas on how can you make money with your game
 
 Building a game on Solana opens up a lot of interesting monetization options for games.
 
-- You can sell NFTs to raise raise money. It is basically like crowd sourcing the development of your game. If the game becomes successful the value of the NFTs will likely also go up.
-- NFTs on Solana can define a resell fee for NFTs which most market places read and use. This means that on every NFT sell on a secondary market place you will get a cut. This can be a constant income stream if the NFTs are traded a lot.
-- You can let players stake NFTs to gain an in game token. These tokens can then also be traded on decentralized marketplaces.
-- Tokens can be created and sold to investors (Just be aware of security law in your country)
-- With crypto currency it is easily possible to let players compete for rewards or let them bet on certain game outcomes. For example in Games like Poker, Chess or luck based games. You could then take a small fee per game for example.
-- Subscription based model like World of Warcraft but players pay in Sol or SPL Tokens
-- Let people purchase in game SPL token for crypto or Fiat (Like in for example Albion online)
-- Running Tournaments: Entry fee for example is 0.1 Sol and then 95% of all intake will be payed out to the winners and 5% to you running the service.
-- In general for a sustainable business model and tokenomics think of player trading time for value and then there will always be “low time-high money” players which take the other side of the trade and invest money to progress faster and save time. With this mindset you can build a sustainable pay to earn game where “low time-high money” players pay for “low money-high time” players and you will be able to take a cut to provide the service.
-- Create a brand and sell merch. Could be bought with Sol or SPL Tokens. And maybe players could slowly grind these tokens, so that very engaged players can also get rewarded. 
-- You could also include ads into the game. The rewards from the ads could then be used to pay for transactions fees or to give out in game tokens.
+## Selling NFTs 
+- You can sell NFTs to raise raise money. It is basically like crowd sourcing the development of your game. If the game becomes successful the value of the NFTs will likely also go up. For that you first need to create an NFT collection. 
+[Metaplex Docs](https://docs.metaplex.com/)<br />
+[Setup a candy machine step by step](https://youtu.be/0KHv1dMV8zU)<br />
+Then you can list the collection on one of the many Nft market places on Solana. 
+
+## Royalty fees
+- NFTs on Solana can define a resell fee for NFTs which most market places read and use. This means that on every NFT sell on a secondary market place you will get a cut of the selling price. This can be a constant income stream if the NFTs are traded a lot.
+This is how it would look like if the NFT defines a 4.2% resell fee which is split between creator 1 and 2.
+
+```js
+"data":{
+    "name":string"Example NFT"
+    "symbol":string"SYMBOl"
+    "uri":string"Url to meta data"
+    "sellerFeeBasisPoints":int 420
+    "creators":[
+        {
+            "address":string"creator 1 public key"
+            "verified":int 0
+            "share":int 50
+        },
+        {
+            "address":string"creator 2 public key"
+            "verified":int 0
+            "share":int 50
+        }
+        ]
+    }
+"primarySaleHappened":int 1
+```
+
+## Selling tokens
+Tokens can be used for micro payments, in game purchases and could also be sold to investors to raise money. (Just be aware of security law in your country)
+[How to create tokens](./references/token)
+
+## Staking NFTs
+- You can let players stake NFTs to gain an in game token. These tokens can then also be traded on marketplaces.
+[Open Source Staking Solution](https://github.com/gemworks/gem-farm)
+
+## Compete for valuable assets
+With crypto currency it is easily possible to let players compete for rewards or let them bet on certain game outcomes. For example in Games like Poker, Chess or luck based games. You could then take a small fee per game for example.
+[Reward Sol](./store-sol-in-pda)
+[Reward Tokens](./interact-with-tokens)
+
+## Subscriptions
+Subscription based model like World of Warcraft but players pay in Sol or SPL Tokens. This can be achieved for example with normal [Sol transfers](./references/basic-transactions.html#how-to-send-sol) or using
+[Solana Pay](https://solanapay.com/) and creating Qr code which players can scan to pay.
+
+## Sell in game currency
+Let people purchase in game SPL token for crypto or Fiat (Like in for example Albion online)
+You can for example deposit you in game currency token into progam account [Store Tokens](./interact-with-tokens)
+and then let people buy it with Sol [Pay out sol](./store-sol-in-pda)
+
+## Tournaments
+Running Tournaments: Entry fee for example is 0.1 Sol and then 95% of all intake can be payed out to the winners and 5% to you running the service.
+
+## Pay to earn
+In general for a sustainable business model and tokenomics think of player trading time for value and then there will always be “low time-high money” players which take the other side of the trade and invest money to progress faster and save time. With this mindset you can build a sustainable pay to earn game where “low time-high money” players pay for “low money-high time” players and you will be able to take a cut to provide the service.
+
+# Merch
+Create a brand and sell merch. Could be bought with Sol or SPL Tokens. And maybe players could slowly grind these tokens, so that very engaged players can also get rewarded. 
+
+# Ads
+You could also include ads into the game. The rewards from the ads could then be used to pay for transactions fees or to give out in game tokens.
