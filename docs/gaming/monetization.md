@@ -36,6 +36,7 @@ head:
       content: index,follow
 footer: MIT Licensed
 ---
+
 # Monetization
 
 Building a game on Solana opens up a lot of interesting monetization options for games.

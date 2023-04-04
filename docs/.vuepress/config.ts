@@ -19,7 +19,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   themeConfig: {
     logo: "/solana_cookbook_lightmode.svg",
     logoDark: "/solana_cookbook_darkmode.svg",
-    contributors: false,
+    contributors: true,
     algolia: {
       apiKey: "1831a64a81ffef4f85d5c0aa28cb801f",
       indexName: "solanacookbook",
@@ -92,6 +92,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                     "/gaming/nfts-in-games.md",
                     "/gaming/hello-world.md",
                     "/gaming/store-sol-in-pda.md",
+                    "/gaming/saving-game-state.md",
                     "/gaming/interact-with-tokens.md",
                     "/gaming/auto-approve.md",
                     "/gaming/partial-sign-in-backend.md",

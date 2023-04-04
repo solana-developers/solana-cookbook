@@ -36,6 +36,7 @@ head:
       content: index,follow
 footer: MIT Licensed
 ---
+
 # Control a game via solana pay qr codes
 
 Solana Pay is a very nice system which lets you create Qr codes that people can scan and sign any transaction on their phones. 

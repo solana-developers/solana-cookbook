@@ -52,7 +52,7 @@ The full source code ready to deploy you can find in this [Solana Playground exa
 
 I big benefit of a blockchain game is that you can reward players for actions in a game.
 To store sol in a program we first need to create a program derived address (PDA).
-This means that it is an account that the program can sign for. Using the [Anchor Framework](https://www.anchor-lang.com/) this is pretty straight forward as you can see for the chest_vault account below you just need to add a seeds value to the account.
+This means that it is an account that the program can sign for. Using the [Anchor Framework](https://www.anchor-lang.com/) this is pretty straight forward as you can see for the chest_vault account below you just need to add a seeds value to the account. These seeds are used to find a program address which the program can sign for. So the program will always be able to change the data in this account.
 
 ```js 
     #[account]

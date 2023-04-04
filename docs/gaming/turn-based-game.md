@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # How to build a turn based game 
 
-Let's have a look on how a turn based multiplayer game could be built on Solana.
+Let's have a look on how a turn based multiplayer game could be built in a Solana program.
 For a turn based game we need to save the whole game state on chain. So we need a list of Players and a turn counter so we can use the figure out whos turn it currently is: 
 
 ```js 

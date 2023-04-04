@@ -36,6 +36,7 @@ head:
       content: index,follow
 footer: MIT Licensed
 ---
+
 # NFTs In Games
 
 
