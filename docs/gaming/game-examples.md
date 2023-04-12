@@ -37,170 +37,101 @@ head:
 footer: MIT Licensed
 ---
 
-import GameCard from "../../../components/GameCard";
+## An unordered list of open source games as reference for learning
 
 ## Interact with Anchor Program from Unity
 
-<div class="container"> 
-<div class="row cards__container">
-
-<GameCard
-    header={{
-        label: "Interact with an on-chain Program from Unity",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "A simple example moving a player left and right using Anchor framework and Unity SDK",
-        translateId: "learn-programs",
-    }}
-    tutorial={"https://www.youtube.com/watch?v=_vQ3bSs3svs"}
-    example={"https://solplay.de/TinyAdventure/index.html"}
-    source={"https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventure"}
-/>
-</div>
-</div>
-
-## Save Sol in a PDA to give out as a reward
-
-<div class="container"> 
-<div class="row cards__container">
-
-<GameCard
-    header={{
-        label: "Tiny Adventure Two",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "Learn how to safe sol in a PDA seed vault and send it back to a player. Backend is written in Anchor and the frontend is using the Unity SDK",
-        translateId: "learn-programs",
-    }}
-    tutorial={"https://www.youtube.com/watch?v=gILXyWvXu7M"}
-    example={"https://solplay.de/TinyAdventureTwo/index.html"}
-    source={"https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventureTwo"}
-/> 
-</div>
-</div>
-
+A simple example moving a player left and right using Anchor framework and Unity SDK
 <br/>
+[Video](https://www.youtube.com/watch?v=_vQ3bSs3svs)<br/>
+[Live Version](https://solplay.de/TinyAdventure/index.html)<br/>
+[Playground](https://beta.solpg.io/tutorials/tiny-adventure)<br/>
+[Unity Client](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventure)<br/>
+
+## Saving Sol in a PDA
+
+Learn how to safe sol in a PDA seed vault and send it back to a player. Backend is written in Anchor and the frontend is using the Unity SDK<br/>
+[Video](https://www.youtube.com/watch?v=gILXyWvXu7M)<br/>
+[Live Version](https://solplay.de/TinyAdventureTwo/index.html)<br/>
+[Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventureTwo)<br/>
 
 ## Use Solana Pay Qr codes to control a game
 
-<div class="container"> 
-<div class="row cards__container">
-
-<GameCard
-    header={{
-        label: "Tug of war",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "A multiplayer game where an account is changed via Solana Pay qr codes which can be player with many people on a big screen. Backend Anchor and the frontend is Js React and Next13",
-        translateId: "learn-programs",
-    }}
-    tutorial={"https://www.youtube.com/watch?v=_XBvEHwSqJc&ab_channel=SolPlay"}
-    example={"https://tug-of-war.vercel.app/"}
-    source={"https://github.com/Woody4618/workshops_fork/tree/main/workshops/tug-of-war"}
-/> 
-</div>
-</div>
-
+Tug of war
+A multiplayer game where an account is changed via Solana Pay qr codes which can be player with many people on a big screen. Backend Anchor and the frontend is Js React and Next13.
 <br/>
+[Tutorial](https://www.youtube.com/watch?v=_XBvEHwSqJc&ab_channel=SolPlay)<br/>
+[Example](https://tug-of-war.vercel.app/)<br/>
+[Source](https://github.com/Woody4618/workshops_fork/tree/main/workshops/tug-of-war)<br/>
 
 ## Saving Game State
 
-<div class="container"> 
-<div class="row cards__container">
+SolHunter
 
-<GameCard
-    header={{
-        label: "Tug of war",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "Realtime Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.",
-        translateId: "learn-programs",
-    }}
-    example={"https://solplay.de/SolHunter/index.html"}
-    source={"https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter"}
-/> 
-</div>
-</div>
+Realtime Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.
+<br/>
+[Example](https://solplay.de/SolHunter/index.html)<br/>
+[Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter)<br/>
 
 ## Hide game state from other players
 
-<div class="container"> 
-<div class="row cards__container">
+Stone paper scissors
 
-<GameCard
-    header={{
-        label: "Stone paper scissors",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "A game where on chain data is hidden by saving a hash in the client until reveal. SPL Tokens as price for the winner.",
-        translateId: "learn-programs",
-    }}
-    source={"https://github.com/kevinrodriguez-io/bonk-paper-scissors"}
-/> 
-</div>
-</div>
+A game where on chain data is hidden by saving a hash in the client until reveal. SPL Tokens as price for the winner.<br/>
+[Source](https://github.com/kevinrodriguez-io/bonk-paper-scissors)
+
+Another example submitted for grizzlython which encrypts entries and send it to the next player with an additional encryption:<br/>
+[Source](https://github.com/solanaGames)
+
 
 ## How to build a round based multiplayer game
 
-<div class="container"> 
-<div class="row cards__container">
+Tic Tac toe
+A simple multiplayer game written in Anchor
 
-<GameCard
-    header={{
-        label: "Tic Tac toe",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "A simple multiplayer game written in Anchor",
-        translateId: "learn-programs",
-    }}
-    tutorial={"https://book.anchor-lang.com/anchor_in_depth/milestone_project_tic-tac-toe.html"}
-    source={"https://github.com/coral-xyz/anchor-book/tree/master/programs/tic-tac-toe"}
-/> 
-</div>
-</div>
+[Tutorial](https://book.anchor-lang.com/anchor_in_depth/milestone_project_tic-tac-toe.html)<br/>
+[Source](https://github.com/coral-xyz/anchor-book/tree/master/programs/tic-tac-toe)
+
 
 ## On Chain Chess
 
-<div class="container"> 
-<div class="row cards__container">
+Chess
+Complete on chain playable chess game written in Anchor. Send someone a link to start a game. Looking for contributors.
+<br/>
+[Live Version](https://chess.vicyyn.com/)<br/>
+[Source](https://github.com/vicyyn/sol-chess/)<br/>
 
-<GameCard
-    header={{
-        label: "On Chain Chess",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "Complete on chain playable chess game written in Anchor. Send someone a link to start a game. Looking for contributors.",
-        translateId: "learn-programs",
-    }}
-    example={"https://chess.vicyyn.com/"}
-    source={"https://github.com/vicyyn/sol-chess/"}
-/> 
-</div>
-</div>
 
 ## Multiplayer Game using voting system
+Pokemon voting system
+A game where collectively people vote on moves in a game boy game. Every move is recorded and each move can be minted as an NFTs.
+<br/>
+[Live Version](https://solana.playspokemon.xyz/)<br/>
+[Source](https://github.com/nelsontky/web3-plays-pokemon)<br/>
 
-<div class="container"> 
-<div class="row cards__container">
 
-<GameCard
-    header={{
-        label: "On Chain Chess",
-        translateId: "developer-programs",
-    }}
-    body={{
-        label: "A game where collectively people vote on moves in a game boy game. Every move is recorded and each move can be minted as an NFTs.",
-        translateId: "learn-programs",
-    }}
-    example={"https://solana.playspokemon.xyz/"}
-    source={"https://github.com/nelsontky/web3-plays-pokemonhttps://solana.playspokemon.xyz/"}
-/>
-</div>
-</div>
+## On chain matchmaking
+
+A multiplayer match three game which uses NFT stats for the character stats in the game and has an interesting onchain matchmaking system.
+<br/>
+[Live Version](https://deezquest.vercel.app/)<br/>
+[Source](https://github.com/val-samonte/deezquest)<br/>
+
+
+## Entity component system example
+
+Kyoudai Clash is an on chain realtime 
+Using the jump crypto [Arc framework](https://github.com/JumpCrypto/sol-arc) which is an on chain entity component system for Solana. 
+<br/>
+[xNFT Version](https://www.xnft.gg/app/D2i3cz9juUPLwbpi8rV2XvAnB5nEe3f8fM5YUpgVprbT)<br/>
+[Source](https://github.com/spacemandev-git/dominari-arc)<br/>
+
+
+## Adventure killing monsters and gaining xp
+
+Lumia online was a hackthon submission and is a nice reference for a little adventure game.
+<br/>
+[xNFT Version](https://www.xnft.gg/app/D2i3cz9juUPLwbpi8rV2XvAnB5nEe3f8fM5YUpgVprbT)<br/>
+[Source](https://github.com/spacemandev-git/dominari-arc)<br/>
+
+  

@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # On chain game
 
-## Interact with an Anchor Program from Unity
+## Write your first Solana game
 
 Video Walkthrough:
 <div class="video-block">
@@ -447,7 +447,7 @@ Congratulations! You have successfully built, deployed, and invoked the Tiny Adv
 
 With the basic game complete, unleash your creativity and practice building independently by implementing your own ideas to enrich the game experience. Here are a few suggestions:
 
-1. Modify the in-game texts to create an intriguing story. Invite a friend to play through your custom narrative and observe the on-chain transactions as they unfold!.
+1. Modify the in-game texts to create an intriguing story. Invite a friend to play through your custom narrative and observe the on-chain transactions as they unfold!
 2. Add a chest that rewards players with SOL (Example: storing SOL in a PDA) or let the player collect coins (Example: using tokens) as they progress through the game.
 3. Create a grid that allows the player to move up, down, left, and right, and introduce multiple players for a more dynamic experience.
 

@@ -93,6 +93,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                     "/gaming/hello-world.md",
                     "/gaming/store-sol-in-pda.md",
                     "/gaming/saving-game-state.md",
+                    "/gaming/energy-system.md",
                     "/gaming/interact-with-tokens.md",
                     "/gaming/auto-approve.md",
                     "/gaming/partial-sign-in-backend.md",
