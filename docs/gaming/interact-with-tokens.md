@@ -41,12 +41,12 @@ footer: MIT Licensed
 
 Solana has tokens which can be used as rewards for games. The tokens use the SPL Token program and are following all the same standard.
 You can store these Tokens in a Solana program and send them to player when they do certain actions in the game.
-Problem here is that a Token Account needs to be owned by the SPL Token Program. 
-So to work around this we can create a Token Account and then set the Authority of this account to our PDA. 
+Problem here is that a Token Account needs to be owned by the SPL Token Program.
+So to work around this we can create a Token Account and then set the Authority of this account to our PDA.
 
-This will be the owner of the token account that will be owned by the program: 
+This will be the owner of the token account that will be owned by the program:
 
-```js 
+```js
     #[account(
         init_if_needed,
         payer = signer,
@@ -57,8 +57,8 @@ This will be the owner of the token account that will be owned by the program:
     token_account_owner_pda: AccountInfo<'info>,
 ```
 
-And this is how we can derive the Token Account. As you can see the seeds are a string and the mint of the token. Like this we can have a token_vault for any token we want. 
-The authority is our token pda. What [Anchor Framework](https://www.anchor-lang.com/) does internally is creating a token account and setting its authority to our pda. 
+And this is how we can derive the Token Account. As you can see the seeds are a string and the mint of the token. Like this we can have a token_vault for any token we want.
+The authority is our token pda. What [Anchor Framework](https://www.anchor-lang.com/) does internally is creating a token account and setting its authority to our pda.
 
 ```js
     #[account(
@@ -72,7 +72,7 @@ The authority is our token pda. What [Anchor Framework](https://www.anchor-lang.
     vault_token_account: Account<'info, TokenAccount>,
 ```
 
-We also need to pass in the Token Mint and the token account of the sender so that the Solana runtime knows all the accounts needed in advance. 
+We also need to pass in the Token Mint and the token account of the sender so that the Solana runtime knows all the accounts needed in advance.
 
 ```js
     #[account(mut)]
@@ -81,7 +81,7 @@ We also need to pass in the Token Mint and the token account of the sender so th
     pub mint_of_token_being_sent: Account<'info, Mint>,
 ```
 
-With all accounts in place we can then trigger a transfer from the users token account to the token account owned by our PDA: 
+With all accounts in place we can then trigger a transfer from the users token account to the token account owned by our PDA:
 
 ```js
     let transfer_instruction = Transfer {
@@ -97,9 +97,9 @@ With all accounts in place we can then trigger a transfer from the users token a
     anchor_spl::token::transfer(cpi_ctx, data)?;
 ```
 
-When we want to transfer something out of the token account that is owned by our PDA we need to invoke the cross program invocation with the same seeds we used to create the PDA: 
+When we want to transfer something out of the token account that is owned by our PDA we need to invoke the cross program invocation with the same seeds we used to create the PDA:
 
-```js 
+```js
         let transfer_instruction = Transfer {
             from: ctx.accounts.vault_token_account.to_account_info(),
             to: ctx.accounts.sender_token_account.to_account_info(),
@@ -120,7 +120,7 @@ When we want to transfer something out of the token account that is owned by our
 
 This is how you can find the correct PDA addresses in the js client:
 
-```js 
+```js
 let [tokenAccountOwnerPda, bump] = await PublicKey.findProgramAddress(
   [Buffer.from("token_account_owner_pda", "utf8")],
   pg.PROGRAM_ID
@@ -132,7 +132,7 @@ let [token_vault, bump2] = await PublicKey.findProgramAddress(
 );
 ```
 
-These account addresses we can then pass in the transaction. It's a nice trick to set skipPreflight to true so you can copy the signature into a Solana explorer and see exactly what happened on chain. Without it the transaction would fail in the simulation step if you have an error. 
+These account addresses we can then pass in the transaction. It's a nice trick to set skipPreflight to true so you can copy the signature into a Solana explorer and see exactly what happened on chain. Without it the transaction would fail in the simulation step if you have an error.
 
 ```js
 let accounts = {
@@ -156,7 +156,7 @@ let txHash = await pg.program.methods
 
 Here the whole code to copy paste. You can for example run it in [Solana Playground](https://beta.solpg.io/)<br />
 
-Anchor: 
+Anchor:
 
 ```js
 use anchor_lang::prelude::*;
@@ -253,7 +253,7 @@ pub struct Initialize<'info> {
 
 And the js client to transfer 1000 tokens in the vault and send it out again:
 
-```js 
+```js
 import {
   TOKEN_PROGRAM_ID,
   createMint,

@@ -350,7 +350,7 @@ This next section will guide you through a simple client-side implementation for
 
 First, let’s derive the PDA for the `GameDataAccount`. A PDA is a unique address in the format of a public key, derived using the program's ID and additional seeds. Feel free to check out the PDA lessons of the [Solana Course](https://www.soldev.app/course) for more details.
 
-```rust
+```js
 // The PDA adress everyone will be able to control the character if the interact with your program
 const [globalLevel1GameDataAccount, bump] =
   await anchor.web3.PublicKey.findProgramAddress(
@@ -361,7 +361,7 @@ const [globalLevel1GameDataAccount, bump] =
 
 Next, let’s try to fetch the game data account using the PDA from the previous step. If the account doesn't exist, we'll create it by invoking the `initialize` instruction from our program.
 
-```rust
+```js
 let txHash;
 let gameDateAccount;
 try {
@@ -389,7 +389,7 @@ try {
 
 Now we are ready to interact with the game by moving left or right. This is done by invoking the `moveLeft` or `moveRight` instructions from the program and submitting a transaction to the Solana network. You can repeat this step as many times as you'd like.
 
-```rust
+```js
 // Here you can play around now, move left and right
 txHash = await pg.program.methods
   //.moveLeft()
@@ -411,7 +411,7 @@ console.log("Player position is:", gameDateAccount.playerPosition.toString());
 
 Lastly, let’s use a `switch` statement to log the character's position based on the `playerPosition` value stored in the `gameDateAccount`. We’ll use this as a visual representation of the character's movement in the game.
 
-```rust
+```js
 switch (gameDateAccount.playerPosition) {
   case 0:
     console.log("A journey begins...");
