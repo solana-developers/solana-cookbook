@@ -39,24 +39,18 @@ footer: MIT Licensed
 
 # Intro into gaming on Solana
 
-The gaming space in the Solana ecosystem is growing. 
-Integrating with Solana can provide many benefits for games, including:
-- Allowing players to own and trade their assets via [Nfts in games](./nfts-in-games)
-- Build a real in-game economy
-- Create composable game programs
-- Let players compete for valuable assets 
+The gaming space in the Solana ecosystem is expanding rapidly. Integrating with Solana can provide numerous benefits for games, such as enabling players to own and trade their assets via NFTs in games, building a real in-game economy, creating composable game programs, and allowing players to compete for valuable assets.
 
-Solana is built for games and with its 400ms block time and incredible fast confirmations it can be thought of as a realtime database, free for all, which you can built your game on. 
-Perfect genres are strategy games, city builders, any round based game and many more. 
+Solana is purpose-built for games, with its 400ms block time and lightning-fast confirmations making it a real-time database that's free for all. It's perfect for genres like strategy games, city builders, round-based games, and more.
 
-But you don't need to put everything on chain, easy integrations can also be done with a smaller integration using NFTs that represent game items for example.
+However, not everything needs to be put on the blockchain. Smaller integrations using NFTs that represent game items, for example, can be easily done. Transaction fees are extremely cheap, and there are many tools and SDKs available to start building today. You can build your game in [Javascript](https://docs.solana.com/de/developing/clients/javascript-api) and Canvas, [Flutter](https://github.com/espresso-cash/espresso-cash-public), or use one of the Solana Game SDKs for the two biggest game engines - [UnitySDK](./gaming/game-sdks), [UnrealSDK](https://github.com/staratlasmeta/FoundationKit), and more [Game SDKs](./gaming/game-sdks).
 
-The fees for transactions are extremely cheap, and many tools and SDKs available to start building today. You can build your game in [Javascript](https://docs.solana.com/de/developing/clients/javascript-api) and Canvas, [Flutter](https://github.com/espresso-cash/espresso-cash-public), or use one of the Solana Game SDKs for the two biggest game engines, [UnitySDK](./versioned-transactions.md), [UnrealSDK](https://github.com/staratlasmeta/FoundationKit) and more [Game SDKs](./gaming/game-sdks).
+There are several ways to integrate Solana into your game:
 
-There are multiple ways to integrate Solana into your game:
-
-1. Give players NFTs for in game items or use them as characters. [Nfts in games](./nfts-in-games)
-2. Use Sol- or an SPL-token for in-app purchases or micro payments in the game. See [Monetization](./monetization) <br/>  and [Interact with tokens](./interact-with-tokens)
+1. Give players NFTs for in game items or use them as characters. Check out [Nfts in games](./nfts-in-games)
+2. Use Sol or an SPL token for in-app purchases or micro-payments in the game. See [Monetization](./monetization) <br/>  and [Interact with tokens](./interact-with-tokens)
 3. Use the player's wallet to authenticate them in the game. [Sign message](../references/keypairs-and-wallets.html#how-to-sign-and-verify-messages-with-wallets) 
 4. Run tournaments and pay out crypto rewards to our players. 
-5. Develop the game completely on-chain to be able to reward your players in every step they take. [Hello world unity](./hello-world)
+5. Develop the game entirely on-chain to reward your players in every step they take. Start with [Hello world](./hello-world)
+
+With all these benefits, Solana is quickly becoming the go-to platform for game developers. Get started today!

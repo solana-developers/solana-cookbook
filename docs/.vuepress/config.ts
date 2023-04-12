@@ -99,6 +99,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                     "/gaming/partial-sign-in-backend.md",
                     "/gaming/solana-pay-sign-on-phone.md",
                     "/gaming/turn-based-game.md",
+                    "/gaming/porting-anchor-to-unity.md",
                     "/gaming/monetization.md",
                     "/gaming/distribution.md",
                     "/gaming/game-examples.md",
