@@ -55,6 +55,14 @@ Learn how to safe sol in a PDA seed vault and send it back to a player. Backend 
 [Live Version](https://solplay.de/TinyAdventureTwo/index.html)<br/>
 [Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventureTwo)<br/>
 
+
+## On chain match three with matchmaking
+
+A multiplayer match three game which uses NFT stats for the character stats in the game and has an interesting onchain matchmaking system.
+<br/>
+[Live Version](https://deezquest.vercel.app/)<br/>
+[Source](https://github.com/val-samonte/deezquest)<br/>
+
 ## Use Solana Pay Qr codes to control a game
 
 Tug of war
@@ -64,14 +72,6 @@ A multiplayer game where an account is changed via Solana Pay qr codes which can
 [Example](https://tug-of-war.vercel.app/)<br/>
 [Source](https://github.com/Woody4618/workshops_fork/tree/main/workshops/tug-of-war)<br/>
 
-## Saving Game State
-
-SolHunter
-
-Realtime Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.
-<br/>
-[Example](https://solplay.de/SolHunter/index.html)<br/>
-[Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter)<br/>
 
 ## Hide game state from other players
 
@@ -109,15 +109,6 @@ A game where collectively people vote on moves in a game boy game. Every move is
 [Live Version](https://solana.playspokemon.xyz/)<br/>
 [Source](https://github.com/nelsontky/web3-plays-pokemon)<br/>
 
-
-## On chain matchmaking
-
-A multiplayer match three game which uses NFT stats for the character stats in the game and has an interesting onchain matchmaking system.
-<br/>
-[Live Version](https://deezquest.vercel.app/)<br/>
-[Source](https://github.com/val-samonte/deezquest)<br/>
-
-
 ## Entity component system example
 
 Kyoudai Clash is an on chain realtime 
@@ -134,4 +125,11 @@ Lumia online was a hackthon submission and is a nice reference for a little adve
 [xNFT Version](https://www.xnft.gg/app/D2i3cz9juUPLwbpi8rV2XvAnB5nEe3f8fM5YUpgVprbT)<br/>
 [Source](https://github.com/spacemandev-git/dominari-arc)<br/>
 
-  
+## Realtime pvp on chain game
+
+SolHunter
+
+Realtime Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.
+<br/>
+[Example](https://solplay.de/SolHunter/index.html)<br/>
+[Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter)<br/>

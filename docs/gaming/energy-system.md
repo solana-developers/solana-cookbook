@@ -39,13 +39,17 @@ footer: MIT Licensed
 
 # Energy System  
 
-Many casual games in traditional gaming use energy systems. This is how you can build it on chain.
-Recommended to start with the [Hello World Example](../guides/hello-world). 
+Many casual games in traditional gaming use energy systems. Meaning that actions in the game cost energy which refills over time. This is how you can build it on chain.
+Recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge. 
+
+Here is a complete example source code based on the Solana dapp scaffold with a react client: 
+[Source](https://github.com/Woody4618/solumberjack)<br/>
+
 
 ## Anchor program 
 
 Here we will build a program which refills energy over time which the player can then use to perform actions in the game. 
-In our example it will be a lumber jack which chops trees. Every tree will reward on wood and cost one energy. 
+In our example it will be a lumber jack which chops trees. Every tree will reward one wood and cost one energy. 
 
 ### Creating the player account
 
@@ -110,7 +114,7 @@ Then whenever the player calls the chop_tree instruction we will check if the pl
 
         ctx.accounts.player.wood = ctx.accounts.player.wood + 1;
         ctx.accounts.player.energy = ctx.accounts.player.energy - 1;
-        msg!("You chopped a tree and got 1 log. You have {} wood and {} energy left.", ctx.accounts.player.wood, ctx.accounts.player.energy);
+        msg!("You chopped a tree and got 1 wood. You have {} wood and {} energy left.", ctx.accounts.player.wood, ctx.accounts.player.energy);
         Ok(())
     }
 ```
@@ -150,14 +154,61 @@ pub fn update_energy(ctx: &mut ChopTree) -> Result<()> {
 
 ## Js client 
 
+Here is a complete example based on the Solana dapp scaffold with a react client: 
+[Source](https://github.com/Woody4618/solumberjack)<br/>
+
+### Create connection
+
+In the Anchor.ts file we create a connection: 
+
+```js 
+export const connection = new Connection(
+    "https://api.devnet.solana.com",
+    "confirmed"
+);
+```
+
+Notice that the confirmation parameter is set toe confirmed. This means that we wait until the transaction are confirmed instead of finalized. This means that we wait until the super majority of the network said that the transaction is valid. This takes around 400ms and there was never a confirmed transaction which did not get finalized. So for games this is the perfect confirmation flag.
+
+### Initialize player data 
+
+First thing we do is find the program address for the player account using the seed string "player" and the players public key. Then we call initPlayer to create the account.
+
+```js
+const [pda] = PublicKey.findProgramAddressSync(
+  [Buffer.from("player", "utf8"), publicKey.toBuffer()],
+  new PublicKey(LUMBERJACK_PROGRAM_ID)
+);
+
+const transaction = program.methods
+  .initPlayer()
+  .accounts({
+    player: pda,
+    signer: publicKey,
+    systemProgram: SystemProgram.programId,
+  })
+  .transaction();
+
+const tx = await transaction;
+const txSig = await sendTransaction(tx, connection, {
+  skipPreflight: true,
+});
+
+await connection.confirmTransaction(txSig, "confirmed");
+
+```
+
 ### Subscribe to account updates
+
+Here you can see how to get account data in the js client and how to subscribe to an account. "connection.onAccountChange" creates a socket connection to the RPC node which will push any changes that happen to the account to the client. 
+This is way faster than fetching new account data after every change. 
+We can then use the "program.coder" to decode the account data into the TS types and directly use it in the game.
 
 ```js
 useEffect(() => {
     if (!publicKey) {return;}
     const [pda] = PublicKey.findProgramAddressSync(
-        [Buffer.from("player", "utf8"), 
-        publicKey.toBuffer()],
+        [Buffer.from("player", "utf8"), publicKey.toBuffer()],
         new PublicKey(LUMBERJACK_PROGRAM_ID)
       );
     try {
@@ -175,15 +226,15 @@ useEffect(() => {
   }, [publicKey]);
 ```
 
-### Calculate energy and show countdown
+### Calculate energy and show count down
 
-In the java script client we can then perform the same logic and show a countdown timer for the player so that he knows when the next energy will be available:
+In the java script client we can then perform the same logic as in the program to precalculate how much energy the player would have at this point in time and show a countdown timer for the player so that he knows when the next energy will be available:
 
 ```js
 useEffect(() => {
     const interval = setInterval(async () => {
         if (gameState == null || gameState.lastLogin == undefined || gameState.energy >= 10) {return;}
-        const lastLoginTime=gameState.lastLogin * 1000;
+        const lastLoginTime = gameState.lastLogin * 1000;
         let timePassed = ((Date.now() - lastLoginTime) / 1000);
         while (timePassed > TIME_TO_REFILL_ENERGY && gameState.energy < MAX_ENERGY) {
             gameState.energy = (parseInt(gameState.energy) + 1);
@@ -191,7 +242,7 @@ useEffect(() => {
             timePassed -= TIME_TO_REFILL_ENERGY;
         }
         setTimePassed(timePassed);
-        let nextEnergyIn = Math.floor(TIME_TO_REFILL_ENERGY -timePassed);
+        let nextEnergyIn = Math.floor(TIME_TO_REFILL_ENERGY - timePassed);
         if (nextEnergyIn < TIME_TO_REFILL_ENERGY && nextEnergyIn > 0) {
             setEnergyNextIn(nextEnergyIn);
         } else {
@@ -209,11 +260,8 @@ useEffect(() => {
     {("Wood: " + gameState.wood + " Energy: " + gameState.energy + " Next energy in: " + nextEnergyIn )}
 </div>)} 
 
-  ```
+```
 
 With this you can now build any energy based game and even if someone builds a bot for the game the most he can do is play optimally, which maybe even easier to achieve when playing normally depending on the logic of your game.
 
-This game becomes even better when combined with the [Token example](../guides/interact-with-tokens) and you actually drop some spl token to the players. 
-
-Here is a complete example based on the solana dapp scaffold: 
-[Source](https://github.com/Woody4618/solumberjack)<br/>
+This game becomes even better when combined with the [Token example](../gaming/interact-with-tokens) and you actually drop some spl token to the players. 
