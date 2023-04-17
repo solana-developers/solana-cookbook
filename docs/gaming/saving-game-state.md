@@ -44,7 +44,6 @@ We can for example create a PlayerData account and use the players public key as
 This can be done in a program like this: 
 
 ```rust
-
 pub fn init_player(ctx: Context<InitPlayer>) -> Result<()> {
     ctx.accounts.player.energy = MAX_ENERGY;
     ctx.accounts.player.health = MAX_HEALTH;
@@ -133,7 +132,8 @@ try {
   await connection.confirmTransaction(txSig, "confirmed");
 ```
 
-
+How to actually build this energy system you can learn here: 
+[Building an Energy system](../guides/energy-system)
 
 
 

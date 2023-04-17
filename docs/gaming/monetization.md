@@ -99,7 +99,7 @@ and then let people buy it with Sol [Pay out sol](./store-sol-in-pda)
 Running Tournaments: Entry fee for example is 0.1 Sol and then 95% of all intake can be payed out to the winners and 5% to you running the service. This can be achieved for example by storing the rewards in a PDA in a program [Store sol in PDA](./store-sol-in-pda) and then have an instruction to join the tournament, which will transfer sol in a chest vault and adds the player into a list. Then when the tournament is over all the rewards can be payed out to the winners on that list depending on their ranking. 
 
 ## Energy System
-Many casual mobile games use an energy system to limit the play time of the players and the energy refills over time and can also be refilled for premium purchases. This energy system can be build as a program. [Energy System](./interact-with-tokens)
+Many casual mobile games use an energy system to limit the play time of the players and the energy refills over time and can also be refilled for premium purchases. This energy system can be build as a program. You can build and energy system like this for example: [Energy System](./energy-system) and combine it with SPL tokens [Token Example](./interact-with-tokens) to reward players for actions in the game.
 
 ## Pay to earn
 In general for a sustainable business model and tokenomics think of player trading time for value and then there will always be “low time-high money” players which take the other side of the trade and invest money to progress faster and save time. With this mindset you can build a sustainable pay to earn game where “low time-high money” players pay for “low money-high time” players and you will be able to take a cut to provide the service.

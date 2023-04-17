@@ -41,7 +41,7 @@ footer: MIT Licensed
 
 Distribution of your game depends highly on the platform you are using of course. With Solana game SDKs you can build for IOS, Android, Web and Native Windows or Mac. Using the Unity SDK you could even connect Nintendo Switch or XBox to Solana theoretically. Many game companies are pivoting to a mobile first approach because there are so many people with mobile phones in the world. Mobile comes with its own complications though, so you should pick what fits best to your game.  
 
-A unique advantage that Solana has compared to other blockchains, is that Solana is selling a crypto native mobile phone called "Saga" which comes with a new innovative dApps store which allows you to distribute crypto games without the restrictions on traditional app stores from for examples Google or Apple. 
+A unique advantage that Solana has compared to other blockchains, is that Solana is selling a crypto native mobile phone called [Saga](https://solanamobile.com/) which comes with a new innovative dApps store which allows you to distribute crypto games without the restrictions on traditional app stores from for examples Google or Apple. 
 
 ## Publishing Platforms
 

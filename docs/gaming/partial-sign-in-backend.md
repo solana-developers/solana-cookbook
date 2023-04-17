@@ -1,5 +1,5 @@
 ---
-title: Partial sign in the backend
+title: How to sign a transaction in the backend
 head:
   - - meta
     - name: title

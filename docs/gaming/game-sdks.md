@@ -49,11 +49,10 @@ The Solana Unity SDK is based on a Solnet fork and the Solanart SDK and maintain
 ### Unreal SDK
 
 Unreal engine is known for its great visuals and node based scripting framework. 
-The Solana sdk was originally build by the team of Star Atlas. Bitfrost built a newer SDK as a hackathon project.
+The Solana sdk was originally build by the team of Star Atlas.
 
 [Star Atlas Unreal SDK](https://github.com/staratlasmeta/FoundationKit)<br />
 [Tutorial](https://www.youtube.com/watch?v=S8fm8mFeUkk)<br />
-[Bifrost Unreal SDK](https://github.com/Bifrost-Technologies/Solana-UnrealEngine5-SDK)<br />
 
 ### Flutter
 

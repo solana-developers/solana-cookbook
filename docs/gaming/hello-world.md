@@ -448,7 +448,7 @@ Congratulations! You have successfully built, deployed, and invoked the Tiny Adv
 With the basic game complete, unleash your creativity and practice building independently by implementing your own ideas to enrich the game experience. Here are a few suggestions:
 
 1. Modify the in-game texts to create an intriguing story. Invite a friend to play through your custom narrative and observe the on-chain transactions as they unfold!
-2. Add a chest that rewards players with SOL (Example: storing SOL in a PDA) or let the player collect coins (Example: using tokens) as they progress through the game.
+2. Add a chest that rewards players with [Sol Rewards](./store-sol-in-pda) or let the player collect coins [Interact with tokens](./interact-with-tokens) as they progress through the game.
 3. Create a grid that allows the player to move up, down, left, and right, and introduce multiple players for a more dynamic experience.
 
-In the next installment, Tiny Adventure Two, we'll learn how to store SOL in the program and distribute it to players as rewards.
+In the next installment, [Tiny Adventure Two](./store-sol-in-pda), we'll learn how to store SOL in the program and distribute it to players as rewards.
