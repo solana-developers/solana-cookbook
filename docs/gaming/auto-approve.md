@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# How to auto approve transaction for fast game play
+# How to auto approve transaction for fast game play and great ux
 
 To have a fluid game play for on-chain games it is beneficial to have an auto approve wallet. 
 
@@ -53,3 +53,7 @@ To have a fluid game play for on-chain games it is beneficial to have an auto ap
 3. You can pay the fees yourself, by creating and signing the transactions in the backend and interact with it via an API. See 
 <a href="partial-sign-in-backend">Partial sign in Backend section </a> 
 just instead of partial sign you sign the whole transaction and send a confirmation to the client as soon as it is done. 
+
+4. There is a protocol called @gumisfunn and they released a feature called session keys. Session Keys are ephemeral keys with fine-grained program/instruction scoping for tiered access in your @solana programs.
+They allow users to interact with apps under particular parameters like duration, max tokens, amount of posts or any other function specific to an app.
+[Link](https://twitter.com/gumisfunn/status/1642898237395972097?s=20)

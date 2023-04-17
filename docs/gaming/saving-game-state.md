@@ -133,7 +133,7 @@ try {
 ```
 
 How to actually build this energy system you can learn here: 
-[Building an Energy system](../guides/energy-system)
+[Building an Energy system](../gaming/energy-system)
 
 
 

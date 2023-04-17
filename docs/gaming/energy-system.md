@@ -152,7 +152,7 @@ pub fn update_energy(ctx: &mut ChopTree) -> Result<()> {
 }
 ```
 
-## Js client 
+## Js client
 
 Here is a complete example based on the Solana dapp scaffold with a react client: 
 [Source](https://github.com/Woody4618/solumberjack)<br/>
@@ -168,7 +168,7 @@ export const connection = new Connection(
 );
 ```
 
-Notice that the confirmation parameter is set toe confirmed. This means that we wait until the transaction are confirmed instead of finalized. This means that we wait until the super majority of the network said that the transaction is valid. This takes around 400ms and there was never a confirmed transaction which did not get finalized. So for games this is the perfect confirmation flag.
+Notice that the confirmation parameter is set to 'confirmed'. This means that we wait until the transactions are confirmed instead of finalized. This means that we wait until the super majority of the network said that the transaction is valid. This takes around 400ms and there was never a confirmed transaction which did not get finalized. So for games this is the perfect confirmation flag.
 
 ### Initialize player data 
 
