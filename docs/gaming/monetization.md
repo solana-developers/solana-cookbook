@@ -41,14 +41,14 @@ footer: MIT Licensed
 
 Building a game on Solana opens up a lot of interesting monetization options for games.
 
-## Selling NFTs 
-You can sell NFTs to raise raise money. It is basically like crowd sourcing the development of your game. If the game becomes successful the value of the NFTs will likely also go up. For that you first need to create an NFT collection. 
+## Selling NFTs
+You can sell NFTs to raise raise money. It is basically like crowd sourcing the development of your game. If the game becomes successful the value of the NFTs will likely also go up. For that you first need to create an NFT collection.
 [Metaplex Docs](https://docs.metaplex.com/)<br />
 [Setup a candy machine step by step](https://youtu.be/0KHv1dMV8zU)<br />
-Then you can list the collection on one of the many Nft market places on Solana. 
+Then you can list the collection on one of the many Nft market places on Solana.
 
 ## Royalty fees
-NFTs on Solana can define a resell fee for NFTs which most market places read and use. This means that on every NFT sell on a secondary market place you will get a cut of the selling price. This can be a constant income stream if the NFTs are traded a lot.
+NFTs on Solana can define a resell fee for NFTs which most market places read and use. This means that on every NFT sell on a secondary market place you will get a percentage of the selling price. This can be a constant income stream if the NFTs are traded a lot.
 This is how it would look like if the NFT defines a 4.2% resell fee which is split between creator 1 and 2.
 
 ```js
@@ -96,16 +96,16 @@ You can for example deposit you in game currency token into progam account [Stor
 and then let people buy it with Sol [Pay out sol](./store-sol-in-pda)
 
 ## Tournaments
-Running Tournaments: Entry fee for example is 0.1 Sol and then 95% of all intake can be payed out to the winners and 5% to you running the service. This can be achieved for example by storing the rewards in a PDA in a program [Store sol in PDA](./store-sol-in-pda) and then have an instruction to join the tournament, which will transfer sol in a chest vault and adds the player into a list. Then when the tournament is over all the rewards can be payed out to the winners on that list depending on their ranking. 
+Running Tournaments: Entry fee for example is 0.1 Sol and then 95% of all intake can be payed out to the winners and 5% to you running the service. This can be achieved for example by storing the rewards in a PDA in a program [Store sol in PDA](./store-sol-in-pda) and then have an instruction to join the tournament, which will transfer sol in a chest vault and adds the player into a list. Then when the tournament is over all the rewards can be payed out to the winners on that list depending on their ranking.
 
 ## Energy System
 Many casual mobile games use an energy system to limit the play time of the players and the energy refills over time and can also be refilled for premium purchases. This energy system can be build as a program. You can build and energy system like this for example: [Energy System](./energy-system) and combine it with SPL tokens [Token Example](./interact-with-tokens) to reward players for actions in the game.
 
 ## Pay to earn
-In general for a sustainable business model and tokenomics think of player trading time for value and then there will always be “low time-high money” players which take the other side of the trade and invest money to progress faster and save time. With this mindset you can build a sustainable pay to earn game where “low time-high money” players pay for “low money-high time” players and you will be able to take a cut to provide the service.
+Generally, to establish a sustainable business model and tokenomics for a pay-to-earn game, consider the trade-off between players' time and value. There will often be players who have more resources and less time, willing to invest in progressing faster and saving time. Conversely, there will be players with more time and less resources, willing to spend more time in the game. By understanding this dynamic, you can create a sustainable pay-to-earn gaming ecosystem where players with more resources essentially fund the experience for those with less, while you, as the service provider, receive a portion of the proceeds.
 
 ## Merch
-Create a brand and sell merch. The merch could be bought with Sol or SPL Tokens. And maybe players could slowly grind these tokens, so that very engaged players can also get rewarded. 
+Create a brand and sell merch. The merch could be bought with Sol or SPL Tokens. And maybe players could slowly grind these tokens, so that very engaged players can also get rewarded.
 
 ## Ads
 You could also include ads into the game. The rewards from the ads could then be used to pay for transactions fees or to give out in game tokens.

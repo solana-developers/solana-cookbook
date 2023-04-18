@@ -37,24 +37,24 @@ head:
 footer: MIT Licensed
 ---
 
-# Energy System  
+# Energy System
 
 Many casual games in traditional gaming use energy systems. Meaning that actions in the game cost energy which refills over time. This is how you can build it on chain.
-Recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge. 
+Recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge.
 
-Here is a complete example source code based on the Solana dapp scaffold with a react client: 
+Here is a complete example source code based on the Solana dapp scaffold with a react client:
 [Source](https://github.com/Woody4618/solumberjack)<br/>
 
 
-## Anchor program 
+## Anchor program
 
-Here we will build a program which refills energy over time which the player can then use to perform actions in the game. 
-In our example it will be a lumber jack which chops trees. Every tree will reward one wood and cost one energy. 
+Here we will build a program which refills energy over time which the player can then use to perform actions in the game.
+In our example it will be a lumber jack which chops trees. Every tree will reward one wood and cost one energy.
 
 ### Creating the player account
 
-First the player needs to create an account which saves the state of our player. Notice the last_login time which will save the current unix time stamp of the player he interacts with the program. 
-Like this we will be able to calculate how much energy the player has at a certain point in time.  
+First the player needs to create an account which saves the state of our player. Notice the last_login time which will save the current unix time stamp of the player he interacts with the program.
+Like this we will be able to calculate how much energy the player has at a certain point in time.
 We also have a value for wood which will store the wood the lumber jack chucks in the game.
 
 ```rust
@@ -69,8 +69,8 @@ pub fn init_player(ctx: Context<InitPlayer>) -> Result<()> {
 
 #[derive(Accounts)]
 pub struct InitPlayer <'info> {
-    #[account( 
-        init, 
+    #[account(
+        init,
         payer = signer,
         space = 1000,
         seeds = [b"player".as_ref(), signer.key().as_ref()],
@@ -95,7 +95,7 @@ pub struct PlayerData {
 
 ### Choping trees
 
-Then whenever the player calls the chop_tree instruction we will check if the player has enough energy and reward him with one wood. 
+Then whenever the player calls the chop_tree instruction we will check if the player has enough energy and reward him with one wood.
 
 ```rust
     #[error_code]
@@ -121,9 +121,9 @@ Then whenever the player calls the chop_tree instruction we will check if the pl
 
 ### Calculating the energy
 
-The interesting part happens in the update_energy function. We check how much time has passed and calculate the energy that the player will have at the given time. 
-The same thing we will also do in the client. So we basically lazily update the energy instead of polling it all the time. 
-The is a common technic in game development. 
+The interesting part happens in the update_energy function. We check how much time has passed and calculate the energy that the player will have at the given time.
+The same thing we will also do in the client. So we basically lazily update the energy instead of polling it all the time.
+The is a common technique in game development.
 
 ```rust
 
@@ -154,14 +154,14 @@ pub fn update_energy(ctx: &mut ChopTree) -> Result<()> {
 
 ## Js client
 
-Here is a complete example based on the Solana dapp scaffold with a react client: 
+Here is a complete example based on the Solana dapp scaffold with a react client:
 [Source](https://github.com/Woody4618/solumberjack)<br/>
 
 ### Create connection
 
-In the Anchor.ts file we create a connection: 
+In the Anchor.ts file we create a connection:
 
-```js 
+```js
 export const connection = new Connection(
     "https://api.devnet.solana.com",
     "confirmed"
@@ -170,7 +170,7 @@ export const connection = new Connection(
 
 Notice that the confirmation parameter is set to 'confirmed'. This means that we wait until the transactions are confirmed instead of finalized. This means that we wait until the super majority of the network said that the transaction is valid. This takes around 400ms and there was never a confirmed transaction which did not get finalized. So for games this is the perfect confirmation flag.
 
-### Initialize player data 
+### Initialize player data
 
 First thing we do is find the program address for the player account using the seed string "player" and the players public key. Then we call initPlayer to create the account.
 
@@ -200,8 +200,8 @@ await connection.confirmTransaction(txSig, "confirmed");
 
 ### Subscribe to account updates
 
-Here you can see how to get account data in the js client and how to subscribe to an account. "connection.onAccountChange" creates a socket connection to the RPC node which will push any changes that happen to the account to the client. 
-This is way faster than fetching new account data after every change. 
+Here you can see how to get account data in the js client and how to subscribe to an account. "connection.onAccountChange" creates a socket connection to the RPC node which will push any changes that happen to the account to the client.
+This is way faster than fetching new account data after every change.
 We can then use the "program.coder" to decode the account data into the TS types and directly use it in the game.
 
 ```js
@@ -218,7 +218,7 @@ useEffect(() => {
     } catch (e) {
       window.alert("No player data found, please init!");
     }
- 
+
     connection.onAccountChange(pda, (account) => {
         setGameState(program.coder.accounts.decode("playerData", account.data));
     });
@@ -228,7 +228,7 @@ useEffect(() => {
 
 ### Calculate energy and show count down
 
-In the java script client we can then perform the same logic as in the program to precalculate how much energy the player would have at this point in time and show a countdown timer for the player so that he knows when the next energy will be available:
+In the javascript client we can then perform the same logic as in the program to precalculate how much energy the player would have at this point in time and show a countdown timer for the player so that he knows when the next energy will be available:
 
 ```js
 useEffect(() => {
@@ -258,10 +258,10 @@ useEffect(() => {
 
 {(gameState && <div className="flex flex-col items-center">
     {("Wood: " + gameState.wood + " Energy: " + gameState.energy + " Next energy in: " + nextEnergyIn )}
-</div>)} 
+</div>)}
 
 ```
 
 With this you can now build any energy based game and even if someone builds a bot for the game the most he can do is play optimally, which maybe even easier to achieve when playing normally depending on the logic of your game.
 
-This game becomes even better when combined with the [Token example](../gaming/interact-with-tokens) and you actually drop some spl token to the players. 
+This game becomes even better when combined with the [Token example](../gaming/interact-with-tokens) and you actually drop some spl token to the players.
