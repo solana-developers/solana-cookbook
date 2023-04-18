@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Porting a program to Unity
 
-When you have written a solana program you now maybe want to use it in the Unity Game engine. Fortunately there is a code generator which lets you port a anchor idl (A json representation of a solana program) to C# 
+When you have written a solana program you now maybe want to use it in the Unity Game engine. Fortunately there is a code generator which lets you port a anchor idl (a json representation of a solana program) to C#
 
 ## Generating the Client
 

@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # Control a game via solana pay qr codes
 
-Solana Pay is a very nice system which lets you create Qr codes that people can scan and sign any transaction on their phones. 
+Solana Pay is a very nice system which lets you create Qr codes that people can scan and sign any transaction on their phones.
 This can also be used for games.
 
 Tug of war game live Version.
@@ -51,7 +51,7 @@ Video live stream:
 <iframe width="320" height="200" src="https://www.youtube.com/embed/_XBvEHwSqJc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-When the Player scans a Solana Pay Qr code the Wallet does a get request to your API to get a description and an Icon: 
+When the Player scans a Solana Pay Qr code the Wallet does a get request to your API to get a description and an Icon:
 
 ```js
 const get = async (req: NextApiRequest, res: NextApiResponse<GET>) => {
@@ -66,7 +66,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse<GET>) => {
 };
 ```
 
-Then the wallet does a post request to get the transaction that you want to sign. 
+Then the wallet does a post request to get the transaction that you want to sign.
 
 ```js
 type POST = {
@@ -90,7 +90,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse<POST>) => {
 
     let message;
 
-    // Here you can use instructionField to switch different instructions 
+    // Here you can use instructionField to switch different instructions
 
     transaction.add(new TransactionInstruction({
         keys: [
@@ -115,7 +115,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse<POST>) => {
 };
 ```
 
-In the client you then create a QR code with the URL to the next js api.
+In the client you then create a QR code with the URL to the Nextjs api.
 For that you need the npm package: [@solana/pay](https://www.npmjs.com/package/@solana/pay)
 
 ```js
