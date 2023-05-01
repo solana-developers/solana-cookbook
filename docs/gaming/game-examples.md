@@ -12,7 +12,7 @@ head:
       content: A list of open source games on Solana with tutorials to get you started.
   - - meta
     - name: og:description
-      content: A list of open source games with tutorials to get you started.
+      content: A list of open source games on Solana with tutorials to get you started.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
