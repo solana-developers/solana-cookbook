@@ -12,7 +12,7 @@ head:
       content: A list of SDKs that you can use to develope games on Solana 
   - - meta
     - name: og:description
-      content: A list of SDKs that you can use to develope games on Solana 
+      content: A list of SDKs that you can use to develop games on Solana 
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
