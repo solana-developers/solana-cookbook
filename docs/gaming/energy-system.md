@@ -6,7 +6,7 @@ head:
       content: Solana Cookbook | Energy System
   - - meta
     - name: og:title
-      content: Solana Cookbook | Energy System
+      content: Solana Cookbook | Energy System in Solana Games
   - - meta
     - name: description
       content: Build Energy Systems for Casual Games on Solana with these Easy Steps
