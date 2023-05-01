@@ -125,7 +125,7 @@ Lumia online was a hackthon submission and is a nice reference for a little adve
 [xNFT Version](https://www.xnft.gg/app/D2i3cz9juUPLwbpi8rV2XvAnB5nEe3f8fM5YUpgVprbT)<br/>
 [Source](https://github.com/spacemandev-git/dominari-arc)<br/>
 
-## Realtime pvp on chain game
+## Real-time pvp on chain game
 
 SolHunter
 
