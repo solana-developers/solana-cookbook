@@ -172,7 +172,7 @@ Notice that the confirmation parameter is set to 'confirmed'. This means that we
 
 ### Initialize player data
 
-First thing we do is find the program address for the player account using the seed string "player" and the players public key. Then we call initPlayer to create the account.
+First thing we do is find the program address for the player account using the seed string `player`and the player's public key. Then we call `initPlayer` to create the account.
 
 ```js
 const [pda] = PublicKey.findProgramAddressSync(
