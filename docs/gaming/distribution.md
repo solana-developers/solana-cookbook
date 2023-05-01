@@ -9,7 +9,7 @@ head:
       content: Solana Cookbook | Game Distribution
   - - meta
     - name: description
-      content: Different options on how to distribute your game built on Solana
+      content: How to do game distribution on Solana
   - - meta
     - name: og:description
       content: Different options on how to distribute your game built on Solana
