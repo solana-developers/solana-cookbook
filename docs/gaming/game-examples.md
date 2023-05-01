@@ -3,7 +3,7 @@ title: Learn By Example
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Learn By Example
+      content: Solana Cookbook | Learn How to Build Solana Games By Example
   - - meta
     - name: og:title
       content: Solana Cookbook | Learn How to Build Solana Games By Example
