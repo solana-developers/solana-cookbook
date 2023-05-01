@@ -6,7 +6,7 @@ head:
       content: Solana Cookbook | Energy System
   - - meta
     - name: og:title
-      content: Solana Cookbook | Energy System
+      content: Solana Cookbook | Energy System in Solana Games
   - - meta
     - name: description
       content: Many casual games in traditional gaming use energy systems. This is how you can build it on chain.
