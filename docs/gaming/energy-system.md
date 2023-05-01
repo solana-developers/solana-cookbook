@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Energy System
   - - meta
     - name: description
-      content: Many casual games in traditional gaming use energy systems. This is how you can build it on chain.
+      content: Build Energy Systems for Casual Games on Solana with these Easy Steps
   - - meta
     - name: og:description
-      content: Many casual games in traditional gaming use energy systems. This is how you can build it on chain.
+      content: Build Energy Systems for Casual Games on Solana with these Easy Steps
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,8 +39,8 @@ footer: MIT Licensed
 
 # Energy System
 
-Many casual games in traditional gaming use energy systems. Meaning that actions in the game cost energy which refills over time. This is how you can build it on chain.
-Recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge.
+Casual games commonly use energy systems, meaning that actions in the game cost energy which refills over time. In this guide we will walk through how to build one on Solana.
+It is recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge.
 
 Here is a complete example source code based on the Solana dapp scaffold with a react client:
 [Source](https://github.com/Woody4618/solumberjack)<br/>
@@ -48,14 +48,14 @@ Here is a complete example source code based on the Solana dapp scaffold with a 
 
 ## Anchor program
 
-Here we will build a program which refills energy over time which the player can then use to perform actions in the game.
-In our example it will be a lumber jack which chops trees. Every tree will reward one wood and cost one energy.
+In this tutorial, we will guide you through the process of creating a program that gradually replenishes the player's energy reserves over time. This, in turn, will enable them to execute various actions within the game.
+In our example, a lumber jack will chops trees with every tree rewarding one wood and cost one energy.
 
 ### Creating the player account
 
-First the player needs to create an account which saves the state of our player. Notice the last_login time which will save the current unix time stamp of the player he interacts with the program.
-Like this we will be able to calculate how much energy the player has at a certain point in time.
-We also have a value for wood which will store the wood the lumber jack chucks in the game.
+First the player needs to create an account which saves the state of our player. Notice the last_login time saves the current unix time stamp of the player he interacts with the program.
+With this state, we will be able to calculate how much energy the player has at a certain point in time.
+We also have a value for how much wood the lumber jack chucks in the game.
 
 ```rust
 
@@ -200,7 +200,7 @@ await connection.confirmTransaction(txSig, "confirmed");
 
 ### Subscribe to account updates
 
-Here you can see how to get account data in the js client and how to subscribe to an account. "connection.onAccountChange" creates a socket connection to the RPC node which will push any changes that happen to the account to the client.
+Here you can see how to get account data in the js client and how to subscribe to an account. `connection.onAccountChange` creates a socket connection to the RPC node which will push any changes that happen to the account to the client.
 This is faster than fetching new account data after every change.
 We can then use the `program.coder` to decode the account data into the TS types and directly use it in the game.
 
