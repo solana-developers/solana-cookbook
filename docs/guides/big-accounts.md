@@ -10,7 +10,7 @@ Video Walkthrough:
 <iframe width="320" height="200" src="https://www.youtube.com/embed/zs_yU0IuJxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-[Zero Copy Example with tests](https://github.com/Woody4618/anchor-zero-copy-example)
+[Zero Copy Example with tests](https://github.com/solana-developers/anchor-zero-copy-example)
 
 ## Heap and stack size
 
@@ -158,6 +158,6 @@ Like this you can interact with the data of the account using copy_from_slice or
 ```
 
 Here is a game anchor program that uses Zero Copy for a game grid: <br/> 
-[Anchor Program](https://github.com/Woody4618/SolPlay_Unity_SDK/blob/main/Assets/SolPlay/Examples/SolHunter/AnchorProgram/src/state/game.rs) <br/>
+[Anchor Program](https://github.com/solana-developers/solana-game-starter-kits/tree/main/seven-seas) <br/>
 [Another Example using items](https://github.com/coral-xyz/anchor/issues/651)
 

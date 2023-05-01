@@ -43,7 +43,7 @@ Casual games commonly use energy systems, meaning that actions in the game cost 
 It is recommended to start with the [Hello World Example](../gaming/hello-world) if you do not have any prior Solana knowledge.
 
 Here is a complete example source code based on the Solana dapp scaffold with a react client:
-[Source](https://github.com/Woody4618/solumberjack)<br/>
+[Source](https://github.com/solana-developers/solana-game-starter-kits/tree/main/lumberjack)<br/>
 
 
 ## Anchor program
