@@ -6,7 +6,7 @@ head:
       content: Solana Cookbook | Learn By Example
   - - meta
     - name: og:title
-      content: Solana Cookbook | Learn By Example
+      content: Solana Cookbook | Learn How to Build Solana Games By Example
   - - meta
     - name: description
       content: A list of open source games with tutorials to get you started.
