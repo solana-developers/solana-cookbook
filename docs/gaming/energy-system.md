@@ -121,7 +121,7 @@ Then whenever the player calls the `chop_tree` instruction we will check if the 
 
 ### Calculating the energy
 
-The interesting part happens in the update_energy function. We check how much time has passed and calculate the energy that the player will have at the given time.
+The interesting part happens in the `update_energy` function. We check how much time has passed and calculate the energy that the player will have at the given time.
 The same thing we will also do in the client. So we basically lazily update the energy instead of polling it all the time.
 The is a common technique in game development.
 
