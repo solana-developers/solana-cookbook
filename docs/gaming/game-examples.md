@@ -56,7 +56,7 @@ Learn how to save sol in a PDA seed vault and send it back to a player. Backend 
 [Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventureTwo)<br/>
 
 
-## On chain match three with matchmaking
+## On chain matchmaking
 
 A multiplayer match three game which uses NFT stats for the character stats in the game and has an interesting onchain matchmaking system.
 <br/>
