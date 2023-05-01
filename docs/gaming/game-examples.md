@@ -50,7 +50,7 @@ A simple example moving a player left and right using Anchor framework and Unity
 
 ## Saving Sol in a PDA
 
-Learn how to safe sol in a PDA seed vault and send it back to a player. Backend is written in Anchor and the frontend is using the Unity SDK<br/>
+Learn how to save sol in a PDA seed vault and send it back to a player. Backend is written in Anchor and the frontend is using the Unity SDK<br/>
 [Video](https://www.youtube.com/watch?v=gILXyWvXu7M)<br/>
 [Live Version](https://solplay.de/TinyAdventureTwo/index.html)<br/>
 [Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/TinyAdventureTwo)<br/>
