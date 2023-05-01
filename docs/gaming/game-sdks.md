@@ -9,7 +9,7 @@ head:
       content: Solana Cookbook | Solana Gaming SDKs 
   - - meta
     - name: description
-      content: A list of SDKs that you can use to develope games on Solana 
+      content: A list of SDKs that you can use to develop games on Solana 
   - - meta
     - name: og:description
       content: A list of SDKs that you can use to develop games on Solana 
