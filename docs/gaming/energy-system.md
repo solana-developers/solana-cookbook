@@ -95,7 +95,7 @@ pub struct PlayerData {
 
 ### Choping trees
 
-Then whenever the player calls the chop_tree instruction we will check if the player has enough energy and reward him with one wood.
+Then whenever the player calls the `chop_tree` instruction we will check if the player has enough energy and reward him with one wood.
 
 ```rust
     #[error_code]
