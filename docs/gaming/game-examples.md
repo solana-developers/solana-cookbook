@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-## An unordered list of open source games as reference for learning
+# Open source Solana games to reference for learning
 
 ## Interact with Anchor Program from Unity
 
