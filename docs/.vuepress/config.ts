@@ -86,6 +86,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/references/name-service.md",
                 {
                   text: "Gaming",
+                  collapsible: true,
                   children: [
                     "/gaming/intro.md",
                     "/gaming/game-sdks.md",
