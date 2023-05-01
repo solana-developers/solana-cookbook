@@ -129,7 +129,7 @@ Lumia online was a hackthon submission and is a nice reference for a little adve
 
 SolHunter
 
-Realtime Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.
+Real-time Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket account subscription. Players can spawn their characters represented as one of their NFTs on a grid and move around. If a player hits another player or chest he collect its Sol. The grid is implemented as a two dimensional array where every tile saves the players wallet key and the NFT public key.
 <br/>
 [Example](https://solplay.de/SolHunter/index.html)<br/>
 [Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter)<br/>
