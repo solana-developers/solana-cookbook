@@ -12,7 +12,7 @@ head:
       content: How to do game distribution on Solana
   - - meta
     - name: og:description
-      content: Different options on how to distribute your game built on Solana
+      content: How to do game distribution on Solana
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
