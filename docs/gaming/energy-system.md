@@ -201,7 +201,7 @@ await connection.confirmTransaction(txSig, "confirmed");
 ### Subscribe to account updates
 
 Here you can see how to get account data in the js client and how to subscribe to an account. "connection.onAccountChange" creates a socket connection to the RPC node which will push any changes that happen to the account to the client.
-This is way faster than fetching new account data after every change.
+This is faster than fetching new account data after every change.
 We can then use the "program.coder" to decode the account data into the TS types and directly use it in the game.
 
 ```js
