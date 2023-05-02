@@ -1,5 +1,5 @@
 ---
-title: Storing Sol in a program
+title: Storing SOL in a PDA
 head:
   - - meta
     - name: title
