@@ -12,7 +12,7 @@ head:
       content: Using PDAs, you can reward SOL to players playing your game. Learn how to reward SOL from a PDA when players find chests in this game.
   - - meta
     - name: og:description
-      content: Show how to pay out SOL to the player from a chest vault
+      content: Using PDAs, you can reward SOL to players playing your game. Learn how to reward SOL from a PDA when players find chests in this game.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
