@@ -85,35 +85,35 @@ NFTs also have Metadata, which can be used for all kind of traits for game objec
 You can load NFT metadata and their attributes using the Metaplex SDK:
 
 ```js
-  import { Metaplex, keypairIdentity } from "@metaplex-foundation/js";
+import { Metaplex, keypairIdentity } from "@metaplex-foundation/js";
 
-    JSON.parse(
-      // For example '.config/solana/devnet.json'
-      fs.readFileSync("yourKeyPair.json").toString())
-    );
-    let keyPair = Keypair.fromSecretKey(decodedKey);
+JSON.parse(
+  // For example '.config/solana/devnet.json'
+  fs.readFileSync("yourKeyPair.json").toString())
+);
+let keyPair = Keypair.fromSecretKey(decodedKey);
 
-    const metaplex = Metaplex.make(connection).use(keypairIdentity(keyPair));
-    const nfts = await metaplex.nfts().findAllByOwner({owner: keyPair.publicKey});
+const metaplex = Metaplex.make(connection).use(keypairIdentity(keyPair));
+const nfts = await metaplex.nfts().findAllByOwner({owner: keyPair.publicKey});
 
-    const physicalDamage = 5;
-    const magicalDamage = 5;
+const physicalDamage = 5;
+const magicalDamage = 5;
 
-    nfts.forEach(async nft => {
-      const metaData = await metaplex.nfts().load({metadata: nft});
+nfts.forEach(async nft => {
+  const metaData = await metaplex.nfts().load({metadata: nft});
 
-        metaData.json.attributes.forEach(async attribute => {
-          if (attribute.trait_type == "Strength") {
-            physicalDamage += parseInt(attribute.value)
-          }
-          if (attribute.trait_type == "Int") {
-            magicalDamage += parseInt(attribute.value)
-          }
-        });
-    })
+    metaData.json.attributes.forEach(async attribute => {
+      if (attribute.trait_type == "Strength") {
+        physicalDamage += parseInt(attribute.value)
+      }
+      if (attribute.trait_type == "Int") {
+        magicalDamage += parseInt(attribute.value)
+      }
+    });
+})
 
-    console.log("Player Physical Damage: " + physicalDamage)
-    console.log("Player Magical Damage: " + magicalDamage)
+console.log("Player Physical Damage: " + physicalDamage)
+console.log("Player Magical Damage: " + magicalDamage)
 ````
 
 ## Have NFTs own other NFTs (Fusion)
