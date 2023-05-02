@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Storing SOL in a Program Account and Distributing Rewards to Players
+# Storing SOL in PDAs for Game Rewards
 
 Video Walkthrough:
 <div class="video-block">
