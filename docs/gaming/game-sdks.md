@@ -40,7 +40,7 @@ footer: MIT Licensed
 ### Unity SDK
 
 The unity game engine is known for its beginner friendly approach and cross platform support including WebGL, ios and android. Build once export everywhere.
-The Solana Unity SDK is based on a Solnet fork and the Solanart SDK and maintained by the Team Magic block. It comes with NFT support, Transactions, RPC functions, Phantom Deep links, WebGL connector, WebSocket connection support, mobile wallet adapter and anchor client code generation.
+The Solana Unity SDK comes with NFT support, transactions, RPC functions, Phantom Deep lLinks, WebGL connector, WebSocket connection support, mobile wallet-adapter and anchor client code generation.
 
 [Docs](https://solana.unity-sdk.gg/)<br />
 [Verified Unity Asset Store Listing](https://assetstore.unity.com/packages/decentralization/infrastructure/solana-sdk-for-unity-246931)<br />
