@@ -155,7 +155,7 @@ pub fn update_energy(ctx: &mut ChopTree) -> Result<()> {
 ## Js client
 
 Here is a complete example based on the Solana dapp scaffold with a react client:
-[Source](https://github.com/Woody4618/solumberjack)<br/>
+[Source](https://github.com/solana-developers/solana-game-starter-kits/tree/main/lumberjack)<br/>
 
 ### Create connection
 

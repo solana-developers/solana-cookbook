@@ -54,22 +54,22 @@ This is how it would look like if the NFT defines a 4.2% resell fee which is spl
 "data":{
     "name": "Example NFT"
     "symbol": "SYMBOl"
-    "uri":string"Url to meta data"
-    "sellerFeeBasisPoints":int 420
+    "uri": "Url to meta data"
+    "sellerFeeBasisPoints": 420
     "creators":[
         {
-            "address":string"creator 1 public key"
-            "verified":int 0
-            "share":int 50
+            "address":"creator 1 public key"
+            "verified": 0
+            "share": 50
         },
         {
-            "address":string"creator 2 public key"
-            "verified":int 0
-            "share":int 50
+            "address":"creator 2 public key"
+            "verified": 0
+            "share": 50
         }
         ]
     }
-"primarySaleHappened":int 1
+"primarySaleHappened": 1
 ```
 
 ## Selling tokens
