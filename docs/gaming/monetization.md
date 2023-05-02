@@ -3,16 +3,16 @@ title: Monetization in crypto games
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Monetization in crypto games
+      content: Solana Cookbook | Monetizing your blockchain game on Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | Monetization in crypto games
+      content: Solana Cookbook | Monetizing your blockchain game on Solana
   - - meta
     - name: description
-      content: Some ideas on how can you make money with your game
+      content: Learn how to monetize your blockchain game on Solana utilizing platforms, tools, and more
   - - meta
     - name: og:description
-      content: Some ideas on how can you make money with your game
+      content: Learn how to monetize your blockchain game on Solana utilizing platforms, tools, and more
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -41,11 +41,10 @@ footer: MIT Licensed
 
 Building a game on Solana opens up a lot of interesting monetization options for games.
 
-## Selling NFTs
-You can sell NFTs to raise raise money. It is basically like crowd sourcing the development of your game. If the game becomes successful the value of the NFTs will likely also go up. For that you first need to create an NFT collection.
+## Digital Collectibles
+Digital collectibles on blockchains are more commonly known as NFTs. Games can sell NFTs much like people sell items within the Steam shop. NFTs are commonly a part of a collection.
 [Metaplex Docs](https://docs.metaplex.com/)<br />
 [Setup a candy machine step by step](https://youtu.be/0KHv1dMV8zU)<br />
-Then you can list the collection on one of the many Nft market places on Solana.
 
 ## Royalty fees
 NFTs on Solana can define a resell fee for NFTs which most market places read and use. This means that on every NFT sell on a secondary market place you will get a percentage of the selling price. This can be a constant income stream if the NFTs are traded a lot.
@@ -53,8 +52,8 @@ This is how it would look like if the NFT defines a 4.2% resell fee which is spl
 
 ```js
 "data":{
-    "name":string"Example NFT"
-    "symbol":string"SYMBOl"
+    "name": "Example NFT"
+    "symbol": "SYMBOl"
     "uri":string"Url to meta data"
     "sellerFeeBasisPoints":int 420
     "creators":[

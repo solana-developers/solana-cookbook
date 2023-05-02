@@ -1,12 +1,12 @@
 ---
-title: NFTs in games
+title: Gaming with NFTs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | NFTs in games
+      content: Solana Cookbook | Gaming with NFTS
   - - meta
     - name: og:title
-      content: Solana Cookbook | NFTs in games
+      content: Solana Cookbook | Gaming with NFTS
   - - meta
     - name: description
       content: NFTs can be a powerful tool in blockchain games. Learn how to utilize NFTs in Solana games to their full potential.
@@ -45,37 +45,38 @@ to them. The metadata allows developers to store important attributes and inform
 as its rarity or specific in-game capabilities. NFTs can be used in games to represent anything from weapons
 and armor to digital real estate and collectibles, providing a new level of ownership and scarcity for players.
 
-## Allow only players from a collection
+## Token gating with NFTs
 
 Using NFTs, you can gate access to a particular part of a game based on owning the NFT. This can form a more tight-knit community within your game.
 In [js](https://docs.solana.com/de/developing/clients/javascript-api) using the [Metaplex sdk](https://github.com/metaplex-foundation/js#readme) this would look like this:
 
 ```js
-    JSON.parse(
-      // For example '.config/solana/devnet.json'
-      fs.readFileSync("yourKeyPair.json").toString())
-    );
-    let keyPair = Keypair.fromSecretKey(decodedKey);
+JSON.parse(
+  // For example '.config/solana/devnet.json'
+  fs.readFileSync("yourKeyPair.json").toString())
+);
+let keyPair = Keypair.fromSecretKey(decodedKey);
 
-    const metaplex = Metaplex.make(connection).use(keypairIdentity(keyPair));
+const metaplex = Metaplex.make(connection).use(keypairIdentity(keyPair));
 
-    const nfts = await metaplex
-      .nfts()
-      .findAllByOwner({ owner: wallet.publicKey })
+const nfts = await metaplex
+  .nfts()
+  .findAllByOwner({ owner: wallet.publicKey })
 
-    let collectionNfts = []
-    for (let i = 0; i < nfts.length; i++) {
-      if (nfts[i].collection?.address.toString() == collectionAddress.toString()) {
-        collectionNfts.push(nfts[i])
-      }
-    }
+let collectionNfts = []
+for (let i = 0; i < nfts.length; i++) {
+  if (nfts[i].collection?.address.toString() == collectionAddress.toString()) {
+    collectionNfts.push(nfts[i])
+  }
+}
 ```
 
 ## Bonus Effects with NFTs
 
 In addition to providing new revenue streams, NFTs can also be used to provide in-game benefits and bonuses to players. For instance, a player who owns a "coin doubler" NFT may receive double the amount of coins for as long as they hold the NFT in their wallet. Additionally, NFTs can be used as consumables, allowing players to use them to gain temporary effects such as potions or spells. Once consumed, the NFT is burned, and the effect is applied to the player's character. These innovative features of NFTs provide game developers with new opportunities to create unique gameplay experiences and reward players for their ownership of valuable assets on the Solana blockchain.
 
-[How to interact with tokens](../references/token#how-to-burn-tokens) <br/>
+[How to interact with tokens](../references/token#how-to-burn-tokens)
+
 [NFTs](../references/nfts)
 
 
