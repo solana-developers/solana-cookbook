@@ -6,7 +6,7 @@ head:
       content: Solana Cookbook | Using tokens in games on Solana
   - - meta
     - name: og:title
-      content: Solana Cookbook | How interact with tokens in programs
+      content: Solana Cookbook | Using tokens in games on Solana
   - - meta
     - name: description
       content: A small game that shows how game can interact with the Solana block chain
