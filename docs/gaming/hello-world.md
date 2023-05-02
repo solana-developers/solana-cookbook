@@ -52,7 +52,7 @@ Live Version. (use devnet in the embedded version)
 
 ## Tiny Adventure
 
-Tiny Adventure is a beginner-friendly Solana program created using the Anchor framework. The goal of this program is to show you how to create a simple game that allows players to set up an account to track their position and move their position left and right.
+Tiny Adventure is a beginner-friendly Solana program created using the Anchor framework. The goal of this program is to show you how to create a simple game that allows players to track their position and move left or right.
 
 The Tiny Adventure Program consists of only 3 instructions:
 
