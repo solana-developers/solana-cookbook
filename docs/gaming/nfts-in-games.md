@@ -71,7 +71,7 @@ In [js](https://docs.solana.com/de/developing/clients/javascript-api) using the 
     }
 ```
 
-## Nft Boosters
+## Bonus Effects with NFTs
 
 Players could also gain certain bonuses by owning certain NFTs. For example a coin doubler NFT, which grants the player 2x coin as long as he has the NFT in his wallet. NFTs can also be burned. So there could be consumable NFTs as well. So a potion or spell in the inventory could be burned or transferred somewhere to give the character the effect.
 
