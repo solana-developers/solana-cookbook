@@ -79,7 +79,7 @@ In addition to providing new revenue streams, NFTs can also be used to provide i
 [NFTs](../references/nfts)
 
 
-## Use metadata as stats
+## Using NFT Metadata for Player Stats
 
 NFTs also have Metadata, which can be used for all kind of traits for game objects. For example an NFT could represent a game character and his traits Strength/Intelligence/Agility etc could directly influence how strong the character is in the game.
 This is how you can load nft metadata and their attributes using the metaplex sdk:
