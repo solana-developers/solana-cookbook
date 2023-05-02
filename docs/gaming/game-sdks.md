@@ -12,7 +12,7 @@ head:
       content: A list of Solana Gaming SDKs to get you started creating your first Solana Game
   - - meta
     - name: og:description
-      content: A list of SDKs that you can use to develop games on Solana 
+      content: A list of Solana Gaming SDKs to get you started creating your first Solana Game
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
