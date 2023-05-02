@@ -1,5 +1,5 @@
 ---
-title: Gaming Intro
+title: Introduction to Gaming on Solana
 head:
   - - meta
     - name: title
