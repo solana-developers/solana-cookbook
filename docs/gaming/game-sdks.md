@@ -56,7 +56,7 @@ The Solana sdk was originally build by the team of Star Atlas.
 
 ### Flutter
 
-Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase. For more complex games I would recommend using a GameEngine like Unity or Unreal though.
+Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
 
 [Source Code](https://github.com/espresso-cash/espresso-cash-public)<br />
 
