@@ -48,7 +48,7 @@ However, not everything needs to be put on the blockchain. Smaller integrations 
 There are several ways to integrate Solana into your game:
 
 1. Give players digital collectibles for in-game items or use them as characters. Check out [Nfts in games](./nfts-in-games)
-2. Use tokens for in-app purchases or micro-payments in the game. See [how to monetize your game](./monetization) and [use tokens](./interact-with-tokens)
+2. Use tokens for in-app purchases or micro-payments in the game. See [use tokens](./interact-with-tokens)
 3. Use the player's wallet to authenticate them in the game. [Sign message](../references/keypairs-and-wallets.html#how-to-sign-and-verify-messages-with-wallets) 
 4. Run tournaments and pay out crypto rewards to your players. 
 5. Develop the game entirely on-chain to reward your players in every step they take. Start with [Hello world](./hello-world)

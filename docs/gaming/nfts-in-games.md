@@ -156,6 +156,8 @@ With the [Raindrops Boots program](https://docs.raindrops.xyz/services/boots) yo
 
 NFTs on Solana mostly follow the Metaplex standard. Metaplex is a company which takes care of the NFT most used standard on Solana. The most common way to create an NFT collection is to create a metaplex candy machine which lets the user mint predefined pairs of metadata and images.
 
-[Metaplex Docs](https://docs.metaplex.com/)<br />
-[Setup a candy machine step by step](https://youtu.be/0KHv1dMV8zU)<br />
+[Metaplex Docs](https://docs.metaplex.com/programs/candy-machine/how-to-guides/my-first-candy-machine-part1)
 
+[Setup a candy machine step by step](https://youtu.be/0KHv1dMV8zU)
+
+[NFTs](../references/nfts)

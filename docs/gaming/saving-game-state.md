@@ -40,7 +40,7 @@ footer: MIT Licensed
 # How to save game state
 
 You can use Solana block chain to save the state of your game in program accounts. These are accounts that are owned by your program and they are derived from the program Id and some seeds. These can be thought of as data base entries. 
-We can for example create a PlayerData account and use the players public key as a seed. This means every player can have one player account per wallet. These accounts can be up to 10Kb by default. If you need a bigger account look into [Manage big accounts](../guides/big-accounts)
+We can for example create a PlayerData account and use the players public key as a seed. This means every player can have one player account per wallet. These accounts can be up to 10Kb by default. If you need a bigger account look into [Manage big accounts](https://github.com/solana-developers/anchor-zero-copy-example)
 This can be done in a program like this: 
 
 ```rust

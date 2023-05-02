@@ -67,8 +67,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/guides/retrying-transactions.md",
                 "/guides/debugging-solana-programs.md",
                 "/guides/feature-parity-testing.md",
-                "/guides/versioned-transactions.md",
-                "/guides/big-accounts.md",
+                "/guides/versioned-transactions.md"
               ],
             },
             {
@@ -96,11 +95,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                     "/gaming/saving-game-state.md",
                     "/gaming/energy-system.md",
                     "/gaming/interact-with-tokens.md",
-                    "/gaming/partial-sign-in-backend.md",
-                    "/gaming/solana-pay-sign-on-phone.md",
-                    "/gaming/turn-based-game.md",
                     "/gaming/porting-anchor-to-unity.md",
-                    "/gaming/monetization.md",
                     "/gaming/distribution.md",
                     "/gaming/game-examples.md",
                   ],                  
