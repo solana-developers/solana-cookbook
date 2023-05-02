@@ -3,7 +3,7 @@ title: Storing SOL in a PDA
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Storing Sol in a program
+      content: Solana Cookbook | Storing SOL in a PDA
   - - meta
     - name: og:title
       content: Solana Cookbook | Storing Sol in a program
