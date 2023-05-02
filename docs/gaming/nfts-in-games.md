@@ -123,7 +123,7 @@ The [Metaplex Fusion Trifle program](https://docs.metaplex.com/programs/fusion/o
 ## Use 3D Nfts in a game
 
 Every NFT metadata can also have a animation url. This url can contain a video, gif or a 3d file. These 3d files usually use the format .glb or .gltf and can dynamically be loaded into a game.
-For unity you can use this [GLTFast](https://github.com/atteneder/glTFast) package and in js for example this
+For unity you can use the [GLTFast](https://github.com/atteneder/glTFast) package and in js the
 [GLTFast JS](https://discoverthreejs.com/book/first-steps/load-models/). For reference a [NFT metadata with glb model](https://solscan.io/token/DzHPvbGzrHK4UcyeDurw2nuBFKNvt4Kb7K8Bx9dtsfn#metadata)
 
 ```c#
