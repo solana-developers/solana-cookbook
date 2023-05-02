@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # On chain game
 
-## Write your first Solana game
+## Getting started with your first Solana game
 
 Video Walkthrough:
 <div class="video-block">
