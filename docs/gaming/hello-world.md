@@ -12,7 +12,7 @@ head:
       content: Get started building Solana games with a basic adventure game 
   - - meta
     - name: og:description
-      content: A tiny adventure on chain game written in anchor with clients in js and c#
+      content: Get started building Solana games with a basic adventure game
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
