@@ -12,7 +12,7 @@ head:
       content: NFTs can be a powerful tool in blockchain games. Learn how to utilize NFTs in Solana games to their full potential.
   - - meta
     - name: og:description
-      content: A list of options that should give you an idea of how NFTs can be utilized in games
+      content: NFTs can be a powerful tool in blockchain games. Learn how to utilize NFTs in Solana games to their full potential.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
