@@ -3,7 +3,7 @@ title: How interact with tokens in programs
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | How interact with tokens in programs
+      content: Solana Cookbook | Using tokens in games on Solana
   - - meta
     - name: og:title
       content: Solana Cookbook | How interact with tokens in programs
