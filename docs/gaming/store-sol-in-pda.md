@@ -6,7 +6,7 @@ head:
       content: Solana Cookbook | Storing SOL in a PDA
   - - meta
     - name: og:title
-      content: Solana Cookbook | Storing Sol in a program
+      content: Solana Cookbook | Storing SOL in a PDA
   - - meta
     - name: description
       content: Using PDAs, you can reward SOL to players playing your game. Learn how to reward SOL from a PDA when players find chests in this game.
