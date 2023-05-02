@@ -149,7 +149,7 @@ let image: Image = await asset.imageData.get(0) // fetches CesiumLogoFlat.png
 
 ## Customize NFTs with items and traits (Raindrops boots)
 
-With the [Raindrops Boots program](https://docs.raindrops.xyz/services/boots) you can for example have an adventure character which owns a sword and a helmet. When the Character NFT would be sold on a market place the other NFTs it owns would be sold as well.
+With the [Raindrops Boots program](https://docs.raindrops.xyz/services/boots) you can have an adventure character which owns a sword and a helmet. When the Character NFT would be sold on a market place the other NFTs it owns would be sold as well.
 
 The possibilities are pretty much endless. (Tutorial coming soon)
 
