@@ -73,7 +73,7 @@ In [js](https://docs.solana.com/de/developing/clients/javascript-api) using the 
 
 ## Bonus Effects with NFTs
 
-Players could also gain certain bonuses by owning certain NFTs. For example a coin doubler NFT, which grants the player 2x coin as long as he has the NFT in his wallet. NFTs can also be burned. So there could be consumable NFTs as well. So a potion or spell in the inventory could be burned or transferred somewhere to give the character the effect.
+In addition to providing new revenue streams, NFTs can also be used to provide in-game benefits and bonuses to players. For instance, a player who owns a "coin doubler" NFT may receive double the amount of coins for as long as they hold the NFT in their wallet. Additionally, NFTs can be used as consumables, allowing players to use them to gain temporary effects such as potions or spells. Once consumed, the NFT is burned, and the effect is applied to the player's character. These innovative features of NFTs provide game developers with new opportunities to create unique gameplay experiences and reward players for their ownership of valuable assets on the Solana blockchain.
 
 [How to interact with tokens](../references/token#how-to-burn-tokens) <br/>
 [NFTs](../references/nfts)
