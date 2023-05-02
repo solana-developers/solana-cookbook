@@ -47,7 +47,7 @@ and armor to digital real estate and collectibles, providing a new level of owne
 
 ## Allow only players from a collection
 
-- You can for example only allow players that own an NFT of an NFT collection to enter the game.
+Using NFTs, you can gate access to a particular part of a game based on owning the NFT. This can form a more tight-knit community within your game.
 In [js](https://docs.solana.com/de/developing/clients/javascript-api) using the [Metaplex sdk](https://github.com/metaplex-foundation/js#readme) this would look like this:
 
 ```js
