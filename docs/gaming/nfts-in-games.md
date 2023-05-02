@@ -39,8 +39,11 @@ footer: MIT Licensed
 
 # NFTs In Games
 
-NFTs are probably the easiest and most popular way to integrate Solana into your game.
-NFTs are objects that are saved on the Solana block chain and have a json metadata attached to them which can be used to safe attributes about the NFT. These are perfect for usage in games.
+Non-fungible tokens (NFTs) are rapidly gaining popularity as a means of integrating Solana into games.
+These unique digital assets are stored on the Solana blockchain and come with a JSON metadata attached
+to them. The metadata allows developers to store important attributes and information about the NFT, such
+as its rarity or specific in-game capabilities. NFTs can be used in games to represent anything from weapons
+and armor to digital real estate and collectibles, providing a new level of ownership and scarcity for players.
 
 ## Allow only players from a collection
 
