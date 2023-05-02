@@ -67,7 +67,7 @@ The fastest way to set it up is:
 ```js
 npx create-solana-dapp your-app
 ```
-I comes with a complete app using Solana wallet adapter and some basic functionality which should ba a good starting point. 
+This will generate a great starting application with wallet-adapter support.
 A benefit of using Next.js is that you can use the same code in the backend and in the frontend, which speed up development.
 
 [Web3Js](https://github.com/espresso-cash/espresso-cash-public)<br />
