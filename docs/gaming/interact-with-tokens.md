@@ -9,10 +9,10 @@ head:
       content: Solana Cookbook | Using tokens in games on Solana
   - - meta
     - name: description
-      content: A small game that shows how game can interact with the Solana block chain
+      content: Learn how to use tokens in Solana games with an on-chain tutorial
   - - meta
     - name: og:description
-      content: A small game that shows how game can interact with the Solana block chain
+      content: Learn how to use tokens in Solana games with an on-chain tutorial
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# How interact with tokens in programs
+# Using tokens in games on Solana
 
 Tokens on Solana can serve various purposes, such as in-game rewards, incentives, or other applications. For example, you can create tokens and distribute them to players when they complete specific in-game actions.
 

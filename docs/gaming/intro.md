@@ -3,7 +3,7 @@ title: Introduction to Gaming on Solana
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Gaming Intro
+      content: Solana Cookbook | Introduction to Gaming on Solana
   - - meta
     - name: og:title
       content: Solana Cookbook | Introduction to Gaming on Solana
