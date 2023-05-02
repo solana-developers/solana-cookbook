@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# On chain game
+# Building an on-chain game on Solana
 
 ## Getting started with your first Solana game
 
