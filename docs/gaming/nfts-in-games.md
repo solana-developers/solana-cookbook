@@ -116,7 +116,7 @@ console.log("Player Physical Damage: " + physicalDamage)
 console.log("Player Magical Damage: " + magicalDamage)
 ````
 
-## Have NFTs own other NFTs (Fusion)
+## Fusing NFTs Together
 
 The [Metaplex Fusion Trifle program](https://docs.metaplex.com/programs/fusion/overview) allows you to have NFTs own other NFTs. For example you could create a plant plot NFT and then use  to combine it with a water NFT and a seed NFT to create a Tomato NFT.
 
