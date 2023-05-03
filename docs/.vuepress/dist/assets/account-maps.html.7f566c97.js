@@ -1,1 +1,0 @@
-const e={key:"v-76b1e9e3",path:"/guides/account-maps.html",title:"Account Maps",lang:"en-US",frontmatter:{title:"Account Maps"},excerpt:"",headers:[{level:2,title:"Deriving PDAs",slug:"deriving-pdas",children:[]},{level:2,title:"Single Map Account",slug:"single-map-account",children:[]}],git:{updatedTime:1660791465e3},filePathRelative:"guides/account-maps.md"};export{e as data};
