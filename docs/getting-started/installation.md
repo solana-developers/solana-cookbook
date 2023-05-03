@@ -39,7 +39,8 @@ footer: MIT Licensed
 
 ## Install Web3.js
 
-There are a few libraries that you can use to get started with javascript or typescript on Solana.<br/>
+There are a few libraries that you can use to get started with javascript or typescript on Solana.
+
 
 ### Web3.js
 
