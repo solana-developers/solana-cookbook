@@ -441,6 +441,22 @@ Anda bisa menutup akun (termasuk menghapus semua data yang di simpan) dengan car
   </template>
 
   </SolanaCodeGroupItem>
+
+  <SolanaCodeGroupItem title="C++">
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/get-balance/main.en.cpp)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/get-balance/main.preview.en.cpp)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ::: tip

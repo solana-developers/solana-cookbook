@@ -1,5 +1,5 @@
 const web3 = require("@solana/web3.js");
-const { Token } = require("@solana/spl-token");
+const splToken = require("@solana/spl-token");
 
 (async () => {
   // Connect to cluster
@@ -9,8 +9,8 @@ const { Token } = require("@solana/spl-token");
   );
 
   // Generate a new wallet keypair and airdrop SOL
-  var fromWallet = web3.Keypair.generate();
-  var fromAirdropSignature = await connection.requestAirdrop(
+  const fromWallet = web3.Keypair.generate();
+  const fromAirdropSignature = await connection.requestAirdrop(
     fromWallet.publicKey,
     web3.LAMPORTS_PER_SOL
   );
@@ -21,7 +21,7 @@ const { Token } = require("@solana/spl-token");
   const toWallet = web3.Keypair.generate();
 
   // Create new token mint
-  const mint = await Token.createMint(
+  const mint = await splToken.createMint(
     connection,
     fromWallet,
     fromWallet.publicKey,
@@ -45,12 +45,12 @@ const { Token } = require("@solana/spl-token");
     fromTokenAccount.address,
     fromWallet.publicKey,
     [],
-    1000000000
+    1000000000 // it's 1 token, but in lamports
   );
 
   // Add token transfer instructions to transaction
   const transaction = new web3.Transaction().add(
-    splToken.Token.createTransferInstruction(
+    splToken.createTransferInstruction(
       splToken.TOKEN_PROGRAM_ID,
       fromTokenAccount.address,
       toTokenAccount.address,

@@ -5,4 +5,4 @@ secret_key= [
         63, 176, 109, 168, 89, 238, 135,
     ]
     
-keypair = Keypair.from_secret_key(bytes(secret_key))
+keypair = Keypair.from_bytes(secret_key)

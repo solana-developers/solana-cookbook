@@ -51,7 +51,7 @@ head:
     - (Tuỳ chọn) `dataSlice`: `object` - Giới hạn các Account trả về dựa trên:
         - `offset`: `number` - Vị trí bắt đầu cho dữ liệu được trả về của Account
         - `length`: `number` - Độ dài dữ liệu của Account cần trả về và được tính từ vị trí bắt đầu
-    - (Tuỳ chọn) `filters`: `array` - Lọc các kết quả bằng các sử dụng các bộ lọc sau:
+    - (Tuỳ chọn) `filters`: `array` - Lọc các kết quả bằng cách sử dụng các bộ lọc sau:
         - `memcmp`: `object` - Lọc bằng cách so sánh một chuỗi dữ liệu dưới dạng các bytes với dữ liệu Account
             - `offset`: `number` - Vị trí bắt đầu trong dữ liệu Account dùng để so sánh 
             - `bytes`: `string` - Dữ liệu cần so sánh, được truyền vào dưới dạng base58 và không quá 129 bytes
@@ -64,7 +64,7 @@ Mặc định `getProgramAccounts` sẽ trả về một mảng các đối tư�
 
 - `pubkey`: `string` - Địa chỉ của Account và được mã hoá base58
 - `account`: `object` - Là một đối tượng JSON với các trường con như sau:
-    - `lamports`: `number`, sô dư lamports của Account
+    - `lamports`: `number`, số dư lamports của Account
     - `owner`: `string`, Địa chỉ của Program sở hữu Account và được mã hoá base58
     - `data`: `string` | `object` - Dữ liệu của Account và được biểu diễn dưới dạng, hoặc là binary, hoặc là JSON, tuỳ vào tham số `encoding` lúc truyền vào
     - `executable`: `boolean`, Nhãn đánh dấu nếu Account này chứa một Program và có thể thực thi
@@ -79,12 +79,11 @@ Mặc định `getProgramAccounts` sẽ trả về một mảng các đối tư�
 - Tất cả các Account cho một mint (hoặc thường được gọi là token đối với các blockchain khác) (i.e. Tất cả người giữ token [SRM](https://www.projectserum.com/))
 - Tất cả các Account theo ý muốn của một Program cụ thể (i.e. Tất cả Account người dùng của ứng dụng [Mango](https://mango.markets/))
 
-Mặc dù hữu dụng là vậy, `getProgramAccounts` chỉ thường bị dùng sai vì các hạn chế hiện tại. Nhiều câu truy vấn được hỗ trợ bởi `getProgramAccounts` yêu cầu các nốt RPC phải quét một khối lượng rất lớn các dữ liệu. Những câu truy vấn như vậy không chỉ lớn về dung lượng dữ liệu và còn lớn về khối lượng tính toán. Tất yếu, việc gọi quá nhiều về cả tần suất và khối lượng dẫn đến kết nối sẽ bị ngắt. Ngoài ra, tại thời điểm cuốn sách được viết, `getProgramAccounts` vẫn chưa hỗ trợ phân trang. Nếu kết quả truy vấn quá lớn, nó sẽ được cắt bỏ đi.
+Mặc dù hữu dụng là vậy, `getProgramAccounts` thường bị dùng sai vì các hạn chế hiện tại. Nhiều câu truy vấn được hỗ trợ bởi `getProgramAccounts` yêu cầu các nốt RPC phải quét một khối lượng rất lớn các dữ liệu. Những câu truy vấn như vậy không chỉ lớn về dung lượng dữ liệu và còn lớn về khối lượng tính toán. Tất yếu, việc gọi quá nhiều về cả tần suất và khối lượng dẫn đến kết nối sẽ bị ngắt. Ngoài ra, tại thời điểm cuốn sách được viết, `getProgramAccounts` vẫn chưa hỗ trợ phân trang. Nếu kết quả truy vấn quá lớn, nó sẽ được cắt bỏ đi.
 
 Để tránh các hạn chế này, `getProgramAccounts` giới thiệu các tham số dùng cho việc lọc và sơ chế kết quả, ví dụ như: `dataSlice`, `filters` với tuỳ chọn `memcmp` và `dataSize`. Bằng cách kết hợp các tham số trên, chúng ta có thể giảm thiểu phạm vi truy vấn với kích thước dữ liệu được kiểm soát và dễ đoán hơn.
 
 Một ví dụ thường thấy của `getProgramAccounts` là tương tác với [SPL-Token Program](https://spl.solana.com/token). Truy vấn tất cả các Account được sở hữu bởi Token Program với một câu [truy vấn thuần tuý](../references/accounts.md#get-program-accounts) không có lọc sẽ dẫn đến một số lượng dữ liệu trả về khổng lồ. Thay vào đó, bằng cách bổ sung các tham số, chúng ta có thể truy vấn một cách hiệu quả chỉ những dữ liệu mình cần.
-
 ### `filters`
 
 Tham số phổ biến nhất được dùng kèm với `getProgramAccounts` chính là mảng các `filters`. Mảng này chấp nhận 2 kiểu lọc là `dataSize` và `memcmp`. Trước khi sử dụng một trong hai, chúng ta nên hiểu được dữ liệu cần truy vấn sẽ có chứa dữ liệu gì? hình thái ra sao? tuần tự hoá như thế nào?
@@ -100,12 +99,12 @@ Nếu chúng ta muốn tìm tất cả Token Account sở hữu bởi chỉ riê
 
 Điều kiện lọc `memcmp`, hoặc "memory comparison" (phép so sánh vùng nhớ), cho phép chúng ta so sánh dữ liệu truyền vào với bất kỳ vùng nhớ nào được lưu trong Account. Đặc biệt, chúng ta có thể truy vấn chỉ những Account mà khớp với một đoạn dữ liệu tại một vị trí cụ thể. `memcmp` yêu cầu 2 tham số:
 
-- `offset`: Vị trí bắt đầu để so sánh dữ liệu. Vị trí này thường được tính theo bytes và biễu diễn dưới dạng số nguyên.
+- `offset`: Vị trí bắt đầu để so sánh dữ liệu. Vị trí này thường được tính theo bytes và biểu diễn dưới dạng số nguyên.
 - `bytes`: Dữ liệu dùng để đối chiếu với dữ liệu trong Account. Dữ liệu này nên được biểu diễn dưới dạng base58 và không quá 129 bytes.
 
 Một điều quan trọng cần lưu ý là `memcmp` chỉ trả về các kết quả khớp chính xác trên từng `bytes`. Và hiện tại không hỗ trợ các phép so sánh lớn hơn hoặc nhỏ hơn cho `bytes`.
 
-Sử dụng lại ví dụ Token Program bên trên, chúng ta diều chỉnh câu truy vấn chỉ trả về những Token Account mà được sở hữu bởi chính mình. Khi nhìn vào một Token Account, chúng ta biết được 2 trường đầu tiên lưu trong Token Account là 2 khoá công khai với độ dài là 32 bytes. Biết rằng `owner` là trường thứ 2, chúng ta nên khởi tạo `memcmp` với `offset` là 32. Từ đó, chúng ta sẽ lọc được những Account của mình bằng cách truyền địa chỉ ví vào `bytes`.
+Sử dụng lại ví dụ Token Program bên trên, chúng ta điều chỉnh câu truy vấn chỉ trả về những Token Account mà được sở hữu bởi chính mình. Khi nhìn vào một Token Account, chúng ta biết được 2 trường đầu tiên lưu trong Token Account là 2 khoá công khai với độ dài là 32 bytes. Biết rằng `owner` là trường thứ 2, chúng ta nên khởi tạo `memcmp` với `offset` là 32. Từ đó, chúng ta sẽ lọc được những Account của mình bằng cách truyền địa chỉ ví vào `bytes`.
 
 ![Account Size](./get-program-accounts/memcmp.png)
 

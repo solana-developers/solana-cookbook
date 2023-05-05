@@ -1,5 +1,5 @@
-from solana.keypair import Keypair
-from solana.system_program import SYS_PROGRAM_ID
+from solders.keypair import Keypair
+from solders.system_program import ID as SYS_PROGRAM_ID
 
 from pytest import fixture, mark
 from pytest_asyncio import fixture as async_fixture
@@ -29,7 +29,7 @@ async def initialized_base_account(program: Program, provider: Provider) -> Keyp
         provider.wallet.public_key,
         ctx=Context(
             accounts={
-                "base_account": base_account.public_key,
+                "base_account": base_account.pubkey(),
                 "user": provider.wallet.public_key,
                 "system_program": SYS_PROGRAM_ID,
             },
@@ -46,7 +46,7 @@ async def test_initialized_base_account(
     program: Program,
     provider: Provider,
 ) -> None:
-    base_account = await program.account["BaseAccount"].fetch(initialized_base_account.public_key)
+    base_account = await program.account["BaseAccount"].fetch(initialized_base_account.pubkey())
     assert base_account.authority == provider.wallet.public_key
     count = base_account.count
     assert count == 0
@@ -62,12 +62,12 @@ async def test_increment(
     await program.rpc["increment"](
         ctx=Context(
             accounts={
-                "base_account": initialized_base_account.public_key,
+                "base_account": initialized_base_account.pubkey(),
                 "authority": provider.wallet.public_key,
             },
         ),
     )
-    base_account = await program.account["BaseAccount"].fetch(initialized_base_account.public_key)
+    base_account = await program.account["BaseAccount"].fetch(initialized_base_account.pubkey())
     assert base_account.authority == provider.wallet.public_key
     count = base_account.count
     assert count == 1

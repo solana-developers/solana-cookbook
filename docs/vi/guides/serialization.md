@@ -168,7 +168,7 @@ Dưới đây là một hiện thực Pack cho chương tình mẫu của chúng
 1. `sol_template_shared::pack_into_slice` - Điểm thực sự diễn ra quá trình tuần tự hoá
 2. `sol_template_shared::unpack_from_slice` - Điểm thực sự diễn ra quá trình phi tuần tự hoá
 
-**Lưu ý** rằng trong code mẫu bên dưới, chúng ta có một vùng nhớ 4 bytes cho `u32` dành cho `BTREE_LENGTH` ngay trước `BTREE_STORAGE`. Việc này giúp Borsh, trong quá trình phi tuần tự hoá, có thể kiểm tra độ lớn của vùng nhớ mà nó cần phải trích xuất để xử lý, cũng như tái tạo lại đối tượng đã được tuần tự hoá trước đây. Phương pháp này được minh hoạ bên dưới khi mà `BTREE_LENGTH` được đọc trước tiên nhắm lấy được kích thước của `slice` ra khỏi con trỏ `BTREE_STROAGE`.
+**Lưu ý** rằng trong code mẫu bên dưới, chúng ta có một vùng nhớ 4 bytes cho `u32` dành cho `BTREE_LENGTH` ngay trước `BTREE_STORAGE`. Việc này giúp Borsh, trong quá trình phi tuần tự hoá, có thể kiểm tra độ lớn của vùng nhớ mà nó cần phải trích xuất để xử lý, cũng như tái tạo lại đối tượng đã được tuần tự hoá trước đây. Phương pháp này được minh hoạ bên dưới khi mà `BTREE_LENGTH` được đọc trước tiên nhằm lấy được kích thước của `slice` ra khỏi con trỏ `BTREE_STROAGE`.
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -260,7 +260,7 @@ Sau đây là một minh hoạ về tuần tự hoá dữ liệu nguyên thuỷ 
 
 ## Kiểu dữ liệu nâng cao
 
-Chúng ta đã đi qua nội dung cơ bản ở các ví dụ trước. Nhưng ngoài ra, Solana còn có một vài kiểu dự liệu tự định nghĩa khác. Trong phần này, chúng ta tìm hiểu qua các xử lý chúng bằng TS/JS và Rust.
+Chúng ta đã đi qua nội dung cơ bản ở các ví dụ trước. Nhưng ngoài ra, Solana còn có một vài kiểu dữ liệu tự định nghĩa khác. Trong phần này, chúng ta tìm hiểu qua các xử lý chúng bằng TS/JS và Rust.
 ### COption
 
 <CodeGroup>

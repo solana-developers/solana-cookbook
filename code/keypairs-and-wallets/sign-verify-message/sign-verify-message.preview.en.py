@@ -1,10 +1,5 @@
-message = "The quick brown fox jumps over the lazy dog"
-message_bytes = bytes(message,'utf8')
-signed_message = keypair.sign(message_bytes)
+message = b"The quick brown fox jumps over the lazy dog"
+signature = keypair.sign_message(message)
+verify_sign = signature.verify(keypair.pubkey(), message)
 
-verify_sign = VerifyKey(
-    pubkey_bytes
-).verify(
-    smessage=message_bytes,  
-    signature=signed_message.signature
-)
+print(verify_sign) # bool

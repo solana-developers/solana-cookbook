@@ -74,9 +74,9 @@ Mỗi Account lại có một địa chỉ (thường là public key - khoá cô
 
 | Trường     | Mô tả                                                      |
 | ---------- | ---------------------------------------------------------- |
-| lamports   | Số lượng lamports trong Account đóng                        |
+| lamports   | Số lượng lamports thuộc sở hữu bởi Account đó                         |
 | owner      | Địa chỉ Program Account đang kiếm soát Account đó          |
-| executable | Account này có thể thực thi các chỉ thị hay không?         |
+| executable | Account này có thể thực thi các instructions hay không?         |
 | data       | Dữ liệu thô dưới dạng các bytes được lưu trữ trong Account |
 | rent_epoch | Kỳ hạn thuê vùng nhớ tiếp theo cho Account                 |
 
@@ -86,7 +86,7 @@ Có một vài quy tắc quan trọng về quyền sở hữu:
 - Bất kỳ ai cũng được phép nạp lamports vào một Data Account
 - Owner của một Account có thể được gán cho một owner mới khi và chỉ khi vùng nhớ của Account đó được hoàn trả
 
-Program Accounts không được lưu bất kỳ trạng thái.
+Program Accounts không được lưu state.
 
 Ví dụ, nếu bạn có một chương trình đếm trên một Program Account và cho phép tăng bộ đếm lên sau mỗi lần tương tác, bạn phải tạo tối thiểu 2 Account. Trong đó, một cho Program Account để lưu code thực thi, và một cho Data Account để lưu dữ liệu bộ đếm.
 
@@ -100,7 +100,7 @@ Lưu trữ dữ liệu vào Account và duy trì Account đó sẽ phát sinh ch
 
 Chi phí thuê được tính toán và chi trả ở 2 thời điểm khác nhau:
 
-1. Khi có bất kỳ giao dịch nào có tham khảo đến Account đó.
+1. Khi có bất kỳ giao dịch nào có tham chiếu đến Account đó.
 2. Định kỳ mỗi epoch.
 
 Một phần của chi phí thuê thu được sẽ được tiêu huỷ, trong khi phần còn lại sẽ được phân chia cho các Vote Account sau mỗi slot.

@@ -1,6 +1,6 @@
 transaction = Transaction().add(transfer(TransferParams(
-    from_pubkey=sender.public_key,
-    to_pubkey=receiver.public_key,
+    from_pubkey=sender.pubkey(),
+    to_pubkey=receiver.pubkey(),
     lamports=1_000_000)
 ))
 
