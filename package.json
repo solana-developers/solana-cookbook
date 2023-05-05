@@ -6,7 +6,7 @@
   "repository": "https://github.com/solana-developers/solana-cookbook",
   "scripts": {
     "start": "vuepress dev docs",
-    "build": "NODE_OPTIONS=--max_old_space_size=16384 vuepress build docs",
+    "build": "NODE_OPTIONS=--max_old_space_size=32384 vuepress build docs",
     "prepare": "husky install",
     "format": "prettier --write ."
   },
