@@ -221,14 +221,26 @@ Alternatively, you can install from binaries instead of using solana-install.
 
 Download the binaries by navigating to
 [https://github.com/solana-labs/solana/releases/latest](https://github.com/solana-labs/solana/releases/latest),
-download **solana-release-x86_64-unknown-linux-msvc.tar.bz2**, then extract the
+download **solana-release-x86_64-unknown-linux-gnu.tar.bz2**. Open a new terminal, move the binaries from your download folder to the root folder, then extract the
 archive:
 
 ```bash
+mv Downloads/solana-release-x86_64-unknown-linux-gnu.tar.bz2 .
 tar jxf solana-release-x86_64-unknown-linux-gnu.tar.bz2
-cd solana-release/
-export PATH=$PWD/bin:$PATH
 ```
+Next, You need to make the solana-cli accessible in all terminal.To do that, you need to add it to the PATH. Open the terminal configuration file with the command below
+
+```bash
+sudo nano /etc/profile
+```
+At the bottom of the nano editor shown, you will add the following line of code
+```bash
+export PATH=/home/coderina/solana-release/bin:$PATH
+```
+Save the file by pressing CTRL + X, then Y and then Enter.
+
+Restart your Machine to make this change take effect. Voila you can now access the solana-cli in any terminal on your machine.
+
 
 #### Downloading Binaries (macOS)
 
