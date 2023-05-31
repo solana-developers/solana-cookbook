@@ -148,7 +148,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "指南",
             children: [
-              // '/zh/guides/get-program-accounts.md',
+              '/zh/guides/get-program-accounts.md',
               // '/zh/guides/serialization.md',
               // '/zh/guides/data-migration.md',
               // '/zh/guides/account-maps.md',
