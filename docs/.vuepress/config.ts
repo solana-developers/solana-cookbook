@@ -799,6 +799,80 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/fil/": {
+        selectLanguageName: "Filipino",
+        navbar: [
+          {
+            text: "Pag-ambag",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+          {
+            text: "Mga Integrasyon",
+            link: "/fil/integrations",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Nagsisimula",
+              children: ["/fil/", "/id/getting-started/installation.md"],
+            },
+            {
+              text: "Mga pangunahing konsepto",
+              children: [
+                "/fil/core-concepts/accounts.md",
+                "/fil/core-concepts/programs.md",
+                "/fil/core-concepts/transactions.md",
+                "/fil/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Mga Gabay",
+              children: [
+                "/fil/guides/get-program-accounts.md",
+                "/fil/guides/serialization.md",
+                "/fil/guides/data-migration.md",
+                "/fil/guides/account-maps.md",
+                "/fil/guides/retrying-transactions.md",
+                "/fil/guides/debugging-solana-programs.md",
+                "/fil/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Mga sanggunian",
+              children: [
+                "/fil/references/local-development.md",
+                "/fil/references/keypairs-and-wallets.md",
+                "/fil/references/basic-transactions.md",
+                "/fil/references/accounts.md",
+                "/fil/references/programs.md",
+                "/fil/references/token.md",
+                // "/id/references/anchor.md",
+                "/fil/references/staking.md",
+                "/fil/references/nfts.md",
+                "/fil/references/offline-transactions.md",
+                "/fil/references/name-service.md",
+              ],
+            },
+          ],
+          "/fil/integrations/": [
+            {
+              text: "Mga Integrasyon",
+              children: [
+                "/fil/integrations/",
+                "/fil/integrations/serum.md",
+                "/fil/integrations/pyth.md",
+                "/fil/integrations/switchboard.md",
+                "/fil/integrations/mango.md",
+                "/fil/integrations/strata.md",
+                "/fil/integrations/web3auth.md",
+                "/fil/integrations/react-native.md",
+                "/fil/integrations/jupiter.md",
+              ],
+            },
+          ],
+        },
+      }
     },
   },
   locales: {
@@ -847,6 +921,10 @@ export default defineUserConfig<DefaultThemeOptions>({
     "/ja/": {
       lang: "ja-JP",
       title: "Solana Cookbook"
+    },
+    "/fil/": {
+      lang: "fil-PH",
+      title: "Solana Cookbook"
     }
   },
   markdown: {
@@ -890,6 +968,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           "/ja/": {
             placeholder: "検索",
           },
+          "/fil/": {
+            placeholder: "Maghanap",
+          }
         },
         maxSuggestions: 10,
       },
@@ -974,6 +1055,14 @@ export default defineUserConfig<DefaultThemeOptions>({
               },
             },
           },
+          "/fil/": {
+            placeholder: "Maghanap",
+            translations: {
+              button: {
+                buttonText: "Maghanap",
+              }
+            }
+          }
         },
       },
     ],
