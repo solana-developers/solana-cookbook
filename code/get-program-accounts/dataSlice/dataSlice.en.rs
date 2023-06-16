@@ -43,7 +43,7 @@ pub fn main() {
 }
 
 /*
-// Output (notice the empty <Buffer > at acccount.data)
+// Output (notice zero `len` in `data` of `Account`s)
 
 Found 3 token account(s) for mint BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf: 
 [
