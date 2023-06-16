@@ -53,20 +53,20 @@ maaaring hindi pareho ang iyong pagsubok kapag nagde-deploy at tumatakbo sa iban
 :::
 
 ## Sitwasyon
-Ipagpalagay na mayroon kang Transaksyon na naglalaman ng tatlong (3) mga tagubilin at ang bawat tagubilin ay kumukonsumo ng humigit-kumulang
+Ipagpalagay na mayroon kang Transaksyon na naglalaman ng tatlong (3) mga instruction at ang bawat instruction ay kumukonsumo ng humigit-kumulang
 100_000 Compute Units (CU). Kapag tumatakbo sa bersyon ng Solana 1.8.x, mapapansin mo ang iyong pagtuturo sa pagkonsumo ng CU katulad ng:
 
-| Tagubilin | Simula sa CU | Pagpapatupad | Natitirang CU|
+| Instruction | Simula sa CU | Pagpapatupad | Natitirang CU|
 | - | - | - | - |
 | 1 | 200_000 | -100_000| 100_000
 | 2 | 200_000 | -100_000| 100_000
 | 3 | 200_000 | -100_000| 100_000
 
 Sa Solana 1.9.2 isang tampok na tinatawag na 'transaction wide compute cap' ay ipinakilala kung saan ang isang Transaksyon, bilang default,
-ay may 200_000 CU na badyet at ang mga naka-encapsulate na tagubilin **_bumaba_** mula sa badyet ng Transaksyon na iyon. Parehong tumatakbo
+ay may 200_000 CU na badyet at ang mga naka-encapsulate na instruction na **_ay kumukuha_** mula sa badyet ng Transaksyon na iyon. Parehong tumatakbo
 ang transaksyon tulad ng nabanggit sa itaas ay magkakaroon ng ibang pag-uugali:
 
-| Tagubilin | Simula sa CU | Pagpapatupad | Natitirang CU|
+| Instruction | Simula sa CU | Pagpapatupad | Natitirang CU|
 | - | - | - | - |
 | 1 | 200_000 | -100_000| 100_000
 | 2 | 100_000 | -100_000| 0
@@ -94,7 +94,7 @@ na magpapakita, bahagyang screen na ipinapakita dito, at hindi nangangailangan n
 
 ## Pagsubok sa Pagkakapantay-pantay
 Gaya ng nabanggit sa itaas, awtomatikong ina-activate ng `solana-test-validator` ang **lahat** ng mga feature.
-Kaya't upang masagot ang tanong na "Paano ko masusubok nang lokal sa isang kapaligiran na may pagkakapareho sa devnet,
+Kaya't upang masagot ang tanong na "Paano ko masusubok nang lokal sa isang environment na may pagkakapareho sa devnet,
 testnet o kahit mainnet-beta?".
 
 Solusyon: Ang mga PR ay idinagdag sa Solana 1.9.6 upang payagan ang pag-deactivate ng mga feature:
@@ -105,7 +105,7 @@ solana-test-validator --deactivate-feature <FEATURE_PUBKEY> ...
 
 ## Simpleng Pagpapakita
 Ipagpalagay na mayroon kang isang simpleng programa na nag-log sa data na natatanggap nito sa entry-point nito. At ikaw ay
-pagsubok ng isang transaksyon na nagdaragdag ng dalawang (2) mga tagubilin para sa iyong programa.
+pagsubok ng isang transaksyon na nagdaragdag ng dalawang (2) mga instruction para sa iyong programa.
 
 ### Na-activate ang lahat ng feature
 1. Sisimulan mo ang test validator sa isang terminal:
@@ -135,14 +135,14 @@ Dahil ang aming feature na 'transaction wide compute cap' ay awtomatikong naisaa
 pagtuturo na kumukuha ng CU mula sa panimulang Transaksyon na badyet na 200_000 CU.
 
 ### Na-deactivate ang mga piling feature
-1. Para sa run na ito, gusto naming tumakbo upang ang pag-uugali ng badyet ng CU ay naaayon sa kung ano ang tumatakbo sa devnet. Gamit
+1. Para sa run na ito, gusto nating tumakbo upang ang pag-uugali ng badyet ng CU ay naaayon sa kung ano ang tumatakbo sa devnet. Gamit
 ang (mga) tool na inilalarawan sa [Status ng Tampok](#feature-status) ibinubukod namin ang pampublikong key na `transaction wide compute cap`
 at gamitin ang `--deactivate-feature` sa test validator startup
 
 ```console
 solana-test-validator -l ./ledger --deactivate-feature 5ekBxc8itEnPv4NzGJtr8BVVQLNMQuLMNQQj7pHoLNZ9 --bpf-program target/deploy/PROGNAME.so --reset`
 ```
-2. Nakita namin ngayon sa aming mga log na ang aming mga tagubilin ay mayroon na ngayong sariling 200_000 CU na badyet (na-edit para sa kalinawan) na
+2. Nakita namin ngayon sa aming mga log na ang aming mga instruction ay mayroon na ngayong sariling 200_000 CU na badyet (na-edit para sa kalinawan) na
 kasalukuyang estado sa lahat ng upstream cluster:
 ```console
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc invoke [1]
@@ -171,7 +171,7 @@ solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 Kung magbubukas ka ng isa pang terminal, habang tumatakbo ang validator, at `solana feature status` ang makikita mo
 mga feature na na-deactivate na nakitang naka-deactivate sa devnet
 
-## Buong Parity Testing sa Programatically
+## Buong Parity Testing sa pamamagitan ng pag-program
 Para sa mga kumokontrol sa pagpapatakbo ng test validator sa loob ng kanilang test code, nagbabago
 ang test validator activated/deactivated features ay posible gamit ang TestValidatorGenesis. Sa
 Solana 1.9.6 isang function ang idinagdag sa tagabuo ng validator upang suportahan ito.

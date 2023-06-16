@@ -54,9 +54,9 @@ Live na Bersyon. (gamitin ang devnet sa naka-embed na bersyon)
 
 Ang Tiny Adventure ay isang beginner-friendly na programang Solana na nilikha gamit ang Anchor framework. Ang layunin ng program na ito ay ipakita sa iyo kung paano lumikha ng isang simpleng laro na nagbibigay-daan sa mga manlalaro na subaybayan ang kanilang posisyon at lumipat pakaliwa o kanan.
 
-Ang Tiny Adventure Program ay binubuo lamang ng 3 mga tagubilin:
+Ang Tiny Adventure Program ay binubuo lamang ng 3 mga instruction:
 
-- `initialize` - Ang tagubiling ito ay nagse-set up ng on-chain na account upang iimbak ang posisyon ng manlalaro
+- `initialize` - Ang instruction na ito ay nagse-set up ng on-chain na account upang iimbak ang posisyon ng manlalaro
 - `move_left` - Hinahayaan ng pagtuturo na ito ang player na ilipat ang kanilang posisyon sa kaliwa
 - `move_right` - Hinahayaan ng pagtuturo na ito ang player na ilipat ang kanilang posisyon sa kanan
 
@@ -130,9 +130,9 @@ pub struct GameDataAccount {
 
 ### Magsimula ng Instruksyon
 
-Pagkatapos tukuyin ang account ng programa, ipatupad natin ang tagubiling `initialize`. Sinisimulan ng tagubiling ito ang `GameDataAccount` kung wala pa ito, itinatakda ang `player_position` sa 0, at mag-print ng ilang log ng mensahe.
+Pagkatapos tukuyin ang account ng programa, ipatupad natin ang instruction na `initialize`. Sinisimulan ng instruction na ito ang `GameDataAccount` kung wala pa ito, itinatakda ang `player_position` sa 0, at mag-print ng ilang log ng mensahe.
 
-Ang tagubiling `pasimulan` ay nangangailangan ng 3 account:
+Ang instruction na `initialize` ay nangangailangan ng 3 account:
 
 - `new_game_data_account` - ang `GameDataAccount` na sinisimulan namin
 - `signer` - ang player na nagbabayad para sa initialization ng `GameDataAccount`
@@ -179,7 +179,7 @@ Bilang kahalili, maaari mong gamitin ang address ng lumagda bilang isang karagda
 
 ### Ilipat ang Instruksyon sa Kaliwa
 
-Ngayon na maaari na nating simulan ang isang `GameDataAccount` account, ipatupad natin ang tagubiling `move_left`. Nagbibigay-daan ito sa isang player na i-update ang kanilang `player_position`. Sa halimbawang ito, ang paglipat sa kaliwa ay nangangahulugan lamang ng pagbabawas ng `player_position` ng 1. Itatakda din namin ang minimum na posisyon sa 0.
+Ngayon na maaari na nating simulan ang isang `GameDataAccount` account, ipatupad natin ang instruction na `move_left`. Nagbibigay-daan ito sa isang player na i-update ang kanilang `player_position`. Sa halimbawang ito, ang paglipat sa kaliwa ay nangangahulugan lamang ng pagbabawas ng `player_position` ng 1. Itatakda din namin ang minimum na posisyon sa 0.
 
 Ang tanging account na kailangan para sa pagtuturo na ito ay ang `GameDataAccount`.
 
@@ -214,7 +214,7 @@ pub struct MoveLeft<'info> {
 
 ### Pagtuturo sa Pakanan
 
-Panghuli, ipatupad natin ang tagubiling `move_right`. Sa katulad na paraan, ang paglipat sa kanan ay nangangahulugan lamang ng pagtaas ng `player_position` ng 1. Nililimitahan din namin ang maximum na posisyon sa 3.
+Panghuli, ipatupad natin ang instruction na `move_right`. Sa katulad na paraan, ang paglipat sa kanan ay nangangahulugan lamang ng pagtaas ng `player_position` ng 1. Nililimitahan din namin ang maximum na posisyon sa 3.
 
 Katulad ng dati, ang tanging account na kailangan para sa pagtuturo na ito ay ang `GameDataAccount`.
 
@@ -387,7 +387,7 @@ try {
 }
 ```
 
-Ngayon ay handa na kaming makipag-ugnayan sa laro sa pamamagitan ng paggalaw sa kaliwa o kanan. Ginagawa ito sa pamamagitan ng paggamit ng `moveLeft` o `moveRight` na mga tagubilin mula sa programa at pagsusumite ng transaksyon sa Solana network. Maaari mong ulitin ang hakbang na ito nang maraming beses hangga't gusto mo.
+Ngayon ay handa na kaming makipag-ugnayan sa laro sa pamamagitan ng paggalaw sa kaliwa o kanan. Ginagawa ito sa pamamagitan ng paggamit ng `moveLeft` o `moveRight` na mga instruction na mula sa programa at pagsusumite ng transaksyon sa Solana network. Maaari mong ulitin ang hakbang na ito nang maraming beses hangga't gusto mo.
 
 ```js
 // Here you can play around now, move left and right

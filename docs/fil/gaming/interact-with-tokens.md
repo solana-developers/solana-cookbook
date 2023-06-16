@@ -45,11 +45,11 @@ Ang mga token sa Solana ay maaaring maghatid ng iba't ibang layunin, gaya ng mga
 
 Sa tutorial na ito, bubuo kami ng laro gamit ang Anchor para ipakilala ang mga pangunahing kaalaman sa pakikipag-ugnayan sa Token Program sa Solana. Ang laro ay bubuoin sa paligid ng apat na pangunahing aksyon: paggawa ng bagong token mint, pagsisimula ng mga account ng manlalaro, pagbibigay ng reward sa mga manlalaro sa pagkatalo sa mga kaaway, at pagpapahintulot sa mga manlalaro na gumaling sa pamamagitan ng pagsunog ng mga token.
 
-Ang programa ay binubuo ng 4 na mga tagubilin:
+Ang programa ay binubuo ng 4 na mga instruction:
 
-- `create_mint` - Lumilikha ang tagubiling ito ng bagong token mint na may Program Derived Address (PDA) bilang awtoridad ng mint at gumagawa ng metadata account para sa mint. Magdaragdag kami ng isang hadlang na nagbibigay-daan lamang sa isang "admin" na gamitin ang tagubiling ito
-- `init_player` - Ang tagubiling ito ay nagpapasimula ng bagong player account na may panimulang kalusugan na 100
-- `kill_enemy` - Ibinabawas ng tagubiling ito ang 10 health point mula sa player account kapag "natalo ang isang kaaway" at nagbibigay ng 1 token bilang reward para sa player
+- `create_mint` - Lumilikha ang instruction na ito ng bagong token mint na may Program Derived Address (PDA) bilang awtoridad ng mint at gumagawa ng metadata account para sa mint. Magdaragdag kami ng isang hadlang na nagbibigay-daan lamang sa isang "admin" na gamitin ang instruction na ito
+- `init_player` - Ang instruction na ito ay nagpapasimula ng bagong player account na may panimulang kalusugan na 100
+- `kill_enemy` - Ibinabawas ng instruction na ito ang 10 health point mula sa player account kapag "natalo ang isang kaaway" at nagbibigay ng 1 token bilang reward para sa player
 - `heal` - Ang pagtuturo na ito ay nagbibigay-daan sa isang manlalaro na magsunog ng 1 token upang maibalik ang kanilang kalusugan sa 100
 
 Para sa isang mataas na antas na pangkalahatang-ideya ng ugnayan ng mga wallet ng user, token mints, token account, at token metadata account, isaalang-alang ang pag-explore sa bahaging ito ng [dokumentasyon ng Metaplex](https://docs.metaplex.com/programs/token-metadata /pangkalahatang-ideya).
@@ -84,17 +84,17 @@ Dito ay dinadala lamang namin sa saklaw ang mga crates at kaukulang mga module n
 
 ### Lumikha ng pagtuturo ng Mint
 
-Una, ipatupad natin ang isang tagubilin para gumawa ng bagong token mint at ang metadata account nito. Ang on-chain token metadata, kasama ang pangalan, simbolo, at URI, ay ibibigay bilang mga parameter sa pagtuturo.
+Una, ipatupad natin ang isang instruction para gumawa ng bagong token mint at ang metadata account nito. Ang on-chain token metadata, kasama ang pangalan, simbolo, at URI, ay ibibigay bilang mga parameter sa pagtuturo.
 
-Bukod pa rito, papayagan lang namin ang isang "admin" na gamitin ang tagubiling ito sa pamamagitan ng pagtukoy ng `ADMIN_PUBKEY` na pare-pareho at paggamit nito bilang isang hadlang. Tiyaking palitan ang `ADMIN_PUBKEY` ng iyong Solana Playground wallet na pampublikong key.
+Bukod pa rito, papayagan lang namin ang isang "admin" na gamitin ang instruction na ito sa pamamagitan ng pagtukoy ng `ADMIN_PUBKEY` na pare-pareho at paggamit nito bilang isang hadlang. Tiyaking palitan ang `ADMIN_PUBKEY` ng iyong Solana Playground wallet na pampublikong key.
 
-Ang tagubiling `create_mint` ay nangangailangan ng mga sumusunod na account:
+Ang instruction na `create_mint` ay nangangailangan ng mga sumusunod na account:
 
 - `admin` - ang `ADMIN_PUBKEY` na pumipirma sa transaksyon at nagbabayad para sa pagsisimula ng mga account
 - `reward_token_mint` - ang bagong token mint na sinisimulan namin, gamit ang isang PDA bilang parehong address ng mint account at awtoridad nito sa mint
 - `metadata_account` - ang metadata account na sinisimulan namin para sa token mint
-- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga tagubilin sa Token program
-- `token_metadata_program` - kinakailangang account para sa pakikipag-ugnayan sa mga tagubilin sa Token Metadata program
+- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga instruction sa Token program
+- `token_metadata_program` - kinakailangang account para sa pakikipag-ugnayan sa mga instruction sa Token Metadata program
 - `system_program`- isang kinakailangang account kapag gumagawa ng bagong account
 - `rent` - Sysvar Rent, isang kinakailangang account kapag gumagawa ng metadata account
 
@@ -190,13 +190,13 @@ pub struct CreateMint<'info> {
 }
 ```
 
-Ang tagubiling `create_mint` ay lumilikha ng bagong token mint, gamit ang Program Derived Address (PDA) bilang parehong address ng token mint at ang awtoridad ng mint nito. Ang pagtuturo ay kumukuha ng URI (off-chain metadata), pangalan, at simbolo bilang mga parameter.
+Ang instruction na `create_mint` ay lumilikha ng bagong token mint, gamit ang Program Derived Address (PDA) bilang parehong address ng token mint at ang awtoridad ng mint nito. Ang pagtuturo ay kumukuha ng URI (off-chain metadata), pangalan, at simbolo bilang mga parameter.
 
-Ang tagubiling ito ay gagawa ng metadata account para sa token mint sa pamamagitan ng Cross-Program Invocation (CPI) na tumatawag sa `create_metadata_accounts_v3` na pagtuturo mula sa Token Metadata program.
+Ang instruction na ito ay gagawa ng metadata account para sa token mint sa pamamagitan ng Cross-Program Invocation (CPI) na tumatawag sa `create_metadata_accounts_v3` na pagtuturo mula sa Token Metadata program.
 
 Ginagamit ang PDA para "pirmahan" ang CPI dahil ito ang awtoridad ng mint, na kinakailangang lumagda kapag gumagawa ng metadata account para sa isang mint. Ang data ng pagtuturo (URI, pangalan, simbolo) ay kasama sa `DataV2` struct upang tukuyin ang metadata ng bagong token mint.
 
-Bini-verify din namin na ang address ng `admin` account na pumipirma sa transaksyon ay tumutugma sa halaga ng `ADMIN_PUBKEY` na pare-pareho upang matiyak na ang nilalayong wallet lang ang makakapag-invoke ng tagubiling ito.
+Bini-verify din namin na ang address ng `admin` account na pumipirma sa transaksyon ay tumutugma sa halaga ng `ADMIN_PUBKEY` na pare-pareho upang matiyak na ang nilalayong wallet lang ang makakapag-invoke ng instruction na ito.
 
 ```rust
 const ADMIN_PUBKEY: Pubkey = pubkey!("REPLACE_WITH_YOUR_WALLET_PUBKEY");
@@ -204,9 +204,9 @@ const ADMIN_PUBKEY: Pubkey = pubkey!("REPLACE_WITH_YOUR_WALLET_PUBKEY");
 
 ### Init Player Instruction
 
-Susunod, ipatupad natin ang tagubiling `init_player` na lumilikha ng bagong account ng manlalaro na may paunang kalusugan na 100. Ang pare-parehong `MAX_HEALTH` ay nakatakda sa 100 upang kumatawan sa panimulang kalusugan.
+Susunod, ipatupad natin ang instruction na `init_player` na lumilikha ng bagong account ng manlalaro na may paunang kalusugan na 100. Ang pare-parehong `MAX_HEALTH` ay nakatakda sa 100 upang kumatawan sa panimulang kalusugan.
 
-Ang tagubiling `init_player` ay nangangailangan ng mga sumusunod na account:
+Ang instruction na `init_player` ay nangangailangan ng mga sumusunod na account:
 
 - `player_data` - ang bagong account ng manlalaro na aming sinisimulan, na mag-iimbak ng kalusugan ng manlalaro
 - `player` - ang user na pumirma sa transaksyon at nagbabayad para sa pagsisimula ng account
@@ -254,15 +254,15 @@ Sinisimulan ang `player_data` account gamit ang Program Derived Address (PDA) na
 
 ### Instruksyon ng Patayin ang Kaaway
 
-Susunod, ipatupad natin ang tagubiling `kill_enemy` na nagbabawas ng 10 sa kalusugan ng manlalaro at nagbibigay ng 1 token sa token account ng manlalaro bilang reward.
+Susunod, ipatupad natin ang instruction na `kill_enemy` na nagbabawas ng 10 sa kalusugan ng manlalaro at nagbibigay ng 1 token sa token account ng manlalaro bilang reward.
 
-Ang tagubiling `kill_enemy` ay nangangailangan ng mga sumusunod na account:
+Ang instruction na `kill_enemy` ay nangangailangan ng mga sumusunod na account:
 
 - `player` - ang player na tumatanggap ng token
 - `player_data` - ang player data account na nag-iimbak ng kasalukuyang kalusugan ng player
 - `player_token_account` - ang nauugnay na token account ng manlalaro kung saan gagawa ng mga token
 - `reward_token_mint` - ang token mint account, na tumutukoy sa uri ng token na ilalagay
-- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga tagubilin sa token program
+- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga instruction sa token program
 - `associated_token_program` - kinakailangan kapag nagtatrabaho sa mga nauugnay na token account
 - `system_program` - isang kinakailangang account kapag gumagawa ng bagong account
 
@@ -352,11 +352,11 @@ Ang kalusugan ng manlalaro ay nabawasan ng 10 upang kumatawan sa "labanan sa kal
 
 Ang pagtuturo pagkatapos ay gumagamit ng cross-program invocation (CPI) para tawagan ang `mint_to` na pagtuturo mula sa Token program at mag-mint ng 1 token ng `reward_token_mint` sa `player_token_account` bilang reward sa pagpatay sa kaaway.
 
-Dahil ang awtoridad ng mint para sa token mint ay Program Derived Address (PDA), maaari kaming direktang mag-mint ng mga token sa pamamagitan ng pagtawag sa tagubiling ito nang walang karagdagang pumirma. Ang programa ay maaaring "mag-sign" sa ngalan ng PDA, na nagpapahintulot sa token minting nang hindi tahasang nangangailangan ng mga karagdagang pumirma.
+Dahil ang awtoridad ng mint para sa token mint ay Program Derived Address (PDA), maaari kaming direktang mag-mint ng mga token sa pamamagitan ng pagtawag sa instruction na ito nang walang karagdagang pumirma. Ang programa ay maaaring "mag-sign" sa ngalan ng PDA, na nagpapahintulot sa token minting nang hindi tahasang nangangailangan ng mga karagdagang pumirma.
 
 ### Heal Instruction
 
-Susunod, ipatupad natin ang tagubiling `heal` na nagbibigay-daan sa isang manlalaro na magsunog ng 1 token at ibalik ang kanilang kalusugan sa pinakamataas na halaga nito.
+Susunod, ipatupad natin ang instruction na `heal` na nagbibigay-daan sa isang manlalaro na magsunog ng 1 token at ibalik ang kanilang kalusugan sa pinakamataas na halaga nito.
 
 Ang pagtuturo ng `heal` ay nangangailangan ng mga sumusunod na account:
 
@@ -364,7 +364,7 @@ Ang pagtuturo ng `heal` ay nangangailangan ng mga sumusunod na account:
 - `player_data` - ang player data account na nag-iimbak ng kasalukuyang kalusugan ng player
 - `player_token_account` - ang nauugnay na token account ng manlalaro kung saan susunugin ang mga token
 - `reward_token_mint` - ang token mint account, na tumutukoy sa uri ng token na susunugin
-- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga tagubilin sa token program
+- `token_program` - kinakailangan para sa pakikipag-ugnayan sa mga instruction sa token program
 - `associated_token_program` - kinakailangan kapag nagtatrabaho sa mga nauugnay na token account
 
 ```rust
@@ -767,7 +767,7 @@ async function fetchAccountData() {
 }
 ```
 
-Susunod, gamitin ang tagubiling `createMint` para gumawa ng bagong token mint kung wala pa ito.
+Susunod, gamitin ang instruction na `createMint` para gumawa ng bagong token mint kung wala pa ito.
 
 ```js
 let txHash;
@@ -789,7 +789,7 @@ try {
 console.log("Token Mint: ", rewardTokenMintPda.toString());
 ```
 
-Susunod, tawagan ang tagubiling `initPlayer` para gumawa ng bagong player account kung wala pa.
+Susunod, tawagan ang instruction na `initPlayer` para gumawa ng bagong player account kung wala pa.
 
 ```js
 try {

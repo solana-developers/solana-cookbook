@@ -814,8 +814,8 @@ export default defineUserConfig<DefaultThemeOptions>({
         sidebar: {
           "/": [
             {
-              text: "Nagsisimula",
-              children: ["/fil/", "/id/getting-started/installation.md"],
+              text: "Pagsisimula",
+              children: ["/fil/", "/fil/getting-started/installation.md"],
             },
             {
               text: "Mga pangunahing konsepto",

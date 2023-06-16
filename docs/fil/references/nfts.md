@@ -144,7 +144,7 @@ ibig sabihin, isang token account lang ang hahawak ng token na iyon kahit saan
 punto sa oras, habang ang lahat ng iba pang mga token account para sa mint key na iyon
 may balanseng 0.
 
-Kapag natukoy na ang pinakamalaking token account, maaari naming makuha ang may-ari nito.
+Kapag natukoy na ang pinakamalaking token account, maaari nating makuha ang may-ari nito.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -167,7 +167,7 @@ Kapag natukoy na ang pinakamalaking token account, maaari naming makuha ang may-
 
 ## Paano makakuha ng NFT Mint Address
 
-Kung alam mo ang pampublikong key ng Candy Machine, maaari mong makuha ang listahan ng lahat ng NFT mint address na nabuo mula sa Candy Machine na iyon gamit ang sumusunod na code. Tandaan na maaari naming gamitin ang sumusunod na `memcmp` na filter dahil, sa v1, ang unang gumawa ay palaging ang address ng Candy Machine.
+Kung alam mo ang pampublikong key ng Candy Machine, maaari mong makuha ang listahan ng lahat ng NFT mint address na nabuo mula sa Candy Machine na iyon gamit ang sumusunod na code. Tandaan na maaari nating gamitin ang sumusunod na `memcmp` na filter dahil, sa v1, ang unang gumawa ay palaging ang address ng Candy Machine.
 
 ### Candy Machine V1
 
@@ -216,7 +216,7 @@ Kung gumagamit ka ng Candy Machine v2, kakailanganin mo munang i-access ang "Can
 ## Paano makukuha ang lahat ng NFT mula sa isang wallet?
 
 Kapag nakuha ang lahat ng NFT mula sa isang wallet, kakailanganin mong makuha ang lahat ng token account at pagkatapos ay i-parse kung alin ang mga NFT.
-Magagawa ang lahat ng ito gamit ang [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/L260S-mula sa Metadata. aklatan.
+Magagawa ang lahat ng ito gamit ang [`findDataByOwner`](https://github.com/metaplex-foundation/js/blob/248b61baf89a69b88f9a461e32b1cbd54a9b0a18/src/programs/metadata/accounts/Metadata.ts#L220-L236) mula sa Metaplex JS library.
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

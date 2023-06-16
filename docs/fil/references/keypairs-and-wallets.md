@@ -42,7 +42,7 @@ footer: MIT Licensed
 ## Paano bumuo ng bagong Keypair
 
 Marami sa iba't ibang aksyon na maaari mong gawin sa iba't ibang Solana
-ang mga aklatan ay nangangailangan ng Keypair o Wallet. Kung kumokonekta ka sa a
+ang mga library ay nangangailangan ng Keypair o Wallet. Kung kumokonekta ka sa a
 wallet, hindi mo kailangang mag-alala. Gayunpaman, kung ikaw ay nangangailangan ng isang
 keypair, kakailanganin mong bumuo ng isa.
 
@@ -709,7 +709,7 @@ yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wa
 
 Ang mga library ng React wallet-adapter ay nagbibigay-daan sa amin na magpatuloy at ma-access ang mga estado ng koneksyon ng wallet sa pamamagitan ng mga hook at Context provider, ibig sabihin, `useWallet`, `WalletProvider`, `useConnection`, at `ConnectionProvider`. Ang React App ay dapat na balot ng `WalletProvider` at `ConnectionProvider`.
 
-Bukod pa rito, maaari naming hikayatin ang mga user na kumonekta sa pamamagitan ng paggamit ng `useWalletModal` upang i-toggle ang visibility ng modal ng koneksyon at ibalot din ang App gamit ang `WalletModalProvider` mula sa `@solana/wallet-adapter-react-ui`. Hahawakan ng connection modal ang daloy ng koneksyon na iyon para sa atin, para makinig lang tayo kapag may kumonekta na wallet. Alam naming nakakonekta ang wallet kapag ang tugon ng `useWallet` ay may hindi null na `wallet` na property. Vice versa, kung null ang property na iyon, alam natin na disconnected ang wallet.
+Bukod pa rito, maaari nating hikayatin ang mga user na kumonekta sa pamamagitan ng paggamit ng `useWalletModal` upang i-toggle ang visibility ng modal ng koneksyon at ibalot din ang App gamit ang `WalletModalProvider` mula sa `@solana/wallet-adapter-react-ui`. Hahawakan ng connection modal ang daloy ng koneksyon na iyon para sa atin, para makinig lang tayo kapag may kumonekta na wallet. Alam nating nakakonekta ang wallet kapag ang tugon ng `useWallet` ay may hindi null na `wallet` na property. Vice versa, kung null ang property na iyon, alam natin na disconnected ang wallet.
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>

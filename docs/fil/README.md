@@ -61,6 +61,6 @@ Ang Solana Cookbook ay nahahati sa iba't ibang mga seksyon, ang bawat isa ay nag
 
 | Section                  | Description |
 |--------------------------|--------------------------------------------------------------------------------|
-| Mga pangunahing konsepto | Building blocks ng Solana na magandang malaman para sa pag-unlad               |
-| Mga gabay                | Snack-sized na mga gabay tungkol sa iba't ibang kasangkapan para sa pag-unlad  |
+| Mga pangunahing konsepto | Building blocks ng Solana na magandang malaman para sa pag-gawa               |
+| Mga gabay                | Snack-sized na mga gabay tungkol sa iba't ibang kasangkapan para sa pag-gawa  |
 | Mga sanggunian           | Mga sanggunian sa mga karaniwang kinakailangang snippet ng code                |

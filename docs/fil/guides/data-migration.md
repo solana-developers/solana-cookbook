@@ -123,7 +123,7 @@ Sa aming unang bersyon ng isang account, ginagawa namin ang sumusunod:
 |3| Pagsisimula ng bilang ng mga constant na gagamitin sa mga bersyon ng program
 |4| Magdagdag ng function ng update ng account sa ilalim ng `fn conversion_logic` para sa mga upgrade sa hinaharap
 
-Sabihin nating gusto naming i-upgrade ngayon ang mga account ng aming programa para maisama
+Sabihin nating gusto nating i-upgrade ngayon ang mga account ng aming programa para maisama
 isang bagong kinakailangang field, ang field na `somestring`.
 
 Kung hindi kami naglaan ng dagdag na espasyo sa nakaraang account, magagawa namin
@@ -131,7 +131,7 @@ hindi i-upgrade ang account at ma-stuck.
 
 ## Pag-upgrade ng Account
 
-Sa aming bagong programa gusto naming magdagdag ng bagong property para sa estado ng nilalaman.
+Sa aming bagong programa gusto nating magdagdag ng bagong property para sa estado ng nilalaman.
 Ang mga kasunod na pagbabago ay kung paano namin ginamit ang paunang programa
 mga konstruksyon habang ginagamit ang mga ito ngayon.
 
@@ -160,10 +160,10 @@ mga konstruksyon habang ginagamit ang mga ito ngayon.
 | 6 | Idinagdag namin ang `solana_program::borsh::try_from_slice_unchecked` ni Solana upang pasimplehin ang pagbabasa ng mga subset ng data mula sa mas malaking data block
 | 13-26| Dito napanatili namin ang lumang istraktura ng nilalaman, `AccountContentOld` na linya 24, bago palawigin ang `AccountContentCurrent` simula sa linya 17.
 | 60 | Binabangga namin ang pare-parehong `DATA_VERSION`
-| 71 | Mayroon na kaming 'nakaraang' na bersyon at gusto naming malaman ang laki nito
-| 86 | Ang Coup de grace ay nagdaragdag ng pagtutubero upang i-upgrade ang dating estado ng nilalaman sa bagong (kasalukuyang) estado ng nilalaman
+| 71 | Mayroon na kaming 'nakaraang' na bersyon at gusto nating malaman ang laki nito
+| 86 | Ang Coup de grace ay nagdaragdag ng code upang i-upgrade ang dating estado ng nilalaman sa bagong (kasalukuyang) estado ng nilalaman
 
-Pagkatapos ay ina-update namin ang aming mga tagubilin, upang magdagdag ng bago para sa pag-update ng `somestring`, at processor para sa paghawak ng bagong pagtuturo. Tandaan na ang 'pag-upgrade' sa istraktura ng data ay naka-encapsulated sa likod ng `pack/unpack`
+Pagkatapos ay ina-update namin ang aming mga instruction, upang magdagdag ng bago para sa pag-update ng `somestring`, at processor para sa paghawak ng bagong pagtuturo. Tandaan na ang 'pag-upgrade' sa istraktura ng data ay naka-encapsulated sa likod ng `pack/unpack`
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,7 +179,7 @@ Pagkatapos ay ina-update namin ang aming mga tagubilin, upang magdagdag ng bago 
   </CodeGroupItem>
 </CodeGroup>
 
-Pagkatapos bumuo at magsumite ng tagubilin: `VersionProgramInstruction::SetString(String)` mayroon na kaming sumusunod na 'na-upgrade' na layout ng data ng account
+Pagkatapos bumuo at magsumite ng instruction: `VersionProgramInstruction::SetString(String)` mayroon na kaming sumusunod na 'na-upgrade' na layout ng data ng account
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 

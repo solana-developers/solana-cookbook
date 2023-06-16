@@ -55,7 +55,7 @@ Ang mga sample sa natitirang bahagi ng dokumentong ito ay mga sipi na kinuha mul
 
 ## Pagse-set up para sa Borsh Serialization
 
-Ang mga aklatan para sa Borsh ay dapat na setup para sa Rust program, Rust client, Node at/o Python client.
+Ang mga library para sa Borsh ay dapat na setup para sa Rust program, Rust client, Node at/o Python client.
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -194,7 +194,7 @@ na ipinakita sa ibaba ay unang nagbabasa ng `BTREE_LENGTH` upang makuha ang laki
 Pinagsasama-sama ng sumusunod ang lahat at ipinapakita kung paano nakikipag-ugnayan ang program sa `ProgramAccountState`
 na nakapaloob sa flag ng initialization pati na rin ang pinagbabatayan na `BTreeMap` para sa aming mga pares ng key/value.
 
-Una kapag gusto naming magpasimula ng bagong account:
+Una kapag gusto nating magpasimula ng bagong account:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">
@@ -204,8 +204,8 @@ Una kapag gusto naming magpasimula ng bagong account:
   </CodeGroupItem>
 </CodeGroup>
 
-Ngayon ay maaari na kaming gumana sa aming iba pang mga tagubilin habang ang mga sumusunod ay nagpapakita ng paggawa ng bago
-key value pair na ipinakita namin sa itaas noong nagpapadala ng mga tagubilin mula sa isang kliyente:
+Ngayon ay maaari na kaming gumana sa aming iba pang mga instruction habang ang mga sumusunod ay nagpapakita ng paggawa ng bago
+key value pair na ipinakita namin sa itaas noong nagpapadala ng mga instruction mula sa isang kliyente:
 
 <CodeGroup>
   <CodeGroupItem title="Rust">

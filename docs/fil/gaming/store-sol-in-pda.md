@@ -52,10 +52,10 @@ Live na Bersyon. (gamitin ang devnet)
 
 Sa tutorial na ito, bubuuin namin ang larong Tiny Adventure at magpapakilala ng chest na may reward na 0.1 SOL. Ang dibdib ay "spawn" sa isang partikular na posisyon, at kapag naabot ng manlalaro ang posisyon na iyon, makakatanggap sila ng gantimpala. Ang layunin ng programang ito ay ipakita kung paano mag-imbak ng SOL sa loob ng isang account ng programa at ipamahagi ito sa mga manlalaro.
 
-Ang Tiny Adventure Two Program ay binubuo ng 3 tagubilin:
+Ang Tiny Adventure Two Program ay binubuo ng 3 instruction:
 
-- `initialize_level_one` - Ang tagubiling ito ay nagpapasimula ng dalawang on-chain na account: isa para sa pag-record ng posisyon ng player at isa pa para sa paghawak ng SOL reward na kumakatawan sa "reward chest".
-- `reset_level_and_spawn_chest` - Nire-reset ng tagubiling ito ang posisyon ng player sa zero at "re-respawn" ang isang reward chest sa pamamagitan ng paglilipat ng SOL mula sa user na gumagamit ng tagubilin sa reward chest account.
+- `initialize_level_one` - Ang instruction na ito ay nagpapasimula ng dalawang on-chain na account: isa para sa pag-record ng posisyon ng player at isa pa para sa paghawak ng SOL reward na kumakatawan sa "reward chest".
+- `reset_level_and_spawn_chest` - Nire-reset ng instruction na ito ang posisyon ng player sa zero at "re-respawn" ang isang reward chest sa pamamagitan ng paglilipat ng SOL mula sa user na gumagamit ng instruction sa reward chest account.
 - `move_right` - Ang pagtuturo na ito ay nagbibigay-daan sa manlalaro na ilipat ang kanilang posisyon sa kanan at kolektahin ang SOL sa reward chest kapag naabot na nila ang isang partikular na posisyon.
 
 Sa mga sumusunod na seksyon, gagabayan ka namin sa pagbuo ng programa nang sunud-sunod. Mahahanap mo ang kumpletong source code, na maaaring direktang i-deploy mula sa iyong browser gamit ang Solana Playground, sa link na ito: [Open In Playground](https://beta.solpg.io/tutorials/tiny-adventure-two).
@@ -102,7 +102,7 @@ Sa larong ito, magsisimula ang manlalaro sa posisyon 0 at makakagalaw lamang sa 
 
 Idagdag ang `CHEST_REWARD` na pare-pareho sa simula ng programa. Ang `CHEST_REWARD` ay kumakatawan sa dami ng lamports na ilalagay sa chest at ibibigay bilang mga reward. Ang mga Lampor ay ang pinakamaliit na bahagi ng isang SOL, na may 1 bilyong lampor na katumbas ng 1 SOL.
 
-Para mag-imbak ng SOL reward, tutukuyin namin ang isang bagong `ChestVaultAccount` struct. Isa itong walang laman na struct dahil direkta naming ia-update ang mga lamports sa account. Hahawakan ng account ang gantimpala ng SOL at hindi na kailangang mag-imbak ng anumang karagdagang data.
+Para mag-imbak ng SOL reward, tutukuyin namin ang isang bagong `ChestVaultAccount` struct. Isa itong walang laman na struct dahil direkta nating ia-update ang mga lamports sa account. Hahawakan ng account ang gantimpala ng SOL at hindi na kailangang mag-imbak ng anumang karagdagang data.
 
 ```rust
 use anchor_lang::prelude::*;
@@ -128,7 +128,7 @@ pub struct ChestVaultAccount {}
 
 ### Pagtukoy sa Game Data Account
 
-Upang masubaybayan ang posisyon ng manlalaro sa loob ng laro, kailangan naming tukuyin ang isang istraktura para sa on-chain na account na mag-iimbak ng posisyon ng manlalaro.
+Upang masubaybayan ang posisyon ng manlalaro sa loob ng laro, kailangan nating tukuyin ang isang istraktura para sa on-chain na account na mag-iimbak ng posisyon ng manlalaro.
 
 Ang `GameDataAccount` struct ay naglalaman ng isang field, `player_position`, na nag-iimbak ng kasalukuyang posisyon ng player bilang isang unsigned 8-bit integer.
 
@@ -160,12 +160,12 @@ Sa tinukoy na `GameDataAccount` struct, maaari mo na itong gamitin upang mag-imb
 
 ### Simulan ang Level One Instruction
 
-Sa tinukoy na `GameDataAccount` at `ChestVaultAccount`, ipatupad natin ang tagubiling `initialize_level_one`. Sinisimulan ng tagubiling ito ang `GameDataAccount` at `ChestVaultAccount`, itinatakda ang posisyon ng manlalaro sa 0, at ipinapakita ang panimulang mensahe.
+Sa tinukoy na `GameDataAccount` at `ChestVaultAccount`, ipatupad natin ang instruction na `initialize_level_one`. Sinisimulan ng instruction na ito ang `GameDataAccount` at `ChestVaultAccount`, itinatakda ang posisyon ng manlalaro sa 0, at ipinapakita ang panimulang mensahe.
 
-Ang tagubiling `initialize_level_one` ay nangangailangan ng 4 na account:
+Ang instruction na `initialize_level_one` ay nangangailangan ng 4 na account:
 
-- `new_game_data_account` - ang `GameDataAccount` na sinisimulan naming iimbak ang posisyon ng player
-- `chest_vault` - ang `ChestVaultAccount` na sinisimulan naming iimbak ang SOL reward
+- `new_game_data_account` - ang `GameDataAccount` na sinisimulan nating iimbak ang posisyon ng player
+- `chest_vault` - ang `ChestVaultAccount` na sinisimulan nating iimbak ang SOL reward
 - `signer` - ang manlalaro na nagbabayad para sa pagsisimula ng mga account
 - `system_program` - isang kinakailangang account kapag gumagawa ng bagong account
 
@@ -218,7 +218,7 @@ Bilang kahalili, maaari mong gamitin ang address ng lumagda bilang isang karagda
 
 ### I-reset ang Antas at Pagtuturo sa Dibdib ng Spawn
 
-Susunod, ipatupad natin ang tagubiling `reset_level_and_spawn_chest`, na nagre-reset sa posisyon ng player sa simula at pinupuno ang dibdib ng reward na 0.1 SOL.
+Susunod, ipatupad natin ang instruction na `reset_level_and_spawn_chest`, na nagre-reset sa posisyon ng player sa simula at pinupuno ang dibdib ng reward na 0.1 SOL.
 
 Ang pagtuturo sa `reset_level_and_spawn_chest` ay nangangailangan ng 4 na account:
 
@@ -268,17 +268,17 @@ pub struct SpawnChest<'info> {
 ...
 ```
 
-Kasama sa tagubiling ito ang cross-program invocation (CPI) para ilipat ang SOL mula sa nagbabayad patungo sa `ChestVaultAccount`. Ang cross-program invocation ay kapag ang isang programa ay nag-invoke ng pagtuturo sa isa pang programa. Sa kasong ito, gumagamit kami ng CPI para i-invoke ang tagubiling `Transfer` mula sa `system_program` para ilipat ang SOL mula sa nagbabayad patungo sa `ChestVaultAccount`.
+Kasama sa instruction na ito ang cross-program invocation (CPI) para ilipat ang SOL mula sa nagbabayad patungo sa `ChestVaultAccount`. Ang cross-program invocation ay kapag ang isang programa ay nag-invoke ng pagtuturo sa isa pang programa. Sa kasong ito, gumagamit kami ng CPI para i-invoke ang instruction na `Transfer` mula sa `system_program` para ilipat ang SOL mula sa nagbabayad patungo sa `ChestVaultAccount`.
 
-Ang mga cross-program invocations ay isang pangunahing konsepto sa Solana programming model, na nagbibigay-daan sa mga program na direktang makipag-ugnayan sa mga tagubilin mula sa iba pang mga program. Para sa mas malalim na pagsisid sa mga CPI, huwag mag-atubiling tuklasin ang mga aralin sa CPI na available sa [Solana Course](https://www.soldev.app/course).
+Ang mga cross-program invocations ay isang pangunahing konsepto sa Solana programming model, na nagbibigay-daan sa mga program na direktang makipag-ugnayan sa mga instruction mula sa iba pang mga program. Para sa mas malalim na pagsisid sa mga CPI, huwag mag-atubiling tuklasin ang mga aralin sa CPI na available sa [Solana Course](https://www.soldev.app/course).
 
 ### Pagtuturo sa Pakanan
 
-Panghuli, ipatupad natin ang tagubiling `move_right` na kinabibilangan ng logic para sa pagkolekta ng chest reward. Kapag naabot ng isang manlalaro ang posisyon 3 at naipasok ang tamang "password", ililipat ang reward mula sa **`ChestVaultAccount`** papunta sa account ng manlalaro. Kung ang isang maling password ay ipinasok, isang custom na Anchor Error ay ibabalik. Kung ang manlalaro ay nasa posisyon 3 na, isang mensahe ang mai-log. Kung hindi, ang posisyon ay dagdagan ng 1 upang kumatawan sa paglipat sa kanan.
+Panghuli, ipatupad natin ang instruction na `move_right` na kinabibilangan ng logic para sa pagkolekta ng chest reward. Kapag naabot ng isang manlalaro ang posisyon 3 at naipasok ang tamang "password", ililipat ang reward mula sa **`ChestVaultAccount`** papunta sa account ng manlalaro. Kung ang isang maling password ay ipinasok, isang custom na Anchor Error ay ibabalik. Kung ang manlalaro ay nasa posisyon 3 na, isang mensahe ang mai-log. Kung hindi, ang posisyon ay dagdagan ng 1 upang kumatawan sa paglipat sa kanan.
 
 Ang pangunahing layunin ng functionality na "password" na ito ay upang ipakita kung paano isama ang mga parameter sa isang pagtuturo at ang pagpapatupad ng mga custom na Anchor Error para sa pinahusay na paghawak ng error. Sa halimbawang ito, ang tamang password ay magiging "gib".
 
-Ang tagubiling `move_right` ay nangangailangan ng 3 account:
+Ang instruction na `move_right` ay nangangailangan ng 3 account:
 
 - `new_game_data_account` - ang `GameDataAccount` na nag-iimbak ng posisyon ng player
 - `chest_vault` - ang `ChestVaultAccount` na nag-iimbak ng SOL reward
@@ -348,7 +348,7 @@ pub enum MyError {
 ...
 ```
 
-Upang ilipat ang mga lampor mula sa reward chest papunta sa player account, hindi kami maaaring gumamit ng Cross-Program Invocation (CPI) tulad ng ginawa namin dati, dahil ang `ChestVaultAccount` ay hindi pagmamay-ari ng system program. Sa halip, direkta naming binabago ang mga lamport sa loob ng mga account sa pamamagitan ng paggamit ng `try_borrow_mut_laports`. Tandaan na ang account na iyong ibinabawas sa mga laport ay dapat na isang signer, at palaging tinitiyak ng runtime na ang kabuuang balanse ng account ay mananatiling pantay pagkatapos ng isang transaksyon.
+Upang ilipat ang mga lampor mula sa reward chest papunta sa player account, hindi kami maaaring gumamit ng Cross-Program Invocation (CPI) tulad ng ginawa namin dati, dahil ang `ChestVaultAccount` ay hindi pagmamay-ari ng system program. Sa halip, direkta nating binabago ang mga lamport sa loob ng mga account sa pamamagitan ng paggamit ng `try_borrow_mut_laports`. Tandaan na ang account na iyong ibinabawas sa mga laport ay dapat na isang signer, at palaging tinitiyak ng runtime na ang kabuuang balanse ng account ay mananatiling pantay pagkatapos ng isang transaksyon.
 
 Tandaan na ang Program Derived Accounts (PDAs) ay nag-aalok ng dalawang pangunahing feature:
 
@@ -452,7 +452,7 @@ fn print_player(player_position: u8) {
 
 #[derive(Accounts)]
 pub struct InitializeLevelOne<'info> {
-    // Dapat naming tukuyin ang espasyo upang makapagsimula ng account.
+    // Dapat nating tukuyin ang espasyo upang makapagsimula ng account.
     // Ang unang 8 byte ay default na discriminator ng account,
     // ang susunod na 1 byte ay mula sa NewAccount.data na uri u8.
     // (u8 = 8 bits unsigned integer = 8 bytes)
@@ -543,7 +543,7 @@ const [chestVaultAccount, chestBump] =
   );
 ```
 
-Susunod, tatawagin namin ang tagubiling `initializeLevelOne` para i-set up ang `GameDataAccount` at `ChestVaultAccount`.
+Susunod, tatawagin namin ang instruction na `initializeLevelOne` para i-set up ang `GameDataAccount` at `ChestVaultAccount`.
 
 ```js
 // Initialize level
@@ -567,7 +567,7 @@ console.log(
 );
 ```
 
-Pagkatapos nito, gagamitin namin ang tagubiling `resetLevelAndSpawnChest` para itakda ang posisyon ng player sa 0 at punan ang `ChestVaultAccount` ng 0.1 SOL.
+Pagkatapos nito, gagamitin namin ang instruction na `resetLevelAndSpawnChest` para itakda ang posisyon ng player sa 0 at punan ang `ChestVaultAccount` ng 0.1 SOL.
 
 ```js
 // Set the player position back to 0 and pay to fill up the chest with sol
@@ -589,7 +589,7 @@ console.log("Level reset and chest spawned 💎");
 console.log("o........💎");
 ```
 
-Ngayon ay maaari na tayong makipag-ugnayan sa laro sa pamamagitan ng pagtawag sa `moveRight` na pagtuturo. Sa halimbawang ito, uulitin namin ang tagubiling ito hanggang sa maabot ng manlalaro ang posisyon upang mangolekta ng reward mula sa `ChestVaultAccount`.
+Ngayon ay maaari na tayong makipag-ugnayan sa laro sa pamamagitan ng pagtawag sa `moveRight` na pagtuturo. Sa halimbawang ito, uulitin namin ang instruction na ito hanggang sa maabot ng manlalaro ang posisyon upang mangolekta ng reward mula sa `ChestVaultAccount`.
 
 ```js
 

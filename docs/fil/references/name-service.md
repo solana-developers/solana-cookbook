@@ -67,7 +67,7 @@ Ang data para sa isang domain name ay palaging prefix ng header, sa ibaba ay ang
 
 </SolanaCodeGroup>
 
-## Paglutas ng mga domain ng SOL
+## Pag-resolve ng mga domain ng SOL
 
 Ang mga .SOL na domain ay natatangi, pang-tao na mga pangalan ng domain
 na nagko-convert sa publicKeys. Ginagamit ito ng maraming wallet bilang
@@ -93,7 +93,7 @@ isa pang opsyon upang magpadala ng mga token o SOL. Maaari kang mag-convert
 
 </SolanaCodeGroup>
 
-## Baliktarin ang tingin
+## Reverse lookup
 
 Magagamit ito upang malutas ang pangalan ng domain mula sa pampublikong key nito
 

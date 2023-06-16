@@ -88,7 +88,7 @@ Ang isang Legacy na Mensahe ay may mga sumusunod na bahagi:
 2. Isang compact-array ng mga address ng account, kung saan ang bawat address ng account ay tumatagal ng 32 byte
 3. Isang kamakailang blockhash
    * isang 32-byte na SHA-256 hash na ginamit upang ipahiwatig kung kailan huling naobserbahan ang ledger. Kung ang isang blockhash ay masyadong luma, tinatanggihan ito ng mga validator.
-4. Isang compact-array ng Mga Tagubilin
+4. Isang compact-array ng Mga Instruction
     
 ![Legacy Message](./versioned-transactions/legacy_message.png)
 
@@ -113,7 +113,7 @@ Nagsisimula ang compact array na ito sa isang compact-u16 encoding ng bilang ng 
 
 ### Compact na hanay ng mga instruction
 
-Katulad ng hanay ng mga address ng account, ang compact array na ito ay nagsisimula sa isang compact-u16 encoding ng bilang ng mga tagubilin, na sinusundan ng hanay ng mga tagubilin. Ang bawat pagtuturo sa array ay may mga sumusunod na bahagi:
+Katulad ng hanay ng mga address ng account, ang compact array na ito ay nagsisimula sa isang compact-u16 encoding ng bilang ng mga instruction, na sinusundan ng hanay ng mga instruction. Ang bawat pagtuturo sa array ay may mga sumusunod na bahagi:
 
 1. **Program ID**: kinikilala ang isang on-chain program na magpoproseso ng pagtuturo. Ito ay kinakatawan bilang u8 index sa isang address sa compact na hanay ng mga address ng account sa loob ng mensahe.
 2. **Compact na hanay ng mga index ng address ng account**: Ang u8 ay nag-i-index sa isang subset ng mga address ng account sa compact na hanay ng mga address ng account, na nangangailangan ng mga lagda.
@@ -175,7 +175,7 @@ Ang istraktura ng bagong MessageV0 ay halos pareho, maliban sa dalawang maliit n
 1. **Message Header**: hindi binago mula sa legacy
 2. **Compact array ng mga account key**: hindi nabago mula sa legacy. Ipapahiwatig namin ang hanay ng mga index na tumuturo sa mga elemento sa array na ito bilang *index array A* (makikita mo kung bakit namin ito tinutukoy sa lalong madaling panahon)
 3. **Kamakailang blockhash**: hindi nabago mula sa legacy
-4. **Compact na hanay ng mga tagubilin**: baguhin mula sa legacy
+4. **Compact na hanay ng mga instruction**: baguhin mula sa legacy
 5. **Compact array ng address table lookups**: ipinakilala sa v0
     
 ![Message v0](./versioned-transactions/messagev0.png)
@@ -198,7 +198,7 @@ Ngayon tingnan natin kung anong mga pagbabago ang ginawa sa compact array ng mga
 
 ### Compact na hanay ng mga instruction
 
-Gaya ng tinalakay dati, ang compact na hanay ng mga legacy na tagubilin ay nag-iimbak ng mga indibidwal na legacy na tagubilin na nag-iimbak ng mga sumusunod:
+Gaya ng tinalakay dati, ang compact na hanay ng mga legacy na instruction ay nag-iimbak ng mga indibidwal na legacy na instruction na nag-iimbak ng mga sumusunod:
 
 1. Program ID index
 2. Compact na hanay ng mga index ng address ng account

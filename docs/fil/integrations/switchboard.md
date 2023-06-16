@@ -144,7 +144,7 @@ Ang natatanging tampok ng Switchboard ay pinapayagan ka nitong lumikha ng iyong 
 </SolanaCodeGroup>
 
 ### Magpatakbo ng orakulo nang lokal
-Maaari kang magpatakbo ng isang oracle nang lokal at italaga ito sa iyong sariling oracle queue upang subukan kung paano maaaring gumana ang iyong programa sa produksyon. Ang mga orakulo ng Mainnet ay dapat palaging pinapatakbo sa mga kapaligiran na may mataas na kakayahang magamit na may ilang hanay ng mga kakayahan sa pagsubaybay.
+Maaari kang magpatakbo ng isang oracle nang lokal at italaga ito sa iyong sariling oracle queue upang subukan kung paano maaaring gumana ang iyong programa sa produksyon. Ang mga orakulo ng Mainnet ay dapat palaging pinapatakbo sa mga environment na may mataas na kakayahang magamit na may ilang hanay ng mga kakayahan sa pagsubaybay.
 
 #### Mga kinakailangan
   - Docker-compose

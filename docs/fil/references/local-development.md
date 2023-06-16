@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Lokal na Pag-unlad
+# Lokal na Pag-gawa
 
 ## Pagsisimula ng Lokal na Validator
 
@@ -61,11 +61,11 @@ Ang mga pakinabang ng paggamit ng local-test-validator ay kinabibilangan ng:
 - Nako-configure na haba ng panahon (`--slots-per-epoch ...`)
 - Tumalon sa isang arbitrary slot (`--warp-slot ...`)
 
-## Kumokonekta sa Mga Kapaligiran
+## Kumokonekta sa Mga Environment
 
 Kapag nagtatrabaho ka sa pagbuo ng Solana, kakailanganin mong kumonekta
-sa isang partikular na endpoint ng RPC API. May 3 pampublikong pag-unlad ang Solana
-kapaligiran:
+sa isang partikular na endpoint ng RPC API. May 3 pampublikong pag-gawa ang Solana
+environment:
 - mainnet-beta https://api.mainnet-beta.solana.com
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
@@ -311,7 +311,7 @@ Ang klase ng `Connection` ay naglalantad ng mga pub/sub na pamamaraan - lahat si
 ## Pagkuha ng Test SOL
 
 Kapag nagtatrabaho ka nang lokal, kailangan mo ng ilang SOL para makapagpadala
-mga transaksyon. Sa mga hindi mainnet na kapaligiran maaari kang makatanggap ng SOL sa pamamagitan ng
+mga transaksyon. Sa mga hindi mainnet na environment maaari kang makatanggap ng SOL sa pamamagitan ng
 i-airdrop ito sa iyong address
 
 <SolanaCodeGroup>

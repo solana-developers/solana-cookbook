@@ -54,17 +54,17 @@ dotnet tool install Solana.Unity.Anchor.Tool
 dotnet anchorgen -i idl/file.json -o src/ProgramCode.cs
 ```
 
-Ito ay bubuo sa iyo ng isang C# na representasyon ng iyong programa, na nagbibigay-daan sa iyong deserialize ang data at madaling gumawa ng mga tagubilin sa programa.
+Ito ay bubuo sa iyo ng isang C# na representasyon ng iyong programa, na nagbibigay-daan sa iyong deserialize ang data at madaling gumawa ng mga instruction sa programa.
 
 ## Pagbuo ng Transaksyon sa Unity C#
 
 Sa loob ng Unity game engine, magagamit natin ang [Solana Unity SDK](https://assetstore.unity.com/packages/decentralization/infrastructure/solana-sdk-for-unity-246931) upang makipag-ugnayan sa programa.
-1. Una naming mahanap ang nasa chain address ng game data account na may TryFindProgramAddress.
-Kailangan naming ipasa ang account na ito sa transaksyon para malaman ng Solana runtime na gusto naming baguhin ang account na ito.
+1. Una nating mahanap ang nasa chain address ng game data account na may TryFindProgramAddress.
+Kailangan nating ipasa ang account na ito sa transaksyon para malaman ng Solana runtime na gusto nating baguhin ang account na ito.
 2. Susunod na ginagamit namin ang nabuong kliyente upang lumikha ng MoveRight na pagtuturo.
 3. Pagkatapos ay humiling kami ng block hash mula sa isang RPC node. Ito ay kinakailangan upang malaman ni Solana kung gaano katagal ang magiging bisa ng transaksyon.
 4. Susunod na itinakda namin ang nagbabayad ng bayad upang maging wallet ng mga manlalaro.
-5. Pagkatapos ay idinagdag namin ang paglipat ng tamang pagtuturo sa Transaksyon. Maaari din kaming magdagdag ng maraming tagubilin sa isang solong transaksyon kung kinakailangan.
+5. Pagkatapos ay idinagdag namin ang paglipat ng tamang pagtuturo sa Transaksyon. Maaari din kaming magdagdag ng maraming instruction sa isang solong transaksyon kung kinakailangan.
 6. Pagkatapos ang transaksyon ay mapirmahan at pagkatapos ay ipadala sa RPC node para sa pagproseso.
 May iba't ibang antas ng Commitment ang Solana. Kung itatakda namin ang antas ng pangako sa Nakumpirma, makukuha na namin ang bagong estado sa loob ng susunod na 500ms.
 

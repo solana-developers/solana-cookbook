@@ -133,7 +133,7 @@ Panghuli, sa template (o `render function`) idagdag ang sumusunod na markup:
 
 ### [iOS only] Install cocoapods
 
-Upang ang aming mga polyfill ay ma-autolink sa iOS, kailangan naming i-install ang `cocoapods`.
+Upang ang aming mga polyfill ay ma-autolink sa iOS, kailangan nating i-install ang `cocoapods`.
 
 ```shell
 cd ios && pod install
@@ -141,7 +141,7 @@ cd ios && pod install
 
 ### Simulan ang application
 
-Kapag natapos na namin ang lahat ng nasa itaas, maaari na naming simulan ang aming application sa Android o iOS simulator.
+Kapag natapos na namin ang lahat ng nasa itaas, maaari na nating simulan ang aming application sa Android o iOS simulator.
 
 ```shell
 yarn android

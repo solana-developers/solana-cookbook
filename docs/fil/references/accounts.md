@@ -205,7 +205,7 @@ Tanging isang account na pagmamay-ari ng system program ang maaaring ilipat sa p
 
 ## Paano gumawa ng mga PDA
 
-Ang [Program derived address(PDA)][3] ay tulad ng isang normal na address na may mga sumusunod na pagkakaiba:
+Ang [Program derived address (PDA)][3] ay tulad ng isang normal na address na may mga sumusunod na pagkakaiba:
 
 1. Bumagsak sa ed25519 curve
 2. Paggamit ng program para mag-sign sa halip na pribadong key
@@ -244,7 +244,7 @@ halimbawa ng programa para sa paglikha ng isang PDA account na pagmamay-ari ng p
 
 #### Programa
 
-Ang nasa ibaba ay nagpapakita ng iisang tagubilin na `system_instruction::create_account` na lumilikha ng account na may nakalaan na laki ng data na `space`, `rent_lamports` na halaga ng mga lampor para sa nagmula na PDA. Ito ay nilagdaan gamit ang PDA gamit ang `invoke_signed` katulad ng tinalakay sa itaas.
+Ang nasa ibaba ay nagpapakita ng iisang instruction na `system_instruction::create_account` na lumilikha ng account na may nakalaan na laki ng data na `space`, `rent_lamports` na halaga ng mga lampor para sa nagmula na PDA. Ito ay nilagdaan gamit ang PDA gamit ang `invoke_signed` katulad ng tinalakay sa itaas.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="rust" active>

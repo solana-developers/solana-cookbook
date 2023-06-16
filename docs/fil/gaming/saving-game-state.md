@@ -79,7 +79,7 @@ pub struct PlayerData {
 
 ```
 
-Maaari kang makipag-ugnayan sa data ng player na ito sa pamamagitan ng mga tagubilin sa transaksyon. Sabihin nating gusto naming magkaroon ng karanasan ang player para sa pagpatay ng halimaw halimbawa:
+Maaari kang makipag-ugnayan sa data ng player na ito sa pamamagitan ng mga instruction sa transaksyon. Sabihin nating gusto nating magkaroon ng karanasan ang player para sa pagpatay ng halimaw halimbawa:
 
 ```rust
     pub fn kill_enemy(mut ctx: Context<KillEnemy>, enemyId: u8) -> Result<()> {

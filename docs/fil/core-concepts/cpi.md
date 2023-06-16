@@ -46,9 +46,9 @@ Ang layunin ng seksyong ito ay magbigay ng mataas na antas ng pangkalahatang-ide
 ## Facts
 
 ::: tip Fact Sheet
-- Ang Cross-Program Invocation (CPI) ay isang tawag mula sa isang programa patungo sa isa pa, na nagta-target ng isang partikular na tagubilin sa tinatawag na program
+- Ang Cross-Program Invocation (CPI) ay isang tawag mula sa isang programa patungo sa isa pa, na nagta-target ng isang partikular na instruction sa tinatawag na program
 - Binibigyang-daan ng mga CPI ang programa sa pagtawag na palawigin ang mga pribilehiyo ng pagpirma nito sa programang tumatawag
-- Maaaring magsagawa ng mga CPI ang mga programa gamit ang alinman sa `invoke` o `invoke_signed` sa loob ng kanilang mga tagubilin
+- Maaaring magsagawa ng mga CPI ang mga programa gamit ang alinman sa `invoke` o `invoke_signed` sa loob ng kanilang mga instruction
 - Ang `invoke` ay ginagamit kapag ang lahat ng kinakailangang lagda ay naa-access bago ang invocation, nang hindi nangangailangan ng mga PDA na kumilos bilang mga pumirma
 - Ang `invoke_signed` ay ginagamit kapag ang mga PDA mula sa programa sa pagtawag ay kinakailangan bilang mga pumirma sa CPI
 - Pagkatapos maisagawa ang isang CPI sa isa pang programa, ang program na tumatawag ay maaaring gumawa ng karagdagang mga CPI sa iba pang mga programa, hanggang sa maximum na lalim na 4

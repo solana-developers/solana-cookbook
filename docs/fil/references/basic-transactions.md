@@ -270,11 +270,11 @@ manu-manong `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`.
 ## Paano baguhin ang pagkalkula ng badyet, bayad, &amp; priyoridad para sa isang transaksyon
 Ang priyoridad ng Transaction (TX) ay nakakamit sa pamamagitan ng pagbabayad ng Prioritization Fee in
 karagdagan sa Base Fee. Bilang default, ang compute budget ay produkto ng
-200,000 Compute Units (CU) * bilang ng mga tagubilin, na may max na 1.4M CU. Ang
+200,000 Compute Units (CU) * bilang ng mga instruction, na may max na 1.4M CU. Ang
 Ang Base Fee ay 5,000 Lamports. Ang isang microLamport ay 0.000001 Lamports.
 
 Ang kabuuang compute budget o Prioritization Fee para sa isang TX ay maaaring baguhin ng
-pagdaragdag ng mga tagubilin mula sa ComputeBudgetProgram.
+pagdaragdag ng mga instruction mula sa ComputeBudgetProgram.
 
 `ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })`
 ay magdaragdag ng Prioritization Fee sa itaas ng Base Fee (5,000 Lamports). Ang halaga

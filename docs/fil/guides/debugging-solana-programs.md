@@ -84,7 +84,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 2. Magtakda ng breakpoint sa mga programang `msg!` na linya (11)
 3. Bumalik sa test module, i-click ang `Debug` at sa loob ng ilang segundo ay titigil ang debugger sa breakpoint at
-ngayon ay maaari mong suriin ang data, hakbang sa pamamagitan ng mga function, atbp., atbp.
+ngayon ay maaari mong suriin ang data, hakbang sa pamamagitan ng mga function, atbp.
 
 Ang mga pagsubok na ito ay pinapatakbo din mula sa command line na may:
 `cargo test` o `cargo test-bpf`. Siyempre, ang anumang mga breakpoint ay hindi papansinin.
@@ -133,7 +133,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 Ang pag-debug dito ay magbibigay-daan sa iyong i-debug ang mga function at pamamaraan na ginamit sa **_test body_** ngunit gagawin
 hindi breakpoint sa iyong programa.
 
-Ang tuhod ng bubuyog eh?
+_The bee's knees eh?_
 
 ## Lokal na Validator Node Testing mula sa Client Apps
 Panghuli, maaari kang magsimula ng isang lokal na validating node at i-load ang iyong program at anumang mga account gamit ang `solana-test-validator`
@@ -149,7 +149,7 @@ Tingnan ang `solana-test-validator --help` para sa higit pang mga detalye at ops
 4. Magbukas ng isa pang terminal at patakbuhin ang `solana logs` upang simulan ang log streamer
 5. Pagkatapos ay maaari mong patakbuhin ang iyong programa ng kliyente at obserbahan ang output ng programa sa terminal kung saan mo sinimulan ang log streamer
 
-Ngayon na ang pajama ng pusa YO!
+Now that is the cat's pajamas YO!
 
 ## Resources
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)

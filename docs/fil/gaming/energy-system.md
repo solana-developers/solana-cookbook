@@ -203,7 +203,7 @@ await connection.confirmTransaction(txSig, "confirmed");
 
 Dito makikita mo kung paano kumuha ng data ng account sa js client at kung paano mag-subscribe sa isang account. Gumagawa ang `connection.onAccountChange` ng socket connection sa RPC node na magtutulak ng anumang pagbabagong mangyayari sa account sa kliyente.
 Ito ay mas mabilis kaysa sa pagkuha ng bagong data ng account pagkatapos ng bawat pagbabago.
-Pagkatapos ay maaari naming gamitin ang `program.coder` upang i-decode ang data ng account sa mga uri ng TS at direktang gamitin ito sa laro.
+Pagkatapos ay maaari nating gamitin ang `program.coder` upang i-decode ang data ng account sa mga uri ng TS at direktang gamitin ito sa laro.
 
 ```js
 useEffect(() => {

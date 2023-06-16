@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 ## I-install ang Web3.js
 
-Mayroong ilang mga aklatan na magagamit mo upang makapagsimula sa javascript o typescript sa Solana.
+Mayroong ilang mga library na magagamit mo upang makapagsimula sa javascript o typescript sa Solana.
 
 
 ### Web3.js
@@ -121,7 +121,7 @@ npm install --save @solana/spl-token
 
 ### Wallet-Adapter
 
-Mayroong isang koleksyon ng mga aklatan na makakatulong sa mga koneksyon sa bootstrap na wallet sa loob ng Solana na tinatawag na wallet-adapter.
+Mayroong isang koleksyon ng mga library na makakatulong sa mga koneksyon sa bootstrap na wallet sa loob ng Solana na tinatawag na wallet-adapter.
 Sa kasalukuyan, sinusuportahan ng package ang paggamit sa loob ng Svelte, Angular, Vue.js, at React. Maaring mabilis na simulan ng Wallet-adapter ang iyong dApp
 pagsasama sa mga wallet tulad ng [Phantom](https://phantom.app/), [Solflare](https://solflare.com/), at higit pa.
 

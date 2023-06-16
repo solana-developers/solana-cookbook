@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 ## Kumuha ng Mga Kasalukuyang Validator
 
-Maaari naming i-stake ang SOL at makakuha ng mga reward para sa pagtulong sa pag-secure ng network. Para i-stake, itinatalaga namin ang SOL sa mga validator na nagpoproseso naman ng mga transaksyon.
+Maaari nating i-stake ang SOL at makakuha ng mga reward para sa pagtulong sa pag-secure ng network. Para i-stake, itinatalaga namin ang SOL sa mga validator na nagpoproseso naman ng mga transaksyon.
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -60,7 +60,7 @@ Maaari naming i-stake ang SOL at makakuha ng mga reward para sa pagtulong sa pag
 
 ## Gumawa ng Stake Account
 
-Ang lahat ng mga tagubilin sa staking ay pinangangasiwaan ng [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Upang magsimula, gumawa kami ng [Stake Account](https://docs.solana.com/staking/stake-accounts) na ginawa at pinamamahalaan nang iba kaysa sa karaniwang [system account](accounts.md#create-a-system -account). Sa partikular, dapat nating itakda ang `Stake Authority` at `Withdrawal Authority` ng account.
+Ang lahat ng mga instruction sa staking ay pinangangasiwaan ng [Stake Program](https://docs.solana.com/developing/runtime-facilities/programs#stake-program). Upang magsimula, gumawa kami ng [Stake Account](https://docs.solana.com/staking/stake-accounts) na ginawa at pinamamahalaan nang iba kaysa sa karaniwang [system account](accounts.md#create-a-system -account). Sa partikular, dapat nating itakda ang `Stake Authority` at `Withdrawal Authority` ng account.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

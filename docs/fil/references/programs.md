@@ -59,7 +59,7 @@ Ang recipient account *ay hindi kailangang* isang account na pagmamay-ari ng iyo
 
 Ang pagkuha ng orasan ay maaaring gawin sa dalawang paraan
 
-1. Pagpasa ng `SYSVAR_CLOCK_PUBKEY` sa isang tagubilin
+1. Pagpasa ng `SYSVAR_CLOCK_PUBKEY` sa isang instruction
 2. Pag-access sa Orasan nang direkta sa loob ng isang pagtuturo.
 
 Nakakatuwang malaman ang parehong mga pamamaraan, dahil inaasahan pa rin ng ilang legacy na programa ang `SYSVAR_CLOCK_PUBKEY` bilang isang account.
@@ -128,7 +128,7 @@ Gumawa tayo ng parehong pagtuturo, ngunit hindi inaasahan ang `SYSVAR_CLOCK_PUBK
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-Ang tagubilin sa panig ng kliyente, ngayon ay kailangan lamang na ipasa ang mga account ng estado at nagbabayad.
+Ang instruction sa client-side, ngayon ay kailangan lamang na ipasa ang mga account ng estado at nagbabayad.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -210,7 +210,7 @@ ang mga account na kakailanganin namin para mangyari ang paglilipat ay
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-Ang kaukulang tagubilin ng kliyente ay ang mga sumusunod. Para sa pag-alam sa mga tagubilin sa paggawa ng mint at token, mangyaring sumangguni sa buong code sa malapit.
+Ang kaukulang instruction ng kliyente ay ang mga sumusunod. Para sa pag-alam sa mga instruction sa paggawa ng mint at token, mangyaring sumangguni sa buong code sa malapit.
 <br />
 <br />
 <SolanaCodeGroup>
@@ -319,7 +319,7 @@ One can send the required accounts via client as follows
 
 ## Paano magbasa ng mga account
 
-Halos lahat ng mga tagubilin sa Solana ay mangangailangan ng hindi bababa sa 2 - 3 account, at babanggitin ang mga ito sa mga tagapangasiwa ng tagubilin kung anong pagkakasunud-sunod ang inaasahan sa mga hanay ng mga account na iyon. Ito ay medyo simple kung sasamantalahin natin ang paraan ng `iter()` sa Rust, sa halip na manu-manong ipahiwatig ang mga account. Ang pamamaraang `next_account_info` ay karaniwang hinihiwa ang unang index ng iterable at ibinabalik ang account na nasa loob ng array ng mga account. Tingnan natin ang isang simpleng pagtuturo na umaasa sa isang grupo ng mga account at nangangailangang i-parse ang bawat isa sa kanila.
+Halos lahat ng mga instruction sa Solana ay mangangailangan ng hindi bababa sa 2 - 3 account, at babanggitin ang mga ito sa mga tagapangasiwa ng instruction kung anong pagkakasunud-sunod ang inaasahan sa mga hanay ng mga account na iyon. Ito ay medyo simple kung sasamantalahin natin ang paraan ng `iter()` sa Rust, sa halip na manu-manong ipahiwatig ang mga account. Ang pamamaraang `next_account_info` ay karaniwang hinihiwa ang unang index ng iterable at ibinabalik ang account na nasa loob ng array ng mga account. Tingnan natin ang isang simpleng pagtuturo na umaasa sa isang grupo ng mga account at nangangailangang i-parse ang bawat isa sa kanila.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -349,7 +349,7 @@ Dahil ang mga programa sa Solana ay stateless, kami bilang isang tagalikha ng pr
 4. Kung sinisimulan ang estado sa unang pagkakataon, tingnan kung nasimulan na ang account o hindi.
 5. Suriin kung anumang mga cross program id na naipasa (kapag kinakailangan) ay tulad ng inaasahan.
 
-Ang isang pangunahing tagubilin na nagpapasimula ng isang hero state account, ngunit sa mga nabanggit na pagsusuri ay tinukoy sa ibaba
+Ang isang pangunahing instruction na nagpapasimula ng isang hero state account, ngunit sa mga nabanggit na pagsusuri ay tinukoy sa ibaba
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -369,9 +369,9 @@ Ang isang pangunahing tagubilin na nagpapasimula ng isang hero state account, ng
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Paano magbasa ng maraming tagubilin mula sa isang transaksyon
+## Paano magbasa ng maraming instruction mula sa isang transaksyon
 
-Pinapayagan kami ng Solana na silipin ang lahat ng mga tagubilin sa kasalukuyang transaksyon. Maaari naming iimbak ang mga ito sa isang variable at
+Pinapayagan kami ng Solana na silipin ang lahat ng mga instruction sa kasalukuyang transaksyon. Maaari nating iimbak ang mga ito sa isang variable at
 umulit sa kanila. Marami tayong magagawa dito, tulad ng pagsuri para sa mga kahina-hinalang transaksyon.
 
 <SolanaCodeGroup>

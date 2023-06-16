@@ -366,7 +366,7 @@ Kinukuha ng API na ito ang lahat ng available na token na maaaring ipagpalit gam
 </SolanaCodeGroup>
 
 ### Pagkuha ng Serialized na Transaksyon para magsagawa ng Swap
-Ang kahilingan sa POST API ay tapos na sa rutang nais naming puntahan at ang wallet address ng user ay may ilang mga opsyonal na parameter na maaaring idagdag sa api na ito tulad ng **wrapUnwrapSOL** at **feeAccount** upang matuto nang higit pa tungkol dito dumaan sa mga opisyal na doc dito [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
+Ang kahilingan sa POST API ay tapos na sa rutang nais nating puntahan at ang wallet address ng user ay may ilang mga opsyonal na parameter na maaaring idagdag sa api na ito tulad ng **wrapUnwrapSOL** at **feeAccount** upang matuto nang higit pa tungkol dito dumaan sa mga opisyal na doc dito [link](https://docs.jup.ag/jupiter-api/swap-api-for-solana)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
