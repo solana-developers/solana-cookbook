@@ -53,7 +53,7 @@ footer: MIT Licensed
 
 ## Scenario
 당신이 3개의 Instuction들을 포함하는 하나의 Transaction을 갖고 각 Instruction은 대략 100_000 컴퓨터 유닛을 소비한다고 가정합시다.
-Solana 1.8.x 버전에서 돌릴 때, 당신은 아래와 유사한 Insturction CU 소비를 보게 될 것입니다.
+Solana 1.8.x 버전에서 돌릴 때, 당신은 아래와 유사한 Instruction CU 소비를 보게 될 것입니다.
 
 | Instruction | Starting CU | Execution | Remaining CU|
 | - | - | - | - |

@@ -36,7 +36,7 @@ import * as bs58 from "bs58";
   let nonceAccount = NonceAccount.fromAccountData(nonceAccountInfo.data);
 
   let tx = new Transaction().add(
-    // nonce advance must be the first insturction
+    // nonce advance must be the first instruction
     SystemProgram.nonceAdvance({
       noncePubkey: nonceAccountPubkey,
       authorizedPubkey: nonceAccountAuth.publicKey,
