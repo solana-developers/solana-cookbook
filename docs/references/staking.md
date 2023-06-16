@@ -168,3 +168,25 @@ Once deactivated, the `Withdrawal Authority` can withdraw SOL back to a system a
   </template>
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+
+## Get Stake Amount
+
+Once we stake multiple tokens using multiple stake account, we can get stake amount for our specific wallet who have multiple stake account. for this we will fetch all the stake account using `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/staking/get-stake-amount/get-stake-amount.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/staking/get-stake-amount/get-stake-amount.preview.en.ts)
+
+  </template>
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
