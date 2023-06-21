@@ -479,3 +479,30 @@ Loading it to your localnet is then done by passing the program's file and desti
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
+### How to create RPC batch requests
+
+Requests can be sent in batches by sending an array of JSON-RPC request objects as the data for a single POST.
+
+Batch requests are a single HTTP request that contain multiple API calls nested within it.
+Clients can send several request objects together at the same time, filled within an array, will get a corresponding array of response objects from the server.
+
+The server processes all requests of this batch RPC call concurrently, in any order. The response objects returned from a batch RPC can be in any order, the client should match contexts of request objects to response objects based on id member of each object.
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="CLI">
+  <template v-slot:preview>
+
+@[code](@/code/local-development/rpcbatch-request/rpcbatch-request.preview.en.sh)
+
+  </template>
+
+  <template v-slot:default>
+
+@[code](@/code/local-development/rpcbatch-request/rpcbatch-request.en.sh)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
