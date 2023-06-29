@@ -1,12 +1,12 @@
 ---
-title: Migrating Program Data Accounts
+title: 迁移程序的数据账户
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Program Accounts Data Migration
+      content: Solana秘籍 | 迁移程序的数据账户
   - - meta
     - name: og:title
-      content: Solana Cookbook | Program Accounts Data Migration
+      content: Solana秘籍 | 迁移程序的数据账户
   - - meta
     - name: description
       content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
@@ -37,29 +37,23 @@ head:
 footer: MIT Licensed
 ---
 
-# Migrating a Programs Data Accounts
+# 迁移程序的数据账户
 
-## How can you migrate a program's data accounts?
+## 你如何迁移一个程序的数据账户？
 
-When you create a program, each data account associated with that
-program will have a specific data structure. If you ever need
-to upgrade a program derived account, you end up having a bunch
-of leftover program derived accounts with the old structure.
+当你创建一个程序时，与该程序关联的每个数据账户都将具有特定的数据结构。如果你需要升级一个程序派生账户，那么你将得到一堆具有旧结构的剩余程序派生账户。
 
-With account versioning, you can upgrade your old accounts to
-the new structure.
+通过账户版本控制，您可以将旧账户升级到新的结构。
 
-:::tip Note
-This is only one of many ways to migrate data in Program Owned Accounts (POA).
+:::tip 注意
+这只是在程序拥有的账户（POA）中迁移数据的众多方法之一。
 :::
 
-## Scenario
+## 场景
 
-To version and migrate our account data, we will be providing an **id** for each
-account. This id will allow us to identify the account version when
-we pass it to the program, and thus handle the account correctly.
+为了对账户数据进行版本控制和迁移，我们将为每个账户提供一个ID。该ID允许我们在将其传递给程序时识别账户的版本，从而正确处理账户。
 
-Take the following account state and program:
+假设有以下账户状态和程序：
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -114,7 +108,7 @@ Take the following account state and program:
 
 </SolanaCodeGroup>
 
-In our first version of an account, we are doing the following:
+在我们账户的第一个版本中，我们执行以下操作：
 
 | ID | Action |
 | - | - |
@@ -123,19 +117,15 @@ In our first version of an account, we are doing the following:
 |3| Initializing a number of constants to be used across program versions
 |4| Add an update account function under `fn conversion_logic` for future upgrades
 
-Let's say we want to upgrade our program's accounts now to include
-a new required field, the `somestring` field.
+假设我们现在希望升级程序的账户，包括一个新的必需字段：`somestring`字段。
 
-If we didn't allocate extra space on the previous account, we could
-not upgrade the account and be stuck.
+如果我们之前没有为账户分配额外的空间，我们将无法升级该账户，而被卡住。
 
-## Upgrading the Account
+## 升级账户
 
-In our new program we want to add a new property for the content state.
-The changes that follow are how we leveraged the initial program
-constructs as they come into use now.
+在我们的新程序中，我们希望为内容状态添加一个新属性。下面的变化展示了我们如何利用初始的程序结构，并在现在使用时进行修改。
 
-### 1. Add account conversion logic
+### 1. 添加账户转换逻辑
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -163,7 +153,7 @@ constructs as they come into use now.
 | 71 | We now have a 'previous' version and we want to know it's size
 | 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
 
-We then update our instructions, to add a new one for updating `somestring`, and processor for handling the new instruction. Note that the 'upgrading' the data structure is encapsulated behind `pack/unpack`
+然后，我们更新指令，添加一个新的指令来更新`somestring`，并更新处理器来处理新的指令。请注意，"升级"数据结构是通过`pack/unpack`封装起来的。
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -179,11 +169,11 @@ We then update our instructions, to add a new one for updating `somestring`, and
   </CodeGroupItem>
 </CodeGroup>
 
-After building and submitting an instruction: `VersionProgramInstruction::SetString(String)` we now have the following 'upgraded' account data layout
+在构建并提交指令`VersionProgramInstruction::SetString(String)`后，我们现在有了以下 "升级" 的账户数据布局。
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
-## Resources
+## 资料
 
 * [Borsh Specification](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)

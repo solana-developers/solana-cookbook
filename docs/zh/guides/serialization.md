@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# Serializing Data
+# 序列数据
 
 当我们谈论序列化时，我们指的是数据的序列化和反序列化。
 

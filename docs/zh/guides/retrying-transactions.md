@@ -1,12 +1,12 @@
 ---
-title: Retrying Transactions
+title: 重试交易
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Retrying Transactions
+      content: Solana秘籍 | 重试交易
   - - meta
     - name: og:title
-      content: Solana Cookbook | Retrying Transactions
+      content: Solana秘籍 | 重试交易
   - - meta
     - name: description
       content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
@@ -37,39 +37,39 @@ head:
 footer: MIT Licensed
 ---
 
-# Retrying Transactions
+# 重试交易
 
-On some occasions, a seemingly valid transaction may be dropped before it is included in a block. This most often occurs during periods of network congestion, when an RPC node fails to rebroadcast the transaction to the [leader](https://docs.solana.com/terminology#leader). To an end-user, it may appear as if their transaction disappears entirely. While RPC nodes are equipped with a generic rebroadcasting algorithm, application developers are also capable of developing their own custom rebroadcasting logic.
+在某些情况下，一个看似有效的交易可能在输入区块之前会被丢弃。这种情况最常发生在网络拥堵期间，当一个RPC节点无法将交易重新广播给区块链的[领导](https://docs.solana.com/terminology#leader)节点时。对于最终用户来说，他们的交易可能会完全消失。虽然RPC节点配备了通用的重新广播算法，但应用程序开发人员也可以开发自己的自定义重新广播逻辑。
 
-## Facts
+## 综述
 
-::: tip Fact Sheet
-- RPC nodes will attempt to rebroadcast transactions using a generic algorithm
-- Application developers can implement their own custom rebroadcasting logic
-- Developers should take advantage of the `maxRetries` parameter on the `sendTransaction` JSON-RPC method
-- Developers should enable preflight checks to raise errors before transactions are submitted
-- Before re-signing any transaction, it is **very important** to ensure that the initial transaction’s blockhash has expired
+::: tip 事实表
+- RPC节点将尝试使用通用算法重新广播交易
+- 应用程序开发人员可以实现自定义的重新广播逻辑
+- 开发人员应该利用`sendTransaction` JSON-RPC方法中的`maxRetries`参数
+- 开发人员应该启用预检查，以便在提交交易之前引发错误
+- 在重新签署任何交易之前，**非常重要**的是确保初始交易的块哈希已过期
 :::
 
-## The Journey of a Transaction
+## 交易的旅程
 
-### How Clients Submit Transactions
+### 客户端如何提交交易
 
-In Solana, there is no concept of a mempool. All transactions, whether they are initiated programmatically or by an end-user, are efficiently routed to leaders so that they can be processed into a block. There are two main ways in which a transaction can be sent to leaders:
-1. By proxy via an RPC server and the [sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC method
-2. Directly to leaders via a [TPU Client](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html)
+在Solana中，没有内存池（mempool）的概念。无论是通过编程还是由最终用户发起，所有的交易都会被高效地路由到领导节点，以便将它们处理成区块。有两种主要的方式可以将交易发送给领导节点：
+1. 通过RPC服务器和[sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC 方法进行代理发送
+2. 通过[TPU客户](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html) 端直接发送给领导节点
 
-The vast majority of end-users will submit transactions via an RPC server. When a client submits a transaction, the receiving RPC node will in turn attempt to broadcast the transaction to both the current and next leaders. Until the transaction is processed by a leader, there is no record of the transaction outside of what the client and the relaying RPC nodes are aware of. In the case of a TPU client, rebroadcast and leader forwarding is handled entirely by the client software.
+绝大多数最终用户将通过RPC服务器提交交易。当客户端提交交易时，接收的RPC节点会尝试将交易广播给当前和下一个领导节点。在交易被领导节点处理之前，除了客户端和中继的RPC节点知道的内容外，没有关于交易的记录。在TPU客户端的情况下，重新广播和领导节点的转发完全由客户端软件处理。
 
 ![Transaction Journey](./retrying-transactions/tx-journey.png)
 
-### How RPC Nodes Broadcast Transactions
+### RPC节点如何广播交易
 
-After an RPC node receives a transaction via `sendTransaction`, it will convert the transaction into a [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) packet before forwarding it to the relevant leaders. UDP allows validators to quickly communicate with one another, but does not provide any guarantees regarding transaction delivery.
+当RPC节点通过`sendTransaction`接收到一个交易后，它会将交易转换为[UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) 数据包，然后将其转发给相关的领导。UDP允许验证节点之间快速通信，但不提供关于交易传递的任何保证。
 
-Because Solana’s leader schedule is known in advance of every [epoch](https://docs.solana.com/terminology#epoch) (~2 days), an RPC node will broadcast its transaction directly to the current and next leaders. This is in contrast to other gossip protocols such as Ethereum that propagate transactions randomly and broadly across the entire network.  By default, RPC nodes will try to forward transactions to leaders every two seconds until either the transaction is finalized or the transaction’s blockhash expires (150 blocks or ~1 minute 19 seconds as of the time of this writing). If the outstanding rebroadcast queue size is greater than [10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20), newly submitted transactions are dropped.  There are command-line [arguments](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) that RPC operators can adjust to change the default behavior of this retry logic.
+因为Solana的领导节点调度在每个[纪元](https://docs.solana.com/terminology#epoch) （大约2天）之前就已知，所以RPC节点会直接将其交易广播给当前和下一个领导节点。这与其他流言协议（如以太坊）随机广播和广泛传播整个网络的交易的方式形成对比。默认情况下，RPC节点会每两秒尝试将交易转发给领导节点，直到交易被确认或交易的块哈希过期（在本文撰写时为150个区块或约1分钟19秒）。如果待重新广播的队列大小超过[10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20) 个交易，则新提交的交易将被丢弃。RPC运营商可以调整命令行[参数](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) 以更改此重试逻辑的默认行为。
 
-When an RPC node broadcasts a transaction, it will attempt to forward the transaction to a leader’s [Transaction Processing Unit (TPU)](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/validator.rs#L867). The TPU processes transactions in five distinct phases: 
+当RPC节点广播一个交易时，它会尝试将交易转发给领导节点的交易处理单元（TPU）。TPU将交易处理分为五个不同的阶段：
 - [Fetch Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
 - [SigVerify Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L91)
 - [Banking Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/banking_stage.rs#L249)
@@ -79,61 +79,61 @@ When an RPC node broadcasts a transaction, it will attempt to forward the transa
 ![TPU Overview](./retrying-transactions/tpu-jito-labs.png)
 <small style="display:block;text-align:center;">Image Courtesy of Jito Labs</small>
 
-Of these five phases, the Fetch Stage is responsible for receiving transactions. Within the Fetch Stage, validators will categorize incoming transactions according to three ports:
-- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) handles regular transactions such as token transfers, NFT mints, and program instructions
-- [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) focuses exclusively on voting transactions
-- [tpu_forwards](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L29) forwards unprocessed packets to the next leader if the current leader is unable to process all transactions 
+在这五个阶段中，Fetch阶段负责接收交易。在Fetch阶段中，验证节点会根据三个端口对传入的交易进行分类：
+- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) 处理常规交易，例如代币转账、NFT铸造和程序指令。
+- [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) 专门处理投票交易。
+- [tpu_forwards](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L29) 将未处理的数据包转发给下一个领导节点，如果当前领导无法处理所有交易。
 
-For more information on the TPU, please refer to [this excellent writeup by Jito Labs](https://jito-labs.medium.com/solana-validator-101-transaction-processing-90bcdc271143).
+如需了解更多关于TPU的信息，请参考[Jito Labs出色的文章](https://jito-labs.medium.com/solana-validator-101-transaction-processing-90bcdc271143).
 
-## How Transactions Get Dropped
+## 交易如何被丢弃 
 
-Throughout a transaction’s journey, there are a few scenarios in which the transaction can be unintentionally dropped from the network.
+在交易的整个过程中，有几种情况下交易可能意外从网络中丢失。
 
-### Before a transaction is processed
+### 在交易被处理之前
 
-If the network drops a transaction, it will most likely do so before the transaction is processed by a leader. UDP [packet loss](https://en.wikipedia.org/wiki/Packet_loss) is the simplest reason why this might occur. During times of intense network load, it’s also possible for validators to become overwhelmed by the sheer number of transactions required for processing. While validators are equipped to forward surplus transactions via `tpu_forwards`, there is a limit to the amount of data that can be [forwarded](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). Furthermore, each forward is limited to a single hop between validators. That is, transactions received on the `tpu_forwards` port are not forwarded on to other validators.
+如果网络丢弃一个交易，通常是在交易被领导处理之前发生。UDP [数据包丢失](https://en.wikipedia.org/wiki/Packet_loss) 是可能发生这种情况的最简单原因。在网络负载高峰期，验证节点可能会被大量需要处理的交易压倒。虽然验证节点可以通过 `tpu_forwards`,端口转发多余的交易，但[转发](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). 的数据量是有限的。此外，每个转发仅限于验证节点之间的单一跳跃。也就是说，通过`tpu_forwards`端口接收的交易不会被转发给其他验证节点。
 
-There are also two lesser known reasons why a transaction may be dropped before it is processed. The first scenario involves transactions that are submitted via an RPC pool. Occasionally, part of the RPC pool can be sufficiently ahead of the rest of the pool. This can cause issues when nodes within the pool are required to work together. In this example, the transaction’s [recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) is queried from the advanced part of the pool (Backend A). When the transaction is submitted to the lagging part of the pool (Backend B), the nodes will not recognize the advanced blockhash and will drop the transaction. This can be detected upon transaction submission if developers enable [preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) on `sendTransaction`.
+还有两个较少为人知的原因，可能导致交易在被处理之前被丢弃。第一种情况涉及通过RPC池提交的交易。偶尔，RPC池的一部分可能会领先于其他部分。当池中的节点需要共同工作时，这可能会导致问题。在这个例子中，交易的[recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) 从池中的先进部分（后端A）查询。当交易提交到滞后的池中（后端B）时，节点将无法识别先进的块哈希并丢弃交易。如果开发人员在`sendTransaction`中启用了[preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction)， 可以在提交交易时检测到此问题。
 
 ![Dropped via RPC Pool](./retrying-transactions/dropped-via-rpc-pool.png)
 
-Temporarily network forks can also result in dropped transactions. If a validator is slow to replay its blocks within the Banking Stage, it may end up creating a minority fork. When a client builds a transaction, it’s possible for the transaction to reference a `recentBlockhash` that only exists on the minority fork.  After the transaction is submitted, the cluster can then switch away from its minority fork before the transaction is processed. In this scenario, the transaction is dropped due to the blockhash not being found.
+网络分叉也可能暂时的导致交易丢失。如果验证在银行阶段重新播放其块的速度较慢，可能会创建一个少数派分叉。当客户端构建一个交易时，交易可能引用仅存在于少数派分叉上的`recentBlockhash`。在提交交易后，集群可能在交易被处理之前切换到其他分叉。在这种情况下，由于找不到块哈希，交易被丢弃。
 
 ![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
-### After a transaction is processed and before it is finalized
+### 在交易被处理后，但尚未最终确认之前
 
-In the event a transaction references a `recentBlockhash` from a minority fork, it’s still possible for the transaction to be processed. In this case, however, it would be processed by the leader on the minority fork. When this leader attempts to share its processed transactions with the rest of the network, it would fail to reach consensus with the majority of validators that do not recognize the minority fork. At this time, the transaction would be dropped before it could be finalized.
+如果一个交易引用了来自少数派分叉的`recentBlockhash`，该交易有可能还会进行处理。在这种情况下，交易将由少数派分叉上的领导节点进行处理。当这个领导试图与不认可少数派分叉的大多数验证节点达成共识时，它将无法与它们分享已处理的交易。在这种情况下，交易在最终确定之前将被丢弃。
 
 ![Dropped due to Minority Fork (After Processed)](./retrying-transactions/dropped-minority-fork-post-process.png)
 
-## Handling Dropped Transactions
+## 处理被丢弃的交易
 
-While RPC nodes will attempt to rebroadcast transactions, the algorithm they employ is generic and often ill-suited for the needs of specific applications. To prepare for times of network congestion, application developers should customize their own rebroadcasting logic.
+虽然RPC节点会尝试重新广播交易，但它们使用的算法是通用的，往往不适合特定应用的需求。为了应对网络拥堵的时候，应用程序开发人员应该自定义自己的重新广播逻辑。
 
-### An In-Depth Look at sendTransaction
+### 深入了解sendTransaction
 
-When it comes to submitting transactions, the `sendTransaction` RPC method is the primary tool available to developers. `sendTransaction` is only responsible for relaying a transaction from a client to an RPC node. If the node receives the transaction, `sendTransaction` will return the transaction id that can be used to track the transaction. A successful response does not indicate whether the transaction will be processed or finalized by the cluster.
+在提交交易方面，`sendTransaction` RPC方法是开发者可用的主要工具。`sendTransaction`仅负责将交易从客户端传递到RPC节点。如果节点接收到交易，`sendTransaction`将返回用于跟踪交易的交易ID。成功的响应并不表示该交易将由集群处理或最终确定。
 
 :::tip
-#### Request Parameters
-- `transaction`: `string` - fully-signed Transaction, as encoded string
-- (optional) `configuration object`: `object` 
-    - `skipPreflight`: `boolean` - if true, skip the preflight transaction checks (default: false)
-    - (optional) `preflightCommitment`: `string` - [Commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) level to use for preflight simulations against the bank slot (default: "finalized").
-    - (optional) `encoding`: `string` - Encoding used for the transaction data. Either "base58" (slow), or "base64". (default: "base58").
-    - (optional) `maxRetries`: `usize` - Maximum number of times for the RPC node to retry sending the transaction to the leader. If this parameter is not provided, the RPC node will retry the transaction until it is finalized or until the blockhash expires.
+#### 请求参数
+- `transaction`: `string` -  完全签名的交易，以编码字符串形式表示 
+- (可选) `configuration object`: `object` 
+    - `skipPreflight`: `boolean` - 如果为 true，则跳过预检事务检查（默认为 false）
+    - (可选) `preflightCommitment`: `string` - 用于针对银行插槽进行预检模拟的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别（默认为"finalized"）
+    - (可选) `encoding`: `string` - 用于交易数据的编码方式。可以选择 "base58"（较慢）或 "base64"（默认为 "base58")
+    - (可选) `maxRetries`: `usize` -  RPC节点重试将交易发送给领导者的最大次数。如果未提供此参数，RPC节点将重试交易，直到交易最终确定或块哈希过期为止
 
-#### Response
-- `transaction id`: `string` - First transaction signature embedded in the transaction, as base-58 encoded string. This transaction id can be used with [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) to poll for status updates.
+#### 响应
+- `transaction id`: `string` - 第一个嵌入在交易中的交易签名，以base-58编码的字符串形式表示。可以使用该交易ID与 [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) 一起使用，以轮询获取状态更新。
 :::
 
-## Customizing Rebroadcast Logic
+## 自定义重播逻辑
 
-In order to develop their own rebroadcasting logic, developers should take advantage of `sendTransaction`’s `maxRetries` parameter. If provided, `maxRetries` will override an RPC node’s default retry logic, allowing developers to manually control the retry process [within reasonable bounds](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274).
+为了开发自己的重新广播逻辑，开发者应该利用`sendTransaction`的`maxRetries`参数。如果提供了`maxRetries`，它将覆盖RPC节点的默认重试逻辑，允许开发人员在[合理范围内](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274) 手动控制重试过程。
 
-A common pattern for manually retrying transactions involves temporarily storing the `lastValidBlockHeight` that comes from [getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash). Once stashed, an application can then [poll the cluster’s blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight) and manually retry the transaction at an appropriate interval. In times of network congestion, it’s advantageous to set `maxRetries` to 0 and manually rebroadcast via a custom algorithm. While some applications may employ an [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) algorithm, others such as [Mango](https://www.mango.markets/) opt to [continuously resubmit](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) transactions at a constant interval until some timeout has occurred. 
+手动重试交易的常见模式涉及临时存储来自[getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash) 的`lastValidBlockHeight`。一旦存储了该值，应用程序可以[轮询集群的blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight)， 并在适当的时间间隔内手动重试交易。在网络拥堵的时期，将`maxRetries`设置为0并通过自定义算法手动重新广播是有优势的。一些应用程序可能采用[指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)， 而其他应用程序（如[Mango](https://www.mango.markets/) ）选择在恒定间隔内[持续重新提交](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) 交易，直到发生超时。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -154,25 +154,26 @@ A common pattern for manually retrying transactions involves temporarily storing
 </SolanaCodeGroup>
 
 
-When polling via `getLatestBlockhash`, applications should specify their intended [commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) level. By setting its commitment to `confirmed` (voted on) or `finalized` (~30 blocks after `confirmed`), an application can avoid polling a blockhash from a minority fork.
+当通过`getLatestBlockhash`进行轮询时，应用程序应该指定其预期的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别。通过将承诺级别设置为`confirmed`（已投票）或`finalized`（在`confirmed`之后约30个块），应用程序可以避免从少数派分叉轮询块哈希。
 
-If an application has access to RPC nodes behind a load balancer, it can also choose to divide its workload amongst specific nodes. RPC nodes that serve data-intensive requests such as [getProgramAccounts](./get-program-accounts.md) may be prone to falling behind and can be ill-suited for also forwarding transactions. For applications that handle time-sensitive transactions, it may be prudent to have dedicated nodes that only handle `sendTransaction`.
+如果应用程序可以访问负载均衡器后面的RPC节点，还可以选择将其工作负载分配给特定节点。为数据密集型请求提供服务的RPC节点（例如[getProgramAccounts](./get-program-accounts.md)）可能会滞后，并且可能不适合转发交易。对于处理时间敏感交易的应用程序，最好拥有专用节点仅处理`sendTransaction`操作。
 
-### The Cost of Skipping Preflight
+### 跳过预检的后果
 
-By default, `sendTransaction` will perform three preflight checks prior to submitting a transaction. Specifically, `sendTransaction` will:
-- Verify that all signatures are valid
-- Check that the referenced blockhash is within the last 150 blocks
-- Simulate the transaction against the bank slot specified by the `preflightCommitment`
+默认情况下，`sendTransaction`将在提交交易之前执行三个预检查。具体而言，`sendTransaction`将会：
 
-In the event that any of these three preflight checks fail, `sendTransaction` will raise an error prior to submitting the transaction. Preflight checks can often be the difference between losing a transaction and allowing a client to gracefully handle an error. To ensure that these common errors are accounted for, it is recommended that developers keep `skipPreflight` set to `false`.
+- 验证所有签名是否有效
+- 检查引用的块哈希是否在最近的150个块内
+- 针对预检查的`preFlightCommitment`，模拟交易与银行槽位之间的交互
 
-### When to Re-Sign Transactions
+如果其中任何一个预检查失败，`sendTransaction`将在提交交易之前引发错误。预检查常常能够防止交易丢失，并使客户端能够优雅地处理错误。为了确保这些常见错误得到考虑，建议开发人员将skipPreflight设置为false。
 
-Despite all attempts to rebroadcast, there may be times in which a client is required to re-sign a transaction. Before re-signing any transaction, it is **very important** to ensure that the initial transaction’s blockhash has expired. If the initial blockhash is still valid, it is possible for both transactions to be accepted by the network. To an end-user, this would appear as if they unintentionally sent the same transaction twice.
+### 何时重新签署交易
 
-In Solana, a dropped transaction can be safely discarded once the blockhash it references is older than the `lastValidBlockHeight` received from `getLatestBlockhash`. Developers should keep track of this `lastValidBlockHeight` by querying [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) and comparing with `blockHeight` in the response. Once a blockhash is invalidated, clients may re-sign with a newly-queried blockhash.
+尽管尽力进行重新广播，但有时客户端可能需要重新签署交易。在重新签署任何交易之前，非常重要的是确保初始交易的块哈希已经过期。如果初始块哈希仍然有效，那么两个交易都有可能被网络接受。对于最终用户来说，这将看起来好像他们无意中发送了相同的交易两次。
 
-## Acknowledgements
+在Solana中，一旦所引用的块哈希早于从`getLatestBlockhash`接收到的`lastValidBlockHeight`，可以安全地丢弃已丢弃的交易。开发者应该通过查询 [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) 并将其与响应中的`blockHeight`进行比较来跟踪l`astValidBlockHeight`。一旦一个块哈希无效，客户端可以使用新查询的块哈希重新签署。
 
-Many thanks to Trent Nelson, [Jacob Creech](https://twitter.com/jacobvcreech), White Tiger, Le Yafo, [Buffalu](https://twitter.com/buffalu__), and [Jito Labs](https://twitter.com/jito_labs) for their review and feedback.
+## 致谢
+
+非常感谢 Trent Nelson、[Jacob Creech](https://twitter.com/jacobvcreech), White Tiger、Le Yafo、[Buffalu](https://twitter.com/buffalu__), 和 [Jito Labs](https://twitter.com/jito_labs) 的审查和反馈。

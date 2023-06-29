@@ -1,12 +1,12 @@
 ---
-title: Debugging Solana Programs
+title: 调试 Solana 程序
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: Solana秘籍 | 调试 Solana 程序
   - - meta
     - name: og:title
-      content: Solana Cookbook | Debugging Solana Programs
+      content: Solana秘籍 | 调试 Solana 程序
   - - meta
     - name: description
       content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
@@ -37,42 +37,32 @@ head:
 footer: MIT Licensed
 ---
 
-# Debugging Solana Programs
+# 调试 Solana 程序
 
-There are a number of options and supporting tools for testing and debugging a Solana program.
+有许多选项和支持工具可用于测试和调试Solana程序。
 
-## Facts
+## 综述
 
-::: tip Fact Sheet
-- The crate `solana-program-test` enables use of bare bones **_local runtime_** where you can test and debug
-your program interactively (e.g. in vscode).
-- The crate `solana-validator` enables use of the `solana-test-validator` implementation for more robust
-testing that occurs on a **_local validator node_**. You can run from the editor **_but breakpoints in the
-program are ignored_**.
-- The CLI tool `solana-test-validator` runs and loads your program and processes transaction execution from
-command line Rust applications or Javascript/Typescript applications using web3.
-- For all the above, liberal use of `msg!` macro in your program is recommended at the start and then
-removing them as you test and ensure rock solid behavior. Remember that `msg!` consumes Compute Units which
-can eventually fail your program by hitting the Compute Unit budget caps.
+::: tip 事实表 
+- `solana-program-test`  包可以使用基本的本地运行时，在其中可以交互式地测试和调试程序（例如在 vscode 中）。
+- `solana-validator` 包可以使用`solana-test-validator`实现进行更可靠的测试，该测试发生在本地验证器节点上。你可以从编辑器中运行，但是程序中的断点将被忽略。
+- CLI工具`solana-test-validator` 可以从命令行运行和加载你的程序，并处理来自命令行 Rust 应用程序或使用 web3 的 JavaScript/TypeScript 应用程序的事务执行。 
+- 对于上述所有情况，建议在开始时大量使用`msg!`宏进行输出，然后在测试和确保行为稳定后将其移除。请记住，`msg!` 会消耗计算单位，如果达到计算单位的预算限制，最终可能导致程序失败。
 :::
 
-The steps in the following sections use the [solana-program-bpf-template](#resources). Clone that to your
-machine:
+按照以下步骤使用 [solana-program-bpf-template](#resources)。将其克隆到你的计算机上：
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
 code .
 ```
-## Runtime Testing and Debugging in editor
+## 在编辑器中进行运行时测试和调试
 
-Open the file `src/lib.rs`
+打开文件 `src/lib.rs`
 
-You'll see that the program is a pretty simple and basically just logs the content received by
-the program entrypoint function: `process_instruction`
+你会看到该程序非常简单，基本上只是记录程序入口函数`process_instruction`接收到的内容。
 
-1. Go to the `#[cfg(test)]` section and click `Run Tests`. This will build the program and then
-execute the `async fn test_transaction()` test. You will see the log messages (simplified) in the vscode terminal below
-the source.
+1.转到 `#[cfg(test)]` 部分，并点击`Run Tests`。这将构建程序，然后执行 `async fn test_transaction()` 测试。你将在 `vscode` 终端中看到简化的日志消息。
 ```bash
 running 1 test
 "bpf_program_template" program loaded as native code
@@ -82,42 +72,35 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
-2. Set a breakpoint on the programs `msg!` line (11)
-3. Back in the test module, click `Debug` and within seconds the debugger will stop on the breakpoint and
-now you can examine data, step through functions, etc., etc..
+2.在程序的第11行（`msg!`行）上设置一个断点。
+3. 返回测试模块，点击`Debug`，几秒钟后调试器会在断点处停下，现在你可以检查数据、逐步执行函数等等。
 
-These tests are also run from the command line with:
-`cargo test` or `cargo test-bpf`. Of course any breakpoints will be ignored.
+这些测试也可以通过命令行运行：`cargo test` 或 `cargo test-bpf`。当然，任何断点都会被忽略。
 
-How groovy can you get!
+多酷啊！
 
-:::tip Note
-Keep in mind you are not using a validator node so default programs, blockhashes, etc. are not represented or
-will not behave as they would when running in validator node. This is why the gang at Solana gave us
-Local Validator Node testing!
+:::tip 请注意
+你并没有使用验证节点，因此默认的程序、区块哈希等在验证节点中的行为可能与你的运行结果不同。这就是 Solana 团队为我们提供本地验证节点测试的原因！
 :::
 
 
-## Local Validator Node Testing in editor
+## 在编辑器中进行本地验证节点测试
 
-Integration testing using programmatic loading of a local validator node is defined in the
-`tests/integration.rs` file.
+在 `tests/integration.rs` 文件中，定义了使用程序加载本地验证节点进行集成测试。
 
-By default, the template repo integration tests will only be runnable from the command line
-using `cargo test-bpf`. The following steps will enable you to run within the editor as well
-as displaying program validator logs and `msg!` outputs from your program:
+默认情况下，模板仓库的集成测试只能通过命令行使用 `cargo test-bpf` 运行。以下步骤将使你能够在编辑器中运行测试，并显示程序的验证节点日志和 `msg!` 输出：
 
-1. In the repo directory run `cargo build-bpf` to build the sample program
-2. In the editor, open `tests/integration.rs`
-3. Comment out line 1 -> `// #![cfg(feature = "test-bpf")]`
-4. On line 19 change it to read: `.add_program("target/deploy/bpf_program_template", program_id)`
-5. Insert the following at line 22 `solana_logger::setup_with_default("solana_runtime::message=debug");`
-6. Click `Run Test` above the `test_validator_transaction()` function
+1. 在仓库目录中运行 `cargo build-bpf` 来构建示例程序
+2. 在编辑器中打开 `tests/integration.rs` 文件
+3. 将第 1 行注释掉 -> `// #![cfg(feature = "test-bpf")]`
+4. 在第 19 行将其修改为：`.add_program("target/deploy/bpf_program_template", program_id)`
+5. 在第 22 行插入以下内容`solana_logger::setup_with_default("solana_runtime::message=debug");`
+6. 点击在 `test_validator_transaction()` 函数上方的 `Run Test`
 
-This will load the validator node then allowing you to construct a transaction (the Rust way) and
-submit to the node using the `RcpClient`.
 
-The program's output will also print out in the editor terminal. For example (simplified):
+这将加载验证节点，然后允许您构建一个交易（按照 Rust 的方式），并使用`RpcClient`提交给节点。
+
+程序的输出也将打印在编辑器的终端中。例如（简化）：
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -130,28 +113,27 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-Debugging here will allow you to debug the functions and methods used in the **_test body_** but will
-not breakpoint in your program.
+在这里进行调试将允许你调试测试主体中使用的函数和方法，但不会在你的程序中设置断点。
 
-The bee's knees eh?
+非常出色，不是吗？
 
-## Local Validator Node Testing from Client Apps
-Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
-from the command line.
+## 从客户端应用程序进行本地验证节点测试
+最后，你可以从命令行启动一个本地验证节点，并使用`solana-test-validator`加载你的程序和任何账户。
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
-[JavaScript or Typescript clients](#resources)
+在这种方法中，你需要一个客户端应用程序，可以使用Rust的 [RcpClient](#resources)，也可以使用
+[JavaScript or Typescript clients](#resources)的客户端。
 
-See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
-1. Open a terminal in the repo folder
-2. Run `solana config set -ul` to set the configuration to point to local
-3. Run `solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. Open another terminal and run `solana logs` to start the log streamer
-5. You can then run your client program and observe program output in the terminal where you started the log streamer
+有关更多详细信息和选项，请参阅`solana-test-validator --help`。对于这个示例程序，以下是基本设置：
 
-Now that is the cat's pajamas YO!
+1. 在存储库文件夹中打开一个终端
+2. 运行`solana config set -ul`命令，将配置设置为指向本地
+3. 运行`solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
+4. 打开另一个终端并运行`solana logs`以启动日志流
+5. 然后，你可以运行客户端程序，并在您启动日志流的终端中观察程序输出
 
-## Resources
+那可真是太棒了！
+
+## 资料
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
 
 [RcpClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)
