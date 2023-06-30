@@ -124,7 +124,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         },
       },
       "/zh/": {
-        selectLanguageName: "中文",
+        selectLanguageName: "中文（简体）",
         navbar: [
           {
             text: "贡献代码",

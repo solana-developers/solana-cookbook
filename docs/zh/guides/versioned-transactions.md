@@ -1,12 +1,12 @@
 ---
-title: Versioned Transactions
+title: 版本化交易 (Versioned Transactions)
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Versioned Transactions
+      content: Solana秘籍| Versioned Transactions
   - - meta
     - name: og:title
-      content: Solana Cookbook | Versioned Transactions
+      content: Solana秘籍| Versioned Transactions
   - - meta
     - name: description
       content: New and improved transaction format on Solana.
@@ -37,37 +37,36 @@ head:
 footer: MIT Licensed
 ---
 
-# Versioned Transactions
+# 版本化交易 (Versioned Transactions)
 
-Solana recently released Versioned Transactions. The proposed changes are as follows:
+Solana最近发布了版本化交易。提议的更改如下：
 
-1. Introduce a new program which manages on-chain address lookup tables
+1. 引入一个新的程序，用于管理链上地址查找表。
     
-2. Add a new transaction format which can make use of on-chain address lookup tables
+2. 添加一种新的交易格式，可以利用链上地址查找表。
 
-## Facts
+## 综述
 
-::: tip Fact Sheet
-- Legacy transactions have a major issue: Maximum allowed size of 1232 bytes, and hence the number of accounts that can fit in an atomic transaction: 35 addresses.
-- Address Lookup Tables (LUTs): Once accounts are stored in this table, the address of the table can be referenced in a transaction message using 1-byte u8 indices.
-- `solana/web3.js`'s `createLookupTable()` can be used to construct a new lookup table, as well as determine its address.
-- Once an LUT is created, it can be extended, ie., accounts can be appended to the table.
-- Versioned Transactions: The structure of legacy transaction needs to be modified to incorporate LUTs
-- Before versioning was introduced, txs left an unused upper bit in the first byte of their headers, which can be used to explicitly declare the version of txs
+::: tip 事实表
+-传统交易存在一个主要问题：最大允许的大小为1232字节，因此原子交易中可以容纳的账户数量为35个地址。
+- 地址查找表（LUTs）：一旦账户存储在该表中，可以使用1字节的u8索引，在交易消息中引用该表的地址。
+- 可以使用`solana/web3.js`的`createLookupTable()`构建一个新的查找表，并确定其地址。
+- 一旦创建了LUT，可以进行扩展，即可以将账户追加到表中。
+- 版本化交易：需要修改传统交易的结构以整合LUTs。
+- 在引入版本化之前，交易在其头部的第一个字节中保留了一个未使用的最高位，可以用来显式声明交易的版本。
 :::
 
-We'll talk more about the above introduced changes and what they mean for developers. To understand the changes better, however, we need to first understand the anatomy of a regular (or legacy) transaction.
+我们将更详细地讨论上述引入的更改以及它们对开发人员的意义。然而，为了更好地理解这些更改，我们首先需要了解常规（或传统）交易的结构。
 
-## Legacy Transaction
+## 传统交易（Legacy Transactions）
 
-The Solana network uses a maximum transactional unit (MTU) size of 1280 bytes, adherent to the [IPv6 MTU](https://en.wikipedia.org/wiki/IPv6_packet) size constraints to ensure speed and reliability. This leaves **1232 bytes** for packet data like serialised transactions.
+Solana网络使用最大事务单元（MTU）大小为1280字节，遵循[IPv6 MTU](https://en.wikipedia.org/wiki/IPv6_packet) 的大小约束，以确保速度和可靠性。这样留下了1232字节的数据空间，用于存储序列化的交易等数据。
 
-A transaction is comprised of:
+一个交易由以下组成：
 
-1. A compact array of signatures, where each signature is a 64 byte [ed25519](https://ed25519.cr.yp.to/).  
-2. A (legacy) message
+1. 一个紧凑数组的签名，其中每个签名是一个64字节的[ed25519](https://ed25519.cr.yp.to/)签名。
+2. 一个（传统的）消息。
     
-
 ![Transaction Format](./versioned-transactions/tx_format.png)
 
 ::: tip Compact-Array format
@@ -80,82 +79,83 @@ A compact array is an array serialised to have the following components:
 ![Compact array format](./versioned-transactions/compact_array_format.png)
 :::
 
-## Legacy Message
+## 传统消息
 
-A Legacy Message has the following components:
+传统消息包含以下组件：
 
-1. A header
-2. A compact-array of account addresses, where each account address takes 32 bytes
-3. A recent blockhash
-  * a 32-byte SHA-256 hash used to indicate when ledger was last observed. If a blockhash is too old, validators reject it.
-4. A compact-array of Instructions
+1. 一个头部（header）。
+2. 一个紧凑数组的账户地址，每个账户地址占用32字节。
+3. 一个最近的区块哈希（recent blockhash）：
+   * 一个32字节的SHA-256哈希，用于指示上次观察到的账本状态。如果一个区块哈希太旧，验证节点将拒绝它。
+4. 一个紧凑数组的指令
     
 ![Legacy Message](./versioned-transactions/legacy_message.png)
 
-### Header
+### 头部
 
-The message header is 3 bytes in length and contains 3 u8 integers:
+消息头部是3字节长，包含3个u8整数：
 
-1. The number of required signatures: the Solana runtime verifies this number with the length of the compact array of signatures in the transaction.
-2. The number of read-only account addresses that require signatures.
-3. The number of read-only account addresses that do not require signatures.
+1. 所需签名数量：Solana运行时会将此数字与交易中紧凑数组签名的长度进行验证。
+2. 需要签名的只读账户地址数量。
+3. 不需要签名的只读账户地址数量。
     
 ![Message Header](./versioned-transactions/message_header.png)
 
-### Compact-array of account addresses
+### 紧凑账户地址数组
 
-This compact array starts with a compact-u16 encoding of the number of account addresses, followed by:
+这个紧凑数组以紧凑的u16编码的账户地址数量开始，然后是：
 
-1. **Account addresses that require signatures**: The addresses that request read and write access are listed first, followed by the ones that request for read-only access
-2. **Account addresses that do not require signatures**: Same as above, the addresses that request read and write access are listed first, followed by the ones that request for read-only access
-    
+1. **需要签名的账户地址**：首先列出请求读取和写入访问权限的地址，然后是请求只读访问权限的地址。
+2. **不需要签名的账户地址**：与上述相同，首先列出请求读取和写入访问权限的地址，然后是请求只读访问权限的地址。
+   
 ![Compact array of account addresses](./versioned-transactions/compat_array_of_account_addresses.png)
 
-### Compact array of instructions
+### 紧凑指令数组
 
-Much like the array of account addresses, this compact array starts with a compact-u16 encoding of the number of instructions, followed by an array of instructions. Each instruction in the array has the following components:
+就像账户地址数组一样，这个紧凑指令数组以紧凑的u16编码的指令数量开始，然后是一个指令数组。数组中的每个指令具有以下组件：
 
-1. **Program ID**: identifies an on-chain program that will process the instruction. This is represented as a u8 index to an address in the compact array of account addresses inside the message.   
-2. **Compact array of account address indexes**: u8 indexes to a subset of account addresses in the compact array of account addresses, that require signatures.
-3. **Compact array of opaque u8 data**: a general purpose byte array that is specific to the program ID mentioned before. This array of data specifies any operations that the program should perform and any additional information that the accounts might not contain.
+1. **程序ID**：用于标识将处理该指令的链上程序。它表示为消息中账户地址紧凑数组的地址的u8索引。
+2. **账户地址索引的紧凑数组**：指向紧凑账户地址数组中需要签名的一部分账户地址的u8索引。
+3. **不透明的u8数据的紧凑数组**：一个通用的字节数组，与前面提到的程序ID相关。该数据数组指定了程序应执行的任何操作以及账户可能不包含的任何附加信息。
     
 ![Compact array of Instructions](./versioned-transactions/compact_array_of_ixs.png)
 
-## Issues with Legacy Transactions
+## 传统交易的问题
 
-What is the issue with the above Transaction model?
+上述交易模型存在的问题是什么?
 
-**The max size of a transaction, and hence the number of accounts that can fit in a single atomic transaction.**
+交易的最大大小以及因此能够在单个原子交易中容纳的账户数量。
 
-As discussed earlier, the maximum allowed size of a transaction is **1232 bytes**. The size of an account address is 32 bytes. Thus, a transaction can at the very best store **35 accounts**, taking into account some space for headers, signatures and other metadata.
+如前所述，交易的最大允许大小为1232字节。一个账户地址的大小为32字节。因此，考虑到一些用于头部、签名和其他元数据的空间，一个交易最多只能存储35个账户。
 
 ![Issue with legacy transactions](./versioned-transactions/issues_with_legacy_txs.png)
 
-This is problematic as there are several cases where developers need to include 100s of signature-free accounts in a single transaction. This is currently not possible with the legacy transaction model. The solution currently being used is to temporarily store state on-chain and consume it later in transactions. This workaround does not work when multiple programs need to be composed in a single transaction. Each program requires multiple accounts as input and hence we fall into the same problem as before.
+这是一个问题，因为有几种情况下，开发人员需要在单个交易中包含数百个无需签名的账户。但是，传统交易模型目前无法实现这一点。目前使用的解决方案是在链上临时存储状态，并在稍后的交易中使用。但是，当多个程序需要组合在单个交易中时，这种解决方法就不适用了。每个程序都需要多个账户作为输入，因此我们陷入了与之前相同的问题。
 
-This is where **Address Lookup Tables (LUT)** are introduced.
+这就是引入**地址查找表（Address Lookup Tables，LUT）**的原因。
 
-## Address Lookup Tables (LUT)
+## 地址查找表(Address Lookeup Tables)
 
-The idea behind Address Lookup Tables is to store account addresses in a table-like (array) data structure on-chain. Once accounts are stored in this table, the address of the table can be referenced in a transaction message. To point to an individual account within the table, a 1-byte u8 index is needed.
+地址查找表的理念是在链上使用表格（数组）的数据结构存储账户地址。一旦账户存储在该表中，可以在交易消息中引用该表的地址。为了指向表中的单个账户，需要使用一个字节的u8索引。
 
 ![LUTs](./versioned-transactions/luts.png)
 
-This opens up space as addresses need not be stored inside the transaction message anymore. They only need to be referenced in the form of an index within the array like table. This leads to a possibility of referencing 2^8=**256** accounts, as accounts are referenced using a u8 index.
 
-LUTs need to be rent-exempt when initialised or whenever a new address is added to the table. Addresses can be added to this table either by an on-chain buffer, or by directly appending them to the table through the `Extension` instruction. Furthermore, LUTs can store associated metadata followed by a compact-array of accounts. Below you can see the structure of a typical Address Lookup Table.
+这样做可以节省空间，因为地址不再需要存储在交易消息中。它们只需要以数组形式的表格中的索引进行引用。这使得有可能引用256个账户，因为账户使用u8索引进行引用。
+
+当初始化地址查找表或向表中添加新地址时，需要使地址查找表免除租金。地址可以通过链上缓冲区或直接通过`Extension`指令将其追加到表格中。此外，地址查找表还可以存储相关的元数据，后面是一个紧凑数组的账户。下面是一个典型地址查找表的结构：
 
 ![LUT Format](./versioned-transactions/lut_format.png)
 
-One important pitfall of LUTs is that since address lookups require extra overhead during transaction processing, they usually incur higher costs for a transaction.
+地址查找表的一个重要缺点是，在交易处理过程中，由于地址查找需要额外的开销，通常会导致交易的成本较高。
 
-## Versioned Transactions: TransactionV0
+## 版本化交易： TransactionV0
 
-The structure of legacy transaction needs to be modified to incorporate address table lookups. These changes should not break transaction processing on Solana, nor should they indicate any format changes to the invoked programs.
+传统交易的结构需要修改以包含地址表查找。这些更改不应破坏Solana上的交易处理，也不应对被调用的程序的格式产生任何更改。
 
-To ensure the above, it is important to explicitly mention the transaction type: `legacy` or `versioned`. How do we include this information in a transaction?
+为了确保上述情况，重要的是明确指出交易类型：`legacy`（传统）或`versioned`（版本化）。我们如何在交易中包含这些信息呢？
 
-Before versioning was introduced, transactions left an unused upper bit in the first byte of their message headers: `num_required_signatures`. We can now use this bit to explicitly declare the version of our transactions.
+在引入版本化之前，交易在其消息头部的`num_required_signatures`字段的第一个字节中留下了一个未使用的上位比特。现在，我们可以使用这个比特位来明确声明我们的交易版本。
 
 ```rust
 pub enum VersionedMessage {
@@ -164,72 +164,70 @@ pub enum VersionedMessage {
 }
 ```
 
-If the first bit is set, the remaining bits in the first byte will encode a version number. Solana is beginning with “Version 0”, which is the versioned required to begin using LUTs.
+如果设置了第一个比特位，那么第一个字节中的剩余比特将用于编码版本号。Solana从“版本0”开始，这是开始使用地址查找表的版本。
 
-If the first bit is not set, the transaction will be considered a “Legacy Transaction” and the remainder of the first byte will be treated as the first byte of an encoded legacy message.
+如果未设置第一个比特位，那么该交易将被视为“传统交易”，并且第一个字节的剩余部分将被视为编码传统消息的第一个字节。
 
 ## MessageV0
 
-The structure of the new MessageV0 is more or less the same, except for two small but important changes:
+新的MessageV0的结构基本上是相同的，只是有两个小但重要的变化：
 
-1. **Message Header**: unchanged from legacy 
-2. **Compact array of account keys**: unchanged from legacy. We will denote the array of indexes pointing to elements in this array as *index array A* (you will see why we are denoting this soon)
-3. **Recent blockhash**: unchanged from legacy
-4. **Compact array of instructions**: change from legacy
-5. **Compact array of address table lookups**: introduced in v0
+1. **消息头部**：与传统版本相同，没有变化。
+2. **紧凑账户密钥数组**：与传统版本相同，没有变化。我们将指向该数组元素的索引数组表示为*索引数组A*（您很快将看到为什么我们这样表示）。
+3. **最近的区块哈希**：与传统版本相同，没有变化。
+4. **紧凑指令数组**：与传统版本不同，发生了变化。
+5. **地址表查找的紧凑数组**：在版本0中引入。
     
 ![Message v0](./versioned-transactions/messagev0.png)
 
-We'll first discuss the structure of the compact array of address table lookups before seeing what changed in the instruction array.
+在查看指令数组中的变化之前，我们首先讨论地址表查找的紧凑数组的结构。
 
-### Compact array of address table lookups
+### 地址表查找的紧凑数组
 
-This struct introduces Address Lookup Tables (LUT) to Versioned Transactions, hence enables the usage of LUTs for loading more readonly and writable accounts in a single transaction.
+这个结构将地址查找表（LUT）引入到版本化交易中，从而使得在单个交易中加载更多的只读和可写账户成为可能。
 
-The compact array starts with a compact-u16 encoding of the number of address table lookups, followed by an array of address table lookups. Each lookup has the following structure:
+紧凑数组以紧凑的u16编码表示地址表查找的数量，后跟一个地址表查找的数组。每个查找的结构如下：
 
-1. **Account key**: account key of the address lookup table
-2. **Writable indexes**: compact array of indexes used to load writable account addresses. We will denote this array as *index array B*.
-3. **Readonly indexes**: compact array of indexes used to load readonly account addresses. We will denote this array as *index array C*.
-    
+1. **账户密钥**：地址查找表的账户密钥。
+2. **可写索引**：用于加载可写账户地址的紧凑索引数组。我们将此数组表示为*索引数组B*。
+3. **只读索引**：用于加载只读账户地址的紧凑索引数组。我们将此数组表示为*索引数组C*。
+   
 ![Compact array of LUTs](./versioned-transactions/compact_array_of_luts.png)
 
-Now let's see what changes were made in the instructions compact array
+现在让我们看看指令紧凑数组中做了哪些改变。
 
-### Compact array of instructions
+### 紧凑指令数组
 
-As discussed before, the compact array of legacy instructions stores individual legacy instructions that in-turn store the following:
+如前所述，传统指令的紧凑数组存储了各个传统指令，而这些指令又分别存储了以下内容：
 
-1. Program ID index   
-2. Compact array of account address indexes
-3. Compact array of opaque 8-bit data
+1. 程序ID索引
+2. 账户地址索引的紧凑数组
+3. 不透明的8位数据的紧凑数组
     
+新指令中的变化不在于指令本身的结构，而是在于用于获取第1和第2项索引的数组。在传统交易中，使用了索引数组A的子集，而在版本化交易中，则使用了以下组合数组的子集：
 
-The change in the new instruction is not in the structure of the instruction itself, but the array being used to get indexes from for 1 and 2. In legacy transactions, a subset of the index array A is used, while in versioned transactions, a subset of the combined array of the following are used:
-
-1. **index array A**: Compact array of accounts stored in the message    
-2. **index array B**: Writable indexes in address table lookup
-3. **index array C**: Readonly indexes in address table lookup
+1. **索引数组A**：存储在消息中的紧凑账户数组。
+2. **索引数组B**：地址表查找中的可写索引。
+3. **索引数组C**：地址表查找中的只读索引。
     
 ![New Compact array of Instructions](./versioned-transactions/new_compact_array_of_ixs.png)
 
-## RPC Changes
+## RPC变更
 
-Transaction responses will require a new version field: `maxSupportedTransactionVersion` to indicate to clients which transaction structure needs to be followed for deserialisation.
+事务响应将需要一个新的版本字段：`maxSupportedTransactionVersion`，以向客户端指示需要遵循的事务结构以进行反序列化。
 
-The following methods need to be updated to avoid errors:
+以下方法需要进行更新以避免错误：
 
 * `getTransaction`
 * `getBlock`
-    
 
-The following parameter needs to be added to the requests:
+请求中需要添加以下参数：
 
 `maxSupportedTransactionVersion: 0`
 
-If `maxSupportedTransactionVersion` is not explicitly added to the request, the transaction version will fallback to `legacy`. Any block that contains a versioned transaction will return with an error by the client in the case of a legacy transaction.
+如果请求中没有显式添加`maxSupportedTransactionVersion`，事务版本将回退到`legacy`。任何包含版本化事务的区块，在存在传统事务的情况下将返回客户端错误。
 
-You can set this via JSON formatted requests to the RPC endpoint like below:
+你可以通过向RPC端点发送JSON格式的请求来设置如下：
 
 ```plaintext
 curl http://localhost:8899 -X POST -H "Content-Type: application/json" -d \
@@ -241,7 +239,7 @@ curl http://localhost:8899 -X POST -H "Content-Type: application/json" -d \
 }]}'
 ```
 
-You can also do the same using the [`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) library.
+你还可以使用 [`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/) 库执行相同操作。
 
 ```js
 // connect to the `devnet` cluster and get the current `slot`
@@ -262,14 +260,14 @@ const getTx = await connection.getTransaction(
 );
 ```
 
-## Other Resources
-* [How to build a Versioned Transaction](https://beta.docs.solana.com/developing/versioned-transactions#how-create-a-versioned-transaction)
-* [How to build a Versioned Transaction with Address Lookup using LUTs](https://beta.docs.solana.com/developing/lookup-tables#how-to-create-an-address-lookup-table)
-* [Limitations of Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#limitations)
-* [Security concerns of Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#security-concerns)
-* [Alternate proposed solutions to Versioned Transactions](https://beta.docs.solana.com/proposals/transactions-v2#other-proposals)
+## 其他资料
+* [如何构建一个版本化事务](https://beta.docs.solana.com/developing/versioned-transactions#how-create-a-versioned-transaction)
+* [如何使用地址查找表（LUTs）构建版本化事务](https://beta.docs.solana.com/developing/lookup-tables#how-to-create-an-address-lookup-table)
+* [版本化交易的限制](https://beta.docs.solana.com/proposals/transactions-v2#limitations)
+* [版本化交易的安全性问题](https://beta.docs.solana.com/proposals/transactions-v2#security-concerns)
+* [版本化交易的替代性解决方案](https://beta.docs.solana.com/proposals/transactions-v2#other-proposals)
     
 
-## References
+## 参考资料
 * [Transactions-V2 Proposal](https://beta.docs.solana.com/proposals/transactions-v2)
-* [Developing with Versioned Transactions](https://beta.docs.solana.com/developing/versioned-transactions)
+* [使用版本化交易来开发](https://beta.docs.solana.com/developing/versioned-transactions)
