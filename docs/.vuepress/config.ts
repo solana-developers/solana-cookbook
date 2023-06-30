@@ -175,6 +175,58 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
       },
+	  "/zh_t/": {
+        selectLanguageName: "中文（繁体）",
+        navbar: [
+          {
+            text: "貢獻代碼",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: [
+          {
+            text: "開始使用",
+            children: ["/zh_t/", "/zh_t/getting-started/installation.md"],
+          },
+          {
+            text: "核心概念",
+            children: [
+              "/zh_t/core-concepts/accounts.md",
+              "/zh_t/core-concepts/programs.md",
+              "/zh_t/core-concepts/transactions.md",
+              "/zh_t/core-concepts/pdas.md",
+            ],
+          },
+          {
+            text: "指南",
+            children: [
+              // '/zh_t/guides/get-program-accounts.md',
+              // '/zh_t/guides/serialization.md',
+              // '/zh_t/guides/data-migration.md',
+              // '/zh_t/guides/account-maps.md',
+              // '/zh_t/guides/retrying-transactions.md',
+              // '/zh_t/guides/debugging-solana-programs.md',
+              // '/zh_t/guides/feature-parity-testing.md',
+            ],
+          },
+          {
+            text: "參考",
+            children: [
+              // '/zh_t/references/local-development.md',
+              // '/zh_t/references/keypairs-and-wallets.md',
+              // '/zh_t/references/basic-transactions.md',
+              // '/zh_t/references/accounts.md',
+              // '/zh_t/references/programs.md',
+              // '/zh_t/references/token.md',
+              // '/zh_t/references/anchor.md',
+              // '/zh_t/references/staking.md',
+              // '/zh_t/references/nfts.md',
+              // '/zh_t/references/offline-transactions.md',
+              // '/zh_t/references/name-service.md',
+            ],
+          },
+        ],
+      },
       "/es/": {
         selectLanguageName: "Spanish",
         navbar: [
