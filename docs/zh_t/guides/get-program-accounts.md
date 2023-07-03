@@ -1,12 +1,12 @@
 ---
-title: 获取程序帐户
+title: 獲取程序帳戶
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 获取程序帐户
+      content: Solana祕籍 | 獲取程序帳戶
   - - meta
     - name: og:title
-      content: Solana秘籍 | 获取程序帐户
+      content: Solana祕籍 | 獲取程序帳戶
   - - meta
     - name: description
       content: Learn how to query data on Solana using getProgramAccounts and accountsDB
@@ -36,78 +36,78 @@ head:
       content: index,follow
 ---
 
-# 获取程序帐户
+# 獲取程序帳戶
 
-一个返回程序所拥有的账户的RPC方法。目前不支持分页。请求`getProgramAccounts`应该包括`dataSlice`和/或`filters`参数，以提高响应时间并返回只有预期结果的内容。
+一個返回程序所擁有的賬戶的RPC方法。目前不支持分頁。請求`getProgramAccounts`應該包括`dataSlice`和/或`filters`參數，以提高響應時間並返回只有預期結果的內容。
 
-## 综述
+## 綜述
 
-::: tip 参数
+::: tip 參數
 
-- `programId`: `string` - 要查询的程序的公钥，以base58编码的字符串形式提供。
-- (可选) `configOrCommitment`: `object` - 包含以下可选字段的配置参数：
-    - (可选) `commitment`: `string` - [状态承诺/State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-    - (可选) `encoding`: `string` - 账户数据的编码方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 请注意 web3js 用户应改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
-    - (可选) `dataSlice`: `object` - 根据以下内容限制返回的账户数据：
-        - `offset`: `number` - 开始返回账户数据的字节数
-        - `length`: `number` - 要返回的账户数据的字节数
-    - (可选) `filters`: `array` - 使用以下过滤器对象对结果进行过滤：
-        - `memcmp`: `object` - 将一系列字节与账户数据匹配：
-            - `offset`: `number` - 开始比较的账户数据字节偏移量
-            - `bytes`: `string` - 要匹配的数据，以base58编码的字符串形式，限制为129个字节
-        - `dataSize`: `number` - 将账户数据的长度与提供的数据大小进行比较
-    - (可选) `withContext`: `boolean` - 将结果包装在一个 [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+- `programId`: `string` - 要查詢的程序的公鑰，以base58編碼的字符串形式提供。
+- (可選) `configOrCommitment`: `object` - 包含以下可選字段的配置參數：
+    - (可選) `commitment`: `string` - [狀態承諾/State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
+    - (可選) `encoding`: `string` - 賬戶數據的編碼方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 請注意 web3js 用戶應改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+    - (可選) `dataSlice`: `object` - 根據以下內容限制返回的賬戶數據：
+        - `offset`: `number` - 開始返回賬戶數據的字節數
+        - `length`: `number` - 要返回的賬戶數據的字節數
+    - (可選) `filters`: `array` - 使用以下過濾器對象對結果進行過濾：
+        - `memcmp`: `object` - 將一系列字節與賬戶數據匹配：
+            - `offset`: `number` - 開始比較的賬戶數據字節偏移量
+            - `bytes`: `string` - 要匹配的數據，以base58編碼的字符串形式，限制爲129個字節
+        - `dataSize`: `number` - 將賬戶數據的長度與提供的數據大小進行比較
+    - (可選) `withContext`: `boolean` - 將結果包裝在一個 [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
+	
+##### 響應
 
-##### 响应
+默認情況下，`getProgramAccounts`將返回一個具有以下結構的 JSON 對象數組：
 
-默认情况下，`getProgramAccounts`将返回一个具有以下结构的 JSON 对象数组：
-
-- `pubkey`: `string` - 账户公钥，以 base58 编码的字符串形式
-- `account`: `object` - 一个包含以下子字段的 JSON 对象：
-    - `lamports`: `number`, 分配给账户的 lamports 数量
-    - `owner`: `string`, 账户所分配的程序的 base58 编码的公钥
-    - `data`: `string` | `object` - 与账户关联的数据，根据提供的编码参数，可以是编码的二进制数据或 JSON 格式 parameter
-    - `executable`: `boolean`, 指示账户是否包含着程序
-    - `rentEpoch`: `number`, 该账户下次需要支付租金的纪元（epoch）
+- `pubkey`: `string` - 賬戶公鑰，以 base58 編碼的字符串形式
+- `account`: `object` - 一個包含以下子字段的 JSON 對象：
+    - `lamports`: `number`, 分配給賬戶的 lamports 數量
+    - `owner`: `string`, 賬戶所分配的程序的 base58 編碼的公鑰
+    - `data`: `string` | `object` - 與賬戶關聯的數據，根據提供的編碼參數，可以是編碼的二進制數據或 JSON 格式 parameter
+    - `executable`: `boolean`, 指示賬戶是否包含着程序
+    - `rentEpoch`: `number`, 該賬戶下次需要支付租金的紀元（epoch）
 :::
 
 ## 深入
 
-`getProgramAccounts` 是一个多功能的RPC方法，用于返回由程序拥有的所有账户。我们可以利用`getProgramAccounts`进行许多有用的查询，例如查找：
+`getProgramAccounts` 是一個多功能的RPC方法，用於返回由程序擁有的所有賬戶。我們可以利用`getProgramAccounts`進行許多有用的查詢，例如查找：
 
-- 特定钱包的所有代币账户
-- 特定代币发行的所有代币账户（即所有[SRM](https://www.projectserum.com/)持有人)
-- 特定程序的所有自定义账户（即所有[Mango](https://mango.markets/)用户)
+- 特定錢包的所有代幣賬戶
+- 特定代幣發行的所有代幣賬戶（即所有[SRM](https://www.projectserum.com/)持有人)
+- 特定程序的所有自定義賬戶（即所有[Mango](https://mango.markets/)用戶)
 
-尽管`getProgramAccounts`非常有用，但由于目前的限制，它经常被误解。许多由`getProgramAccounts`支持的查询需要RPC节点扫描大量数据。这些扫描需要大量的内存和资源。因此，调用过于频繁或范围过大可能导致连接超时。此外，在撰写本文时，`getProgramAccounts`端点不支持分页。如果查询结果太大，响应将被截断。
+儘管`getProgramAccounts`非常有用，但由於目前的限制，它經常被誤解。許多由`getProgramAccounts`支持的查詢需要RPC節點掃描大量數據。這些掃描需要大量的內存和資源。因此，調用過於頻繁或範圍過大可能導致連接超時。此外，在撰寫本文時，`getProgramAccounts`端點不支持分頁。如果查詢結果太大，響應將被截斷。
 
-为了解决当前的限制，`getProgramAccounts`提供了一些有用的参数，包括`dataSlice`和`filters`选项的`memcmp`和`dataSize`。通过提供这些参数的组合，我们可以将查询范围缩小到可管理和可预测的大小。
+爲了解決當前的限制，`getProgramAccounts`提供了一些有用的參數，包括`dataSlice`和`filters`選項的`memcmp`和`dataSize`。通過提供這些參數的組合，我們可以將查詢範圍縮小到可管理和可預測的大小。
 
-`getProgramAccounts`的一个常见示例涉及与[SPL-Token Program](https://spl.solana.com/token) 程序交互。仅使用基本调用请求由Token程序拥有的所有账户将涉及大量的数据。然而，通过提供参数，我们可以高效地请求我们要使用的数据。
+`getProgramAccounts`的一個常見示例涉及與[SPL-Token Program](https://spl.solana.com/token) 程序交互。僅使用基本調用請求由Token程序擁有的所有賬戶將涉及大量的數據。然而，通過提供參數，我們可以高效地請求我們要使用的數據。
 
 ### `filters`
-与`getProgramAccounts`一起使用的最常见参数是`filters`数组。该数组接受两种类型的过滤器，即`dataSize`和`memcmp`。在使用这些过滤器之前，我们应该熟悉我们请求的数据的布局和序列化方式。
+與`getProgramAccounts`一起使用的最常見參數是`filters`數組。該數組接受兩種類型的過濾器，即`dataSize`和`memcmp`。在使用這些過濾器之前，我們應該熟悉我們請求的數據的佈局和序列化方式。
 
 #### `dataSize`
-在Token程序的情况下，我们可以看到[代币账户的长度为165个字节](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具体而言，一个代币账户有八个不同的字段，每个字段需要一定数量的字节。我们可以使用下面的示例图来可视化这些数据的布局。
+在Token程序的情況下，我們可以看到[代幣賬戶的長度爲165個字節](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具體而言，一個代幣賬戶有八個不同的字段，每個字段需要一定數量的字節。我們可以使用下面的示例圖來可視化這些數據的佈局。
 
 ![Account Size](./get-program-accounts/account-size.png)
 
-如果我们想找到由我们的钱包地址拥有的所有代币账户，我们可以在`filters`数组中添加`{ dataSize: 165 }`来将查询范围缩小为仅限长度为165个字节的账户。然而，仅此还不够。我们还需要添加一个过滤器来查找由我们的地址拥有的账户。我们可以使用`memcmp`过滤器实现这一点。
+如果我們想找到由我們的錢包地址擁有的所有代幣賬戶，我們可以在`filters`數組中添加`{ dataSize: 165 }`來將查詢範圍縮小爲僅限長度爲165個字節的賬戶。然而，僅此還不夠。我們還需要添加一個過濾器來查找由我們的地址擁有的賬戶。我們可以使用`memcmp`過濾器實現這一點。
 
 #### `memcmp`
-`memcmp`过滤器，也叫"内存比较"过滤器，允许我们比较存储在账户上的任何字段的数据。具体而言，我们可以查询仅与特定位置上的特定一组字节匹配的账户。`memcmp`需要两个参数：
+`memcmp`過濾器，也叫"內存比較"過濾器，允許我們比較存儲在賬戶上的任何字段的數據。具體而言，我們可以查詢僅與特定位置上的特定一組字節匹配的賬戶。`memcmp`需要兩個參數：
 
-- `offset`: 开始比较数据的位置。这个位置以字节为单位，表示为一个整数。
-- `bytes`: 数据应该与账户的数据匹配。这表示为一个base58编码的字符串，应该限制在129个字节以下。
+- `offset`: 開始比較數據的位置。這個位置以字節爲單位，表示爲一個整數。
+- `bytes`: 數據應該與賬戶的數據匹配。這表示爲一個base58編碼的字符串，應該限制在129個字節以下。
 
-需要注意的是，`memcmp`只会返回与提供的`bytes`完全匹配的结果。目前，它不支持与提供的`bytes`相比小于或大于的比较。
+需要注意的是，`memcmp`只會返回與提供的`bytes`完全匹配的結果。目前，它不支持與提供的`bytes`相比小於或大於的比較。
 
-继续使用我们的Token程序示例，我们可以修改查询，只返回由我们的钱包地址拥有的代币账户。观察代币账户时，我们可以看到存储在代币账户上的前两个字段都是公钥，而且每个公钥的长度为32个字节。鉴于`owner`是第二个字段，我们应该从`offset`为32字节的位置开始进行`memcmp`。从这里开始，我们将寻找owner字段与我们的钱包地址匹配的账户。
+繼續使用我們的Token程序示例，我們可以修改查詢，只返回由我們的錢包地址擁有的代幣賬戶。觀察代幣賬戶時，我們可以看到存儲在代幣賬戶上的前兩個字段都是公鑰，而且每個公鑰的長度爲32個字節。鑑於`owner`是第二個字段，我們應該從`offset`爲32字節的位置開始進行`memcmp`。從這裏開始，我們將尋找owner字段與我們的錢包地址匹配的賬戶。
 
 ![Account Size](./get-program-accounts/memcmp.png)
 
-我们可以通过以下实例来调用此查询：
+我們可以通過以下實例來調用此查詢：
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -131,14 +131,14 @@ head:
 
 ### `dataSlice`
 
-除了上面提到的两个过滤器参数以外，`getProgramAccounts`的第三个最常见参数是`dataSlice`。与`filters`参数不同，`dataSlice`不会减少查询返回的账户数量。`dataSlice`将限制的是每个账户的数据量。
+除了上面提到的兩個過濾器參數以外，`getProgramAccounts`的第三個最常見參數是`dataSlice`。與`filters`參數不同，`dataSlice`不會減少查詢返回的賬戶數量。`dataSlice`將限制的是每個賬戶的數據量。
 
-与`memcmp`类似，`dataSlice`接受两个参数：
+與`memcmp`類似，`dataSlice`接受兩個參數：
 
-- `offset`: 开始返回账户数据的位置（以字节为单位）
-- `length`: 应该返回的字节数
+- `offset`: 開始返回賬戶數據的位置（以字節爲單位）
+- `length`: 應該返回的字節數
 
-在处理大型数据集但实际上不关心账户数据本身时，`dataSlice`特别有用。例如，如果我们想找到特定代币发行的代币账户数量（即代币持有者数量），就可以使用`dataSlice`。
+在處理大型數據集但實際上不關心賬戶數據本身時，`dataSlice`特別有用。例如，如果我們想找到特定代幣發行的代幣賬戶數量（即代幣持有者數量），就可以使用`dataSlice`。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -160,9 +160,9 @@ head:
   </CodeGroupItem>
 </CodeGroup>
 
-通过组合这三个参数（`dataSlice`、`dataSize`和`memcmp`），我们可以限制查询的范围，并高效地返回我们想要的数据。
+通過組合這三個參數（`dataSlice`、`dataSize`和`memcmp`），我們可以限制查詢的範圍，並高效地返回我們想要的數據。
 
-## 其他资料 
+## 其他資料
 
 - [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
 - [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)

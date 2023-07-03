@@ -1,12 +1,12 @@
 ---
-title: 编写程序
+title: 編寫程序
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | Solana程序资料
+      content: Solana祕籍 | Solana程序資料
   - - meta
     - name: og:title
-      content: Solana密集 | Solana程序资料
+      content: Solana密集 | Solana程序資料
   - - meta
     - name: description
       content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
@@ -36,13 +36,13 @@ head:
       content: index,follow
 ---
 
-# 编写程序
+# 編寫程序
 
-## 如何在程序中转移 SOL 
+## 如何在程序中轉移 SOL 
 
-你的Solana程序可以在不"调用"系统程序的情况下将lamports从一个账户转移给另一个账户。基本规则是，你的程序可以将lamports从你的程序所拥有的任何账户转移到任何账户。
+你的Solana程序可以在不"調用"系統程序的情況下將lamports從一個賬戶轉移給另一個賬戶。基本規則是，你的程序可以將lamports從你的程序所擁有的任何賬戶轉移到任何賬戶。
 
-接收方账户不一定要是你的程序所拥有的账户。
+接收方賬戶不一定要是你的程序所擁有的賬戶。
 
 <CodeGroup>
   <CodeGroupItem title="Program">
@@ -52,18 +52,18 @@ head:
   </CodeGroupItem>
 </CodeGroup>
 
-## 如何在程序中获取时钟
+## 如何在程序中獲取時鐘
 
-获取时钟的方法有两种：
+獲取時鐘的方法有兩種：
 
-1. 将`SYSVAR_CLOCK_PUBKEY`作为指令的参数传入。
-2. 在指令内部直接访问时钟。
+1. 將`SYSVAR_CLOCK_PUBKEY`作爲指令的參數傳入。
+2. 在指令內部直接訪問時鐘。
 
-了解这两种方法会对你有好处，因为一些传统的程序仍然将SYSVAR_CLOCK_PUBKEY作为一个账户来使用。
+瞭解這兩種方法會對你有好處，因爲一些傳統的程序仍然將SYSVAR_CLOCK_PUBKEY作爲一個賬戶來使用。
 
-### 在指令中将时钟作为一个账户传递
+### 在指令中將時鐘作爲一個賬戶傳遞
 
-让我们创建一个指令，该指令接收一个账户用于初始化，并接收 SYSVAR 的公钥。
+讓我們創建一個指令，該指令接收一個賬戶用於初始化，並接收 SYSVAR 的公鑰。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -83,7 +83,7 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-现在，我们通过客户端传递时钟的 SYSVAR 公共地址:
+現在，我們通過客戶端傳遞時鐘的 SYSVAR 公共地址:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,9 +103,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### 在指令内部直接访问时钟
+### 在指令內部直接訪問時鐘
 
-让我们创建同样的指令，但这次我们不需要从客户端传递`SYSVAR_CLOCK_PUBKEY`。
+讓我們創建同樣的指令，但這次我們不需要從客戶端傳遞`SYSVAR_CLOCK_PUBKEY`。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -125,7 +125,7 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-现在，客户端只需要传递状态和支付账户的指令:
+現在，客戶端只需要傳遞狀態和支付賬戶的指令:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -145,9 +145,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何更改账户大小
+## 如何更改賬戶大小
 
-你可以使用`realloc`函数来更改程序拥有的账户的大小。`realloc`函数可以将账户的大小调整到最大10KB。当你使用`realloc`增加账户的大小时，你需要转移lamports以保持该账户的租金免除状态。
+你可以使用`realloc`函數來更改程序擁有的賬戶的大小。`realloc`函數可以將賬戶的大小調整到最大10KB。當你使用`realloc`增加賬戶的大小時，你需要轉移lamports以保持該賬戶的租金免除狀態。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -167,15 +167,15 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 跨程序调用的方法
+## 跨程序調用的方法
 
-跨程序调用，简单来说，就是在我们的程序中调用另一个程序的指令。一个很好的例子是`Uniswap`的`swap`功能。`UniswapV2Router`合约调用必要的逻辑进行交换，并调用`ERC20`合约的transfer函数将代币从一个人转移到另一个人。同样的方式，我们可以调用程序的指令来实现多种目的。
+跨程序調用，簡單來說，就是在我們的程序中調用另一個程序的指令。一個很好的例子是`Uniswap`的`swap`功能。`UniswapV2Router`合約調用必要的邏輯進行交換，並調用`ERC20`合約的transfer函數將代幣從一個人轉移到另一個人。同樣的方式，我們可以調用程序的指令來實現多種目的。
 
-让我们来看看我们的第一个例子，即`SPL Token Program`的`transfer`指令。进行转账所需的账户包括：
+讓我們來看看我們的第一個例子，即`SPL Token Program`的`transfer`指令。進行轉賬所需的賬戶包括：
 
-1. 源代币账户（我们持有代币的账户）
-2. 目标代币账户（我们要将代币转移至的账户）
-3. 源代币账户的持有者（我们将为其签名的钱包地址）
+1. 源代幣賬戶（我們持有代幣的賬戶）
+2. 目標代幣賬戶（我們要將代幣轉移至的賬戶）
+3. 源代幣賬戶的持有者（我們將爲其簽名的錢包地址）
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -195,7 +195,7 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 <br />
-相应的客户端指令如下所示。有关了解铸币和代币创建指令，请参考附近的完整代码。
+相應的客戶端指令如下所示。有關了解鑄幣和代幣創建指令，請參考附近的完整代碼。
 <br />
 <br />
 <SolanaCodeGroup>
@@ -216,11 +216,11 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-现在让我们来看另一个例子，即`System Program`的`create_account`指令。这里与上面提到的指令有一点不同。在上述例子中，我们不需要在`invoke`函数中将`token_program`作为账户之一传递。然而，在某些情况下，您需要传递调用指令的`program_id`。在我们的例子中，它将是`System Program`的`program_id`（"11111111111111111111111111111111"）。所以现在所需的账户包括：
+現在讓我們來看另一個例子，即`System Program`的`create_account`指令。這裏與上面提到的指令有一點不同。在上述例子中，我們不需要在`invoke`函數中將`token_program`作爲賬戶之一傳遞。然而，在某些情況下，您需要傳遞調用指令的`program_id`。在我們的例子中，它將是`System Program`的`program_id`（"11111111111111111111111111111111"）。所以現在所需的賬戶包括：
 
-1.  负责支付租金的支付账户
-2. 将要创建的账户
-3. 系统程序（System Program）账户
+1.  負責支付租金的支付賬戶
+2. 將要創建的賬戶
+3. 系統程序（System Program）賬戶
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -240,7 +240,7 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-对应的客户端代码如下所示：
+對應的客戶端代碼如下所示：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -260,9 +260,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何创建PDA
+## 如何創建PDA
 
-程序派生地址（Program Derived Address，PDA）是程序拥有的账户，但没有私钥。相反，它的签名是通过一组种子和一个阻碍值（一个确保其不在曲线上的随机数）获取的。"生成"程序地址与"创建"它是不同的。可以使用`Pubkey::find_program_address`来生成PDA。创建PDA实质上意味着初始化该地址的空间并将其状态设置为初始状态。普通的密钥对账户可以在我们的程序之外创建，然后将其用于初始化PDA的状态。不幸的是，对于PDA来说，它必须在链上创建，因为它本身无法代表自己进行签名。因此，我们使用`invoke_signed`来传递PDA的种子，以及资金账户的签名，从而实现了PDA的账户创建。
+程序派生地址（Program Derived Address，PDA）是程序擁有的賬戶，但沒有私鑰。相反，它的簽名是通過一組種子和一個阻礙值（一個確保其不在曲線上的隨機數）獲取的。"生成"程序地址與"創建"它是不同的。可以使用`Pubkey::find_program_address`來生成PDA。創建PDA實質上意味着初始化該地址的空間並將其狀態設置爲初始狀態。普通的密鑰對賬戶可以在我們的程序之外創建，然後將其用於初始化PDA的狀態。不幸的是，對於PDA來說，它必須在鏈上創建，因爲它本身無法代表自己進行簽名。因此，我們使用`invoke_signed`來傳遞PDA的種子，以及資金賬戶的簽名，從而實現了PDA的賬戶創建。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -282,7 +282,7 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-可以通过客户端按如下方式发送所需的账户：
+可以通過客戶端按如下方式發送所需的賬戶：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -302,9 +302,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何读取账户
+## 如何讀取賬戶
 
-在Solana中，几乎所有的指令都至少需要2-3个账户，并且在指令处理程序中会说明它期望的账户顺序。如果我们利用Rust中的`iter()`方法，而不是手动索引账户，那么这将非常简单。`next_account_info`方法基本上是对可迭代对象的第一个索引进行切片，并返回账户数组中存在的账户。让我们看一个简单的指令，它期望一堆账户并需要解析每个账户。
+在Solana中，幾乎所有的指令都至少需要2-3個賬戶，並且在指令處理程序中會說明它期望的賬戶順序。如果我們利用Rust中的`iter()`方法，而不是手動索引賬戶，那麼這將非常簡單。`next_account_info`方法基本上是對可迭代對象的第一個索引進行切片，並返回賬戶數組中存在的賬戶。讓我們看一個簡單的指令，它期望一堆賬戶並需要解析每個賬戶。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -324,17 +324,17 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何验证账户
+## 如何驗證賬戶
 
-由于Solana中的程序是无状态的，作为程序创建者，我们必须尽可能验证传递的账户，以避免任何恶意账户的进入。可以进行的基本检查包括：
+由於Solana中的程序是無狀態的，作爲程序創建者，我們必須儘可能驗證傳遞的賬戶，以避免任何惡意賬戶的進入。可以進行的基本檢查包括：
 
-1. 检查预期的签名账户是否已签名。
-2. 检查预期的状态账户是否已标记为可写。
-3. 检查预期的状态账户的所有者是否为调用程序的程序ID。
-4. 如果首次初始化状态，请检查账户是否已经初始化。
-5. 检查是否按预期传递了任何跨程序的ID（在需要时）。
+1. 檢查預期的簽名賬戶是否已簽名。
+2. 檢查預期的狀態賬戶是否已標記爲可寫。
+3. 檢查預期的狀態賬戶的所有者是否爲調用程序的程序ID。
+4. 如果首次初始化狀態，請檢查賬戶是否已經初始化。
+5. 檢查是否按預期傳遞了任何跨程序的ID（在需要時）。
 
-下面是一个基本的指令，它使用上述检查初始化英雄状态账户的示例：
+下面是一個基本的指令，它使用上述檢查初始化英雄狀態賬戶的示例：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
@@ -354,9 +354,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何从一个交易中读取多个指令 
+## 如何從一個交易中讀取多個指令 
 
-Solana允许我们查看当前交易中的所有指令。我们可以将它们存储在一个变量中，并对其进行迭代。我们可以利用这一点做许多事情，比如检查可疑的交易。
+Solana允許我們查看當前交易中的所有指令。我們可以將它們存儲在一個變量中，並對其進行迭代。我們可以利用這一點做許多事情，比如檢查可疑的交易。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>

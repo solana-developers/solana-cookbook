@@ -104,8 +104,6 @@ footer: MIT Licensed
 
 ## 通过验证器获取委托人
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
-
 多个账户可能已经质押给了特定的验证账户。为了获取所有的质押人，我们可以使用 `getProgramAccounts` 或 `getParsedProgramAccounts` API。请参考[指南部分](/guides/get-program-accounts.html) 获取更多信息。质押账户长度为200字节，选民公钥从第124字节开始。[参考资料](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)。
 
 <SolanaCodeGroup>

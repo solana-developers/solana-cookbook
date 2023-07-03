@@ -1,12 +1,12 @@
 ---
-title: 调试 Solana 程序
+title: 調試 Solana 程序
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 调试 Solana 程序
+      content: Solana祕籍 | 調試 Solana 程序
   - - meta
     - name: og:title
-      content: Solana秘籍 | 调试 Solana 程序
+      content: Solana祕籍 | 調試 Solana 程序
   - - meta
     - name: description
       content: There are a number of options and supporting tools for testing and debugging a Solana BPF program.
@@ -37,32 +37,32 @@ head:
 footer: MIT Licensed
 ---
 
-# 调试 Solana 程序
+# 調試 Solana 程序
 
-有许多选项和支持工具可用于测试和调试Solana程序。
+有許多選項和支持工具可用於測試和調試Solana程序。
 
-## 综述
+## 綜述
 
-::: tip 事实表 
-- `solana-program-test`  包可以使用基本的本地运行时，在其中可以交互式地测试和调试程序（例如在 vscode 中）。
-- `solana-validator` 包可以使用`solana-test-validator`实现进行更可靠的测试，该测试发生在本地验证器节点上。你可以从编辑器中运行，但是程序中的断点将被忽略。
-- CLI工具`solana-test-validator` 可以从命令行运行和加载你的程序，并处理来自命令行 Rust 应用程序或使用 web3 的 JavaScript/TypeScript 应用程序的事务执行。 
-- 对于上述所有情况，建议在开始时大量使用`msg!`宏进行输出，然后在测试和确保行为稳定后将其移除。请记住，`msg!` 会消耗计算单位，如果达到计算单位的预算限制，最终可能导致程序失败。
+::: tip 事實表 
+- `solana-program-test`  包可以使用基本的本地運行時，在其中可以交互式地測試和調試程序（例如在 vscode 中）。
+- `solana-validator` 包可以使用`solana-test-validator`實現進行更可靠的測試，該測試發生在本地驗證器節點上。你可以從編輯器中運行，但是程序中的斷點將被忽略。
+- CLI工具`solana-test-validator` 可以從命令行運行和加載你的程序，並處理來自命令行 Rust 應用程序或使用 web3 的 JavaScript/TypeScript 應用程序的事務執行。 
+- 對於上述所有情況，建議在開始時大量使用`msg!`宏進行輸出，然後在測試和確保行爲穩定後將其移除。請記住，`msg!` 會消耗計算單位，如果達到計算單位的預算限制，最終可能導致程序失敗。
 :::
 
-按照以下步骤使用 [solana-program-bpf-template](#resources)。将其克隆到你的计算机上：
+按照以下步驟使用 [solana-program-bpf-template](#resources)。將其克隆到你的計算機上：
 ```bash
 git clone git@github.com:mvines/solana-bpf-program-template.git
 cd solana-bpf-program-template
 code .
 ```
-## 在编辑器中进行运行时测试和调试
+## 在編輯器中進行運行時測試和調試
 
-打开文件 `src/lib.rs`
+打開文件 `src/lib.rs`
 
-你会看到该程序非常简单，基本上只是记录程序入口函数`process_instruction`接收到的内容。
+你會看到該程序非常簡單，基本上只是記錄程序入口函數`process_instruction`接收到的內容。
 
-1.转到 `#[cfg(test)]` 部分，并点击`Run Tests`。这将构建程序，然后执行 `async fn test_transaction()` 测试。你将在 `vscode` 终端中看到简化的日志消息。
+1.轉到 `#[cfg(test)]` 部分，並點擊`Run Tests`。這將構建程序，然後執行 `async fn test_transaction()` 測試。你將在 `vscode` 終端中看到簡化的日誌消息。
 ```bash
 running 1 test
 "bpf_program_template" program loaded as native code
@@ -72,35 +72,35 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test::test_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 33.41s
 ```
-2.在程序的第11行（`msg!`行）上设置一个断点。
-3. 返回测试模块，点击`Debug`，几秒钟后调试器会在断点处停下，现在你可以检查数据、逐步执行函数等等。
+2.在程序的第11行（`msg!`行）上設置一個斷點。
+3. 返回測試模塊，點擊`Debug`，幾秒鐘後調試器會在斷點處停下，現在你可以檢查數據、逐步執行函數等等。
 
-这些测试也可以通过命令行运行：`cargo test` 或 `cargo test-bpf`。当然，任何断点都会被忽略。
+這些測試也可以通過命令行運行：`cargo test` 或 `cargo test-bpf`。當然，任何斷點都會被忽略。
 
 多酷啊！
 
-:::tip 请注意
-你并没有使用验证节点，因此默认的程序、区块哈希等在验证节点中的行为可能与你的运行结果不同。这就是 Solana 团队为我们提供本地验证节点测试的原因！
+:::tip 請注意
+你並沒有使用驗證節點，因此默認的程序、區塊哈希等在驗證節點中的行爲可能與你的運行結果不同。這就是 Solana 團隊爲我們提供本地驗證節點測試的原因！
 :::
 
 
-## 在编辑器中进行本地验证节点测试
+## 在編輯器中進行本地驗證節點測試
 
-在 `tests/integration.rs` 文件中，定义了使用程序加载本地验证节点进行集成测试。
+在 `tests/integration.rs` 文件中，定義了使用程序加載本地驗證節點進行集成測試。
 
-默认情况下，模板仓库的集成测试只能通过命令行使用 `cargo test-bpf` 运行。以下步骤将使你能够在编辑器中运行测试，并显示程序的验证节点日志和 `msg!` 输出：
+默認情況下，模板倉庫的集成測試只能通過命令行使用 `cargo test-bpf` 運行。以下步驟將使你能夠在編輯器中運行測試，並顯示程序的驗證節點日誌和 `msg!` 輸出：
 
-1. 在仓库目录中运行 `cargo build-bpf` 来构建示例程序
-2. 在编辑器中打开 `tests/integration.rs` 文件
-3. 将第 1 行注释掉 -> `// #![cfg(feature = "test-bpf")]`
-4. 在第 19 行将其修改为：`.add_program("target/deploy/bpf_program_template", program_id)`
-5. 在第 22 行插入以下内容`solana_logger::setup_with_default("solana_runtime::message=debug");`
-6. 点击在 `test_validator_transaction()` 函数上方的 `Run Test`
+1. 在倉庫目錄中運行 `cargo build-bpf` 來構建示例程序
+2. 在編輯器中打開 `tests/integration.rs` 文件
+3. 將第 1 行註釋掉 -> `// #![cfg(feature = "test-bpf")]`
+4. 在第 19 行將其修改爲：`.add_program("target/deploy/bpf_program_template", program_id)`
+5. 在第 22 行插入以下內容`solana_logger::setup_with_default("solana_runtime::message=debug");`
+6. 點擊在 `test_validator_transaction()` 函數上方的 `Run Test`
 
 
-这将加载验证节点，然后允许您构建一个交易（按照 Rust 的方式），并使用`RpcClient`提交给节点。
+這將加載驗證節點，然後允許您構建一個交易（按照 Rust 的方式），並使用`RpcClient`提交給節點。
 
-程序的输出也将打印在编辑器的终端中。例如（简化）：
+程序的輸出也將打印在編輯器的終端中。例如（簡化）：
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -113,27 +113,27 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
-在这里进行调试将允许你调试测试主体中使用的函数和方法，但不会在你的程序中设置断点。
+在這裏進行調試將允許你調試測試主體中使用的函數和方法，但不會在你的程序中設置斷點。
 
-非常出色，不是吗？
+非常出色，不是嗎？
 
-## 从客户端应用程序进行本地验证节点测试
-最后，你可以从命令行启动一个本地验证节点，并使用`solana-test-validator`加载你的程序和任何账户。
+## 從客戶端應用程序進行本地驗證節點測試
+最後，你可以從命令行啓動一個本地驗證節點，並使用`solana-test-validator`加載你的程序和任何賬戶。
 
-在这种方法中，你需要一个客户端应用程序，可以使用Rust的 [RcpClient](#resources)，也可以使用
-[JavaScript or Typescript clients](#resources)的客户端。
+在這種方法中，你需要一個客戶端應用程序，可以使用Rust的 [RcpClient](#resources)，也可以使用
+[JavaScript or Typescript clients](#resources)的客戶端。
 
-有关更多详细信息和选项，请参阅`solana-test-validator --help`。对于这个示例程序，以下是基本设置：
+有關更多詳細信息和選項，請參閱`solana-test-validator --help`。對於這個示例程序，以下是基本設置：
 
-1. 在存储库文件夹中打开一个终端
-2. 运行`solana config set -ul`命令，将配置设置为指向本地
-3. 运行`solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
-4. 打开另一个终端并运行`solana logs`以启动日志流
-5. 然后，你可以运行客户端程序，并在您启动日志流的终端中观察程序输出
+1. 在存儲庫文件夾中打開一個終端
+2. 運行`solana config set -ul`命令，將配置設置爲指向本地
+3. 運行`solana-test-validator --bpf-program target/deploy/bpf_program_template-keypair.json target/deploy/bpf_program_template.so`
+4. 打開另一個終端並運行`solana logs`以啓動日誌流
+5. 然後，你可以運行客戶端程序，並在您啓動日誌流的終端中觀察程序輸出
 
 那可真是太棒了！
 
-## 资料
+## 資料
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
 
 [RcpClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)

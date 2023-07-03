@@ -1,18 +1,18 @@
 ---
-title: 账户
+title: 賬戶
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 账户
+      content: Solana祕籍 | 賬戶
   - - meta
     - name: og:title
-      content: Solana秘籍 | 账户
+      content: Solana祕籍 | 賬戶
   - - meta
     - name: description
-      content: 账户是Solana开发中非常重要的构成要素。在Solana秘籍可以学习账户以及其他一些核心概念。
+      content: 賬戶是Solana開發中非常重要的構成要素。在Solana祕籍可以學習賬戶以及其他一些核心概念。
   - - meta
     - name: og:description
-      content: 账户是Solana开发中非常重要的构成要素。在Solana秘籍可以学习账户以及其他一些核心概念。
+      content: 賬戶是Solana開發中非常重要的構成要素。在Solana祕籍可以學習賬戶以及其他一些核心概念。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,84 +37,84 @@ head:
 footer: MIT Licensed
 ---
 
-# 账户
+# 賬戶
 
-在Solana中，账户是用来存储状态的。账户是Solana开发中非常重要的构成要素。
+在Solana中，賬戶是用來存儲狀態的。賬戶是Solana開發中非常重要的構成要素。
 
-## 综述
+## 綜述
 
-::: tip 要点
-- 账户是用来存放数据的
-- 每个账户都有一个独一无二的地址
-- 每个账户大小不能超过10MB
-- 程序派生账户大小不能超过10KB
-- 程序派生账户可以用其对应程序进行签名
-- 账户大小是静态的
-- 账户数据存储需要付租金
-- 默认的账户所有者是"系统程序"
+::: tip 要點
+- 賬戶是用來存放數據的
+- 每個賬戶都有一個獨一無二的地址
+- 每個賬戶大小不能超過10MB
+- 程序派生賬戶大小不能超過10KB
+- 程序派生賬戶可以用其對應程序進行簽名
+- 賬戶大小是靜態的
+- 賬戶數據存儲需要付租金
+- 默認的賬戶所有者是"系統程序"
 :::
 
 ## 深入
 
-### 账户模型
+### 賬戶模型
 
-在Solana中有三类账户：
+在Solana中有三類賬戶：
 
-- 数据账户，用来存储数据
-- 程序账户，用来存储可执行程序
-- 原生账户，指Solana上的原生程序，例如"System"，"Stake"，以及"Vote"。
+- 數據賬戶，用來存儲數據
+- 程序賬戶，用來存儲可執行程序
+- 原生賬戶，指Solana上的原生程序，例如"System"，"Stake"，以及"Vote"。
 
-数据账户又分为两类：
+數據賬戶又分爲兩類：
 
-- 系统所有账户
-- 程序派生账户（PDA）
+- 系統所有賬戶
+- 程序派生賬戶（PDA）
 
-每个账户都有一个地址（一般情况下是一个公钥）以及一个所有者（程序账户的地址）。
-下面详细列出一个账户存储的完整字段列表。
+每個賬戶都有一個地址（一般情況下是一個公鑰）以及一個所有者（程序賬戶的地址）。
+下面詳細列出一個賬戶存儲的完整字段列表。
 
 | 字段      | 描述                                    |
 |------------|------------------------------------------------|
-| lamports   | 这个账户拥有的lamport（兰波特）数量   |
-| owner      | 这个账户的所有者程序              |
-| executable | 这个账户成是否可以处理指令  |
-| data       | 这个账户存储的数据的字节码 |
-| rent_epoch | 下一个需要付租金的epoch（代） |
+| lamports   | 這個賬戶擁有的lamport（蘭波特）數量   |
+| owner      | 這個賬戶的所有者程序              |
+| executable | 這個賬戶成是否可以處理指令  |
+| data       | 這個賬戶存儲的數據的字節碼 |
+| rent_epoch | 下一個需要付租金的epoch（代） |
 
-关于所有权，有几条重要的规则：
+關於所有權，有幾條重要的規則：
 
-- 只有账户的所有者才能改变账户中的数据，提取lamport
-- 任何人都可以向数据账户中存入lamport
-- 当账户中的数据被抹除之后，账户的所有者可以指定新的所有者
+- 只有賬戶的所有者才能改變賬戶中的數據，提取lamport
+- 任何人都可以向數據賬戶中存入lamport
+- 當賬戶中的數據被抹除之後，賬戶的所有者可以指定新的所有者
 
-程序账户不储存状态。
+程序賬戶不儲存狀態。
 
-例如，假设有一个计数程序，这个程序用来为一个计数器加数，你需要创建两个账户，一个用于存储程序的代码，
-另一个用于存储计数器本身。
+例如，假設有一個計數程序，這個程序用來爲一個計數器加數，你需要創建兩個賬戶，一個用於存儲程序的代碼，
+另一個用於存儲計數器本身。
 
 ![](./account_example.png)
 
-为了避免账户被删除，必须付租金。
+爲了避免賬戶被刪除，必須付租金。
 
 ### 租金
 
-在账户中存储数据需要花费SOL来维持，这部分花费的SOL被称作租金。如果你在一个账户中存入大于两年租金的SOL，
-这个账户就可以被豁免付租。租金可以通过关闭账户的方式来取回。lamport会被返还回你的钱包。
+在賬戶中存儲數據需要花費SOL來維持，這部分花費的SOL被稱作租金。如果你在一個賬戶中存入大於兩年租金的SOL，
+這個賬戶就可以被豁免付租。租金可以通過關閉賬戶的方式來取回。lamport會被返還回你的錢包。
 
-租金在这两个不同的时间点被支取：
+租金在這兩個不同的時間點被支取：
 
-1. 被一个交易引用的时候
-2. epoch更迭时
+1. 被一個交易引用的時候
+2. epoch更迭時
 
-收取的租金，一定百分比会被销毁，另一部分会在每个slot（插槽）结束时被分配给投票账户。
+收取的租金，一定百分比會被銷燬，另一部分會在每個slot（插槽）結束時被分配給投票賬戶。
 
-当一个账户没有足够的余额支付租金时，这个账户会被释放，数据会被清除。
+當一個賬戶沒有足夠的餘額支付租金時，這個賬戶會被釋放，數據會被清除。
 
-## 其他资料
+## 其他資料
 
-- [Solana账户模型](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
-- [官方文档](https://docs.solana.com/developing/programming-model/accounts)
-- [pencilflip账户主题](https://twitter.com/pencilflip/status/1452402100470644739)
+- [Solana賬戶模型](https://solana.wiki/zh-cn/docs/account-model/#account-storage)
+- [官方文檔](https://docs.solana.com/developing/programming-model/accounts)
+- [pencilflip賬戶主題](https://twitter.com/pencilflip/status/1452402100470644739)
 
-### 致谢
+### 致謝
 
-这些核心概念来源于Pencilflip. [在Twitter上关注他](https://twitter.com/intent/user?screen_name=pencilflip).
+這些核心概念來源於Pencilflip. [在Twitter上關注他](https://twitter.com/intent/user?screen_name=pencilflip).

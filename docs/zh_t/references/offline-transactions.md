@@ -1,12 +1,12 @@
 ---
-title: 发送离线交易
+title: 發送離線交易
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 发送离线交易
+      content: Solana祕籍 | 發送離線交易
   - - meta
     - name: og:title
-      content: Solana秘籍 | 发送离线交易
+      content: Solana祕籍 | 發送離線交易
   - - meta
     - name: description
       content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# 发送离线交易
+# 發送離線交易
 
-## 签署交易
+## 簽署交易
 
-要创建离线交易，你需要签署交易，然后任何人都可以在网络上广播它。
+要創建離線交易，你需要簽署交易，然後任何人都可以在網絡上廣播它。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -61,17 +61,17 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 部分签署交易
+## 部分簽署交易
 
-当一个交易需要多个签名时，你可以部分签署它。其他签署者随后可以签署并在网络上广播该交易。
+當一個交易需要多個簽名時，你可以部分簽署它。其他簽署者隨後可以簽署並在網絡上廣播該交易。
 
-以下是一些有用的情况示例：
+以下是一些有用的情況示例：
 
-- 用支付作为交换发送 SPL 代币
-- 签署交易以便以后验证其真实性
-- 在需要你签名的自定义程序中调用交易
+- 用支付作爲交換髮送 SPL 代幣
+- 簽署交易以便以後驗證其真實性
+- 在需要你簽名的自定義程序中調用交易
 
-在这个例子中，Bob给Alice发送了一个 SPL 代币，回报Alice的付款：
+在這個例子中，Bob給Alice發送了一個 SPL 代幣，回報Alice的付款：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -93,12 +93,12 @@ footer: MIT Licensed
 
 ## 耐久性的 Nonce
 
-`RecentBlockhash`对于交易非常重要。如果你使用一个过期的最近区块哈希（在150个区块后），你的交易将被拒绝。你可以使用耐久性Nonce来获取一个永不过期的最近区块哈希。要触发这种机制，你的交易必须：
+`RecentBlockhash`對於交易非常重要。如果你使用一個過期的最近區塊哈希（在150個區塊後），你的交易將被拒絕。你可以使用耐久性Nonce來獲取一個永不過期的最近區塊哈希。要觸發這種機制，你的交易必須：
 
-1. 使用存储在`nonce`账户中的`nonce`作为最近的区块哈希。
-2. 将`nonce advance`操作放在第一个指令中。
+1. 使用存儲在`nonce`賬戶中的`nonce`作爲最近的區塊哈希。
+2. 將`nonce advance`操作放在第一個指令中。
 
-### 创建Nonce账户
+### 創建Nonce賬戶
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -118,7 +118,7 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### 获取Nonce账户
+### 獲取Nonce賬戶
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -138,7 +138,7 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### 使用Nonce账户
+### 使用Nonce賬戶
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

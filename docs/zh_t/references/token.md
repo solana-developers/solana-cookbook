@@ -1,12 +1,12 @@
 ---
-title: 与代币互动
+title: 與代幣互動
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 与代币互动
+      content: Solana祕籍 | 與代幣互動
   - - meta
     - name: og:title
-      content: Solana秘籍 | 与代币互动
+      content: Solana祕籍 | 與代幣互動
   - - meta
     - name: description
       content: Learn how to use, transfer, and more with tokens on Solana
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# 代币
+# 代幣
 
-## 我需要什么才能开始使用SPL代币？
+## 我需要什麼才能開始使用SPL代幣？
 
-每当你在Solana上与代币进行交互时，实际上你正在与Solana程序库代币（SPL-Token）或SPL代币标准交互。SPL代币标准需要使用特定的库，你可以根据你使用的编程语言在下面找到相应的库。
+每當你在Solana上與代幣進行交互時，實際上你正在與Solana程序庫代幣（SPL-Token）或SPL代幣標準交互。SPL代幣標準需要使用特定的庫，你可以根據你使用的編程語言在下面找到相應的庫。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -53,9 +53,9 @@ footer: MIT Licensed
   </CodeGroupItem>
 </CodeGroup>
 
-## 如何创建一个新的代币
+## 如何創建一個新的代幣
 
-创建代币是通过创建所谓的“铸币账户”来完成的。这个铸币账户随后用于向用户的代币账户铸造代币。
+創建代幣是通過創建所謂的“鑄幣賬戶”來完成的。這個鑄幣賬戶隨後用於向用戶的代幣賬戶鑄造代幣。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -75,9 +75,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何获得一个代币铸币账户
+## 如何獲得一個代幣鑄幣賬戶
 
-为了获得代币的当前供应量、授权信息或小数位数，你需要获取代币铸币账户的账户信息。
+爲了獲得代幣的當前供應量、授權信息或小數位數，你需要獲取代幣鑄幣賬戶的賬戶信息。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -97,13 +97,13 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何创建一个代币账户
+## 如何創建一個代幣賬戶
 
-用户需要一个代币账户来持有代币。
+用戶需要一個代幣賬戶來持有代幣。
 
-对于用户所拥有的每种类型的代币，他们将至少拥有一个代币账户。
+對於用戶所擁有的每種類型的代幣，他們將至少擁有一個代幣賬戶。
 
-关联代币账户(Associated Token Accounts, ATA) 是根据每个密钥对确定性地创建的账户。关联代币账户是管理代币账户的推荐方法。
+關聯代幣賬戶(Associated Token Accounts, ATA) 是根據每個密鑰對確定性地創建的賬戶。關聯代幣賬戶是管理代幣賬戶的推薦方法。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -123,9 +123,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何获得一个代币账户
+## 如何獲得一個代幣賬戶
 
-每个代币账户都包含有关代币的信息，例如所有者、铸币账户、数量（余额）和小数位数。
+每個代幣賬戶都包含有關代幣的信息，例如所有者、鑄幣賬戶、數量（餘額）和小數位數。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -145,9 +145,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何获得一个代币账户的余额
+## 如何獲得一個代幣賬戶的餘額
 
-每个代币账户都包含有关代币的信息，例如所有者、铸币账户、数量（余额）和小数位数。
+每個代幣賬戶都包含有關代幣的信息，例如所有者、鑄幣賬戶、數量（餘額）和小數位數。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -184,13 +184,13 @@ footer: MIT Licensed
 
 </SolanaCodeGroup>
 
-::: 贴士
-一个代币账户只能持有一种铸币。当您指定一个代币账户时，您也需要指定一个铸币。
+::: tip
+一個代幣賬戶只能持有一種鑄幣。當您指定一個代幣賬戶時，您也需要指定一個鑄幣。
 :::
 
-## 如何铸造(mint)代币 
+## 如何鑄造(mint)代幣 
 
-当你铸造代币时，你会增加供应量并将新代币转移到特定的代币账户。
+當你鑄造代幣時，你會增加供應量並將新代幣轉移到特定的代幣賬戶。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -210,9 +210,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何转移代币
+## 如何轉移代幣
 
-你可以将代币从一个代币账户转移到另一个代币账户。
+你可以將代幣從一個代幣賬戶轉移到另一個代幣賬戶。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -232,9 +232,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何销代币
+## 如何銷代幣
 
-如果你是代币的所有者，你可以销毁代币。
+如果你是代幣的所有者，你可以銷燬代幣。
 
 
 <SolanaCodeGroup>
@@ -255,12 +255,12 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何关闭代币账户 
+## 如何關閉代幣賬戶 
 
-如果你不再需要使用某个代币账户，你可以关闭它。有两种情况：
+如果你不再需要使用某個代幣賬戶，你可以關閉它。有兩種情況：
 
-1. 包装的 SOL（Wrapped SOL）- 关闭操作会将包装的 SOL 转换为 SOL。
-2. 其他代币（Other Tokens）- 只有当代币账户的余额为0时，你才能关闭它。
+1. 包裝的 SOL（Wrapped SOL）- 關閉操作會將包裝的 SOL 轉換爲 SOL。
+2. 其他代幣（Other Tokens）- 只有當代幣賬戶的餘額爲0時，你才能關閉它。
 
 
 <SolanaCodeGroup>
@@ -281,14 +281,14 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何在代币账户或铸币账户上设置权限
+## 如何在代幣賬戶或鑄幣賬戶上設置權限
 
-你可以设置/更新权限。有四种类型：
+你可以設置/更新權限。有四種類型：
 
-1. MintTokens（铸币账户）：用于控制在铸币账户上铸造代币的权限。
-2. FreezeAccount（铸币账户）：用于冻结或解冻铸币账户的权限。
-3. AccountOwner（代币账户）：用于控制代币账户所有权的权限。
-4. CloseAccount（代币账户）：用于关闭代币账户的权限。
+1. MintTokens（鑄幣賬戶）：用於控制在鑄幣賬戶上鑄造代幣的權限。
+2. FreezeAccount（鑄幣賬戶）：用於凍結或解凍鑄幣賬戶的權限。
+3. AccountOwner（代幣賬戶）：用於控制代幣賬戶所有權的權限。
+4. CloseAccount（代幣賬戶）：用於關閉代幣賬戶的權限。
 
 
 <SolanaCodeGroup>
@@ -309,9 +309,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何批准代币委托
+## 如何批准代幣委託
 
-你可以设置一个委托代理，并指定一个允许的代币数量。设置后，委托代理就像代币账户的另一个所有者。一个代币账户在同一时间只能委托给一个账户。
+你可以設置一個委託代理，並指定一個允許的代幣數量。設置後，委託代理就像代幣賬戶的另一個所有者。一個代幣賬戶在同一時間只能委託給一個賬戶。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -331,9 +331,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何撤销代币委托 
+## 如何撤銷代幣委託 
 
-撤销操作将把代币委托设置为空，并将委托的代币数量设置为0。
+撤銷操作將把代幣委託設置爲空，並將委託的代幣數量設置爲0。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -353,23 +353,23 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何管理包装的SOL 
+## 如何管理包裝的SOL 
 
-包装的 SOL与其他代币铸币类似，区别在于使用 `syncNative` 并在 `NATIVE_MINT` 地址上专门创建代币账户。
+包裝的 SOL與其他代幣鑄幣類似，區別在於使用 `syncNative` 並在 `NATIVE_MINT` 地址上專門創建代幣賬戶。
 
-### 创建代币账户
+### 創建代幣賬戶
 
-与 [创建代币账户](#create-token-account) 但将mint替换为`NATIVE_MINT`。
+與 [創建代幣賬戶](#create-token-account) 但將mint替換爲`NATIVE_MINT`。
 
 ```js
 import { NATIVE_MINT } from "@solana/spl-token";
 ```
 
-### 增加余额
+### 增加餘額
 
-有两种方法可以增加包装的 SOL 的余额：
+有兩種方法可以增加包裝的 SOL 的餘額：
 
-#### 1. 通过 SOL 转账方式
+#### 1. 通過 SOL 轉賬方式
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -389,7 +389,7 @@ import { NATIVE_MINT } from "@solana/spl-token";
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-#### 2. 通过代币转账方式
+#### 2. 通過代幣轉賬方式
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -409,11 +409,11 @@ import { NATIVE_MINT } from "@solana/spl-token";
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何通过所有者获取所有代币账户
+## 如何通過所有者獲取所有代幣賬戶
 
-你可以通过所有者获取代币账户。有两种方法可以实现。
+你可以通過所有者獲取代幣賬戶。有兩種方法可以實現。
 
-1. 获取所有代币账户
+1. 獲取所有代幣賬戶
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -433,7 +433,7 @@ import { NATIVE_MINT } from "@solana/spl-token";
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-2. 按照铸币进行过滤
+2. 按照鑄幣進行過濾
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

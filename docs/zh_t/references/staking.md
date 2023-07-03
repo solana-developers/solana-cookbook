@@ -1,12 +1,12 @@
 ---
-title: 质押
+title: 質押
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 质押
+      content: Solana祕籍 | 質押
   - - meta
     - name: og:title
-      content: Solana秘籍 | 质押
+      content: Solana祕籍 | 質押
   - - meta
     - name: description
       content: stake SOL and earn rewards for helping secure the network.
@@ -37,13 +37,13 @@ head:
 footer: MIT Licensed
 ---
 
-# 质押
+# 質押
 
 
 
-## 获取当前验证器
+## 獲取當前驗證器
 
-我们可以质押 SOL 并通过帮助保护网络来获得奖励。要进行质押，我们将 SOL 委托给验证器，而验证器则处理交易。
+我們可以質押 SOL 並通過幫助保護網絡來獲得獎勵。要進行質押，我們將 SOL 委託給驗證器，而驗證器則處理交易。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -58,9 +58,9 @@ footer: MIT Licensed
   </CodeGroupItem>
 </CodeGroup>
 
-## 创建质押账户
+## 創建質押賬戶
 
-所有的质押指令由[质押程序 (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program) 处理。首先，我们创建一个[质押账户](https://docs.solana.com/staking/stake-accounts)， 该账户与标准[系统账户](accounts.md#create-a-system-account)创建和管理方式不同。特别是，我们需要设置账户的`Stake Authority`和`Withdrawal Authority`。
+所有的質押指令由[質押程序 (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program) 處理。首先，我們創建一個[質押賬戶](https://docs.solana.com/staking/stake-accounts)， 該賬戶與標準[系統賬戶](accounts.md#create-a-system-account)創建和管理方式不同。特別是，我們需要設置賬戶的`Stake Authority`和`Withdrawal Authority`。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -80,9 +80,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 委托质押
+## 委託質押
 
-一旦质押账户得到资金支持，`Stake Authority`可以将其委托给一个验证者。每个质押账户一次只能委托给一个验证者。此外，账户中的所有代币必须要么被委托，要么取消委托。一旦委托成功，质押账户需要经过几个时期才能变为活跃状态。
+一旦質押賬戶得到資金支持，`Stake Authority`可以將其委託給一個驗證者。每個質押賬戶一次只能委託給一個驗證者。此外，賬戶中的所有代幣必須要麼被委託，要麼取消委託。一旦委託成功，質押賬戶需要經過幾個時期才能變爲活躍狀態。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -102,11 +102,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 通过验证器获取委托人
+## 通過驗證器獲取委託人
 
-Multiple accounts might have staked to a particular validator account. To fetch all the stakers, we will use `getProgramAccounts` or `getParsedProgramAccounts` API. Refer [guides section](/guides/get-program-accounts.html) for more information. The stake accounts are of 200 bytes in length and the Voter Public Key starts at 124 bytes. [Reference](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)
-
-多个账户可能已经质押给了特定的验证账户。为了获取所有的质押人，我们可以使用 `getProgramAccounts` 或 `getParsedProgramAccounts` API。请参考[指南部分](/guides/get-program-accounts.html) 获取更多信息。质押账户长度为200字节，选民公钥从第124字节开始。[参考资料](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)。
+多個賬戶可能已經質押給了特定的驗證賬戶。爲了獲取所有的質押人，我們可以使用 `getProgramAccounts` 或 `getParsedProgramAccounts` API。請參考[指南部分](/guides/get-program-accounts.html) 獲取更多信息。質押賬戶長度爲200字節，選民公鑰從第124字節開始。[參考資料](https://github.com/solana-labs/solana/blob/e960634909a9617fb98d5d836c9c4c5e0d9d59cc/sdk/program/src/stake/state.rs)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -126,9 +124,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 停用质押
+## 停用質押
 
-在质押账户委托后的任何时候，`Stake Authority`可以选择停用该账户。停用过程可能需要多个时期才能完成，并且在提取任何 SOL 之前必须完成停用操作。
+在質押賬戶委託後的任何時候，`Stake Authority`可以選擇停用該賬戶。停用過程可能需要多個時期才能完成，並且在提取任何 SOL 之前必須完成停用操作。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -148,9 +146,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 提取质押
+## 提取質押
 
-一旦停用了，`Withdrawal Authority`可以将 SOL 提取回系统账户。一旦质押账户不再委托并且余额为 0 SOL，它将被销毁了。
+一旦停用了，`Withdrawal Authority`可以將 SOL 提取回系統賬戶。一旦質押賬戶不再委託並且餘額爲 0 SOL，它將被銷燬了。
 
 <!-- <CodeGroup>
   <CodeGroupItem title="TS" active> -->
@@ -171,9 +169,9 @@ Multiple accounts might have staked to a particular validator account. To fetch 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 获取质押金额
+## 獲取質押金額
 
-一旦我们使用多个质押账户质押多个代币，我们可以获取与我们的特定钱包相关的质押金额。为此，我们将使用`getProgramAccounts`或`getParsedProgramAccounts` API获取所有的质押账户。有关更多信息，请参考[指南部分](/guides/get-program-accounts.html)。
+一旦我們使用多個質押賬戶質押多個代幣，我們可以獲取與我們的特定錢包相關的質押金額。爲此，我們將使用`getProgramAccounts`或`getParsedProgramAccounts` API獲取所有的質押賬戶。有關更多信息，請參考[指南部分](/guides/get-program-accounts.html)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

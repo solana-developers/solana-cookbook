@@ -1,12 +1,12 @@
 ---
-title: 迁移程序的数据账户
+title: 遷移程序的數據賬戶
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 迁移程序的数据账户
+      content: Solana祕籍 | 遷移程序的數據賬戶
   - - meta
     - name: og:title
-      content: Solana秘籍 | 迁移程序的数据账户
+      content: Solana祕籍 | 遷移程序的數據賬戶
   - - meta
     - name: description
       content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
@@ -37,23 +37,23 @@ head:
 footer: MIT Licensed
 ---
 
-# 迁移程序的数据账户
+# 遷移程序的數據賬戶
 
-## 你如何迁移一个程序的数据账户？
+## 你如何遷移一個程序的數據賬戶？
 
-当你创建一个程序时，与该程序关联的每个数据账户都将具有特定的数据结构。如果你需要升级一个程序派生账户，那么你将得到一堆具有旧结构的剩余程序派生账户。
+當你創建一個程序時，與該程序關聯的每個數據賬戶都將具有特定的數據結構。如果你需要升級一個程序派生賬戶，那麼你將得到一堆具有舊結構的剩餘程序派生賬戶。
 
-通过账户版本控制，您可以将旧账户升级到新的结构。
+通過賬戶版本控制，您可以將舊賬戶升級到新的結構。
 
 :::tip 注意
-这只是在程序拥有的账户（POA）中迁移数据的众多方法之一。
+這只是在程序擁有的賬戶（POA）中遷移數據的衆多方法之一。
 :::
 
-## 场景
+## 場景
 
-为了对账户数据进行版本控制和迁移，我们将为每个账户提供一个ID。该ID允许我们在将其传递给程序时识别账户的版本，从而正确处理账户。
+爲了對賬戶數據進行版本控制和遷移，我們將爲每個賬戶提供一個ID。該ID允許我們在將其傳遞給程序時識別賬戶的版本，從而正確處理賬戶。
 
-假设有以下账户状态和程序：
+假設有以下賬戶狀態和程序：
 
 <img src="./data-migration/pav1.png" alt="Program Account v1">
 
@@ -108,24 +108,24 @@ footer: MIT Licensed
 
 </SolanaCodeGroup>
 
-在我们账户的第一个版本中，我们执行以下操作：
+在我們賬戶的第一個版本中，我們執行以下操作：
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| 在您的数据中包含一个"数据版本"字段。它可以是一个简单递增的序数（例如，u8），或者是更复杂的形式。
+|2| 為數據增長分配足夠的空間
+|3| 初始化一些常數，以在程式版本間使用。
+|4| 在`fn conversion_logic`下添加一個更新帳戶的功能，以供未來升級使用。
 
-假设我们现在希望升级程序的账户，包括一个新的必需字段：`somestring`字段。
+假設我們現在希望升級程序的賬戶，包括一個新的必需字段：`somestring`字段。
 
-如果我们之前没有为账户分配额外的空间，我们将无法升级该账户，而被卡住。
+如果我們之前沒有爲賬戶分配額外的空間，我們將無法升級該賬戶，而被卡住。
 
-## 升级账户
+## 升級賬戶
 
-在我们的新程序中，我们希望为内容状态添加一个新属性。下面的变化展示了我们如何利用初始的程序结构，并在现在使用时进行修改。
+在我們的新程序中，我們希望爲內容狀態添加一個新屬性。下面的變化展示了我們如何利用初始的程序結構，並在現在使用時進行修改。
 
-### 1. 添加账户转换逻辑
+### 1. 添加賬戶轉換邏輯
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Account">
@@ -147,13 +147,13 @@ footer: MIT Licensed
 
 | Line(s) | Note |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | 我们已经添加了Solana的`solana_program::borsh::try_from_slice_unchecked`，以简化从较大数据块中读取子集数据的操作。
+| 13-26| 在这里，我们保留了旧的内容结构，在第24行的`AccountContentOld`之前，然后在第17行开始扩展`AccountContentCurrent`。
+| 60 | 我们增加了`DATA_VERSION`常数。
+| 71 | 现在我们有一个“之前”的版本，并且我们想知道它的大小。
+| 86 | 最后的致命一击是添加管道，将之前的内容状态升级到新的（当前的）内容状态。
 
-然后，我们更新指令，添加一个新的指令来更新`somestring`，并更新处理器来处理新的指令。请注意，"升级"数据结构是通过`pack/unpack`封装起来的。
+然後，我們更新指令，添加一個新的指令來更新`somestring`，並更新處理器來處理新的指令。請注意，"升級"數據結構是通過`pack/unpack`封裝起來的。
 
 <CodeGroup>
   <CodeGroupItem title="Instruction">
@@ -169,11 +169,11 @@ footer: MIT Licensed
   </CodeGroupItem>
 </CodeGroup>
 
-在构建并提交指令`VersionProgramInstruction::SetString(String)`后，我们现在有了以下 "升级" 的账户数据布局。
+在構建並提交指令`VersionProgramInstruction::SetString(String)`後，我們現在有了以下 "升級" 的賬戶數據佈局。
 
 <img src="./data-migration/pav2.png" alt="Program Account v2">
 
-## 资料
+## 資料
 
 * [Borsh Specification](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)

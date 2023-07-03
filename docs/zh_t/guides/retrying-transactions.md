@@ -1,12 +1,12 @@
 ---
-title: 重试交易
+title: 重試交易
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 重试交易
+      content: Solana祕籍 | 重試交易
   - - meta
     - name: og:title
-      content: Solana秘籍 | 重试交易
+      content: Solana祕籍 | 重試交易
   - - meta
     - name: description
       content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
@@ -37,39 +37,39 @@ head:
 footer: MIT Licensed
 ---
 
-# 重试交易
+# 重試交易
 
-在某些情况下，一个看似有效的交易可能在输入区块之前会被丢弃。这种情况最常发生在网络拥堵期间，当一个RPC节点无法将交易重新广播给区块链的[领导](https://docs.solana.com/terminology#leader)节点时。对于最终用户来说，他们的交易可能会完全消失。虽然RPC节点配备了通用的重新广播算法，但应用程序开发人员也可以开发自己的自定义重新广播逻辑。
+在某些情況下，一個看似有效的交易可能在輸入區塊之前會被丟棄。這種情況最常發生在網絡擁堵期間，當一個RPC節點無法將交易重新廣播給區塊鏈的[領導](https://docs.solana.com/terminology#leader)節點時。對於最終用戶來說，他們的交易可能會完全消失。雖然RPC節點配備了通用的重新廣播算法，但應用程序開發人員也可以開發自己的自定義重新廣播邏輯。
 
-## 综述
+## 綜述
 
-::: tip 事实表
-- RPC节点将尝试使用通用算法重新广播交易
-- 应用程序开发人员可以实现自定义的重新广播逻辑
-- 开发人员应该利用`sendTransaction` JSON-RPC方法中的`maxRetries`参数
-- 开发人员应该启用预检查，以便在提交交易之前引发错误
-- 在重新签署任何交易之前，**非常重要**的是确保初始交易的块哈希已过期
+::: tip 事實表
+- RPC節點將嘗試使用通用算法重新廣播交易
+- 應用程序開發人員可以實現自定義的重新廣播邏輯
+- 開發人員應該利用`sendTransaction` JSON-RPC方法中的`maxRetries`參數
+- 開發人員應該啓用預檢查，以便在提交交易之前引發錯誤
+- 在重新簽署任何交易之前，**非常重要**的是確保初始交易的塊哈希已過期
 :::
 
 ## 交易的旅程
 
-### 客户端如何提交交易
+### 客戶端如何提交交易
 
-在Solana中，没有内存池（mempool）的概念。无论是通过编程还是由最终用户发起，所有的交易都会被高效地路由到领导节点，以便将它们处理成区块。有两种主要的方式可以将交易发送给领导节点：
-1. 通过RPC服务器和[sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC 方法进行代理发送
-2. 通过[TPU客户](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html) 端直接发送给领导节点
+在Solana中，沒有內存池（mempool）的概念。無論是通過編程還是由最終用戶發起，所有的交易都會被高效地路由到領導節點，以便將它們處理成區塊。有兩種主要的方式可以將交易發送給領導節點：
+1. 通過RPC服務器和[sendTransaction](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction) JSON-RPC 方法進行代理髮送
+2. 通過[TPU客戶](https://docs.rs/solana-client/1.7.3/solana_client/tpu_client/index.html) 端直接發送給領導節點
 
-绝大多数最终用户将通过RPC服务器提交交易。当客户端提交交易时，接收的RPC节点会尝试将交易广播给当前和下一个领导节点。在交易被领导节点处理之前，除了客户端和中继的RPC节点知道的内容外，没有关于交易的记录。在TPU客户端的情况下，重新广播和领导节点的转发完全由客户端软件处理。
+絕大多數最終用戶將通過RPC服務器提交交易。當客戶端提交交易時，接收的RPC節點會嘗試將交易廣播給當前和下一個領導節點。在交易被領導節點處理之前，除了客戶端和中繼的RPC節點知道的內容外，沒有關於交易的記錄。在TPU客戶端的情況下，重新廣播和領導節點的轉發完全由客戶端軟件處理。
 
 ![Transaction Journey](./retrying-transactions/tx-journey.png)
 
-### RPC节点如何广播交易
+### RPC節點如何廣播交易
 
-当RPC节点通过`sendTransaction`接收到一个交易后，它会将交易转换为[UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) 数据包，然后将其转发给相关的领导。UDP允许验证节点之间快速通信，但不提供关于交易传递的任何保证。
+當RPC節點通過`sendTransaction`接收到一個交易後，它會將交易轉換爲[UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) 數據包，然後將其轉發給相關的領導。UDP允許驗證節點之間快速通信，但不提供關於交易傳遞的任何保證。
 
-因为Solana的领导节点调度在每个[纪元](https://docs.solana.com/terminology#epoch) （大约2天）之前就已知，所以RPC节点会直接将其交易广播给当前和下一个领导节点。这与其他流言协议（如以太坊）随机广播和广泛传播整个网络的交易的方式形成对比。默认情况下，RPC节点会每两秒尝试将交易转发给领导节点，直到交易被确认或交易的块哈希过期（在本文撰写时为150个区块或约1分钟19秒）。如果待重新广播的队列大小超过[10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20) 个交易，则新提交的交易将被丢弃。RPC运营商可以调整命令行[参数](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) 以更改此重试逻辑的默认行为。
+因爲Solana的領導節點調度在每個[紀元](https://docs.solana.com/terminology#epoch) （大約2天）之前就已知，所以RPC節點會直接將其交易廣播給當前和下一個領導節點。這與其他流言協議（如以太坊）隨機廣播和廣泛傳播整個網絡的交易的方式形成對比。默認情況下，RPC節點會每兩秒嘗試將交易轉發給領導節點，直到交易被確認或交易的塊哈希過期（在本文撰寫時爲150個區塊或約1分鐘19秒）。如果待重新廣播的隊列大小超過[10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20) 個交易，則新提交的交易將被丟棄。RPC運營商可以調整命令行[參數](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) 以更改此重試邏輯的默認行爲。
 
-当RPC节点广播一个交易时，它会尝试将交易转发给领导节点的交易处理单元（TPU）。TPU将交易处理分为五个不同的阶段：
+當RPC節點廣播一個交易時，它會嘗試將交易轉發給領導節點的交易處理單元（TPU）。TPU將交易處理分爲五個不同的階段：
 - [Fetch Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
 - [SigVerify Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L91)
 - [Banking Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/banking_stage.rs#L249)
@@ -79,61 +79,61 @@ footer: MIT Licensed
 ![TPU Overview](./retrying-transactions/tpu-jito-labs.png)
 <small style="display:block;text-align:center;">Image Courtesy of Jito Labs</small>
 
-在这五个阶段中，Fetch阶段负责接收交易。在Fetch阶段中，验证节点会根据三个端口对传入的交易进行分类：
-- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) 处理常规交易，例如代币转账、NFT铸造和程序指令。
-- [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) 专门处理投票交易。
-- [tpu_forwards](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L29) 将未处理的数据包转发给下一个领导节点，如果当前领导无法处理所有交易。
+在這五個階段中，Fetch階段負責接收交易。在Fetch階段中，驗證節點會根據三個端口對傳入的交易進行分類：
+- [tpu](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L27) 處理常規交易，例如代幣轉賬、NFT鑄造和程序指令。
+- [tpu_vote](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L31) 專門處理投票交易。
+- [tpu_forwards](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/gossip/src/contact_info.rs#L29) 將未處理的數據包轉發給下一個領導節點，如果當前領導無法處理所有交易。
 
-如需了解更多关于TPU的信息，请参考[Jito Labs出色的文章](https://jito-labs.medium.com/solana-validator-101-transaction-processing-90bcdc271143).
+如需瞭解更多關於TPU的信息，請參考[Jito Labs出色的文章](https://jito-labs.medium.com/solana-validator-101-transaction-processing-90bcdc271143).
 
-## 交易如何被丢弃 
+## 交易如何被丟棄 
 
-在交易的整个过程中，有几种情况下交易可能意外从网络中丢失。
+在交易的整個過程中，有幾種情況下交易可能意外從網絡中丟失。
 
-### 在交易被处理之前
+### 在交易被處理之前
 
-如果网络丢弃一个交易，通常是在交易被领导处理之前发生。UDP [数据包丢失](https://en.wikipedia.org/wiki/Packet_loss) 是可能发生这种情况的最简单原因。在网络负载高峰期，验证节点可能会被大量需要处理的交易压倒。虽然验证节点可以通过 `tpu_forwards`,端口转发多余的交易，但[转发](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). 的数据量是有限的。此外，每个转发仅限于验证节点之间的单一跳跃。也就是说，通过`tpu_forwards`端口接收的交易不会被转发给其他验证节点。
+如果網絡丟棄一個交易，通常是在交易被領導處理之前發生。UDP [數據包丟失](https://en.wikipedia.org/wiki/Packet_loss) 是可能發生這種情況的最簡單原因。在網絡負載高峯期，驗證節點可能會被大量需要處理的交易壓倒。雖然驗證節點可以通過 `tpu_forwards`,端口轉發多餘的交易，但[轉發](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). 的數據量是有限的。此外，每個轉發僅限於驗證節點之間的單一跳躍。也就是說，通過`tpu_forwards`端口接收的交易不會被轉發給其他驗證節點。
 
-还有两个较少为人知的原因，可能导致交易在被处理之前被丢弃。第一种情况涉及通过RPC池提交的交易。偶尔，RPC池的一部分可能会领先于其他部分。当池中的节点需要共同工作时，这可能会导致问题。在这个例子中，交易的[recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) 从池中的先进部分（后端A）查询。当交易提交到滞后的池中（后端B）时，节点将无法识别先进的块哈希并丢弃交易。如果开发人员在`sendTransaction`中启用了[preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction)， 可以在提交交易时检测到此问题。
+還有兩個較少爲人知的原因，可能導致交易在被處理之前被丟棄。第一種情況涉及通過RPC池提交的交易。偶爾，RPC池的一部分可能會領先於其他部分。當池中的節點需要共同工作時，這可能會導致問題。在這個例子中，交易的[recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) 從池中的先進部分（後端A）查詢。當交易提交到滯後的池中（後端B）時，節點將無法識別先進的塊哈希並丟棄交易。如果開發人員在`sendTransaction`中啓用了[preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction)， 可以在提交交易時檢測到此問題。
 
 ![Dropped via RPC Pool](./retrying-transactions/dropped-via-rpc-pool.png)
 
-网络分叉也可能暂时的导致交易丢失。如果验证在银行阶段重新播放其块的速度较慢，可能会创建一个少数派分叉。当客户端构建一个交易时，交易可能引用仅存在于少数派分叉上的`recentBlockhash`。在提交交易后，集群可能在交易被处理之前切换到其他分叉。在这种情况下，由于找不到块哈希，交易被丢弃。
+網絡分叉也可能暫時的導致交易丟失。如果驗證在銀行階段重新播放其塊的速度較慢，可能會創建一個少數派分叉。當客戶端構建一個交易時，交易可能引用僅存在於少數派分叉上的`recentBlockhash`。在提交交易後，集羣可能在交易被處理之前切換到其他分叉。在這種情況下，由於找不到塊哈希，交易被丟棄。
 
 ![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
-### 在交易被处理后，但尚未最终确认之前
+### 在交易被處理後，但尚未最終確認之前
 
-如果一个交易引用了来自少数派分叉的`recentBlockhash`，该交易有可能还会进行处理。在这种情况下，交易将由少数派分叉上的领导节点进行处理。当这个领导试图与不认可少数派分叉的大多数验证节点达成共识时，它将无法与它们分享已处理的交易。在这种情况下，交易在最终确定之前将被丢弃。
+如果一個交易引用了來自少數派分叉的`recentBlockhash`，該交易有可能還會進行處理。在這種情況下，交易將由少數派分叉上的領導節點進行處理。當這個領導試圖與不認可少數派分叉的大多數驗證節點達成共識時，它將無法與它們分享已處理的交易。在這種情況下，交易在最終確定之前將被丟棄。
 
 ![Dropped due to Minority Fork (After Processed)](./retrying-transactions/dropped-minority-fork-post-process.png)
 
-## 处理被丢弃的交易
+## 處理被丟棄的交易
 
-虽然RPC节点会尝试重新广播交易，但它们使用的算法是通用的，往往不适合特定应用的需求。为了应对网络拥堵的时候，应用程序开发人员应该自定义自己的重新广播逻辑。
+雖然RPC節點會嘗試重新廣播交易，但它們使用的算法是通用的，往往不適合特定應用的需求。爲了應對網絡擁堵的時候，應用程序開發人員應該自定義自己的重新廣播邏輯。
 
-### 深入了解sendTransaction
+### 深入瞭解sendTransaction
 
-在提交交易方面，`sendTransaction` RPC方法是开发者可用的主要工具。`sendTransaction`仅负责将交易从客户端传递到RPC节点。如果节点接收到交易，`sendTransaction`将返回用于跟踪交易的交易ID。成功的响应并不表示该交易将由集群处理或最终确定。
+在提交交易方面，`sendTransaction` RPC方法是開發者可用的主要工具。`sendTransaction`僅負責將交易從客戶端傳遞到RPC節點。如果節點接收到交易，`sendTransaction`將返回用於跟蹤交易的交易ID。成功的響應並不表示該交易將由集羣處理或最終確定。
 
 :::tip
-#### 请求参数
-- `transaction`: `string` -  完全签名的交易，以编码字符串形式表示 
-- (可选) `configuration object`: `object` 
-    - `skipPreflight`: `boolean` - 如果为 true，则跳过预检事务检查（默认为 false）
-    - (可选) `preflightCommitment`: `string` - 用于针对银行插槽进行预检模拟的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别（默认为"finalized"）
-    - (可选) `encoding`: `string` - 用于交易数据的编码方式。可以选择 "base58"（较慢）或 "base64"（默认为 "base58")
-    - (可选) `maxRetries`: `usize` -  RPC节点重试将交易发送给领导者的最大次数。如果未提供此参数，RPC节点将重试交易，直到交易最终确定或块哈希过期为止
+#### 請求參數
+- `transaction`: `string` -  完全簽名的交易，以編碼字符串形式表示 
+- (可選) `configuration object`: `object` 
+    - `skipPreflight`: `boolean` - 如果爲 true，則跳過預檢事務檢查（默認爲 false）
+    - (可選) `preflightCommitment`: `string` - 用於針對銀行插槽進行預檢模擬的[承諾](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 級別（默認爲"finalized"）
+    - (可選) `encoding`: `string` - 用於交易數據的編碼方式。可以選擇 "base58"（較慢）或 "base64"（默認爲 "base58")
+    - (可選) `maxRetries`: `usize` -  RPC節點重試將交易發送給領導者的最大次數。如果未提供此參數，RPC節點將重試交易，直到交易最終確定或塊哈希過期爲止
 
-#### 响应
-- `transaction id`: `string` - 第一个嵌入在交易中的交易签名，以base-58编码的字符串形式表示。可以使用该交易ID与 [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) 一起使用，以轮询获取状态更新。
+#### 響應
+- `transaction id`: `string` - 第一個嵌入在交易中的交易簽名，以base-58編碼的字符串形式表示。可以使用該交易ID與 [getSignatureStatuses](https://docs.solana.com/developing/clients/jsonrpc-api#getsignaturestatuses) 一起使用，以輪詢獲取狀態更新。
 :::
 
-## 自定义重播逻辑
+## 自定義重播邏輯
 
-为了开发自己的重新广播逻辑，开发者应该利用`sendTransaction`的`maxRetries`参数。如果提供了`maxRetries`，它将覆盖RPC节点的默认重试逻辑，允许开发人员在[合理范围内](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274) 手动控制重试过程。
+爲了開發自己的重新廣播邏輯，開發者應該利用`sendTransaction`的`maxRetries`參數。如果提供了`maxRetries`，它將覆蓋RPC節點的默認重試邏輯，允許開發人員在[合理範圍內](https://github.com/solana-labs/solana/blob/98707baec2385a4f7114d2167ef6dfb1406f954f/validator/src/main.rs#L1258-L1274) 手動控制重試過程。
 
-手动重试交易的常见模式涉及临时存储来自[getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash) 的`lastValidBlockHeight`。一旦存储了该值，应用程序可以[轮询集群的blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight)， 并在适当的时间间隔内手动重试交易。在网络拥堵的时期，将`maxRetries`设置为0并通过自定义算法手动重新广播是有优势的。一些应用程序可能采用[指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)， 而其他应用程序（如[Mango](https://www.mango.markets/) ）选择在恒定间隔内[持续重新提交](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) 交易，直到发生超时。
+手動重試交易的常見模式涉及臨時存儲來自[getLatestBlockhash](https://docs.solana.com/developing/clients/jsonrpc-api#getlatestblockhash) 的`lastValidBlockHeight`。一旦存儲了該值，應用程序可以[輪詢集羣的blockheight](https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight)， 並在適當的時間間隔內手動重試交易。在網絡擁堵的時期，將`maxRetries`設置爲0並通過自定義算法手動重新廣播是有優勢的。一些應用程序可能採用[指數退避](https://en.wikipedia.org/wiki/Exponential_backoff)， 而其他應用程序（如[Mango](https://www.mango.markets/) ）選擇在恆定間隔內[持續重新提交](https://github.com/blockworks-foundation/mango-ui/blob/b6abfc6c13b71fc17ebbe766f50b8215fa1ec54f/src/utils/send.tsx#L713) 交易，直到發生超時。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -154,26 +154,26 @@ footer: MIT Licensed
 </SolanaCodeGroup>
 
 
-当通过`getLatestBlockhash`进行轮询时，应用程序应该指定其预期的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别。通过将承诺级别设置为`confirmed`（已投票）或`finalized`（在`confirmed`之后约30个块），应用程序可以避免从少数派分叉轮询块哈希。
+當通過`getLatestBlockhash`進行輪詢時，應用程序應該指定其預期的[承諾](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 級別。通過將承諾級別設置爲`confirmed`（已投票）或`finalized`（在`confirmed`之後約30個塊），應用程序可以避免從少數派分叉輪詢塊哈希。
 
-如果应用程序可以访问负载均衡器后面的RPC节点，还可以选择将其工作负载分配给特定节点。为数据密集型请求提供服务的RPC节点（例如[getProgramAccounts](./get-program-accounts.md)）可能会滞后，并且可能不适合转发交易。对于处理时间敏感交易的应用程序，最好拥有专用节点仅处理`sendTransaction`操作。
+如果應用程序可以訪問負載均衡器後面的RPC節點，還可以選擇將其工作負載分配給特定節點。爲數據密集型請求提供服務的RPC節點（例如[getProgramAccounts](./get-program-accounts.md)）可能會滯後，並且可能不適合轉發交易。對於處理時間敏感交易的應用程序，最好擁有專用節點僅處理`sendTransaction`操作。
 
-### 跳过预检的后果
+### 跳過預檢的後果
 
-默认情况下，`sendTransaction`将在提交交易之前执行三个预检查。具体而言，`sendTransaction`将会：
+默認情況下，`sendTransaction`將在提交交易之前執行三個預檢查。具體而言，`sendTransaction`將會：
 
-- 验证所有签名是否有效
-- 检查引用的块哈希是否在最近的150个块内
-- 针对预检查的`preFlightCommitment`，模拟交易与银行槽位之间的交互
+- 驗證所有簽名是否有效
+- 檢查引用的塊哈希是否在最近的150個塊內
+- 針對預檢查的`preFlightCommitment`，模擬交易與銀行槽位之間的交互
 
-如果其中任何一个预检查失败，`sendTransaction`将在提交交易之前引发错误。预检查常常能够防止交易丢失，并使客户端能够优雅地处理错误。为了确保这些常见错误得到考虑，建议开发人员将skipPreflight设置为false。
+如果其中任何一個預檢查失敗，`sendTransaction`將在提交交易之前引發錯誤。預檢查常常能夠防止交易丟失，並使客戶端能夠優雅地處理錯誤。爲了確保這些常見錯誤得到考慮，建議開發人員將skipPreflight設置爲false。
 
-### 何时重新签署交易
+### 何時重新簽署交易
 
-尽管尽力进行重新广播，但有时客户端可能需要重新签署交易。在重新签署任何交易之前，非常重要的是确保初始交易的块哈希已经过期。如果初始块哈希仍然有效，那么两个交易都有可能被网络接受。对于最终用户来说，这将看起来好像他们无意中发送了相同的交易两次。
+儘管盡力進行重新廣播，但有時客戶端可能需要重新簽署交易。在重新簽署任何交易之前，非常重要的是確保初始交易的塊哈希已經過期。如果初始塊哈希仍然有效，那麼兩個交易都有可能被網絡接受。對於最終用戶來說，這將看起來好像他們無意中發送了相同的交易兩次。
 
-在Solana中，一旦所引用的块哈希早于从`getLatestBlockhash`接收到的`lastValidBlockHeight`，可以安全地丢弃已丢弃的交易。开发者应该通过查询 [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) 并将其与响应中的`blockHeight`进行比较来跟踪l`astValidBlockHeight`。一旦一个块哈希无效，客户端可以使用新查询的块哈希重新签署。
+在Solana中，一旦所引用的塊哈希早於從`getLatestBlockhash`接收到的`lastValidBlockHeight`，可以安全地丟棄已丟棄的交易。開發者應該通過查詢 [`getEpochInfo`](https://docs.solana.com/developing/clients/jsonrpc-api#getepochinfo) 並將其與響應中的`blockHeight`進行比較來跟蹤l`astValidBlockHeight`。一旦一個塊哈希無效，客戶端可以使用新查詢的塊哈希重新簽署。
 
-## 致谢
+## 致謝
 
-非常感谢 Trent Nelson、[Jacob Creech](https://twitter.com/jacobvcreech), White Tiger、Le Yafo、[Buffalu](https://twitter.com/buffalu__), 和 [Jito Labs](https://twitter.com/jito_labs) 的审查和反馈。
+非常感謝 Trent Nelson、[Jacob Creech](https://twitter.com/jacobvcreech), White Tiger、Le Yafo、[Buffalu](https://twitter.com/buffalu__), 和 [Jito Labs](https://twitter.com/jito_labs) 的審查和反饋。

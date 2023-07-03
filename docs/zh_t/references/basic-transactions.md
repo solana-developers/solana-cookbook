@@ -1,12 +1,12 @@
 ---
-title: 发送交易
+title: 發送交易
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 发送交易
+      content: Solana祕籍 | 發送交易
   - - meta
     - name: og:title
-      content: Solana秘籍 | 发送交易
+      content: Solana祕籍 | 發送交易
   - - meta
     - name: description
       content: Learn Basic Transactions like Sending SOL, SPL-Tokens, Calculating Transaction Cost, and more references for Building on Solana at The Solana cookbook.
@@ -36,11 +36,11 @@ head:
       content: index,follow
 ---
 
-# 发送交易
+# 發送交易
 
-## 如何发送SOL
+## 如何發送SOL
 
-要发送SOL，你需要与[SystemProgram][1] 交互。
+要發送SOL，你需要與[SystemProgram][1] 交互。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -115,9 +115,9 @@ head:
 
 [1]: https://docs.solana.com/developing/runtime-facilities/programs#system-program
 
-## 如何发送SPL-代币
+## 如何發送SPL-代幣
 
-使用 [Token Program][1] 来转移SPL代币。为了发送SPL代币，你需要知道它的SPL代币账户地址。你可以使用以下示例来获取地址并发送代币。
+使用 [Token Program][1] 來轉移SPL代幣。爲了發送SPL代幣，你需要知道它的SPL代幣賬戶地址。你可以使用以下示例來獲取地址併發送代幣。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -166,13 +166,13 @@ head:
 
 [1]: https://spl.solana.com/token
 
-## 如何计算交易成本
+## 如何計算交易成本
 
-交易所需的签名数量用于计算交易成本。只要你不是创建账户，这将是最终的交易成本。如果想了解创建账户的成本，请参考 [计算租金豁免](accounts.md#calculating-rent-exemption)
+交易所需的簽名數量用於計算交易成本。只要你不是創建賬戶，這將是最終的交易成本。如果想了解創建賬戶的成本，請參考 [計算租金豁免](accounts.md#calculating-rent-exemption)
 
-下面的两个示例展示了目前可用于计算估计交易成本的两种方法。
+下面的兩個示例展示了目前可用於計算估計交易成本的兩種方法。
 
-第一个示例使用了`Transaction`类上的新方法`getEstimatedFee`，而第二个示例使用了`Connection`类上的`getFeeForMessage`来替代`getFeeCalculatorForBlockhash`。
+第一個示例使用了`Transaction`類上的新方法`getEstimatedFee`，而第二個示例使用了`Connection`類上的`getFeeForMessage`來替代`getFeeCalculatorForBlockhash`。
 
 ### getEstimatedFee
 <SolanaCodeGroup>
@@ -212,10 +212,10 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何向交易添加备注 
+## 如何向交易添加備註 
 
-任何交易都可以利用 [备注程序 （memo program）][2].
-添加消息。目前，备注程序的`programID`必须手动添加为`MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`。
+任何交易都可以利用 [備註程序 （memo program）][2].
+添加消息。目前，備註程序的`programID`必須手動添加爲`MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr`。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -262,14 +262,14 @@ head:
 
 </SolanaCodeGroup>
 
-## 如何更改交易的计算预算、费用和优先级
-交易（TX）的优先级是通过支付优先级费用（Prioritization Fee）来实现的，此外还需要支付基本费用（Base Fee）。默认情况下，计算预算是200,000个计算单元（Compute Units，CU）与指令数的乘积，最大为1.4M CU。基本费用是5,000个Lamport。一个微型Lamport等于0.000001个Lamport。
+## 如何更改交易的計算預算、費用和優先級
+交易（TX）的優先級是通過支付優先級費用（Prioritization Fee）來實現的，此外還需要支付基本費用（Base Fee）。默認情況下，計算預算是200,000個計算單元（Compute Units，CU）與指令數的乘積，最大爲1.4M CU。基本費用是5,000個Lamport。一個微型Lamport等於0.000001個Lamport。
 
-要更改单个交易的总计算预算或优先级费用，可以通过添加ComputeBudgetProgram的指令来实现。
+要更改單個交易的總計算預算或優先級費用，可以通過添加ComputeBudgetProgram的指令來實現。
 
-使用`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })`可以在基本费用（5,000个Lamport）之上添加优先级费用。microLamports参数提供的值将与计算预算的CU数相乘，以确定优先级费用（以Lamport为单位）。例如，如果您的计算预算为1M CU，然后添加1个microLamport/CU，优先级费用将为1个Lamport（1M * 0.000001）。总费用将为5001个Lamport。
+使用`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })`可以在基本費用（5,000個Lamport）之上添加優先級費用。microLamports參數提供的值將與計算預算的CU數相乘，以確定優先級費用（以Lamport爲單位）。例如，如果您的計算預算爲1M CU，然後添加1個microLamport/CU，優先級費用將爲1個Lamport（1M * 0.000001）。總費用將爲5001個Lamport。
 
-使用`ComputeBudgetProgram.setComputeUnitLimit({ units: number })`来设置新的计算预算。提供的值将替换默认值。交易应该请求执行所需的最小数量的CU，以最大化吞吐量或最小化费用。
+使用`ComputeBudgetProgram.setComputeUnitLimit({ units: number })`來設置新的計算預算。提供的值將替換默認值。交易應該請求執行所需的最小數量的CU，以最大化吞吐量或最小化費用。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -303,7 +303,7 @@ head:
 
 </SolanaCodeGroup>
 
-程序日志示例 ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
+程序日誌示例 ( [Explorer](https://explorer.solana.com/tx/2mNPXeoy3kFxo12L8avsEoep65S4Ehvw2sheduDrAXbmmNJwTtXNmUrb5MM3s15eki2MWSQrwyKGAUQFZ9wAGo9K/) ):
 
 <CodeGroup>
   <CodeGroupItem title="Log Output">
