@@ -127,36 +127,6 @@ decisions based on the most recent pricing information.
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## Retreat Market Nodes
-
-Retreats Zeta volatility surface and interest rates based on the trades that <br />
-have occurred on the platform.
-
-This instruction trigger the retreat of `market nodes` in the Zeta platform for <br />
-a specific asset. It updates the **volatility**, **retreat**, and **interest** <br />
-parameters on-chain, ensuring that the market data used for pricing and trading <br />
-derivatives remains up-to-date.
-
-The instruction checks if the asset belongs to a Zeta subexchange where only <br />
-`perpetual contracts` are traded. If so, there is no need to retreat market <br />
-nodes, and the function returns without performing any further actions.
-
-<SolanaCodeGroup>
-  <SolanaCodeGroupItem title="TS" active>
-
-  <template v-slot:default>
-
-@[code](@/code/cranking/retreat-market-nodes/retreat-market-nodes.en.ts)
-
-  </template>
-
-  <template v-slot:preview>
-
-@[code](@/code/cranking/retreat-market-nodes/retreat-market-nodes.preview.en.ts)
-
-  </template>
-  </SolanaCodeGroupItem>
-</SolanaCodeGroup>
 
 ## Rebalance Insurance Vault
 

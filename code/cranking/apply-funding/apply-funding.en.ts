@@ -78,7 +78,7 @@ async function main() {
  */
 
 async function applyFunding() {
-  let marginAccPubkeys: Array<PublicKey> = [];
+  let marginAccPubkeys: Array<any>;
   try {
     marginAccPubkeys = await utils.getAllProgramAccountAddresses(
       types.ProgramAccountType.MarginAccount
@@ -92,7 +92,7 @@ async function applyFunding() {
     i += constants.MAX_FUNDING_ACCOUNTS
   ) {
     // Grab set of margin accounts
-    let marginAccounts = [];
+    let marginAccounts: Array<any> = [];
     try {
       marginAccounts =
         await Exchange.program.account.marginAccount.fetchMultiple(
@@ -104,7 +104,7 @@ async function applyFunding() {
 
     // In that set: Check if any have non-zero perp positions
     // If they do, apply funding on them
-    let fundingAccounts = new Map<assets.Asset, PublicKey[]>();
+    let fundingAccounts = new Map<constants.Asset, PublicKey[]>();
     for (var asset of Exchange.assets) {
       fundingAccounts.set(asset, []);
     }
@@ -116,6 +116,7 @@ async function applyFunding() {
           .push(marginAccPubkeys[i + j]);
       }
     }
+
     // This will automatically break into multiple txs if there are too many
     for (var asset of Exchange.assets) {
       await utils.applyPerpFunding(asset, fundingAccounts.get(asset));

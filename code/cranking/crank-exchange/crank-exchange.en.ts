@@ -93,7 +93,7 @@ function getMarketsToCrank(asset: assets.Asset, liveOnly: boolean): Market[] {
     return [Exchange.getPerpMarket(asset)];
   }
 
-  let marketsToCrank = [];
+  let marketsToCrank: Array<any> = [];
 
   if (liveOnly) {
     let liveExpiryIndices =

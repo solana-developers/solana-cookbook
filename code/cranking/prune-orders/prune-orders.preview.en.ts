@@ -1,3 +1,5 @@
+import { constants } from "@zetamarkets/sdk";
+
 /**
  * Prunes expired time-in-force (TIF) orders for all sub-exchanges.
  * It retrieves the sub-exchanges, determines the markets to prune orders from,
@@ -9,26 +11,11 @@ async function pruneExpiredTIFOrders() {
   try {
     await Promise.all(
       subExchanges.map((se) => {
-        let markets = se.getMarkets();
-
-        let marketIndicesToPrune: number[] = [];
-
-        for (let i = 0; i < markets.length; i++) {
-          if (!markets[i].expirySeries) {
-            marketIndicesToPrune.push(markets[i].marketIndex);
-            continue;
-          }
-          if (!markets[i].expirySeries.isLive()) {
-            continue;
-          }
-          marketIndicesToPrune.push(markets[i].marketIndex);
-        }
-
-        return utils.pruneExpiredTIFOrders(se.asset, marketIndicesToPrune);
+        return utils.pruneExpiredTIFOrders(se.asset, constants.PERP_INDEX);
       })
     );
     console.log("Pruned expired TIF orders.");
   } catch (e) {
-    this.alert("Failed to prune expired TIF orders.", `Error=${e}`);
+    console.log("Failed to prune expired TIF orders.", `Error=${e}`);
   }
 }

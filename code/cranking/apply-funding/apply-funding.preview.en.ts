@@ -32,7 +32,7 @@ async function applyFunding() {
 
     // In that set: Check if any have non-zero perp positions
     // If they do, apply funding on them
-    let fundingAccounts = new Map<assets.Asset, PublicKey[]>();
+    let fundingAccounts = new Map<constants.Asset, PublicKey[]>();
     for (var asset of Exchange.assets) {
       fundingAccounts.set(asset, []);
     }
@@ -44,6 +44,7 @@ async function applyFunding() {
           .push(marginAccPubkeys[i + j]);
       }
     }
+
     // This will automatically break into multiple txs if there are too many
     for (var asset of Exchange.assets) {
       await utils.applyPerpFunding(asset, fundingAccounts.get(asset));

@@ -4,41 +4,17 @@
  */
 async function updatePricing() {
   // Get relevant expiry indices.
-  for (var asset of assetList) {
-    let indicesToCrank = [];
-    if (!Exchange.getZetaGroup(asset).perpsOnly) {
-      for (
-        var i = 0;
-        i < Exchange.getZetaGroupMarkets(asset).expirySeries.length;
-        i++
-      ) {
-        let expirySeries = Exchange.getZetaGroupMarkets(asset).expirySeries[i];
-        if (
-          Exchange.clockTimestamp <= expirySeries.expiryTs &&
-          expirySeries.strikesInitialized &&
-          !expirySeries.dirty
-        ) {
-          indicesToCrank.push(i);
-        }
+
+  await Promise.all(
+    assetList.map(async (asset) => {
+      try {
+        console.log(`[${assets.assetToName(asset)}] Update pricing`);
+        await Exchange.updatePricing(asset);
+      } catch (e) {
+        console.error(
+          `[${assets.assetToName(asset)}] Update pricing failed. ${e}`
+        );
       }
-    } else {
-      indicesToCrank.push(0);
-    }
-    await Promise.all(
-      indicesToCrank.map(async (index) => {
-        try {
-          console.log(
-            `[${assets.assetToName(asset)}] Update pricing index ${index}`
-          );
-          await Exchange.updatePricing(asset, index);
-        } catch (e) {
-          console.error(
-            `[${assets.assetToName(
-              asset
-            )}] Index ${index}: Update pricing failed. ${e}`
-          );
-        }
-      })
-    );
-  }
+    })
+  );
 }
