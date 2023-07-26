@@ -2,7 +2,7 @@
 let createNewAccountTx = new Transaction().add(
   SystemProgram.createAccount({
     fromPubkey: feePayer.publicKey,
-    newAccountPubkey: newAccount.publicKey,
+    newAccountPubkey: newAccountKeypair.publicKey,
     lamports: 1e8, // 0.1 SOL
     space: 10, // a random value
     programId: programId,
@@ -14,7 +14,7 @@ let closeAccountTx = new Transaction().add(
   new TransactionInstruction({
     keys: [
       {
-        pubkey: newAccount.publicKey,
+        pubkey: newAccountKeypair.publicKey,
         isSigner: false,
         isWritable: true,
       },

@@ -1,6 +1,6 @@
 const createAccountParams = {
-  fromPubkey: fromPubkey.publicKey,
-  newAccountPubkey: newAccountPubkey.publicKey,
+  fromPubkey: fromKeypair.publicKey,
+  newAccountPubkey: newAccountKeypair.publicKey,
   lamports: rentExemptionAmount,
   space,
   programId: SystemProgram.programId,
@@ -11,6 +11,6 @@ const createAccountTransaction = new Transaction().add(
 );
 
 await sendAndConfirmTransaction(connection, createAccountTransaction, [
-  fromPubkey,
-  newAccountPubkey,
+  fromKeypair,
+  newAccountKeypair,
 ]);

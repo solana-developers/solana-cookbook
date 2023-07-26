@@ -20,7 +20,7 @@ import * as BN from "bn.js";
 
 // Users
 const PAYER_KEYPAIR = Keypair.generate();
-const RECEIVER_PUBKEY = Keypair.generate().publicKey;
+const RECEIVER_KEYPAIR = Keypair.generate().publicKey;
 
 // Mint and token accounts
 const TOKEN_MINT_ACCOUNT = Keypair.generate();
@@ -115,7 +115,7 @@ const TOKEN_TRANSFER_AMOUNT_BUFFER = Buffer.from(
       TOKEN_PROGRAM_ID,
       TOKEN_MINT_ACCOUNT.publicKey,
       DESTINATION_TOKEN_ACCOUNT.publicKey,
-      RECEIVER_PUBKEY
+      RECEIVER_KEYPAIR
     );
 
   // Our program's CPI instruction (transfer)
