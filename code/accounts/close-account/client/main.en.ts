@@ -27,13 +27,13 @@ import {
   );
 
   // 1. create an account to your program
-  let newAccount = Keypair.generate();
-  console.log(`new account: ${newAccount.publicKey.toBase58()}`);
+  let newAccountKeypair = Keypair.generate();
+  console.log(`new account: ${newAccountKeypair.publicKey.toBase58()}`);
 
   let createNewAccountTx = new Transaction().add(
     SystemProgram.createAccount({
       fromPubkey: feePayer.publicKey,
-      newAccountPubkey: newAccount.publicKey,
+      newAccountPubkey: newAccountKeypair.publicKey,
       lamports: 1e8, // 0.1 SOL
       space: 10, // a random value
       programId: programId,
@@ -42,7 +42,7 @@ import {
   console.log(
     `create account txhash: ${await connection.sendTransaction(
       createNewAccountTx,
-      [feePayer, newAccount]
+      [feePayer, newAccountKeypair]
     )}`
   );
 
@@ -51,7 +51,7 @@ import {
     new TransactionInstruction({
       keys: [
         {
-          pubkey: newAccount.publicKey,
+          pubkey: newAccountKeypair.publicKey,
           isSigner: false,
           isWritable: true,
         },
