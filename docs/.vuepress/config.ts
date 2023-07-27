@@ -598,6 +598,59 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       },
+      "/pt/": {
+        selectLanguageName: "Português",
+        navbar: [
+          {
+            text: "Contribuir",
+            link: "https://github.com/solana-developers/solana-cookbook",
+          },
+        ],
+        sidebar: {
+          "/": [
+            {
+              text: "Primeiros pasos",
+              children: ["/pt/", "/pt/getting-started/installation.md"],
+            },
+            {
+              text: "Conceitos chaves",
+              children: [
+                "/pt/core-concepts/accounts.md",
+                "/pt/core-concepts/programs.md",
+                "/pt/core-concepts/transactions.md",
+                "/pt/core-concepts/pdas.md",
+              ],
+            },
+            {
+              text: "Guias",
+              children: [
+                "/pt/guides/get-program-accounts.md",
+                "/pt/guides/serialization.md",
+                "/pt/guides/data-migration.md",
+                "/pt/guides/account-maps.md",
+                "/pt/guides/retrying-transactions.md",
+                "/pt/guides/debugging-solana-programs.md",
+                "/pt/guides/feature-parity-testing.md",
+              ],
+            },
+            {
+              text: "Referências",
+              children: [
+                '/pt/references/local-development.md',
+                '/pt/references/keypairs-and-wallets.md',
+                '/pt/references/basic-transactions.md',
+                '/pt/references/accounts.md',
+                '/pt/references/programs.md',
+                '/pt/references/token.md',
+                '/pt/references/staking.md',
+                '/pt/references/nfts.md',
+                '/pt/references/offline-transactions.md',
+                '/pt/references/name-service.md',
+              ],
+            },
+          ],
+        },
+      },
       "/tr/": {
         selectLanguageName: "Türkçe",
         navbar: [
@@ -816,6 +869,10 @@ export default defineUserConfig<DefaultThemeOptions>({
       lang: "es",
       title: "Solana Cookbook",
     },
+    "/pt/": {
+      lang: "pt-BR",
+      title: "Solana Cookbook",
+    },
     "/de/": {
       lang: "de-DE",
       title: "Solana Cookbook",
@@ -880,6 +937,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           "/fr/": {
             placeholder: "Rechercher",
+          },
+          "/pt/": {
+            placeholder: "Buscar",
           },
           "/id/": {
             placeholder: "Cari",
@@ -947,6 +1007,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             translations: {
               button: {
                 buttonText: "Rechercher",
+              },
+            },
+          },
+          "/pt/": {
+            placeholder: "Buscar",
+            translations: {
+              button: {
+                buttonText: "Buscar",
               },
             },
           },
