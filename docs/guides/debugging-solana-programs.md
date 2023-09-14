@@ -139,7 +139,7 @@ The bee's knees eh?
 Lastly, you can start a local validating node and load your program and any accounts using the `solana-test-validator`
 from the command line.
 
-In this approach, you will need a client application either using Rust [RcpClient](#resources) or in
+In this approach, you will need a client application either using Rust [RpcClient](#resources) or in
 [JavaScript or Typescript clients](#resources)
 
 See `solana-test-validator --help` for more details and options. For the example program here is vanilla setup:
@@ -154,6 +154,6 @@ Now that is the cat's pajamas YO!
 ## Resources
 [solana-program-bpf-template](https://github.com/mvines/solana-bpf-program-template)
 
-[RcpClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)
+[RpcClient](https://docs.rs/solana-client/latest/solana_client/rpc_client/struct.RpcClient.html)
 
 [JavaScript/Typescript Library](https://solana-labs.github.io/solana-web3.js/)
