@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 发送离线交易
   - - meta
     - name: description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: 签署离线交易后，任何人都可以在网络上广播该交易。有关发送离线交易的更多信息和参考资料，请参阅Solana秘籍。
   - - meta
     - name: og:description
-      content: After signing the Offline Transaction, anyone can broadcast it on the network. Learn more about Sending Offline Transactions and references at The Solana cookbook.
+      content: 签署离线交易后，任何人都可以在网络上广播该交易。有关发送离线交易的更多信息和参考资料，请参阅Solana秘籍。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -63,15 +63,15 @@ footer: MIT Licensed
 
 ## 部分签署交易
 
-当一个交易需要多个签名时，你可以部分签署它。其他签署者随后可以签署并在网络上广播该交易。
+当一个交易需要多个签名时，你可以分别签署它。其他签署者随后可以签署并在网络上广播该交易。
 
-以下是一些有用的情况示例：
+以下是一些有用的示例：
 
-- 用支付作为交换发送 SPL 代币
+- 发送 SPL 代币用来进行支付
 - 签署交易以便以后验证其真实性
 - 在需要你签名的自定义程序中调用交易
 
-在这个例子中，Bob给Alice发送了一个 SPL 代币，回报Alice的付款：
+在这个例子中，Bob 给 Alice 发送了一个 SPL 代币，回报Alice的付款：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

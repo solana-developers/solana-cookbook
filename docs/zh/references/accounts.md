@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 账户资料
   - - meta
     - name: description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: 了解 Solan 账户概念，以及在程序中如何使用账户。
   - - meta
     - name: og:description
-      content: Learn more about accounts on Solana and how to use them in your programs.
+      content: 了解 Solan 账户概念，以及在程序中如何使用账户。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -102,7 +102,7 @@ footer: MIT Licensed
 
 ## 如何使用种子创建账户
 
-你可以使用 `createAccountWithSeed` 方法来管理您的账户，而无需创建大量不同的密钥对。
+你可以使用 `createAccountWithSeed` 方法来管理你的账户，而无需创建大量不同的密钥对。
 
 ### 生成
 
@@ -214,7 +214,7 @@ footer: MIT Licensed
 
 ### 生成一个PDA
 
-`findProgramAddress`会在你的种子末尾添加一个额外的字节。它从255递减到0，并返回第一个不在ed25519曲线上的公钥。如果您传入相同的程序ID和种子，您将始终获得相同的结果。
+`findProgramAddress`会在你的种子末尾添加一个额外的字节。它从255递减到0，并返回第一个不在ed25519曲线上的公钥。如果你传入相同的程序ID和种子，你将始终获得相同的结果。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -280,7 +280,7 @@ footer: MIT Licensed
 
 PDAs只能在程序内部进行签名。以下是使用PDA进行签名的程序示例，并使用客户端调用该程序的示例。  
 
-### 程序
+### 程序（program）
 
 以下示例展示了一个单个指令，用于从由种子`escrow`派生的 PDA 转账 SOL 到指定的账户。使用 `invoke_signed` 函数来使用 PDA 签名。
 

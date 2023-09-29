@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 命名服务
   - - meta
     - name: description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse/Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: 名称注册表存储有关域名的信息。有关 SOL 域名解析、反向/子域查询、名称服务的更多信息和参考资料，请参阅Solana秘籍。 
   - - meta
     - name: og:description
-      content: The name registry stores information about the domain name. Learn about Resolving SOL domains, Reverse, Subdomain look up, more about Name Service and references at The Solana cookbook.
+      content: 名称注册表存储有关域名的信息。有关 SOL 域名解析、反向/子域查询、名称服务的更多信息和参考资料，请参阅Solana秘籍。 
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -117,8 +117,8 @@ footer: MIT Licensed
 
 为了解析一个子域名，你需要：
 
-1. 域名的密钥
-2. 域名的密钥
+1. 知道父域名的Key
+2. 知道子域名的Key
 3. 检索账户信息
 
 <SolanaCodeGroup>
@@ -140,7 +140,7 @@ footer: MIT Licensed
 
 </SolanaCodeGroup>
 
-## 查找由公钥拥有的所有域名
+## 查找公钥拥有的所有域名
 
 你可以通过使用带有`memcmp`过滤器的`getProgramAccounts`请求来检索钱包的所有域名。
 

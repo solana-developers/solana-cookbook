@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 重试交易
   - - meta
     - name: description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
+      content: 在某些情况下，一个看似有效的交易可能会在被纳入区块之前就被丢弃。为了应对这种情况，应用程序开发人员可以开发自己的自定义重试交易逻辑。有关重试事务和更多信息，请参阅Solana秘籍。
   - - meta
     - name: og:description
-      content: On some occasions, a seemingly valid transaction may be dropped before it is included in a block. To combat this, application developers are able to develop their own custom rebroadcasting logic. Learn about retrying transactions and more at The Solana cookbook.
+      content: 在某些情况下，一个看似有效的交易可能会在被纳入区块之前就被丢弃。为了应对这种情况，应用程序开发人员可以开发自己的自定义重试交易逻辑。有关重试事务和更多信息，请参阅Solana秘籍。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -46,7 +46,7 @@ footer: MIT Licensed
 ::: tip 事实表
 - RPC节点将尝试使用通用算法重新广播交易
 - 应用程序开发人员可以实现自定义的重新广播逻辑
-- 开发人员应该利用`sendTransaction` JSON-RPC方法中的`maxRetries`参数
+- 开发人员应该利用 `sendTransaction` JSON-RPC方法中的`maxRetries`参数
 - 开发人员应该启用预检查，以便在提交交易之前引发错误
 - 在重新签署任何交易之前，**非常重要**的是确保初始交易的块哈希已过期
 :::
@@ -67,14 +67,14 @@ footer: MIT Licensed
 
 当RPC节点通过`sendTransaction`接收到一个交易后，它会将交易转换为[UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) 数据包，然后将其转发给相关的领导。UDP允许验证节点之间快速通信，但不提供关于交易传递的任何保证。
 
-因为Solana的领导节点调度在每个[纪元](https://docs.solana.com/terminology#epoch) （大约2天）之前就已知，所以RPC节点会直接将其交易广播给当前和下一个领导节点。这与其他流言协议（如以太坊）随机广播和广泛传播整个网络的交易的方式形成对比。默认情况下，RPC节点会每两秒尝试将交易转发给领导节点，直到交易被确认或交易的块哈希过期（在本文撰写时为150个区块或约1分钟19秒）。如果待重新广播的队列大小超过[10,000 transactions](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20) 个交易，则新提交的交易将被丢弃。RPC运营商可以调整命令行[参数](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) 以更改此重试逻辑的默认行为。
+因为Solana的领导节点调度在每个[纪元](https://docs.solana.com/terminology#epoch) （大约2天）之前就已知，所以RPC节点会直接将其交易广播给当前和下一个领导节点。这与其他流言协议（如以太坊）随机广播和广泛传播整个网络的交易的方式形成对比。默认情况下，RPC节点会每两秒尝试将交易转发给领导节点，直到交易被确认或交易的块哈希过期（在本文撰写时为150个区块或约1分钟19秒）。如果待重新广播的队列大小超过[10,000 交易](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/send-transaction-service/src/send_transaction_service.rs#L20) 个交易，则新提交的交易将被丢弃。RPC运营商可以调整命令行[参数](https://github.com/solana-labs/solana/blob/bfbbc53dac93b3a5c6be9b4b65f679fdb13e41d9/validator/src/main.rs#L1172) 以更改此重试逻辑的默认行为。
 
 当RPC节点广播一个交易时，它会尝试将交易转发给领导节点的交易处理单元（TPU）。TPU将交易处理分为五个不同的阶段：
-- [Fetch Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
-- [SigVerify Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L91)
-- [Banking Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/banking_stage.rs#L249)
+- [Fetch 阶段](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/fetch_stage.rs#L21)
+- [SigVerify 阶段](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L91)
+- [Banking 阶段](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/banking_stage.rs#L249)
 - [Proof of History Service](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/poh/src/poh_service.rs)
-- [Broadcast Stage](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L136)
+- [Broadcast 阶段](https://github.com/solana-labs/solana/blob/cd6f931223181d5a1d47cba64e857785a175a760/core/src/tpu.rs#L136)
 
 ![TPU Overview](./retrying-transactions/tpu-jito-labs.png)
 <small style="display:block;text-align:center;">Image Courtesy of Jito Labs</small>
@@ -92,13 +92,13 @@ footer: MIT Licensed
 
 ### 在交易被处理之前
 
-如果网络丢弃一个交易，通常是在交易被领导处理之前发生。UDP [数据包丢失](https://en.wikipedia.org/wiki/Packet_loss) 是可能发生这种情况的最简单原因。在网络负载高峰期，验证节点可能会被大量需要处理的交易压倒。虽然验证节点可以通过 `tpu_forwards`,端口转发多余的交易，但[转发](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). 的数据量是有限的。此外，每个转发仅限于验证节点之间的单一跳跃。也就是说，通过`tpu_forwards`端口接收的交易不会被转发给其他验证节点。
+如果网络丢弃一个交易，通常是在交易被领导处理之前发生。UDP [数据包丢失](https://en.wikipedia.org/wiki/Packet_loss) 是可能发生这种情况的最简单原因。在网络负载高峰期，验证节点可能会被大量需要处理的交易压倒。虽然验证节点可以通过 `tpu_forwards`,端口转发多余的交易，但[转发](https://github.com/solana-labs/solana/blob/master/core/src/banking_stage.rs#L389). 的数据量是有限的。此外，每个转发仅限于验证节点之间的单跳。也就是说，通过`tpu_forwards`端口接收的交易不会被转发给其他验证节点。
 
-还有两个较少为人知的原因，可能导致交易在被处理之前被丢弃。第一种情况涉及通过RPC池提交的交易。偶尔，RPC池的一部分可能会领先于其他部分。当池中的节点需要共同工作时，这可能会导致问题。在这个例子中，交易的[recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) 从池中的先进部分（后端A）查询。当交易提交到滞后的池中（后端B）时，节点将无法识别先进的块哈希并丢弃交易。如果开发人员在`sendTransaction`中启用了[preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction)， 可以在提交交易时检测到此问题。
+还有两个较少为人知的原因，可能导致交易在被处理之前被丢弃。第一种情况涉及通过RPC池提交的交易。偶尔，RPC池的一部分可能会领先于其他部分。当池中的节点需要共同工作时，这可能会导致问题。在这个例子中，交易的[recentBlockhash](https://docs.solana.com/developing/programming-model/transactions#recent-blockhash) 从池中的先进部分（后端A）查询。当交易提交到滞后的池中（后端B）时，节点将无法识别先进的块哈希并丢弃交易。如果开发人员在`sendTransaction`中启用了[preflight checks](https://docs.solana.com/developing/clients/jsonrpc-api#sendtransaction)，可以在提交交易时检测到此问题。
 
 ![Dropped via RPC Pool](./retrying-transactions/dropped-via-rpc-pool.png)
 
-网络分叉也可能暂时的导致交易丢失。如果验证在银行阶段重新播放其块的速度较慢，可能会创建一个少数派分叉。当客户端构建一个交易时，交易可能引用仅存在于少数派分叉上的`recentBlockhash`。在提交交易后，集群可能在交易被处理之前切换到其他分叉。在这种情况下，由于找不到块哈希，交易被丢弃。
+网络分叉也可能暂时的导致交易丢失。如果验证在Banking阶段重新播放其块的速度较慢，可能会创建一个少数派分叉。当客户端构建一个交易时，交易可能引用仅存在于少数派分叉上的`recentBlockhash`。在提交交易后，集群可能在交易被处理之前切换到其他分叉。在这种情况下，由于找不到块哈希，交易被丢弃。
 
 ![Dropped due to Minority Fork (Before Processed)](./retrying-transactions/dropped-minority-fork-pre-process.png)
 
@@ -121,7 +121,7 @@ footer: MIT Licensed
 - `transaction`: `string` -  完全签名的交易，以编码字符串形式表示 
 - (可选) `configuration object`: `object` 
     - `skipPreflight`: `boolean` - 如果为 true，则跳过预检事务检查（默认为 false）
-    - (可选) `preflightCommitment`: `string` - 用于针对银行插槽进行预检模拟的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别（默认为"finalized"）
+    - (可选) `preflightCommitment`: `string` - 用于针对库存（bank）插槽进行预检模拟的[承诺](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment) 级别（默认为"finalized"）
     - (可选) `encoding`: `string` - 用于交易数据的编码方式。可以选择 "base58"（较慢）或 "base64"（默认为 "base58")
     - (可选) `maxRetries`: `usize` -  RPC节点重试将交易发送给领导者的最大次数。如果未提供此参数，RPC节点将重试交易，直到交易最终确定或块哈希过期为止
 
@@ -164,7 +164,7 @@ footer: MIT Licensed
 
 - 验证所有签名是否有效
 - 检查引用的块哈希是否在最近的150个块内
-- 针对预检查的`preFlightCommitment`，模拟交易与银行槽位之间的交互
+- 针对预检查的`preFlightCommitment`，模拟交易与库存槽位之间的交互
 
 如果其中任何一个预检查失败，`sendTransaction`将在提交交易之前引发错误。预检查常常能够防止交易丢失，并使客户端能够优雅地处理错误。为了确保这些常见错误得到考虑，建议开发人员将skipPreflight设置为false。
 

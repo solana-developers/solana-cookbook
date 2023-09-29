@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 密钥对和钱包
   - - meta
     - name: description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: 了解密钥对和钱包，签名和验证消息，更多如何在Solana上构建，参考 Solana 秘籍 
   - - meta
     - name: og:description
-      content: Learn about Keypairs and Wallets, Signing and Verifying Messages and more references for Building on Solana at The Solana cookbook.
+      content: 了解密钥对和钱包，签名和验证消息，更多如何在Solana上构建，参考 Solana 秘籍
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -39,7 +39,7 @@ footer: MIT Licensed
 
 # 密钥对和钱包
 
-## 如何生成新的密钥对
+## 如何生成新的密钥对（Keypair）
 
 对于使用Solana库执行各种操作，许多操作都需要一个密钥对或钱包。如果你正在连接到一个钱包，那么你不必担心。然而，如果你需要一个密钥对，你会需要生成一个。
 
@@ -130,7 +130,7 @@ footer: MIT Licensed
 
 如果你已经有了密钥，你可以通过这个密钥获取密钥对，以测试你的dApp。
 
-1. 从字节中：
+1. 通过字节（Bytes）获取：
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -215,7 +215,7 @@ footer: MIT Licensed
 
 </SolanaCodeGroup>
 
-2. 从Base58字符串：
+2. 通过 Base58 字符串：
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="TS" active>
@@ -569,7 +569,7 @@ footer: MIT Licensed
 注意: 自定义地址中字符的数量越多，生成时间将会更长。
 
 ::: 警告
-在此任务中，您应该使用命令行界面（CLI）。Python和TypeScript的示例仅用于说明，速度比CLI慢得多。
+在此任务中，你应该使用命令行界面（CLI）。Python和TypeScript的示例仅用于说明，速度比CLI慢得多。
 :::
 
 <SolanaCodeGroup>
@@ -684,9 +684,9 @@ footer: MIT Licensed
 
 ## 如何连接到钱包
 
-Solana的[钱包适配器](https://github.com/solana-labs/wallet-adapter) 库使客户端管理钱包连接变得简单。
+Solana 的[钱包适配器](https://github.com/solana-labs/wallet-adapter) 库使客户端管理钱包连接变得简单。
 
-### 反应
+### React
 
 运行以下命令来安装所需的依赖项：
 
@@ -694,7 +694,7 @@ Solana的[钱包适配器](https://github.com/solana-labs/wallet-adapter) 库使
 yarn add @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets
 ```
 
-React的钱包适配器库允许我们通过钩子和上下文提供程序来持久化和访问钱包连接状态，主要包括`useWallet、WalletProvider`、`useConnection和ConnectionProvider`。`WalletProvider`和`ConnectionProvider`必须包装React应用程。
+React的钱包适配器库允许我们通过钩子（Hook）和上下文提供者（providers）来持久化和访问钱包连接状态，主要包括`useWallet、WalletProvider`、`useConnection` 和`ConnectionProvider`。React App 必须要用 `WalletProvider`和`ConnectionProvider` 包装。
 
 此外，我们可以使用`useWalletModal`来提示用户进行连接，通过切换连接模态框的可见性，并将应用程序包装在`@solana/wallet-adapter-react-ui`中的`WalletModalProvider`中。连接模态框将处理连接流程，因此我们只需监听钱包连接的状态。当`useWallet`的响应具有非空的`wallet`属性时，我们知道钱包已连接。反之，如果该属性为空，我们知道钱包已断开连接。
 
@@ -754,7 +754,7 @@ npm install solana-wallets-vue @solana/wallet-adapter-wallets
 npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-[Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) 包允许我们在使用Svelte模板或SvelteKit创建的项目中，在所有JS、TS或/和Svelte文件之间添加一个可访问的Svelte Store（`$walletStore`）。使用 [此处](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) 的存储库引用，您可以在SSR或SPA中使用适配器。UI包含一个`<WalletMultiButton />`组件，允许用户选择一个钱包并连接到它。
+[Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) 包允许我们在使用Svelte模板或SvelteKit创建的项目中，在所有JS、TS或/和Svelte文件之间添加一个可访问的Svelte Store（`$walletStore`）。使用 [此处](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) 的代码库引用，你可以在SSR或SPA中使用适配器。UI包含一个`<WalletMultiButton />`组件，允许用户选择一个钱包并连接到它。
 
 <SolanaCodeGroup>
    <SolanaCodeGroupItem title="Svelte" active>

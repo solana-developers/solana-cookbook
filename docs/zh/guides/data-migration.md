@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 迁移程序的数据账户
   - - meta
     - name: description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: 从根本上说，为支持迁移而对数据进行版本控制，就是为数据集合创建一个唯一的引用。这种参考可以采用查询、ID 或通常的日期时间标识符等形式。了解序列化和更多要素，请参阅 Solana 秘籍。
   - - meta
     - name: og:description
-      content: Fundamentally to version data in support of migration means to create a unique reference for a collection of data. This reference can take the form of a query, an ID, or also commonly a datetime identifier. Learn about Serialization and more Ingredients for your dish at The Solana cookbook.
+      content: 从根本上说，为支持迁移而对数据进行版本控制，就是为数据集合创建一个唯一的引用。这种参考可以采用查询、ID 或通常的日期时间标识符等形式。了解序列化和更多要素，请参阅 Solana 秘籍。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,7 +43,7 @@ footer: MIT Licensed
 
 当你创建一个程序时，与该程序关联的每个数据账户都将具有特定的数据结构。如果你需要升级一个程序派生账户，那么你将得到一堆具有旧结构的剩余程序派生账户。
 
-通过账户版本控制，您可以将旧账户升级到新的结构。
+通过账户版本控制，你可以将旧账户升级到新的结构。
 
 :::tip 注意
 这只是在程序拥有的账户（POA）中迁移数据的众多方法之一。
@@ -112,10 +112,10 @@ footer: MIT Licensed
 
 | ID | Action |
 | - | - |
-|1| Include a 'data version' field in your data. It can be a simple incrementing ordinal (e.g. u8) or something more sophisticated
-|2| Allocating enough space for data growth
-|3| Initializing a number of constants to be used across program versions
-|4| Add an update account function under `fn conversion_logic` for future upgrades
+|1| 在你的数据中包含 'data version' 字段. 它可以是一个简单的递增序号（如 u8），也可以是更复杂的东西
+|2| 为数据增长分配足够的空间
+|3| 初始化多个要跨程序版本使用的常量
+|4| 在 `fn conversion_logic` 下添加一个升级账户函数用于将来升级
 
 假设我们现在希望升级程序的账户，包括一个新的必需字段：`somestring`字段。
 
@@ -145,13 +145,13 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-| Line(s) | Note |
+| 行 | 备注 |
 | ------- | - |
-| 6 | We've added Solana's `solana_program::borsh::try_from_slice_unchecked` to simplify reading subsets of data from the larger data block
-| 13-26| Here we've preserved the old content structure, `AccountContentOld` line 24, before extending the `AccountContentCurrent` starting in line 17.
-| 60 | We bump the `DATA_VERSION` constant
-| 71 | We now have a 'previous' version and we want to know it's size
-| 86 | The Coup de grâce is adding the plumbing to upgrade the previous content state to the new (current) content state
+| 6 | 我们添加了 Solana 的`solana_program::borsh::try_from_slice_unchecked`，以简化从较大数据块中读取数据子集的过程。
+| 13-26| 在这里，我们保留了旧的内容结构，即第 24 行中的 `AccountContentOld `，然后从第 17 行开始扩展了 `AccountContentCurrent `。
+| 60 | 使用 `DATA_VERSION` 常量
+| 71 | 我们现在有一个 '以前' 的版本，我们想知道它的大小
+| 86 | 重头戏是添加管道，将以前的内容状态升级为新（当前）内容状态
 
 然后，我们更新指令，添加一个新的指令来更新`somestring`，并更新处理器来处理新的指令。请注意，"升级"数据结构是通过`pack/unpack`封装起来的。
 
@@ -175,6 +175,6 @@ footer: MIT Licensed
 
 ## 资料
 
-* [Borsh Specification](https://borsh.io/)
+* [Borsh 规范](https://borsh.io/)
 * [Solana `try_from_slice_unchecked`](https://github.com/solana-labs/solana/blob/master/sdk/program/src/borsh.rs#L67)
-* [Reference Implementation](https://github.com/FrankC01/versioning-solana)
+* [Solana 数据版本控制实现](https://github.com/FrankC01/versioning-solana)
