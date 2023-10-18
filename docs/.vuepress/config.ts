@@ -118,6 +118,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/integrations/react-native.md",
                 "/integrations/jupiter.md",
                 "/integrations/orao-vrf.md",
+		"/integrations/particle.md",
               ],
             },
           ],
