@@ -255,5 +255,6 @@ If you'd like to [open the wallet UI](https://docs.particle.network/developers/a
 ## Resources
 * [Documentation](https://docs.particle.network/)
 * [Web Demo](https://web-demo.particle.network/)
+* [Blog](https://blog.particle.network/)
 * [Solana "Sign in with Google" Example](https://github.com/TABASCOatw/particle-solana-google-example)
 * [Particle Network](https://particle.network)
