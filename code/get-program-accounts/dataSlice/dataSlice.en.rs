@@ -14,8 +14,8 @@ pub fn main() {
 
   let filters = Some(vec![
       RpcFilterType::Memcmp(Memcmp::new(
-        32, // number of bytes
-        MemcmpEncodedBytes::Base58(wallet_address.to_string()),
+        0, // number of bytes
+        MemcmpEncodedBytes::Base58(MY_TOKEN_MINT_ADDRESS.to_string()),
       )),
       RpcFilterType::DataSize(165), // number of bytes
   ]);
