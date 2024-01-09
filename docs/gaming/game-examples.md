@@ -160,3 +160,11 @@ Real-time Solana Battle Royal Game. Using Anchor program, UnitySDK, WebSocket ac
 
 [Source](https://github.com/Woody4618/SolPlay_Unity_SDK/tree/main/Assets/SolPlay/Examples/SolHunter)
 
+
+## Idle Game on Solana
+
+In this tutorial you will learn how to create an idle game on Solana. 
+
+[Tutorial](https://www.youtube.com/watch?v=ax0Si3Vkvbo)
+
+[Source](https://github.com/solana-developers/solana-game-examples/tree/main/idle-game)
