@@ -95,7 +95,7 @@ For example, if you have a counter program that lets you increment a counter, yo
 must create two accounts, one account to store the program's code, and one to store
 the counter.
 
-![](./account_example.jpeg)
+![](./account_example.jpg)
 
 To prevent an account from being deleted, you must pay rent.
 
