@@ -13,11 +13,10 @@ pub fn main() {
   let connection = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed());
 
   let filters = Some(vec![
-      RpcFilterType::Memcmp(Memcmp {
-          offset: 0, // number of bytes
-          bytes: MemcmpEncodedBytes::Base58(MY_TOKEN_MINT_ADDRESS.to_string()),
-          encoding: Some(MemcmpEncoding::Binary),
-      }),
+      RpcFilterType::Memcmp(Memcmp::new(
+        0, // number of bytes
+        MemcmpEncodedBytes::Base58(MY_TOKEN_MINT_ADDRESS.to_string()),
+      )),
       RpcFilterType::DataSize(165), // number of bytes
   ]);
 
