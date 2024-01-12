@@ -76,10 +76,11 @@ A benefit of using Next.js is that you can use the same code in the backend and 
 
 ### Python 
 
-Python is an easy to learn programming language which is often used in AI programming. There is a framework called Seahorse which lets you build smart contracts in Python.
+Python is an easy to learn programming language which is often used in AI programming. There is a framework called Seahorse which lets you build smart contracts in Python. Seahorse is built on top of the Solana Anchor framework. It converts Python code into Rust which Anchor can then use. Seahorse is currently in beta.
 
 [Anchor Playground Example](https://beta.solpg.io/tutorials/hello-seahorse)<br />
-[Source and Docs](https://github.com/ameliatastic/seahorse-lang)<br />
+[Github Repo](https://github.com/solana-developers/seahorse)<br />
+[Documentation](https://www.seahorse.dev/)
 
 ### Native C#
 
