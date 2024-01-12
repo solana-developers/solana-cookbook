@@ -341,7 +341,7 @@ import{_ as u,r as o,o as i,c as r,b as t,w as a,F as k,a as n,d as s,e as b}fro
       connection`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// connection"),s(`
       feePayer`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// fee payer"),s(`
       mintPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint"),s(`
-      tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (sholud be a token account)"),s(`
+      tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (should be a token account)"),s(`
       alice`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint authority"),s(`
       `),n("span",{class:"token number"},"1e8"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// amount. if your decimals is 8, you mint 10^8 for 1 token."),s(`
       `),n("span",{class:"token number"},"8"),s(),n("span",{class:"token comment"},"// decimals"),s(`
@@ -353,7 +353,7 @@ import{_ as u,r as o,o as i,c as r,b as t,w as a,F as k,a as n,d as s,e as b}fro
     `),n("span",{class:"token comment"},"//   connection, // connection"),s(`
     `),n("span",{class:"token comment"},"//   feePayer, // fee payer"),s(`
     `),n("span",{class:"token comment"},"//   mintPubkey, // mint"),s(`
-    `),n("span",{class:"token comment"},"//   tokenAccountPubkey, // receiver (sholud be a token account)"),s(`
+    `),n("span",{class:"token comment"},"//   tokenAccountPubkey, // receiver (should be a token account)"),s(`
     `),n("span",{class:"token comment"},"//   alice.publicKey, // !! mint authority pubkey !!"),s(`
     `),n("span",{class:"token comment"},"//   1e8, // amount. if your decimals is 8, you mint 10^8 for 1 token."),s(`
     `),n("span",{class:"token comment"},"//   8, // decimals"),s(`
@@ -368,7 +368,7 @@ import{_ as u,r as o,o as i,c as r,b as t,w as a,F as k,a as n,d as s,e as b}fro
     `),n("span",{class:"token keyword"},"let"),s(" tx "),n("span",{class:"token operator"},"="),s(),n("span",{class:"token keyword"},"new"),s(),n("span",{class:"token class-name"},"Transaction"),n("span",{class:"token punctuation"},"("),n("span",{class:"token punctuation"},")"),n("span",{class:"token punctuation"},"."),n("span",{class:"token function"},"add"),n("span",{class:"token punctuation"},"("),s(`
       `),n("span",{class:"token function"},"createMintToCheckedInstruction"),n("span",{class:"token punctuation"},"("),s(`
         mintPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint"),s(`
-        tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (sholud be a token account)"),s(`
+        tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (should be a token account)"),s(`
         alice`),n("span",{class:"token punctuation"},"."),s("publicKey"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint authority"),s(`
         `),n("span",{class:"token number"},"1e8"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// amount. if your decimals is 8, you mint 10^8 for 1 token."),s(`
         `),n("span",{class:"token number"},"8"),s(),n("span",{class:"token comment"},"// decimals"),s(`
@@ -389,7 +389,7 @@ import{_ as u,r as o,o as i,c as r,b as t,w as a,F as k,a as n,d as s,e as b}fro
     connection`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// connection"),s(`
     feePayer`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// fee payer"),s(`
     mintPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint"),s(`
-    tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (sholud be a token account)"),s(`
+    tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (should be a token account)"),s(`
     alice`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint authority"),s(`
     `),n("span",{class:"token number"},"1e8"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// amount. if your decimals is 8, you mint 10^8 for 1 token."),s(`
     `),n("span",{class:"token number"},"8"),s(),n("span",{class:"token comment"},"// decimals"),s(`
@@ -403,7 +403,7 @@ import{_ as u,r as o,o as i,c as r,b as t,w as a,F as k,a as n,d as s,e as b}fro
   `),n("span",{class:"token keyword"},"let"),s(" tx "),n("span",{class:"token operator"},"="),s(),n("span",{class:"token keyword"},"new"),s(),n("span",{class:"token class-name"},"Transaction"),n("span",{class:"token punctuation"},"("),n("span",{class:"token punctuation"},")"),n("span",{class:"token punctuation"},"."),n("span",{class:"token function"},"add"),n("span",{class:"token punctuation"},"("),s(`
     `),n("span",{class:"token function"},"createMintToCheckedInstruction"),n("span",{class:"token punctuation"},"("),s(`
       mintPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint"),s(`
-      tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (sholud be a token account)"),s(`
+      tokenAccountPubkey`),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// receiver (should be a token account)"),s(`
       alice`),n("span",{class:"token punctuation"},"."),s("publicKey"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// mint authority"),s(`
       `),n("span",{class:"token number"},"1e8"),n("span",{class:"token punctuation"},","),s(),n("span",{class:"token comment"},"// amount. if your decimals is 8, you mint 10^8 for 1 token."),s(`
       `),n("span",{class:"token number"},"8"),s(),n("span",{class:"token comment"},"// decimals"),s(`

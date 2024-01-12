@@ -65,7 +65,7 @@ import{_ as n,e as s}from"./app.55b1b60c.js";const a={},e=s(`<h1 id="interacting
     connection<span class="token punctuation">,</span> <span class="token comment">// connection</span>
     feePayer<span class="token punctuation">,</span> <span class="token comment">// fee payer</span>
     mintPubkey<span class="token punctuation">,</span> <span class="token comment">// mint</span>
-    tokenAccountPubkey<span class="token punctuation">,</span> <span class="token comment">// receiver (sholud be a token account)</span>
+    tokenAccountPubkey<span class="token punctuation">,</span> <span class="token comment">// receiver (should be a token account)</span>
     alice<span class="token punctuation">,</span> <span class="token comment">// mint authority</span>
     <span class="token number">1e8</span><span class="token punctuation">,</span> <span class="token comment">// amount. if your decimals is 8, you mint 10^8 for 1 token.</span>
     <span class="token number">8</span> <span class="token comment">// decimals</span>
@@ -79,7 +79,7 @@ import{_ as n,e as s}from"./app.55b1b60c.js";const a={},e=s(`<h1 id="interacting
   <span class="token keyword">let</span> tx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>
     <span class="token function">createMintToCheckedInstruction</span><span class="token punctuation">(</span>
       mintPubkey<span class="token punctuation">,</span> <span class="token comment">// mint</span>
-      tokenAccountPubkey<span class="token punctuation">,</span> <span class="token comment">// receiver (sholud be a token account)</span>
+      tokenAccountPubkey<span class="token punctuation">,</span> <span class="token comment">// receiver (should be a token account)</span>
       alice<span class="token punctuation">.</span>publicKey<span class="token punctuation">,</span> <span class="token comment">// mint authority</span>
       <span class="token number">1e8</span><span class="token punctuation">,</span> <span class="token comment">// amount. if your decimals is 8, you mint 10^8 for 1 token.</span>
       <span class="token number">8</span> <span class="token comment">// decimals</span>
