@@ -56,8 +56,8 @@ Cek link berikut untuk lihat semua issue yang masih aktif[here](https://github.c
 
 Buku Panduan Solana dibagi menjadi beberapa bagian yang berbeda, masing-masing ditujukan untuk tujuan yang berbeda. 
 
-| Section       | Description |
+| Section       | Description                                                           |
 |---------------|-----------------------------------------------------------------------|
-| Konsep Utama  | Membangun blocks Solana yang bagus untuk diketahui untuk pengembangan  | 
+| Konsep Utama  | Membangun blocks Solana yang bagus untuk diketahui untuk pengembangan | 
 | Panduan       | Panduan detail tentang beragam tools yang berbeda untuk pengembangan  |
 | Referensi     | Referensi untuk cuplikan kode yang umum dibutuhkan untuk pengembangan | 
