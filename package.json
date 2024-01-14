@@ -1,7 +1,7 @@
 {
   "name": "solana-cookbook-book",
   "version": "1.0.0",
-  "description": "Recipes for everything Solana",
+  "description": "Recipes for everything Solana and Ethereum",
   "main": "index.js",
   "repository": "https://github.com/solana-developers/solana-cookbook",
   "scripts": {
