@@ -554,13 +554,13 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
   <template v-slot:default>
 
-@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip44.py)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.py)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip44.preview.py)
+@[code](@/code/keypairs-and-wallets/mnemonic-to-keypair/from-bip44.preview.py)
 
   </template>
 
