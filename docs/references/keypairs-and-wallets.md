@@ -550,6 +550,22 @@ You can make multiple wallets from a single seed - also known as 'Hierarchical D
 
   </SolanaCodeGroupItem>
 
+  <SolanaCodeGroupItem title="Python">
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip44.py)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/generate-mnemonic/from-bip44.preview.py)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
   <SolanaCodeGroupItem title="CLI">
 
   <template v-slot:default>
