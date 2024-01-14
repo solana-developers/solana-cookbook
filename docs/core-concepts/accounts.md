@@ -49,7 +49,7 @@ building block for developing on Solana.
 - Accounts are used to store data
 - Each account has a unique address
 - Accounts have a max size of 10MB (10 Mega Bytes)
-- PDA accounts have a max size of 10KB (10 Kilo Bytes)
+- PDA accounts have a max size of 10MB (10 Mega Bytes)
 - PDA accounts can be used to sign on behalf of a program
 - Accounts size are fixed at creation time, but can be adjusted using [realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)
 - Account data storage is paid with rent
