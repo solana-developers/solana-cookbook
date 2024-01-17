@@ -399,7 +399,7 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </template>
 
   </SolanaCodeGroupItem>
-    <SolanaCodeGroupItem title="Wallet-Adapter" active>
+    <SolanaCodeGroupItem title="Wallet-Adapter">
 
   <template v-slot:default>
 
