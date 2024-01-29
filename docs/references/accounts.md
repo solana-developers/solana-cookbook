@@ -399,6 +399,21 @@ You can close an account (erase all stored data) by removing all SOL. (you can r
   </template>
 
   </SolanaCodeGroupItem>
+    <SolanaCodeGroupItem title="Wallet-Adapter" active>
+
+  <template v-slot:default>
+
+@[code](@/code/accounts/close-account/client/close-account.adapter.en.tsx)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/accounts/close-account/client/close-account.adapter.preview.en.tsx)
+
+  </template>
+
+  </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
 ## How to get account balance
