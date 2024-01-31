@@ -8,5 +8,3 @@ let (mut client, receiver) = PubsubClient::account_subscribe(
         commitment: Some(CommitmentConfig::confirmed()),
     }),
 ).unwrap();
-let message = match receiver.recv().unwrap();
-println!("{:?}", message)
