@@ -1,8 +1,8 @@
 # Solana Cookbook
 
 The Solana Cookbook is meant to house small digestible code snippets
-for someone that has no experience with blockchain or Solana to be able
-to grab and go.
+for someone that has no experience with blockchain or Solana development to be able
+to grab and use.
 
 ## Contributing
 
