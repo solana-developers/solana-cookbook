@@ -341,3 +341,14 @@ prebuilt binaries:
 ```bash
 solana-install init
 ```
+
+## Install via Docker
+
+If you want to deploy a new project on a docker container, the easiest way to start is to clone the Solana dApp Scaffold Next Github [repo](https://github.com/solana-labs/dapp-scaffold) and after installing `docker`, you should be able to run the following:
+
+```
+docker build -t dapp-scaffold .
+docker run -d -it --name dapp-scaffold-run -p 3003:3000 dapp-scaffold
+```
+
+And you should see your app run on `http://localhost:3003`.
