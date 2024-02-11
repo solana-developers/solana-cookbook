@@ -1,0 +1,1 @@
+particle.auth.logout()
