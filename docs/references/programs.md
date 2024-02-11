@@ -150,8 +150,8 @@ The client side instruction, now only needs to pass the state and payer accounts
 
 ## How to change account size
 
-You can change a program owned account's size with the use 
-of `realloc`. `realloc` can resize an account up to 10KB.
+You can change an account's size with the use of `realloc`.
+`realloc` can resize an account in steps of 10KB up to 10MB of max size.
 When you use `realloc` to increase the size of an account,
 you must transfer lamports in order to keep that account
 rent-exempt.
