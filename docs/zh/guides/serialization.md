@@ -1,18 +1,18 @@
 ---
-title: 序列数据
+title: 序列化数据
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 序列数据
+      content: Solana秘籍 | 序列化数据
   - - meta
     - name: og:title
-      content: Solana秘籍 | 序列数据
+      content: Solana秘籍 | 序列化数据
   - - meta
     - name: description
-      content: Learn how to serialize and deserialize data on Solana
+      content: 学习 Solana 如何进行序列化与反序列化
   - - meta
     - name: og:description
-      content: Learn how to serialize and deserialize data on Solana
+      content: 学习 Solana 如何进行序列化与反序列化
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,7 +37,7 @@ head:
 footer: MIT Licensed
 ---
 
-# 序列数据
+# 序列化数据
 
 当我们谈论序列化时，我们指的是数据的序列化和反序列化。
 
@@ -83,11 +83,11 @@ footer: MIT Licensed
 
 </CodeGroup>
 
-## 如何序列化客户端上的指令数据
+## 如何在客户端上序列化指令数据
 
 <img src="./serialization/ser1.png" alt="Serialize Instruction Data">
 
-如果你要将出站指令数据序列化并发送给程序，它必须与程序反序列化入站指令数据的方式保持一致。
+如果你要将出站指令（outbound instruction）数据序列化并发送给程序，它必须与程序反序列化入站指令（inbound instruction）数据的方式保持一致。
 
 在此模板中，指令数据块是一个包含序列化数组的数据块，例如：
 
@@ -98,7 +98,7 @@ footer: MIT Licensed
 | Transfer (2)                | "foo"                          | not applicable for instruction |
 | Burn (2)                    | "foo"                          | not applicable for instruction |
 
-在下面的示例中，我们假设程序拥有的账户已经初始化完成。
+在下面的示例中，我们假设程序拥有账户已经初始化完成。
 
 <CodeGroup>
   <CodeGroupItem title="TS Client" active>
@@ -145,11 +145,11 @@ footer: MIT Licensed
 
 关于 [Pack][1] trait
 
-可以更容易地隐藏账户数据序列化/反序列化的细节，使你的核心程序指令处理代码更简洁。因此，不需要将所有的序列化/反序列化逻辑放在程序处理代码中，而是将这些细节封装在以下三个函数中：
+Pack trait 可以更容易地隐藏账户数据序列化/反序列化的细节，使你的核心程序指令处理代码更简洁。因此，不需要将所有的序列化/反序列化逻辑放在程序处理代码中，而是将这些细节封装在以下三个函数中：
 
 1. `unpack_unchecked` - 允许你对账户进行反序列化，而无需检查它是否已被初始化。当实际处理初始化函数（变体索引为0）时，这非常有用。
 2. `unpack` - 调用你的Pack实现的`unpack_from_slice`函数，并检查账户是否已被初始化。
-3. `pack` - 调用您的Pack实现的`pack_into_slice`函数。
+3. `pack` - 调用你的Pack实现的`pack_into_slice`函数。
 
 下面是我们示例程序的Pack trait实现。随后是使用Borsh进行账户数据处理的示例。
 
@@ -168,7 +168,7 @@ footer: MIT Licensed
 1. `sol_template_shared::pack_into_slice` - 进行序列化的地方
 2. `sol_template_shared::unpack_from_slice` - 进行反序列化的地方
 
-**请关注** 在下面的示例中，我们在`BTREE_LENGTH`的数据布局中的`BTREE_STORAGE`之前有一个`u32`（4字节）的分区。这是因为在反序列化过程中，borsh会检查您正在反序列化的切片的长度是否与它实际读取的数据量一致，然后才进行对象的重组。下面演示的方法首先读取`BTREE_LENGTH`，以获取要从`BTREE_STORAGE`指针中`slice`的大小。
+**请关注** 在下面的示例中，我们在`BTREE_LENGTH`的数据布局中的`BTREE_STORAGE`之前有一个`u32`（4字节）的分区。这是因为在反序列化过程中，borsh会检查你正在反序列化的切片的长度是否与它实际读取的数据量一致，然后才进行对象的重组。下面演示的方法首先读取`BTREE_LENGTH`，以获取要从`BTREE_STORAGE`指针中`slice` 的大小。
 
 <CodeGroup>
   <CodeGroupItem title="Rust Program">
@@ -232,7 +232,7 @@ footer: MIT Licensed
 
 ## Solana TS/JS 常用映射
 
-[Borsh Specification](#resources)中包含了大多数基本和复合数据类型的映射关系。
+[Borsh 规范](#resources)中包含了大多数基本和复合数据类型的映射关系。
 
 在TS/JS和Python中，关键是创建一个具有适当定义的Borsh模式，以便序列化和反序列化可以生成或遍历相应的输入。
 
@@ -280,10 +280,10 @@ footer: MIT Licensed
 
 ## 资料
 
-- [Borsh Specification](https://borsh.io/)
+- [Borsh 规范](https://borsh.io/)
 - [Rust Borsh](https://github.com/near/borsh-rs)
 - [TS/JS Borsh](https://github.com/near/borsh-js)
 - [Python Borsh](https://github.com/near/borsh-construct-py)
-- [Python Borsh Documentation](https://near.github.io/borsh-construct-py/)
+- [Python Borsh 文档](https://near.github.io/borsh-construct-py/)
 - [Solana CLI Program Template2](https://github.com/hashblock/solana-cli-program-template)
 

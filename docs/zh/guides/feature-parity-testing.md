@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 功能相等测试 
   - - meta
     - name: description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: 功能因 Solana 集群而异。功能测试可确保可预测的结果。
   - - meta
     - name: og:description
-      content: Features vary by Solana cluster. Feature testing ensures predictable results.
+      content: 功能因 Solana 集群而异。功能测试可确保可预测的结果。 
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -45,7 +45,7 @@ footer: MIT Licensed
 
 ::: tip 事实表
 - 功能是为 Solana 验证节点引入的能力，需要激活才能使用。
-- 某个集群（例如测试网）中可能激活了某些特性，而另一个集群（例如主网测试网）则未激活。
+- 某个集群（例如测试网 testnet ）中可能激活了某些特性，而另一个集群（例如mainnet-beta网）则未激活。
 - 然而，在本地运行默认的`solana-test-validator`时，你的 Solana 版本中的所有可用功能都会自动激活。结果是，在本地测试时，特性和测试结果可能与在不同集群中部署和运行时不同！
 :::
 
@@ -69,15 +69,15 @@ footer: MIT Licensed
 
 天哪！如果你不知道这一点，你可能会感到沮丧，因为你的指令行为没有任何变化会导致这种情况。在开发网络上它正常工作，但在本地却失败了？！？
 
-你可以增加整体交易预算，比如将其增加到 300,000 计算单元（CU），来保持你的理智，但这也展示了为什么以功能相等的方式进行测试是避免任何混淆的积极方式。
+你可以增加整体交易预算，比如将其增加到 300,000 计算单元（CU），来保证正常运行，但这也展示了为什么以功能相等的方式进行测试是避免任何困惑的积极方式。
 
 ## 功能状态
 使用`solana feature status`命令可以很容易地检查特定集群启用了哪些功能。
 ```console
-solana feature status -ud   // Displays by feature status for devnet
-solana feature status -ut   // Displays for testnet
-solana feature status -um   // Displays for mainnet-beta
-solana feature status -ul   // Displays for local, requires running solana-test-validator
+solana feature status -ud   // 显示 devnet网 功能状态
+solana feature status -ut   // 显示 testnet网 功能状态
+solana feature status -um   // 显示 mainnet-beta网 功能状态
+solana feature status -ul   // 显示本地验证节点 功能状态，需要运行 solana-test-validator
 ```
 
 或者，你可以使用类似的工具，像 [scfsd](#resources)，观察所有集群上的功能状态。该工具会显示如下的部分屏幕内容，并且不需要`solana-test-validator`运行：
@@ -119,9 +119,9 @@ Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 187157 compute units
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 ```
-因为我们的功能“事务整体计算容量”默认情况下是自动激活的，我们观察到每个指令从起始事务预算的 200,000 CU 中消耗 CU。
+因为功能“事务整体计算容量”默认情况下是自动激活的，我们观察到每个指令从起始事务预算的 200,000 CU 中消耗 CU。
 
-### 选择性功能已停用
+### 选择性停用功能
 1. 在这次运行中，我们希望使 CU 预算的行为与 devnet 中运行的行为保持一致。使用 Feature Status 中描述的工具，我们可以找到`transaction wide compute cap`的公钥，并在测试验证器启动时使用 `--deactivate-feature` 参数。
 
 ```console
@@ -145,7 +145,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 solana-test-validator --deactivate-feature PUBKEY_1 --deactivate-feature PUBKEY_2 ...
 ```
 
-或者，scfsd](#resources) 提供了一个命令开关，用于输出集群的完整停用功能集，可以直接用于`solana-test-validator`的启动参数：
+或者，[scfsd](#resources) 提供了一个命令开关，用于输出集群的完整停用功能集，可以直接用于`solana-test-validator`的启动参数：
 ```console
 solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ```
@@ -155,7 +155,7 @@ solana-test-validator -l ./.ledger $(scfsd -c devnet -k -t)
 ## 以编程方式进行全面相等性测试
 对于那些在测试代码中控制运行测试验证器的人来说，可以使用`TestValidatorGenesis`来修改测试验证器的激活/停用功能。在 Solana 1.9.6 中，验证器构建器添加了一个函数来支持这个功能。
 
-在您的程序文件夹的根目录下，创建一个名为`tests`的新文件夹，并添加一个`parity_test.rs`文件。以下是每个测试使用的基本函数（模板函数）：
+在你的程序文件夹的根目录下，创建一个名为`tests`的新文件夹，并添加一个`parity_test.rs`文件。以下是每个测试使用的基本函数（模板函数）：
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Test Boiler Plate" active>
 

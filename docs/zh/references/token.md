@@ -1,18 +1,18 @@
 ---
-title: 与代币互动
+title: 与代币交互
 head:
   - - meta
     - name: title
-      content: Solana秘籍 | 与代币互动
+      content: Solana秘籍 | 与代币交互
   - - meta
     - name: og:title
-      content: Solana秘籍 | 与代币互动
+      content: Solana秘籍 | 与代币交互
   - - meta
     - name: description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: 了解如何在 Solana 上使用、转移代币及更多。
   - - meta
     - name: og:description
-      content: Learn how to use, transfer, and more with tokens on Solana
+      content: 了解如何在 Solana 上使用、转移代币及更多。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -37,11 +37,11 @@ head:
 footer: MIT Licensed
 ---
 
-# 代币
+# 代币（Token）
 
 ## 我需要什么才能开始使用SPL代币？
 
-每当你在Solana上与代币进行交互时，实际上你正在与Solana程序库代币（SPL-Token）或SPL代币标准交互。SPL代币标准需要使用特定的库，你可以根据你使用的编程语言在下面找到相应的库。
+每当你在Solana上与代币进行交互时，实际上你正在与Solana程序库代币（Solana Program Library Token）或SPL代币标准交互。SPL代币标准需要使用特定的库，你可以根据你使用的编程语言在下面找到相应的库。
 
 <CodeGroup>
   <CodeGroupItem title="TS" active>
@@ -55,7 +55,7 @@ footer: MIT Licensed
 
 ## 如何创建一个新的代币
 
-创建代币是通过创建所谓的“铸币账户”来完成的。这个铸币账户随后用于向用户的代币账户铸造代币。
+创建代币是通过创建所谓的“铸币账户（mint account）”来完成的。这个铸币账户随后用于向用户的代币账户（token account）铸造代币。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -147,7 +147,7 @@ footer: MIT Licensed
 
 ## 如何获得一个代币账户的余额
 
-每个代币账户都包含有关代币的信息，例如所有者、铸币账户、数量（余额）和小数位数。
+每个代币账户有代币的余额，可以通过单词调用获取
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -184,8 +184,8 @@ footer: MIT Licensed
 
 </SolanaCodeGroup>
 
-::: 贴士
-一个代币账户只能持有一种铸币。当您指定一个代币账户时，您也需要指定一个铸币。
+::: tip
+一个代币账户只能持有一种铸币（mint）。当你指定一个代币账户时，你也需要指定一个铸币（mint）。
 :::
 
 ## 如何铸造(mint)代币 
@@ -232,7 +232,7 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何销代币
+## 如何销毁代币
 
 如果你是代币的所有者，你可以销毁代币。
 
@@ -309,9 +309,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 如何批准代币委托
+## 如何授权代币委托
 
-你可以设置一个委托代理，并指定一个允许的代币数量。设置后，委托代理就像代币账户的另一个所有者。一个代币账户在同一时间只能委托给一个账户。
+你可以授权一个委托代理，并指定委托的代币数量。授权后，委托代理就像代币账户的另一个所有者。一个代币账户在同一时间只能委托给一个账户。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

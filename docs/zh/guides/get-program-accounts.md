@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 获取程序帐户
   - - meta
     - name: description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: 学习在 Solana 上如何使用 getProgramAccounts 和 accountsDB 查询数据。
   - - meta
     - name: og:description
-      content: Learn how to query data on Solana using getProgramAccounts and accountsDB
+      content: 学习在 Solana 上如何使用 getProgramAccounts 和 accountsDB 查询数据。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -42,6 +42,7 @@ head:
 
 ## 综述
 
+### 参数
 ::: tip 参数
 
 - `programId`: `string` - 要查询的程序的公钥，以base58编码的字符串形式提供。
@@ -58,7 +59,7 @@ head:
         - `dataSize`: `number` - 将账户数据的长度与提供的数据大小进行比较
     - (可选) `withContext`: `boolean` - 将结果包装在一个 [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
 
-##### 响应
+### 响应
 
 默认情况下，`getProgramAccounts`将返回一个具有以下结构的 JSON 对象数组：
 
@@ -76,20 +77,20 @@ head:
 `getProgramAccounts` 是一个多功能的RPC方法，用于返回由程序拥有的所有账户。我们可以利用`getProgramAccounts`进行许多有用的查询，例如查找：
 
 - 特定钱包的所有代币账户
-- 特定代币发行的所有代币账户（即所有[SRM](https://www.projectserum.com/)持有人)
-- 特定程序的所有自定义账户（即所有[Mango](https://mango.markets/)用户)
+- 特定代币发行的所有代币账户（如所有[SRM](https://www.projectserum.com/)持有人)
+- 特定程序的所有自定义账户（如所有[Mango](https://mango.markets/)用户)
 
 尽管`getProgramAccounts`非常有用，但由于目前的限制，它经常被误解。许多由`getProgramAccounts`支持的查询需要RPC节点扫描大量数据。这些扫描需要大量的内存和资源。因此，调用过于频繁或范围过大可能导致连接超时。此外，在撰写本文时，`getProgramAccounts`端点不支持分页。如果查询结果太大，响应将被截断。
 
 为了解决当前的限制，`getProgramAccounts`提供了一些有用的参数，包括`dataSlice`和`filters`选项的`memcmp`和`dataSize`。通过提供这些参数的组合，我们可以将查询范围缩小到可管理和可预测的大小。
 
-`getProgramAccounts`的一个常见示例涉及与[SPL-Token Program](https://spl.solana.com/token) 程序交互。仅使用基本调用请求由Token程序拥有的所有账户将涉及大量的数据。然而，通过提供参数，我们可以高效地请求我们要使用的数据。
+`getProgramAccounts`的一个常见示例是与[SPL-Token Program](https://spl.solana.com/token) 程序交互。仅使用基本调用请求查询由Token程序拥有的所有账户将涉及大量的数据。然而，通过提供参数，我们可以高效地请求到要使用的数据。
 
-### `filters`
-与`getProgramAccounts`一起使用的最常见参数是`filters`数组。该数组接受两种类型的过滤器，即`dataSize`和`memcmp`。在使用这些过滤器之前，我们应该熟悉我们请求的数据的布局和序列化方式。
+### 参数 `filters`
+与`getProgramAccounts`一起使用的最常见参数是`filters`数组。该数组接受两种类型的过滤器，即`dataSize`和`memcmp`。在使用这些过滤器之前，我们应该熟悉请求的数据的布局和序列化方式。
 
-#### `dataSize`
-在Token程序的情况下，我们可以看到[代币账户的长度为165个字节](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具体而言，一个代币账户有八个不同的字段，每个字段需要一定数量的字节。我们可以使用下面的示例图来可视化这些数据的布局。
+####  `dataSize`
+如果是 Token Program ，我们可以看到[代币账户的长度为165个字节](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具体而言，一个代币账户有八个不同的字段，每个字段需要一定数量的字节。我们可以使用下面的示例图来可视化这些数据的布局。
 
 ![Account Size](./get-program-accounts/account-size.png)
 
@@ -164,6 +165,6 @@ head:
 
 ## 其他资料 
 
-- [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
-- [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
-- [JSON-parsed Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+- [RPC API 文档](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
+- [Web3js 文档](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
+- [JSON-parsed Web3js 文档](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)

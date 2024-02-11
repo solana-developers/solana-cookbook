@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 质押
   - - meta
     - name: description
-      content: stake SOL and earn rewards for helping secure the network.
+      content: 质押 SOL，帮助保护网络安全并获得奖励。
   - - meta
     - name: og:description
-      content: Stake SOL and earn rewards for helping secure the network. Learn more about Creating Stake Accounts, Delegate Stake, Withdraw Stake and more references for Building on Solana at The Solana cookbook.
+      content: 质押 SOL，帮助保护网络安全并获得奖励。了解更多有关创建质押账户、委托质押、提取质押以及在 Solana 上构建，更多参考Solana秘籍。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -146,7 +146,7 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 提取质押
+## 赎回质押
 
 一旦停用了，`Withdrawal Authority`可以将 SOL 提取回系统账户。一旦质押账户不再委托并且余额为 0 SOL，它将被销毁了。
 

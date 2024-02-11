@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 非同质化代币 (NFTs)
   - - meta
     - name: description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: 了解如何获取 NFT 元数据、获取 NFT 所有者、在 Solana 上铸造 NFT 等
   - - meta
     - name: og:description
-      content: Learn how to get NFT metadata, get NFT owners, mint NFTs on Solana, and more
+      content: 了解如何获取 NFT 元数据、获取 NFT 所有者、在 Solana 上铸造 NFT 等
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -43,9 +43,9 @@ footer: MIT Licensed
 
 要创建一个 NFT，你需要：
 
-1. 将图像上传到像 Arweave 这样的 IPFS 网络上。
-2. 将 JSON 元数据上传到像 Arweave 这样的 IPFS 网络上。
-3. 调用 Metaplex 创建一个用于该 NFT 的账户。
+1. 将图像上传到像 Arweave 或 IPFS 这样的去中心化存储网络上。
+2. 将 JSON 元数据上传到像 Arweave 或 IPFS 网络上。
+3. 调用 Metaplex 去创建一个用于该 NFT 的账户。
 
 ### 上传到 Arweave
 
@@ -80,9 +80,9 @@ footer: MIT Licensed
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-### 铸造（Mint）该 NFT
+### 铸造（Mint）NFT
 
-如果你已经上传了图像和元数据，您可以使用以下代码铸造（Mint）该 NFT。
+如果你已经上传了图像和元数据，你可以使用以下代码铸造（Mint）该 NFT。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -103,12 +103,12 @@ footer: MIT Licensed
 </SolanaCodeGroup>
 
 ::: tip 注意
-你不能使用与你钱包不同的创作者信息来铸造（Mint） NFT。如果遇到创作者的问题，请确保你的元数据中将你列为创作者。
+你不能使用与创作者信息不同的钱包来铸造（Mint） NFT。如果遇到创作者的问题，请确保你的元数据中将你列为创作者。
 :::
 
 ## 如何获取 NFT 元数据
 
-Metaplex 的 NFT 元数据存储在 Arweave 上。为了获取 Arweave 的元数据，您需要获取 Metaplex PDA（程序派生账户）并对账户数据进行解码。
+Metaplex 的 NFT 元数据存储在 Arweave 上。为了获取 Arweave 的元数据，你需要获取 Metaplex PDA（程序派生账户）并对账户数据进行解码。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -229,9 +229,9 @@ Metaplex 的 NFT 元数据存储在 Arweave 上。为了获取 Arweave 的元数
 
 ## Candy Machine v2
 
-Metaplex JS SDK 现在支持通过代码创建和更新Candy Machine v2。它使开发者能够与糖果机v2 程序进行交互，创建、更新和删除Candy Machine，并从中铸造（Mint） NFT。
+Metaplex JS SDK 现在支持通过代码创建和更新Candy Machine v2。它使开发者能够与 Candy Machine v2 程序进行交互，创建、更新和删除Candy Machine，并从中铸造（Mint） NFT。
 
-### 如何创建Candy Machine
+### 如何创建 Candy Machine
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>
@@ -363,7 +363,7 @@ Metaplex JS SDK 现在支持通过代码创建和更新Candy Machine v2。它使
 
 </SolanaCodeGroup>
 
-### 如何将物品插入到Candy Machine
+### 如何将项目插入到Candy Machine
 
 <SolanaCodeGroup>
 <SolanaCodeGroupItem title="TS" active>

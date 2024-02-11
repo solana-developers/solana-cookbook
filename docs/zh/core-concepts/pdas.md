@@ -83,6 +83,6 @@ PDA是Solana程序开发的重要构成要素。有了PDA，程序可以为账�
 在使用PDA编写程序时，经常会将这个bump[存储在这个账户本身的数据当中](https://github.com/solana-labs/solana-program-library/blob/78e29e9238e555967b9125799d7d420d7d12b959/token-swap/program/src/state.rs#L100)。
 这种机制可以让开发者轻易的对PDA进行验证，而不用重新在指令参数当中传入这个值。
 
-## Other Resources
+## 其他材料
 - [官方文档](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
-- [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
+- [理解程序派生账户](https://www.brianfriel.xyz/understanding-program-derived-addresses/)

@@ -194,7 +194,7 @@ Active release directory: /home/solana/.local/share/solana/install/active_releas
 Update successful
 ```
 
-根据不同的系统，安装包可能提示您
+根据不同的系统，安装包可能提示你
 
 ```bash
 Please update your PATH environment variable to include the solana programs:

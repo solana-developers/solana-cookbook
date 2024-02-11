@@ -9,10 +9,10 @@ head:
       content: Solana秘籍 | 本地开发
   - - meta
     - name: description
-      content: Setup Local Validator for local developer environment and Airdrop SOL. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: 为本地开发环境和空投 SOL 设置本地验证器。有关本地开发和在 Solana 上构建的更多参考信息，请参阅Solana 秘籍 
   - - meta
     - name: og:description
-      content: Setup Local Validator and Airdrop SOL for building on Solana Locally. Learn about Local Development and more references for Building on Solana at The Solana cookbook.
+      content: 为本地开发环境和空投 SOL 设置本地验证器。有关本地开发和在 Solana 上构建的更多参考信息，请参阅Solana 秘籍 
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -53,7 +53,7 @@ solana-test-validator
 使用本地测试验证器的好处包括：
 
 - 无RPC速率限制
-- 无空投限制
+- 无空投数量限制
 - 直接在链上部署程序（`--bpf-program ...`）
 - 从公共集群克隆账户，包括程序（`--clone ...`）
 - 可配置的事务历史保留（`--limit-ledger-size ...`）
@@ -234,9 +234,9 @@ solana-test-validator
 
 Websockets提供了一种发布/订阅接口，你可以在其中监听特定的事件。与在固定时间间隔内对典型的HTTP端点进行轮询以获取频繁的更新不同，你可以仅在事件发生时才接收这些更新。
 
-Solana的web3[`连接`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) 在底层生成一个websocket端点，并在创建新的`Connection`实例时注册一个websocket客户端（请参阅 [此处](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)) 的源代码）。
+Solana 的 web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) 在底层生成一个websocket端点，并在创建新的`Connection`实例时注册一个websocket客户端（请参阅 [此处](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)) 的源代码）。
 
-`Connection`类提供了发布/订阅方法，它们都以`on`开头，类似于事件发射器。当您调用这些监听器方法时，它会在该`Connection`实例的websocket客户端中注册一个新的订阅。下面我们使用的示例发布/订阅方法是[`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange)。 回调函数将通过参数提供更新的状态数据（例如，查看A[`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) 作为示例）。
+`Connection`类提供了发布/订阅方法，它们都以`on`开头，类似于事件发射器。当你调用这些监听器方法时，它会在该`Connection`实例的websocket客户端中注册一个新的订阅。下面我们使用的示例发布/订阅方法是[`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange)。 回调函数将通过参数提供更新的状态数据（例如，查看A[`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) 作为示例）。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -386,12 +386,12 @@ Solana的web3[`连接`](https://solana-labs.github.io/solana-web3.js/classes/Con
 
 </SolanaCodeGroup>
 
-## 使用主网 （Mainnet) 账户和程序
+## 使用主网（Mainnet) 账户和程序
 
-本地测试通常依赖于仅在主网上可用的程序和账户。Solana CLI 提供了以下两个功能：
+有时，本地测试会依赖于仅在主网上可用的程序和账户。Solana CLI 提供了以下两个功能：
 
-*下载程序和账户
-*将程序和账户加载到本地验证器中
+* 下载程序和账户
+* 将程序和账户加载到本地验证器中
 
 
 ### 如何从主网加载账户

@@ -9,10 +9,10 @@ head:
       content: Solana秘籍| Versioned Transactions
   - - meta
     - name: description
-      content: New and improved transaction format on Solana.
+      content: Solana 新的和改进过的交易格式。
   - - meta
     - name: og:description
-      content: New and improved transaction format on Solana.
+      content: Solana 新的和改进过的交易格式。
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -48,7 +48,7 @@ Solana最近发布了版本化交易。提议的更改如下：
 ## 综述
 
 ::: tip 事实表
--传统交易存在一个主要问题：最大允许的大小为1232字节，因此原子交易中可以容纳的账户数量为35个地址。
+- 传统交易存在一个主要问题：最大允许的大小为1232字节，因此原子交易中可以容纳的账户数量为35个地址。
 - 地址查找表（LUTs）：一旦账户存储在该表中，可以使用1字节的u8索引，在交易消息中引用该表的地址。
 - 可以使用`solana/web3.js`的`createLookupTable()`构建一个新的查找表，并确定其地址。
 - 一旦创建了LUT，可以进行扩展，即可以将账户追加到表中。
@@ -69,12 +69,12 @@ Solana网络使用最大事务单元（MTU）大小为1280字节，遵循[IPv6 M
     
 ![Transaction Format](./versioned-transactions/tx_format.png)
 
-::: tip Compact-Array format
+::: tip 紧凑数组格式
  
-A compact array is an array serialised to have the following components:
+紧凑数组是一个序列化过的数组，它具有以下组件:
  
-1. An array length in a multi-byte encoding called [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format)
-2. Followed by each array item  
+1. 称为 [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format) 的多字节编码的数组长度
+2. 接着是每个数组元素
 
 ![Compact array format](./versioned-transactions/compact_array_format.png)
 :::
@@ -173,7 +173,7 @@ pub enum VersionedMessage {
 新的MessageV0的结构基本上是相同的，只是有两个小但重要的变化：
 
 1. **消息头部**：与传统版本相同，没有变化。
-2. **紧凑账户密钥数组**：与传统版本相同，没有变化。我们将指向该数组元素的索引数组表示为*索引数组A*（您很快将看到为什么我们这样表示）。
+2. **紧凑账户密钥数组**：与传统版本相同，没有变化。我们将指向该数组元素的索引数组表示为*索引数组A*（你很快将看到为什么我们这样表示）。
 3. **最近的区块哈希**：与传统版本相同，没有变化。
 4. **紧凑指令数组**：与传统版本不同，发生了变化。
 5. **地址表查找的紧凑数组**：在版本0中引入。

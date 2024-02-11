@@ -9,10 +9,10 @@ head:
       content: Solana密集 | Solana程序资料
   - - meta
     - name: description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: 了解如何在 Solana 上编写程序，及跨程序调用、读取账户等内容
   - - meta
     - name: og:description
-      content: Learn how to write programs on Solana, with references on cross program invocation, reading accounts, and more
+      content: 了解如何在 Solana 上编写程序，及跨程序调用、读取账户等内容
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -59,7 +59,7 @@ head:
 1. 将`SYSVAR_CLOCK_PUBKEY`作为指令的参数传入。
 2. 在指令内部直接访问时钟。
 
-了解这两种方法会对你有好处，因为一些传统的程序仍然将SYSVAR_CLOCK_PUBKEY作为一个账户来使用。
+了解这两种方法会对你有好处，因为一些传统的程序仍然将 `SYSVAR_CLOCK_PUBKEY` 作为一个账户来使用。
 
 ### 在指令中将时钟作为一个账户传递
 
@@ -167,9 +167,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-## 跨程序调用的方法
+## 如何跨程序调用
 
-跨程序调用，简单来说，就是在我们的程序中调用另一个程序的指令。一个很好的例子是`Uniswap`的`swap`功能。`UniswapV2Router`合约调用必要的逻辑进行交换，并调用`ERC20`合约的transfer函数将代币从一个人转移到另一个人。同样的方式，我们可以调用程序的指令来实现多种目的。
+跨程序调用，简单来说，就是在我们的程序中调用另一个程序的指令。一个很好的例子是`Uniswap`的`swap`功能。`UniswapV2Router`合约调用必要的逻辑进行兑换，并调用`ERC20`合约的transfer函数将代币从一个人转移到另一个人。同样的方式，我们可以调用程序的指令来实现多种目的。
 
 让我们来看看我们的第一个例子，即`SPL Token Program`的`transfer`指令。进行转账所需的账户包括：
 
@@ -216,9 +216,9 @@ head:
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
 
-现在让我们来看另一个例子，即`System Program`的`create_account`指令。这里与上面提到的指令有一点不同。在上述例子中，我们不需要在`invoke`函数中将`token_program`作为账户之一传递。然而，在某些情况下，您需要传递调用指令的`program_id`。在我们的例子中，它将是`System Program`的`program_id`（"11111111111111111111111111111111"）。所以现在所需的账户包括：
+现在让我们来看另一个例子，即`System Program`的`create_account`指令。这里与上面提到的指令有一点不同。在上述例子中，我们不需要在`invoke`函数中将`token_program`作为账户之一传递。然而，在某些情况下，你需要传递调用指令的`program_id`。在我们的例子中，它将是`System Program`的`program_id`（"11111111111111111111111111111111"）。所以现在所需的账户包括：
 
-1.  负责支付租金的支付账户
+1. 负责支付租金的支付账户
 2. 将要创建的账户
 3. 系统程序（System Program）账户
 
@@ -262,7 +262,7 @@ head:
 
 ## 如何创建PDA
 
-程序派生地址（Program Derived Address，PDA）是程序拥有的账户，但没有私钥。相反，它的签名是通过一组种子和一个阻碍值（一个确保其不在曲线上的随机数）获取的。"生成"程序地址与"创建"它是不同的。可以使用`Pubkey::find_program_address`来生成PDA。创建PDA实质上意味着初始化该地址的空间并将其状态设置为初始状态。普通的密钥对账户可以在我们的程序之外创建，然后将其用于初始化PDA的状态。不幸的是，对于PDA来说，它必须在链上创建，因为它本身无法代表自己进行签名。因此，我们使用`invoke_signed`来传递PDA的种子，以及资金账户的签名，从而实现了PDA的账户创建。
+程序派生地址（Program Derived Address，PDA）是程序拥有的账户，但没有私钥。相反，它的签名是通过一组种子和一个跳跃值（一个确保其不在曲线上的随机数）获取的。"生成（Generating）"程序地址与"创建（creating）"它是不同的。可以使用`Pubkey::find_program_address`来生成 PDA。创建 PDA 实质上意味着初始化该地址的空间并将其状态设置为初始状态。普通的密钥对账户可以在我们的程序之外创建，然后将其用于初始化PDA的状态。不幸的是，对于PDA来说，它必须在链上创建，因为它本身无法代表自己进行签名。因此，我们使用`invoke_signed`来传递PDA的种子，以及资金账户的签名，从而实现了PDA的账户创建。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="Rust" active>
