@@ -38,7 +38,7 @@ Varsayılan olarak `getProgramAccounts`, aşağıdaki yapıya sahip bir dizi JSO
 `getProgramAccounts`, bir programın sahip olduğu tüm account'ları döndüren çok yönlü bir RPC methodudur. `getProgramAccounts`'u aşağıdakileri bulmak gibi bir dizi yararlı sorgu için kullanabiliriz:
 
 - Belirli bir cüzdan için tüm token account'ları
-- Belirli bir mint için tüm token account'ları (tüm [SRM](https://www.projectserum.com/) sahipleri)
+- Belirli bir mint için tüm token account'ları (tüm [SRM](https://www.projectOpenBook.com/) sahipleri)
 - Belirli bir program için tüm private account'lar (tüm [Mango](https://mango.markets/) kullanıcıları)
 
 Kullanışlılığına rağmen, `getProgramAccounts`, mevcut kısıtlamaları nedeniyle genellikle yanlış anlaşılır. `getProgramAccounts` tarafından desteklenen sorguların çoğu, büyük veri kümelerini taramak için RPC node’larını gerektirir. Bu taramalar hem bellek hem de kaynak yoğundur. Sonuç olarak, çok sık veya çok geniş kapsamlı çağrılar bağlantı zaman aşımlarına neden olabilir. Ayrıca, bu yazının yazıldığı sırada `getProgramAccounts` uç noktası sayfalandırmayı desteklemez. Bir sorgunun sonuçları çok büyükse, yanıt kesilecektir.

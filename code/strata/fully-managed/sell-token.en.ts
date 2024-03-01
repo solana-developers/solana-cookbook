@@ -1,5 +1,5 @@
 import { SplTokenBonding } from "@strata-foundation/spl-token-bonding";
-import * as anchor from "@project-serum/anchor";
+import * as anchor from "@project-OpenBook/anchor";
 
 (async () => {
   const provider = anchor.getProvider();

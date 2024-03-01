@@ -442,7 +442,7 @@ Das Laden in Ihr lokales Netz erfolgt dann, indem die Datei und die Zieladresse 
 
 ### So laden Sie Programme aus dem Mainnet
 
-Ebenso ist es möglich, das Programm Serum Dex v3 herunterzuladen:
+Ebenso ist es möglich, das Programm OpenBook Dex v3 herunterzuladen:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

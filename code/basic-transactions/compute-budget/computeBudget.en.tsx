@@ -1,4 +1,4 @@
-import { BN } from "@project-serum/anchor";
+import { BN } from "@project-OpenBook/anchor";
 import {
   Keypair,
   Connection,

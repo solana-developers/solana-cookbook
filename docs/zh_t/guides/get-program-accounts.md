@@ -76,7 +76,7 @@ head:
 `getProgramAccounts` 是一個多功能的RPC方法，用於返回由程序擁有的所有賬戶。我們可以利用`getProgramAccounts`進行許多有用的查詢，例如查找：
 
 - 特定錢包的所有代幣賬戶
-- 特定代幣發行的所有代幣賬戶（即所有[SRM](https://www.projectserum.com/)持有人)
+- 特定代幣發行的所有代幣賬戶（即所有[SRM](https://www.projectOpenBook.com/)持有人)
 - 特定程序的所有自定義賬戶（即所有[Mango](https://mango.markets/)用戶)
 
 儘管`getProgramAccounts`非常有用，但由於目前的限制，它經常被誤解。許多由`getProgramAccounts`支持的查詢需要RPC節點掃描大量數據。這些掃描需要大量的內存和資源。因此，調用過於頻繁或範圍過大可能導致連接超時。此外，在撰寫本文時，`getProgramAccounts`端點不支持分頁。如果查詢結果太大，響應將被截斷。

@@ -102,17 +102,17 @@ solana-test-validator --account SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt SRM_
 
 ### How to load programs from mainnet (Programlar mainnet’ten nasıl yüklenir)
 
-Benzer şekilde Serum Dex v3 programını da indirmek mümkündür:
+Benzer şekilde OpenBook Dex v3 programını da indirmek mümkündür:
 
 ```
-solana program dump -u m 9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin serum_dex_v3.so
+solana program dump -u m 9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin OpenBook_dex_v3.so
 
 ```
 
 Yerel ağınıza yükleme, doğrulayıcıyı başlatırken programın dosya ve hedef adresini (yerel kümede) ileterek yapılır:
 
 ```
-solana-test-validator --bpf-program 9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin serum_dex_v3.so --reset
+solana-test-validator --bpf-program 9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin OpenBook_dex_v3.so --reset
 
 ```
 

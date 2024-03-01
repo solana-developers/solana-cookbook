@@ -1,18 +1,18 @@
 ---
-title: Serum
+title: OpenBook
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Building on Serum
+      content: Solana Cookbook | Building on OpenBook
   - - meta
     - name: og:title
-      content: Solana Cookbook | Building on Serum
+      content: Solana Cookbook | Building on OpenBook
   - - meta
     - name: description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: OpenBook is an innovative CLOB on Solana. Learn how to use and build on top of OpenBook.
   - - meta
     - name: og:description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: OpenBook is an innovative CLOB on Solana. Learn how to use and build on top of OpenBook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,15 +36,15 @@ head:
       content: index,follow
 ---
 
-# Serum
+# OpenBook
 
-Ang Serum ay isang protocol para sa mga desentralisadong palitan na binuo sa Solana. Ikaw
-maaaring gumamit ng Serum para gumawa ng mga bagong market, kumuha ng mga order book, trade, at higit pa.
+Ang OpenBook ay isang protocol para sa mga desentralisadong palitan na binuo sa Solana. Ikaw
+maaaring gumamit ng OpenBook para gumawa ng mga bagong market, kumuha ng mga order book, trade, at higit pa.
 
-## Paano makakuha ng Serum market
+## Paano makakuha ng OpenBook market
 
-Ang isang merkado sa Serum ay naglalaman ng lahat ng mga order at kakayahan upang gumawa ng mga order
-sa Serum. Para sa lahat ng ginagawa mo sa Serum kailangan mong malaman ang market mo
+Ang isang merkado sa OpenBook ay naglalaman ng lahat ng mga order at kakayahan upang gumawa ng mga order
+sa OpenBook. Para sa lahat ng ginagawa mo sa OpenBook kailangan mong malaman ang market mo
 ay nagtatrabaho sa.
 
 <SolanaCodeGroup>
@@ -52,13 +52,13 @@ ay nagtatrabaho sa.
 
   <template v-slot:default>
 
-@[code](@/code/serum/load-market/load-market.en.ts)
+@[code](@/code/OpenBook/load-market/load-market.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/load-market/load-market.preview.en.ts)
+@[code](@/code/OpenBook/load-market/load-market.preview.en.ts)
 
   </template>
 
@@ -66,9 +66,9 @@ ay nagtatrabaho sa.
 
 </SolanaCodeGroup>
 
-## Paano kumuha ng Serum order books
+## Paano kumuha ng OpenBook order books
 
-Ang mga serum market ay binubuo ng mga orderbook na may mga bid at nagtatanong. Kaya mo
+Ang mga OpenBook market ay binubuo ng mga orderbook na may mga bid at nagtatanong. Kaya mo
 i-query ang impormasyong ito para makita mo kung ano ang nangyayari sa merkado at
 kumilos nang naaayon.
 
@@ -77,13 +77,13 @@ kumilos nang naaayon.
 
   <template v-slot:default>
 
-@[code](@/code/serum/get-books/get-books.en.ts)
+@[code](@/code/OpenBook/get-books/get-books.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/get-books/get-books.preview.en.ts)
+@[code](@/code/OpenBook/get-books/get-books.preview.en.ts)
 
   </template>
 
@@ -95,20 +95,20 @@ kumilos nang naaayon.
 
 Bilang isang mangangalakal, gugustuhin mong malaman kung anong kasalukuyang bukas na mga order ang mayroon ka
 sa isang palengke. Maaari mong i-query ang iyong mga open order o ng sinuman sa isang market
-may Serum.
+may OpenBook.
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/serum/get-orders/get-orders.en.ts)
+@[code](@/code/OpenBook/get-orders/get-orders.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/get-orders/get-orders.preview.en.ts)
+@[code](@/code/OpenBook/get-orders/get-orders.preview.en.ts)
 
   </template>
 

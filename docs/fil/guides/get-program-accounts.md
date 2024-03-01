@@ -76,7 +76,7 @@ Bilang default, magbabalik ang `getProgramAccounts` ng hanay ng mga JSON object 
 Ang `getProgramAccounts` ay isang versatile na paraan ng RPC na ibinabalik ang lahat ng account na pagmamay-ari ng isang program. Maaari nating gamitin ang `getProgramAccounts` para sa ilang kapaki-pakinabang na query, gaya ng paghahanap ng:
 
 - Lahat ng token account para sa isang partikular na wallet
-- Lahat ng token account para sa isang partikular na mint (i.e. Lahat ng [SRM](https://www.projectserum.com/) may hawak)
+- Lahat ng token account para sa isang partikular na mint (i.e. Lahat ng [SRM](https://www.projectOpenBook.com/) may hawak)
 - Lahat ng custom na account para sa isang partikular na programa (ibig sabihin, Lahat ng [Mango](https://mango.markets/) user)
 
 Sa kabila ng pagiging kapaki-pakinabang nito, ang `getProgramAccounts` ay madalas na hindi maintindihan dahil sa mga kasalukuyang hadlang nito. Marami sa mga query na sinusuportahan ng `getProgramAccounts` ay nangangailangan ng mga RPC node na mag-scan ng malalaking set ng data. Ang mga pag-scan na ito ay parehong memory at resource intensive. Bilang resulta, ang mga tawag na masyadong madalas o masyadong malaki ang saklaw ay maaaring magresulta sa mga timeout ng koneksyon. Higit pa rito, sa oras ng pagsulat na ito, ang endpoint ng `getProgramAccounts` ay hindi sumusuporta sa pagination. Kung ang mga resulta ng isang query ay masyadong malaki, ang tugon ay puputulin.

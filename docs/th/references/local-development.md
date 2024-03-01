@@ -436,7 +436,7 @@ local tests มักจะต้องใช้ programs และ accounts ท
 
 ### วิธี load programs from mainnet
 
-และเช่นกันเราสามารถ download Serum Dex v3 program ได้:
+และเช่นกันเราสามารถ download OpenBook Dex v3 program ได้:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

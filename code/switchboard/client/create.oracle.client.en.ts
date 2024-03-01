@@ -1,4 +1,4 @@
-import * as anchor from "@project-serum/anchor";
+import * as anchor from "@project-OpenBook/anchor";
 import { Keypair } from "@solana/web3.js";
 import {
   loadSwitchboardProgram,

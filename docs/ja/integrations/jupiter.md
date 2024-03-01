@@ -324,7 +324,7 @@ useJupiterフックは、必要なすべてのパラメーターを取得して�
 ```bash
 yarn i @solana/web3.js
 yarn i cross-fetch
-yarn i @project-serum/anchor
+yarn i @project-OpenBook/anchor
 yarn i bs58
 ```
 
@@ -335,7 +335,7 @@ yarn i bs58
 ```bash
 npm i @solana/web3.js
 npm i cross-fetch
-npm i @project-serum/anchor
+npm i @project-OpenBook/anchor
 npm i bs58
 ```
 

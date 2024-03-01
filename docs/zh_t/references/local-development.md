@@ -437,7 +437,7 @@ Solana的web3[`連接`](https://solana-labs.github.io/solana-web3.js/classes/Con
 
 ### 如何從主網加載程序
 
-同樣地，我們可以下載Serum Dex v3程序：
+同樣地，我們可以下載OpenBook Dex v3程序：
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

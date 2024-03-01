@@ -52,7 +52,7 @@ Mango offre un lieu unique pour prêter, emprunter, échanger et négocier des c
 
 ## Comment récupérer un Groupe Mango
 
-Un groupe Mango est un panier de jetons à marges croisées. Il contient des informations générales sur le marché des jetons, les dex de Serum, les marchés perp, les oracles, les fonds d'assurance et les vaults de frais. Chaque version de Mango Markets utilise un groupe Mango différent contenant des jetons différents. Le groupe v3 actuel `mainnet.1`. Voici un tableau présentant les différents groupes :
+Un groupe Mango est un panier de jetons à marges croisées. Il contient des informations générales sur le marché des jetons, les dex de OpenBook, les marchés perp, les oracles, les fonds d'assurance et les vaults de frais. Chaque version de Mango Markets utilise un groupe Mango différent contenant des jetons différents. Le groupe v3 actuel `mainnet.1`. Voici un tableau présentant les différents groupes :
 
 
 | Groupe                | Version     | Cluster          |
@@ -149,7 +149,7 @@ Après avoir créé un compte mango, vous devrez l'approvisionner en jetons pour
 </SolanaCodeGroup>
 
 ## Comment placer un ordre spot
-Mango interagit avec le Protocole Serum pour placer des ordres spot sur les marchés. Vous pouvez passer un ordre spot en procédant ainsi. Vous pouvez trouver la référence de la fonction placeSpotOrder [ici](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
+Mango interagit avec le Protocole OpenBook pour placer des ordres spot sur les marchés. Vous pouvez passer un ordre spot en procédant ainsi. Vous pouvez trouver la référence de la fonction placeSpotOrder [ici](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango possède un fichier de configuration qui contient des informations sur les groupes, les marchés, les jetons et les oracles que vous pouvez trouver [ici](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). Nous utilisons les informations de ce dossier pour trouver le bon groupe et le bon marché.
 
 <SolanaCodeGroup>
@@ -171,7 +171,7 @@ Mango possède un fichier de configuration qui contient des informations sur les
 </SolanaCodeGroup>
 
 ## Comment charger les offres
-Mango utilise les informations de marché du Protocole Serum pour charger les offres. Vous pouvez les charger directement depuis Serum pour travailler avec sur Mango. Vous pouvez en savoir plus sur les marchés de Serum [ici](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango utilise les informations de marché du Protocole OpenBook pour charger les offres. Vous pouvez les charger directement depuis OpenBook pour travailler avec sur Mango. Vous pouvez en savoir plus sur les marchés de OpenBook [ici](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -192,7 +192,7 @@ Mango utilise les informations de marché du Protocole Serum pour charger les of
 </SolanaCodeGroup>
 
 ## Comment charger les demandes
-Mango utilise les informations de marché du Protocole Serum pour charger les demandes. Vous pouvez les charger directement depuis Serum pour travailler avec sur Mango. Vous pouvez en savoir plus sur les marchés de Serum [ici](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango utilise les informations de marché du Protocole OpenBook pour charger les demandes. Vous pouvez les charger directement depuis OpenBook pour travailler avec sur Mango. Vous pouvez en savoir plus sur les marchés de OpenBook [ici](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

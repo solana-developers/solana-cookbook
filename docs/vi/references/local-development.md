@@ -435,7 +435,7 @@ Sau đó, cài đặt nó vào môi trường localnet của bạn bằng cách 
 
 ### Làm thế nào để cải đặt programs từ mainnet
 
-Tương tự, bạn phải tải xuống program của Serum Dex v3:
+Tương tự, bạn phải tải xuống program của OpenBook Dex v3:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

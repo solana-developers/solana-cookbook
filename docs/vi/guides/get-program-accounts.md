@@ -76,7 +76,7 @@ Mặc định `getProgramAccounts` sẽ trả về một mảng các đối tư�
 `getProgramAccounts` là một phương thức RPC rất linh hoạt và có khả năng trả về tất cả các Account được sở hữu bởi một Program. Chúng ta có thể sử dụng `getProgramAccounts` cho nhiều loại truy vấn khác nhau, ví dụ như:
 
 - Tất cả các Account của một ví cụ thể
-- Tất cả các Account cho một mint (hoặc thường được gọi là token đối với các blockchain khác) (i.e. Tất cả người giữ token [SRM](https://www.projectserum.com/))
+- Tất cả các Account cho một mint (hoặc thường được gọi là token đối với các blockchain khác) (i.e. Tất cả người giữ token [SRM](https://www.projectOpenBook.com/))
 - Tất cả các Account theo ý muốn của một Program cụ thể (i.e. Tất cả Account người dùng của ứng dụng [Mango](https://mango.markets/))
 
 Mặc dù hữu dụng là vậy, `getProgramAccounts` thường bị dùng sai vì các hạn chế hiện tại. Nhiều câu truy vấn được hỗ trợ bởi `getProgramAccounts` yêu cầu các nốt RPC phải quét một khối lượng rất lớn các dữ liệu. Những câu truy vấn như vậy không chỉ lớn về dung lượng dữ liệu và còn lớn về khối lượng tính toán. Tất yếu, việc gọi quá nhiều về cả tần suất và khối lượng dẫn đến kết nối sẽ bị ngắt. Ngoài ra, tại thời điểm cuốn sách được viết, `getProgramAccounts` vẫn chưa hỗ trợ phân trang. Nếu kết quả truy vấn quá lớn, nó sẽ được cắt bỏ đi.

@@ -55,7 +55,7 @@ Sie benötigen außerdem die Solana-Javascript-API-Bibliothek.
 
 ## So erhalten Sie eine Mango-Gruppe
 
-Eine Mangogruppe ist ein Korb mit querrandigen Spielmarken. Es enthält umfassende Marktinformationen über Token, Serum-Dex-Märkte, Tätermärkte, Orakel, Versicherungsfonds und Gebührentresore. Jede Version
+Eine Mangogruppe ist ein Korb mit querrandigen Spielmarken. Es enthält umfassende Marktinformationen über Token, OpenBook-Dex-Märkte, Tätermärkte, Orakel, Versicherungsfonds und Gebührentresore. Jede Version
 von Mango Markets verwendet eine andere Mango-Gruppe, die andere enthält
 Token. Die aktuelle v3-Gruppe ist „mainnet.1“. Hier ist eine Tabelle mit den verschiedenen Gruppen:
 
@@ -157,7 +157,7 @@ Die Referenz für die Einzahlungsmethode finden Sie [hier](https://blockworks-fo
 
 ## So platzieren Sie eine Spot-Order
 
-Mango interagiert mit dem Serum Protocol, um Spot-Orders auf den Märkten zu platzieren. Sie können eine Spot Order
+Mango interagiert mit dem OpenBook Protocol, um Spot-Orders auf den Märkten zu platzieren. Sie können eine Spot Order
 bestellen, indem Sie dies tun. Die Referenz für die placeSpotOrder-Funktion finden Sie [hier](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder).
 Mango hat eine Konfigurationsdatei, die Informationen zu Gruppen, Märkten, Token und Orakeln enthält.
 Sie finden es [hier](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). Wir verwenden Informationen aus dieser Datei, um die richtige Gruppe und den richtigen Markt zu finden.
@@ -182,8 +182,8 @@ Sie finden es [hier](https://github.com/blockworks-foundation/mango-client-v3/bl
 
 ## So laden Sie Gebote
 
-Mango verwendet die Marktinformationen von Serum Protocol, um Gebote zu laden. Sie können
-sie direkt aus Serum laden, um mit Mango zu arbeiten. Sie können [hier](https://github.com/project-serum/serum-ts/tree/master/packages/serum) mehr über Serum Märkte erfahren
+Mango verwendet die Marktinformationen von OpenBook Protocol, um Gebote zu laden. Sie können
+sie direkt aus OpenBook laden, um mit Mango zu arbeiten. Sie können [hier](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook) mehr über OpenBook Märkte erfahren
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -205,8 +205,8 @@ sie direkt aus Serum laden, um mit Mango zu arbeiten. Sie können [hier](https:/
 
 ## How to load asks
 
-Mango verwendet die Marktinformationen von Serum Protocol, um Anfragen zu laden.
-Sie können sie direkt aus Serum laden, um mit Mango zu arbeiten. Sie können [hier](https://github.com/project-serum/serum-ts/tree/master/packages/serum) mehr über die Märkte von Serum erfahren
+Mango verwendet die Marktinformationen von OpenBook Protocol, um Anfragen zu laden.
+Sie können sie direkt aus OpenBook laden, um mit Mango zu arbeiten. Sie können [hier](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook) mehr über die Märkte von OpenBook erfahren
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

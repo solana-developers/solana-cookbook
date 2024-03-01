@@ -90,5 +90,5 @@ Pyth stellt eine Rust Crate bereit, die von On-Chain-Programmen oder Off-Chain-A
 
 - [Client Libraries](https://docs.pyth.network/consumers/client-libraries)
 - [JS Example Code](https://github.dev/solana-labs/solana/tree/master/web3.js/examples)
-- [Rust Example Code](https://github.com/project-serum/anchor/tree/master/tests/pyth)
+- [Rust Example Code](https://github.com/project-OpenBook/anchor/tree/master/tests/pyth)
 - [Anchor Example Code](https://github.com/0xPratik/pyth-anchor-example)

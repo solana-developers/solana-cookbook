@@ -109,7 +109,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Integrations",
               children: [
                 "/integrations",
-                "/integrations/serum.md",
+                "/integrations/OpenBook.md",
                 "/integrations/pyth.md",
                 "/integrations/switchboard.md",
                 "/integrations/mango.md",
@@ -340,7 +340,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Integrationen",
               children: [
                 "/de/integrations",
-                "/de/integrations/serum.md",
+                "/de/integrations/OpenBook.md",
                 "/de/integrations/pyth.md",
                 "/de/integrations/switchboard.md",
                 "/de/integrations/mango.md",
@@ -414,7 +414,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Tích hợp",
               children: [
                 "/vi/integrations",
-                "/vi/integrations/serum.md",
+                "/vi/integrations/OpenBook.md",
                 "/vi/integrations/pyth.md",
                 "/vi/integrations/switchboard.md",
                 "/vi/integrations/mango.md",
@@ -488,7 +488,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "การใช้งาน",
               children: [
                 "/th/integrations",
-                "/th/integrations/serum.md",
+                "/th/integrations/OpenBook.md",
                 "/th/integrations/pyth.md",
                 "/th/integrations/switchboard.md",
                 "/th/integrations/mango.md",
@@ -580,7 +580,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Intégrations",
               children: [
                 "/fr/integrations",
-                "/fr/integrations/serum.md",
+                "/fr/integrations/OpenBook.md",
                 "/fr/integrations/pyth.md",
                 "/fr/integrations/switchboard.md",
                 "/fr/integrations/mango.md",
@@ -655,7 +655,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Integrasi",
               children: [
                 "/id/integrations",
-                "/id/integrations/serum.md",
+                "/id/integrations/OpenBook.md",
                 "/id/integrations/pyth.md",
                 "/id/integrations/switchboard.md",
                 "/id/integrations/mango.md",
@@ -834,7 +834,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Integrations",
               children: [
                 "/integrations",
-                "/integrations/serum.md",
+                "/integrations/OpenBook.md",
                 "/integrations/pyth.md",
                 "/integrations/switchboard.md",
                 "/integrations/mango.md",
@@ -908,7 +908,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "インテグレーション",
               children: [
                 "/ja/integrations",
-                "/ja/integrations/serum.md",
+                "/ja/integrations/OpenBook.md",
                 "/ja/integrations/pyth.md",
                 "/ja/integrations/switchboard.md",
                 "/ja/integrations/mango.md",
@@ -983,7 +983,7 @@ export default defineUserConfig<DefaultThemeOptions>({
               text: "Mga Integrasyon",
               children: [
                 "/fil/integrations/",
-                "/fil/integrations/serum.md",
+                "/fil/integrations/OpenBook.md",
                 "/fil/integrations/pyth.md",
                 "/fil/integrations/switchboard.md",
                 "/fil/integrations/mango.md",

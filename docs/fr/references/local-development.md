@@ -435,7 +435,7 @@ Le chargement sur votre réseau local se fait ensuite en passant le fichier cont
 
 ### Comment charger des programmes depuis le mainnet
 
-De même, il est possible de télécharger le programme Serum Dex v3 :
+De même, il est possible de télécharger le programme OpenBook Dex v3 :
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

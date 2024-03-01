@@ -434,7 +434,7 @@ Memuatnya ke localnet anda kemudian dilakukan dengan meneruskan file akun dan al
 
 ### Cara memuat program dari mainnet 
 
-Demikian pula, dimungkinkan untuk mengunduh program Serum Dex v3:
+Demikian pula, dimungkinkan untuk mengunduh program OpenBook Dex v3:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

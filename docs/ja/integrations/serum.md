@@ -1,18 +1,18 @@
 ---
-title: Serum
+title: OpenBook
 head:
   - - meta
     - name: title
-      content: Solana Cookbook | Building on Serum
+      content: Solana Cookbook | Building on OpenBook
   - - meta
     - name: og:title
-      content: Solana Cookbook | Building on Serum
+      content: Solana Cookbook | Building on OpenBook
   - - meta
     - name: description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: OpenBook is an innovative CLOB on Solana. Learn how to use and build on top of OpenBook.
   - - meta
     - name: og:description
-      content: Serum is an innovative CLOB on Solana. Learn how to use and build on top of Serum.
+      content: OpenBook is an innovative CLOB on Solana. Learn how to use and build on top of OpenBook.
   - - meta
     - name: og:image
       content: https://solanacookbook.com/cookbook-sharing-card.png
@@ -36,26 +36,26 @@ head:
       content: index,follow
 ---
 
-# Serum
+# OpenBook
 
-Serumは、Solana 上に構築された分散型取引所のプロトコルです。 Serumを使用して、新しい市場の作成、オーダーブックの取得、取引などを行うことができます。
+OpenBookは、Solana 上に構築された分散型取引所のプロトコルです。 OpenBookを使用して、新しい市場の作成、オーダーブックの取得、取引などを行うことができます。
 
-## Serumマーケットの取得方法
+## OpenBookマーケットの取得方法
 
-Serumのマーケットには、Serumで注文するためのすべての注文と機能が含まれています。 Serumで行うすべてのことについて、作業しているマーケットを知る必要があります。
+OpenBookのマーケットには、OpenBookで注文するためのすべての注文と機能が含まれています。 OpenBookで行うすべてのことについて、作業しているマーケットを知る必要があります。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/serum/load-market/load-market.en.ts)
+@[code](@/code/OpenBook/load-market/load-market.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/load-market/load-market.preview.en.ts)
+@[code](@/code/OpenBook/load-market/load-market.preview.en.ts)
 
   </template>
 
@@ -63,22 +63,22 @@ Serumのマーケットには、Serumで注文するためのすべての注文�
 
 </SolanaCodeGroup>
 
-## Serumオーダーブックの入手方法
+## OpenBookオーダーブックの入手方法
 
-Serumマーケットは、ビッドとアスクを含むオーダーブックで構成されています。この情報を照会して、市場で何が起こっているかを確認し、それに応じて行動することができます。
+OpenBookマーケットは、ビッドとアスクを含むオーダーブックで構成されています。この情報を照会して、市場で何が起こっているかを確認し、それに応じて行動することができます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/serum/get-books/get-books.en.ts)
+@[code](@/code/OpenBook/get-books/get-books.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/get-books/get-books.preview.en.ts)
+@[code](@/code/OpenBook/get-books/get-books.preview.en.ts)
 
   </template>
 
@@ -88,20 +88,20 @@ Serumマーケットは、ビッドとアスクを含むオーダーブックで
 
 ## 現在のオープンの注文を取得する方法
 
-トレーダーとして、市場で現在開いている注文を知りたいと思うでしょう。Serumを使用して、市場での自分または他の誰かのオープン注文を照会できます。
+トレーダーとして、市場で現在開いている注文を知りたいと思うでしょう。OpenBookを使用して、市場での自分または他の誰かのオープン注文を照会できます。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
 
   <template v-slot:default>
 
-@[code](@/code/serum/get-orders/get-orders.en.ts)
+@[code](@/code/OpenBook/get-orders/get-orders.en.ts)
 
   </template>
 
   <template v-slot:preview>
 
-@[code](@/code/serum/get-orders/get-orders.preview.en.ts)
+@[code](@/code/OpenBook/get-orders/get-orders.preview.en.ts)
 
   </template>
 

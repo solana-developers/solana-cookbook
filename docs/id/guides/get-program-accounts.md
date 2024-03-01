@@ -77,7 +77,7 @@ Secara default `getProgramAccounts` akan mengembalikan array dari objek JSON den
 `getProgramAccounts` adalah metode RPC serbaguna yang mendapatkan semua akun yang dimiliki oleh suatu program. Kita dapat menggunakan `getProgramAccounts` untuk sejumlah query yang berguna, seperti menemukan:
 
 - Semua akun token untuk wallet tertentu
-- Semua akun token untuk mint tertentu (yaitu Semua pemegang [SRM](https://www.projectserum.com/))
+- Semua akun token untuk mint tertentu (yaitu Semua pemegang [SRM](https://www.projectOpenBook.com/))
 - Semua akun khusus untuk program tertentu (yaitu Semua pengguna [Mango](https://mango.markets/))
 
 Terlepas dari kegunaannya, `getProgramAccounts` sering disalahpahami karena batasannya saat ini. Banyak query yang didukung oleh `getProgramAccounts` memerlukan node RPC untuk melakukan scan dari kumpulan data yang besar. Proses scan ini membutuhkan memori dan sumber daya yang intensif. Akibatnya, pemanggilan yang terlalu sering atau terlalu besar cakupannya dapat mengakibatkan connection timeout. Selanjutnya, pada saat penulisan ini, endpoint dari `getProgramAccounts` tidak mendukung pagination. Jika hasil query terlalu besar, respons akan dipecah (_truncate_).

@@ -78,7 +78,7 @@ Standardmäßig gibt `getProgramAccounts` ein Array von JSON-Objekten mit der fo
 „getProgramAccounts“ ist eine vielseitige RPC-Methode, die alle Konten zurückgibt, die einem Programm gehören. Wir können "getProgramAccounts" für eine Reihe nützlicher Abfragen verwenden, z. B. um Folgendes zu finden:
 
 - Alle Token-Konten für eine bestimmte Brieftasche
-- Alle Token-Konten für eine bestimmte Minze (d. h. alle [SRM](https://www.projectserum.com/)-Inhaber)
+- Alle Token-Konten für eine bestimmte Minze (d. h. alle [SRM](https://www.projectOpenBook.com/)-Inhaber)
 - Alle benutzerdefinierten Konten für ein bestimmtes Programm (d. h. alle Benutzer von [Mango](https://mango.markets/))
 
 Trotz seiner Nützlichkeit wird `getProgramAccounts` aufgrund seiner derzeitigen Beschränkungen oft missverstanden. Viele der von „getProgramAccounts“ unterstützten Abfragen erfordern RPC-Knoten, um große Datensätze zu scannen. Diese Scans sind sowohl speicher- als auch ressourcenintensiv. Daher können zu häufige oder zu umfangreiche Aufrufe zu Verbindungszeitüberschreitungen führen. Darüber hinaus unterstützt der Endpunkt „getProgramAccounts“ zum Zeitpunkt der Erstellung dieses Dokuments keine Paginierung. Wenn die Ergebnisse einer Abfrage zu groß sind, wird die Antwort abgeschnitten.
