@@ -441,7 +441,7 @@ Ang paglo-load nito sa iyong localnet ay ginagawa sa pamamagitan ng pagpasa sa f
 
 ### Paano mag-load ng mga programa mula sa mainnet
 
-Katulad nito, posibleng i-download ang Serum Dex v3 program:
+Katulad nito, posibleng i-download ang OpenBook Dex v3 program:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

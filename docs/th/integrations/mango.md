@@ -54,7 +54,7 @@ Mango รวม lend, borrow, swap, และ leverage trade crypto assets ไ�
 
 ## วิธีดึงข้อมูล Mango Group
 
-mango group คือตะกร้า (basket) ของ cross-margined tokens. มันจะมีข้อมูลกว้างๆ ของ market เกี่ยวกับ tokens, serum dex markets, perp markets, oracles, insurance fund และ fees vaults. แต่ละ version ของ Mango Markets ใช้ Mango Group ที่แตกต่างกัน และมี tokens ที่แตกต่างกัน ใน v3 ปัจจุบันนั้นมีชื่อ group คือ `mainnet.1` นี่คือตาราง table ที่แสดงข้อมูลกลุ่มต่างๆ:
+mango group คือตะกร้า (basket) ของ cross-margined tokens. มันจะมีข้อมูลกว้างๆ ของ market เกี่ยวกับ tokens, OpenBook dex markets, perp markets, oracles, insurance fund และ fees vaults. แต่ละ version ของ Mango Markets ใช้ Mango Group ที่แตกต่างกัน และมี tokens ที่แตกต่างกัน ใน v3 ปัจจุบันนั้นมีชื่อ group คือ `mainnet.1` นี่คือตาราง table ที่แสดงข้อมูลกลุ่มต่างๆ:
 
 
 | Group                | Version     | Cluster   |
@@ -153,7 +153,7 @@ Mango Account จะเกี่ยวข้องกับ a Mango Group, แ�
 </SolanaCodeGroup>
 
 ## วิธีตั้ง spot order
-Mango ติดต่อกับ Serum Protocol เพื่อวาง spot orders บน markets เราจะวาง spot 
+Mango ติดต่อกับ OpenBook Protocol เพื่อวาง spot orders บน markets เราจะวาง spot 
 order ได้ถ้าทำตามนี้ เราสามารถหาข้ออมูลอ้างอิงของ placeSpotOrder function ได้ [ที่นี่](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango มี config file ที่มี่ข้อมูลเกี่ญซกับ groups, markets, tokens และ oracles, 
 เราสามารถหาจ้อมูลได้ [ที่นี่](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). เราได้ข้อมูลจาก file นั้นเพื่อหา group และ market ที่ถต้องการได้
@@ -177,9 +177,9 @@ Mango มี config file ที่มี่ข้อมูลเกี่ญซ�
 </SolanaCodeGroup>
 
 ## วิธี load bids
-Mango uses the market information from Serum Protocol to load bids. เราสามารถ load 
-them directly from Serum to work with on Mango. เราสามารถ find out more about Serum's 
-markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango uses the market information from OpenBook Protocol to load bids. เราสามารถ load 
+them directly from OpenBook to work with on Mango. เราสามารถ find out more about OpenBook's 
+markets [ที่นี่](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -200,8 +200,8 @@ markets [ที่นี่](https://github.com/project-serum/serum-ts/tree/mast
 </SolanaCodeGroup>
 
 ## วิธีดึงข้อมูลราคาขาย (asks)
-Mango ใช้ข้อมูล market จาก Serum Protocol เพื่อดึงข้อมูลราคาขาย asks. 
-เราสามารถดึงข้อมูลได้โดยตรงจาก Serum เพื่อทำงานบน Mango เราสามารถอ่านรายละเอียดเพิ่มเกี่ยวกับ Serum's markets ได้ [ที่นี่](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango ใช้ข้อมูล market จาก OpenBook Protocol เพื่อดึงข้อมูลราคาขาย asks. 
+เราสามารถดึงข้อมูลได้โดยตรงจาก OpenBook เพื่อทำงานบน Mango เราสามารถอ่านรายละเอียดเพิ่มเกี่ยวกับ OpenBook's markets ได้ [ที่นี่](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

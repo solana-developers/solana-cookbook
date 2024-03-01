@@ -8,7 +8,7 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 
-import * as borsh from "@project-serum/borsh";
+import * as borsh from "@project-OpenBook/borsh";
 
 const MY_PROGRAM_ID = new PublicKey(
   "FwcG3yKuAkCfX68q9GPykNWDaaPjdZFaR1Tgr8qSxaEa"

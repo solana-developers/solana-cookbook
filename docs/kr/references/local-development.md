@@ -440,7 +440,7 @@ validator를 시작할 때 이 Account 파일과 목적지 address (local cluste
 
 ### How to load programs from mainnet
 
-비슷하게 Serum Dex v3 프로그램을 다운로드할 수 있습니다:
+비슷하게 OpenBook Dex v3 프로그램을 다운로드할 수 있습니다:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

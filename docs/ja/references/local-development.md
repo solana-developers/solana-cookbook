@@ -434,7 +434,7 @@ SRMトークンミントアカウントをファイルにダウンロードす�
 
 ### メインネットからプログラムをロードする方法
 
-同様に、Serum Dex v3プログラムをダウンロードすることもできます:
+同様に、OpenBook Dex v3プログラムをダウンロードすることもできます:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

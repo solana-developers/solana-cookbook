@@ -1,6 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey } from "@solana/web3.js";
-import { Market } from "@project-serum/serum";
+import { Market } from "@project-OpenBook/OpenBook";
 import {
   IDS,
   MangoClient,
@@ -40,7 +40,7 @@ import {
     connection,
     marketConfig.publicKey,
     {},
-    groupConfig.serumProgramId
+    groupConfig.OpenBookProgramId
   );
   await client.placeSpotOrder(
     mangoGroup,

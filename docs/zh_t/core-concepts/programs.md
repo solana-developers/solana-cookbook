@@ -94,7 +94,7 @@ SPL程序定義了一系列的鏈上活動，其中包括針對代幣的創建�
 | state.rs       | 程序對象，對狀態進行反序列化        |
 | error.rs       | 程序中制定的錯誤                    |
 
-最近，[Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html)逐漸成爲了一個廣受歡迎的Solana程序開發框架。
+最近，[Anchor](https://project-OpenBook.github.io/anchor/getting-started/introduction.html)逐漸成爲了一個廣受歡迎的Solana程序開發框架。
 Anchor是一個有態度的框架，與Ruby on Rails相似，這個框架旨在減少模式化的代碼，將Rust開發流程中的序列化與反序列化過程流水線化。
 
 在部署到Testnet（測試網）和Mainnet（主網）之前，程序在開發和測試階段經常使用Localhost和Devnet（開發網）環境。
@@ -137,4 +137,4 @@ BPF加載器負責管理程序賬戶，讓客戶端可以通過其`program_id`�
 - [Solana Starter Kit by Iron Addicted Dog](https://hackmd.io/@ironaddicteddog/solana-starter-kit)
 - [Programming on Solana by Paulx](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [An Introduction to the Solana Blockchain by Hana](https://2501babe.github.io/posts/solana101.html)
-- [Anchor](https://project-serum.github.io/anchor/getting-started/introduction.html)
+- [Anchor](https://project-OpenBook.github.io/anchor/getting-started/introduction.html)

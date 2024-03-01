@@ -77,7 +77,7 @@ head:
 `getProgramAccounts` はプログラムが所有するすべてのアカウントを返す多用途の RPC メソッドです。下記のような検索など、多くのクエリに使用できます:
 
 - 特定のウォレットのすべてのトークン アカウントの取得
-- 特定のmintのすべてのトークン アカウント ( つまり、[SRM](https://www.projectserum.com/) の所有者すべて)
+- 特定のmintのすべてのトークン アカウント ( つまり、[SRM](https://www.projectOpenBook.com/) の所有者すべて)
 - 特定のプログラムのすべてのカスタム アカウント (つまり、[Mango](https://mango.markets/) ユーザー全員)
 
  `getProgramAccounts`は非常に便利ですが、現在の制約のためによく誤解されます。

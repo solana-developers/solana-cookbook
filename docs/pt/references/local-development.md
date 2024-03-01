@@ -434,7 +434,7 @@ O carregamento para a sua rede local é feito passando o arquivo da conta e o en
 
 ### Como carregar programas da mainnet
 
-Da mesma forma, é possível baixar o programa Serum Dex v3:
+Da mesma forma, é possível baixar o programa OpenBook Dex v3:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">

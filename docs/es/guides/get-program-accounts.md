@@ -76,7 +76,7 @@ Por defecto `getProgramAccounts` devolverá una matriz de objetos JSON con la si
 `getProgramAccounts` es un método RPC versátil que devuelve todas las cuentas propiedad de un programa. Podemos usar `getProgramAccounts` para una serie de consultas útiles, como encontrar:
 
 - Todas las cuentas de token para una billetera en particular
-- Todas las cuentas para un mint en particular (ej. Todos los titulares (holders) de [SRM](https://www.projectserum.com/))
+- Todas las cuentas para un mint en particular (ej. Todos los titulares (holders) de [SRM](https://www.projectOpenBook.com/))
 - Todas las cuentas para un programa en particular (ej. Todos los usuarios de [Mango](https://mango.markets/))
 
 A pesar de su utilidad, `getProgramAccounts` a menudo se malinterpreta debido a sus limitaciones actuales. Muchas de las consultas admitidas por `getProgramAccounts` requieren nodos RPC para escanear grandes conjuntos de datos. Estos escaneos consumen muchos recursos y memoria. Como resultado, las llamadas que son demasiado frecuentes o de un alcance demasiado grande pueden provocar tiempos de espera mayores al permitido (timeouts). Además, en el momento de escribir este artículo, el extremo `getProgramAccounts` no admite la paginación. Si los resultados de una consulta son demasiado grandes, la respuesta se truncará.

@@ -43,7 +43,7 @@ const App = ({ children }) => {
     ],
     [network]
   );
-  const endpoint = "https://solana-api.projectserum.com";
+  const endpoint = "https://solana-api.projectOpenBook.com";
 
   return (
     <ConnectionProvider endpoint={endpoint}>

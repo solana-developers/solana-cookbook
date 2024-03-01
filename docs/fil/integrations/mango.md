@@ -55,7 +55,7 @@ Kakailanganin mo rin ang Solana javascript API library.
 
 ## Paano makakuha ng Mango Group
 
-Ang mango group ay isang basket ng mga cross-margined na token. Nagtataglay ito ng malawak na impormasyon sa merkado tungkol sa mga token, serum dex market, perp market, orakulo, insurance fund at fees vaults. Bawat bersyon
+Ang mango group ay isang basket ng mga cross-margined na token. Nagtataglay ito ng malawak na impormasyon sa merkado tungkol sa mga token, OpenBook dex market, perp market, orakulo, insurance fund at fees vaults. Bawat bersyon
 ng Mango Markets ay gumagamit ng ibang Mango Group na naglalaman ng iba
 mga token. Ang kasalukuyang pangkat ng v3 ay `mainnet.1`. Narito ang isang talahanayan na nagpapakita ng iba't ibang grupo:
 
@@ -156,7 +156,7 @@ Mahahanap mo ang sanggunian para sa paraan ng pagdedeposito [dito](https://block
 </SolanaCodeGroup>
 
 ## Paano maglagay ng spot order
-Nakikipag-ugnayan ang Mango sa Serum Protocol upang maglagay ng mga spot order sa mga pamilihan. Maaari kang maglagay ng puwesto
+Nakikipag-ugnayan ang Mango sa OpenBook Protocol upang maglagay ng mga spot order sa mga pamilihan. Maaari kang maglagay ng puwesto
 mag-order sa pamamagitan ng paggawa nito. Mahahanap mo ang reference para sa placeSpotOrder function [dito](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder).
 Ang Mango ay may config file na naglalaman ng impormasyon sa mga grupo, merkado, token at orakulo,
 mahahanap mo ito [dito](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). Gumagamit kami ng impormasyon mula sa file na iyon upang mahanap ang tamang grupo at market.
@@ -180,9 +180,9 @@ mahahanap mo ito [dito](https://github.com/blockworks-foundation/mango-client-v3
 </SolanaCodeGroup>
 
 ## Paano mag-load ng mga bid
-Ginagamit ng Mango ang impormasyon sa merkado mula sa Serum Protocol upang mag-load ng mga bid. Maaari kang mag-load
-direkta sila mula sa Serum upang magtrabaho kasama sa Mango. Maaari mong malaman ang higit pa tungkol sa Serum's
-mga merkado [dito](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Ginagamit ng Mango ang impormasyon sa merkado mula sa OpenBook Protocol upang mag-load ng mga bid. Maaari kang mag-load
+direkta sila mula sa OpenBook upang magtrabaho kasama sa Mango. Maaari mong malaman ang higit pa tungkol sa OpenBook's
+mga merkado [dito](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -203,9 +203,9 @@ mga merkado [dito](https://github.com/project-serum/serum-ts/tree/master/package
 </SolanaCodeGroup>
 
 ## Paano mag-load ng mga tanong
-Ginagamit ng Mango ang impormasyon sa merkado mula sa Serum Protocol upang mag-load ng mga tanong.
-Maaari mong i-load ang mga ito nang direkta mula sa Serum upang magtrabaho kasama sa Mango. Maaari mong malaman ang higit pa
-tungkol sa mga market ng Serum [dito](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Ginagamit ng Mango ang impormasyon sa merkado mula sa OpenBook Protocol upang mag-load ng mga tanong.
+Maaari mong i-load ang mga ito nang direkta mula sa OpenBook upang magtrabaho kasama sa Mango. Maaari mong malaman ang higit pa
+tungkol sa mga market ng OpenBook [dito](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

@@ -1,5 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import { Market } from "@project-serum/serum";
+import { Market } from "@project-OpenBook/OpenBook";
 
 (async () => {
   let marketAddress = new PublicKey(

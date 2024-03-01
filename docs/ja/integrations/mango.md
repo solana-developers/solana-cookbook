@@ -53,7 +53,7 @@ Mangoは、オンチェーンリスク エンジンを介して、取引暗号�
 
 ## Mango Groupの取得方法
 
-Mango groupはクロスマージントークンのバスケットで、トークン、Serum dex market、perp market、Oracle、Insurance fund、Fees vaultに関する幅広い市場情報を保持しています。 Mango Markets の各バージョンは、異なるトークンを含む異なる Mango Group を使用します。現在の v3 グループは`mainnet.1` です。さまざまなグループを示す表を次に示します:
+Mango groupはクロスマージントークンのバスケットで、トークン、OpenBook dex market、perp market、Oracle、Insurance fund、Fees vaultに関する幅広い市場情報を保持しています。 Mango Markets の各バージョンは、異なるトークンを含む異なる Mango Group を使用します。現在の v3 グループは`mainnet.1` です。さまざまなグループを示す表を次に示します:
 
 
 | Group                | Version     | Cluster   |
@@ -151,7 +151,7 @@ Mango accountアカウントを作成したら、取引用のトークンで資�
 </SolanaCodeGroup>
 
 ## スポット注文の方法
-MangoはSerum Protocolと対話し、市場でスポット注文を出します。これにより、スポット注文を出すことができます。placeSpotOrder関数のリファレンスは[こちら](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder)。
+MangoはOpenBook Protocolと対話し、市場でスポット注文を出します。これにより、スポット注文を出すことができます。placeSpotOrder関数のリファレンスは[こちら](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder)。
 Mangoには、グループ、マーケット、トークン、およびOracleに関する情報を含む構成ファイルがあります。
 [ここ](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json)で見つけることができます。そのファイルの情報を使用して、適切なグループと市場を見つけます。
 
@@ -174,8 +174,8 @@ Mangoには、グループ、マーケット、トークン、およびOracleに
 </SolanaCodeGroup>
 
 ## 売値の読込方法
-MangoはSerum Protocolから得た市場情報を使用して売値を読み込みます。Serumから直接読み込み、Mangoで操作できます。Serumの市場に関しての 
-より詳しい情報は[こちら](https://github.com/project-serum/serum-ts/tree/master/packages/serum)。
+MangoはOpenBook Protocolから得た市場情報を使用して売値を読み込みます。OpenBookから直接読み込み、Mangoで操作できます。OpenBookの市場に関しての 
+より詳しい情報は[こちら](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -196,8 +196,8 @@ MangoはSerum Protocolから得た市場情報を使用して売値を読み込�
 </SolanaCodeGroup>
 
 ## 買値の読込方法
-MangoはSerum Protocolから得た市場情報を使用して買値を読み込みます。
-Serumから直接読み込み、Mangoで操作できます。Serumの市場の詳しい情報は[こちら](https://github.com/project-serum/serum-ts/tree/master/packages/serum)。
+MangoはOpenBook Protocolから得た市場情報を使用して買値を読み込みます。
+OpenBookから直接読み込み、Mangoで操作できます。OpenBookの市場の詳しい情報は[こちら](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)。
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

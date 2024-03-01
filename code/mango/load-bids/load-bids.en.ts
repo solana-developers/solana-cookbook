@@ -1,5 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import { Market } from "@project-serum/serum";
+import { Market } from "@project-OpenBook/OpenBook";
 import {
   IDS,
   Config,
@@ -23,7 +23,7 @@ import {
     connection,
     marketConfig.publicKey,
     {},
-    groupConfig.serumProgramId
+    groupConfig.OpenBookProgramId
   );
   const bids = market.loadBids(connection);
 })();

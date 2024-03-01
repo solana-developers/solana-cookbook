@@ -2,7 +2,7 @@ import {
   SplTokenBonding,
   ExponentialCurveConfig,
 } from "@strata-foundation/spl-token-bonding";
-import * as anchor from "@project-serum/anchor";
+import * as anchor from "@project-OpenBook/anchor";
 import { NATIVE_MINT } from "@solana/spl-token";
 
 (async () => {

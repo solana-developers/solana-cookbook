@@ -55,7 +55,7 @@ You'll also need the Solana javascript API library.
 
 ## How to get a Mango Group
 
-A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, serum dex markets, perp markets, oracles, insurance fund and fees vaults. Each version 
+A mango group is a basket of cross-margined tokens. It holds broad market info about tokens, OpenBook dex markets, perp markets, oracles, insurance fund and fees vaults. Each version 
 of Mango Markets uses a different Mango Group containing different 
 tokens. The current v3 group is `mainnet.1`. Here's a table showing the various groups:
 
@@ -156,7 +156,7 @@ You can find the reference for the deposit method [here](https://blockworks-foun
 </SolanaCodeGroup>
 
 ## How to place a spot order
-Mango interacts with Serum Protocol to place spot orders on markets. You can place a spot 
+Mango interacts with OpenBook Protocol to place spot orders on markets. You can place a spot 
 order by doing this. You can find the reference for the placeSpotOrder function [here](https://blockworks-foundation.github.io/mango-client-v3/classes/MangoClient.html#placeSpotOrder). 
 Mango has a config file that contains information on groups, markets, tokens and oracles, 
 you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/blob/main/src/ids.json). We use information from that file to find the right group and market.
@@ -180,9 +180,9 @@ you can find it [here](https://github.com/blockworks-foundation/mango-client-v3/
 </SolanaCodeGroup>
 
 ## How to load bids
-Mango uses the market information from Serum Protocol to load bids. You can load 
-them directly from Serum to work with on Mango. You can find out more about Serum's 
-markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango uses the market information from OpenBook Protocol to load bids. You can load 
+them directly from OpenBook to work with on Mango. You can find out more about OpenBook's 
+markets [here](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -203,9 +203,9 @@ markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/se
 </SolanaCodeGroup>
 
 ## How to load asks
-Mango uses the market information from Serum Protocol to load asks. 
-You can load them directly from Serum to work with on Mango. You can find out more 
-about Serum's markets [here](https://github.com/project-serum/serum-ts/tree/master/packages/serum)
+Mango uses the market information from OpenBook Protocol to load asks. 
+You can load them directly from OpenBook to work with on Mango. You can find out more 
+about OpenBook's markets [here](https://github.com/project-OpenBook/OpenBook-ts/tree/master/packages/OpenBook)
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>

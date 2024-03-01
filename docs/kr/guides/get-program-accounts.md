@@ -79,7 +79,7 @@ RPC method는 프로그램에 의해 소유된 모든 Account들을 반환한다
 우리는 아래와 같이 몇 가지 유용한 쿼리를 위해 `getProgramAccounts`를 사용할 수 있습니다.
 
 - 특정 지갑에 대한 모든 Token Account들 조회
-- 특정 mint에 대한 모든 Token Account들 조회 (i.e. All [SRM](https://www.projectserum.com/) holders)
+- 특정 mint에 대한 모든 Token Account들 조회 (i.e. All [SRM](https://www.projectOpenBook.com/) holders)
 - 특정 Program에 대한 모든 custom Account들 조회 (i.e. All [Mango](https://mango.markets/) users)
 
 이렇게 유용함에도 불구하고, `getProgramAccounts`는 현재 제약사항들 때문에 자주 오해받습니다.

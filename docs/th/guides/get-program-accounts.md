@@ -76,7 +76,7 @@ head:
 `getProgramAccounts` คือ RPC method ที่จะคืนค่าทุก accounts ที่ program เป็นเจ้าของ. เราสามารถใช้ `getProgramAccounts` สำหรับดึงข้อมูลได้หลายแบบ เช่น:
 
 - หาทุกๆ token accounts ของ wallet
-- หาทุกๆ token accounts ที่มี mint เดียวกัน(เช่น ทุกๆ คนที่ถือ token [SRM](https://www.projectserum.com/) ไว้)
+- หาทุกๆ token accounts ที่มี mint เดียวกัน(เช่น ทุกๆ คนที่ถือ token [SRM](https://www.projectOpenBook.com/) ไว้)
 - หาทุกๆ custom accounts ที่ใช้ program นี้(เช่น ทุกๆ คนที่ใช้ [Mango](https://mango.markets/))
 
 นอกจากจะมีประโยชน์แล้ว, `getProgramAccounts` ยังถูกเข้าใจผิดอยู่บ้าง เพราะด้วยข้อจำกัดของมัน การดึงข้อมูลที่ใช้ `getProgramAccounts` จะทำให้ RPC nodes ค้นหา data ขนาดใหญ่. การค้นหานั้นกินทั้ง memory และ resource มากๆ. ผลที่เกิดขึ้นคือถ้าเรียกใช้บ่อยเกินไป หรือใหญ่เกินไปจะทำให้เกิด connection timeouts ได้. ในตอนนี้ `getProgramAccounts` endpoint ยังไม่สนับสนุน pagination. ถ้าผลการค้นหาใหญ่เกินไปผลลัพท์จะถูกตัดทิ้ง.

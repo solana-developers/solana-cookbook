@@ -1,4 +1,4 @@
-import * as borsh from "@project-serum/borsh";
+import * as borsh from "@project-OpenBook/borsh";
 import { PublicKey } from "@solana/web3.js";
 
 export const BLOG_ACCOUNT_DATA_LAYOUT = borsh.struct([
