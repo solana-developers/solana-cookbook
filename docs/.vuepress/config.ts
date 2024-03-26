@@ -36,10 +36,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: "Contribute",
             link: "https://github.com/solana-developers/solana-cookbook",
           },
-          {
-            text: "Integrations",
-            link: "/integrations",
-          },
         ],
         sidebar: {
           "/": [
@@ -103,23 +99,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
                         
-          ],
-          "/integrations": [
-            {
-              text: "Integrations",
-              children: [
-                "/integrations",
-                "/integrations/serum.md",
-                "/integrations/pyth.md",
-                "/integrations/switchboard.md",
-                "/integrations/mango.md",
-                "/integrations/strata.md",
-                "/integrations/web3auth.md",
-                "/integrations/react-native.md",
-                "/integrations/jupiter.md",
-                "/integrations/orao-vrf.md",
-              ],
-            },
           ],
         },
       },
@@ -287,10 +266,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: "Kontributor",
             link: "https://github.com/solana-developers/solana-cookbook",
           },
-          {
-            text: "Integrationen",
-            link: "/de/integrations",
-          },
         ],
         sidebar: {
           "/": [
@@ -335,23 +310,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/de/integrations": [
-            {
-              text: "Integrationen",
-              children: [
-                "/de/integrations",
-                "/de/integrations/serum.md",
-                "/de/integrations/pyth.md",
-                "/de/integrations/switchboard.md",
-                "/de/integrations/mango.md",
-                "/de/integrations/strata.md",
-                "/de/integrations/web3auth.md",
-                "/de/integrations/react-native.md",
-                "/de/integrations/jupiter.md",
-
-              ],
-            },
-          ],
         },
       },
       "/vi/": {
@@ -360,10 +318,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "Đóng góp",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "Tích hợp",
-            link: "/vi/integrations",
           },
         ],
         sidebar: {
@@ -409,22 +363,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/vi/integrations": [
-            {
-              text: "Tích hợp",
-              children: [
-                "/vi/integrations",
-                "/vi/integrations/serum.md",
-                "/vi/integrations/pyth.md",
-                "/vi/integrations/switchboard.md",
-                "/vi/integrations/mango.md",
-                "/vi/integrations/strata.md",
-                "/vi/integrations/web3auth.md",
-                "/vi/integrations/react-native.md",
-                "/vi/integrations/jupiter.md",
-              ],
-            },
-          ],
         },
       },
       "/th/": {
@@ -433,10 +371,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "ร่วมกันเขียน",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "การใช้งาน",
-            link: "/th/integrations",
           },
         ],
         sidebar: {
@@ -483,23 +417,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/th/integrations": [
-            {
-              text: "การใช้งาน",
-              children: [
-                "/th/integrations",
-                "/th/integrations/serum.md",
-                "/th/integrations/pyth.md",
-                "/th/integrations/switchboard.md",
-                "/th/integrations/mango.md",
-                "/th/integrations/strata.md",
-                "/th/integrations/web3auth.md",
-                "/th/integrations/react-native.md",
-                "/th/integrations/jupiter.md",
-
-              ],
-            },
-          ],
         },
       },
       "/fr/": {
@@ -508,10 +425,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "Contribuer",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "Intégrations",
-            link: "/fr/integrations",
           },
         ],
         sidebar: {
@@ -575,23 +488,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/fr/integrations": [
-            {
-              text: "Intégrations",
-              children: [
-                "/fr/integrations",
-                "/fr/integrations/serum.md",
-                "/fr/integrations/pyth.md",
-                "/fr/integrations/switchboard.md",
-                "/fr/integrations/mango.md",
-                "/fr/integrations/strata.md",
-                "/fr/integrations/web3auth.md",
-                "/fr/integrations/react-native.md",
-                "/fr/integrations/jupiter.md",
-
-              ],
-            },
-          ],
         },
       },
       "/id/": {
@@ -600,10 +496,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "Kontribusi",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "Integrasi",
-            link: "/id/integrations",
           },
         ],
         sidebar: {
@@ -647,22 +539,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/id/references/nfts.md",
                 "/id/references/offline-transactions.md",
                 "/id/references/name-service.md",
-              ],
-            },
-          ],
-          "/id/integrations": [
-            {
-              text: "Integrasi",
-              children: [
-                "/id/integrations",
-                "/id/integrations/serum.md",
-                "/id/integrations/pyth.md",
-                "/id/integrations/switchboard.md",
-                "/id/integrations/mango.md",
-                "/id/integrations/strata.md",
-                "/id/integrations/web3auth.md",
-                "/id/integrations/react-native.md",
-                "/id/integrations/jupiter.md",
               ],
             },
           ],
@@ -781,10 +657,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: "Contribute",
             link: "https://github.com/solana-developers/solana-cookbook",
           },
-          {
-            text: "Integrations",
-            link: "/integrations",
-          },
         ],
         sidebar: {
           "/": [
@@ -829,22 +701,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/integrations": [
-            {
-              text: "Integrations",
-              children: [
-                "/integrations",
-                "/integrations/serum.md",
-                "/integrations/pyth.md",
-                "/integrations/switchboard.md",
-                "/integrations/mango.md",
-                "/integrations/strata.md",
-                "/integrations/web3auth.md",
-                "/integrations/react-native.md",
-                "/integrations/jupiter.md",
-              ],
-            },
-          ],
         },
       },
       "/ja/": {
@@ -853,10 +709,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "コントリビュート",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "インテグレーション",
-            link: "/ja/integrations",
           },
         ],
         sidebar: {
@@ -903,23 +755,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               ],
             },
           ],
-          "/ja/integrations": [
-            {
-              text: "インテグレーション",
-              children: [
-                "/ja/integrations",
-                "/ja/integrations/serum.md",
-                "/ja/integrations/pyth.md",
-                "/ja/integrations/switchboard.md",
-                "/ja/integrations/mango.md",
-                "/ja/integrations/strata.md",
-                "/ja/integrations/web3auth.md",
-                "/ja/integrations/react-native.md",
-                "/ja/integrations/jupiter.md",
-                "/ja/integrations/orao-vrf.md",
-              ],
-            },
-          ],
         },
       },
       "/fil/": {
@@ -928,10 +763,6 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: "Pag-ambag",
             link: "https://github.com/solana-developers/solana-cookbook",
-          },
-          {
-            text: "Mga Integrasyon",
-            link: "/fil/integrations",
           },
         ],
         sidebar: {
@@ -975,22 +806,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/fil/references/nfts.md",
                 "/fil/references/offline-transactions.md",
                 "/fil/references/name-service.md",
-              ],
-            },
-          ],
-          "/fil/integrations/": [
-            {
-              text: "Mga Integrasyon",
-              children: [
-                "/fil/integrations/",
-                "/fil/integrations/serum.md",
-                "/fil/integrations/pyth.md",
-                "/fil/integrations/switchboard.md",
-                "/fil/integrations/mango.md",
-                "/fil/integrations/strata.md",
-                "/fil/integrations/web3auth.md",
-                "/fil/integrations/react-native.md",
-                "/fil/integrations/jupiter.md",
               ],
             },
           ],
