@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { defineUserConfig } from 'vuepress';
+import { redirectPlugin } from '@vuepress/plugin-redirect';
 
 import type { DefaultThemeOptions } from "vuepress";
 export default defineUserConfig<DefaultThemeOptions>({
@@ -60,7 +61,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/guides/serialization.md",
                 "/guides/data-migration.md",
                 "/guides/account-maps.md",
-                "/guides/retrying-transactions.md",
                 "/guides/debugging-solana-programs.md",
                 "/guides/feature-parity-testing.md",
                 "/guides/versioned-transactions.md"
@@ -131,7 +131,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               "/zh/guides/serialization.md",
               "/zh/guides/data-migration.md",
               "/zh/guides/account-maps.md",
-              "/zh/guides/retrying-transactions.md",
               "/zh/guides/debugging-solana-programs.md",
               "/zh/guides/feature-parity-testing.md",
             ],
@@ -183,7 +182,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               "/zh_t/guides/serialization.md",
               "/zh_t/guides/data-migration.md",
               "/zh_t/guides/account-maps.md",
-              "/zh_t/guides/retrying-transactions.md",
               "/zh_t/guides/debugging-solana-programs.md",
               "/zh_t/guides/feature-parity-testing.md",
             ],
@@ -236,7 +234,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/es/guides/serialization.md",
                 "/es/guides/data-migration.md",
                 "/es/guides/account-maps.md",
-                "/es/guides/retrying-transactions.md",
                 "/es/guides/debugging-solana-programs.md",
                 "/es/guides/feature-parity-testing.md",
               ],
@@ -289,7 +286,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/de/guides/serialization.md",
                 "/de/guides/data-migration.md",
                 "/de/guides/account-maps.md",
-                "/de/guides/retrying-transactions.md",
                 "/de/guides/debugging-solana-programs.md",
                 "/de/guides/feature-parity-testing.md",
               ],
@@ -342,7 +338,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/vi/guides/serialization.md",
                 "/vi/guides/data-migration.md",
                 "/vi/guides/account-maps.md",
-                "/vi/guides/retrying-transactions.md",
                 "/vi/guides/debugging-solana-programs.md",
                 "/vi/guides/feature-parity-testing.md",
               ],
@@ -395,7 +390,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/th/guides/serialization.md",
                 "/th/guides/data-migration.md",
                 "/th/guides/account-maps.md",
-                "/th/guides/retrying-transactions.md",
                 "/th/guides/debugging-solana-programs.md",
                 "/th/guides/feature-parity-testing.md",
                 "/th/guides/versioned-transactions.md",
@@ -450,7 +444,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/fr/guides/serialization.md",
                 "/fr/guides/data-migration.md",
                 "/fr/guides/account-maps.md",
-                "/fr/guides/retrying-transactions.md",
                 "/fr/guides/debugging-solana-programs.md",
                 "/fr/guides/feature-parity-testing.md",
               ],
@@ -520,7 +513,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/id/guides/serialization.md",
                 "/id/guides/data-migration.md",
                 "/id/guides/account-maps.md",
-                "/id/guides/retrying-transactions.md",
                 "/id/guides/debugging-solana-programs.md",
                 "/id/guides/feature-parity-testing.md",
               ],
@@ -574,7 +566,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/pt/guides/serialization.md",
                 "/pt/guides/data-migration.md",
                 "/pt/guides/account-maps.md",
-                "/pt/guides/retrying-transactions.md",
                 "/pt/guides/debugging-solana-programs.md",
                 "/pt/guides/feature-parity-testing.md",
               ],
@@ -627,7 +618,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/tr/guides/serialization.md",
                 "/tr/guides/data-migration.md",
                 "/tr/guides/account-maps.md",
-                "/tr/guides/retrying-transactions.md",
                 "/tr/guides/debugging-solana-programs.md",
                 "/tr/guides/feature-parity-testing.md",
               ],
@@ -680,7 +670,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/kr/guides/serialization.md",
                 "/kr/guides/data-migration.md",
                 "/kr/guides/account-maps.md",
-                "/kr/guides/retrying-transactions.md",
                 "/kr/guides/debugging-solana-programs.md",
                 "/kr/guides/feature-parity-testing.md",
               ],
@@ -734,7 +723,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/ja/guides/serialization.md",
                 "/ja/guides/data-migration.md",
                 "/ja/guides/account-maps.md",
-                "/ja/guides/retrying-transactions.md",
                 "/ja/guides/debugging-solana-programs.md",
                 "/ja/guides/feature-parity-testing.md",
               ],
@@ -787,7 +775,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 "/fil/guides/serialization.md",
                 "/fil/guides/data-migration.md",
                 "/fil/guides/account-maps.md",
-                "/fil/guides/retrying-transactions.md",
                 "/fil/guides/debugging-solana-programs.md",
                 "/fil/guides/feature-parity-testing.md",
               ],
@@ -876,6 +863,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
   plugins: [
+    redirectPlugin(),
     [
       "@vuepress/plugin-google-analytics",
       {
