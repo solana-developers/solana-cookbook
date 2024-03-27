@@ -1,6 +1,5 @@
 import * as path from 'path';
 import { defineUserConfig } from 'vuepress';
-import { redirectPlugin } from '@vuepress/plugin-redirect';
 
 import type { DefaultThemeOptions } from "vuepress";
 export default defineUserConfig<DefaultThemeOptions>({
@@ -863,7 +862,6 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
   plugins: [
-    redirectPlugin(),
     [
       "@vuepress/plugin-google-analytics",
       {
