@@ -236,11 +236,11 @@ running remotely with the following:
 
 ## Subscribing to Events
 
-Websockets provide a pub/sub interface where you can listen for certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can instead receive those updates only when they happen.
+Websockets provide a pub/sub interface to listen to certain events. Instead of pinging a typical HTTP endpoint at an interval to get frequent updates, you can receive those updates only when they happen.
 
-Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a websocket endpoint and registers a websocket client when you create a new `Connection` instance (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
+Solana's web3 [`Connection`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html) under the hood generates a WebSocket endpoint and registers a WebSocket client when you create a new `Connection` instance (see source code [here](https://github.com/solana-labs/solana-web3.js/blob/45923ca00e4cc1ed079d8e55ecbee83e5b4dc174/src/connection.ts#L2100)).
 
-The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the websocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
+The `Connection` class exposes pub/sub methods - they all start with `on`, like event emitters. When you call these listener methods, it registers a new subscription to the WebSocket client of that `Connection` instance. The example pub/sub method we use below is [`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange). The callback will provide the updated state data through arguments (see [`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) as an example).
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="TS" active>
@@ -310,8 +310,8 @@ The `Connection` class exposes pub/sub methods - they all start with `on`, like 
 
 ## Getting Test SOL
 
-When you're working locally, you need some SOL in order to send
-transactions. In non-mainnet environments you can receive SOL by
+When you're working locally, you need some SOL to send
+transactions. In non-mainnet environments, you can receive SOL by
 airdropping it to your address
 
 <SolanaCodeGroup>
@@ -441,7 +441,7 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 ### How to load programs from mainnet
 
-Similarly, it is possible to download the Serum Dex v3 program:
+Similarly, it is possible to download the OpenBook Dex program:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
