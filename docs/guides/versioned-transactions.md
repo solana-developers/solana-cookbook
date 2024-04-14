@@ -272,4 +272,4 @@ const getTx = await connection.getTransaction(
 
 ## References
 * [Transactions-V2 Proposal](https://beta.docs.solana.com/proposals/transactions-v2)
-* [Developing with Versioned Transactions](https://beta.docs.solana.com/developing/versioned-transactions)
+* [Developing with Versioned Transactions](https://solanacookbook.com/guides/versioned-transactions.html)

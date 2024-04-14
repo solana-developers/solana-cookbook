@@ -2,7 +2,7 @@
 mod tests {
     use std::{error, path::PathBuf, str::FromStr};
 
-    // Use gadget-scfs to get interegate feature lists from clusters
+    // Use gadget-scfs to get interrogate feature lists from clusters
     // must have `gadgets-scfs = "0.2.0" in Cargo.toml [dev-dependencies] to use
     use gadgets_scfs::{ScfsCriteria, ScfsMatrix, SCFS_DEVNET};
     use solana_client::rpc_client::RpcClient;
