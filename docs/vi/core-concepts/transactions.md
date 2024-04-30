@@ -78,7 +78,7 @@ Mạng Solana sẽ thu 2 loại phí:
 
 Trên Solana, phí giao dịch thường bất biến, nghĩa là không có khái niệm về đánh phí theo thị trường nơi mà người dùng có thể trả phí cao hơn mặt bằng để tăng cơ hội được ưu tiên thực thi Transaction trước. Tại thời điểm tác giả viết, phí giao dịch được xác định bằng số lượng chữ ký bên trong Transaction (cụ thể là `lamports_per_signature`), và không phải bằng số bước tính toán cho Transaction đó. Điều đó được lý giải bởi vì luôn có một giới hạn trần là 1232 bytes cho mọi Transaction.
 
-Tất cả Transaction yêu cầu ít nhất một Account là `writable` để ký Transaction đó. Một khi được gửi, Account trả phí với nhãn `writable` và `siger` sẽ được tuần tự hoá trước tiên. Account này sẽ chi trả các chi phí phát sinh của Transaction cho dù Transaction thành công hay thất bại. Nếu Account trả phí không đủ số dư để trả phí giao dịch, Transaction sẽ bị bỏ qua.
+Tất cả Transaction yêu cầu ít nhất một Account là `writable` để ký Transaction đó. Một khi được gửi, Account trả phí với nhãn `writable` và `signer` sẽ được tuần tự hoá trước tiên. Account này sẽ chi trả các chi phí phát sinh của Transaction cho dù Transaction thành công hay thất bại. Nếu Account trả phí không đủ số dư để trả phí giao dịch, Transaction sẽ bị bỏ qua.
 
 Tại thời điểm được viết, 50% phí giao dịch sẽ được thưởng cho Validator để sinh ra block, trong khi 50% còn lại sẽ được đốt. Bằng cơ cấu như vậy, Validator được khuyến khích phải xử lý càng nhiều Transaction càng tốt trong thời hạn được đề cử.
 
