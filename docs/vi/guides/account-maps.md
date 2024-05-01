@@ -50,7 +50,7 @@ Như vậy, dễ hiểu khi mà ta lưu **values** vào những Account tách bi
 
 * Những địa chỉ đề cập bên trên được tham chiếu bằng khoá công khai của những **Keypairs** (cặp khoá) khác nhau, trong đó khoá công khai bắt buộc phải có khoá riêng tư tương ứng. Khoá riêng tư lại cần thiết để ký các chỉ thị và lại bắt buộc chúng ta phải lưu ở một nơi nào đó, điều mà thật sự **không** được khuyến khích trong thực tiễn.
 
-Điếu đó dẫn đến rất nhiều vấn đề cho lập trình viên muốn hiện thực `Map` trực tiếp vào Program trên Solana. Giờ hãy quan sát một vài cách để giải quyết vấn đề trên.
+Điều đó dẫn đến rất nhiều vấn đề cho lập trình viên muốn hiện thực `Map` trực tiếp vào Program trên Solana. Giờ hãy quan sát một vài cách để giải quyết vấn đề trên.
 
 ## Tìm PDA
 
