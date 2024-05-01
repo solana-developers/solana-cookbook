@@ -161,7 +161,7 @@ Cũng giống với `memcmp`, `dataSlice` có 2 tham số con:
   </CodeGroupItem>
 </CodeGroup>
 
-Vời việc kết hợp giữ 3 tham số (`dataSlice`, `dataSize`, và `memcmp`), chúng ta có thể giới hạn phạm vi truy vấn một cách hiệu quả với chỉ các kết quả trả về mà chúng ta quan tâm.
+Với việc kết hợp giữ 3 tham số (`dataSlice`, `dataSize`, và `memcmp`), chúng ta có thể giới hạn phạm vi truy vấn một cách hiệu quả với chỉ các kết quả trả về mà chúng ta quan tâm.
 
 ## <a name="resources"></a> Các nguồn tài liệu khác
 

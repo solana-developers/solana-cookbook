@@ -186,7 +186,7 @@ Thông tin số dư token của một token account có thể được truy vấ
 Một token account chỉ có thể chứa một loại mint duy nhất. Khi bạn khai báo token account, bạn cũng phải chỉ rõ lại mint.
 :::
 
-## Làm thế nào để dúc token
+## Làm thế nào để đúc token
 
 Khi bạn đúc token, bạn tăng số lượng tổng cung và chuyển số lược token mới cho token account mong muốn.
 
