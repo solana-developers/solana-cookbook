@@ -76,7 +76,7 @@ By default `getProgramAccounts` will return an array of JSON objects with the fo
 `getProgramAccounts` is a versatile RPC method that returns all accounts owned by a program. We can use `getProgramAccounts` for a number of useful queries, such as finding:
 
 - All token accounts for a particular wallet
-- All token accounts for a particular mint (i.e. All [SRM](https://www.projectserum.com/) holders)
+- All token accounts for a particular mint (i.e. All [SRM](https://docs.projectserum.com/) holders)
 - All custom accounts for a particular program (i.e. All [Mango](https://mango.markets/) users)
 
 Despite its usefulness, `getProgramAccounts` is often misunderstood due to its current constraints. Many of the queries supported by `getProgramAccounts` require RPC nodes to scan large sets of data. These scans are both memory and resource intensive. As a result, calls that are too frequent or too large in scope can result in connection timeouts. Furthermore, at the time of this writing, the `getProgramAccounts` endpoint does not support pagination. If the results of a query are too large, the response will be truncated.
