@@ -1,4 +1,4 @@
-from borsh_construct import U8, U16, U32, String, HashMap
+from borsh_construct import U8, U16, U32, CStruct, String, HashMap
 
 # Schema to deserialize various types
 primitive_schema = CStruct(

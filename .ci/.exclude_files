@@ -1,0 +1,14 @@
+.venv/*
+hello.py
+.ci/scripts.py
+code/nfts/upload-arweave/upload-arweave.en.py
+code/local-development/airdropping-sol/airdropping-sol.en.py
+code/basic-transactions/sending-sol/sending-sol.en.py
+code/local-development/connecting-websocket/connecting-websocket.en.py
+code/anchor/testing-with-anchor/client/testing_with_anchor.py
+code/keypairs-and-wallets/vanity-publickeys/vanity-publickeys.en.py
+code/serialization/clientdata/python.client.data.py
+code/serialization/primitives/python.demo_primitives.py
+code/serialization/instruction/python.client.py
+code/local-development/connecting-cluster/connecting-cluster.en.py
+code/local-development/connecting-private-cluster/connecting-private-cluster.en.py

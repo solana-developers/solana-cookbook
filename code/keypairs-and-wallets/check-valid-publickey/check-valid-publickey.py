@@ -7,4 +7,7 @@ print(key.is_on_curve()) # Lies on the ed25519 curve and is suitable for users
 off_curve_address = Pubkey.from_string('4BJXYkfvg37zEmBbsacZjeQDpTNx91KppxFJxRqrz48e') # Valid public key
 print(off_curve_address.is_on_curve()) # Not on the ed25519 curve, therefore not suitable for users
 
-error_pubkey = Pubkey.from_string("testPubkey"); # Is not a valid public key
+try:
+  error_pubkey = Pubkey.from_string("testPubkey"); # Is not a valid public key
+except:
+  print("testPubkey is not a valid public key as expected!")
