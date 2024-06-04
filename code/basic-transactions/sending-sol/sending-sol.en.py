@@ -20,4 +20,5 @@ transaction = Transaction().add(transfer(TransferParams(
     lamports=1_000_000)
 ))
 
-client.send_transaction(transaction, sender)
+result = client.send_transaction(transaction, sender)
+print(result)

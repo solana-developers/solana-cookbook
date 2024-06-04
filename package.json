@@ -25,7 +25,7 @@
     "vuepress": "^2.0.0-beta.36"
   },
   "lint-staged": {
-    "*.{js,css,ts}": "prettier --write"
+    "*.{js,css,ts,py}": "prettier --write"
   },
   "dependencies": {
     "http-server": "^14.1.1",
