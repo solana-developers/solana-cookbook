@@ -37,9 +37,9 @@ export const Web3Provider: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletModalProvider>
-        <WalletProvider wallets={wallets}>{children}</WalletProvider>
-      </WalletModalProvider>
+      <WalletProvider wallets={wallets}>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </WalletProvider>
     </ConnectionProvider>
   );
 };
