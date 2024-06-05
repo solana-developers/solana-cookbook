@@ -803,3 +803,38 @@ The [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) 
   </SolanaCodeGroupItem>
 
 </SolanaCodeGroup>
+
+### Angular
+
+#### @heavy-duty/wallet-adapter
+
+Run the following command to install the required dependencies:
+
+```bash
+npm i --save @heavy-duty/wallet-adapter @solana/wallet-adapter-wallets
+```
+
+<SolanaCodeGroup>
+   <SolanaCodeGroupItem title="Angular" active>
+
+  <template v-slot:default>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-angular.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/keypairs-and-wallets/connect-to-wallet/connect-to-wallet-angular.preview.en.html)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+
+</SolanaCodeGroup>
+
+The [@heavy-duty/wallet-adapter](https://github.com/heavy-duty/platform/tree/master/libs/wallet-adapter) simplifies the implementation of the framework-agnostic "@solana/wallet-adapter" for Angular developers. It strives to offer a smoother developer experience by aligning with Angular conventions, addressing potential challenges, and ensuring a more natural integration process.
+
+Dependency injection - Provide and Inject Wallet services in your components
+
+Observable based - Utilize RxJS rather than callbacks for realtime streams
