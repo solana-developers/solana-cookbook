@@ -1,8 +1,128 @@
 {
   "redirects": [
     {
+      "source": "/getting-started/installation.html",
+      "destination": "https://solana.com/developers/guides/getstarted/setup-local-development",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/accounts.html",
+      "destination": "https://solana.com/docs/core/accounts",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/programs.html",
+      "destination": "https://solana.com/docs/core/programs",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/transactions.html",
+      "destination": "https://solana.com/docs/core/transactions",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/pdas.html",
+      "destination": "https://solana.com/docs/core/pda",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/cpi.html",
+      "destination": "https://solanacookbook.com/core-concepts/cpi.html",
+      "permanent": true
+    },
+    {
+      "source": "guides/debugging-solana-programs.html",
+      "destination": "https://solana.com/docs/programs/debugging#logging",
+      "permanent": true
+    },
+    {
       "source": "/guides/retrying-transactions.html",
       "destination": "https://solana.com/docs/core/transactions/retry",
+      "permanent": true
+    },
+    {
+      "source": "/guides/versioned-transactions.html",
+      "destination": "https://solana.com/docs/advanced/versions",
+      "permanent": true
+    },
+    {
+      "source": "/references/local-development.htm",
+      "destination": "https://solana.com/developers/guides/getstarted/solana-test-validator",
+      "permanent": true
+    },
+    {
+      "source": "/references/keypairs-and-wallets.html",
+      "destination": "https://solana.com/developers/cookbook/wallets/create-keypair",
+      "permanent": true
+    },
+    {
+      "source": "/references/basic-transactions.html",
+      "destination": "https://solana.com/developers/cookbook/transactions/send-sol",
+      "permanent": true
+    },
+    {
+      "source": "/references/accounts.html",
+      "destination": "https://solana.com/developers/cookbook/accounts/create-account",
+      "permanent": true
+    },
+    {
+      "source": "/references/tokens.html",
+      "destination": "https://solana.com/developers/cookbook/tokens/create-mint-account",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/intro.html",
+      "destination": "https://solana.com/developers/guides/games/getting-started-with-game-development",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/intro.html",
+      "destination": "https://solana.com/developers/guides/games/getting-started-with-game-development",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/game-sdks.html",
+      "destination": "https://solana.com/developers/guides/games/game-sdks",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/nfts-in-games.html",
+      "destination": "https://solana.com/developers/guides/games/nfts-in-games",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/hello-world.html",
+      "destination": "https://solana.com/developers/guides/games/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/store-sol-in-pda.html",
+      "destination": "https://solana.com/developers/guides/games/store-sol-in-pda",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/saving-game-state.html",
+      "destination": "https://solana.com/developers/guides/games/saving-game-state",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/energy-system.html",
+      "destination": "https://solana.com/developers/guides/games/energy-system",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/interact-with-tokens.html",
+      "destination": "https://solana.com/developers/guides/games/interact-with-tokens",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/porting-anchor-to-unity.html",
+      "destination": "https://solana.com/developers/guides/games/porting-anchor-to-unity",
+      "permanent": true
+    },
+    {
+      "source": "/gaming/game-examples.html",
+      "destination": "https://solana.com/developers/guides/games/game-examples",
       "permanent": true
     }
   ]
