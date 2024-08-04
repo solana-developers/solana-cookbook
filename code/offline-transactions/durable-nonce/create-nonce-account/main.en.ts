@@ -6,11 +6,12 @@ import {
   NONCE_ACCOUNT_LENGTH,
   SystemProgram,
   LAMPORTS_PER_SOL,
-} from "@solana/web3.js";
+  sendAndConfirmTransaction,
+} from '@solana/web3.js';
 
 (async () => {
   // Setup our connection and wallet
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
   const feePayer = Keypair.generate();
 
   // Fund our wallet with 1 SOL
@@ -44,6 +45,9 @@ import {
   );
 
   console.log(
-    `txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`
+    `txhash: ${await sendAndConfirmTransaction(connection, tx, [
+      feePayer,
+      nonceAccount,
+    ])}`
   );
 })();

@@ -4,26 +4,50 @@ import {
   Keypair,
   LAMPORTS_PER_SOL,
   PublicKey,
+  sendAndConfirmTransaction,
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from "@solana/web3.js";
+} from '@solana/web3.js';
 
 const PAYER_KEYPAIR = Keypair.generate();
 
 (async () => {
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const latestBlockHash = await connection.getLatestBlockhash();
   const programId = new PublicKey(
-    "6eW5nnSosr2LpkUGCdznsjRGDhVb26tLmiM1P8RV1QQp"
+    '6eW5nnSosr2LpkUGCdznsjRGDhVb26tLmiM1P8RV1QQp'
   );
 
   // Airdop to Payer
   await connection.confirmTransaction(
-    await connection.requestAirdrop(PAYER_KEYPAIR.publicKey, LAMPORTS_PER_SOL)
+    {
+      blockhash: latestBlockHash.blockhash,
+      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+      signature: await connection.requestAirdrop(
+        PAYER_KEYPAIR.publicKey,
+        LAMPORTS_PER_SOL
+      ),
+    },
+    'confirmed'
+  );
+
+  // Airdropping 1 SOL
+  const feePayer = Keypair.generate();
+  await connection.confirmTransaction(
+    {
+      blockhash: latestBlockHash.blockhash,
+      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+      signature: await connection.requestAirdrop(
+        feePayer.publicKey,
+        LAMPORTS_PER_SOL
+      ),
+    },
+    'confirmed'
   );
 
   const [pda, bump] = await PublicKey.findProgramAddress(
-    [Buffer.from("customaddress"), PAYER_KEYPAIR.publicKey.toBuffer()],
+    [Buffer.from('customaddress'), PAYER_KEYPAIR.publicKey.toBuffer()],
     programId
   );
 
@@ -54,6 +78,8 @@ const PAYER_KEYPAIR = Keypair.generate();
   const transaction = new Transaction();
   transaction.add(createPDAIx);
 
-  const txHash = await connection.sendTransaction(transaction, [PAYER_KEYPAIR]);
+  const txHash = await sendAndConfirmTransaction(connection, transaction, [
+    PAYER_KEYPAIR,
+  ]);
   console.log(`Created PDA successfully. Tx Hash: ${txHash}`);
 })();

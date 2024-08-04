@@ -7,19 +7,29 @@ import {
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from "@solana/web3.js";
+  sendAndConfirmTransaction,
+} from '@solana/web3.js';
 
 (async () => {
   const programId = new PublicKey(
-    "4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk"
+    '4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk'
   );
 
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+  const latestBlockHash = await connection.getLatestBlockhash();
 
   // Airdropping 1 SOL
   const feePayer = Keypair.generate();
   await connection.confirmTransaction(
-    await connection.requestAirdrop(feePayer.publicKey, LAMPORTS_PER_SOL)
+    {
+      blockhash: latestBlockHash.blockhash,
+      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+      signature: await connection.requestAirdrop(
+        feePayer.publicKey,
+        LAMPORTS_PER_SOL
+      ),
+    },
+    'confirmed'
   );
 
   // Hello state account
@@ -58,7 +68,7 @@ import {
   const transaction = new Transaction();
   transaction.add(allocateHelloAccountIx, initIx);
 
-  const txHash = await connection.sendTransaction(transaction, [
+  const txHash = await sendAndConfirmTransaction(connection, transaction, [
     feePayer,
     helloAccount,
   ]);

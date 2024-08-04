@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://solana.com/docs",
+      "permanent": true
+    },
+    {
       "source": "/getting-started/installation.html",
       "destination": "https://solana.com/developers/guides/getstarted/setup-local-development",
       "permanent": true
@@ -31,6 +36,11 @@
       "permanent": true
     },
     {
+      "source": "/guides/get-program-accounts.html#facts",
+      "destination": "https://solana.com/developers/guides/get-program-accounts",
+      "permanent": true
+    },
+    {
       "source": "guides/debugging-solana-programs.html",
       "destination": "https://solana.com/docs/programs/debugging#logging",
       "permanent": true
@@ -46,8 +56,8 @@
       "permanent": true
     },
     {
-      "source": "/references/local-development.htm",
-      "destination": "https://solana.com/developers/guides/getstarted/solana-test-validator",
+      "source": "/references/local-development.html",
+      "destination": "https://solana.com/developers/cookbook/development/start-local-validator",
       "permanent": true
     },
     {
@@ -66,8 +76,18 @@
       "permanent": true
     },
     {
+      "source": "/references/programs.html#how-to-transfer-sol-in-a-program",
+      "destination": "https://solana.com/developers/cookbook/programs/transfer-sol",
+      "permanent": true
+    },
+    {
       "source": "/references/tokens.html",
       "destination": "https://solana.com/developers/cookbook/tokens/create-mint-account",
+      "permanent": true
+    },
+    {
+      "source": "/references/offline-transactions.html#sign-transaction",
+      "destination": "https://solana.com/developers/cookbook/transactions/offline-transactions",
       "permanent": true
     },
     {
