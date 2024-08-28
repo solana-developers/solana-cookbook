@@ -86,6 +86,11 @@
       "permanent": true
     },
     {
+      "source": "/references/nfts.html#how-to-create-an-nft",
+      "destination": "https://solana.com/developers/cookbook/tokens/",
+      "permanent": true
+    },
+    {
       "source": "/references/offline-transactions.html#sign-transaction",
       "destination": "https://solana.com/developers/cookbook/transactions/offline-transactions",
       "permanent": true
