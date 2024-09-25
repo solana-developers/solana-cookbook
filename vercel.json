@@ -47,7 +47,7 @@
     },
     {
       "source": "/guides/retrying-transactions.html",
-      "destination": "https://solana.com/docs/core/transactions/retry",
+      "destination": "https://solana.com/docs/advanced/retry",
       "permanent": true
     },
     {
