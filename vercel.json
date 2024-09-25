@@ -7,7 +7,7 @@
     },
     {
       "source": "/getting-started/installation.html",
-      "destination": "https://solana.com/developers/guides/getstarted/setup-local-development",
+      "destination": "https://solana.com/docs/intro/installation",
       "permanent": true
     },
     {
