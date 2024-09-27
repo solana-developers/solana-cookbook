@@ -284,7 +284,7 @@ A Program Derived Address is simply an account owned by the program, but has no 
 
   <template v-slot:default>
 
-@[code](@/code/programs/create-pda/program/src/lib.rs)
+@[code](@/code/pprograms/create-pda/program/src/lib.rs)
 
   </template>
 
