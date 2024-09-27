@@ -1,4 +1,4 @@
-from solders.keypair import Keypair
+from solana.transaction import Keypair
 
 b58_string = "5MaiiCavjCmn9Hs1o3eznqDEhRwxo7pXiAYez7keQUviUkauRiTMD8DrESdrNjN8zd9mTmVhRvBJeg5vhyvgrAhG"
 keypair = Keypair.from_base58_string(b58_string)
