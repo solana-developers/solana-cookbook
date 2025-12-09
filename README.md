@@ -12,7 +12,7 @@ the project's style when contributing new snippets of code.
 ### Structure
 
 Currently we have "topics" under `/docs` and the code for those topics
-lives under `/code/<topic>`.
+lives under `/code/<topic>`.`
 
 ### References
 
