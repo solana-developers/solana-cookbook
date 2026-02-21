@@ -23,5 +23,5 @@ let stakeBalance = await connection.getBalance(stakeAccount.publicKey);
 console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
 
 // Verify the status of our stake account. This will start as inactive and will take some time to activate.
-let stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
+let stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey) // see full source for getStakeActivation() helper;
 console.log(`Stake account status: ${stakeStatus.state}`);

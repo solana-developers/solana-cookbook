@@ -7,7 +7,35 @@ import {
   Authorized,
   sendAndConfirmTransaction,
   Lockup,
+  PublicKey,
 } from "@solana/web3.js";
+
+// ---------------------------------------------------------------------------
+// getStakeActivation() was removed from the Solana RPC in validator v1.18.
+// This helper replicates the same result by reading stake account data
+// directly. See: https://github.com/solana-developers/solana-cookbook/issues/620
+// ---------------------------------------------------------------------------
+async function getStakeActivation(
+  connection: Connection,
+  stakeAccountPubkey: PublicKey
+): Promise<{ state: string }> {
+  const [epochInfo, accountInfo] = await Promise.all([
+    connection.getEpochInfo(),
+    connection.getParsedAccountInfo(stakeAccountPubkey),
+  ]);
+  const currentEpoch = BigInt(epochInfo.epoch);
+  const parsed = (accountInfo.value?.data as any)?.parsed;
+  if (!parsed || parsed.type === "uninitialized") return { state: "inactive" };
+  const delegation = parsed.info?.stake?.delegation;
+  if (!delegation) return { state: "inactive" };
+  const activationEpoch = BigInt(delegation.activationEpoch);
+  const deactivationEpoch = BigInt(delegation.deactivationEpoch);
+  if (deactivationEpoch < currentEpoch) return { state: "inactive" };
+  if (deactivationEpoch === currentEpoch) return { state: "deactivating" };
+  if (activationEpoch >= currentEpoch) return { state: "activating" };
+  return { state: "active" };
+}
+
 
 (async () => {
   // Setup our connection and wallet
@@ -56,6 +84,6 @@ import {
   console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
 
   // Verify the status of our stake account. This will start as inactive and will take some time to activate.
-  let stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
+  let stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
   console.log(`Stake account status: ${stakeStatus.state}`);
 })();

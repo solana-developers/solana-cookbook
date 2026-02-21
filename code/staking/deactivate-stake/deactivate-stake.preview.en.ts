@@ -11,5 +11,5 @@ const deactivateTxId = await sendAndConfirmTransaction(
 console.log(`Stake account deactivated. Tx Id: ${deactivateTxId}`);
 
 // Check in on our stake account. It should now be inactive.
-stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
+stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey) // see full source for getStakeActivation() helper;
 console.log(`Stake account status: ${stakeStatus.state}`);

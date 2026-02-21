@@ -13,5 +13,5 @@ console.log(
 );
 
 // Check in on our stake account. It should now be activating.
-stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
+stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey) // see full source for getStakeActivation() helper;
 console.log(`Stake account status: ${stakeStatus.state}`);
