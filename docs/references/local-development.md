@@ -441,7 +441,7 @@ Loading it to your localnet is then done by passing the account's file and desti
 
 ### How to load programs from mainnet
 
-Similarly, it is possible to download the Serum Dex v3 program:
+Similarly, it is possible to download the Openbook program:
 
 <SolanaCodeGroup>
   <SolanaCodeGroupItem title="CLI">
