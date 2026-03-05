@@ -463,3 +463,93 @@ You can fetch token accounts by owner. There are two ways to do it.
 
   </SolanaCodeGroupItem>
 </SolanaCodeGroup>
+
+## How to swap tokens using Jupiter Aggregator
+
+[Jupiter](https://jup.ag) is the leading DEX aggregator on Solana. It splits
+trades across Raydium, Orca, and other liquidity pools to get the best price,
+and returns a single ready-to-sign `VersionedTransaction`.
+
+### Why `VersionedTransaction`?
+
+Jupiter always returns **v0 transactions** that embed
+[Address Lookup Tables](https://solana.com/docs/advanced/lookup-tables)
+(ALTs). Multi-hop swap routes can reference more than 35 accounts — the legacy
+`Transaction` limit — so ALTs are required. Using `Transaction.from()` on a
+Jupiter response will silently produce a malformed transaction; always use
+`VersionedTransaction.deserialize()`.
+
+### Endpoints
+
+Jupiter's free tier requires no API key:
+
+| Tier | Quote endpoint | Swap endpoint |
+|------|---------------|---------------|
+| Free | `https://lite-api.jup.ag/swap/v1/quote` | `https://lite-api.jup.ag/swap/v1/swap` |
+| Paid | `https://api.jup.ag/swap/v1/quote` | `https://api.jup.ag/swap/v1/swap` |
+
+> **Note:** The legacy `quote-api.jup.ag/v6/` endpoint now requires a paid API key.
+> Use `lite-api.jup.ag` for unauthenticated access.
+
+### Key swap body fields
+
+| Field | Description |
+|-------|-------------|
+| `quoteResponse` | The full quote object returned by `/quote` |
+| `userPublicKey` | Signer's base58 public key |
+| `wrapAndUnwrapSol` | `true` — Jupiter creates the destination ATA and wraps/unwraps SOL automatically |
+| `dynamicComputeUnitLimit` | `true` — Jupiter sets the CU limit to actual usage (saves fees) |
+| `jitoTipLamports` | Optional Jito tip (lamports). Jupiter embeds the tip instruction; set to `25000`–`200000` for MEV-resistant execution |
+
+### Example
+
+<SolanaCodeGroup>
+  <SolanaCodeGroupItem title="TS" active>
+
+  <template v-slot:default>
+
+@[code](@/code/jupiter/swap/main.en.ts)
+
+  </template>
+
+  <template v-slot:preview>
+
+@[code](@/code/jupiter/swap/main.preview.en.ts)
+
+  </template>
+
+  </SolanaCodeGroupItem>
+</SolanaCodeGroup>
+
+### Price impact check
+
+Always check `quote.priceImpactPct` before executing. A large trade on a
+thin pool can move the price by several percent — meaning you receive
+significantly less than the displayed quote.
+
+```ts
+const impact = parseFloat(quote.priceImpactPct ?? "0");
+if (impact > 1.0) {
+  throw new Error(`Price impact ${impact.toFixed(2)}% exceeds limit — skipping`);
+}
+```
+
+A threshold of **1–3%** is typical; lower for stable, liquid pairs.
+
+### Confirmation pattern
+
+Use the `lastValidBlockHeight` confirmation form — it's more reliable than the
+legacy signature-only form, especially on congested networks:
+
+```ts
+const { blockhash, lastValidBlockHeight } =
+  await connection.getLatestBlockhash("confirmed");
+// … sign and sendRawTransaction …
+await connection.confirmTransaction(
+  { signature: sig, blockhash, lastValidBlockHeight },
+  "confirmed"
+);
+```
+
+The transaction is safe to retry (by fetching a fresh quote and re-signing)
+if `confirmTransaction` times out.
