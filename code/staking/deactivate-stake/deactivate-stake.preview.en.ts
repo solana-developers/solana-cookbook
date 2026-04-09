@@ -11,5 +11,7 @@ const deactivateTxId = await sendAndConfirmTransaction(
 console.log(`Stake account deactivated. Tx Id: ${deactivateTxId}`);
 
 // Check in on our stake account. It should now be inactive.
-stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-console.log(`Stake account status: ${stakeStatus.state}`);
+// Note: connection.getStakeActivation() was removed in Agave 2.0.
+// Use the client-side alternative from @anza-xyz/solana-rpc-get-stake-activation-v1 instead.
+stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+console.log(`Stake account status: ${stakeStatus.status}`);

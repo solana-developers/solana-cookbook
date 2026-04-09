@@ -47,8 +47,8 @@ let stakeBalance = await connection.getBalance(stakeAccount.publicKey);
 console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
 
 // Verify the status of our stake account. This will start as inactive and will take some time to activate.
-let stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-console.log(`Stake account status: ${stakeStatus.state}`);
+let stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+console.log(`Stake account status: ${stakeStatus.status}`);
 
 ```
 
@@ -72,8 +72,8 @@ console.log(
 );
 
 // Check in on our stake account. It should now be activating.
-stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-console.log(`Stake account status: ${stakeStatus.state}`);
+stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+console.log(`Stake account status: ${stakeStatus.status}`);
 
 ```
 
@@ -182,8 +182,8 @@ const deactivateTxId = await sendAndConfirmTransaction(
 console.log(`Stake account deactivated. Tx Id: ${deactivateTxId}`);
 
 // Check in on our stake account. It should now be inactive.
-stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-console.log(`Stake account status: ${stakeStatus.state}`);
+stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+console.log(`Stake account status: ${stakeStatus.status}`);
 
 ```
 
