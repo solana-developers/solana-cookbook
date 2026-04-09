@@ -9,6 +9,7 @@ import {
   Lockup,
   PublicKey,
 } from "@solana/web3.js";
+import { getStakeActivation } from "@anza-xyz/solana-rpc-get-stake-activation-v1";
 
 (async () => {
   // Setup our connection and wallet
@@ -56,9 +57,10 @@ import {
   let stakeBalance = await connection.getBalance(stakeAccount.publicKey);
   console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
 
-  // Verify the status of our stake account. This will start as inactive and will take some time to activate.
-  let stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-  console.log(`Stake account status: ${stakeStatus.state}`);
+  // Note: connection.getStakeActivation() was removed in Agave 2.0.
+  // Use the client-side alternative from @anza-xyz/solana-rpc-get-stake-activation-v1 instead.
+  let stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+  console.log(`Stake account status: ${stakeStatus.status}`);
 
   // To delegate our stake, we first have to select a validator. Here we get all validators and select the first active one.
   const validators = await connection.getVoteAccounts();
@@ -80,8 +82,8 @@ import {
   );
 
   // Check in on our stake account. It should now be activating.
-  stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-  console.log(`Stake account status: ${stakeStatus.state}`);
+  stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+  console.log(`Stake account status: ${stakeStatus.status}`);
 
   // At anytime we can choose to deactivate our stake. Our stake account must be inactive before we can withdraw funds.
   const deactivateTx = StakeProgram.deactivate({
@@ -96,8 +98,8 @@ import {
   console.log(`Stake account deactivated. Tx Id: ${deactivateTxId}`);
 
   // Check in on our stake account. It should now be inactive.
-  stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
-  console.log(`Stake account status: ${stakeStatus.state}`);
+  stakeStatus = await getStakeActivation(connection, stakeAccount.publicKey);
+  console.log(`Stake account status: ${stakeStatus.status}`);
 
   // Once deactivated, we can withdraw our SOL back to our main wallet
   const withdrawTx = StakeProgram.withdraw({
